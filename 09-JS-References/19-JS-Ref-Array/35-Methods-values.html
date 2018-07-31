@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Welcome</title>
+</header>
+<body>
+
+<p>
+The values() method returns a new Array Iterator object that contains the values for each index in the array.
+
+
+</p>
+<script>
+var a = ['w', 'y', 'k', 'o', 'p']; 
+var iterator = a.values();
+
+console.log(iterator.next().value); // w 
+console.log(iterator.next().value); // y 
+console.log(iterator.next().value); // k 
+console.log(iterator.next().value); // o 
+console.log(iterator.next().value); // p
+</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Welcome</title>
+</header>
+<body>
+<script>
+
+The shift() method removes the first element from an array and returns that removed element. This method changes the length of the array.
+var a = [1, 2, 3];
+var b = a.shift();
+
+console.log(a); // [2, 3]
+console.log(b); // 1
+
+The slice() method returns a shallow copy of a portion of an array into a new array object selected from begin to end (end not included). The original array will not be modified.
+var animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+
+console.log(animals.slice(2));
+// expected output: Array ["camel", "duck", "elephant"]
+
+console.log(animals.slice(2, 4));
+// expected output: Array ["camel", "duck"]
+
+console.log(animals.slice(1, 5));
+// expected output: Array ["bison", "camel", "duck", "elephant"]
+
+The some() method tests whether at least one element in the array passes the test implemented by the provided function.
+function isBiggerThan10(element, index, array) {
+  return element > 10;
+}
+
+[2, 5, 8, 1, 4].some(isBiggerThan10);  // false
+[12, 5, 8, 1, 4].some(isBiggerThan10); // true
+
+
+The sort() method sorts the elements of an array in place and returns the array. The sort is not necessarily stable. The default sort order is according to string Unicode code points.
+var fruit = ['cherries', 'apples', 'bananas'];
+fruit.sort(); // ['apples', 'bananas', 'cherries']
+
+var scores = [1, 10, 21, 2]; 
+scores.sort(); // [1, 10, 2, 21]
+// Note that 10 comes before 2,
+// because '10' is mix of two characters '1' and '0' so '10' is before '2' in Unicode code point order.
+
+var things = ['word', 'Word', '1 Word', '2 Words'];
+things.sort(); // ['1 Word', '2 Words', 'Word', 'word']
+// In Unicode, numbers come before upper case letters,
+// which come before lower case letters.
+
+The splice() method changes the contents of an array by removing existing elements and/or adding new elements.
+var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+
+myFish.splice(2, 0, 'drum'); // insert 'drum' at 2-index position
+// myFish is ["angel", "clown", "drum", "mandarin", "sturgeon"]
+
+myFish.splice(2, 1); // remove 1 item at 2-index position (that is, "drum")
+// myFish is ["angel", "clown", "mandarin", "sturgeon"]
+
+The toLocaleString() method returns a string representing the elements of the array. The elements are converted to Strings using their toLocaleString methods and these Strings are separated by a locale-specific String (such as a comma “,”).
+var number = 1337;
+var date = new Date();
+var myArr = [number, date, 'foo'];
+
+var str = myArr.toLocaleString(); 
+
+console.log(str); 
+// logs '1337,6.12.2013 19:37:35,foo'
+// if run in a German (de-DE) locale with timezone Europe/Berlin
+
+
+The toString() method returns a string representing the specified array and its elements.
+var months = ['Jan', 'Feb', 'Mar', 'Apr'];
+months.toString(); // "Jan,Feb,Mar,Apr"
+
+The unshift() method adds one or more elements to the beginning of an array and returns the new length of the array.
+var a = [1, 2, 3];
+a.unshift(4, 5);
+
+console.log(a); // [4, 5, 1, 2, 3]
+
+
+The values() method returns a new Array Iterator object that contains the values for each index in the array.
+var a = ['w', 'y', 'k', 'o', 'p']; 
+var iterator = a.values();
+
+console.log(iterator.next().value); // w 
+console.log(iterator.next().value); // y 
+console.log(iterator.next().value); // k 
+console.log(iterator.next().value); // o 
+console.log(iterator.next().value); // p
+
+
+</script>
+
+</body>
+</html>

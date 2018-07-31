@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title> Welcome </title>
+   <!--link href="css/bootstrap.min.css" /-->	
+   <link href="css/style.css" />
+   
+   <body>
+
+  <script type="text/javascript">  
+	// As simple as possible:
+	function isPrime(num) {
+	  for(var i = 2; i < num; i++)
+		if(num % i === 0) return false;
+	  return num !== 1;
+	}
+	console.log(isPrime(8));
+	
+	// With the ES6 syntax:
+	const isPrime = num => {
+	  for(let i = 2; i < num; i++)
+		if(num % i === 0) return false;
+	  return num !== 1;
+	}	
+	
+	// other way
+	const isPrime = num => {
+    for(let i = 2, s = Math.sqrt(num); i <= s; i++)
+        if(num % i === 0) return false; 
+    return num !== 1;
+}
+	
+  </script>
+
+   </body>
+</html>

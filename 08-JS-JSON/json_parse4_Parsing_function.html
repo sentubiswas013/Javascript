@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title> Welcome </title>
+   <!--link href="css/bootstrap.min.css" /-->	
+   <link href="css/style.css" />
+   <body>      
+   
+	
+	<h2>Convert a string into a function.</h2>
+
+	<p id="demo"></p>
+
+	<script>
+
+	var text = '{ "name":"John", "age":"function() {return 30;}", "city":"New York"}';
+	var obj = JSON.parse(text);
+	obj.age = eval("(" + obj.age + ")");
+
+	document.getElementById("demo").innerHTML = obj.name + ", " + obj.age(); 
+
+	</script>
+
+   </body>
+</html>

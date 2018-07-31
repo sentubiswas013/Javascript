@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Welcome</title>
+</header>
+<body>
+<!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter -->
+<p>
+	The Array.isArray() function determines whether the passed value is an Array.
+</p>
+<script>
+var cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+var text = "";
+var i;
+for (i = 0; i < cars.length; i++) {
+    text += cars[i] + "<br>";
+}
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Welcome</title>
+</header>
+<body>
+
+<p>
+The sort() method sorts the elements of an array in place and returns the array. The sort is not necessarily stable. The default sort order is according to string Unicode code points.
+
+</p>
+<script>
+var fruit = ['cherries', 'apples', 'bananas'];
+fruit.sort(); // ['apples', 'bananas', 'cherries']
+
+var scores = [1, 10, 21, 2]; 
+scores.sort(); // [1, 10, 2, 21]
+// Note that 10 comes before 2,
+// because '10' is mix of two characters '1' and '0' so '10' is before '2' in Unicode code point order.
+
+var things = ['word', 'Word', '1 Word', '2 Words'];
+things.sort(); // ['1 Word', '2 Words', 'Word', 'word']
+// In Unicode, numbers come before upper case letters,
+// which come before lower case letters.
+</script>
+
+</body>
+</html>

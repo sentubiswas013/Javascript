@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Welcome</title>
+</header>
+<body>
+
+<p>
+	The Math.random() function returns a floating-point, pseudo-random number in the range from 0 inclusive up to but not including 1 — which you can then scale to your desired range. The implementation selects the initial seed to the random number generation algorithm; it cannot be chosen or reset by the user.
+</p>
+<script>
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+console.log(getRandomInt(3));
+// expected output: 0, 1 or 2
+
+console.log(getRandomInt(1));
+// expected output: 0
+
+console.log(Math.random());
+// expected output: a number between 0 and 1
+</script>
+
+</body>
+</html>

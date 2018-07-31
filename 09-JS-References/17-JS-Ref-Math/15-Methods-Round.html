@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Welcome</title>
+</header>
+<body>
+
+<p>
+	The Math.round() function returns the value of a number rounded to the nearest integer.
+</p>
+<script>
+
+function precisionRound(number, precision) {
+  var factor = Math.pow(10, precision);
+  return Math.round(number * factor) / factor;
+}
+
+console.log(precisionRound(1234.5678, 1));
+// expected output: 1234.6
+
+console.log(precisionRound(1234.5678, -1));
+// expected output: 1230
+</script>
+
+</body>
+</html>

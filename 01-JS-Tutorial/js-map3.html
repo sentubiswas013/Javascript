@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+   <meta>
+   <title> Welcome </title>
+   <body> 
+	<div class="normal">
+		<p>This is Paragraph No.1</p>
+	</div>
+	
+	<script>
+	  const smartPhones = [
+		  { name:'iphone', price:649 },
+		  { name:'Galaxy S6', price:576 },
+		  { name:'Galaxy Note 5', price:489 }
+		];
+		
+		// ES6
+		const prices = smartPhones.map(smartPhone => smartPhone.price);
+		console.log(prices); // [649, 576, 489]
+		
+		// ES5
+		/*var prices = smartPhones.map(function(smartPhone) {
+		  return smartPhone.price;
+		});
+		console.log(prices);*/
+		// [649, 576, 489]
+	</script>
+
+   </body>
+</html>

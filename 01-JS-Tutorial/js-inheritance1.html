@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+   <meta>
+   <title> Welcome </title>
+   <body> 
+	<div class="normal">
+		<p>This is Paragraph No.1</p>
+	</div>
+	
+	<script>
+		function person(fname="Sukanta", lname="Sarkar"){
+			this.fname = fname || "Pintu"
+			//this.fname = "Sentu"
+			this.lname = lname || "Biswas"
+			//this.lname = "Biswas"
+			this.fullName = function(){
+				return this.fname+" "+this.lname
+			}
+		}
+		function age(e){
+			this.age = 30;
+		}
+		person.prototype = new age();
+		var info = new person("Krishna", "Raul");
+		
+		console.log(info.fullName());
+		//console.log(info.age);
+	</script>
+
+   </body>
+</html>

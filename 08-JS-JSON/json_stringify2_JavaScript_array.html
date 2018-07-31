@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title> Welcome </title>
+   <!--link href="css/bootstrap.min.css" /-->	
+   <link href="css/style.css" />
+   <body>      
+   
+	
+	<h2>Create JSON string from a JavaScript array.</h2>
+
+	<p id="demo"></p>
+
+	<script>
+
+	var arr = [ "John", "Peter", "Sally", "Jane" ];
+	var myJSON = JSON.stringify(arr);
+	document.getElementById("demo").innerHTML = myJSON;
+
+	</script>
+
+   </body>
+</html>

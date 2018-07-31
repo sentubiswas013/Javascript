@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title> Welcome </title>
+   <!--link href="css/bootstrap.min.css" /-->	
+   <link href="css/style.css" />
+   <body>      
+   
+	<p>Use bracket notation to access the property values.</p>
+
+	<p id="demo"></p>
+
+	<script>
+	var myObj = { "name":"John", "age":30, "car":null };
+	for (x in myObj) {
+		document.getElementById("demo").innerHTML += myObj[x] + "<br>";
+	}
+	</script>
+	
+   </body>
+</html>
