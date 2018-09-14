@@ -35,9 +35,7 @@
 	  };
 	  request.send(); // send the request
 	});
-
 	console.log('Asynchronous request made.');
-
 	promise.then((data) => {
 	  console.log('Got data! Promise fulfilled.', data);
 	  //document.body.textContent = JSON.parse(data).value.joke;
