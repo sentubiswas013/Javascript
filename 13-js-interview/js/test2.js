@@ -1,2 +1,0 @@
-
- personObj.logPerson();
