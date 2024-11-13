@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+
+<script>
+    var books = [
+        { title: "C++", author: "Bjarne" },
+        { title: "Java", author: "James" },
+        { title: "Python", author: "Guido" },
+        { title: "Java", author: "James" },
+    ];
+    var person = {
+        name: "Sentu",
+        lname: "Biswas",
+        email: "abac@gmail.com",
+        address : {
+            village: "Nazirpur",
+            city: "birnagar",
+            dist: "Nadia",
+            pin: 741127,
+            state: "West Bengal"
+        },
+        contact: 23789234
+    }
+    let string = "supriya";
+    let stringLong = "supriya is a hahahahaha good girl";
+    var arr = [1,2,3,3,7,4,5];
+    var arrLong = [55, 44, 55,67,67,67,67,8,8,8,8,8,65,1,2,3,3,34,5];
+
+    for (let index = 0; index < 5; index++) {
+        const element = 5[index];
+        console.log("element----", element)
+    }
+
+    console.log("------------------------------------------");
+    for (const key in person) {
+        if (person.hasOwnProperty.call(person, key)) {
+            const element = person[key];
+            console.log("element----", element)
+        }
+    }
+    console.log("------------------------------------------");
+    books.some((row)=>{
+        console.log("row---", row.title,  (row.title === 'Java'))
+    })  
+    console.log("------------------------------------------");
+    // books.reduce((item)=>{
+    //     console.log("item---", item.title,  (item.title === 'Java'))
+    // })  
+
+
+
+
+
+</script>
+
+</body>
+</html>
