@@ -603,7 +603,7 @@ What is the difference between localStorage, sessionStorage, and cookies in Java
 
   
 
-Miscellaneous/Conceptual Questions
+## Miscellaneous/Conceptual Questions
 
 What are closures and lexical scoping?
 
@@ -625,7 +625,7 @@ What is the purpose of JavaScript's eval() function?
 
   
 
-Bonus: JavaScript Frameworks and Libraries
+## Bonus: JavaScript Frameworks and Libraries
 
 What is the Virtual DOM, and how does it work in React?
 
@@ -653,7 +653,7 @@ Here is a list of common JavaScript coding interview questions that can help you
 
   
 
-1. Basic JavaScript Concepts
+## Basic JavaScript Concepts
 
 What are let, const, and var? Explain the differences.
 
@@ -673,7 +673,7 @@ What is a closure in JavaScript, and how does it work?
 
 What is the difference between null and undefined?
 
-2. Arrays and Strings
+## Arrays and Strings
 
 Reverse a string without using built-in methods.
 
@@ -687,7 +687,7 @@ Write a function to flatten a nested array (array of arrays).
 
 How do you find the missing number in an array containing numbers from 1 to n?
 
-3. Objects and Data Structures
+## Objects and Data Structures
 
 Merge two sorted arrays into a single sorted array.
 
@@ -701,7 +701,7 @@ Implement a hash map in JavaScript.
 
 How would you implement a set in JavaScript without using the Set object?
 
-4. Higher-Order Functions and Functional Programming
+## Higher-Order Functions and Functional Programming
 
 What are higher-order functions? Give an example.
 
@@ -713,7 +713,7 @@ Write a function to throttle a given function.
 
 What is currying? Can you write a simple example of currying in JavaScript?
 
-5. Algorithms and Problem Solving
+## Algorithms and Problem Solving
 
 Write a function to find the factorial of a number.
 
@@ -733,7 +733,7 @@ Write an algorithm to check if a number is prime.
 
 Reverse a linked list (you can assume a basic linked list structure).
 
-6. Asynchronous JavaScript
+## Asynchronous JavaScript
 
 Explain how promises work in JavaScript and how you would use them.
 
@@ -747,7 +747,7 @@ What are callbacks and why do they sometimes lead to "callback hell"?
 
 What are setTimeout and setInterval? How do they differ?
 
-7. Performance and Optimization
+## Performance and Optimization
 
 How would you optimize a piece of JavaScript code for better performance?
 
@@ -757,7 +757,7 @@ How do you handle memory leaks in JavaScript?
 
 What is throttling and debouncing? How do they help with performance?
 
-8. ES6+ Features
+## ES6+ Features
 
 What are template literals and how are they used?
 
@@ -771,7 +771,7 @@ What are arrow functions and how do they differ from regular functions?
 
 What are Promises and async/await? How are they different from callbacks?
 
-9. Miscellaneous/Advanced Topics
+## Miscellaneous/Advanced Topics
 
 What is the difference between synchronous and asynchronous functions in JavaScript?
 
@@ -787,7 +787,7 @@ What is the difference between a forEach and a for loop in JavaScript?
 
 What are JavaScript generators and how are they used?
 
-10. JavaScript and the DOM
+## JavaScript and the DOM
 
 How can you select an element in the DOM using JavaScript?
 
@@ -808,5 +808,3 @@ Practice coding: Use platforms like LeetCode, HackerRank, Codewars, and Exercism
 Know the latest features: Make sure you’re familiar with ES6+ features like arrow functions, destructuring, async/await, and promises.
 
 Solve problems in different ways: Many problems can be solved in multiple ways—make sure you can articulate time and space complexity and justify your approach.
-
-### Would you like help with any specific question or topic from this list?
