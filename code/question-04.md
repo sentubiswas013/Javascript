@@ -52,7 +52,7 @@ A **closure** is a function that "remembers" the scope in which it was created, 
 Example:
 
 ```javascript
- codefunction outer() {
+ function outer() {
   let counter = 0;
   
   return function inner() {
@@ -111,7 +111,7 @@ Example:
 Example:
 
 ```javascript
- codefunction regularFunc() {
+ function regularFunc() {
   console.log(this); // Global object (window in browsers)
 }
 
@@ -173,7 +173,7 @@ let b = null; // explicitly assigned to null
 Example:
 
 ```javascript
- codeconst person = { name: "Alice" };
+ const person = { name: "Alice" };
 const employee = Object.create(person);
 employee.job = "Engineer";
 
@@ -323,7 +323,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   * **Usage**: Immediately invokes the function with a specified `this` value and arguments provided individually.
   * **Example**:
     ```javascript
-     codefunction greet(name) {
+     function greet(name) {
       console.log(`Hello, ${name}`);
     }
     greet.call(null, 'Alice'); // "Hello, Alice"
@@ -334,7 +334,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   * **Usage**: Similar to `call()`, but arguments are passed as an array (or an array-like object).
   * **Example**:
     ```javascript
-     codefunction greet(name, age) {
+     function greet(name, age) {
       console.log(`Hello, ${name}. You are ${age} years old.`);
     }
     greet.apply(null, ['Bob', 30]); // "Hello, Bob. You are 30 years old."
@@ -345,7 +345,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   * **Usage**: Returns a new function with a bound `this` value and optional arguments. Unlike `call()` and `apply()`, `bind()` does not invoke the function immediately but creates a new function that can be called later.
   * **Example**:
     ```javascript
-     codefunction greet(name) {
+     function greet(name) {
       console.log(`Hello, ${name}`);
     }
     const greetAlice = greet.bind(null, 'Alice');
@@ -394,7 +394,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   * **Images**: Load images only when they come into the viewport (using the `IntersectionObserver` API).
 
     ```javascript
-     codeconst images = document.querySelectorAll('img[data-src]');
+     const images = document.querySelectorAll('img[data-src]');
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -430,7 +430,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
 * **Example**:
 
   ```javascript
-   codeconst worker = new Worker('worker.js');
+   const worker = new Worker('worker.js');
   worker.postMessage('Hello, worker!');
 
   worker.onmessage = function(e) {
@@ -461,7 +461,7 @@ ES6 modules enable you to split JavaScript code into separate files, allowing fo
 * **Export**: You can export functions, objects, or variables from a module.
 
 ```js
-jsCopy code// file1.js
+ code// file1.js
 export const greet = () => {
   console.log("Hello!");
 };
@@ -470,7 +470,7 @@ export const greet = () => {
 * **Import**: You can import specific elements from a module into another file.
 
 ```js
-jsCopy code// file2.js
+ code// file2.js
 import { greet } from './file1.js';
 greet();  // Output: Hello!
 ```
@@ -478,7 +478,7 @@ greet();  // Output: Hello!
 * You can also export default values.
 
 ```js
-jsCopy code// file1.js
+ code// file1.js
 const greet = () => {
   console.log("Hello!");
 };
@@ -486,7 +486,7 @@ export default greet;
 ```
 
 ```js
-jsCopy code// file2.js
+ code// file2.js
 import greet from './file1.js';
 greet();  // Output: Hello!
 ```
@@ -500,7 +500,7 @@ Arrow functions are a shorter syntax for writing functions and also have differe
 * **Syntax**:
 
 ```js
-jsCopy codeconst add = (a, b) => a + b;
+ const add = (a, b) => a + b;
 ```
 
 * **Key differences from regular functions**:
@@ -508,7 +508,7 @@ jsCopy codeconst add = (a, b) => a + b;
   * **`this` binding**: Arrow functions do not have their own `this` context; they inherit `this` from the surrounding lexical scope.
 
 ```js
-jsCopy code// Regular function
+ code// Regular function
 function Person() {
   this.age = 30;
   setTimeout(function() {
@@ -534,7 +534,7 @@ Destructuring allows you to unpack values from arrays or properties from objects
 * **Array destructuring**:
 
 ```js
-jsCopy codeconst arr = [1, 2, 3];
+ const arr = [1, 2, 3];
 const [a, b] = arr;
 console.log(a, b);  // Output: 1 2
 ```
@@ -542,7 +542,7 @@ console.log(a, b);  // Output: 1 2
 * **Object destructuring**:
 
 ```js
-jsCopy codeconst person = { name: "Alice", age: 25 };
+ const person = { name: "Alice", age: 25 };
 const { name, age } = person;
 console.log(name, age);  // Output: Alice 25
 ```
@@ -550,7 +550,7 @@ console.log(name, age);  // Output: Alice 25
 You can also use default values, renaming, and nested destructuring.
 
 ```js
-jsCopy codeconst { name: fullName = 'Unknown', address: { city = 'Unknown' } = {} } = person;
+ const { name: fullName = 'Unknown', address: { city = 'Unknown' } = {} } = person;
 ```
 
 ---
@@ -562,7 +562,7 @@ Template literals are a new way of defining strings introduced in ES6. They allo
 * **Syntax**: Template literals use backticks (`` ` ``) instead of quotes.
 
 ```js
-jsCopy codeconst name = 'Alice';
+ const name = 'Alice';
 const greeting = `Hello, ${name}!`;  // Interpolation
 console.log(greeting);  // Output: Hello, Alice!
 ```
@@ -572,7 +572,7 @@ console.log(greeting);  // Output: Hello, Alice!
   * **Multi-line strings**: Template literals can span multiple lines without needing escape sequences.
 
 ```js
-jsCopy codeconst message = `This is a 
+ const message = `This is a 
 multi-line string.`;
 ```
 
@@ -583,7 +583,7 @@ multi-line string.`;
 * **Spread operator (`...`)**: Expands an array or object into individual elements.
 
 ```js
-jsCopy codeconst arr1 = [1, 2, 3];
+ const arr1 = [1, 2, 3];
 const arr2 = [...arr1, 4, 5];
 console.log(arr2);  // Output: [1, 2, 3, 4, 5]
 ```
@@ -591,7 +591,7 @@ console.log(arr2);  // Output: [1, 2, 3, 4, 5]
 * **Rest operator (`...`)**: Gathers multiple elements into an array or object.
 
 ```js
-jsCopy codefunction sum(...numbers) {
+ function sum(...numbers) {
   return numbers.reduce((acc, num) => acc + num, 0);
 }
 console.log(sum(1, 2, 3));  // Output: 6
@@ -614,7 +614,7 @@ A higher-order function is a function that either:
 * **Example**:
 
 ```js
-jsCopy codefunction applyFunction(fn, x) {
+ function applyFunction(fn, x) {
   return fn(x);
 }
 
@@ -633,7 +633,7 @@ A generator function is a special type of function that can pause and resume its
 * **Syntax**:
 
 ```js
-jsCopy codefunction* generateNumbers() {
+ function* generateNumbers() {
   yield 1;
   yield 2;
   yield 3;
@@ -658,7 +658,7 @@ A `Set` is a collection of unique values in JavaScript. Unlike arrays, sets do n
 * **Example**:
 
 ```js
-jsCopy codeconst set = new Set([1, 2, 3, 3, 4]);
+ const set = new Set([1, 2, 3, 3, 4]);
 console.log(set);  // Output: Set { 1, 2, 3, 4 }
 ```
 
@@ -678,7 +678,7 @@ console.log(set);  // Output: Set { 1, 2, 3, 4 }
 * **WeakMap**: A collection of key-value pairs where the keys are objects, and the values can be any type. If the key object is garbage collected, the corresponding entry in the `WeakMap` is automatically removed.
 
 ```js
-jsCopy codelet obj = {};
+ codelet obj = {};
 const weakMap = new WeakMap();
 weakMap.set(obj, 'value');
 ```
@@ -697,7 +697,7 @@ weakMap.set(obj, 'value');
 * **Proxy**: A `Proxy` is a mechanism for defining custom behavior for fundamental operations (e.g., property lookup, assignment). It allows you to intercept and customize operations on objects.
 
 ```js
-jsCopy codeconst handler = {
+ const handler = {
   get: (target, prop) => {
     if (prop === 'name') {
       return 'Alice';
@@ -713,7 +713,7 @@ console.log(person.name);  // Output: Alice
 * **Reflect**: The `Reflect` object provides methods for interceptable operations. It's often used in conjunction with `Proxy` to provide default behavior.
 
 ```js
-jsCopy codeconst target = { name: 'Alice' };
+ const target = { name: 'Alice' };
 const handler = {
   get: (target, prop) => Reflect.get(...arguments),
 };
@@ -747,7 +747,7 @@ A **pure function** in JavaScript is a function that:
 For example:
 
 ```js
-jsCopy codefunction add(a, b) {
+ function add(a, b) {
   return a + b; // Pure function
 }
 ```
@@ -767,7 +767,7 @@ jsCopy codefunction add(a, b) {
   Example of synchronous iteration:
 
   ```js
-  jsCopy codeconst arr = [1, 2, 3];
+   const arr = [1, 2, 3];
   for (let i = 0; i < arr.length; i++) {
     console.log(arr[i]); // Blocking, executes sequentially
   }
@@ -778,7 +778,7 @@ jsCopy codefunction add(a, b) {
   Example of asynchronous iteration:
 
   ```js
-  jsCopy codeasync function processData() {
+   codeasync function processData() {
     const arr = [1, 2, 3];
     for (let i = 0; i < arr.length; i++) {
       await someAsyncOperation(arr[i]); // Non-blocking, allows other operations to run
@@ -818,7 +818,7 @@ In React, when the state of a component changes, the Virtual DOM is updated firs
   Example:
 
   ```js
-  jsCopy codefetch('https://api.example.com/data')
+   codefetch('https://api.example.com/data')
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
@@ -833,7 +833,7 @@ In React, when the state of a component changes, the Virtual DOM is updated firs
   Example:
 
   ```js
-  jsCopy codevar xhr = new XMLHttpRequest();
+   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.example.com/data', true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -864,7 +864,7 @@ A **service worker** is a script that runs in the background of a web browser, s
 Example of registering a service worker:
 
 ```js
-jsCopy codeif ('serviceWorker' in navigator) {
+ codeif ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js')
     .then(reg => console.log('Service Worker registered:', reg))
     .catch(err => console.error('Service Worker registration failed:', err));
@@ -880,7 +880,7 @@ jsCopy codeif ('serviceWorker' in navigator) {
 For example:
 
 ```js
-jsCopy codeconst person = { name: 'Alice', age: 25 };
+ const person = { name: 'Alice', age: 25 };
 const updatedPerson = { ...person, age: 26 }; // New object created
 ```
 
@@ -900,7 +900,7 @@ The `bind()` method creates a new function that, when invoked, has its `this` ke
 For example:
 
 ```js
-jsCopy codefunction greet(name) {
+ function greet(name) {
   console.log(`Hello, ${name}`);
 }
 const greetBob = greet.bind(null, 'Bob');
@@ -914,7 +914,7 @@ greetBob(); // "Hello, Bob"
    Example:
 
    ```js
-   jsCopy codeclass MyComponent extends React.Component {
+    codeclass MyComponent extends React.Component {
      constructor(props) {
        super(props);
        this.handleClick = this.handleClick.bind(this); // bind this to the instance
@@ -1093,13 +1093,13 @@ JSX (JavaScript XML) is a syntax extension that allows you to write HTML-like co
 Example:
 
 ```jsx
-jsxCopy codeconst element = <h1>Hello, world!</h1>;
+jsxCopy const element = <h1>Hello, world!</h1>;
 ```
 
 gets converted into:
 
 ```js
-jsCopy codeconst element = React.createElement('h1', null, 'Hello, world!');
+ const element = React.createElement('h1', null, 'Hello, world!');
 ```
 
 JSX allows you to declare UI elements directly inside your JavaScript code, making React code more intuitive and readable.
@@ -1212,7 +1212,7 @@ Sure, here are the answers to the questions:
 
 1. **Minification**: Use the `TerserWebpackPlugin` to minify the JavaScript code for smaller file sizes.
    ```javascript
-    codeconst TerserPlugin = require('terser-webpack-plugin');
+    const TerserPlugin = require('terser-webpack-plugin');
    module.exports = {
      optimization: {
        minimize: true,

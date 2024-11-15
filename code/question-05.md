@@ -806,7 +806,7 @@ Optimizing rendering performance involves minimizing the time it takes for the b
 - **Example:**
 
   ```javascript
-   codeconst worker = new Worker('worker.js');
+   const worker = new Worker('worker.js');
   worker.postMessage(data); // Send data to the worker
 
   worker.onmessage = function(event) {
@@ -921,7 +921,7 @@ In React, both class components and functional components can be used to define 
   - No lifecycle methods, but `useEffect` provides similar functionality.
 
   ```jsx
-  jsxCopy codeconst MyComponent = () => {
+  jsxCopy const MyComponent = () => {
     const [count, setCount] = useState(0);
 
     const handleClick = () => setCount(count + 1);
@@ -1015,7 +1015,7 @@ State in React can be managed in several ways:
 - **Context API**: For passing data through the component tree without manually passing props at each level. Great for managing global state in a small-to-medium-sized app.
 
   ```jsx
-  jsxCopy codeconst MyContext = createContext();
+  jsxCopy const MyContext = createContext();
 
   const Parent = () => {
     const [value, setValue] = useState('Hello');
@@ -1096,7 +1096,7 @@ const MyComponent = () => {
 - **Controlled components**: These components have their form data controlled by React state. The value of the input field is set by the state, and changes are handled via event handlers.
 
   ```jsx
-  jsxCopy codeconst ControlledInput = () => {
+  jsxCopy const ControlledInput = () => {
     const [value, setValue] = useState('');
 
     const handleChange = (e) => {
@@ -1110,7 +1110,7 @@ const MyComponent = () => {
 - **Uncontrolled components**: These components manage their own state internally, and React doesn't control the input value directly. Instead, you use a **ref** to access the value.
 
   ```jsx
-  jsxCopy codeconst UncontrolledInput = () => {
+  jsxCopy const UncontrolledInput = () => {
     const inputRef = useRef();
 
     const handleSubmit = () => {
@@ -1161,7 +1161,7 @@ Performance optimization in React can be approached in several ways:
 - **React.memo**: Wrap functional components with `React.memo` to prevent unnecessary re-renders when props haven't changed.
 
   ```jsx
-  jsxCopy codeconst MyComponent = React.memo(({ data }) => {
+  jsxCopy const MyComponent = React.memo(({ data }) => {
     return <div>{data}</div>;
   });
   ```
@@ -1169,7 +1169,7 @@ Performance optimization in React can be approached in several ways:
 - **useMemo and useCallback**: Use `useMemo` to memoize expensive computations and `useCallback` to memoize functions that are passed as props.
 
   ```jsx
-  jsxCopy codeconst MyComponent = ({ data }) => {
+  jsxCopy const MyComponent = ({ data }) => {
     const memoizedData = useMemo(() => expensiveComputation(data), [data]);
     return <div>{memoizedData}</div>;
   };
@@ -1178,7 +1178,7 @@ Performance optimization in React can be approached in several ways:
 - **Code Splitting**: Use React's `React.lazy` and `Suspense` for lazy loading components, which can improve initial load performance.
 
   ```jsx
-  jsxCopy codeconst LazyComponent = React.lazy(() => import('./LazyComponent'));
+  jsxCopy const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
   const App = () => (
     <Suspense fallback={<div>Loading...</div>}>
@@ -1331,7 +1331,7 @@ Steps to set up routing in Angular:
 1. **Define Routes**: Define an array of route objects that map URL paths to components.
 
    ```typescript
-   typescriptCopy codeconst routes: Routes = [
+   typescriptCopy const routes: Routes = [
      { path: '', component: HomeComponent },
      { path: 'about', component: AboutComponent },
      { path: 'contact', component: ContactComponent }
@@ -1536,7 +1536,7 @@ Component-based architecture is a software design pattern commonly used in moder
 Examples of components in React:
 
 ```js
-jsCopy codefunction Button({ label, onClick }) {
+ function Button({ label, onClick }) {
   return <button onClick={onClick}>{label}</button>;
 }
 
@@ -1555,7 +1555,7 @@ function App() {
   - **Higher-Order Functions**: Functions that take other functions as arguments or return them as values.
   - **Example**:
     ```js
-    jsCopy codeconst sum = (a, b) => a + b;
+     const sum = (a, b) => a + b;
     const numbers = [1, 2, 3];
     const total = numbers.map(num => sum(num, 2)); // [3, 4, 5]
     ```
@@ -1570,7 +1570,7 @@ function App() {
   - **Example**:
 
     ```js
-    jsCopy codeclass Animal {
+     codeclass Animal {
       constructor(name) {
         this.name = name;
       }
@@ -1596,7 +1596,7 @@ Design patterns are general reusable solutions to common problems in software de
 - **Module Pattern**: Encapsulates functionality into a single object, preventing conflicts in the global namespace.
 
   ```js
-  jsCopy codeconst myModule = (() => {
+   const myModule = (() => {
     let privateVar = 'I am private';
     return {
       publicMethod: () => console.log(privateVar),
@@ -1607,7 +1607,7 @@ Design patterns are general reusable solutions to common problems in software de
 - **Singleton Pattern**: Ensures that a class has only one instance and provides a global access point to it.
 
   ```js
-  jsCopy codeclass Singleton {
+   codeclass Singleton {
     constructor() {
       if (!Singleton.instance) {
         Singleton.instance = this;
@@ -1620,7 +1620,7 @@ Design patterns are general reusable solutions to common problems in software de
 - **Observer Pattern**: Allows a subject to notify multiple observers (subscribers) about changes without knowing who or what is receiving the notification (used for event handling).
 
   ```js
-  jsCopy codeclass Subject {
+   codeclass Subject {
     constructor() {
       this.observers = [];
     }
@@ -1638,7 +1638,7 @@ Design patterns are general reusable solutions to common problems in software de
 - **Factory Pattern**: Used to create objects without specifying the exact class of the object that will be created.
 
   ```js
-  jsCopy codeclass AnimalFactory {
+   codeclass AnimalFactory {
     createAnimal(type) {
       if (type === 'dog') return new Dog();
       if (type === 'cat') return new Cat();
@@ -1658,7 +1658,7 @@ Design patterns are general reusable solutions to common problems in software de
 - **Code splitting**: Use `splitChunksPlugin` to separate vendor libraries and application code.
 
   ```js
-  jsCopy codeoptimization: {
+   codeoptimization: {
     splitChunks: {
       chunks: 'all',
     },
@@ -1672,7 +1672,7 @@ Design patterns are general reusable solutions to common problems in software de
 - **Caching**: Enable long-term caching by adding hashes to file names (`[contenthash]`).
 
   ```js
-  jsCopy codeoutput: {
+   codeoutput: {
     filename: '[name].[contenthash].js',
   };
   ```
@@ -1915,7 +1915,7 @@ Debouncing is a technique used to ensure that time-consuming tasks, such as API 
 **Debounce function in JavaScript:**
 
 ```javascript
- codefunction debounce(func, delay) {
+ function debounce(func, delay) {
   let timeout;
   return function (...args) {
     clearTimeout(timeout);
@@ -1943,7 +1943,7 @@ You can solve this problem efficiently with a hash set, achieving an O(n) time c
 **Solution:**
 
 ```javascript
- codefunction findTwoSum(nums, target) {
+ function findTwoSum(nums, target) {
   const seen = new Set();
   for (let num of nums) {
     const complement = target - num;
@@ -2134,7 +2134,7 @@ In the above example, we listen to the `scroll` event and load more data once th
 #### **JavaScript Form Validation**:
 
 ```javascript
- codefunction validateForm() {
+ function validateForm() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 

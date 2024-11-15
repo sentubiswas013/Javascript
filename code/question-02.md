@@ -51,7 +51,7 @@ There are multiple ways to define functions in JavaScript:
 1. **Function Declaration**:
 
    ```javascript
-    codefunction greet() {
+    function greet() {
      console.log('Hello!');
    }
    ```
@@ -59,7 +59,7 @@ There are multiple ways to define functions in JavaScript:
 2. **Function Expression**:
 
    ```javascript
-    codeconst greet = function() {
+    const greet = function() {
      console.log('Hello!');
    };
    ```
@@ -67,7 +67,7 @@ There are multiple ways to define functions in JavaScript:
 3. **Arrow Function**:
 
    ```javascript
-    codeconst greet = () => console.log('Hello!');
+    const greet = () => console.log('Hello!');
    ```
 
 ### 6\. **What are the different ways to declare variables in JavaScript?**
@@ -77,7 +77,7 @@ There are multiple ways to define functions in JavaScript:
 * **`const`**: Block-scoped, cannot be reassigned or redeclared.
 
 ```javascript
- codevar a = 1;   // function-scoped
+ var a = 1;   // function-scoped
 let b = 2;   // block-scoped
 const c = 3; // block-scoped, cannot be reassigned
 ```
@@ -111,7 +111,7 @@ let y = 10;
 Arrays in JavaScript are ordered collections of items. You can create an array using square brackets `[]`.
 
 ```javascript
- codeconst fruits = ['apple', 'banana', 'cherry'];
+ const fruits = ['apple', 'banana', 'cherry'];
 ```
 
 ### 10\. **How do you add, remove, or access elements in an array?**
@@ -162,7 +162,7 @@ for (const fruit of fruits) {
 Objects in JavaScript are collections of key-value pairs. You create an object using curly braces `{}`.
 
 ```javascript
- codeconst person = {
+ const person = {
   name: 'John',
   age: 30,
   greet() {
@@ -189,7 +189,7 @@ console.log(y);  // null
 You can handle events by attaching event listeners to DOM elements using methods like `addEventListener`.
 
 ```javascript
- codeconst button = document.querySelector('button');
+ const button = document.querySelector('button');
 button.addEventListener('click', function() {
   alert('Button clicked!');
 });
@@ -200,7 +200,7 @@ button.addEventListener('click', function() {
 The `this` keyword refers to the context in which a function is called. Its value is determined by how the function is invoked.
 
 ```javascript
- codeconst person = {
+ const person = {
   name: 'Alice',
   greet: function() {
     console.log(`Hello, ${this.name}`);
@@ -216,7 +216,7 @@ In global scope, `this` refers to the global object (`window` in browsers).
 `forEach()` is an array method that executes a provided function once for each array element.
 
 ```javascript
- codeconst numbers = [1, 2, 3];
+ const numbers = [1, 2, 3];
 numbers.forEach((num) => {
   console.log(num);
 });
@@ -245,7 +245,7 @@ numbers.forEach((num) => {
 A callback function is a function passed as an argument to another function, and it is executed after the completion of the main function.
 
 ```javascript
- codefunction greet(name, callback) {
+ function greet(name, callback) {
   console.log(`Hello, ${name}`);
   callback();
 }
@@ -271,7 +271,7 @@ A **closure** is a function that "remembers" its lexical scope even when the fun
 Example:
 
 ```javascript
- codefunction outer() {
+ function outer() {
   let counter = 0;
   return function inner() {
     counter++;
@@ -289,7 +289,7 @@ increment(); // 2
 * **Function Declaration**: A named function defined with the `function` keyword.
 
   ```javascript
-   codefunction greet() {
+   function greet() {
     console.log("Hello");
   }
   ```
@@ -299,7 +299,7 @@ increment(); // 2
 * **Function Expression**: A function assigned to a variable, which may or may not be named.
 
   ```javascript
-   codeconst greet = function() {
+   const greet = function() {
     console.log("Hello");
   };
   ```
@@ -334,7 +334,7 @@ A **promise** represents the eventual completion (or failure) of an asynchronous
 Example:
 
 ```javascript
- codeconst promise = new Promise((resolve, reject) => {
+ const promise = new Promise((resolve, reject) => {
   let success = true;
   if (success) {
     resolve("Operation successful");
@@ -442,7 +442,7 @@ These methods are used to change the context (`this`) of a function.
 * **`call()`**: Invokes the function immediately with a specified `this` value and arguments.
 
   ```javascript
-   codefunction greet(name) {
+   function greet(name) {
     console.log(`Hello, ${name}`);
   }
   greet.call(this, 'Alice');
@@ -457,7 +457,7 @@ These methods are used to change the context (`this`) of a function.
 * **`bind()`**: Returns a new function with a specified `this` value, but it does not invoke the function immediately.
 
   ```javascript
-   codeconst greetAlice = greet.bind(this, 'Alice');
+   const greetAlice = greet.bind(this, 'Alice');
   greetAlice();
   ```
 
@@ -466,21 +466,21 @@ These methods are used to change the context (`this`) of a function.
 * **`map()`**: Creates a new array by applying a function to each element in an existing array.
 
   ```javascript
-   codeconst numbers = [1, 2, 3];
+   const numbers = [1, 2, 3];
   const squares = numbers.map(x => x * x);  // [1, 4, 9]
   ```
 
 * **`filter()`**: Creates a new array with elements that pass a given condition.
 
   ```javascript
-   codeconst numbers = [1, 2, 3, 4];
+   const numbers = [1, 2, 3, 4];
   const evenNumbers = numbers.filter(x => x % 2 === 0);  // [2, 4]
   ```
 
 * **`reduce()`**: Reduces the array to a single value based on a function.
 
   ```javascript
-   codeconst numbers = [1, 2, 3];
+   const numbers = [1, 2, 3];
   const sum = numbers.reduce((acc, curr) => acc + curr, 0);  // 6
   ```
 
@@ -493,14 +493,14 @@ Example:
 * **Arrays**:
 
   ```javascript
-   codeconst arr1 = [1, 2];
+   const arr1 = [1, 2];
   const arr2 = [...arr1, 3, 4];  // [1, 2, 3, 4]
   ```
 
 * **Objects**:
 
   ```javascript
-   codeconst obj1 = { name: "Alice" };
+   const obj1 = { name: "Alice" };
   const obj2 = { ...obj1, age: 25 };  // { name: "Alice", age: 25 }
   ```
 
@@ -511,14 +511,14 @@ Example:
 * **Array Destructuring**:
 
   ```javascript
-   codeconst arr = [1, 2, 3];
+   const arr = [1, 2, 3];
   const [a, b] = arr;  // a = 1, b = 2
   ```
 
 * **Object Destructuring**:
 
   ```javascript
-   codeconst person = { name: "Alice", age: 25 };
+   const person = { name: "Alice", age: 25 };
   const { name, age } = person;  // name = "Alice", age = 25
   ```
 
@@ -580,7 +580,7 @@ The `bind()` method in JavaScript is used to create a **new function** that, whe
 Example:
 
 ```javascript
- codeconst obj = { value: 42 };
+ const obj = { value: 42 };
 const getValue = function() {
   return this.value;
 };
@@ -621,13 +621,13 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
 * **`Object.create(proto)`**: Creates a new object with the specified prototype object (`proto`). It doesn't run a constructor function. Example:
 
   ```javascript
-   codeconst obj = Object.create(protoObject);
+   const obj = Object.create(protoObject);
   ```
 
 * **`new` keyword**: Creates a new object, sets the prototype to the constructor's prototype, and executes the constructor function. Example:
 
   ```javascript
-   codefunction Person(name) {
+   function Person(name) {
     this.name = name;
   }
   const person = new Person('Alice');
@@ -640,7 +640,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
   * **Singleton Pattern**: Ensures that a class has only one instance and provides a global point of access to that instance.
 
     ```javascript
-     codeconst Singleton = (function() {
+     const Singleton = (function() {
       let instance;
       function createInstance() {
         return new Object('I am a singleton');
@@ -659,7 +659,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
   * **Module Pattern**: Used to encapsulate private data and expose only certain methods, maintaining a clean namespace.
 
     ```javascript
-     codeconst Module = (function() {
+     const Module = (function() {
       let privateVar = 'I am private';
       return {
         publicMethod: function() {
@@ -676,7 +676,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
 Example:
 
 ```javascript
- codeconst sym = Symbol('description');
+ const sym = Symbol('description');
 const obj = {
   [sym]: 'value'
 };
@@ -706,7 +706,7 @@ Example:
 Example:
 
 ```javascript
- codeconst worker = new Worker('worker.js');
+ const worker = new Worker('worker.js');
 worker.postMessage('Hello Worker!');
 worker.onmessage = function(event) {
   console.log('Received from worker:', event.data);
@@ -725,7 +725,7 @@ Difference:
 Example:
 
 ```javascript
- codefunction* myGenerator() {
+ function* myGenerator() {
   yield 1;
   yield 2;
   yield 3;
@@ -740,7 +740,7 @@ console.log(gen.next().value); // 2
 * **Proxy**: A special object that allows you to define custom behavior for fundamental operations (e.g., property lookup, assignment, function invocation). Example:
 
   ```javascript
-   codeconst proxy = new Proxy(target, handler);
+   const proxy = new Proxy(target, handler);
   ```
 
 * **Reflect**: A built-in object that provides methods for intercepting and manipulating JavaScript operations (e.g., getting and setting properties). It is often used in conjunction with `Proxy`. Example:
@@ -817,7 +817,7 @@ Sure! Let's go through each of the JavaScript questions one by one:
   Example:
 
   ```javascript
-   codefunction outer() {
+   function outer() {
     let x = 10;
     return function inner() {
       console.log(x);  // `inner` has access to `x` because of the closure
@@ -837,7 +837,7 @@ Both `call()` and `apply()` are methods used to invoke a function with a specifi
 * **`call()`**: The arguments are passed individually, separated by commas.
 
   ```javascript
-   codefunction greet(name, age) {
+   function greet(name, age) {
     console.log(`${name} is ${age} years old.`);
   }
 

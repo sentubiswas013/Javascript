@@ -82,7 +82,7 @@ JavaScript handles asynchronous code primarily through:
   * Closures are created whenever a function is defined within another function.
   * Example:
     ```javascript
-     codefunction outer() {
+     function outer() {
       let counter = 0;
       return function inner() {
         counter++;
@@ -117,7 +117,7 @@ Here are the JavaScript answers for the questions you asked:
 To reverse a string without using the `reverse()` method or any other built-in methods, you can manually iterate through the string.
 
 ```javascript
- codefunction reverseString(str) {
+ function reverseString(str) {
   let reversed = '';
   for (let i = str.length - 1; i >= 0; i--) {
     reversed += str[i];
@@ -131,7 +131,7 @@ To reverse a string without using the `reverse()` method or any other built-in m
 You can remove duplicates by iterating through the array and adding elements to a new array only if they haven't been added already.
 
 ```javascript
- codefunction removeDuplicates(arr) {
+ function removeDuplicates(arr) {
   const uniqueArr = [];
   for (let i = 0; i < arr.length; i++) {
     if (!uniqueArr.includes(arr[i])) {
@@ -145,7 +145,7 @@ You can remove duplicates by iterating through the array and adding elements to 
 Alternatively, you can use a `Set`, but this doesn't fit the "no built-in methods" requirement:
 
 ```javascript
- codefunction removeDuplicates(arr) {
+ function removeDuplicates(arr) {
   const uniqueArr = [];
   arr.forEach(item => {
     if (!uniqueArr.includes(item)) {
@@ -161,7 +161,7 @@ Alternatively, you can use a `Set`, but this doesn't fit the "no built-in method
 To find the longest word in a string, you can split the string into words, then iterate through the array of words to find the longest one.
 
 ```javascript
- codefunction findLongestWord(str) {
+ function findLongestWord(str) {
   const words = str.split(' ');
   let longestWord = '';
   for (let i = 0; i < words.length; i++) {
@@ -178,7 +178,7 @@ To find the longest word in a string, you can split the string into words, then 
 A palindrome reads the same backward as forward. To check if a string is a palindrome, compare the string with its reversed version.
 
 ```javascript
- codefunction isPalindrome(str) {
+ function isPalindrome(str) {
   let reversed = '';
   for (let i = str.length - 1; i >= 0; i--) {
     reversed += str[i];
@@ -192,7 +192,7 @@ A palindrome reads the same backward as forward. To check if a string is a palin
 To flatten a nested array, you can use a recursive function to go through each element. If an element is an array, recursively flatten it.
 
 ```javascript
- codefunction flattenArray(arr) {
+ function flattenArray(arr) {
   let result = [];
   for (let i = 0; i < arr.length; i++) {
     if (Array.isArray(arr[i])) {
@@ -214,7 +214,7 @@ One efficient way to find the missing number is to use the formula for the sum o
 Then, subtract the sum of the array from the expected sum to find the missing number.
 
 ```javascript
- codefunction findMissingNumber(arr, n) {
+ function findMissingNumber(arr, n) {
   const expectedSum = (n * (n + 1)) / 2;
   const actualSum = arr.reduce((sum, num) => sum + num, 0);
   return expectedSum - actualSum;
@@ -232,7 +232,7 @@ Let me know if you need any further clarification on these solutions!
 To merge two sorted arrays into one sorted array, we can use a two-pointer approach to iterate through both arrays simultaneously and merge them in sorted order.
 
 ```javascript
- codefunction mergeSortedArrays(arr1, arr2) {
+ function mergeSortedArrays(arr1, arr2) {
     let result = [];
     let i = 0, j = 0;
 
@@ -270,7 +270,7 @@ console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6])); // [1, 2, 3, 4, 5, 6]
 A deep clone means creating a new object and copying over all properties, including nested objects. This can be done manually or using libraries like `lodash`. Below is a manual implementation:
 
 ```javascript
- codefunction deepClone(obj) {
+ function deepClone(obj) {
     if (obj === null || typeof obj !== 'object') return obj;
 
     let clone = Array.isArray(obj) ? [] : {};
@@ -316,7 +316,7 @@ console.log(obj1.b.c);  // 2 (deep copy does not affect the original)
 You can create a frequency counter using a hash map (object in JavaScript):
 
 ```javascript
- codefunction charFrequency(str) {
+ function charFrequency(str) {
     const freqMap = {};
     for (let char of str) {
         freqMap[char] = (freqMap[char] || 0) + 1;
@@ -453,7 +453,7 @@ Let's implement these functions without using the built-in versions.
 `map()` transforms each element of an array based on a given function.
 
 ```javascript
- codefunction customMap(arr, callback) {
+ function customMap(arr, callback) {
   const result = [];
   for (let i = 0; i < arr.length; i++) {
     result.push(callback(arr[i], i, arr));
@@ -470,7 +470,7 @@ console.log(customMap(arr, x => x * 2));  // Output: [2, 4, 6, 8]
 `filter()` creates a new array with all elements that pass the test implemented by the provided function.
 
 ```javascript
- codefunction customFilter(arr, callback) {
+ function customFilter(arr, callback) {
   const result = [];
   for (let i = 0; i < arr.length; i++) {
     if (callback(arr[i], i, arr)) {
@@ -489,7 +489,7 @@ console.log(customFilter(arr, x => x % 2 === 0));  // Output: [2, 4]
 `reduce()` reduces the array to a single value by applying a function on each element of the array.
 
 ```javascript
- codefunction customReduce(arr, callback, initialValue) {
+ function customReduce(arr, callback, initialValue) {
   let accumulator = initialValue !== undefined ? initialValue : arr[0];
   let startIndex = initialValue !== undefined ? 0 : 1;
 
@@ -509,7 +509,7 @@ console.log(customReduce(arr, (acc, curr) => acc + curr, 0));  // Output: 10
 Debouncing ensures that a function is only executed after a certain delay, useful for optimizing performance when dealing with high-frequency events (e.g., window resizing, key presses).
 
 ```javascript
- codefunction debounce(func, delay) {
+ function debounce(func, delay) {
   let timeout;
   
   return function(...args) {
@@ -530,7 +530,7 @@ window.addEventListener('resize', onResize);
 Throttling ensures that a function is only called once every specified interval, regardless of how many times it is triggered.
 
 ```javascript
- codefunction throttle(func, limit) {
+ function throttle(func, limit) {
   let lastFunc;
   let lastRan;
 
@@ -564,7 +564,7 @@ window.addEventListener('scroll', logScroll);
 #### Example of Currying in JavaScript:
 
 ```javascript
- codefunction multiply(a) {
+ function multiply(a) {
   return function(b) {
     return a * b;
   };
@@ -609,7 +609,7 @@ function factorialIterative(n) {
 * **Recursive approach:**
 
 ```javascript
- codefunction fibonacciRecursive(n) {
+ function fibonacciRecursive(n) {
     if (n <= 1) return n;
     return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
@@ -618,7 +618,7 @@ function factorialIterative(n) {
 * **Iterative approach:**
 
 ```javascript
- codefunction fibonacciIterative(n) {
+ function fibonacciIterative(n) {
     let a = 0, b = 1;
     for (let i = 2; i <= n; i++) {
         let temp = a + b;
@@ -634,7 +634,7 @@ function factorialIterative(n) {
 To find common elements between two arrays:
 
 ```javascript
- codefunction intersection(arr1, arr2) {
+ function intersection(arr1, arr2) {
     return arr1.filter(value => arr2.includes(value));
 }
 ```
@@ -644,7 +644,7 @@ To find common elements between two arrays:
 The first non-repeating character in a string can be found by iterating through the string and counting occurrences of each character.
 
 ```javascript
- codefunction firstNonRepeatingCharacter(str) {
+ function firstNonRepeatingCharacter(str) {
     const charCount = {};
     
     for (let i = 0; i < str.length; i++) {
@@ -666,7 +666,7 @@ The first non-repeating character in a string can be found by iterating through 
 To find the largest sum of consecutive elements (Kadane's algorithm):
 
 ```javascript
- codefunction largestSumConsecutive(arr) {
+ function largestSumConsecutive(arr) {
     let maxSum = arr[0];
     let currentSum = arr[0];
     
@@ -684,7 +684,7 @@ To find the largest sum of consecutive elements (Kadane's algorithm):
 Binary search is an efficient way to search in a sorted array.
 
 ```javascript
- codefunction binarySearch(arr, target) {
+ function binarySearch(arr, target) {
     let left = 0;
     let right = arr.length - 1;
     
@@ -705,7 +705,7 @@ Binary search is an efficient way to search in a sorted array.
 Two strings are anagrams if they contain the same characters in the same frequency.
 
 ```javascript
- codefunction areAnagrams(str1, str2) {
+ function areAnagrams(str1, str2) {
     if (str1.length !== str2.length) return false;
     
     const charCount = {};
@@ -724,7 +724,7 @@ Two strings are anagrams if they contain the same characters in the same frequen
 A prime number is a number greater than 1 that has no divisors other than 1 and itself.
 
 ```javascript
- codefunction isPrime(num) {
+ function isPrime(num) {
     if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
         if (num % i === 0) return false;
@@ -1054,7 +1054,7 @@ This is particularly useful for functions with high computational cost and overl
 Here's a simple example of memoization for the Fibonacci sequence calculation:
 
 ```javascript
- codefunction memoize(fn) {
+ function memoize(fn) {
   const cache = {};
   return function(...args) {
     const key = JSON.stringify(args); // Create a unique key for each set of arguments
@@ -1099,7 +1099,7 @@ Memory leaks occur when objects are no longer in use but are still being referen
 
 * Always remove event listeners when they're no longer needed. For example:
   ```javascript
-   codeconst button = document.querySelector('button');
+   const button = document.querySelector('button');
   function handleClick() { console.log('clicked'); }
   button.addEventListener('click', handleClick);
 
@@ -1111,7 +1111,7 @@ Memory leaks occur when objects are no longer in use but are still being referen
 
 * When using `setTimeout` or `setInterval`, make sure to clear them when they are no longer needed.
   ```javascript
-   codeconst intervalId = setInterval(() => { console.log('Running'); }, 1000);
+   const intervalId = setInterval(() => { console.log('Running'); }, 1000);
 
   // Clear when done
   clearInterval(intervalId);
@@ -1238,7 +1238,7 @@ You can destructure an object to extract values based on the property names.
 **Example:**
 
 ```javascript
- codeconst person = { name: "Alice", age: 30, city: "New York" };
+ const person = { name: "Alice", age: 30, city: "New York" };
 
 // Destructuring
 const { name, age, city } = person;
@@ -1250,7 +1250,7 @@ console.log(city); // New York
 You can also rename variables during destructuring:
 
 ```javascript
- codeconst person = { name: "Alice", age: 30 };
+ const person = { name: "Alice", age: 30 };
 const { name: fullName, age: yearsOld } = person;
 console.log(fullName); // Alice
 console.log(yearsOld); // 30
@@ -1263,7 +1263,7 @@ You can destructure arrays to extract values based on position.
 **Example:**
 
 ```javascript
- codeconst colors = ["red", "green", "blue"];
+ const colors = ["red", "green", "blue"];
 
 // Destructuring
 const [first, second, third] = colors;
@@ -1275,7 +1275,7 @@ console.log(third);  // blue
 You can also skip elements:
 
 ```javascript
- codeconst colors = ["red", "green", "blue"];
+ const colors = ["red", "green", "blue"];
 const [, , third] = colors;
 console.log(third); // blue
 ```
@@ -1289,7 +1289,7 @@ In JavaScript, default parameters allow you to specify default values for functi
 **Example:**
 
 ```javascript
- codefunction greet(name = "Guest") {
+ function greet(name = "Guest") {
   console.log(`Hello, ${name}!`);
 }
 
@@ -1300,7 +1300,7 @@ greet("Alice");  // Output: Hello, Alice!
 You can also use expressions as default values:
 
 ```javascript
- codefunction calculatePrice(price, tax = price * 0.1) {
+ function calculatePrice(price, tax = price * 0.1) {
   return price + tax;
 }
 
@@ -1321,7 +1321,7 @@ The spread operator allows you to expand elements from an array or object into i
 **Example with Arrays:**
 
 ```javascript
- codeconst arr = [1, 2, 3];
+ const arr = [1, 2, 3];
 const newArr = [...arr, 4, 5];
 console.log(newArr); // [1, 2, 3, 4, 5]
 ```
@@ -1329,7 +1329,7 @@ console.log(newArr); // [1, 2, 3, 4, 5]
 **Example with Objects:**
 
 ```javascript
- codeconst person = { name: "Alice", age: 30 };
+ const person = { name: "Alice", age: 30 };
 const personCopy = { ...person, city: "New York" };
 console.log(personCopy); // { name: "Alice", age: 30, city: "New York" }
 ```
@@ -1341,7 +1341,7 @@ The rest operator collects multiple elements and stores them in an array. It is 
 **Example with Functions:**
 
 ```javascript
- codefunction sum(...numbers) {
+ function sum(...numbers) {
   return numbers.reduce((total, num) => total + num, 0);
 }
 console.log(sum(1, 2, 3)); // 6
@@ -1351,7 +1351,7 @@ console.log(sum(5, 10, 15, 20)); // 50
 **Example with Destructuring:**
 
 ```javascript
- codeconst arr = [1, 2, 3, 4, 5];
+ const arr = [1, 2, 3, 4, 5];
 const [first, second, ...rest] = arr;
 console.log(first);  // 1
 console.log(second); // 2
@@ -1367,7 +1367,7 @@ Arrow functions are a shorthand syntax for writing functions in JavaScript. They
 **Example:**
 
 ```javascript
- codeconst add = (a, b) => a + b;
+ const add = (a, b) => a + b;
 console.log(add(2, 3)); // 5
 ```
 
@@ -1409,7 +1409,7 @@ A **Promise** is an object representing the eventual completion or failure of an
 **Example of a Promise:**
 
 ```javascript
- codeconst myPromise = new Promise((resolve, reject) => {
+ const myPromise = new Promise((resolve, reject) => {
   let success = true;
   if (success) {
     resolve("Operation was successful!");
@@ -1452,7 +1452,7 @@ fetchData();
 **Example with Callback:**
 
 ```javascript
- codefunction fetchData(callback) {
+ function fetchData(callback) {
   setTimeout(() => {
     callback(null, "Data fetched");
   }, 1000);
@@ -1470,7 +1470,7 @@ fetchData((error, result) => {
 **Example with Promise:**
 
 ```javascript
- codefunction fetchData() {
+ function fetchData() {
   return new Promise(resolve => {
     setTimeout(() => resolve("Data fetched"), 1000);
   });
@@ -1543,7 +1543,7 @@ The **prototype chain** is a mechanism by which objects in JavaScript inherit pr
 Example:
 
 ```javascript
- codefunction Animal(name) {
+ function Animal(name) {
   this.name = name;
 }
 
@@ -1568,7 +1568,7 @@ There are two main approaches to inheritance in JavaScript: **Classical Inherita
   Example:
 
   ```javascript
-   codefunction Animal(name) {
+   function Animal(name) {
     this.name = name;
   }
 
@@ -1685,7 +1685,7 @@ x = 10; // Throws an error because x is not declared
   Example:
 
   ```javascript
-   codeconst arr = [1, 2, 3];
+   const arr = [1, 2, 3];
   arr.forEach(item => console.log(item));
   ```
 
@@ -1697,7 +1697,7 @@ x = 10; // Throws an error because x is not declared
   Example:
 
   ```javascript
-   codeconst arr = [1, 2, 3];
+   const arr = [1, 2, 3];
   for (let i = 0; i < arr.length; i++) {
     console.log(arr[i]);
   }
@@ -1710,7 +1710,7 @@ A **generator** is a special type of function that can be paused and resumed. It
 * **Generator Syntax**:
 
   ```javascript
-   codefunction* myGenerator() {
+   function* myGenerator() {
     yield 1;
     yield 2;
     yield 3;
@@ -1731,7 +1731,7 @@ A **generator** is a special type of function that can be paused and resumed. It
   Example of generator-based asynchronous flow:
 
   ```javascript
-   codefunction* fetchData() {
+   function* fetchData() {
     const response1 = yield fetch('url1');
     const response2 = yield fetch('url2');
     return [response1, response2];
@@ -1751,31 +1751,31 @@ In JavaScript, you can select an element in the DOM using several methods:
 * **`getElementById()`**: Selects an element by its `id` attribute.
 
   ```javascript
-   codeconst element = document.getElementById('myElement');
+   const element = document.getElementById('myElement');
   ```
 
 * **`getElementsByClassName()`**: Selects all elements with a specific class.
 
   ```javascript
-   codeconst elements = document.getElementsByClassName('myClass');
+   const elements = document.getElementsByClassName('myClass');
   ```
 
 * **`getElementsByTagName()`**: Selects all elements with a specific tag name.
 
   ```javascript
-   codeconst elements = document.getElementsByTagName('div');
+   const elements = document.getElementsByTagName('div');
   ```
 
 * **`querySelector()`**: Selects the first matching element that matches a CSS selector.
 
   ```javascript
-   codeconst element = document.querySelector('.myClass');
+   const element = document.querySelector('.myClass');
   ```
 
 * **`querySelectorAll()`**: Selects all matching elements (returns a NodeList).
 
   ```javascript
-   codeconst elements = document.querySelectorAll('div.myClass');
+   const elements = document.querySelectorAll('div.myClass');
   ```
 
 ### 2\. **Write a function that updates the text content of an HTML element.**
@@ -1783,7 +1783,7 @@ In JavaScript, you can select an element in the DOM using several methods:
 Here's an example of a function that updates the text content of an element by its `id`:
 
 ```javascript
- codefunction updateTextContent(elementId, newText) {
+ function updateTextContent(elementId, newText) {
   const element = document.getElementById(elementId);
   if (element) {
     element.textContent = newText;
@@ -1875,7 +1875,7 @@ You can dynamically create and add an element to the DOM using the following ste
 Example:
 
 ```javascript
- codefunction addNewElement() {
+ function addNewElement() {
   // Step 1: Create a new <div> element
   const newDiv = document.createElement('div');
   
