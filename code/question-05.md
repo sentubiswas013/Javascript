@@ -258,7 +258,7 @@ Event delegation is a technique that involves attaching a single event listener 
     }
   });
   ```
-## 4. What is a Closure, and How Can It Be Useful in JavaScript?
+### 4. What is a Closure, and How Can It Be Useful in JavaScript?
 
 A **closure** is a function that retains access to its lexical environment (the variables that were in scope when the function was created) even after the outer function has finished execution.
 
@@ -283,7 +283,7 @@ A **closure** is a function that retains access to its lexical environment (the 
     console.log(myCounter()); // 2
 ```
 
-## 5. Event Loop in JavaScript and How Asynchronous Code is Handled:
+### 5. Event Loop in JavaScript and How Asynchronous Code is Handled:
 The event loop is responsible for handling asynchronous operations in JavaScript. It ensures that non-blocking code (like I/O operations, timers, or event listeners) is executed after the main thread finishes executing synchronous code.
 
 - **How it works**:
@@ -291,7 +291,7 @@ JavaScript has a single-threaded event loop. When a function is executed, it goe
 When asynchronous tasks (like setTimeout, fetch(), or event listeners) are encountered, they are sent to the callback queue (or task queue) once they are ready to be executed.
 The event loop checks if the call stack is empty. If it is, it pushes the next task from the queue onto the stack.
 
-## 6. Promise vs. Callback Function in JavaScript:
+### 6. Promise vs. Callback Function in JavaScript:
 
 - **Callback**:
 A function passed as an argument to another function, which is executed when the task is completed.
@@ -316,7 +316,7 @@ doSomething()
   .catch(error => console.error(error));
 ```
 
-## 7. Synchronous vs. Asynchronous Execution in JavaScript:
+### 7. Synchronous vs. Asynchronous Execution in JavaScript:
 Synchronous Execution: Code is executed in sequence, blocking the next operation until the current one is finished.
 
 ### Example:
@@ -335,7 +335,7 @@ Asynchronous Execution: Code that runs in the background without blocking the ma
     // Output: 'Sync' followed by 'Async'
 ```
 
-## 8. Hoisting in JavaScript:
+### 8. Hoisting in JavaScript:
 Hoisting is JavaScript’s default behavior of moving declarations (but not initializations) to the top of their containing scope during the compile phase.
 
 #### What gets hoisted:
@@ -354,7 +354,7 @@ Function declarations: Entire function definitions are hoisted.
     }
 ```
 
-## 9. Higher-Order Functions in JavaScript:
+### 9. Higher-Order Functions in JavaScript:
 A higher-order function is a function that either takes one or more functions as arguments or returns a function.
 
 ### Example::
@@ -366,7 +366,7 @@ map is a higher-order function that takes a function and applies it to each elem
     console.log(doubled); // [2, 4, 6]
 ```
 
-## 10. JavaScript Modules and Import/Export:
+### 10. JavaScript Modules and Import/Export:
 JavaScript modules allow you to split your code into separate files and import/export functionality between them.
 
 - **Export**: You can export functions, objects, or values from a module.
@@ -385,7 +385,7 @@ JavaScript modules allow you to split your code into separate files and import/e
     greet(); // Outputs: Hello
 ```
 
-## 11. Destructuring in JavaScript:
+#### 11. Destructuring in JavaScript:
 Destructuring allows you to unpack values from arrays or properties from objects into distinct variables.
 
 ### Array destructuring:
@@ -402,7 +402,7 @@ Destructuring allows you to unpack values from arrays or properties from objects
     console.log(name, age); // John 25
 ```
 
-## 12. fetch() API vs. XMLHttpRequest:
+### 12. fetch() API vs. XMLHttpRequest:
 - **fetch()**: Modern, promise-based API for making HTTP requests. It provides a cleaner, more readable syntax for handling asynchronous requests.
 
 ```javascript
@@ -425,7 +425,7 @@ fetch('https://api.example.com/data')
 ### Performance Optimization
 # Web Application Performance Optimization
 
-## 1. Techniques to Optimize the Performance of a Web Application
+### 1. Techniques to Optimize the Performance of a Web Application
 
 To optimize the performance of a web application, several strategies can be employed across different layers of the app:
 
@@ -468,7 +468,7 @@ To optimize the performance of a web application, several strategies can be empl
 
 ---
 
-## 2. How to Reduce the Page Load Time of a Website
+### 2. How to Reduce the Page Load Time of a Website
 
 Reducing the page load time can be achieved using several best practices:
 
@@ -501,7 +501,7 @@ Reducing the page load time can be achieved using several best practices:
 - Minimize the use of redirects, as they add additional HTTP requests and increase page load time.
 
 
-## 3. What is lazy loading, and how can you implement it in a React or Angular app?
+### 3. What is lazy loading, and how can you implement it in a React or Angular app?
 
 ## What is Lazy Loading?
 
@@ -650,6 +650,7 @@ function App() {
     </div>
   );
 }
+```
 
 export default App;` 
 
@@ -678,10 +679,7 @@ export class LazyModule {}`
 
 2.  **Configure Routing**:
 
-typescript
-
-Copy code
-
+```jsx
 `// app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -698,7 +696,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}` 
-
+```
 When the user navigates to `/lazy`, the `LazyModule` is loaded dynamically.
 
 * * *
@@ -720,13 +718,11 @@ When the user navigates to `/lazy`, the `LazyModule` is loaded dynamically.
 
 Example in React:
 
-javascript
-
-Copy code
-
+```jsx
 `const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
 // This component will only be loaded when it is rendered.` 
+```
 
 #### **Other Types of Code Splitting**:
 
