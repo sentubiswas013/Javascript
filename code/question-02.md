@@ -16,7 +16,7 @@ JavaScript is a dynamic, interpreted programming language primarily used for cre
 * `var`: Declares a function-scoped variable, which can be re-declared and reassigned (not recommended due to its behavior with hoisting).
 
 ```javascript
- codelet x = 5; // Can be reassigned
+let x = 5; // Can be reassigned
 const y = 10; // Cannot be reassigned
 var z = 15; // Function-scoped
 ```
@@ -40,7 +40,7 @@ JavaScript has seven basic data types:
 * `===`: Compares values for equality without type coercion (strict equality).
 
 ```javascript
- code5 == '5'  // true because type coercion occurs
+5 == '5'  // true because type coercion occurs
 5 === '5' // false because types are different (number vs. string)
 ```
 
@@ -87,7 +87,7 @@ const c = 3; // block-scoped, cannot be reassigned
 The `typeof` operator returns a string indicating the type of a variable or expression.
 
 ```javascript
- codetypeof 'hello';   // 'string'
+typeof 'hello';   // 'string'
 typeof 42;        // 'number'
 typeof true;      // 'boolean'
 typeof undefined; // 'undefined'
@@ -99,7 +99,7 @@ typeof null;      // 'object' (a known JavaScript quirk)
 Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope (function or global). Only the declarations are hoisted, not the initializations.
 
 ```javascript
- codeconsole.log(x);  // undefined
+console.log(x);  // undefined
 var x = 5;
 
 console.log(y);  // ReferenceError: Cannot access 'y' before initialization
@@ -121,7 +121,7 @@ Arrays in JavaScript are ordered collections of items. You can create an array u
 * **Access**: Use the index (starting from 0).
 
 ```javascript
- codefruits.push('orange');      // Adds 'orange' to the end
+fruits.push('orange');      // Adds 'orange' to the end
 fruits.unshift('grape');    // Adds 'grape' to the beginning
 fruits.pop();               // Removes 'orange'
 fruits.shift();             // Removes 'grape'
@@ -141,7 +141,7 @@ Types of loops:
 * **`for...in` loop**: Iterates over object properties.
 
 ```javascript
- codefor (let i = 0; i < 5; i++) {
+ for (let i = 0; i < 5; i++) {
   console.log(i); // 0, 1, 2, 3, 4
 }
 
@@ -177,7 +177,7 @@ Objects in JavaScript are collections of key-value pairs. You create an object u
 * `null` is an intentional absence of any value (i.e., "empty").
 
 ```javascript
- codelet x;
+let x;
 console.log(x);  // undefined
 
 let y = null;
@@ -229,7 +229,7 @@ numbers.forEach((num) => {
 * `continue`: Skips the current iteration of a loop and continues with the next iteration.
 
 ```javascript
- codefor (let i = 0; i < 5; i++) {
+ for (let i = 0; i < 5; i++) {
   if (i === 2) {
     continue;  // Skips the iteration where i === 2
   }
@@ -311,7 +311,7 @@ increment(); // 2
 * **`setTimeout()`**: Executes a function once after a specified delay.
 
   ```javascript
-   codesetTimeout(() => {
+  setTimeout(() => {
     console.log("Executed after 2 seconds");
   }, 2000);
   ```
@@ -319,7 +319,7 @@ increment(); // 2
 * **`setInterval()`**: Repeatedly executes a function at specified intervals (in milliseconds).
 
   ```javascript
-   codesetInterval(() => {
+  setInterval(() => {
     console.log("Executed every 2 seconds");
   }, 2000);
   ```
@@ -360,7 +360,7 @@ promise.then(result => {
 Example:
 
 ```javascript
- codeasync function fetchData() {
+async function fetchData() {
   let result = await fetch('https://api.example.com/data');
   let data = await result.json();
   console.log(data);
@@ -376,7 +376,7 @@ Arrow functions are a shorthand syntax for writing functions. They are more conc
 Example:
 
 ```javascript
- code// Regular function
+// Regular function
 function sum(a, b) {
   return a + b;
 }
@@ -394,7 +394,7 @@ const sum = (a, b) => a + b;
 Example:
 
 ```javascript
- codedocument.querySelector('#parent').addEventListener('click', function(event) {
+document.querySelector('#parent').addEventListener('click', function(event) {
   if (event.target && event.target.matches('button')) {
     console.log('Button clicked!');
   }
@@ -417,14 +417,14 @@ Example:
 * Synchronous:
 
   ```javascript
-   codeconsole.log("First");
+  console.log("First");
   console.log("Second");
   ```
 
 * Asynchronous (with `setTimeout`):
 
   ```javascript
-   codeconsole.log("First");
+  console.log("First");
   setTimeout(() => console.log("Second"), 1000);
   console.log("Third");
   ```
@@ -451,7 +451,7 @@ These methods are used to change the context (`this`) of a function.
 * **`apply()`**: Similar to `call()`, but arguments are passed as an array.
 
   ```javascript
-   codegreet.apply(this, ['Alice']);
+  greet.apply(this, ['Alice']);
   ```
 
 * **`bind()`**: Returns a new function with a specified `this` value, but it does not invoke the function immediately.
@@ -531,7 +531,7 @@ Example:
 Example:
 
 ```javascript
- codetry {
+try {
   let result = riskyOperation();
 } catch (error) {
   console.error("An error occurred", error);
@@ -547,7 +547,7 @@ Example:
 * **Exporting**:
 
   ```javascript
-   code// export.js
+  // export.js
   export const greeting = "Hello";
   export function sayHello() {
     console.log("Hello");
@@ -557,7 +557,7 @@ Example:
 * **Importing**:
 
   ```javascript
-   code// import.js
+  // import.js
   import { greeting, sayHello } from './export.js';
   console.log(greeting);  // "Hello"
   sayHello();             // "Hello"
@@ -597,7 +597,7 @@ console.log(boundGetValue());  // 42
 Example:
 
 ```javascript
- codelet shallowCopy = [...originalArray]; // shallow copy
+let shallowCopy = [...originalArray]; // shallow copy
 let deepCopy = JSON.parse(JSON.stringify(originalArray)); // deep copy (works with JSON-serializable data)
 ```
 
@@ -608,7 +608,7 @@ An **IIFE** is a function expression that is defined and executed immediately. I
 Example:
 
 ```javascript
- code(function() {
+(function() {
   // This function runs immediately
   console.log('Hello from IIFE');
 })();
@@ -692,7 +692,7 @@ It’s useful because it reduces memory usage and allows handling events for dyn
 Example:
 
 ```javascript
- codedocument.querySelector('#parent').addEventListener('click', function(event) {
+document.querySelector('#parent').addEventListener('click', function(event) {
   if (event.target && event.target.matches('button.className')) {
     // Handle the button click event
   }
@@ -746,7 +746,7 @@ console.log(gen.next().value); // 2
 * **Reflect**: A built-in object that provides methods for intercepting and manipulating JavaScript operations (e.g., getting and setting properties). It is often used in conjunction with `Proxy`. Example:
 
   ```javascript
-   codeReflect.set(target, 'prop', value);
+  Reflect.set(target, 'prop', value);
   ```
 
 ### 12\. **What is memory management and garbage collection in JavaScript?**
@@ -847,7 +847,7 @@ Both `call()` and `apply()` are methods used to invoke a function with a specifi
 * **`apply()`**: The arguments are passed as an array (or array-like object).
 
   ```javascript
-   codegreet.apply(null, ['Bob', 25]); // Bob is 25 years old.
+  greet.apply(null, ['Bob', 25]); // Bob is 25 years old.
   ```
 
 ### Key Difference:
@@ -881,7 +881,7 @@ JavaScript uses **prototype-based inheritance**.
 Example:
 
 ```javascript
- codeclass Animal {
+class Animal {
   constructor(name) {
     this.name = name;
   }
@@ -914,7 +914,7 @@ The **Fetch API** provides a modern, promise-based approach to making asynchrono
 Example:
 
 ```javascript
- codefetch('https://api.example.com/data')
+ fetch('https://api.example.com/data')
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.error('Error:', error));
@@ -933,7 +933,7 @@ Example:
 Example of synchronous:
 
 ```javascript
- codeconsole.log('Start');
+console.log('Start');
 console.log('Middle');
 console.log('End');
 ```
@@ -941,7 +941,7 @@ console.log('End');
 Example of asynchronous (using `setTimeout`):
 
 ```javascript
- codeconsole.log('Start');
+console.log('Start');
 setTimeout(() => console.log('Middle'), 1000);
 console.log('End');
 ```
@@ -957,7 +957,7 @@ Here, "Middle" is logged after 1 second without blocking "End".
 Example:
 
 ```javascript
- codeasyncFunction1(function(err, result1) {
+asyncFunction1(function(err, result1) {
   asyncFunction2(function(err, result2) {
     asyncFunction3(function(err, result3) {
       // And so on...
@@ -974,7 +974,7 @@ Example:
 Example using async/await:
 
 ```javascript
- codeasync function fetchData() {
+async function fetchData() {
   try {
     const result1 = await asyncFunction1();
     const result2 = await asyncFunction2();
@@ -994,7 +994,7 @@ There are several ways to handle errors in JavaScript:
 * **`try...catch`**: The most common way to catch and handle errors in synchronous code.
 
   ```javascript
-   codetry {
+  try {
     throw new Error('Something went wrong');
   } catch (err) {
     console.error(err.message);
@@ -1004,13 +1004,13 @@ There are several ways to handle errors in JavaScript:
 * **Promises**: For asynchronous operations, you can use `.catch()` to handle errors.
 
   ```javascript
-   codesomeAsyncFunction().catch(err => console.error(err));
+  someAsyncFunction().catch(err => console.error(err));
   ```
 
 * **Async/Await**: Use `try...catch` around `await` to handle errors in asynchronous code.
 
   ```javascript
-   codetry {
+  try {
     const data = await fetchData();
   } catch (err) {
     console.error(err);
@@ -1026,7 +1026,7 @@ The `eval()` function evaluates JavaScript code represented as a string. While i
 Example:
 
 ```javascript
- codeeval('console.log("Hello from eval!")'); // Outputs: Hello from eval!
+eval('console.log("Hello from eval!")'); // Outputs: Hello from eval!
 ```
 
 **Caution**: Avoid using `eval()` unless absolutely necessary due to potential security risks and performance concerns. It can also hinder optimizations by JavaScript engines.
