@@ -20,7 +20,7 @@
 
 ---
 
-## 2. CSS Box Model and How Padding, Margins, Borders, and Content Are Calculated
+### 2. CSS Box Model and How Padding, Margins, Borders, and Content Are Calculated
 
 The CSS Box Model describes the rectangular boxes generated for elements on a page and consists of the following parts:
 
@@ -52,7 +52,7 @@ The total width and height of an element can be calculated as follows:
 
 ---
 
-## 3. Differences Between `position: relative`, `position: absolute`, `position: fixed`, and `position: sticky`
+### 3. Differences Between `position: relative`, `position: absolute`, `position: fixed`, and `position: sticky`
 
 ### `position: relative`:
 - The element is positioned relative to its normal position in the document flow.
@@ -72,7 +72,7 @@ The total width and height of an element can be calculated as follows:
 
 ---
 
-## 4. How CSS Flexbox Works and Typical Use Case
+### 4. How CSS Flexbox Works and Typical Use Case
 
 CSS Flexbox is a layout model designed for distributing space and aligning items within a container, especially when the sizes of the items are unknown or dynamic. Flexbox works along a main axis and a cross axis.
 
@@ -120,7 +120,7 @@ Example:
 
 # CSS Concepts and Best Practices
 
-## 1. What are CSS Grid Layouts, and how do they differ from Flexbox?
+### 1. What are CSS Grid Layouts, and how do they differ from Flexbox?
 
 **CSS Grid Layout** is a two-dimensional layout system for creating both rows and columns. It allows you to design complex layouts by defining both horizontal and vertical positioning of elements in a grid structure. CSS Grid is more powerful and flexible for layouts that require both rows and columns simultaneously.
 
@@ -132,7 +132,7 @@ Example:
 
 ---
 
-## 2. How do you ensure cross-browser compatibility for your web pages?
+### 2. How do you ensure cross-browser compatibility for your web pages?
 
 To ensure cross-browser compatibility, you can take several steps:
 
@@ -146,7 +146,7 @@ To ensure cross-browser compatibility, you can take several steps:
 
 ---
 
-## 3. Explain CSS specificity. How does the browser determine which style rule is applied?
+### 3. Explain CSS specificity. How does the browser determine which style rule is applied?
 
 **CSS specificity** refers to a scoring system that determines which style rule takes precedence when multiple rules apply to the same element. The browser calculates specificity based on the type of selectors used in the rule.
 
@@ -167,7 +167,7 @@ If two conflicting rules apply, the one with the higher specificity will be appl
 
 ---
 
-## 4. What is the purpose of the `z-index` property in CSS?
+### 4. What is the purpose of the `z-index` property in CSS?
 
 The **z-index** property in CSS controls the stacking order of elements along the z-axis (depth). It determines which elements appear on top or behind others when they overlap.
 
@@ -179,7 +179,7 @@ The **z-index** property in CSS controls the stacking order of elements along th
 
 ---
 
-## 5. Can you describe the concept of BEM (Block, Element, Modifier) in naming CSS classes and its benefits?
+### 5. Can you describe the concept of BEM (Block, Element, Modifier) in naming CSS classes and its benefits?
 
 **BEM** (Block, Element, Modifier) is a naming convention for classes in HTML and CSS that helps keep styles organized and reusable, especially in large projects. The goal is to make the structure of your code predictable and easier to maintain.
 
