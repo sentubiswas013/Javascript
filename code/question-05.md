@@ -456,7 +456,7 @@ fetch('https://api.example.com/data')
 
 ## Performance Optimization
 
-## Web Application Performance Optimization
+### Web Application Performance Optimization
 
 ### 1. Techniques to Optimize the Performance of a Web Application
 
