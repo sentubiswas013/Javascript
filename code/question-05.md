@@ -152,7 +152,6 @@ Example:
 - **Grid**: Works on both axes (horizontal and vertical), allowing complex layouts with multiple rows and columns.
 - **Flexbox**: Works on a single axis (either row or column), focusing on the distribution of space in one direction.
 
----
 
 ### 2. How do you ensure cross-browser compatibility for your web pages?
 
@@ -166,7 +165,6 @@ To ensure cross-browser compatibility, you can take several steps:
 - **Avoid Browser-Specific Hacks**: Instead of relying on browser hacks, prefer standard CSS that works across modern browsers.
 - **Use Tools/Autoprefixers**: Tools like Autoprefixer automatically add vendor prefixes to your CSS based on browser usage data.
 
----
 
 ### 3. Explain CSS specificity. How does the browser determine which style rule is applied?
 
@@ -189,8 +187,6 @@ To ensure cross-browser compatibility, you can take several steps:
 
 If two conflicting rules apply, the one with the higher specificity will be applied.
 
----
-
 ### 4. What is the purpose of the `z-index` property in CSS?
 
 The **z-index** property in CSS controls the stacking order of elements along the z-axis (depth). It determines which elements appear on top or behind others when they overlap.
@@ -202,7 +198,6 @@ The **z-index** property in CSS controls the stacking order of elements along th
 - A **negative `z-index`** (e.g., `z-index: -1`) moves the element behind others.
 - **`z-index` only works on elements** that have a position other than `static` (i.e., elements with `position: relative`, `absolute`, `fixed`, or `sticky`).
 
----
 
 ### 5. Can you describe the concept of BEM (Block, Element, Modifier) in naming CSS classes and its benefits?
 
@@ -236,7 +231,7 @@ Sass (Syntactically Awesome Stylesheets) and LESS are two popular preprocessors.
 - **Functions and loops**: For complex calculations and dynamic CSS.
   After writing in a preprocessor syntax, the code is compiled into standard CSS that can be used in the browser.
 
-### JavaScript (Vanilla JS)
+## JavaScript (Vanilla JS)
 ---
 ### 1. What are the key differences between `var`, `let`, and `const`?
 
@@ -260,8 +255,6 @@ Sass (Syntactically Awesome Stylesheets) and LESS are two popular preprocessors.
   - **Re-declaration**: Cannot be re-declared in the same scope.
   - **Mutability**: The variable must be assigned a value at the time of declaration and cannot be reassigned. However, if the value is an object or array, its properties or elements can still be modified.
 
----
-
 ### 2. What is the `this` keyword in JavaScript? How does its value change depending on the context?:
 
 - **What it is**: The `this` keyword refers to the context in which a function is executed. Its value can change depending on how a function is called.
@@ -271,8 +264,6 @@ Sass (Syntactically Awesome Stylesheets) and LESS are two popular preprocessors.
   - **Inside a constructor**: In a constructor function, `this` refers to the newly created object.
   - **Arrow functions**: Arrow functions do not have their own `this`; instead, they inherit `this` from their surrounding (lexical) context.
   - **Explicit binding**: Methods like `call()`, `apply()`, and `bind()` can explicitly set the value of `this`.
-
----
 
 ### 3. Can you explain event delegation in JavaScript and provide a use case?:
 
@@ -314,7 +305,6 @@ A **closure** is a function that retains access to its lexical environment (the 
     const myCounter = counter();
     console.log(myCounter()); // 1
     console.log(myCounter()); // 2
-```
 
 ### 5. Event Loop in JavaScript and How Asynchronous Code is Handled:
 
@@ -464,7 +454,7 @@ fetch('https://api.example.com/data')
     sql
 ```
 
-### Performance Optimization
+## Performance Optimization
 
 ## Web Application Performance Optimization
 
@@ -519,7 +509,6 @@ To optimize the performance of a web application, several strategies can be empl
 
 - Use tools like **Lighthouse**, **WebPageTest**, and browser dev tools to monitor performance and identify bottlenecks.
 
----
 
 ### 2. How to Reduce the Page Load Time of a Website
 
@@ -665,8 +654,6 @@ To reduce the page load time, you can implement several strategies:
 - **Reduce Initial Payload**:
   - Use techniques like server-side rendering (SSR) or static site generation (SSG) to reduce the amount of JavaScript and CSS needed to be executed on the client.
 
----
-
 ### 3\. **What is lazy loading, and how can you implement it in a React or Angular app?**
 
 **Lazy loading** is the technique of deferring the loading of non-essential resources, such as images or components, until they are required (e.g., when they are visible in the viewport or interactable). This can drastically improve page load times and overall performance.
@@ -680,28 +667,24 @@ React supports lazy loading of components using `React.lazy()` and `Suspense`.
 
 Example:
 
-javascript
+```javascript
+  `import React, { Suspense } from 'react';
 
-Copy code
+  // Dynamically import a component
+  const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
-`import React, { Suspense } from 'react';
+  function App() {
+  return (
 
-// Dynamically import a component
-const LazyComponent = React.lazy(() => import('./LazyComponent'));
-
-function App() {
-return (
-
-<div>
-<h1>My App</h1>
-<Suspense fallback={<div>Loading...</div>}>
-<LazyComponent />
-</Suspense>
-</div>
-);
-}
-
-````
+  <div>
+  <h1>My App</h1>
+  <Suspense fallback={<div>Loading...</div>}>
+  <LazyComponent />
+  </Suspense>
+  </div>
+  );
+  }
+```
 
 export default App;`
 
@@ -713,20 +696,18 @@ Example:
 
 1.  **Create a Module**:
 
-typescript
+```javascript
+  `// lazy.module.ts
+  import { NgModule } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { LazyComponent } from './lazy.component';
 
-Copy code
-
-`// lazy.module.ts
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LazyComponent } from './lazy.component';
-
-@NgModule({
-  declarations: [LazyComponent],
-  imports: [CommonModule]
-})
-export class LazyModule {}`
+  @NgModule({
+    declarations: [LazyComponent],
+    imports: [CommonModule]
+  })
+  export class LazyModule {}`
+```
 
 2.  **Configure Routing**:
 
@@ -750,8 +731,6 @@ export class AppRoutingModule {}`
 ````
 
 When the user navigates to `/lazy`, the `LazyModule` is loaded dynamically.
-
----
 
 ### 4\. **What is code splitting, and why is it important?**
 
@@ -1016,8 +995,6 @@ React **Hooks** allow you to use state and other React features in functional co
   );
   ```
 
----
-
 ### 3\. **What is the Virtual DOM, and how does it work in React?**
 
 The **Virtual DOM (VDOM)** is a lightweight representation of the actual DOM in memory. React uses it to optimize updates to the real DOM.
@@ -1028,8 +1005,6 @@ The **Virtual DOM (VDOM)** is a lightweight representation of the actual DOM in 
 - These changes are then **batched** and applied to the real DOM in the most efficient way possible.
 
 This process minimizes the performance cost of DOM manipulation, making React apps more efficient, especially when handling large amounts of dynamic content.
-
----
 
 ### 4\. **How do you manage state in a React application? Have you used Context API or Redux?**
 
@@ -1077,8 +1052,6 @@ State in React can be managed in several ways:
 
 Redux is more scalable for large applications but can be overkill for simpler use cases.
 
----
-
 ### 5\. **How do you handle component lifecycle events in React?**
 
 In **class components**, lifecycle events are handled using methods like `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`.
@@ -1118,8 +1091,6 @@ const MyComponent = () => {
 };
 ```
 
----
-
 ### 6\. **What are controlled vs uncontrolled components in React?**
 
 - **Controlled components**: These components have their form data controlled by React state. The value of the input field is set by the state, and changes are handled via event handlers.
@@ -1155,7 +1126,6 @@ const MyComponent = () => {
   };
   ```
 
----
 
 ### 7\. **Explain React Router and how it helps in single-page applications.**
 
@@ -1183,8 +1153,6 @@ const App = () => (
   </Router>
 );
 ```
-
----
 
 ### 8\. **How would you optimize the performance of a large React application?**
 
@@ -1240,7 +1208,6 @@ By applying these techniques, you can greatly improve the performance and respon
 
 In summary, Angular modules provide a structured way to build scalable applications and manage dependencies effectively.
 
----
 
 ### 2\. **How does data binding work in Angular, and what are the types?**
 
@@ -1267,8 +1234,6 @@ In summary, Angular modules provide a structured way to build scalable applicati
    - Example: `<input [(ngModel)]="name">` binds the value of the input to the `name` property and updates the property when the input value changes.
 
 These types of data binding enable seamless communication between the component and the DOM, facilitating dynamic interaction within Angular applications.
-
----
 
 ### 3\. **Can you explain Angular directives, both built-in and custom?**
 
@@ -1306,7 +1271,6 @@ These types of data binding enable seamless communication between the component 
 
 Directives are key to extending HTML’s behavior and reusing code.
 
----
 
 ### 4\. **What are Angular services, and how are they different from components?**
 
@@ -1327,8 +1291,6 @@ Directives are key to extending HTML’s behavior and reusing code.
 - A component is a UI-centric class, while a service handles logic and data that isn’t directly related to the UI.
 - Services are usually injected into components via **Dependency Injection (DI)**.
 
----
-
 ### 5\. **What is dependency injection in Angular, and why is it useful?**
 
 **Dependency Injection (DI)** is a design pattern that allows you to inject the dependencies (such as services, values, or objects) into a class rather than having the class create them itself. In Angular, DI is a core part of how the framework manages the instantiation and sharing of services and other objects.
@@ -1341,8 +1303,6 @@ Directives are key to extending HTML’s behavior and reusing code.
 - **Flexibility**: You can easily switch or replace services without changing the component code.
 
 Angular’s DI system automatically injects the required services when components or other services declare them in their constructors.
-
----
 
 ### 6\. **Explain Angular’s change detection mechanism.**
 
@@ -1361,7 +1321,6 @@ Angular provides two change detection strategies:
 
 The change detection mechanism ensures that the UI remains in sync with the data, but it can have performance implications, which can be optimized using strategies like `OnPush`.
 
----
 
 ### 7\. **How would you handle routing in an Angular application?**
 
@@ -1823,7 +1782,6 @@ The most commonly used version control tool is **Git**. For hosting Git reposito
 - Use descriptive branch names to indicate the purpose of the work (`feature/login-form`, `bugfix/navbar-bug`).
 - Regularly push changes to remote repositories to avoid merge conflicts.
 
----
 
 ### 4\. **How do you approach documentation in your development process?**
 
@@ -1836,7 +1794,6 @@ Documentation is crucial for maintaining a maintainable and scalable codebase. M
 - **Developer Guides**: In larger teams, creating a developer handbook or contributing guide that outlines coding standards, project-specific patterns, and best practices is important.
 - **Change Logs**: Maintaining a change log with each release helps communicate new features, fixes, and breaking changes clearly to the development team and stakeholders.
 
----
 
 ### 5\. **Have you used any task runners or build tools like Gulp, Grunt, or Webpack? How would you configure them for an optimized frontend workflow?**
 
@@ -1855,7 +1812,6 @@ Yes, I’ve used **Webpack** extensively, and I have some experience with **Gulp
   - Running linters, tests, or other checks during development.
   - Minifying assets, compiling Sass, or automating other build-related tasks.
 
----
 
 ### 6\. **How do you keep up with new trends and technologies in frontend development?**
 
@@ -1869,7 +1825,6 @@ Staying current in frontend development requires a combination of several strate
 
 By combining these strategies, I ensure that I stay up-to-date with new technologies and trends, while also honing my existing skills.
 
----
 
 Let me know if you need further details on any of these topics!
 
@@ -1945,7 +1900,6 @@ Challenges faced:
 
 Ultimately, the project was successful, delivered on time, and received positive feedback from users. We made sure to gather user feedback after launch, which helped us make improvements in the next iteration.
 
----
 
 Let me know if you’d like me to expand on any specific answer or adapt them further!
 
@@ -1953,7 +1907,6 @@ Let me know if you’d like me to expand on any specific answer or adapt them fu
 
 Sure! Here's the solution to each of your questions:
 
----
 
 ### 1\. **Debouncing Mechanism in JavaScript**
 
@@ -1982,7 +1935,6 @@ window.addEventListener("resize", handleResize);
 
 This function ensures that `handleResize` is only called 500ms after the last resize event.
 
----
 
 ### 2\. **Find Two Numbers that Add Up to a Target Sum (JavaScript)**
 
@@ -2010,8 +1962,6 @@ console.log(findTwoSum(nums, target)); // Output: [2, 7]
 ```
 
 This function checks if the complement of the current number (i.e., `target - num`) has already been seen. If so, it returns the pair.
-
----
 
 ### 3\. **Implementing a Modal Component**
 
@@ -2056,7 +2006,7 @@ export default App;
 
 #### **Vue**:
 
-```vue
+```javascript
 vueCopy code<template>
   <div>
     <button @click="isModalOpen = true">Open Modal</button>
@@ -2133,7 +2083,6 @@ export class AppComponent {
 }
 ```
 
----
 
 ### 4\. **Managing and Optimizing Large Data Sets (Infinite Scroll/Pagination)**
 
@@ -2179,8 +2128,6 @@ function InfiniteScroll({ fetchData, pageSize }) {
 ```
 
 In the above example, we listen to the `scroll` event and load more data once the user scrolls to the bottom.
-
----
 
 ### 5\. **Simple Form Validation in JavaScript/React/Vue**
 
