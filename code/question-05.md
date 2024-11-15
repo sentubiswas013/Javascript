@@ -139,8 +139,8 @@ Example:
 </style>
 ```
 
-# CSS Concepts and Best Practices
-
+## CSS Concepts and Best Practices
+--
 ### 1. What are CSS Grid Layouts, and how do they differ from Flexbox?
 
 **CSS Grid Layout** is a two-dimensional layout system for creating both rows and columns. It allows you to design complex layouts by defining both horizontal and vertical positioning of elements in a grid structure. CSS Grid is more powerful and flexible for layouts that require both rows and columns simultaneously.
@@ -237,7 +237,7 @@ Sass (Syntactically Awesome Stylesheets) and LESS are two popular preprocessors.
   After writing in a preprocessor syntax, the code is compiled into standard CSS that can be used in the browser.
 
 ### JavaScript (Vanilla JS)
-
+---
 ### 1. What are the key differences between `var`, `let`, and `const`?
 
 - **`var`**:
@@ -466,7 +466,7 @@ fetch('https://api.example.com/data')
 
 ### Performance Optimization
 
-# Web Application Performance Optimization
+## Web Application Performance Optimization
 
 ### 1. Techniques to Optimize the Performance of a Web Application
 
@@ -581,7 +581,7 @@ const MyComponent = lazy(() => import('./MyComponent'));
 function App() {
   return (
     <div>
-      <h1>Welcome to my App</h1>
+      <h4>Welcome to my App</h4>
       <Suspense fallback={<div>Loading...</div>}>
         <MyComponent />
       </Suspense>
