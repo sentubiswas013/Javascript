@@ -1,6 +1,6 @@
 **\# Senior Frontend Developer Interview Questions**
 
-### HTML and CSS Concepts
+## HTML and CSS Concepts
 
 ---
 
@@ -23,7 +23,7 @@
 - **Block elements** take up the full width of their container and force a line break before and after.
 - **Inline elements** only take as much width as needed and do not cause a line break.
 
----
+
 
 ### 2. CSS Box Model and How Padding, Margins, Borders, and Content Are Calculated
 
@@ -62,7 +62,7 @@ The total width and height of an element can be calculated as follows:
 
 - For margin, the margin does not affect the element’s size (it just adds space around it).
 
----
+
 
 ### 3. Differences Between `position: relative`, `position: absolute`, `position: fixed`, and `position: sticky`
 
@@ -86,7 +86,7 @@ The total width and height of an element can be calculated as follows:
 - The element is positioned based on the user’s scroll position. It toggles between relative and fixed positioning depending on the scroll position.
 - For example, a header can "stick" to the top of the page once it reaches the top of the viewport while scrolling down.
 
----
+
 
 ### 4. How CSS Flexbox Works and Typical Use Case
 
