@@ -140,7 +140,7 @@ Example:
 ```
 
 ## CSS Concepts and Best Practices
---
+---
 ### 1. What are CSS Grid Layouts, and how do they differ from Flexbox?
 
 **CSS Grid Layout** is a two-dimensional layout system for creating both rows and columns. It allows you to design complex layouts by defining both horizontal and vertical positioning of elements in a grid structure. CSS Grid is more powerful and flexible for layouts that require both rows and columns simultaneously.
