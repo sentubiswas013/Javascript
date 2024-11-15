@@ -1,10 +1,8 @@
-# Senior Frontend Developer Interview Questions
+**\# Senior Frontend Developer Interview Questions
 
-## 1. Technical Knowledge (Core Frontend Technologies)
-
-# HTML and CSS Concepts
-
-## 1. Difference Between Block-Level and Inline Elements in HTML
+### HTML and CSS Concepts
+---
+### 1. Difference Between Block-Level and Inline Elements in HTML
 
 ### Block-level elements:
 - These elements occupy the full width of their parent container and always start on a new line, stacking vertically.
