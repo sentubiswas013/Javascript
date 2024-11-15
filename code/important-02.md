@@ -8,7 +8,7 @@ Certainly! Below is a list of JavaScript-related questions that span beginner to
 
   
 
-Beginner-Level Questions
+## Beginner-Level Questions
 
 Sure! Here are the answers to each of the questions with JavaScript examples and explanations:
 
