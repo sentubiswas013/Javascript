@@ -806,7 +806,7 @@ Optimizing rendering performance involves minimizing the time it takes for the b
 - **Example:**
 
   ```javascript
-  javascriptCopy codeconst worker = new Worker('worker.js');
+   codeconst worker = new Worker('worker.js');
   worker.postMessage(data); // Send data to the worker
 
   worker.onmessage = function(event) {
@@ -817,7 +817,7 @@ Optimizing rendering performance involves minimizing the time it takes for the b
   In `worker.js`:
 
   ```javascript
-  javascriptCopy codeonmessage = function(event) {
+   codeonmessage = function(event) {
     let data = event.data;
     let result = performHeavyCalculation(data);
     postMessage(result);
@@ -841,7 +841,7 @@ A **Service Worker** is a JavaScript file that runs in the background of a web a
 **Example:**
 
 ```javascript
-javascriptCopy code// Register Service Worker
+ code// Register Service Worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
     console.log('Service Worker registered with scope:', registration.scope);
@@ -854,7 +854,7 @@ if ('serviceWorker' in navigator) {
 In `service-worker.js`:
 
 ```javascript
-javascriptCopy codeself.addEventListener('install', (event) => {
+ codeself.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('my-cache').then((cache) => {
       return cache.addAll([
@@ -1428,7 +1428,7 @@ A **Progressive Web App (PWA)** is a type of web application that combines the b
 2. **Set Up Service Workers**: A Service Worker is a JavaScript file that runs in the background, intercepting network requests and caching responses. This allows for offline functionality and faster subsequent visits.
 
    ```javascript
-   javascriptCopy codeif ('serviceWorker' in navigator) {
+    codeif ('serviceWorker' in navigator) {
      window.addEventListener('load', () => {
        navigator.serviceWorker.register('/service-worker.js').then(registration => {
          console.log('Service Worker registered with scope:', registration.scope);
@@ -1915,7 +1915,7 @@ Debouncing is a technique used to ensure that time-consuming tasks, such as API 
 **Debounce function in JavaScript:**
 
 ```javascript
-javascriptCopy codefunction debounce(func, delay) {
+ codefunction debounce(func, delay) {
   let timeout;
   return function (...args) {
     clearTimeout(timeout);
@@ -1943,7 +1943,7 @@ You can solve this problem efficiently with a hash set, achieving an O(n) time c
 **Solution:**
 
 ```javascript
-javascriptCopy codefunction findTwoSum(nums, target) {
+ codefunction findTwoSum(nums, target) {
   const seen = new Set();
   for (let num of nums) {
     const complement = target - num;
@@ -2134,7 +2134,7 @@ In the above example, we listen to the `scroll` event and load more data once th
 #### **JavaScript Form Validation**:
 
 ```javascript
-javascriptCopy codefunction validateForm() {
+ codefunction validateForm() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 

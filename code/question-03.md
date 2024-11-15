@@ -82,7 +82,7 @@ JavaScript handles asynchronous code primarily through:
   * Closures are created whenever a function is defined within another function.
   * Example:
     ```javascript
-    javascriptCopy codefunction outer() {
+     codefunction outer() {
       let counter = 0;
       return function inner() {
         counter++;
@@ -117,7 +117,7 @@ Here are the JavaScript answers for the questions you asked:
 To reverse a string without using the `reverse()` method or any other built-in methods, you can manually iterate through the string.
 
 ```javascript
-javascriptCopy codefunction reverseString(str) {
+ codefunction reverseString(str) {
   let reversed = '';
   for (let i = str.length - 1; i >= 0; i--) {
     reversed += str[i];
@@ -131,7 +131,7 @@ javascriptCopy codefunction reverseString(str) {
 You can remove duplicates by iterating through the array and adding elements to a new array only if they haven't been added already.
 
 ```javascript
-javascriptCopy codefunction removeDuplicates(arr) {
+ codefunction removeDuplicates(arr) {
   const uniqueArr = [];
   for (let i = 0; i < arr.length; i++) {
     if (!uniqueArr.includes(arr[i])) {
@@ -145,7 +145,7 @@ javascriptCopy codefunction removeDuplicates(arr) {
 Alternatively, you can use a `Set`, but this doesn't fit the "no built-in methods" requirement:
 
 ```javascript
-javascriptCopy codefunction removeDuplicates(arr) {
+ codefunction removeDuplicates(arr) {
   const uniqueArr = [];
   arr.forEach(item => {
     if (!uniqueArr.includes(item)) {
@@ -161,7 +161,7 @@ javascriptCopy codefunction removeDuplicates(arr) {
 To find the longest word in a string, you can split the string into words, then iterate through the array of words to find the longest one.
 
 ```javascript
-javascriptCopy codefunction findLongestWord(str) {
+ codefunction findLongestWord(str) {
   const words = str.split(' ');
   let longestWord = '';
   for (let i = 0; i < words.length; i++) {
@@ -178,7 +178,7 @@ javascriptCopy codefunction findLongestWord(str) {
 A palindrome reads the same backward as forward. To check if a string is a palindrome, compare the string with its reversed version.
 
 ```javascript
-javascriptCopy codefunction isPalindrome(str) {
+ codefunction isPalindrome(str) {
   let reversed = '';
   for (let i = str.length - 1; i >= 0; i--) {
     reversed += str[i];
@@ -192,7 +192,7 @@ javascriptCopy codefunction isPalindrome(str) {
 To flatten a nested array, you can use a recursive function to go through each element. If an element is an array, recursively flatten it.
 
 ```javascript
-javascriptCopy codefunction flattenArray(arr) {
+ codefunction flattenArray(arr) {
   let result = [];
   for (let i = 0; i < arr.length; i++) {
     if (Array.isArray(arr[i])) {
@@ -214,7 +214,7 @@ One efficient way to find the missing number is to use the formula for the sum o
 Then, subtract the sum of the array from the expected sum to find the missing number.
 
 ```javascript
-javascriptCopy codefunction findMissingNumber(arr, n) {
+ codefunction findMissingNumber(arr, n) {
   const expectedSum = (n * (n + 1)) / 2;
   const actualSum = arr.reduce((sum, num) => sum + num, 0);
   return expectedSum - actualSum;
@@ -232,7 +232,7 @@ Let me know if you need any further clarification on these solutions!
 To merge two sorted arrays into one sorted array, we can use a two-pointer approach to iterate through both arrays simultaneously and merge them in sorted order.
 
 ```javascript
-javascriptCopy codefunction mergeSortedArrays(arr1, arr2) {
+ codefunction mergeSortedArrays(arr1, arr2) {
     let result = [];
     let i = 0, j = 0;
 
@@ -270,7 +270,7 @@ console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6])); // [1, 2, 3, 4, 5, 6]
 A deep clone means creating a new object and copying over all properties, including nested objects. This can be done manually or using libraries like `lodash`. Below is a manual implementation:
 
 ```javascript
-javascriptCopy codefunction deepClone(obj) {
+ codefunction deepClone(obj) {
     if (obj === null || typeof obj !== 'object') return obj;
 
     let clone = Array.isArray(obj) ? [] : {};
@@ -299,7 +299,7 @@ console.log(cloned.b !== original.b);  // true (deep clone)
 Example:
 
 ```javascript
-javascriptCopy codelet obj1 = { a: 1, b: { c: 2 } };
+ codelet obj1 = { a: 1, b: { c: 2 } };
 
 // Shallow copy using Object.assign or spread
 let shallowCopy = { ...obj1 };
@@ -316,7 +316,7 @@ console.log(obj1.b.c);  // 2 (deep copy does not affect the original)
 You can create a frequency counter using a hash map (object in JavaScript):
 
 ```javascript
-javascriptCopy codefunction charFrequency(str) {
+ codefunction charFrequency(str) {
     const freqMap = {};
     for (let char of str) {
         freqMap[char] = (freqMap[char] || 0) + 1;
@@ -332,7 +332,7 @@ console.log(charFrequency('aabbbcccc'));  // { a: 2, b: 3, c: 4 }
 A basic implementation of a hash map can use an array for storing key-value pairs and a simple hash function for converting keys to array indices.
 
 ```javascript
-javascriptCopy codeclass HashMap {
+ codeclass HashMap {
     constructor(size = 100) {
         this.size = size;
         this.map = new Array(size);
@@ -388,7 +388,7 @@ console.log(map.get("age"));  // undefined
 You can implement a set using an object (since object keys are unique in JavaScript):
 
 ```javascript
-javascriptCopy codeclass MySet {
+ codeclass MySet {
     constructor() {
         this.items = {};
     }
@@ -431,7 +431,7 @@ Higher-order functions are a key concept in functional programming and allow for
 #### Example of Higher-Order Function:
 
 ```javascript
-javascriptCopy code// Function that takes another function as an argument
+ code// Function that takes another function as an argument
 function greet(name, callback) {
   return callback(name);
 }
@@ -453,7 +453,7 @@ Let's implement these functions without using the built-in versions.
 `map()` transforms each element of an array based on a given function.
 
 ```javascript
-javascriptCopy codefunction customMap(arr, callback) {
+ codefunction customMap(arr, callback) {
   const result = [];
   for (let i = 0; i < arr.length; i++) {
     result.push(callback(arr[i], i, arr));
@@ -470,7 +470,7 @@ console.log(customMap(arr, x => x * 2));  // Output: [2, 4, 6, 8]
 `filter()` creates a new array with all elements that pass the test implemented by the provided function.
 
 ```javascript
-javascriptCopy codefunction customFilter(arr, callback) {
+ codefunction customFilter(arr, callback) {
   const result = [];
   for (let i = 0; i < arr.length; i++) {
     if (callback(arr[i], i, arr)) {
@@ -489,7 +489,7 @@ console.log(customFilter(arr, x => x % 2 === 0));  // Output: [2, 4]
 `reduce()` reduces the array to a single value by applying a function on each element of the array.
 
 ```javascript
-javascriptCopy codefunction customReduce(arr, callback, initialValue) {
+ codefunction customReduce(arr, callback, initialValue) {
   let accumulator = initialValue !== undefined ? initialValue : arr[0];
   let startIndex = initialValue !== undefined ? 0 : 1;
 
@@ -509,7 +509,7 @@ console.log(customReduce(arr, (acc, curr) => acc + curr, 0));  // Output: 10
 Debouncing ensures that a function is only executed after a certain delay, useful for optimizing performance when dealing with high-frequency events (e.g., window resizing, key presses).
 
 ```javascript
-javascriptCopy codefunction debounce(func, delay) {
+ codefunction debounce(func, delay) {
   let timeout;
   
   return function(...args) {
@@ -530,7 +530,7 @@ window.addEventListener('resize', onResize);
 Throttling ensures that a function is only called once every specified interval, regardless of how many times it is triggered.
 
 ```javascript
-javascriptCopy codefunction throttle(func, limit) {
+ codefunction throttle(func, limit) {
   let lastFunc;
   let lastRan;
 
@@ -564,7 +564,7 @@ window.addEventListener('scroll', logScroll);
 #### Example of Currying in JavaScript:
 
 ```javascript
-javascriptCopy codefunction multiply(a) {
+ codefunction multiply(a) {
   return function(b) {
     return a * b;
   };
@@ -588,7 +588,7 @@ Here are the answers to the provided JavaScript-related tasks:
 Factorial of a number is the product of all positive integers less than or equal to that number.
 
 ```javascript
-javascriptCopy code// Recursive approach
+ code// Recursive approach
 function factorial(n) {
     if (n <= 1) return 1;
     return n * factorial(n - 1);
@@ -609,7 +609,7 @@ function factorialIterative(n) {
 * **Recursive approach:**
 
 ```javascript
-javascriptCopy codefunction fibonacciRecursive(n) {
+ codefunction fibonacciRecursive(n) {
     if (n <= 1) return n;
     return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
@@ -618,7 +618,7 @@ javascriptCopy codefunction fibonacciRecursive(n) {
 * **Iterative approach:**
 
 ```javascript
-javascriptCopy codefunction fibonacciIterative(n) {
+ codefunction fibonacciIterative(n) {
     let a = 0, b = 1;
     for (let i = 2; i <= n; i++) {
         let temp = a + b;
@@ -634,7 +634,7 @@ javascriptCopy codefunction fibonacciIterative(n) {
 To find common elements between two arrays:
 
 ```javascript
-javascriptCopy codefunction intersection(arr1, arr2) {
+ codefunction intersection(arr1, arr2) {
     return arr1.filter(value => arr2.includes(value));
 }
 ```
@@ -644,7 +644,7 @@ javascriptCopy codefunction intersection(arr1, arr2) {
 The first non-repeating character in a string can be found by iterating through the string and counting occurrences of each character.
 
 ```javascript
-javascriptCopy codefunction firstNonRepeatingCharacter(str) {
+ codefunction firstNonRepeatingCharacter(str) {
     const charCount = {};
     
     for (let i = 0; i < str.length; i++) {
@@ -666,7 +666,7 @@ javascriptCopy codefunction firstNonRepeatingCharacter(str) {
 To find the largest sum of consecutive elements (Kadane's algorithm):
 
 ```javascript
-javascriptCopy codefunction largestSumConsecutive(arr) {
+ codefunction largestSumConsecutive(arr) {
     let maxSum = arr[0];
     let currentSum = arr[0];
     
@@ -684,7 +684,7 @@ javascriptCopy codefunction largestSumConsecutive(arr) {
 Binary search is an efficient way to search in a sorted array.
 
 ```javascript
-javascriptCopy codefunction binarySearch(arr, target) {
+ codefunction binarySearch(arr, target) {
     let left = 0;
     let right = arr.length - 1;
     
@@ -705,7 +705,7 @@ javascriptCopy codefunction binarySearch(arr, target) {
 Two strings are anagrams if they contain the same characters in the same frequency.
 
 ```javascript
-javascriptCopy codefunction areAnagrams(str1, str2) {
+ codefunction areAnagrams(str1, str2) {
     if (str1.length !== str2.length) return false;
     
     const charCount = {};
@@ -724,7 +724,7 @@ javascriptCopy codefunction areAnagrams(str1, str2) {
 A prime number is a number greater than 1 that has no divisors other than 1 and itself.
 
 ```javascript
-javascriptCopy codefunction isPrime(num) {
+ codefunction isPrime(num) {
     if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
         if (num % i === 0) return false;
@@ -738,7 +738,7 @@ javascriptCopy codefunction isPrime(num) {
 To reverse a linked list, you can iterate through the list and reverse the pointers.
 
 ```javascript
-javascriptCopy code// Assuming a simple linked list structure like this:
+ code// Assuming a simple linked list structure like this:
 function ListNode(value) {
     this.value = value;
     this.next = null;
@@ -793,7 +793,7 @@ A **Promise** in JavaScript is an object that represents the eventual completion
 #### Example:
 
 ```javascript
-javascriptCopy codelet myPromise = new Promise((resolve, reject) => {
+ codelet myPromise = new Promise((resolve, reject) => {
   let success = true;
   
   if (success) {
@@ -837,7 +837,7 @@ In this example:
 Using promises:
 
 ```javascript
-javascriptCopy codefetchData().then(data => {
+ codefetchData().then(data => {
   console.log(data);
 }).catch(error => {
   console.log(error);
@@ -847,7 +847,7 @@ javascriptCopy codefetchData().then(data => {
 Using async/await:
 
 ```javascript
-javascriptCopy codeasync function fetchDataAsync() {
+ codeasync function fetchDataAsync() {
   try {
     let data = await fetchData();
     console.log(data);
@@ -869,7 +869,7 @@ In JavaScript, errors in asynchronous code can be handled in two main ways:
 1. **Using `.catch()` with Promises**: If the promise is rejected, the error can be caught using `.catch()`.
 
    ```javascript
-   javascriptCopy codemyPromise.then(result => {
+    codemyPromise.then(result => {
      console.log(result);
    }).catch(error => {
      console.log('Error:', error);
@@ -879,7 +879,7 @@ In JavaScript, errors in asynchronous code can be handled in two main ways:
 2. **Using `try/catch` with async/await**: If you are using `async`/`await`, you can handle errors more synchronously inside a `try/catch` block.
 
    ```javascript
-   javascriptCopy codeasync function fetchData() {
+    codeasync function fetchData() {
      try {
        let data = await someAsyncOperation();
        console.log(data);
@@ -923,7 +923,7 @@ A **callback** is a function passed as an argument to another function that is e
 Example of Callback Hell:
 
 ```javascript
-javascriptCopy codedoSomething(function(err, result) {
+ codedoSomething(function(err, result) {
   if (err) {
     console.error(err);
   } else {
@@ -952,7 +952,7 @@ Both `setTimeout` and `setInterval` are used to schedule asynchronous functions 
 * **`setTimeout`**: Executes a function once after a specified delay (in milliseconds).
 
   ```javascript
-  javascriptCopy codesetTimeout(() => {
+   codesetTimeout(() => {
     console.log("This runs after 2 seconds.");
   }, 2000);
   ```
@@ -960,7 +960,7 @@ Both `setTimeout` and `setInterval` are used to schedule asynchronous functions 
 * **`setInterval`**: Executes a function repeatedly, with a specified delay between each execution.
 
   ```javascript
-  javascriptCopy codesetInterval(() => {
+   codesetInterval(() => {
     console.log("This runs every 2 seconds.");
   }, 2000);
   ```
@@ -974,7 +974,7 @@ Both `setTimeout` and `setInterval` are used to schedule asynchronous functions 
 Example of clearing a timer:
 
 ```javascript
-javascriptCopy codelet timerId = setInterval(() => {
+ codelet timerId = setInterval(() => {
   console.log("This will repeat every second.");
 }, 1000);
 
@@ -1054,7 +1054,7 @@ This is particularly useful for functions with high computational cost and overl
 Here's a simple example of memoization for the Fibonacci sequence calculation:
 
 ```javascript
-javascriptCopy codefunction memoize(fn) {
+ codefunction memoize(fn) {
   const cache = {};
   return function(...args) {
     const key = JSON.stringify(args); // Create a unique key for each set of arguments
@@ -1099,7 +1099,7 @@ Memory leaks occur when objects are no longer in use but are still being referen
 
 * Always remove event listeners when they're no longer needed. For example:
   ```javascript
-  javascriptCopy codeconst button = document.querySelector('button');
+   codeconst button = document.querySelector('button');
   function handleClick() { console.log('clicked'); }
   button.addEventListener('click', handleClick);
 
@@ -1111,7 +1111,7 @@ Memory leaks occur when objects are no longer in use but are still being referen
 
 * When using `setTimeout` or `setInterval`, make sure to clear them when they are no longer needed.
   ```javascript
-  javascriptCopy codeconst intervalId = setInterval(() => { console.log('Running'); }, 1000);
+   codeconst intervalId = setInterval(() => { console.log('Running'); }, 1000);
 
   // Clear when done
   clearInterval(intervalId);
@@ -1140,7 +1140,7 @@ Throttling ensures that a function is called at most once in a specified interva
 * **Use case**: If you have a scroll event handler that updates the UI on every scroll, throttling can make sure the handler runs only once every 100ms, for example.
 
 ```javascript
-javascriptCopy code// Throttling example
+ code// Throttling example
 function throttle(fn, wait) {
   let lastTime = 0;
   return function(...args) {
@@ -1164,7 +1164,7 @@ Debouncing ensures that a function is called only after a certain delay, and the
 * **Use case**: In a search box, you only want to make a search request after the user has stopped typing for a certain duration.
 
 ```javascript
-javascriptCopy code// Debouncing example
+ code// Debouncing example
 function debounce(fn, delay) {
   let timeoutId;
   return function(...args) {
@@ -1210,7 +1210,7 @@ Template literals are a feature in JavaScript that allows you to work with strin
 **Example:**
 
 ```javascript
-javascriptCopy codelet name = "Alice";
+ codelet name = "Alice";
 let age = 30;
 let greeting = `Hello, my name is ${name} and I am ${age} years old.`;
 console.log(greeting); 
@@ -1220,7 +1220,7 @@ console.log(greeting);
 You can also create multi-line strings without needing escape characters:
 
 ```javascript
-javascriptCopy codelet message = `This is a string
+ codelet message = `This is a string
 that spans multiple lines.`;
 console.log(message);
 ```
@@ -1238,7 +1238,7 @@ You can destructure an object to extract values based on the property names.
 **Example:**
 
 ```javascript
-javascriptCopy codeconst person = { name: "Alice", age: 30, city: "New York" };
+ codeconst person = { name: "Alice", age: 30, city: "New York" };
 
 // Destructuring
 const { name, age, city } = person;
@@ -1250,7 +1250,7 @@ console.log(city); // New York
 You can also rename variables during destructuring:
 
 ```javascript
-javascriptCopy codeconst person = { name: "Alice", age: 30 };
+ codeconst person = { name: "Alice", age: 30 };
 const { name: fullName, age: yearsOld } = person;
 console.log(fullName); // Alice
 console.log(yearsOld); // 30
@@ -1263,7 +1263,7 @@ You can destructure arrays to extract values based on position.
 **Example:**
 
 ```javascript
-javascriptCopy codeconst colors = ["red", "green", "blue"];
+ codeconst colors = ["red", "green", "blue"];
 
 // Destructuring
 const [first, second, third] = colors;
@@ -1275,7 +1275,7 @@ console.log(third);  // blue
 You can also skip elements:
 
 ```javascript
-javascriptCopy codeconst colors = ["red", "green", "blue"];
+ codeconst colors = ["red", "green", "blue"];
 const [, , third] = colors;
 console.log(third); // blue
 ```
@@ -1289,7 +1289,7 @@ In JavaScript, default parameters allow you to specify default values for functi
 **Example:**
 
 ```javascript
-javascriptCopy codefunction greet(name = "Guest") {
+ codefunction greet(name = "Guest") {
   console.log(`Hello, ${name}!`);
 }
 
@@ -1300,7 +1300,7 @@ greet("Alice");  // Output: Hello, Alice!
 You can also use expressions as default values:
 
 ```javascript
-javascriptCopy codefunction calculatePrice(price, tax = price * 0.1) {
+ codefunction calculatePrice(price, tax = price * 0.1) {
   return price + tax;
 }
 
@@ -1321,7 +1321,7 @@ The spread operator allows you to expand elements from an array or object into i
 **Example with Arrays:**
 
 ```javascript
-javascriptCopy codeconst arr = [1, 2, 3];
+ codeconst arr = [1, 2, 3];
 const newArr = [...arr, 4, 5];
 console.log(newArr); // [1, 2, 3, 4, 5]
 ```
@@ -1329,7 +1329,7 @@ console.log(newArr); // [1, 2, 3, 4, 5]
 **Example with Objects:**
 
 ```javascript
-javascriptCopy codeconst person = { name: "Alice", age: 30 };
+ codeconst person = { name: "Alice", age: 30 };
 const personCopy = { ...person, city: "New York" };
 console.log(personCopy); // { name: "Alice", age: 30, city: "New York" }
 ```
@@ -1341,7 +1341,7 @@ The rest operator collects multiple elements and stores them in an array. It is 
 **Example with Functions:**
 
 ```javascript
-javascriptCopy codefunction sum(...numbers) {
+ codefunction sum(...numbers) {
   return numbers.reduce((total, num) => total + num, 0);
 }
 console.log(sum(1, 2, 3)); // 6
@@ -1351,7 +1351,7 @@ console.log(sum(5, 10, 15, 20)); // 50
 **Example with Destructuring:**
 
 ```javascript
-javascriptCopy codeconst arr = [1, 2, 3, 4, 5];
+ codeconst arr = [1, 2, 3, 4, 5];
 const [first, second, ...rest] = arr;
 console.log(first);  // 1
 console.log(second); // 2
@@ -1367,7 +1367,7 @@ Arrow functions are a shorthand syntax for writing functions in JavaScript. They
 **Example:**
 
 ```javascript
-javascriptCopy codeconst add = (a, b) => a + b;
+ codeconst add = (a, b) => a + b;
 console.log(add(2, 3)); // 5
 ```
 
@@ -1379,7 +1379,7 @@ console.log(add(2, 3)); // 5
 **Example:**
 
 ```javascript
-javascriptCopy code// Arrow function does not have its own `this`
+ code// Arrow function does not have its own `this`
 const person = {
   name: "Alice",
   greet: () => {
@@ -1409,7 +1409,7 @@ A **Promise** is an object representing the eventual completion or failure of an
 **Example of a Promise:**
 
 ```javascript
-javascriptCopy codeconst myPromise = new Promise((resolve, reject) => {
+ codeconst myPromise = new Promise((resolve, reject) => {
   let success = true;
   if (success) {
     resolve("Operation was successful!");
@@ -1430,7 +1430,7 @@ myPromise
 **Example:**
 
 ```javascript
-javascriptCopy codeasync function fetchData() {
+ codeasync function fetchData() {
   try {
     let response = await fetch("https://api.example.com/data");
     let data = await response.json();
@@ -1452,7 +1452,7 @@ fetchData();
 **Example with Callback:**
 
 ```javascript
-javascriptCopy codefunction fetchData(callback) {
+ codefunction fetchData(callback) {
   setTimeout(() => {
     callback(null, "Data fetched");
   }, 1000);
@@ -1470,7 +1470,7 @@ fetchData((error, result) => {
 **Example with Promise:**
 
 ```javascript
-javascriptCopy codefunction fetchData() {
+ codefunction fetchData() {
   return new Promise(resolve => {
     setTimeout(() => resolve("Data fetched"), 1000);
   });
@@ -1500,7 +1500,7 @@ Sure! Here are detailed answers to your JavaScript questions:
   **Example**:
 
   ```javascript
-  javascriptCopy codeconsole.log("Start");
+   codeconsole.log("Start");
   console.log("Middle");
   console.log("End");
   ```
@@ -1521,7 +1521,7 @@ Sure! Here are detailed answers to your JavaScript questions:
   **Example (using `setTimeout`)**:
 
   ```javascript
-  javascriptCopy codeconsole.log("Start");
+   codeconsole.log("Start");
   setTimeout(() => {
     console.log("Middle");
   }, 1000); // Delayed by 1 second
@@ -1543,7 +1543,7 @@ The **prototype chain** is a mechanism by which objects in JavaScript inherit pr
 Example:
 
 ```javascript
-javascriptCopy codefunction Animal(name) {
+ codefunction Animal(name) {
   this.name = name;
 }
 
@@ -1568,7 +1568,7 @@ There are two main approaches to inheritance in JavaScript: **Classical Inherita
   Example:
 
   ```javascript
-  javascriptCopy codefunction Animal(name) {
+   codefunction Animal(name) {
     this.name = name;
   }
 
@@ -1592,7 +1592,7 @@ There are two main approaches to inheritance in JavaScript: **Classical Inherita
   Example:
 
   ```javascript
-  javascriptCopy codeclass Animal {
+   codeclass Animal {
     constructor(name) {
       this.name = name;
     }
@@ -1621,7 +1621,7 @@ A **JavaScript module** is a piece of code that is self-contained and can be imp
   **Exporting**:
 
   ```javascript
-  javascriptCopy code// math.js
+   code// math.js
   export function add(a, b) {
     return a + b;
   }
@@ -1632,7 +1632,7 @@ A **JavaScript module** is a piece of code that is self-contained and can be imp
   **Importing**:
 
   ```javascript
-  javascriptCopy code// app.js
+   code// app.js
   import { add, pi } from './math.js';
 
   console.log(add(2, 3));  // 5
@@ -1642,7 +1642,7 @@ A **JavaScript module** is a piece of code that is self-contained and can be imp
   **Default Export**: You can also have a default export for a single value or function in a module.
 
   ```javascript
-  javascriptCopy code// myModule.js
+   code// myModule.js
   export default function() {
     console.log("This is a default export");
   }
@@ -1651,7 +1651,7 @@ A **JavaScript module** is a piece of code that is self-contained and can be imp
   **Importing Default Export**:
 
   ```javascript
-  javascriptCopy code// app.js
+   code// app.js
   import myFunction from './myModule.js';
   myFunction();  // This is a default export
   ```
@@ -1670,7 +1670,7 @@ Key differences in strict mode:
 Example:
 
 ```javascript
-javascriptCopy code"use strict";
+ code"use strict";
 x = 10; // Throws an error because x is not declared
 ```
 
@@ -1685,7 +1685,7 @@ x = 10; // Throws an error because x is not declared
   Example:
 
   ```javascript
-  javascriptCopy codeconst arr = [1, 2, 3];
+   codeconst arr = [1, 2, 3];
   arr.forEach(item => console.log(item));
   ```
 
@@ -1697,7 +1697,7 @@ x = 10; // Throws an error because x is not declared
   Example:
 
   ```javascript
-  javascriptCopy codeconst arr = [1, 2, 3];
+   codeconst arr = [1, 2, 3];
   for (let i = 0; i < arr.length; i++) {
     console.log(arr[i]);
   }
@@ -1710,7 +1710,7 @@ A **generator** is a special type of function that can be paused and resumed. It
 * **Generator Syntax**:
 
   ```javascript
-  javascriptCopy codefunction* myGenerator() {
+   codefunction* myGenerator() {
     yield 1;
     yield 2;
     yield 3;
@@ -1731,7 +1731,7 @@ A **generator** is a special type of function that can be paused and resumed. It
   Example of generator-based asynchronous flow:
 
   ```javascript
-  javascriptCopy codefunction* fetchData() {
+   codefunction* fetchData() {
     const response1 = yield fetch('url1');
     const response2 = yield fetch('url2');
     return [response1, response2];
@@ -1751,31 +1751,31 @@ In JavaScript, you can select an element in the DOM using several methods:
 * **`getElementById()`**: Selects an element by its `id` attribute.
 
   ```javascript
-  javascriptCopy codeconst element = document.getElementById('myElement');
+   codeconst element = document.getElementById('myElement');
   ```
 
 * **`getElementsByClassName()`**: Selects all elements with a specific class.
 
   ```javascript
-  javascriptCopy codeconst elements = document.getElementsByClassName('myClass');
+   codeconst elements = document.getElementsByClassName('myClass');
   ```
 
 * **`getElementsByTagName()`**: Selects all elements with a specific tag name.
 
   ```javascript
-  javascriptCopy codeconst elements = document.getElementsByTagName('div');
+   codeconst elements = document.getElementsByTagName('div');
   ```
 
 * **`querySelector()`**: Selects the first matching element that matches a CSS selector.
 
   ```javascript
-  javascriptCopy codeconst element = document.querySelector('.myClass');
+   codeconst element = document.querySelector('.myClass');
   ```
 
 * **`querySelectorAll()`**: Selects all matching elements (returns a NodeList).
 
   ```javascript
-  javascriptCopy codeconst elements = document.querySelectorAll('div.myClass');
+   codeconst elements = document.querySelectorAll('div.myClass');
   ```
 
 ### 2\. **Write a function that updates the text content of an HTML element.**
@@ -1783,7 +1783,7 @@ In JavaScript, you can select an element in the DOM using several methods:
 Here's an example of a function that updates the text content of an element by its `id`:
 
 ```javascript
-javascriptCopy codefunction updateTextContent(elementId, newText) {
+ codefunction updateTextContent(elementId, newText) {
   const element = document.getElementById(elementId);
   if (element) {
     element.textContent = newText;
@@ -1794,7 +1794,7 @@ javascriptCopy codefunction updateTextContent(elementId, newText) {
 Usage:
 
 ```javascript
-javascriptCopy codeupdateTextContent('myElement', 'New text content!');
+ codeupdateTextContent('myElement', 'New text content!');
 ```
 
 ### 3\. **Explain the difference between `addEventListener()` and `onclick`.**
@@ -1808,7 +1808,7 @@ javascriptCopy codeupdateTextContent('myElement', 'New text content!');
   Example:
 
   ```javascript
-  javascriptCopy codeelement.addEventListener('click', function() {
+   codeelement.addEventListener('click', function() {
     console.log('Element clicked');
   });
   ```
@@ -1821,7 +1821,7 @@ javascriptCopy codeupdateTextContent('myElement', 'New text content!');
   Example:
 
   ```javascript
-  javascriptCopy codeelement.onclick = function() {
+   codeelement.onclick = function() {
     console.log('Element clicked');
   };
   ```
@@ -1838,7 +1838,7 @@ Event bubbling and capturing are two phases of event propagation in the DOM:
   Example:
 
   ```javascript
-  javascriptCopy codedocument.getElementById('parent').addEventListener('click', function() {
+   codedocument.getElementById('parent').addEventListener('click', function() {
     console.log('Parent clicked');
   });
 
@@ -1857,7 +1857,7 @@ Event bubbling and capturing are two phases of event propagation in the DOM:
   Example:
 
   ```javascript
-  javascriptCopy codedocument.getElementById('parent').addEventListener('click', function() {
+   codedocument.getElementById('parent').addEventListener('click', function() {
     console.log('Parent clicked');
   }, true);  // This enables capturing
   ```
@@ -1875,7 +1875,7 @@ You can dynamically create and add an element to the DOM using the following ste
 Example:
 
 ```javascript
-javascriptCopy codefunction addNewElement() {
+ codefunction addNewElement() {
   // Step 1: Create a new <div> element
   const newDiv = document.createElement('div');
   
@@ -1890,7 +1890,7 @@ javascriptCopy codefunction addNewElement() {
 Usage:
 
 ```javascript
-javascriptCopy codeaddNewElement();
+ codeaddNewElement();
 ```
 
 This will create a new `<div>` element with the specified text and append it to the `body` of the document.

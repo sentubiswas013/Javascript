@@ -31,7 +31,7 @@ Here are detailed answers to your JavaScript-related questions:
   * **For variables**: With `var`, only the declaration (not the initialization) is hoisted, so the variable is initialized as `undefined`. With `let` and `const`, only the declaration is hoisted, but not the initialization, leading to a "temporal dead zone" if you try to access them before the declaration.
 
 ```javascript
-javascriptCopy codeconsole.log(x); // undefined
+ codeconsole.log(x); // undefined
 var x = 5; 
 
 console.log(y); // ReferenceError: Cannot access 'y' before initialization
@@ -52,7 +52,7 @@ A **closure** is a function that "remembers" the scope in which it was created, 
 Example:
 
 ```javascript
-javascriptCopy codefunction outer() {
+ codefunction outer() {
   let counter = 0;
   
   return function inner() {
@@ -73,7 +73,7 @@ increment(); // 2
 * **Promises** represent the eventual result of an asynchronous operation. They can be in one of three states: pending, resolved (fulfilled), or rejected. Promises allow chaining `.then()` for success and `.catch()` for error handling.
 
 ```javascript
-javascriptCopy codelet promise = new Promise((resolve, reject) => {
+ codelet promise = new Promise((resolve, reject) => {
   let success = true;
   if (success) resolve("Success!");
   else reject("Error!");
@@ -89,7 +89,7 @@ This makes asynchronous code easier to read and write, resembling synchronous co
 Example:
 
 ```javascript
-javascriptCopy codeasync function fetchData() {
+ codeasync function fetchData() {
   let response = await fetch('https://api.example.com');
   let data = await response.json();
   return data;
@@ -111,7 +111,7 @@ javascriptCopy codeasync function fetchData() {
 Example:
 
 ```javascript
-javascriptCopy codefunction regularFunc() {
+ codefunction regularFunc() {
   console.log(this); // Global object (window in browsers)
 }
 
@@ -140,7 +140,7 @@ const arrowFunc = () => {
 Example:
 
 ```javascript
-javascriptCopy codedocument.querySelector('#parent').addEventListener('click', (event) => {
+ codedocument.querySelector('#parent').addEventListener('click', (event) => {
   if (event.target && event.target.matches('button.className')) {
     console.log('Button clicked!');
   }
@@ -157,7 +157,7 @@ javascriptCopy codedocument.querySelector('#parent').addEventListener('click', (
 Example:
 
 ```javascript
-javascriptCopy codelet a; // undefined because it’s declared but not assigned a value
+ codelet a; // undefined because it’s declared but not assigned a value
 let b = null; // explicitly assigned to null
 ```
 
@@ -173,7 +173,7 @@ let b = null; // explicitly assigned to null
 Example:
 
 ```javascript
-javascriptCopy codeconst person = { name: "Alice" };
+ codeconst person = { name: "Alice" };
 const employee = Object.create(person);
 employee.job = "Engineer";
 
@@ -192,7 +192,7 @@ console.log(employee.job); // Engineer (own property)
 Example:
 
 ```javascript
-javascriptCopy codeconsole.log(5 == '5');  // true (type coercion)
+ codeconsole.log(5 == '5');  // true (type coercion)
 console.log(5 === '5'); // false (different types)
 ```
 
@@ -219,14 +219,14 @@ The event loop processes the **call stack** first, then the **microtask queue**,
 Example of synchronous:
 
 ```javascript
-javascriptCopy codeconsole.log("First");
+ codeconsole.log("First");
 console.log("Second");
 ```
 
 Example of asynchronous:
 
 ```javascript
-javascriptCopy codesetTimeout(() => console.log("Asynchronous"), 0);
+ codesetTimeout(() => console.log("Asynchronous"), 0);
 console.log("Synchronous");
 ```
 
@@ -323,7 +323,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   * **Usage**: Immediately invokes the function with a specified `this` value and arguments provided individually.
   * **Example**:
     ```javascript
-    javascriptCopy codefunction greet(name) {
+     codefunction greet(name) {
       console.log(`Hello, ${name}`);
     }
     greet.call(null, 'Alice'); // "Hello, Alice"
@@ -334,7 +334,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   * **Usage**: Similar to `call()`, but arguments are passed as an array (or an array-like object).
   * **Example**:
     ```javascript
-    javascriptCopy codefunction greet(name, age) {
+     codefunction greet(name, age) {
       console.log(`Hello, ${name}. You are ${age} years old.`);
     }
     greet.apply(null, ['Bob', 30]); // "Hello, Bob. You are 30 years old."
@@ -345,7 +345,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   * **Usage**: Returns a new function with a bound `this` value and optional arguments. Unlike `call()` and `apply()`, `bind()` does not invoke the function immediately but creates a new function that can be called later.
   * **Example**:
     ```javascript
-    javascriptCopy codefunction greet(name) {
+     codefunction greet(name) {
       console.log(`Hello, ${name}`);
     }
     const greetAlice = greet.bind(null, 'Alice');
@@ -394,7 +394,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   * **Images**: Load images only when they come into the viewport (using the `IntersectionObserver` API).
 
     ```javascript
-    javascriptCopy codeconst images = document.querySelectorAll('img[data-src]');
+     codeconst images = document.querySelectorAll('img[data-src]');
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -409,7 +409,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   * **JavaScript**: Use dynamic `import()` to load JavaScript modules on demand.
 
     ```javascript
-    javascriptCopy codebutton.addEventListener('click', () => {
+     codebutton.addEventListener('click', () => {
       import('./module.js').then(module => {
         // Use the module
       });
@@ -430,7 +430,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
 * **Example**:
 
   ```javascript
-  javascriptCopy codeconst worker = new Worker('worker.js');
+   codeconst worker = new Worker('worker.js');
   worker.postMessage('Hello, worker!');
 
   worker.onmessage = function(e) {
@@ -441,7 +441,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   **worker.js**:
 
   ```javascript
-  javascriptCopy codeonmessage = function(e) {
+   codeonmessage = function(e) {
     postMessage('Received message: ' + e.data);
   };
   ```
@@ -1212,7 +1212,7 @@ Sure, here are the answers to the questions:
 
 1. **Minification**: Use the `TerserWebpackPlugin` to minify the JavaScript code for smaller file sizes.
    ```javascript
-   javascriptCopy codeconst TerserPlugin = require('terser-webpack-plugin');
+    codeconst TerserPlugin = require('terser-webpack-plugin');
    module.exports = {
      optimization: {
        minimize: true,
@@ -1223,7 +1223,7 @@ Sure, here are the answers to the questions:
 2. **Tree Shaking**: Ensure that your code is written in a modular way and use ES6 module syntax (`import`/`export`). Webpack can eliminate unused code through tree shaking.
 3. **Code Splitting**: Divide large bundles into smaller chunks, which can be loaded on demand. Use `optimization.splitChunks` to achieve this.
    ```javascript
-   javascriptCopy codemodule.exports = {
+    codemodule.exports = {
      optimization: {
        splitChunks: {
          chunks: 'all',
@@ -1233,7 +1233,7 @@ Sure, here are the answers to the questions:
    ```
 4. **Caching**: Use `ContentHash` in filenames to enable better long-term caching.
    ```javascript
-   javascriptCopy codeoutput: {
+    codeoutput: {
      filename: '[name].[contenthash].js',
    },
    ```
@@ -1366,7 +1366,7 @@ A **Progressive Web App (PWA)** is a web application that uses modern web capabi
    ```
 2. **Implement Service Worker**: Register a service worker to handle caching and offline functionality.
    ```javascript
-   javascriptCopy codeif ('serviceWorker' in navigator) {
+    codeif ('serviceWorker' in navigator) {
      window.addEventListener('load', () => {
        navigator.serviceWorker.register('/service-worker.js')
          .then((registration) => {
@@ -1380,7 +1380,7 @@ A **Progressive Web App (PWA)** is a web application that uses modern web capabi
    ```
 3. **Caching Resources** in Service Worker (`service-worker.js`):
    ```javascript
-   javascriptCopy codeself.addEventListener('install', (event) => {
+    codeself.addEventListener('install', (event) => {
      event.waitUntil(
        caches.open('my-cache').then((cache) => {
          return cache.addAll(['/index.html', '/styles.css', '/script.js']);
@@ -1400,7 +1400,7 @@ A **Progressive Web App (PWA)** is a web application that uses modern web capabi
 **Example**:
 
 ```javascript
-javascriptCopy codelocalStorage.setItem('theme', 'dark');
+ codelocalStorage.setItem('theme', 'dark');
 let theme = localStorage.getItem('theme');
 ```
 
@@ -1412,7 +1412,7 @@ let theme = localStorage.getItem('theme');
 **Example**:
 
 ```javascript
-javascriptCopy codesessionStorage.setItem('sessionID', 'abc123');
+ codesessionStorage.setItem('sessionID', 'abc123');
 let sessionID = sessionStorage.getItem('sessionID');
 ```
 
@@ -1442,7 +1442,7 @@ The **Shadow DOM** is a web standard that allows developers to encapsulate a pie
   Example:
 
   ```javascript
-  javascriptCopy codeclass MyComponent extends HTMLElement {
+   codeclass MyComponent extends HTMLElement {
     constructor() {
       super();
       const shadow = this.attachShadow({mode: 'open'}); // Create a shadow root
@@ -1477,7 +1477,7 @@ The Shadow DOM helps create self-contained components with their own styles, scr
 Here’s a simple example of how the render props pattern works:
 
 ```javascript
-javascriptCopy codeclass MouseTracker extends React.Component {
+ codeclass MouseTracker extends React.Component {
   state = { x: 0, y: 0 };
 
   handleMouseMove = (event) => {
@@ -1529,7 +1529,7 @@ In this example:
 #### Example using `styled-components`:
 
 ```javascript
-javascriptCopy codeimport styled from 'styled-components';
+ codeimport styled from 'styled-components';
 
 const Button = styled.button`
   background-color: ${props => props.primary ? 'blue' : 'gray'};

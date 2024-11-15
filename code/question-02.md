@@ -16,7 +16,7 @@ JavaScript is a dynamic, interpreted programming language primarily used for cre
 * `var`: Declares a function-scoped variable, which can be re-declared and reassigned (not recommended due to its behavior with hoisting).
 
 ```javascript
-javascriptCopy codelet x = 5; // Can be reassigned
+ codelet x = 5; // Can be reassigned
 const y = 10; // Cannot be reassigned
 var z = 15; // Function-scoped
 ```
@@ -40,7 +40,7 @@ JavaScript has seven basic data types:
 * `===`: Compares values for equality without type coercion (strict equality).
 
 ```javascript
-javascriptCopy code5 == '5'  // true because type coercion occurs
+ code5 == '5'  // true because type coercion occurs
 5 === '5' // false because types are different (number vs. string)
 ```
 
@@ -51,7 +51,7 @@ There are multiple ways to define functions in JavaScript:
 1. **Function Declaration**:
 
    ```javascript
-   javascriptCopy codefunction greet() {
+    codefunction greet() {
      console.log('Hello!');
    }
    ```
@@ -59,7 +59,7 @@ There are multiple ways to define functions in JavaScript:
 2. **Function Expression**:
 
    ```javascript
-   javascriptCopy codeconst greet = function() {
+    codeconst greet = function() {
      console.log('Hello!');
    };
    ```
@@ -67,7 +67,7 @@ There are multiple ways to define functions in JavaScript:
 3. **Arrow Function**:
 
    ```javascript
-   javascriptCopy codeconst greet = () => console.log('Hello!');
+    codeconst greet = () => console.log('Hello!');
    ```
 
 ### 6\. **What are the different ways to declare variables in JavaScript?**
@@ -77,7 +77,7 @@ There are multiple ways to define functions in JavaScript:
 * **`const`**: Block-scoped, cannot be reassigned or redeclared.
 
 ```javascript
-javascriptCopy codevar a = 1;   // function-scoped
+ codevar a = 1;   // function-scoped
 let b = 2;   // block-scoped
 const c = 3; // block-scoped, cannot be reassigned
 ```
@@ -87,7 +87,7 @@ const c = 3; // block-scoped, cannot be reassigned
 The `typeof` operator returns a string indicating the type of a variable or expression.
 
 ```javascript
-javascriptCopy codetypeof 'hello';   // 'string'
+ codetypeof 'hello';   // 'string'
 typeof 42;        // 'number'
 typeof true;      // 'boolean'
 typeof undefined; // 'undefined'
@@ -99,7 +99,7 @@ typeof null;      // 'object' (a known JavaScript quirk)
 Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope (function or global). Only the declarations are hoisted, not the initializations.
 
 ```javascript
-javascriptCopy codeconsole.log(x);  // undefined
+ codeconsole.log(x);  // undefined
 var x = 5;
 
 console.log(y);  // ReferenceError: Cannot access 'y' before initialization
@@ -111,7 +111,7 @@ let y = 10;
 Arrays in JavaScript are ordered collections of items. You can create an array using square brackets `[]`.
 
 ```javascript
-javascriptCopy codeconst fruits = ['apple', 'banana', 'cherry'];
+ codeconst fruits = ['apple', 'banana', 'cherry'];
 ```
 
 ### 10\. **How do you add, remove, or access elements in an array?**
@@ -121,7 +121,7 @@ javascriptCopy codeconst fruits = ['apple', 'banana', 'cherry'];
 * **Access**: Use the index (starting from 0).
 
 ```javascript
-javascriptCopy codefruits.push('orange');      // Adds 'orange' to the end
+ codefruits.push('orange');      // Adds 'orange' to the end
 fruits.unshift('grape');    // Adds 'grape' to the beginning
 fruits.pop();               // Removes 'orange'
 fruits.shift();             // Removes 'grape'
@@ -141,7 +141,7 @@ Types of loops:
 * **`for...in` loop**: Iterates over object properties.
 
 ```javascript
-javascriptCopy codefor (let i = 0; i < 5; i++) {
+ codefor (let i = 0; i < 5; i++) {
   console.log(i); // 0, 1, 2, 3, 4
 }
 
@@ -162,7 +162,7 @@ for (const fruit of fruits) {
 Objects in JavaScript are collections of key-value pairs. You create an object using curly braces `{}`.
 
 ```javascript
-javascriptCopy codeconst person = {
+ codeconst person = {
   name: 'John',
   age: 30,
   greet() {
@@ -177,7 +177,7 @@ javascriptCopy codeconst person = {
 * `null` is an intentional absence of any value (i.e., "empty").
 
 ```javascript
-javascriptCopy codelet x;
+ codelet x;
 console.log(x);  // undefined
 
 let y = null;
@@ -189,7 +189,7 @@ console.log(y);  // null
 You can handle events by attaching event listeners to DOM elements using methods like `addEventListener`.
 
 ```javascript
-javascriptCopy codeconst button = document.querySelector('button');
+ codeconst button = document.querySelector('button');
 button.addEventListener('click', function() {
   alert('Button clicked!');
 });
@@ -200,7 +200,7 @@ button.addEventListener('click', function() {
 The `this` keyword refers to the context in which a function is called. Its value is determined by how the function is invoked.
 
 ```javascript
-javascriptCopy codeconst person = {
+ codeconst person = {
   name: 'Alice',
   greet: function() {
     console.log(`Hello, ${this.name}`);
@@ -216,7 +216,7 @@ In global scope, `this` refers to the global object (`window` in browsers).
 `forEach()` is an array method that executes a provided function once for each array element.
 
 ```javascript
-javascriptCopy codeconst numbers = [1, 2, 3];
+ codeconst numbers = [1, 2, 3];
 numbers.forEach((num) => {
   console.log(num);
 });
@@ -229,7 +229,7 @@ numbers.forEach((num) => {
 * `continue`: Skips the current iteration of a loop and continues with the next iteration.
 
 ```javascript
-javascriptCopy codefor (let i = 0; i < 5; i++) {
+ codefor (let i = 0; i < 5; i++) {
   if (i === 2) {
     continue;  // Skips the iteration where i === 2
   }
@@ -245,7 +245,7 @@ javascriptCopy codefor (let i = 0; i < 5; i++) {
 A callback function is a function passed as an argument to another function, and it is executed after the completion of the main function.
 
 ```javascript
-javascriptCopy codefunction greet(name, callback) {
+ codefunction greet(name, callback) {
   console.log(`Hello, ${name}`);
   callback();
 }
@@ -271,7 +271,7 @@ A **closure** is a function that "remembers" its lexical scope even when the fun
 Example:
 
 ```javascript
-javascriptCopy codefunction outer() {
+ codefunction outer() {
   let counter = 0;
   return function inner() {
     counter++;
@@ -289,7 +289,7 @@ increment(); // 2
 * **Function Declaration**: A named function defined with the `function` keyword.
 
   ```javascript
-  javascriptCopy codefunction greet() {
+   codefunction greet() {
     console.log("Hello");
   }
   ```
@@ -299,7 +299,7 @@ increment(); // 2
 * **Function Expression**: A function assigned to a variable, which may or may not be named.
 
   ```javascript
-  javascriptCopy codeconst greet = function() {
+   codeconst greet = function() {
     console.log("Hello");
   };
   ```
@@ -311,7 +311,7 @@ increment(); // 2
 * **`setTimeout()`**: Executes a function once after a specified delay.
 
   ```javascript
-  javascriptCopy codesetTimeout(() => {
+   codesetTimeout(() => {
     console.log("Executed after 2 seconds");
   }, 2000);
   ```
@@ -319,7 +319,7 @@ increment(); // 2
 * **`setInterval()`**: Repeatedly executes a function at specified intervals (in milliseconds).
 
   ```javascript
-  javascriptCopy codesetInterval(() => {
+   codesetInterval(() => {
     console.log("Executed every 2 seconds");
   }, 2000);
   ```
@@ -334,7 +334,7 @@ A **promise** represents the eventual completion (or failure) of an asynchronous
 Example:
 
 ```javascript
-javascriptCopy codeconst promise = new Promise((resolve, reject) => {
+ codeconst promise = new Promise((resolve, reject) => {
   let success = true;
   if (success) {
     resolve("Operation successful");
@@ -360,7 +360,7 @@ promise.then(result => {
 Example:
 
 ```javascript
-javascriptCopy codeasync function fetchData() {
+ codeasync function fetchData() {
   let result = await fetch('https://api.example.com/data');
   let data = await result.json();
   console.log(data);
@@ -376,7 +376,7 @@ Arrow functions are a shorthand syntax for writing functions. They are more conc
 Example:
 
 ```javascript
-javascriptCopy code// Regular function
+ code// Regular function
 function sum(a, b) {
   return a + b;
 }
@@ -394,7 +394,7 @@ const sum = (a, b) => a + b;
 Example:
 
 ```javascript
-javascriptCopy codedocument.querySelector('#parent').addEventListener('click', function(event) {
+ codedocument.querySelector('#parent').addEventListener('click', function(event) {
   if (event.target && event.target.matches('button')) {
     console.log('Button clicked!');
   }
@@ -417,14 +417,14 @@ Example:
 * Synchronous:
 
   ```javascript
-  javascriptCopy codeconsole.log("First");
+   codeconsole.log("First");
   console.log("Second");
   ```
 
 * Asynchronous (with `setTimeout`):
 
   ```javascript
-  javascriptCopy codeconsole.log("First");
+   codeconsole.log("First");
   setTimeout(() => console.log("Second"), 1000);
   console.log("Third");
   ```
@@ -442,7 +442,7 @@ These methods are used to change the context (`this`) of a function.
 * **`call()`**: Invokes the function immediately with a specified `this` value and arguments.
 
   ```javascript
-  javascriptCopy codefunction greet(name) {
+   codefunction greet(name) {
     console.log(`Hello, ${name}`);
   }
   greet.call(this, 'Alice');
@@ -451,13 +451,13 @@ These methods are used to change the context (`this`) of a function.
 * **`apply()`**: Similar to `call()`, but arguments are passed as an array.
 
   ```javascript
-  javascriptCopy codegreet.apply(this, ['Alice']);
+   codegreet.apply(this, ['Alice']);
   ```
 
 * **`bind()`**: Returns a new function with a specified `this` value, but it does not invoke the function immediately.
 
   ```javascript
-  javascriptCopy codeconst greetAlice = greet.bind(this, 'Alice');
+   codeconst greetAlice = greet.bind(this, 'Alice');
   greetAlice();
   ```
 
@@ -466,21 +466,21 @@ These methods are used to change the context (`this`) of a function.
 * **`map()`**: Creates a new array by applying a function to each element in an existing array.
 
   ```javascript
-  javascriptCopy codeconst numbers = [1, 2, 3];
+   codeconst numbers = [1, 2, 3];
   const squares = numbers.map(x => x * x);  // [1, 4, 9]
   ```
 
 * **`filter()`**: Creates a new array with elements that pass a given condition.
 
   ```javascript
-  javascriptCopy codeconst numbers = [1, 2, 3, 4];
+   codeconst numbers = [1, 2, 3, 4];
   const evenNumbers = numbers.filter(x => x % 2 === 0);  // [2, 4]
   ```
 
 * **`reduce()`**: Reduces the array to a single value based on a function.
 
   ```javascript
-  javascriptCopy codeconst numbers = [1, 2, 3];
+   codeconst numbers = [1, 2, 3];
   const sum = numbers.reduce((acc, curr) => acc + curr, 0);  // 6
   ```
 
@@ -493,14 +493,14 @@ Example:
 * **Arrays**:
 
   ```javascript
-  javascriptCopy codeconst arr1 = [1, 2];
+   codeconst arr1 = [1, 2];
   const arr2 = [...arr1, 3, 4];  // [1, 2, 3, 4]
   ```
 
 * **Objects**:
 
   ```javascript
-  javascriptCopy codeconst obj1 = { name: "Alice" };
+   codeconst obj1 = { name: "Alice" };
   const obj2 = { ...obj1, age: 25 };  // { name: "Alice", age: 25 }
   ```
 
@@ -511,14 +511,14 @@ Example:
 * **Array Destructuring**:
 
   ```javascript
-  javascriptCopy codeconst arr = [1, 2, 3];
+   codeconst arr = [1, 2, 3];
   const [a, b] = arr;  // a = 1, b = 2
   ```
 
 * **Object Destructuring**:
 
   ```javascript
-  javascriptCopy codeconst person = { name: "Alice", age: 25 };
+   codeconst person = { name: "Alice", age: 25 };
   const { name, age } = person;  // name = "Alice", age = 25
   ```
 
@@ -531,7 +531,7 @@ Example:
 Example:
 
 ```javascript
-javascriptCopy codetry {
+ codetry {
   let result = riskyOperation();
 } catch (error) {
   console.error("An error occurred", error);
@@ -547,7 +547,7 @@ javascriptCopy codetry {
 * **Exporting**:
 
   ```javascript
-  javascriptCopy code// export.js
+   code// export.js
   export const greeting = "Hello";
   export function sayHello() {
     console.log("Hello");
@@ -557,7 +557,7 @@ javascriptCopy codetry {
 * **Importing**:
 
   ```javascript
-  javascriptCopy code// import.js
+   code// import.js
   import { greeting, sayHello } from './export.js';
   console.log(greeting);  // "Hello"
   sayHello();             // "Hello"
@@ -580,7 +580,7 @@ The `bind()` method in JavaScript is used to create a **new function** that, whe
 Example:
 
 ```javascript
-javascriptCopy codeconst obj = { value: 42 };
+ codeconst obj = { value: 42 };
 const getValue = function() {
   return this.value;
 };
@@ -597,7 +597,7 @@ console.log(boundGetValue());  // 42
 Example:
 
 ```javascript
-javascriptCopy codelet shallowCopy = [...originalArray]; // shallow copy
+ codelet shallowCopy = [...originalArray]; // shallow copy
 let deepCopy = JSON.parse(JSON.stringify(originalArray)); // deep copy (works with JSON-serializable data)
 ```
 
@@ -608,7 +608,7 @@ An **IIFE** is a function expression that is defined and executed immediately. I
 Example:
 
 ```javascript
-javascriptCopy code(function() {
+ code(function() {
   // This function runs immediately
   console.log('Hello from IIFE');
 })();
@@ -621,13 +621,13 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
 * **`Object.create(proto)`**: Creates a new object with the specified prototype object (`proto`). It doesn't run a constructor function. Example:
 
   ```javascript
-  javascriptCopy codeconst obj = Object.create(protoObject);
+   codeconst obj = Object.create(protoObject);
   ```
 
 * **`new` keyword**: Creates a new object, sets the prototype to the constructor's prototype, and executes the constructor function. Example:
 
   ```javascript
-  javascriptCopy codefunction Person(name) {
+   codefunction Person(name) {
     this.name = name;
   }
   const person = new Person('Alice');
@@ -640,7 +640,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
   * **Singleton Pattern**: Ensures that a class has only one instance and provides a global point of access to that instance.
 
     ```javascript
-    javascriptCopy codeconst Singleton = (function() {
+     codeconst Singleton = (function() {
       let instance;
       function createInstance() {
         return new Object('I am a singleton');
@@ -659,7 +659,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
   * **Module Pattern**: Used to encapsulate private data and expose only certain methods, maintaining a clean namespace.
 
     ```javascript
-    javascriptCopy codeconst Module = (function() {
+     codeconst Module = (function() {
       let privateVar = 'I am private';
       return {
         publicMethod: function() {
@@ -676,7 +676,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
 Example:
 
 ```javascript
-javascriptCopy codeconst sym = Symbol('description');
+ codeconst sym = Symbol('description');
 const obj = {
   [sym]: 'value'
 };
@@ -692,7 +692,7 @@ It’s useful because it reduces memory usage and allows handling events for dyn
 Example:
 
 ```javascript
-javascriptCopy codedocument.querySelector('#parent').addEventListener('click', function(event) {
+ codedocument.querySelector('#parent').addEventListener('click', function(event) {
   if (event.target && event.target.matches('button.className')) {
     // Handle the button click event
   }
@@ -706,7 +706,7 @@ javascriptCopy codedocument.querySelector('#parent').addEventListener('click', f
 Example:
 
 ```javascript
-javascriptCopy codeconst worker = new Worker('worker.js');
+ codeconst worker = new Worker('worker.js');
 worker.postMessage('Hello Worker!');
 worker.onmessage = function(event) {
   console.log('Received from worker:', event.data);
@@ -725,7 +725,7 @@ Difference:
 Example:
 
 ```javascript
-javascriptCopy codefunction* myGenerator() {
+ codefunction* myGenerator() {
   yield 1;
   yield 2;
   yield 3;
@@ -740,13 +740,13 @@ console.log(gen.next().value); // 2
 * **Proxy**: A special object that allows you to define custom behavior for fundamental operations (e.g., property lookup, assignment, function invocation). Example:
 
   ```javascript
-  javascriptCopy codeconst proxy = new Proxy(target, handler);
+   codeconst proxy = new Proxy(target, handler);
   ```
 
 * **Reflect**: A built-in object that provides methods for intercepting and manipulating JavaScript operations (e.g., getting and setting properties). It is often used in conjunction with `Proxy`. Example:
 
   ```javascript
-  javascriptCopy codeReflect.set(target, 'prop', value);
+   codeReflect.set(target, 'prop', value);
   ```
 
 ### 12\. **What is memory management and garbage collection in JavaScript?**
@@ -817,7 +817,7 @@ Sure! Let's go through each of the JavaScript questions one by one:
   Example:
 
   ```javascript
-  javascriptCopy codefunction outer() {
+   codefunction outer() {
     let x = 10;
     return function inner() {
       console.log(x);  // `inner` has access to `x` because of the closure
@@ -837,7 +837,7 @@ Both `call()` and `apply()` are methods used to invoke a function with a specifi
 * **`call()`**: The arguments are passed individually, separated by commas.
 
   ```javascript
-  javascriptCopy codefunction greet(name, age) {
+   codefunction greet(name, age) {
     console.log(`${name} is ${age} years old.`);
   }
 
@@ -847,7 +847,7 @@ Both `call()` and `apply()` are methods used to invoke a function with a specifi
 * **`apply()`**: The arguments are passed as an array (or array-like object).
 
   ```javascript
-  javascriptCopy codegreet.apply(null, ['Bob', 25]); // Bob is 25 years old.
+   codegreet.apply(null, ['Bob', 25]); // Bob is 25 years old.
   ```
 
 ### Key Difference:
@@ -881,7 +881,7 @@ JavaScript uses **prototype-based inheritance**.
 Example:
 
 ```javascript
-javascriptCopy codeclass Animal {
+ codeclass Animal {
   constructor(name) {
     this.name = name;
   }
@@ -914,7 +914,7 @@ The **Fetch API** provides a modern, promise-based approach to making asynchrono
 Example:
 
 ```javascript
-javascriptCopy codefetch('https://api.example.com/data')
+ codefetch('https://api.example.com/data')
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.error('Error:', error));
@@ -933,7 +933,7 @@ javascriptCopy codefetch('https://api.example.com/data')
 Example of synchronous:
 
 ```javascript
-javascriptCopy codeconsole.log('Start');
+ codeconsole.log('Start');
 console.log('Middle');
 console.log('End');
 ```
@@ -941,7 +941,7 @@ console.log('End');
 Example of asynchronous (using `setTimeout`):
 
 ```javascript
-javascriptCopy codeconsole.log('Start');
+ codeconsole.log('Start');
 setTimeout(() => console.log('Middle'), 1000);
 console.log('End');
 ```
@@ -957,7 +957,7 @@ Here, "Middle" is logged after 1 second without blocking "End".
 Example:
 
 ```javascript
-javascriptCopy codeasyncFunction1(function(err, result1) {
+ codeasyncFunction1(function(err, result1) {
   asyncFunction2(function(err, result2) {
     asyncFunction3(function(err, result3) {
       // And so on...
@@ -974,7 +974,7 @@ javascriptCopy codeasyncFunction1(function(err, result1) {
 Example using async/await:
 
 ```javascript
-javascriptCopy codeasync function fetchData() {
+ codeasync function fetchData() {
   try {
     const result1 = await asyncFunction1();
     const result2 = await asyncFunction2();
@@ -994,7 +994,7 @@ There are several ways to handle errors in JavaScript:
 * **`try...catch`**: The most common way to catch and handle errors in synchronous code.
 
   ```javascript
-  javascriptCopy codetry {
+   codetry {
     throw new Error('Something went wrong');
   } catch (err) {
     console.error(err.message);
@@ -1004,13 +1004,13 @@ There are several ways to handle errors in JavaScript:
 * **Promises**: For asynchronous operations, you can use `.catch()` to handle errors.
 
   ```javascript
-  javascriptCopy codesomeAsyncFunction().catch(err => console.error(err));
+   codesomeAsyncFunction().catch(err => console.error(err));
   ```
 
 * **Async/Await**: Use `try...catch` around `await` to handle errors in asynchronous code.
 
   ```javascript
-  javascriptCopy codetry {
+   codetry {
     const data = await fetchData();
   } catch (err) {
     console.error(err);
@@ -1026,7 +1026,7 @@ The `eval()` function evaluates JavaScript code represented as a string. While i
 Example:
 
 ```javascript
-javascriptCopy codeeval('console.log("Hello from eval!")'); // Outputs: Hello from eval!
+ codeeval('console.log("Hello from eval!")'); // Outputs: Hello from eval!
 ```
 
 **Caution**: Avoid using `eval()` unless absolutely necessary due to potential security risks and performance concerns. It can also hinder optimizations by JavaScript engines.
