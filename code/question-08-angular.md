@@ -2,7 +2,7 @@ Here is a list of potential interview questions for a Senior Angular Developer. 
 
 ### 1\. **Core Angular Concepts**
 
-#### 1. **What is the difference between Angular and AngularJS?**
+### 1. **What is the difference between Angular and AngularJS?**
 
 * **AngularJS** (1.x) is the original version of Angular, built using JavaScript. It introduced concepts like two-way data binding, directives, and dependency injection (DI). AngularJS is considered a **single-page application** (SPA) framework but is now deprecated and no longer supported.
 
@@ -51,7 +51,7 @@ Example:
   }
   ```
 
-#### 2. **What are decorators in Angular? Can you explain the `@Component`, `@Injectable`, and `@NgModule` decorators with examples?**
+### 2. **What are decorators in Angular? Can you explain the `@Component`, `@Injectable`, and `@NgModule` decorators with examples?**
 
 Decorators are a TypeScript feature used to annotate and modify classes, methods, or properties. In Angular, decorators are used to define the metadata associated with components, services, modules, etc.
 
@@ -95,7 +95,7 @@ Decorators are a TypeScript feature used to annotate and modify classes, methods
   export class AppModule {}
   ```
 
-#### 3. **What is data binding in Angular? Can you explain the different types (e.g., one-way binding, two-way binding)?**
+### 3. **What is data binding in Angular? Can you explain the different types (e.g., one-way binding, two-way binding)?**
 
 Data binding in Angular allows you to communicate between the component and the template, and it comes in several types:
 
@@ -122,7 +122,7 @@ Data binding in Angular allows you to communicate between the component and the 
    <h1>{{ title }}</h1>
    ```
 
-#### 4. **What is Dependency Injection (DI) in Angular, and how does it work?**
+### 4. **What is Dependency Injection (DI) in Angular, and how does it work?**
 
 **Dependency Injection (DI)** is a design pattern in which an object or function receives its dependencies from an external source, rather than creating them itself. In Angular, DI is a core feature used to inject services, classes, or values into components and other services.
 
@@ -158,7 +158,7 @@ export class ExampleComponent {
 
 In this example, the `LoggerService` is injected into the `ExampleComponent` via the constructor, and Angular automatically resolves and injects an instance of the service when the component is created.
 
-#### 5. **How do you create a service in Angular, and how would you inject it into a component or another service?**
+### 5. **How do you create a service in Angular, and how would you inject it into a component or another service?**
 
 1. **Creating a Service**: A service is typically created using Angular CLI with the command:
 
