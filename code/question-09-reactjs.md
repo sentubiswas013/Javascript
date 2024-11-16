@@ -99,7 +99,7 @@ In **class components**, the `render` method returns JSX that describes the UI f
 Example:
 
 ```jsx
-codeclass MyComponent extends React.Component {
+class MyComponent extends React.Component {
   render() {
     return <h1>Hello, world!</h1>;
   }
@@ -2005,7 +2005,7 @@ Error boundaries are React components that catch JavaScript errors anywhere in t
 3. Use the fallback UI to display a friendly error message to the user.
 
 ```jsx
-codeclass ErrorBoundary extends React.Component {
+class ErrorBoundary extends React.Component {
   state = { hasError: false };
 
   static getDerivedStateFromError(error) {
