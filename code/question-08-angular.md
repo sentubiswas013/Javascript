@@ -58,7 +58,7 @@ Decorators are a TypeScript feature used to annotate and modify classes, methods
 * **`@Component`**: This decorator is used to define a component. It provides metadata about the component, such as the template, selector, and styles. Example:
 
   ```ts
-  code@Component({
+  @Component({
     selector: 'app-example',
     templateUrl: './example.component.html',
     styleUrls: ['./example.component.css']
@@ -95,7 +95,7 @@ Decorators are a TypeScript feature used to annotate and modify classes, methods
   export class AppModule {}
   ```
 
-#### **What is data binding in Angular? Can you explain the different types (e.g., one-way binding, two-way binding)?**
+#### 3. **What is data binding in Angular? Can you explain the different types (e.g., one-way binding, two-way binding)?**
 
 Data binding in Angular allows you to communicate between the component and the template, and it comes in several types:
 
@@ -122,7 +122,7 @@ Data binding in Angular allows you to communicate between the component and the 
    <h1>{{ title }}</h1>
    ```
 
-#### **What is Dependency Injection (DI) in Angular, and how does it work?**
+#### 4. **What is Dependency Injection (DI) in Angular, and how does it work?**
 
 **Dependency Injection (DI)** is a design pattern in which an object or function receives its dependencies from an external source, rather than creating them itself. In Angular, DI is a core feature used to inject services, classes, or values into components and other services.
 
@@ -134,7 +134,7 @@ How it works:
 Example:
 
 ```ts
-code@Injectable({
+@Injectable({
   providedIn: 'root'
 })
 export class LoggerService {
@@ -158,7 +158,7 @@ export class ExampleComponent {
 
 In this example, the `LoggerService` is injected into the `ExampleComponent` via the constructor, and Angular automatically resolves and injects an instance of the service when the component is created.
 
-#### **How do you create a service in Angular, and how would you inject it into a component or another service?**
+#### 5. **How do you create a service in Angular, and how would you inject it into a component or another service?**
 
 1. **Creating a Service**: A service is typically created using Angular CLI with the command:
 
@@ -184,7 +184,7 @@ In this example, the `LoggerService` is injected into the `ExampleComponent` via
 2. **Injecting a Service into a Component**: To inject the service, declare it in the constructor of the component or another service. Example:
 
    ```ts
-   code@Component({
+   @Component({
      selector: 'app-example',
      template: `<div>{{ message }}</div>`
    })
