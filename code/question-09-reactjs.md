@@ -212,7 +212,7 @@ Common hooks:
 * **`useEffect`**: Performs side effects like fetching data or subscribing to an event. It replaces lifecycle methods in class components (e.g., `componentDidMount`, `componentDidUpdate`).
 
   ```js
-  codeuseEffect(() => {
+  useEffect(() => {
     console.log('Component mounted');
   }, []);
   ```
@@ -285,7 +285,7 @@ A **Fragment** allows you to group multiple elements without adding extra nodes 
 **Example:**
 
 ```js
-code// Without Fragment:
+// Without Fragment:
 <div>
   <h1>Title</h1>
   <p>Content</p>
@@ -393,7 +393,7 @@ function App() {
 **Example**:
 
 ```js
-code<Suspense fallback={<div>Loading...</div>}>
+<Suspense fallback={<div>Loading...</div>}>
   <LazyComponent />
 </Suspense>
 ```
@@ -464,7 +464,7 @@ In Redux, asynchronous actions (e.g., API calls, timeouts) are not directly hand
   Example of using Saga:
 
   ```javascript
-  codefunction* fetchUserSaga() {
+  function* fetchUserSaga() {
     try {
       const response = yield call(fetch, '/api/user');
       const data = yield response.json();
@@ -543,7 +543,7 @@ In a large React application, structuring the Redux store is crucial to maintain
    Directory structure example:
 
    ```css
-   codesrc/
+   src/
    ├── actions/
    │   ├── authActions.js
    │   └── postActions.js
@@ -567,7 +567,7 @@ In a large React application, structuring the Redux store is crucial to maintain
    Example:
 
    ```javascript
-   code// selectors.js
+   // selectors.js
    export const getUserName = (state) => state.user.name;
    ```
 
@@ -578,7 +578,7 @@ In a large React application, structuring the Redux store is crucial to maintain
    Example:
 
    ```javascript
-   code// Instead of deeply nested state like:
+   // Instead of deeply nested state like:
    // state = { posts: [{ id: 1, comments: [...] }, { id: 2, comments: [...] }] }
 
    // Normalize the state into:
@@ -621,7 +621,7 @@ In React, lazy loading can be achieved through:
 * **`Suspense`**: Used to handle the loading state while waiting for the component to load.
 
   ```js
-  code<Suspense fallback={<Loading />}>
+  <Suspense fallback={<Loading />}>
     <MyComponent />
   </Suspense>
   ```
@@ -678,7 +678,7 @@ Memory leaks in React usually occur when components are not properly cleaned up 
 * **`useEffect` Cleanup**: Use the cleanup function in the `useEffect` hook to clean up subscriptions, event listeners, or timeouts when a component is unmounted.
 
   ```js
-  codeuseEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => { /* logic */ }, 1000);
     
     return () => clearInterval(timer); // Cleanup on unmount
@@ -688,7 +688,7 @@ Memory leaks in React usually occur when components are not properly cleaned up 
 * **Removing Event Listeners**: When using event listeners, make sure to remove them during cleanup.
 
   ```js
-  codeuseEffect(() => {
+  useEffect(() => {
     const handleResize = () => { ... };
     window.addEventListener('resize', handleResize);
 
@@ -725,7 +725,7 @@ Common testing libraries for React applications include:
 Here’s an example of writing a unit test using Jest and React Testing Library:
 
 ```jsx
-code// MyButton.js
+// MyButton.js
 import React from 'react';
 
 function MyButton({ label, onClick }) {
@@ -738,7 +738,7 @@ export default MyButton;
 Test case:
 
 ```jsx
-code// MyButton.test.js
+// MyButton.test.js
 import { render, screen, fireEvent } from '@testing-library/react';
 import MyButton from './MyButton';
 
@@ -774,7 +774,7 @@ To test components that interact with external APIs, you should **mock** the API
 Example:
 
 ```jsx
-code// UserProfile.js
+// UserProfile.js
 import React, { useEffect, useState } from 'react';
 
 function UserProfile() {
@@ -797,7 +797,7 @@ export default UserProfile;
 Test case:
 
 ```jsx
-code// UserProfile.test.js
+// UserProfile.test.js
 import { render, screen, waitFor } from '@testing-library/react';
 import UserProfile from './UserProfile';
 
@@ -870,7 +870,7 @@ In this example:
 Example:
 
 ```jsx
-code// MyButton.js
+// MyButton.js
 import React from 'react';
 
 function MyButton({ label }) {
@@ -883,7 +883,7 @@ export default MyButton;
 Test case with snapshot:
 
 ```jsx
-code// MyButton.test.js
+// MyButton.test.js
 import { render } from '@testing-library/react';
 import MyButton from './MyButton';
 
@@ -910,7 +910,7 @@ test('button renders correctly', () => {
 Example:
 
 ```jsx
-code// myApi.js
+// myApi.js
 export const fetchData = async () => {
   const response = await fetch('/api/data');
   return response.json();
@@ -920,7 +920,7 @@ export const fetchData = async () => {
 Test case with mocking:
 
 ```jsx
-code// MyComponent.test.js
+// MyComponent.test.js
 import { render, screen, waitFor } from '@testing-library/react';
 import { fetchData } from './myApi';
 import MyComponent from './MyComponent';
@@ -961,7 +961,7 @@ To implement routing in a React application, you can use **React Router**, which
 1. **Install React Router**: First, install `react-router-dom` (the version for web apps).
 
    ```bash
-   codenpm install react-router-dom
+   npm install react-router-dom
    ```
 
 2. **Wrap the app with `BrowserRouter`**: In the root component of your app (usually `App.js`), wrap your app with `BrowserRouter` (or `HashRouter` depending on your needs) to enable routing.
@@ -1195,18 +1195,18 @@ To configure Babel and Webpack for a React application, you need to:
 
 #### Babel Configuration:
 
-Babel is used to transpile modern JavaScript (including JSX) into code that can run in older browsers.
+Babel is used to transpile modern JavaScript (including JSX) into  that can run in older browsers.
 
 1. **Install Babel dependencies**:
 
    ```bash
-   codenpm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader
+   npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader
    ```
 
 2. **Create or update the `.babelrc` or `babel.config.json`**: In the `.babelrc` or `babel.config.json` file, specify presets for JavaScript and React:
 
    ```json
-   code{
+   {
      "presets": [
        "@babel/preset-env",
        "@babel/preset-react"
@@ -1224,7 +1224,7 @@ Webpack is used to bundle JavaScript and other assets.
 1. **Install Webpack and related dependencies**:
 
    ```bash
-   codenpm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin style-loader css-loader babel-loader
+   npm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin style-loader css-loader babel-loader
    ```
 
 2. **Create or update the `webpack.config.js`**: In the Webpack configuration, you’ll set up the entry, output, and loaders.
@@ -1323,7 +1323,7 @@ For example, with **GitHub Actions**:
 3. **Configure the GitHub Actions workflow**: Example `ci.yml` for a React app:
 
    ```yaml
-   codename: React CI/CD
+   name: React CI/CD
 
    on:
      push:
@@ -1452,7 +1452,7 @@ There are several ways to style React components:
    * A CSS-in-JS library that allows defining styles within JavaScript using tagged template literals or object notation.
    * Example:
      ```jsx
-     code/** @jsxImportSource @emotion/react */
+     /** @jsxImportSource @emotion/react */
      import { css } from '@emotion/react';
      const style = css`
        color: blue;
@@ -1615,7 +1615,7 @@ Responsive design in React can be handled using several techniques:
    * Create a `.module.css` file (e.g., `Component.module.css`).
    * Example:
      ```css
-     code/* Component.module.css */
+     /* Component.module.css */
      .container {
        background-color: lightblue;
        padding: 20px;
@@ -1865,7 +1865,7 @@ Handling CORS issues in a React app:
 * **Using proxy in development:** In development, React provides a way to proxy API requests to the backend server by adding a `proxy` field in your `package.json`. This allows you to avoid CORS issues during development. Example:
 
   ```json
-  code"proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000"
   ```
 
 * **Handle preflight requests:** Ensure that your server properly handles CORS preflight requests (OPTIONS requests), which are automatically sent by browsers before making the actual request. The server should respond with the appropriate headers (`Access-Control-Allow-Methods`, `Access-Control-Allow-Headers`).
@@ -1875,7 +1875,7 @@ Handling CORS issues in a React app:
   * **Client-side (fetch example):**
 
     ```javascript
-    codefetch('https://api.example.com', {
+    fetch('https://api.example.com', {
       method: 'GET',
       credentials: 'include',
     });
@@ -1883,7 +1883,7 @@ Handling CORS issues in a React app:
   * **Server-side (Express example):**
 
     ```javascript
-    codeapp.use(cors({
+    app.use(cors({
       origin: 'https://your-react-app.com',
       credentials: true,
     }));
@@ -1945,7 +1945,7 @@ Managing large-scale state effectively without causing tight coupling between co
 In a large React application, a consistent and modular directory structure is key to maintainability and scalability. Here is a recommended approach:
 
 ```bash
-code/src
+/src
   /assets          # Static files like images, fonts, etc.
   /components      # Reusable UI components (atoms, molecules, etc.)
   /containers      # Components that manage state and handle logic
@@ -2031,7 +2031,7 @@ class ErrorBoundary extends React.Component {
 **Usage:**
 
 ```jsx
-code<ErrorBoundary>
+<ErrorBoundary>
   <MyComponent />
 </ErrorBoundary>
 ```
