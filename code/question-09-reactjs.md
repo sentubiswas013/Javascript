@@ -55,7 +55,7 @@ In React, the component lifecycle refers to the series of methods (for class com
   Example:
 
   ```jsx
-  jsxCopy codefunction ControlledInput() {
+  codefunction ControlledInput() {
     const [value, setValue] = useState("");
     return <input type="text" value={value} onChange={(e) => setValue(e.target.value)} />;
   }
@@ -66,7 +66,7 @@ In React, the component lifecycle refers to the series of methods (for class com
   Example:
 
   ```jsx
-  jsxCopy codefunction UncontrolledInput() {
+  codefunction UncontrolledInput() {
     const inputRef = useRef();
     return <input type="text" ref={inputRef} />;
   }
@@ -79,7 +79,7 @@ In React, the component lifecycle refers to the series of methods (for class com
   Example (functional):
 
   ```jsx
-  jsxCopy codeconst [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
   ```
 
 * **Props** (short for properties) are used to pass data from a parent component to a child component. Props are read-only and cannot be modified by the child component.
@@ -87,7 +87,7 @@ In React, the component lifecycle refers to the series of methods (for class com
   Example:
 
   ```jsx
-  jsxCopy codefunction ChildComponent({ name }) {
+  codefunction ChildComponent({ name }) {
     return <p>Hello, {name}!</p>;
   }
   ```
@@ -99,7 +99,7 @@ In **class components**, the `render` method returns JSX that describes the UI f
 Example:
 
 ```jsx
-jsxCopy codeclass MyComponent extends React.Component {
+codeclass MyComponent extends React.Component {
   render() {
     return <h1>Hello, world!</h1>;
   }
@@ -145,7 +145,7 @@ A **Higher-Order Component (HOC)** is a function that takes a component and retu
 **Example:** Suppose you want to add authentication logic to multiple components. Instead of repeating the logic in each component, you can create an HOC to inject the authentication behavior.
 
 ```js
-jsCopy codeimport React from 'react';
+codeimport React from 'react';
 
 function withAuth(Component) {
   return function AuthHOC(props) {
@@ -177,7 +177,7 @@ The **Context API** in React is a way to share values like themes, authenticatio
 **Example:**
 
 ```js
-jsCopy codeconst ThemeContext = React.createContext('light'); // default value
+const ThemeContext = React.createContext('light'); // default value
 
 function ThemeButton() {
   const theme = useContext(ThemeContext);
@@ -206,13 +206,13 @@ Common hooks:
 * **`useState`**: Manages state in a functional component.
 
   ```js
-  jsCopy codeconst [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
   ```
 
 * **`useEffect`**: Performs side effects like fetching data or subscribing to an event. It replaces lifecycle methods in class components (e.g., `componentDidMount`, `componentDidUpdate`).
 
   ```js
-  jsCopy codeuseEffect(() => {
+  codeuseEffect(() => {
     console.log('Component mounted');
   }, []);
   ```
@@ -220,19 +220,19 @@ Common hooks:
 * **`useContext`**: Allows you to access values from a React Context.
 
   ```js
-  jsCopy codeconst value = useContext(MyContext);
+  const value = useContext(MyContext);
   ```
 
 * **`useRef`**: Provides a way to persist values across renders without causing re-renders.
 
   ```js
-  jsCopy codeconst inputRef = useRef();
+  const inputRef = useRef();
   ```
 
 * **`useReducer`**: Manages more complex state logic, often used for state that depends on previous values (like Redux).
 
   ```js
-  jsCopy codeconst [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
   ```
 
 ---
@@ -268,7 +268,7 @@ Global state in React can be managed using different tools, each with its pros a
 **Example:**
 
 ```js
-jsCopy codeconst MyComponent = React.memo(function MyComponent({ count }) {
+const MyComponent = React.memo(function MyComponent({ count }) {
   console.log('Rendering MyComponent');
   return <div>{count}</div>;
 });
@@ -285,7 +285,7 @@ A **Fragment** allows you to group multiple elements without adding extra nodes 
 **Example:**
 
 ```js
-jsCopy code// Without Fragment:
+code// Without Fragment:
 <div>
   <h1>Title</h1>
   <p>Content</p>
@@ -309,7 +309,7 @@ In the second example, no extra `div` is added to the DOM, keeping the structure
 **Example:**
 
 ```js
-jsCopy codefunction MouseTracker({ render }) {
+codefunction MouseTracker({ render }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -343,7 +343,7 @@ Here, `MouseTracker` uses the `render` prop to allow the parent (`App`) to decid
   **Example**:
 
   ```js
-  jsCopy codeconst handleClick = useCallback(() => {
+  const handleClick = useCallback(() => {
     console.log('Clicked');
   }, []); // Will not recreate handleClick unless dependencies change
   ```
@@ -353,7 +353,7 @@ Here, `MouseTracker` uses the `render` prop to allow the parent (`App`) to decid
   **Example**:
 
   ```js
-  jsCopy codeconst filteredList = useMemo(() => {
+  const filteredList = useMemo(() => {
     return list.filter(item => item.includes('foo'));
   }, [list]); // Only recompute when 'list' changes
   ```
@@ -369,7 +369,7 @@ In React, you can use **React.lazy** and **Suspense** for code splitting.
 **Example:**
 
 ```js
-jsCopy codeimport React, { Suspense } from 'react';
+codeimport React, { Suspense } from 'react';
 
 const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
@@ -393,7 +393,7 @@ function App() {
 **Example**:
 
 ```js
-jsCopy code<Suspense fallback={<div>Loading...</div>}>
+code<Suspense fallback={<div>Loading...</div>}>
   <LazyComponent />
 </Suspense>
 ```
@@ -448,7 +448,7 @@ In Redux, asynchronous actions (e.g., API calls, timeouts) are not directly hand
   Example of using Thunk:
 
   ```javascript
-  javascriptCopy codeconst fetchUser = () => {
+  const fetchUser = () => {
     return (dispatch) => {
       dispatch({ type: 'FETCH_USER_REQUEST' });
       fetch('/api/user')
@@ -464,7 +464,7 @@ In Redux, asynchronous actions (e.g., API calls, timeouts) are not directly hand
   Example of using Saga:
 
   ```javascript
-  javascriptCopy codefunction* fetchUserSaga() {
+  codefunction* fetchUserSaga() {
     try {
       const response = yield call(fetch, '/api/user');
       const data = yield response.json();
@@ -484,7 +484,7 @@ In Redux, asynchronous actions (e.g., API calls, timeouts) are not directly hand
   Example using `redux-thunk`:
 
   ```javascript
-  javascriptCopy codeconst fetchData = () => {
+  const fetchData = () => {
     return (dispatch) => {
       dispatch({ type: 'FETCH_START' });
       fetch('https://api.example.com/data')
@@ -500,7 +500,7 @@ In Redux, asynchronous actions (e.g., API calls, timeouts) are not directly hand
   Example using `redux-saga`:
 
   ```javascript
-  javascriptCopy codeimport { call, put, takeEvery } from 'redux-saga/effects';
+  codeimport { call, put, takeEvery } from 'redux-saga/effects';
 
   function* fetchDataSaga() {
     try {
@@ -528,7 +528,7 @@ In a large React application, structuring the Redux store is crucial to maintain
    Example:
 
    ```javascript
-   javascriptCopy codeconst rootReducer = combineReducers({
+   const rootReducer = combineReducers({
      auth: authReducer,
      user: userReducer,
      posts: postsReducer,
@@ -543,7 +543,7 @@ In a large React application, structuring the Redux store is crucial to maintain
    Directory structure example:
 
    ```css
-   cssCopy codesrc/
+   codesrc/
    ├── actions/
    │   ├── authActions.js
    │   └── postActions.js
@@ -567,7 +567,7 @@ In a large React application, structuring the Redux store is crucial to maintain
    Example:
 
    ```javascript
-   javascriptCopy code// selectors.js
+   code// selectors.js
    export const getUserName = (state) => state.user.name;
    ```
 
@@ -578,7 +578,7 @@ In a large React application, structuring the Redux store is crucial to maintain
    Example:
 
    ```javascript
-   javascriptCopy code// Instead of deeply nested state like:
+   code// Instead of deeply nested state like:
    // state = { posts: [{ id: 1, comments: [...] }, { id: 2, comments: [...] }] }
 
    // Normalize the state into:
@@ -615,13 +615,13 @@ In React, lazy loading can be achieved through:
 * **`React.lazy()`**: Dynamically loads components when they are rendered. This helps in splitting the application into smaller bundles, so only the necessary code is downloaded on demand.
 
   ```js
-  jsCopy codeconst MyComponent = React.lazy(() => import('./MyComponent'));
+  const MyComponent = React.lazy(() => import('./MyComponent'));
   ```
 
 * **`Suspense`**: Used to handle the loading state while waiting for the component to load.
 
   ```js
-  jsCopy code<Suspense fallback={<Loading />}>
+  code<Suspense fallback={<Loading />}>
     <MyComponent />
   </Suspense>
   ```
@@ -650,19 +650,19 @@ To prevent unnecessary re-renders, you can use the following strategies:
 * **`React.memo`**: A higher-order component that prevents re-renders if the props haven't changed. Use it for functional components that don’t need to re-render unless their props change.
 
   ```js
-  jsCopy codeconst MyComponent = React.memo((props) => { ... });
+  const MyComponent = React.memo((props) => { ... });
   ```
 
 * **`useMemo`**: Memoizes values that are expensive to compute so they are only recalculated when dependencies change.
 
   ```js
-  jsCopy codeconst memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+  const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
   ```
 
 * **`useCallback`**: Memoizes functions to prevent unnecessary re-creations of function references on each render, which can trigger child component re-renders.
 
   ```js
-  jsCopy codeconst memoizedCallback = useCallback(() => { ... }, [dependencies]);
+  const memoizedCallback = useCallback(() => { ... }, [dependencies]);
   ```
 
 * **`shouldComponentUpdate`**: In class components, override `shouldComponentUpdate` to prevent re-renders unless specific state or props have changed.
@@ -678,7 +678,7 @@ Memory leaks in React usually occur when components are not properly cleaned up 
 * **`useEffect` Cleanup**: Use the cleanup function in the `useEffect` hook to clean up subscriptions, event listeners, or timeouts when a component is unmounted.
 
   ```js
-  jsCopy codeuseEffect(() => {
+  codeuseEffect(() => {
     const timer = setInterval(() => { /* logic */ }, 1000);
     
     return () => clearInterval(timer); // Cleanup on unmount
@@ -688,7 +688,7 @@ Memory leaks in React usually occur when components are not properly cleaned up 
 * **Removing Event Listeners**: When using event listeners, make sure to remove them during cleanup.
 
   ```js
-  jsCopy codeuseEffect(() => {
+  codeuseEffect(() => {
     const handleResize = () => { ... };
     window.addEventListener('resize', handleResize);
 
@@ -725,7 +725,7 @@ Common testing libraries for React applications include:
 Here’s an example of writing a unit test using Jest and React Testing Library:
 
 ```jsx
-jsxCopy code// MyButton.js
+code// MyButton.js
 import React from 'react';
 
 function MyButton({ label, onClick }) {
@@ -738,7 +738,7 @@ export default MyButton;
 Test case:
 
 ```jsx
-jsxCopy code// MyButton.test.js
+code// MyButton.test.js
 import { render, screen, fireEvent } from '@testing-library/react';
 import MyButton from './MyButton';
 
@@ -774,7 +774,7 @@ To test components that interact with external APIs, you should **mock** the API
 Example:
 
 ```jsx
-jsxCopy code// UserProfile.js
+code// UserProfile.js
 import React, { useEffect, useState } from 'react';
 
 function UserProfile() {
@@ -797,7 +797,7 @@ export default UserProfile;
 Test case:
 
 ```jsx
-jsxCopy code// UserProfile.test.js
+code// UserProfile.test.js
 import { render, screen, waitFor } from '@testing-library/react';
 import UserProfile from './UserProfile';
 
@@ -838,7 +838,7 @@ In this example:
   Example with Enzyme:
 
   ```jsx
-  jsxCopy codeimport { shallow } from 'enzyme';
+  codeimport { shallow } from 'enzyme';
   const wrapper = shallow(<MyComponent />);
   expect(wrapper.find('button').text()).toBe('Click Me');
   ```
@@ -853,7 +853,7 @@ In this example:
   Example with Enzyme:
 
   ```jsx
-  jsxCopy codeimport { mount } from 'enzyme';
+  codeimport { mount } from 'enzyme';
   const wrapper = mount(<MyComponent />);
   expect(wrapper.find('ChildComponent').exists()).toBe(true);
   ```
@@ -870,7 +870,7 @@ In this example:
 Example:
 
 ```jsx
-jsxCopy code// MyButton.js
+code// MyButton.js
 import React from 'react';
 
 function MyButton({ label }) {
@@ -883,7 +883,7 @@ export default MyButton;
 Test case with snapshot:
 
 ```jsx
-jsxCopy code// MyButton.test.js
+code// MyButton.test.js
 import { render } from '@testing-library/react';
 import MyButton from './MyButton';
 
@@ -910,7 +910,7 @@ test('button renders correctly', () => {
 Example:
 
 ```jsx
-jsxCopy code// myApi.js
+code// myApi.js
 export const fetchData = async () => {
   const response = await fetch('/api/data');
   return response.json();
@@ -920,7 +920,7 @@ export const fetchData = async () => {
 Test case with mocking:
 
 ```jsx
-jsxCopy code// MyComponent.test.js
+code// MyComponent.test.js
 import { render, screen, waitFor } from '@testing-library/react';
 import { fetchData } from './myApi';
 import MyComponent from './MyComponent';
@@ -961,13 +961,13 @@ To implement routing in a React application, you can use **React Router**, which
 1. **Install React Router**: First, install `react-router-dom` (the version for web apps).
 
    ```bash
-   bashCopy codenpm install react-router-dom
+   codenpm install react-router-dom
    ```
 
 2. **Wrap the app with `BrowserRouter`**: In the root component of your app (usually `App.js`), wrap your app with `BrowserRouter` (or `HashRouter` depending on your needs) to enable routing.
 
    ```jsx
-   jsxCopy codeimport { BrowserRouter } from 'react-router-dom';
+   codeimport { BrowserRouter } from 'react-router-dom';
 
    function App() {
      return (
@@ -981,7 +981,7 @@ To implement routing in a React application, you can use **React Router**, which
 3. **Define Routes with `Route`**: Use `Route` components to define different routes in your app. Each `Route` maps a URL path to a React component.
 
    ```jsx
-   jsxCopy codeimport { Route, Switch } from 'react-router-dom';
+   codeimport { Route, Switch } from 'react-router-dom';
 
    function App() {
      return (
@@ -999,7 +999,7 @@ To implement routing in a React application, you can use **React Router**, which
 4. **Linking Between Routes**: Use `Link` or `NavLink` to create navigable links between routes.
 
    ```jsx
-   jsxCopy codeimport { Link } from 'react-router-dom';
+   codeimport { Link } from 'react-router-dom';
 
    function Navbar() {
      return (
@@ -1025,7 +1025,7 @@ React Router works by rendering different components based on the URL. It mainta
 To create dynamic routes, you define route parameters using a colon (`:`) in the `path`.
 
 ```jsx
-jsxCopy codeimport { useParams } from 'react-router-dom';
+codeimport { useParams } from 'react-router-dom';
 
 function UserProfile() {
   const { userId } = useParams(); // Extract userId from URL
@@ -1054,7 +1054,7 @@ Nested routes allow you to create hierarchical views, where a route can have chi
 #### Example:
 
 ```jsx
-jsxCopy codeimport { Route, Link, BrowserRouter, Switch } from 'react-router-dom';
+codeimport { Route, Link, BrowserRouter, Switch } from 'react-router-dom';
 
 function Dashboard() {
   return (
@@ -1095,7 +1095,7 @@ In this example:
 You can also use `Routes` and `Outlet` in React Router v6 for nested routes:
 
 ```jsx
-jsxCopy codeimport { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+codeimport { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 
 function Dashboard() {
   return (
@@ -1133,27 +1133,27 @@ function App() {
 * **`useParams()`**: `useParams` is a hook that gives you access to the parameters of the current route. It's used in dynamic routes to access the values from the URL.
 
   ```jsx
-  jsxCopy codeconst { userId } = useParams();
+  const { userId } = useParams();
   ```
 
 * **`useLocation()`**: `useLocation` gives you access to the current location object, which includes information about the current URL, such as the pathname, search string, and hash. It can be useful to perform actions based on the current location or when you need to track the navigation state.
 
   ```jsx
-  jsxCopy codeconst location = useLocation();
+  const location = useLocation();
   console.log(location.pathname); // Current URL path
   ```
 
 * **`useHistory()` (React Router v5)**: `useHistory` was used in React Router v5 to get access to the history object, which allows you to programmatically navigate to different routes (push, replace, go back, etc.).
 
   ```jsx
-  jsxCopy codeconst history = useHistory();
+  const history = useHistory();
   history.push('/new-url'); // Navigate to a new route
   ```
 
 * **`useNavigate()` (React Router v6)**: `useNavigate` replaces `useHistory` in React Router v6. It returns a function that can be used to programmatically navigate to a different route. You can pass a path to the `navigate` function to navigate to that route.
 
   ```jsx
-  jsxCopy codeconst navigate = useNavigate();
+  const navigate = useNavigate();
   navigate('/new-url'); // Navigate to a new route
   ```
 
@@ -1200,13 +1200,13 @@ Babel is used to transpile modern JavaScript (including JSX) into code that can 
 1. **Install Babel dependencies**:
 
    ```bash
-   bashCopy codenpm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader
+   codenpm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader
    ```
 
 2. **Create or update the `.babelrc` or `babel.config.json`**: In the `.babelrc` or `babel.config.json` file, specify presets for JavaScript and React:
 
    ```json
-   jsonCopy code{
+   code{
      "presets": [
        "@babel/preset-env",
        "@babel/preset-react"
@@ -1224,13 +1224,13 @@ Webpack is used to bundle JavaScript and other assets.
 1. **Install Webpack and related dependencies**:
 
    ```bash
-   bashCopy codenpm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin style-loader css-loader babel-loader
+   codenpm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin style-loader css-loader babel-loader
    ```
 
 2. **Create or update the `webpack.config.js`**: In the Webpack configuration, you’ll set up the entry, output, and loaders.
 
    ```js
-   jsCopy codeconst path = require('path');
+   const path = require('path');
    const HtmlWebpackPlugin = require('html-webpack-plugin');
 
    module.exports = {
@@ -1290,7 +1290,7 @@ In this setup:
      ```
   3. Access the environment variables in your code:
      ```js
-     jsCopy codeconst apiUrl = process.env.REACT_APP_API_URL;
+     const apiUrl = process.env.REACT_APP_API_URL;
      ```
 
 In **React**, environment variables are automatically injected during the build process, and you can configure different `.env` files for different environments:
@@ -1323,7 +1323,7 @@ For example, with **GitHub Actions**:
 3. **Configure the GitHub Actions workflow**: Example `ci.yml` for a React app:
 
    ```yaml
-   yamlCopy codename: React CI/CD
+   codename: React CI/CD
 
    on:
      push:
@@ -1412,7 +1412,7 @@ There are several ways to style React components:
    * Using the `style` attribute in JSX with a JavaScript object.
    * Example:
      ```jsx
-     jsxCopy codeconst style = { color: 'blue', fontSize: '20px' };
+     const style = { color: 'blue', fontSize: '20px' };
      const Component = () => <div style={style}>Hello World</div>;
      ```
 
@@ -1421,7 +1421,7 @@ There are several ways to style React components:
    * Writing styles in a separate `.css` file and linking it to the component via `import` or using a `<link>` tag in HTML.
    * Example:
      ```jsx
-     jsxCopy codeimport './App.css'; // Importing the CSS file
+     codeimport './App.css'; // Importing the CSS file
      const Component = () => <div className="hello">Hello World</div>;
      ```
 
@@ -1430,7 +1430,7 @@ There are several ways to style React components:
    * Local scoped styles where each class name is automatically scoped to the component.
    * Example:
      ```jsx
-     jsxCopy codeimport styles from './Component.module.css';
+     codeimport styles from './Component.module.css';
      const Component = () => <div className={styles.hello}>Hello World</div>;
      ```
 
@@ -1439,7 +1439,7 @@ There are several ways to style React components:
    * Using the `styled-components` library to define component-level styles with tagged template literals in JavaScript.
    * Example:
      ```jsx
-     jsxCopy codeimport styled from 'styled-components';
+     codeimport styled from 'styled-components';
      const Hello = styled.div`
        color: blue;
        font-size: 20px;
@@ -1452,7 +1452,7 @@ There are several ways to style React components:
    * A CSS-in-JS library that allows defining styles within JavaScript using tagged template literals or object notation.
    * Example:
      ```jsx
-     jsxCopy code/** @jsxImportSource @emotion/react */
+     code/** @jsxImportSource @emotion/react */
      import { css } from '@emotion/react';
      const style = css`
        color: blue;
@@ -1466,7 +1466,7 @@ There are several ways to style React components:
    * A utility-first CSS framework where classes are applied directly in JSX.
    * Example:
      ```jsx
-     jsxCopy codeconst Component = () => <div className="text-blue-500 text-lg">Hello World</div>;
+     const Component = () => <div className="text-blue-500 text-lg">Hello World</div>;
      ```
 
 7. **SASS/SCSS**:
@@ -1474,7 +1474,7 @@ There are several ways to style React components:
    * Using SASS/SCSS with React, typically with a preprocessor setup for `.scss` files.
    * Example:
      ```jsx
-     jsxCopy codeimport './Component.scss';
+     codeimport './Component.scss';
      const Component = () => <div className="hello">Hello World</div>;
      ```
 
@@ -1512,7 +1512,7 @@ There are several ways to style React components:
    * You can style components based on props, state, or themes directly in JavaScript, which makes it easier to implement conditional or dynamic styles.
    * Example with styled-components:
      ```jsx
-     jsxCopy codeconst Button = styled.button`
+     const Button = styled.button`
        background: ${(props) => props.primary ? 'blue' : 'gray'};
      `;
      ```
@@ -1530,7 +1530,7 @@ There are several ways to style React components:
    * Both libraries have built-in theming support, allowing for easy customization of styles across the application.
    * Example:
      ```jsx
-     jsxCopy codeconst theme = {
+     const theme = {
        primary: 'blue',
      };
      const Button = styled.button`
@@ -1553,7 +1553,7 @@ Responsive design in React can be handled using several techniques:
    * Traditional CSS with media queries can be used in external CSS or styled-components.
    * Example:
      ```jsx
-     jsxCopy codeconst Box = styled.div`
+     const Box = styled.div`
        width: 100%;
        @media (min-width: 600px) {
          width: 50%;
@@ -1566,7 +1566,7 @@ Responsive design in React can be handled using several techniques:
    * With libraries like styled-components or Emotion, you can use JavaScript to conditionally apply styles based on viewport size.
    * Example with Emotion:
      ```jsx
-     jsxCopy codeconst style = css`
+     const style = css`
        width: 100%;
        @media (min-width: 600px) {
          width: 50%;
@@ -1580,7 +1580,7 @@ Responsive design in React can be handled using several techniques:
    * You can use `useState` and `useEffect` to track window size and conditionally apply styles.
    * Example:
      ```jsx
-     jsxCopy codeconst useWindowSize = () => {
+     const useWindowSize = () => {
        const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
        useEffect(() => {
@@ -1615,7 +1615,7 @@ Responsive design in React can be handled using several techniques:
    * Create a `.module.css` file (e.g., `Component.module.css`).
    * Example:
      ```css
-     cssCopy code/* Component.module.css */
+     code/* Component.module.css */
      .container {
        background-color: lightblue;
        padding: 20px;
@@ -1627,7 +1627,7 @@ Responsive design in React can be handled using several techniques:
    * Import the `.module.css` file into the React component.
    * Example:
      ```jsx
-     jsxCopy codeimport styles from './Component.module.css';
+     codeimport styles from './Component.module.css';
 
      const Component = () => <div className={styles.container}>Hello World</div>;
      ```
@@ -1719,7 +1719,7 @@ JavaScript’s **asynchronous nature** is crucial for React, especially in handl
 Example:
 
 ```js
-jsCopy codeimport { useEffect, useState } from 'react';
+codeimport { useEffect, useState } from 'react';
 
 function App() {
   const [data, setData] = useState(null);
@@ -1753,7 +1753,7 @@ A **closure** is a function that "remembers" its lexical scope, even when the fu
 Closures are commonly used in React to handle events, callbacks, and state updates that need to remember the component’s state at the time of their creation.
 
 ```js
-jsCopy codeimport React, { useState } from 'react';
+codeimport React, { useState } from 'react';
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -1858,14 +1858,14 @@ Handling CORS issues in a React app:
 * **CORS setup on the server side:** The most common solution is to configure the server to allow requests from your React app’s origin. This can be done by setting the `Access-Control-Allow-Origin` header on the server to your React app’s URL, or by allowing all origins (which is less secure). Example (Express.js):
 
   ```javascript
-  javascriptCopy codeconst cors = require('cors');
+  const cors = require('cors');
   app.use(cors({ origin: 'https://your-react-app.com' }));
   ```
 
 * **Using proxy in development:** In development, React provides a way to proxy API requests to the backend server by adding a `proxy` field in your `package.json`. This allows you to avoid CORS issues during development. Example:
 
   ```json
-  jsonCopy code"proxy": "http://localhost:5000"
+  code"proxy": "http://localhost:5000"
   ```
 
 * **Handle preflight requests:** Ensure that your server properly handles CORS preflight requests (OPTIONS requests), which are automatically sent by browsers before making the actual request. The server should respond with the appropriate headers (`Access-Control-Allow-Methods`, `Access-Control-Allow-Headers`).
@@ -1875,7 +1875,7 @@ Handling CORS issues in a React app:
   * **Client-side (fetch example):**
 
     ```javascript
-    javascriptCopy codefetch('https://api.example.com', {
+    codefetch('https://api.example.com', {
       method: 'GET',
       credentials: 'include',
     });
@@ -1883,7 +1883,7 @@ Handling CORS issues in a React app:
   * **Server-side (Express example):**
 
     ```javascript
-    javascriptCopy codeapp.use(cors({
+    codeapp.use(cors({
       origin: 'https://your-react-app.com',
       credentials: true,
     }));
@@ -1945,7 +1945,7 @@ Managing large-scale state effectively without causing tight coupling between co
 In a large React application, a consistent and modular directory structure is key to maintainability and scalability. Here is a recommended approach:
 
 ```bash
-bashCopy code/src
+code/src
   /assets          # Static files like images, fonts, etc.
   /components      # Reusable UI components (atoms, molecules, etc.)
   /containers      # Components that manage state and handle logic
@@ -2005,7 +2005,7 @@ Error boundaries are React components that catch JavaScript errors anywhere in t
 3. Use the fallback UI to display a friendly error message to the user.
 
 ```jsx
-jsxCopy codeclass ErrorBoundary extends React.Component {
+codeclass ErrorBoundary extends React.Component {
   state = { hasError: false };
 
   static getDerivedStateFromError(error) {
@@ -2031,7 +2031,7 @@ jsxCopy codeclass ErrorBoundary extends React.Component {
 **Usage:**
 
 ```jsx
-jsxCopy code<ErrorBoundary>
+code<ErrorBoundary>
   <MyComponent />
 </ErrorBoundary>
 ```
