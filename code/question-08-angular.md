@@ -2,7 +2,7 @@ Here is a list of potential interview questions for a Senior Angular Developer. 
 
 ### 1\. **Core Angular Concepts**
 
-#### **What is the difference between Angular and AngularJS?**
+#### 1. **What is the difference between Angular and AngularJS?**
 
 * **AngularJS** (1.x) is the original version of Angular, built using JavaScript. It introduced concepts like two-way data binding, directives, and dependency injection (DI). AngularJS is considered a **single-page application** (SPA) framework but is now deprecated and no longer supported.
 
@@ -51,7 +51,7 @@ Example:
   }
   ```
 
-#### **What are decorators in Angular? Can you explain the `@Component`, `@Injectable`, and `@NgModule` decorators with examples?**
+#### 2. **What are decorators in Angular? Can you explain the `@Component`, `@Injectable`, and `@NgModule` decorators with examples?**
 
 Decorators are a TypeScript feature used to annotate and modify classes, methods, or properties. In Angular, decorators are used to define the metadata associated with components, services, modules, etc.
 
