@@ -145,7 +145,7 @@ A **Higher-Order Component (HOC)** is a function that takes a component and retu
 **Example:** Suppose you want to add authentication logic to multiple components. Instead of repeating the logic in each component, you can create an HOC to inject the authentication behavior.
 
 ```js
-codeimport React from 'react';
+import React from 'react';
 
 function withAuth(Component) {
   return function AuthHOC(props) {
@@ -369,7 +369,7 @@ In React, you can use **React.lazy** and **Suspense** for code splitting.
 **Example:**
 
 ```js
-codeimport React, { Suspense } from 'react';
+import React, { Suspense } from 'react';
 
 const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
@@ -500,7 +500,7 @@ In Redux, asynchronous actions (e.g., API calls, timeouts) are not directly hand
   Example using `redux-saga`:
 
   ```javascript
-  codeimport { call, put, takeEvery } from 'redux-saga/effects';
+  import { call, put, takeEvery } from 'redux-saga/effects';
 
   function* fetchDataSaga() {
     try {
@@ -838,7 +838,7 @@ In this example:
   Example with Enzyme:
 
   ```jsx
-  codeimport { shallow } from 'enzyme';
+  import { shallow } from 'enzyme';
   const wrapper = shallow(<MyComponent />);
   expect(wrapper.find('button').text()).toBe('Click Me');
   ```
@@ -853,7 +853,7 @@ In this example:
   Example with Enzyme:
 
   ```jsx
-  codeimport { mount } from 'enzyme';
+  import { mount } from 'enzyme';
   const wrapper = mount(<MyComponent />);
   expect(wrapper.find('ChildComponent').exists()).toBe(true);
   ```
@@ -967,7 +967,7 @@ To implement routing in a React application, you can use **React Router**, which
 2. **Wrap the app with `BrowserRouter`**: In the root component of your app (usually `App.js`), wrap your app with `BrowserRouter` (or `HashRouter` depending on your needs) to enable routing.
 
    ```jsx
-   codeimport { BrowserRouter } from 'react-router-dom';
+   import { BrowserRouter } from 'react-router-dom';
 
    function App() {
      return (
@@ -981,7 +981,7 @@ To implement routing in a React application, you can use **React Router**, which
 3. **Define Routes with `Route`**: Use `Route` components to define different routes in your app. Each `Route` maps a URL path to a React component.
 
    ```jsx
-   codeimport { Route, Switch } from 'react-router-dom';
+   import { Route, Switch } from 'react-router-dom';
 
    function App() {
      return (
@@ -999,7 +999,7 @@ To implement routing in a React application, you can use **React Router**, which
 4. **Linking Between Routes**: Use `Link` or `NavLink` to create navigable links between routes.
 
    ```jsx
-   codeimport { Link } from 'react-router-dom';
+   import { Link } from 'react-router-dom';
 
    function Navbar() {
      return (
@@ -1025,7 +1025,7 @@ React Router works by rendering different components based on the URL. It mainta
 To create dynamic routes, you define route parameters using a colon (`:`) in the `path`.
 
 ```jsx
-codeimport { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function UserProfile() {
   const { userId } = useParams(); // Extract userId from URL
@@ -1054,7 +1054,7 @@ Nested routes allow you to create hierarchical views, where a route can have chi
 #### Example:
 
 ```jsx
-codeimport { Route, Link, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, Link, BrowserRouter, Switch } from 'react-router-dom';
 
 function Dashboard() {
   return (
@@ -1095,7 +1095,7 @@ In this example:
 You can also use `Routes` and `Outlet` in React Router v6 for nested routes:
 
 ```jsx
-codeimport { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 
 function Dashboard() {
   return (
@@ -1421,7 +1421,7 @@ There are several ways to style React components:
    * Writing styles in a separate `.css` file and linking it to the component via `import` or using a `<link>` tag in HTML.
    * Example:
      ```jsx
-     codeimport './App.css'; // Importing the CSS file
+     import './App.css'; // Importing the CSS file
      const Component = () => <div className="hello">Hello World</div>;
      ```
 
@@ -1430,7 +1430,7 @@ There are several ways to style React components:
    * Local scoped styles where each class name is automatically scoped to the component.
    * Example:
      ```jsx
-     codeimport styles from './Component.module.css';
+     import styles from './Component.module.css';
      const Component = () => <div className={styles.hello}>Hello World</div>;
      ```
 
@@ -1439,7 +1439,7 @@ There are several ways to style React components:
    * Using the `styled-components` library to define component-level styles with tagged template literals in JavaScript.
    * Example:
      ```jsx
-     codeimport styled from 'styled-components';
+     import styled from 'styled-components';
      const Hello = styled.div`
        color: blue;
        font-size: 20px;
@@ -1474,7 +1474,7 @@ There are several ways to style React components:
    * Using SASS/SCSS with React, typically with a preprocessor setup for `.scss` files.
    * Example:
      ```jsx
-     codeimport './Component.scss';
+     import './Component.scss';
      const Component = () => <div className="hello">Hello World</div>;
      ```
 
@@ -1627,7 +1627,7 @@ Responsive design in React can be handled using several techniques:
    * Import the `.module.css` file into the React component.
    * Example:
      ```jsx
-     codeimport styles from './Component.module.css';
+     import styles from './Component.module.css';
 
      const Component = () => <div className={styles.container}>Hello World</div>;
      ```
@@ -1719,7 +1719,7 @@ JavaScript’s **asynchronous nature** is crucial for React, especially in handl
 Example:
 
 ```js
-codeimport { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [data, setData] = useState(null);
@@ -1753,7 +1753,7 @@ A **closure** is a function that "remembers" its lexical scope, even when the fu
 Closures are commonly used in React to handle events, callbacks, and state updates that need to remember the component’s state at the time of their creation.
 
 ```js
-codeimport React, { useState } from 'react';
+import React, { useState } from 'react';
 
 function Counter() {
   const [count, setCount] = useState(0);
