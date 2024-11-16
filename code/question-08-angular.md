@@ -220,7 +220,7 @@ The **Angular Router** is a powerful feature of Angular that enables navigation 
 * **app-routing.module.ts**:
 
 ```typescript
-codeimport { NgModule } from '@angular/core';
+import  { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -382,7 +382,7 @@ export class MyComponent {
 **Example of a Custom Pipe:**
 
 ```typescript
-codeimport { Pipe, PipeTransform } from '@angular/core';
+import  { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'filter'
@@ -587,7 +587,7 @@ When working with HTTP requests, Angular’s `HttpClient` service returns Observ
 #### Example: HTTP Request with Observables
 
 ```typescript
-codeimport { HttpClient } from '@angular/common/http';
+import  { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -606,7 +606,7 @@ export class DataService {
 In the above example, `getData()` returns an `Observable` that you can subscribe to in a component to retrieve the HTTP response asynchronously.
 
 ```typescript
-codeimport { Component, OnInit } from '@angular/core';
+import  { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 
 @Component({
@@ -642,7 +642,7 @@ In RxJS, error handling can be done using the following strategies:
 #### Example: Using `catchError` for error handling
 
 ```typescript
-codeimport { Observable, of } from 'rxjs';
+import  { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 this.dataService.getData().pipe(
@@ -744,7 +744,7 @@ Managing state in Angular using RxJS typically involves using **BehaviorSubject*
 #### Example of State Management with `BehaviorSubject`
 
 ```typescript
-codeimport { BehaviorSubject } from 'rxjs';
+import  { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -838,7 +838,7 @@ Here’s how I use `TestBed`:
   Example:
 
   ```typescript
-  codeimport { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+  import  { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -1187,7 +1187,7 @@ In Angular, the token can be retrieved from storage and attached to HTTP request
 1. **Import `HttpClient`**:
 
    ```typescript
-   codeimport { HttpClient } from '@angular/common/http';
+   import  { HttpClient } from '@angular/common/http';
    import { Injectable } from '@angular/core';
    ```
 
@@ -1257,7 +1257,7 @@ To implement an interceptor, create a service that implements the `HttpIntercept
 1. **Create the Interceptor**:
 
    ```typescript
-   codeimport { Injectable } from '@angular/core';
+   import  { Injectable } from '@angular/core';
    import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
    import { Observable } from 'rxjs';
 
@@ -1284,7 +1284,7 @@ To implement an interceptor, create a service that implements the `HttpIntercept
 2. **Register the Interceptor**:
 
    ```typescript
-   codeimport { NgModule } from '@angular/core';
+   import  { NgModule } from '@angular/core';
    import { HTTP_INTERCEPTORS } from '@angular/common/http';
    import { AuthInterceptor } from './auth.interceptor';
 
@@ -1428,7 +1428,7 @@ In summary, file uploads in Angular involve using `HttpClient` with `FormData`, 
 * **DomSanitizer Service:** If you need to bind potentially unsafe content (e.g., HTML) in a controlled way, you can use Angular's `DomSanitizer` service to sanitize the content explicitly. For instance:
 
   ```typescript
-  codeimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+  import  { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
   export class SafeHtmlComponent {
     constructor(private sanitizer: DomSanitizer) {}
