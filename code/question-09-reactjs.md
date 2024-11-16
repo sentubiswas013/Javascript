@@ -55,7 +55,7 @@ In React, the component lifecycle refers to the series of methods (for class com
   Example:
 
   ```jsx
-  codefunction ControlledInput() {
+  function ControlledInput() {
     const [value, setValue] = useState("");
     return <input type="text" value={value} onChange={(e) => setValue(e.target.value)} />;
   }
@@ -66,7 +66,7 @@ In React, the component lifecycle refers to the series of methods (for class com
   Example:
 
   ```jsx
-  codefunction UncontrolledInput() {
+  function UncontrolledInput() {
     const inputRef = useRef();
     return <input type="text" ref={inputRef} />;
   }
@@ -87,7 +87,7 @@ In React, the component lifecycle refers to the series of methods (for class com
   Example:
 
   ```jsx
-  codefunction ChildComponent({ name }) {
+  function ChildComponent({ name }) {
     return <p>Hello, {name}!</p>;
   }
   ```
@@ -309,7 +309,7 @@ In the second example, no extra `div` is added to the DOM, keeping the structure
 **Example:**
 
 ```js
-codefunction MouseTracker({ render }) {
+function MouseTracker({ render }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
