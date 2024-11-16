@@ -20,7 +20,7 @@ Here are some common lifecycle hooks:
 Example:
 
   ```ts
-  tsCopy codengOnInit() {
+  codengOnInit() {
     console.log('Component initialized');
   }
   ```
@@ -29,7 +29,7 @@ Example:
 Example:
 
   ```ts
-  tsCopy codengOnChanges(changes: SimpleChanges) {
+  codengOnChanges(changes: SimpleChanges) {
     console.log('Changes detected:', changes);
   }
   ```
@@ -48,7 +48,7 @@ Example:
 Example:
 
   ```ts
-  tsCopy codengOnDestroy() {
+  codengOnDestroy() {
     console.log('Component destroyed');
   }
   ```
@@ -60,7 +60,7 @@ Decorators are a TypeScript feature used to annotate and modify classes, methods
 * **`@Component`**: This decorator is used to define a component. It provides metadata about the component, such as the template, selector, and styles. Example:
 
   ```ts
-  tsCopy code@Component({
+  code@Component({
     selector: 'app-example',
     templateUrl: './example.component.html',
     styleUrls: ['./example.component.css']
@@ -73,7 +73,7 @@ Decorators are a TypeScript feature used to annotate and modify classes, methods
 * **`@Injectable`**: This decorator marks a class as available for **dependency injection**. It is used for services or other classes that Angular can inject into components or other services. Example:
 
   ```ts
-  tsCopy code@Injectable({
+  code@Injectable({
     providedIn: 'root' // specifies where the service is provided
   })
   export class DataService {
@@ -88,7 +88,7 @@ Decorators are a TypeScript feature used to annotate and modify classes, methods
 * **`@NgModule`**: This decorator defines an Angular module, which organizes components, services, pipes, and other modules into cohesive blocks. The `@NgModule` metadata object can include properties like `declarations`, `imports`, `providers`, and `bootstrap`. Example:
 
   ```ts
-  tsCopy code@NgModule({
+  code@NgModule({
     declarations: [AppComponent, ExampleComponent],
     imports: [BrowserModule, HttpClientModule],
     providers: [DataService],
@@ -105,23 +105,23 @@ Data binding in Angular allows you to communicate between the component and the 
 
    * **Property Binding**: Binds the value of a component's property to an element property.
      ```html
-     htmlCopy code<img [src]="imageUrl">
+     <img [src]="imageUrl">
      ```
    * **Event Binding**: Binds an event (like click, keypress) to a method in the component.
      ```html
-     htmlCopy code<button (click)="onClick()">Click me</button>
+     <button (click)="onClick()">Click me</button>
      ```
 
 2. **Two-way Data Binding**: Data flows both ways, from the component to the view and from the view back to the component. This is typically achieved using `ngModel`.
 
    ```html
-   htmlCopy code<input [(ngModel)]="name">
+   <input [(ngModel)]="name">
    ```
 
 3. **Interpolation**: Used for inserting dynamic data into the template. It's a form of one-way binding where values from the component are rendered in the view.
 
    ```html
-   htmlCopy code<h1>{{ title }}</h1>
+   <h1>{{ title }}</h1>
    ```
 
 #### **What is Dependency Injection (DI) in Angular, and how does it work?**
@@ -136,7 +136,7 @@ How it works:
 Example:
 
 ```ts
-tsCopy code@Injectable({
+code@Injectable({
   providedIn: 'root'
 })
 export class LoggerService {
@@ -165,7 +165,7 @@ In this example, the `LoggerService` is injected into the `ExampleComponent` via
 1. **Creating a Service**: A service is typically created using Angular CLI with the command:
 
    ```bash
-   bashCopy codeng generate service my-service
+   codeng generate service my-service
    ```
 
    This generates a service file (`my-service.service.ts`) with the `@Injectable` decorator, making it injectable.
@@ -173,7 +173,7 @@ In this example, the `LoggerService` is injected into the `ExampleComponent` via
    Example:
 
    ```ts
-   tsCopy code@Injectable({
+   code@Injectable({
      providedIn: 'root' // service is available application-wide
    })
    export class MyService {
@@ -186,7 +186,7 @@ In this example, the `LoggerService` is injected into the `ExampleComponent` via
 2. **Injecting a Service into a Component**: To inject the service, declare it in the constructor of the component or another service. Example:
 
    ```ts
-   tsCopy code@Component({
+   code@Component({
      selector: 'app-example',
      template: `<div>{{ message }}</div>`
    })
@@ -222,7 +222,7 @@ The **Angular Router** is a powerful feature of Angular that enables navigation 
 * **app-routing.module.ts**:
 
 ```typescript
-typescriptCopy codeimport { NgModule } from '@angular/core';
+codeimport { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -242,7 +242,7 @@ export class AppRoutingModule {}
 * **app.component.html**:
 
 ```html
-htmlCopy code<nav>
+<nav>
   <a routerLink="/">Home</a>
   <a routerLink="/about">About</a>
 </nav>
@@ -268,7 +268,7 @@ In this setup, navigating to `/` will display `HomeComponent`, and navigating to
 * In your routing module, you can use `loadChildren` to lazily load a feature module.
 
 ```typescript
-typescriptCopy codeconst routes: Routes = [
+codeconst routes: Routes = [
   { path: 'feature', loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule) }
 ];
 ```
@@ -300,7 +300,7 @@ Angular modules (`NgModule`) are used to organize the application into cohesive 
 * **Core Module**: Place singleton services and utility classes in the core module to avoid multiple instances of the same service.
 
 ```typescript
-typescriptCopy code@NgModule({
+code@NgModule({
   declarations: [SomeComponent, SomePipe],
   exports: [SomeComponent, SomePipe],
   imports: [CommonModule]
@@ -320,7 +320,7 @@ export class SharedModule {}
   * Ideal for setup logic that doesn't depend on the view.
 
   ```typescript
-  typescriptCopy codengOnInit(): void {
+  codengOnInit(): void {
     this.loadData();
   }
   ```
@@ -333,7 +333,7 @@ export class SharedModule {}
   * Ideal for setting up behavior that depends on the presence of the view.
 
   ```typescript
-  typescriptCopy codengAfterViewInit(): void {
+  codengAfterViewInit(): void {
     console.log(this.childComponent); // Access child component after view init
   }
   ```
@@ -358,7 +358,7 @@ Angular uses **change detection** to track and respond to changes in data. By de
 **Usage Example:**
 
 ```typescript
-typescriptCopy code@Component({
+code@Component({
   selector: 'app-my-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './my-component.component.html'
@@ -384,7 +384,7 @@ export class MyComponent {
 **Example of a Custom Pipe:**
 
 ```typescript
-typescriptCopy codeimport { Pipe, PipeTransform } from '@angular/core';
+codeimport { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'filter'
@@ -411,7 +411,7 @@ export class FilterPipe implements PipeTransform {
   **Example**:
 
   ```html
-  htmlCopy code<form #form="ngForm">
+  <form #form="ngForm">
     <input name="username" ngModel required>
     <button [disabled]="form.invalid">Submit</button>
   </form>
@@ -425,7 +425,7 @@ export class FilterPipe implements PipeTransform {
   **Example**:
 
   ```typescript
-  typescriptCopy codethis.form = this.fb.group({
+  codethis.form = this.fb.group({
     username: ['', Validators.required]
   });
   ```
@@ -441,7 +441,7 @@ export class FilterPipe implements PipeTransform {
   **Example**:
 
   ```html
-  htmlCopy code<ng-content></ng-content>
+  <ng-content></ng-content>
   ```
 
 * \*\*\`
@@ -457,7 +457,7 @@ Optimizing the performance of an Angular application involves various strategies
   Example:
 
   ```ts
-  tsCopy codeconst routes: Routes = [
+  codeconst routes: Routes = [
     { path: 'feature', loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule) }
   ];
   ```
@@ -467,7 +467,7 @@ Optimizing the performance of an Angular application involves various strategies
   Example:
 
   ```ts
-  tsCopy code@Component({
+  code@Component({
     selector: 'app-component',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './component.html'
@@ -479,7 +479,7 @@ Optimizing the performance of an Angular application involves various strategies
   Example:
 
   ```ts
-  tsCopy code<div *ngFor="let item of items; trackBy: trackById">
+  code<div *ngFor="let item of items; trackBy: trackById">
     {{ item.name }}
   </div>
 
@@ -527,7 +527,7 @@ To troubleshoot performance issues in an Angular application, the following step
   Example:
 
   ```ts
-  tsCopy code<div *ngFor="let item of items; trackBy: trackById">
+  code<div *ngFor="let item of items; trackBy: trackById">
     {{ item.name }}
   </div>
 
@@ -553,7 +553,7 @@ The `async` pipe in Angular is used to automatically subscribe to an observable 
     Example:
 
     ```ts
-    tsCopy code<div>{{ dataObservable | async }}</div>
+    code<div>{{ dataObservable | async }}</div>
     ```
 
 ---
@@ -589,7 +589,7 @@ When working with HTTP requests, Angular’s `HttpClient` service returns Observ
 #### Example: HTTP Request with Observables
 
 ```typescript
-typescriptCopy codeimport { HttpClient } from '@angular/common/http';
+codeimport { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -608,7 +608,7 @@ export class DataService {
 In the above example, `getData()` returns an `Observable` that you can subscribe to in a component to retrieve the HTTP response asynchronously.
 
 ```typescript
-typescriptCopy codeimport { Component, OnInit } from '@angular/core';
+codeimport { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 
 @Component({
@@ -644,7 +644,7 @@ In RxJS, error handling can be done using the following strategies:
 #### Example: Using `catchError` for error handling
 
 ```typescript
-typescriptCopy codeimport { Observable, of } from 'rxjs';
+codeimport { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 this.dataService.getData().pipe(
@@ -670,7 +670,7 @@ These operators are used to manage the inner observables in higher-order mapping
   **Use case**: Fetching the latest search results.
 
   ```typescript
-  typescriptCopy codesearchTerm$ = new Subject<string>();
+  codesearchTerm$ = new Subject<string>();
 
   this.searchTerm$.pipe(
     switchMap(term => this.searchService.search(term))
@@ -684,7 +684,7 @@ These operators are used to manage the inner observables in higher-order mapping
   **Use case**: Uploading files one after the other.
 
   ```typescript
-  typescriptCopy codefileQueue$.pipe(
+  codefileQueue$.pipe(
     concatMap(file => this.uploadFile(file))
   ).subscribe(response => {
     console.log('File uploaded:', response);
@@ -696,7 +696,7 @@ These operators are used to manage the inner observables in higher-order mapping
   **Use case**: Fetching multiple resources concurrently (e.g., loading user data, comments, and posts in parallel).
 
   ```typescript
-  typescriptCopy codeuser$.pipe(
+  codeuser$.pipe(
     mergeMap(user => this.loadUserPosts(user.id))
   ).subscribe(posts => {
     console.log(posts);
@@ -716,7 +716,7 @@ Higher-order mapping operators in RxJS are operators that take an observable as 
 #### Example of `concatMap` vs `switchMap`
 
 ```typescript
-typescriptCopy code// Using switchMap
+code// Using switchMap
 searchTerm$.pipe(
   switchMap(term => this.searchService.search(term)) // cancels previous request if a new search term comes
 ).subscribe(results => {
@@ -746,7 +746,7 @@ Managing state in Angular using RxJS typically involves using **BehaviorSubject*
 #### Example of State Management with `BehaviorSubject`
 
 ```typescript
-typescriptCopy codeimport { BehaviorSubject } from 'rxjs';
+codeimport { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -767,7 +767,7 @@ export class StateService {
 In this example, the `StateService` uses a `BehaviorSubject` to manage state. Components can subscribe to `getState()` to receive the current state and use `updateState()` to modify it.
 
 ```typescript
-typescriptCopy code// In a component
+code// In a component
 this.stateService.getState().subscribe(state => {
   console.log(state);
 });
@@ -805,7 +805,7 @@ Here’s how I use `TestBed`:
 * **Configure Testing Module**: You configure the module with declarations (components, pipes), providers (services), and imports (other modules). This mimics the application module.
 
   ```typescript
-  typescriptCopy codebeforeEach(() => {
+  codebeforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [MyComponent],  // Declare component to test
       providers: [MyService],       // Provide the service
@@ -818,7 +818,7 @@ Here’s how I use `TestBed`:
 * **Create Component/Service Instance**: After setting up the test bed, you can instantiate the component or service using `TestBed.createComponent()` for components or `TestBed.inject()` for services.
 
   ```typescript
-  typescriptCopy codeconst fixture = TestBed.createComponent(MyComponent);
+  codeconst fixture = TestBed.createComponent(MyComponent);
   const component = fixture.componentInstance;
   ```
 
@@ -829,7 +829,7 @@ Here’s how I use `TestBed`:
   Example using Jasmine:
 
   ```typescript
-  typescriptCopy codeconst mockService = jasmine.createSpyObj('MyService', ['getData']);
+  codeconst mockService = jasmine.createSpyObj('MyService', ['getData']);
   mockService.getData.and.returnValue(of(mockData)); // Mocking the return value of the method
 
   TestBed.configureTestingModule({
@@ -842,7 +842,7 @@ Here’s how I use `TestBed`:
   Example:
 
   ```typescript
-  typescriptCopy codeimport { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+  codeimport { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -878,7 +878,7 @@ To test a component with dependencies like services, observables, or other compo
    Example for an observable:
 
    ```typescript
-   typescriptCopy codemockService.getData.and.returnValue(of(mockData));
+   codemockService.getData.and.returnValue(of(mockData));
    ```
 
 3. **Injecting Components**: If the component has child components, you can declare them in the `TestBed` setup, and mock any methods if needed. If they have outputs, you can simulate user interactions using `fixture.detectChanges()`.
@@ -888,7 +888,7 @@ To test a component with dependencies like services, observables, or other compo
 Example:
 
 ```typescript
-typescriptCopy codeit('should call service on init', () => {
+codeit('should call service on init', () => {
   const service = TestBed.inject(MyService);
   const spy = spyOn(service, 'getData').and.returnValue(of(mockData));
   
@@ -909,7 +909,7 @@ There are several ways to use spies in unit tests:
   Example:
 
   ```typescript
-  typescriptCopy codeconst spy = jasmine.createSpy('myMethod');
+  codeconst spy = jasmine.createSpy('myMethod');
   spy.and.returnValue('mocked value'); // Define the return value for the spy
   ```
 
@@ -918,7 +918,7 @@ There are several ways to use spies in unit tests:
   Example:
 
   ```typescript
-  typescriptCopy codespyOn(myService, 'getData').and.returnValue(of(mockData)); // Spying on an existing method
+  codespyOn(myService, 'getData').and.returnValue(of(mockData)); // Spying on an existing method
   ```
 
 * **Assertions on Spies**: After the test has executed, you can make assertions on how the spy was called, like the number of calls, the arguments passed, or the return value.
@@ -926,7 +926,7 @@ There are several ways to use spies in unit tests:
   Example:
 
   ```typescript
-  typescriptCopy codeexpect(spy).toHaveBeenCalled();
+  codeexpect(spy).toHaveBeenCalled();
   expect(spy).toHaveBeenCalledWith('expected argument');
   ```
 
@@ -943,7 +943,7 @@ By using these techniques, you can write effective and isolated unit tests in An
 When organizing a large Angular application, the goal is to keep the codebase modular, scalable, and maintainable. A good folder structure is crucial to achieving this. Here is a sample folder structure:
 
 ```lua
-luaCopy codesrc/
+codesrc/
 |-- app/
 |   |-- core/                # Core modules and services, singletons, etc.
 |   |   |-- services/        # Shared services (e.g., API, authentication)
@@ -1058,7 +1058,7 @@ The **Singleton** pattern ensures that a class has only one instance throughout 
 Example:
 
 ```typescript
-typescriptCopy code@Injectable({
+code@Injectable({
   providedIn: 'root' // Singleton service across the app
 })
 export class UserService {
@@ -1079,7 +1079,7 @@ In Angular, **component communication** involves passing data between components
    Example:
 
    ```typescript
-   typescriptCopy code// Parent Component
+   code// Parent Component
    @Component({
      selector: 'app-parent',
      template: `<app-child [message]="parentMessage"></app-child>`
@@ -1103,7 +1103,7 @@ In Angular, **component communication** involves passing data between components
    Example:
 
    ```typescript
-   typescriptCopy code// Child Component
+   code// Child Component
    @Component({
      selector: 'app-child',
      template: `<button (click)="sendMessage()">Send Message</button>`
@@ -1133,7 +1133,7 @@ In Angular, **component communication** involves passing data between components
 Example:
 
 ```typescript
-typescriptCopy code@Injectable({ providedIn: 'root' })
+code@Injectable({ providedIn: 'root' })
 export class MessageService {
   private messageSubject = new BehaviorSubject<string>('');
   message$ = this.messageSubject.asObservable();
@@ -1179,7 +1179,7 @@ A JWT is a compact, URL-safe token used to represent claims between two parties 
 The token is sent in the `Authorization` header of HTTP requests as follows:
 
 ```http
-httpCopy codeAuthorization: Bearer <JWT>
+codeAuthorization: Bearer <JWT>
 ```
 
 In Angular, the token can be retrieved from storage and attached to HTTP requests using an HTTP interceptor.
@@ -1191,14 +1191,14 @@ In Angular, the token can be retrieved from storage and attached to HTTP request
 1. **Import `HttpClient`**:
 
    ```typescript
-   typescriptCopy codeimport { HttpClient } from '@angular/common/http';
+   codeimport { HttpClient } from '@angular/common/http';
    import { Injectable } from '@angular/core';
    ```
 
 2. **Inject `HttpClient` into the Service**:
 
    ```typescript
-   typescriptCopy code@Injectable({
+   code@Injectable({
      providedIn: 'root'
    })
    export class ApiService {
@@ -1221,7 +1221,7 @@ In Angular, the token can be retrieved from storage and attached to HTTP request
 Example:
 
 ```typescript
-typescriptCopy codethis.apiService.getData().subscribe(
+codethis.apiService.getData().subscribe(
   (response) => {
     console.log('Data received', response);
   },
@@ -1238,7 +1238,7 @@ typescriptCopy codethis.apiService.getData().subscribe(
 You can also handle HTTP errors with:
 
 ```typescript
-typescriptCopy codethis.http.get('url').pipe(
+codethis.http.get('url').pipe(
   catchError((error) => {
     // Handle error, log it, or show an alert
     console.error('Request failed', error);
@@ -1261,7 +1261,7 @@ To implement an interceptor, create a service that implements the `HttpIntercept
 1. **Create the Interceptor**:
 
    ```typescript
-   typescriptCopy codeimport { Injectable } from '@angular/core';
+   codeimport { Injectable } from '@angular/core';
    import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
    import { Observable } from 'rxjs';
 
@@ -1288,7 +1288,7 @@ To implement an interceptor, create a service that implements the `HttpIntercept
 2. **Register the Interceptor**:
 
    ```typescript
-   typescriptCopy codeimport { NgModule } from '@angular/core';
+   codeimport { NgModule } from '@angular/core';
    import { HTTP_INTERCEPTORS } from '@angular/common/http';
    import { AuthInterceptor } from './auth.interceptor';
 
@@ -1309,7 +1309,7 @@ To upload files, you can use the `HttpClient` to send `multipart/form-data` requ
 1. **Basic File Upload**:
 
    ```typescript
-   typescriptCopy codeuploadFile(event: any) {
+   codeuploadFile(event: any) {
      const file = event.target.files[0];
      const formData = new FormData();
      formData.append('file', file, file.name);
@@ -1328,7 +1328,7 @@ To upload files, you can use the `HttpClient` to send `multipart/form-data` requ
 2. **HTML Input for File Selection**:
 
    ```html
-   htmlCopy code<input type="file" (change)="uploadFile($event)" />
+   <input type="file" (change)="uploadFile($event)" />
    ```
 
 **Best Practices for Handling Large Files**:
@@ -1340,7 +1340,7 @@ For large files, it's common to split the file into smaller chunks and upload th
 Use `HttpClient`'s `reportProgress` option to track upload progress and provide feedback to users.
 
    ```typescript
-   typescriptCopy codeconst formData = new FormData();
+   codeconst formData = new FormData();
    formData.append('file', file, file.name);
 
    this.http.post('https://api.example.com/upload', formData, {
@@ -1422,7 +1422,7 @@ In summary, file uploads in Angular involve using `HttpClient` with `FormData`, 
   For example:
 
   ```html
-  htmlCopy code<div>{{ userInput }}</div>
+  <div>{{ userInput }}</div>
   ```
 
   In the above case, Angular will escape any special characters like `<`, `>`, and `&` in the `userInput` string, rendering them as plain text rather than as HTML or script.
@@ -1432,7 +1432,7 @@ In summary, file uploads in Angular involve using `HttpClient` with `FormData`, 
 * **DomSanitizer Service:** If you need to bind potentially unsafe content (e.g., HTML) in a controlled way, you can use Angular's `DomSanitizer` service to sanitize the content explicitly. For instance:
 
   ```typescript
-  typescriptCopy codeimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+  codeimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
   export class SafeHtmlComponent {
     constructor(private sanitizer: DomSanitizer) {}
@@ -1463,7 +1463,7 @@ In summary, file uploads in Angular involve using `HttpClient` with `FormData`, 
 
    * Configure a strict Content Security Policy to prevent inline scripts and mitigate risks like XSS. For example:
      ```json
-     jsonCopy codeContent-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self';
+     codeContent-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self';
      ```
    * This policy helps ensure that only trusted sources can execute JavaScript.
 
@@ -1502,7 +1502,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Creating a new Angular project**:
 
   ```arduino
-  arduinoCopy codeng new <project-name>
+  codeng new <project-name>
   ```
 
   This command creates a new Angular project with a default structure and sets up all the necessary dependencies.
@@ -1510,7 +1510,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Serving the application (development server)**:
 
   ```
-  Copy codeng serve
+  codeng serve
   ```
 
   This command compiles the project and starts a development server. It watches for changes and automatically reloads the application in the browser.
@@ -1518,7 +1518,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Generating components, services, and other Angular elements**:
 
   ```php-template
-  phpCopy codeng generate component <component-name>
+  codeng generate component <component-name>
   ng generate service <service-name>
   ng generate module <module-name>
   ```
@@ -1528,7 +1528,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Building the application for production**:
 
   ```css
-  cssCopy codeng build --prod
+  codeng build --prod
   ```
 
   This command compiles the application in production mode, enabling optimizations like Ahead-of-Time (AOT) compilation, minification, and tree-shaking to reduce the final bundle size.
@@ -1536,7 +1536,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Running tests**:
 
   ```bash
-  bashCopy codeng test
+  codeng test
   ```
 
   This runs unit tests using Karma and Jasmine by default, and outputs results to the terminal.
@@ -1544,7 +1544,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **E2E testing**:
 
   ```
-  Copy codeng e2e
+  codeng e2e
   ```
 
   This runs end-to-end tests using Protractor.
@@ -1594,14 +1594,14 @@ Angular CLI can also be configured to use specific linting rules or testing fram
 1. **Install the Schematics CLI**:
 
    ```bash
-   bashCopy codenpm install -g @angular-devkit/schematics-cli
+   codenpm install -g @angular-devkit/schematics-cli
    ```
 
 2. **Create a new schematics project**:  
 You can generate a new schematic project by running:
 
    ```php-template
-   phpCopy codeschematics blank <schematic-name>
+   codeschematics blank <schematic-name>
    ```
 
 3. **Define the schematic logic**:  
@@ -1616,7 +1616,7 @@ After implementing your schematic, you can package it and publish it to npm. Use
    Example command to use a custom schematic:
 
    ```php-template
-   phpCopy codeng generate <schematic-name>
+   codeng generate <schematic-name>
    ```
 
 ### **5\. What is Ahead-of-Time (AOT) compilation, and how does it differ from Just-in-Time (JIT) compilation?**
