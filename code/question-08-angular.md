@@ -18,7 +18,7 @@ Here are some common lifecycle hooks:
 Example:
 
   ```ts
-  codengOnInit() {
+  ngOnInit() {
     console.log('Component initialized');
   }
   ```
@@ -27,7 +27,7 @@ Example:
 Example:
 
   ```ts
-  codengOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
     console.log('Changes detected:', changes);
   }
   ```
@@ -46,7 +46,7 @@ Example:
 Example:
 
   ```ts
-  codengOnDestroy() {
+  ngOnDestroy() {
     console.log('Component destroyed');
   }
   ```
@@ -163,7 +163,7 @@ In this example, the `LoggerService` is injected into the `ExampleComponent` via
 1. **Creating a Service**: A service is typically created using Angular CLI with the command:
 
    ```bash
-   codeng generate service my-service
+   ng generate service my-service
    ```
 
    This generates a service file (`my-service.service.ts`) with the `@Injectable` decorator, making it injectable.
@@ -318,7 +318,7 @@ export class SharedModule {}
   * Ideal for setup logic that doesn't depend on the view.
 
   ```typescript
-  codengOnInit(): void {
+  ngOnInit(): void {
     this.loadData();
   }
   ```
@@ -331,7 +331,7 @@ export class SharedModule {}
   * Ideal for setting up behavior that depends on the presence of the view.
 
   ```typescript
-  codengAfterViewInit(): void {
+  ngAfterViewInit(): void {
     console.log(this.childComponent); // Access child component after view init
   }
   ```
@@ -1498,7 +1498,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Creating a new Angular project**:
 
   ```arduino
-  codeng new <project-name>
+  ng new <project-name>
   ```
 
   This command creates a new Angular project with a default structure and sets up all the necessary dependencies.
@@ -1506,7 +1506,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Serving the application (development server)**:
 
   ```
-  codeng serve
+  ng serve
   ```
 
   This command compiles the project and starts a development server. It watches for changes and automatically reloads the application in the browser.
@@ -1514,7 +1514,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Generating components, services, and other Angular elements**:
 
   ```php-template
-  codeng generate component <component-name>
+  ng generate component <component-name>
   ng generate service <service-name>
   ng generate module <module-name>
   ```
@@ -1524,7 +1524,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Building the application for production**:
 
   ```css
-  codeng build --prod
+  ng build --prod
   ```
 
   This command compiles the application in production mode, enabling optimizations like Ahead-of-Time (AOT) compilation, minification, and tree-shaking to reduce the final bundle size.
@@ -1532,7 +1532,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **Running tests**:
 
   ```bash
-  codeng test
+  ng test
   ```
 
   This runs unit tests using Karma and Jasmine by default, and outputs results to the terminal.
@@ -1540,7 +1540,7 @@ The **Angular CLI** is a powerful tool that helps you to create, develop, test, 
 * **E2E testing**:
 
   ```
-  codeng e2e
+  ng e2e
   ```
 
   This runs end-to-end tests using Protractor.
@@ -1612,7 +1612,7 @@ After implementing your schematic, you can package it and publish it to npm. Use
    Example command to use a custom schematic:
 
    ```php-template
-   codeng generate <schematic-name>
+   ng generate <schematic-name>
    ```
 
 ### **5\. What is Ahead-of-Time (AOT) compilation, and how does it differ from Just-in-Time (JIT) compilation?**
