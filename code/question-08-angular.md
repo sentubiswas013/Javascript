@@ -1,7 +1,5 @@
 Here is a list of potential interview questions for a Senior Angular Developer. These questions cover a wide range of topics including Angular fundamentals, advanced concepts, performance optimization, testing, and best practices. You can use this list to assess both technical knowledge and problem-solving abilities:
 
-### **1\. Core Angular Concepts**
-
 ### 1\. **Core Angular Concepts**
 
 #### **What is the difference between Angular and AngularJS?**
@@ -774,8 +772,6 @@ this.stateService.getState().subscribe(state => {
 ```
 
 This allows different components to share and react to state changes in a reactive manner, leveraging the power of RxJS.
-
-### **5\. Angular Testing**
 
 ### **5\. Angular Testing**
 
