@@ -71,7 +71,7 @@ Decorators are a TypeScript feature used to annotate and modify classes, methods
 * **`@Injectable`**: This decorator marks a class as available for **dependency injection**. It is used for services or other classes that Angular can inject into components or other services. Example:
 
   ```ts
-  code@Injectable({
+  @Injectable({
     providedIn: 'root' // specifies where the service is provided
   })
   export class DataService {
@@ -86,7 +86,7 @@ Decorators are a TypeScript feature used to annotate and modify classes, methods
 * **`@NgModule`**: This decorator defines an Angular module, which organizes components, services, pipes, and other modules into cohesive blocks. The `@NgModule` metadata object can include properties like `declarations`, `imports`, `providers`, and `bootstrap`. Example:
 
   ```ts
-  code@NgModule({
+  @NgModule({
     declarations: [AppComponent, ExampleComponent],
     imports: [BrowserModule, HttpClientModule],
     providers: [DataService],
@@ -171,7 +171,7 @@ In this example, the `LoggerService` is injected into the `ExampleComponent` via
    Example:
 
    ```ts
-   code@Injectable({
+   @Injectable({
      providedIn: 'root' // service is available application-wide
    })
    export class MyService {
@@ -298,7 +298,7 @@ Angular modules (`NgModule`) are used to organize the application into cohesive 
 * **Core Module**: Place singleton services and utility classes in the core module to avoid multiple instances of the same service.
 
 ```typescript
-code@NgModule({
+@NgModule({
   declarations: [SomeComponent, SomePipe],
   exports: [SomeComponent, SomePipe],
   imports: [CommonModule]
@@ -356,7 +356,7 @@ Angular uses **change detection** to track and respond to changes in data. By de
 **Usage Example:**
 
 ```typescript
-code@Component({
+@Component({
   selector: 'app-my-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './my-component.component.html'
@@ -465,7 +465,7 @@ Optimizing the performance of an Angular application involves various strategies
   Example:
 
   ```ts
-  code@Component({
+  @Component({
     selector: 'app-component',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './component.html'
@@ -1054,7 +1054,7 @@ The **Singleton** pattern ensures that a class has only one instance throughout 
 Example:
 
 ```typescript
-code@Injectable({
+@Injectable({
   providedIn: 'root' // Singleton service across the app
 })
 export class UserService {
@@ -1129,7 +1129,7 @@ In Angular, **component communication** involves passing data between components
 Example:
 
 ```typescript
-code@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' })
 export class MessageService {
   private messageSubject = new BehaviorSubject<string>('');
   message$ = this.messageSubject.asObservable();
@@ -1194,7 +1194,7 @@ In Angular, the token can be retrieved from storage and attached to HTTP request
 2. **Inject `HttpClient` into the Service**:
 
    ```typescript
-   code@Injectable({
+   @Injectable({
      providedIn: 'root'
    })
    export class ApiService {
