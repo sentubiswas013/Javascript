@@ -741,10 +741,10 @@ document.querySelector('#parent').addEventListener('click', function(event) {
 });
 ```
 
-- **How it works**: 
+**How it works**: 
 - Instead of adding an event listener to each child element, you add one listener to a common ancestor (like a container element) and use the event's `target` property to determine which child element triggered the event.
 
-- **Use case**:  
+**Use case**:  
 - Dynamically added items: Suppose you have a list where new items are added via JavaScript. Instead of adding event listeners to each new list item, you can add a listener to the parent `<ul>` element and use event delegation to handle clicks on `<li>` elements.
 
 **Why it's useful:**
