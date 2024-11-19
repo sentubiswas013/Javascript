@@ -881,6 +881,11 @@ Sure! Let's go through each of the JavaScript questions one by one:
   myClosure();  // 10
   ```
 
+  **Usefulness in frontend development:**
+
+* Closures are useful for data encapsulation and creating private variables.
+* They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
+
 ---
 
 ### 2\. **What is the difference between call() and apply() in JavaScript?**

@@ -4,34 +4,6 @@ Here’s a list of advanced JavaScript questions that would be appropriate for a
 
 Here are detailed answers to your JavaScript-related questions:
 
----
-
-
-### 3\. **Explain closures in JavaScript. How can they be useful in frontend development?**
-
-A **closure** is a function that "remembers" the scope in which it was created, even after that scope has finished executing. This means it has access to variables from its outer function, even when called outside of it.
-
-**Usefulness in frontend development:**
-
-* Closures are useful for data encapsulation and creating private variables.
-* They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
-
-Example:
-
-```javascript
- function outer() {
-  let counter = 0;
-  
-  return function inner() {
-    counter++;
-    console.log(counter);
-  };
-}
-
-const increment = outer();
-increment(); // 1
-increment(); // 2
-```
 
 ---
 

@@ -2,25 +2,6 @@
 
 ## Basic JavaScript Concepts
 
-### 8\. **What is a closure in JavaScript, and how does it work?**
-
-* A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope. In other words, closures allow a function to access variables from its outer function even after the outer function has finished execution.
-  * Closures are created whenever a function is defined within another function.
-  * Example:
-    ```javascript
-     function outer() {
-      let counter = 0;
-      return function inner() {
-        counter++;
-        console.log(counter);
-      };
-    }
-
-    const increment = outer();
-    increment(); // 1
-    increment(); // 2
-    ```
-  * Here, `inner()` has access to `counter` even though `outer()` has finished execution.
 
 ### 9\. **What is the difference between `null` and `undefined`?**
 

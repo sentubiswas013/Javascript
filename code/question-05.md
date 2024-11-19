@@ -234,31 +234,6 @@ Sass (Syntactically Awesome Stylesheets) and LESS are two popular preprocessors.
 ## JavaScript (Vanilla JS)
 ---
 
-
-### 4. What is a Closure, and How Can It Be Useful in JavaScript?
-
-A **closure** is a function that retains access to its lexical environment (the variables that were in scope when the function was created) even after the outer function has finished execution.
-
-### Usefulness:
-
-- **Data encapsulation**: Closures allow for private variables and functions by "hiding" variables inside a function scope while still providing access to them through returned functions.
-- **Function factories**: You can create functions with customized behavior by closing over specific data.
-
-### Example:
-
-```javascript
-    function counter() {
-    let count = 0;
-    return function() {
-        count++;
-        return count;
-    };
-    }
-
-    const myCounter = counter();
-    console.log(myCounter()); // 1
-    console.log(myCounter()); // 2
-
 ### 5. Event Loop in JavaScript and How Asynchronous Code is Handled:
 
 The event loop is responsible for handling asynchronous operations in JavaScript. It ensures that non-blocking code (like I/O operations, timers, or event listeners) is executed after the main thread finishes executing synchronous code.
