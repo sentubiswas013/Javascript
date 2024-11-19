@@ -310,27 +310,6 @@ doSomething()
   .catch(error => console.error(error));
 ```
 
-### 7. Synchronous vs. Asynchronous Execution in JavaScript:
-
-Synchronous Execution: Code is executed in sequence, blocking the next operation until the current one is finished.
-
-### Example:
-
-```javascript
-    console.log(1);
-    console.log(2);
-    console.log(3);
-```
-
-Asynchronous Execution: Code that runs in the background without blocking the main thread. Operations like HTTP requests, timers, and file I/O are asynchronous.
-
-### Example::
-
-```javascript
-    setTimeout(() => console.log('Async'), 1000);
-    console.log('Sync');
-    // Output: 'Sync' followed by 'Async'
-```
 ### 9. Higher-Order Functions in JavaScript:
 
 A higher-order function is a function that either takes one or more functions as arguments or returns a function.

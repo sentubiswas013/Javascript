@@ -456,14 +456,14 @@ The **event loop** is a mechanism that handles asynchronous operations in JavaSc
 
 Example:
 
-* Synchronous:
+* Synchronous: Code is executed in sequence, blocking the next operation until the current one is finished.
 
   ```javascript
   console.log("First");
   console.log("Second");
   ```
 
-* Asynchronous (with `setTimeout`):
+* Asynchronous (with `setTimeout`): Code that runs in the background without blocking the main thread. Operations like HTTP requests, timers, and file I/O are asynchronous.
 
   ```javascript
   console.log("First");

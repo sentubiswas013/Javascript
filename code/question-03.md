@@ -2,14 +2,6 @@
 
 ## Basic JavaScript Concepts
 
-### 6\. **How does JavaScript handle asynchronous code?**
-
-JavaScript handles asynchronous code primarily through:
-
-* **Callbacks**: Functions passed as arguments to be executed after a certain task is completed (e.g., after reading a file or receiving data from an API).
-* **Promises**: A more robust way to handle asynchronous operations. A promise represents a value that may be available now, later, or never. It can be in one of three states: pending, fulfilled, or rejected.
-* **Async/Await**: A syntax sugar introduced in ES2017 to handle promises in a cleaner, more readable way. `async` functions return a promise, and `await` pauses execution until the promise is resolved.
-
 ### 7\. **What is event delegation and why is it useful in JavaScript?**
 
 * **Event delegation** is a technique in JavaScript where a single event listener is attached to a parent element instead of multiple listeners on child elements. The event listener checks the event's target to determine which child element triggered the event.

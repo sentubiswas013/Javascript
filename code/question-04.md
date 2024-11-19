@@ -712,38 +712,6 @@ For example:
 
 ---
 
-### 30\. **What are the key differences between synchronous and asynchronous iteration in JavaScript?**
-
-* **Synchronous iteration** means the code executes in a sequential, blocking manner. Each iteration waits for the previous one to complete before moving on.
-
-  Example of synchronous iteration:
-
-  ```js
-   const arr = [1, 2, 3];
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]); // Blocking, executes sequentially
-  }
-  ```
-
-* **Asynchronous iteration** allows the program to perform non-blocking operations, so it doesn't wait for each iteration to complete before continuing. It is typically used with promises or async functions.
-
-  Example of asynchronous iteration:
-
-  ```js
-   codeasync function processData() {
-    const arr = [1, 2, 3];
-    for (let i = 0; i < arr.length; i++) {
-      await someAsyncOperation(arr[i]); // Non-blocking, allows other operations to run
-    }
-  }
-  ```
-
-**Key Differences**:
-
-1. **Blocking vs Non-blocking**: Synchronous iteration blocks the execution, while asynchronous iteration does not.
-2. **Use Case**: Synchronous is for when tasks need to complete one by one; asynchronous is for IO-bound or long-running tasks that shouldn't block the execution thread.
-
----
 
 ### 31\. **What is the Virtual DOM, and how does it relate to frontend frameworks like React?**
 
