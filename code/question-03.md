@@ -2,19 +2,6 @@
 
 ## Basic JavaScript Concepts
 
-
-### 3\. **What is the difference between `==` and `===` in JavaScript?**
-
-* **`==` (Equality operator)**:
-
-  * Performs *type coercion*. This means it converts the values to the same type before comparing them.
-  * Example: `1 == '1'` evaluates to `true` because JavaScript converts the string `'1'` to a number before comparing.
-
-* **`===` (Strict equality operator)**:
-
-  * Does *not* perform type coercion and compares both the value and the type of the two operands.
-  * Example: `1 === '1'` evaluates to `false` because the types (number and string) are different, even though the values are the same.
-
 ### 4\. **Explain the concept of hoisting in JavaScript.**
 
 * **Hoisting** is JavaScript's behavior of moving variable and function declarations to the top of their containing scope during the compilation phase.
