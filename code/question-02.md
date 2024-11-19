@@ -15,6 +15,12 @@ JavaScript is a dynamic, interpreted programming language primarily used for cre
 * `const`: Declares a block-scoped variable whose value cannot be reassigned after initialization.
 * `var`: Declares a function-scoped variable, which can be re-declared and reassigned (not recommended due to its behavior with hoisting).
 
+```javascript
+let x = 5; // Can be reassigned
+const y = 10; // Cannot be reassigned
+var z = 15; // Function-scoped
+```
+
 - **`var`**:
 
   - **Scope**: Function-scoped (if declared inside a function) or globally-scoped.
@@ -35,11 +41,6 @@ JavaScript is a dynamic, interpreted programming language primarily used for cre
   - **Re-declaration**: Cannot be re-declared in the same scope.
   - **Mutability**: The variable must be assigned a value at the time of declaration and cannot be reassigned. However, if the value is an object or array, its properties or elements can still be modified.
 
-```javascript
-let x = 5; // Can be reassigned
-const y = 10; // Cannot be reassigned
-var z = 15; // Function-scoped
-```
 
 ### 3\. **What are the data types in JavaScript?**
 
