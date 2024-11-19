@@ -15,6 +15,26 @@ JavaScript is a dynamic, interpreted programming language primarily used for cre
 * `const`: Declares a block-scoped variable whose value cannot be reassigned after initialization.
 * `var`: Declares a function-scoped variable, which can be re-declared and reassigned (not recommended due to its behavior with hoisting).
 
+- **`var`**:
+
+  - **Scope**: Function-scoped (if declared inside a function) or globally-scoped.
+  - **Hoisting**: Variables declared with `var` are hoisted to the top of their scope but initialized with `undefined`.
+  - **Re-declaration**: You can re-declare the same variable in the same scope.
+  - **Use**: Considered outdated for modern JavaScript due to issues with scoping and hoisting.
+
+- **`let`**:
+
+  - **Scope**: Block-scoped (only accessible within the block it’s declared in, such as within a loop or if-statement).
+  - **Hoisting**: Hoisted but not initialized. Accessing it before the declaration results in a ReferenceError (due to the Temporal Dead Zone).
+  - **Re-declaration**: Cannot be re-declared within the same scope.
+  - **Use**: Preferred for variables whose value will change.
+
+- **`const`**:
+  - **Scope**: Block-scoped.
+  - **Hoisting**: Like `let`, `const` is hoisted but not initialized, leading to a Temporal Dead Zone.
+  - **Re-declaration**: Cannot be re-declared in the same scope.
+  - **Mutability**: The variable must be assigned a value at the time of declaration and cannot be reassigned. However, if the value is an object or array, its properties or elements can still be modified.
+
 ```javascript
 let x = 5; // Can be reassigned
 const y = 10; // Cannot be reassigned
