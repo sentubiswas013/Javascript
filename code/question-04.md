@@ -67,20 +67,6 @@ const arrowFunc = () => {
 
 ---
 
-### 7\. **What is the difference between `null` and `undefined` in JavaScript? Can you give an example of when each would be used?**
-
-* **`null`** is an intentional absence of any object value. It’s often used to indicate that a variable should be empty, but is explicitly set to null.
-* **`undefined`** means a variable has been declared but has not been assigned a value, or a function does not explicitly return anything.
-
-Example:
-
-```javascript
- codelet a; // undefined because it’s declared but not assigned a value
-let b = null; // explicitly assigned to null
-```
-
----
-
 ### 8\. **Explain the concepts of prototypal inheritance and prototype chain in JavaScript.**
 
 **Prototypal inheritance** is a feature where objects can inherit properties and methods from other objects. Each object has an internal link to a prototype object, and it looks up properties on this prototype if they're not found on the object itself.

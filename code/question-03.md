@@ -3,18 +3,6 @@
 ## Basic JavaScript Concepts
 
 
-### 9\. **What is the difference between `null` and `undefined`?**
-
-* **`null`**:
-  * `null` is an explicit assignment value, representing the intentional absence of any object value.
-  * It is often used to indicate that a variable is empty or not yet initialized with a valid value.
-* **`undefined`**:
-  * `undefined` means a variable has been declared but has not yet been assigned a value. It is the default value assigned to uninitialized variables.
-  * It is also the return value of a function that does not have a `return` statement.
-
-In summary, `null` is used to explicitly indicate "no value," whereas `undefined` is the default state of an uninitialized variable.
-
-
 ## Arrays and Strings
 
 Here are the JavaScript answers for the questions you asked:
