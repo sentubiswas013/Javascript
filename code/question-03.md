@@ -2,14 +2,6 @@
 
 ## Basic JavaScript Concepts
 
-### 5\. **What is the purpose of the `this` keyword in JavaScript?**
-
-* The `this` keyword in JavaScript refers to the context in which a function is executed, and its value is determined by how the function is called.
-  * In a **method** (function inside an object), `this` refers to the object the method is called on.
-  * In a **regular function**, `this` typically refers to the global object (`window` in browsers) in non-strict mode, or `undefined` in strict mode.
-  * In **arrow functions**, `this` does not bind to the function itself but instead inherits the `this` from the surrounding lexical context.
-  * In **event handlers**, `this` refers to the DOM element that triggered the event.
-
 ### 6\. **How does JavaScript handle asynchronous code?**
 
 JavaScript handles asynchronous code primarily through:

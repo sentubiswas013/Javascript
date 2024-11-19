@@ -234,15 +234,6 @@ Sass (Syntactically Awesome Stylesheets) and LESS are two popular preprocessors.
 ## JavaScript (Vanilla JS)
 ---
 
-### 2. What is the `this` keyword in JavaScript? How does its value change depending on the context?:
-
-- **What it is**: The `this` keyword refers to the context in which a function is executed. Its value can change depending on how a function is called.
-- **Context-dependent**:
-  - **Global context**: In the global execution context (outside any function), `this` refers to the global object (`window` in browsers, `global` in Node.js).
-  - **Inside a method**: When used inside an object method, `this` refers to the object itself.
-  - **Inside a constructor**: In a constructor function, `this` refers to the newly created object.
-  - **Arrow functions**: Arrow functions do not have their own `this`; instead, they inherit `this` from their surrounding (lexical) context.
-  - **Explicit binding**: Methods like `call()`, `apply()`, and `bind()` can explicitly set the value of `this`.
 
 ### 3. Can you explain event delegation in JavaScript and provide a use case?:
 
