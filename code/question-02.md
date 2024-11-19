@@ -67,8 +67,8 @@ JavaScript has seven basic data types:
 
 ### 4\. **What is the difference between `==` and `===`?**
 
-* `==`: Compares values for equality with type coercion.
-* `===`: Compares values for equality without type coercion (strict equality).
+* `==`: Compares values for equality with type coercion. It tries to convert the operands to the same type before comparing them. This can lead to unexpected results
+* `===`: Compares values for equality without type coercion (strict equality). It is the **strict equality** operator, meaning it checks both value and type, and does **not perform type coercion**
 
 ```javascript
 5 == '5'  // true because type coercion occurs

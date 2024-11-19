@@ -2,18 +2,6 @@
 
 ## Basic JavaScript Concepts
 
-### 2\. **What are primitive data types in JavaScript?**
-
-Primitive data types in JavaScript are the basic building blocks of the language. They are immutable (unchangeable) and are passed by value, meaning a copy of the value is assigned when passed to functions or assigned to other variables. The primitive types are:
-
-* **String**: Represents textual data, e.g., `"Hello World"`.
-* **Number**: Represents numeric values, both integer and floating-point, e.g., `42` or `3.14`.
-* **BigInt**: A numeric type that can represent integers larger than `Number.MAX_SAFE_INTEGER`.
-* **Boolean**: Represents a true or false value.
-* **undefined**: Represents a variable that has been declared but not assigned a value.
-* **null**: Represents the intentional absence of any object value.
-* **Symbol**: A unique and immutable primitive value used primarily for object property keys.
-* **undefined**: A primitive type representing a variable that has not been assigned a value.
 
 ### 3\. **What is the difference between `==` and `===` in JavaScript?**
 
