@@ -6,25 +6,6 @@ Here are detailed answers to your JavaScript-related questions:
 
 ---
 
----
-
-### 2\. **What is hoisting in JavaScript? How does it work with variables and functions?**
-
-* **Hoisting** is JavaScript's behavior of moving variable and function declarations to the top of their containing scope during the compile phase, before code execution begins.
-
-  * **For functions**: Function declarations (not expressions) are hoisted with both their definition and value, meaning you can call them before they appear in the code.
-
-  * **For variables**: With `var`, only the declaration (not the initialization) is hoisted, so the variable is initialized as `undefined`. With `let` and `const`, only the declaration is hoisted, but not the initialization, leading to a "temporal dead zone" if you try to access them before the declaration.
-
-```javascript
- codeconsole.log(x); // undefined
-var x = 5; 
-
-console.log(y); // ReferenceError: Cannot access 'y' before initialization
-let y = 10;
-```
-
----
 
 ### 3\. **Explain closures in JavaScript. How can they be useful in frontend development?**
 

@@ -340,27 +340,6 @@ Asynchronous Execution: Code that runs in the background without blocking the ma
     console.log('Sync');
     // Output: 'Sync' followed by 'Async'
 ```
-
-### 8. Hoisting in JavaScript:
-
-Hoisting is JavaScript’s default behavior of moving declarations (but not initializations) to the top of their containing scope during the compile phase.
-
-#### What gets hoisted:
-
-- **var declarations**: Only the declaration (not the assignment) is hoisted.
-  let and const declarations: These are hoisted, but accessing them before declaration results in a ReferenceError due to the Temporal Dead Zone (TDZ).
-  Function declarations: Entire function definitions are hoisted.
-
-```javascript
-    console.log(a); // undefined
-    var a = 10;
-
-    foo(); // Works because function declarations are hoisted
-    function foo() {
-    console.log('Hello!');
-    }
-```
-
 ### 9. Higher-Order Functions in JavaScript:
 
 A higher-order function is a function that either takes one or more functions as arguments or returns a function.

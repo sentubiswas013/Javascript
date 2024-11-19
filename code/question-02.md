@@ -125,15 +125,19 @@ typeof undefined; // 'undefined'
 typeof null;      // 'object' (a known JavaScript quirk)
 ```
 
-### 8\. **Explain the concept of hoisting in JavaScript.**
+### 8\. **What is hoisting in JavaScript? How does it work with variables and functions?**
 
-Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope (function or global). Only the declarations are hoisted, not the initializations.
+* **Hoisting** is JavaScript's behavior of moving variable and function declarations to the top of their containing scope during the compile phase, before code execution begins.
+
+  * **For functions**: Function declarations (not expressions) are hoisted with both their definition and value, meaning you can call them before they appear in the code.
+
+  * **For variables**: With `var`, only the declaration (not the initialization) is hoisted, so the variable is initialized as `undefined`. With `let` and `const`, only the declaration is hoisted, but not the initialization, leading to a "temporal dead zone" if you try to access them before the declaration.
 
 ```javascript
-console.log(x);  // undefined
-var x = 5;
+ codeconsole.log(x); // undefined
+var x = 5; 
 
-console.log(y);  // ReferenceError: Cannot access 'y' before initialization
+console.log(y); // ReferenceError: Cannot access 'y' before initialization
 let y = 10;
 ```
 

@@ -2,13 +2,6 @@
 
 ## Basic JavaScript Concepts
 
-### 4\. **Explain the concept of hoisting in JavaScript.**
-
-* **Hoisting** is JavaScript's behavior of moving variable and function declarations to the top of their containing scope during the compilation phase.
-  * For **variables declared with `var`**, the declaration (but not the initialization) is hoisted to the top of the scope. This means you can reference the variable before it's defined, but its value will be `undefined`.
-  * For **`let` and `const`**, the variable declarations are hoisted, but they are not initialized. They remain in a "temporal dead zone" from the start of the block until the declaration is encountered, and accessing them before the declaration results in a ReferenceError.
-  * **Function declarations** are hoisted with both the function name and the implementation, meaning you can call the function before its declaration in the code.
-
 ### 5\. **What is the purpose of the `this` keyword in JavaScript?**
 
 * The `this` keyword in JavaScript refers to the context in which a function is executed, and its value is determined by how the function is called.
