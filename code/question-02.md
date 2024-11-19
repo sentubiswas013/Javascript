@@ -58,16 +58,7 @@ JavaScript has seven basic data types:
 - **`Non-Primitive`**:
 
 - **`Key Differences between Primitive and Non-Primitive Data Types`**:
-|**Feature**|**Primitive Data Types**|**Non-Primitive Data Types**|
-|---|---|---|
-|**Memory**|Stored in stack memory|Stored in heap memory|
-|**Size**|Fixed size|Varies (depends on the data structure or object)|
-|**Value or Reference**|Holds the actual value|Holds a reference to the value (pointer to an object)|
-|**Complexity**|Simple and atomic|More complex and can store multiple values|
-|**Example**|`int`, `char`, `boolean`, `float`|`String`, `Array`, `Object`, `Class`, `Interface`|
-|**Mutability**|Immutable (except in some languages like Java)|Mutable or immutable depending on the type|
-
-### 4\. **What is the difference between `==` and `===`?**
+<table><thead><tr><th><strong>Feature</strong></th><th><strong>Primitive Data Types</strong></th><th><strong>Non-Primitive Data Types</strong></th></tr></thead><tbody><tr><td><strong>Memory</strong></td><td>Stored in stack memory</td><td>Stored in heap memory</td></tr><tr><td><strong>Size</strong></td><td>Fixed size</td><td>Varies (depends on the data structure or object)</td></tr><tr><td><strong>Value or Reference</strong></td><td>Holds the actual value</td><td>Holds a reference to the value (pointer to an object)</td></tr><tr><td><strong>Complexity</strong></td><td>Simple and atomic</td><td>More complex and can store multiple values</td></tr><tr><td><strong>Example</strong></td><td><code>int</code>, <code>char</code>, <code>boolean</code>, <code>float</code></td><td><code>String</code>, <code>Array</code>, <code>Object</code>, <code>Class</code>, <code>Interface</code></td></tr><tr><td><strong>Mutability</strong></td><td>Immutable (except in some languages like Java)</td><td>Mutable or immutable depending on the type</td></tr></tbody></table>
 
 * `==`: Compares values for equality with type coercion.
 * `===`: Compares values for equality without type coercion (strict equality).
