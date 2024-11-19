@@ -2,26 +2,6 @@
 
 ## Basic JavaScript Concepts
 
-### 1\. **What are `let`, `const`, and `var`? Explain the differences.**
-
-* **`var`**:
-
-  * The `var` keyword is used to declare variables.
-  * It has function scope or global scope, meaning it is accessible throughout the function or globally, depending on where it is declared.
-  * Variables declared with `var` are hoisted to the top of their scope, and their values are initialized as `undefined` until assigned a value.
-
-* **`let`**:
-
-  * The `let` keyword is used to declare block-scoped variables.
-  * It is only accessible within the block, statement, or expression where it is defined.
-  * `let` also allows reassignment, but unlike `var`, it is not hoisted in a way that would allow access before declaration (known as the "temporal dead zone").
-
-* **`const`**:
-
-  * `const` is used to declare constants, meaning the value cannot be reassigned after initialization.
-  * It is block-scoped like `let`, and variables declared with `const` must be initialized at the time of declaration.
-  * Note: While the variable cannot be reassigned, the contents of objects and arrays declared with `const` can be modified.
-
 ### 2\. **What are primitive data types in JavaScript?**
 
 Primitive data types in JavaScript are the basic building blocks of the language. They are immutable (unchangeable) and are passed by value, meaning a copy of the value is assigned when passed to functions or assigned to other variables. The primitive types are:

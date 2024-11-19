@@ -6,20 +6,6 @@ Here are detailed answers to your JavaScript-related questions:
 
 ---
 
-### 1\. **Explain the difference between `var`, `let`, and `const`. Why would you use one over the others?**
-
-* **`var`**: A function-scoped variable declaration. It has some quirks, like hoisting (it gets moved to the top of the scope with an undefined value) and allowing redeclaration within the same scope, which can lead to bugs. It also doesn't have block scope.
-
-* **`let`**: A block-scoped variable declaration. It is more flexible and predictable compared to `var`, and is generally preferred in modern JavaScript for variables whose values may change during execution. It is also hoisted, but not initialized, so accessing it before the declaration throws a `ReferenceError`.
-
-* **`const`**: Like `let`, it is block-scoped but it defines a constant reference. You cannot reassign a `const` variable, but the value it points to can still be mutable (e.g., objects or arrays). It's preferred when you don't want the value to be reassigned.
-
-**Why choose one?**
-
-* Use `let` for variables that need to change.
-* Use `const` for variables that should not be reassigned after initialization.
-* Avoid `var` due to its unexpected behavior and lack of block scoping.
-
 ---
 
 ### 2\. **What is hoisting in JavaScript? How does it work with variables and functions?**
