@@ -45,7 +45,7 @@ var z = 15; // Function-scoped
 ### 3\. **What are the data types in JavaScript?**
 
 JavaScript has seven basic data types:
-
+- **`Primitive`**:
 * `String` (e.g., `"hello"`)
 * `Number` (e.g., `42`)
 * `BigInt` (e.g., `9007199254740991n`)
@@ -54,6 +54,18 @@ JavaScript has seven basic data types:
 * `null` (e.g., an explicitly assigned empty value)
 * `Symbol` (e.g., `Symbol('desc')`)
 * `Object` (e.g., arrays, functions, and plain objects)
+
+- **`Non-Primitive`**:
+
+- **`Key Differences between Primitive and Non-Primitive Data Types`**:
+|**Feature**|**Primitive Data Types**|**Non-Primitive Data Types**|
+|---|---|---|
+|**Memory**|Stored in stack memory|Stored in heap memory|
+|**Size**|Fixed size|Varies (depends on the data structure or object)|
+|**Value or Reference**|Holds the actual value|Holds a reference to the value (pointer to an object)|
+|**Complexity**|Simple and atomic|More complex and can store multiple values|
+|**Example**|`int`, `char`, `boolean`, `float`|`String`, `Array`, `Object`, `Class`, `Interface`|
+|**Mutability**|Immutable (except in some languages like Java)|Mutable or immutable depending on the type|
 
 ### 4\. **What is the difference between `==` and `===`?**
 
