@@ -169,21 +169,6 @@ console.log(employee.job); // Engineer (own property)
 
 ---
 
-### 9\. **What are the differences between `==` and `===` in JavaScript?**
-
-* **`==`** performs **type coercion**. It tries to convert the operands to the same type before comparing them. This can lead to unexpected results.
-
-* **`===`** is the **strict equality** operator, meaning it checks both value and type, and does **not perform type coercion**.
-
-Example:
-
-```javascript
- codeconsole.log(5 == '5');  // true (type coercion)
-console.log(5 === '5'); // false (different types)
-```
-
----
-
 ### 10\. **What is the event loop in JavaScript? How does the call stack, event queue, and microtask queue work together?**
 
 The **event loop** is the mechanism that handles asynchronous operations in JavaScript. It continually checks the call stack, event queue, and microtask queue to execute code.
