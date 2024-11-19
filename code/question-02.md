@@ -243,6 +243,7 @@ The `this` keyword refers to the context in which a function is called. Its valu
 };
 person.greet(); // Hello, Alice
 ```
+In global scope, `this` refers to the global object (`window` in browsers).
 
 - **Context-dependent**:
   - **Global context**: In the global execution context (outside any function), `this` refers to the global object (`window` in browsers, `global` in Node.js).
@@ -251,7 +252,6 @@ person.greet(); // Hello, Alice
   - **Arrow functions**: Arrow functions do not have their own `this`; instead, they inherit `this` from their surrounding (lexical) context.
   - **Explicit binding**: Methods like `call()`, `apply()`, and `bind()` can explicitly set the value of `this`.
 
-In global scope, `this` refers to the global object (`window` in browsers).
 
 ### 16\. **How does the `forEach()` method work?**
 
