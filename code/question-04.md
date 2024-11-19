@@ -95,27 +95,6 @@ const arrowFunc = () => {
 
 ---
 
-### 6\. **What is event delegation, and why is it useful in JavaScript?**
-
-**Event delegation** is a technique where you attach a single event listener to a parent element rather than individual child elements. It takes advantage of the event bubbling mechanism, where events propagate from the target element to the root.
-
-**Why it's useful:**
-
-* Reduces memory usage by minimizing the number of event listeners.
-* Works with dynamically added elements (elements that may not exist at the time the listener is attached).
-
-Example:
-
-```javascript
- codedocument.querySelector('#parent').addEventListener('click', (event) => {
-  if (event.target && event.target.matches('button.className')) {
-    console.log('Button clicked!');
-  }
-});
-```
-
----
-
 ### 7\. **What is the difference between `null` and `undefined` in JavaScript? Can you give an example of when each would be used?**
 
 * **`null`** is an intentional absence of any object value. It’s often used to indicate that a variable should be empty, but is explicitly set to null.

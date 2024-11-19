@@ -235,23 +235,6 @@ Sass (Syntactically Awesome Stylesheets) and LESS are two popular preprocessors.
 ---
 
 
-### 3. Can you explain event delegation in JavaScript and provide a use case?:
-
-Event delegation is a technique that involves attaching a single event listener to a parent element instead of multiple listeners to each child element. This allows handling events for dynamically added elements.
-
-- **How it works**: Instead of adding an event listener to each child element, you add one listener to a common ancestor (like a container element) and use the event's `target` property to determine which child element triggered the event.
-- **Use case**:
-
-  - Dynamically added items: Suppose you have a list where new items are added via JavaScript. Instead of adding event listeners to each new list item, you can add a listener to the parent `<ul>` element and use event delegation to handle clicks on `<li>` elements.
-
-  ```javascript
-  document.querySelector('ul').addEventListener('click', (event) => {
-    if (event.target.tagName === 'LI') {
-      console.log('Item clicked:', event.target.textContent);
-    }
-  });
-  ```
-
 ### 4. What is a Closure, and How Can It Be Useful in JavaScript?
 
 A **closure** is a function that retains access to its lexical environment (the variables that were in scope when the function was created) even after the outer function has finished execution.

@@ -2639,34 +2639,7 @@ document.querySelector("#parent").addEventListener("click",(e)=> {console.log("p
 document.querySelector("#child").addEventListener("click",()=> {console.log("child clicked")},false); 
 ```
 ------------------------------------------
-#### Event Delegation:
 
-1. Event delegation makes use of one of the Event Propagation techniques called Event Bubbling
-2. if we have a lot of elements handled in a similar way, then instead of assigning a handler to each of them – we put a single handler on their common ancestor.
-3. In the handler we get event.target to see where the event actually happened and handle it.
-4. Less memory usage, better performance.
-5. Less time required to set up event handlers on the page.
-6. Event delegation is a pattern to handle events efficiently in JavaScript. The main idea is to reduce the number of event handlers on a webpage and thus 
-   improving the performance of the website.
-7. When there are multiple DOM elements present, instead of adding event handlers on each one of them, you can just add one event handler 
-   (on the parent/common ancestor element) which can do the exact same work which all those multiple event handlers were supposed to do.
-
-#### Example:
-```javascript
-html-
-Counter: <input type="button" value="1" data-counter>
-One more counter: <input type="button" value="2" data-counter>
-<script>
-  document.addEventListener('click', function(event) {
-
-    if (event.target.dataset.counter != undefined) { 
-      event.target.value++;
-      console.log(event.target.value)
-    }
-  });
-</script>
-```
-------------------------------------------
 #### Polyfill:
 
 1. With the help of polyfill can write own implementation of BIND function.

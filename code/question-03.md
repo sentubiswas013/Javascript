@@ -2,12 +2,6 @@
 
 ## Basic JavaScript Concepts
 
-### 7\. **What is event delegation and why is it useful in JavaScript?**
-
-* **Event delegation** is a technique in JavaScript where a single event listener is attached to a parent element instead of multiple listeners on child elements. The event listener checks the event's target to determine which child element triggered the event.
-  * This is useful because it reduces the number of event listeners, especially in cases where there are many child elements or when elements are dynamically added or removed from the DOM.
-  * Example: Instead of attaching an event listener to each list item, attach it to the parent `<ul>` element and use the event's `target` property to identify the clicked list item.
-
 ### 8\. **What is a closure in JavaScript, and how does it work?**
 
 * A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope. In other words, closures allow a function to access variables from its outer function even after the outer function has finished execution.

@@ -741,6 +741,17 @@ document.querySelector('#parent').addEventListener('click', function(event) {
 });
 ```
 
+- **How it works**: 
+- Instead of adding an event listener to each child element, you add one listener to a common ancestor (like a container element) and use the event's `target` property to determine which child element triggered the event.
+
+- **Use case**:  
+- Dynamically added items: Suppose you have a list where new items are added via JavaScript. Instead of adding event listeners to each new list item, you can add a listener to the parent `<ul>` element and use event delegation to handle clicks on `<li>` elements.
+
+**Why it's useful:**
+
+* Reduces memory usage by minimizing the number of event listeners.
+* Works with dynamically added elements (elements that may not exist at the time the listener is attached).
+
 ### 9\. **What are Web Workers, and how do they work in JavaScript?**
 
 **Web Workers** allow JavaScript to run in the background on a separate thread, without blocking the main thread. They are useful for tasks that are CPU-intensive or require heavy computations (e.g., large data processing) without freezing the UI.
