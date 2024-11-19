@@ -370,8 +370,14 @@ increment(); // 2
 
 A **promise** represents the eventual completion (or failure) of an asynchronous operation. It can be in one of three states: **pending**, **fulfilled**, or **rejected**.
 
-* **`then()`**: Registers a callback to be executed when the promise is fulfilled.
-* **`catch()`**: Registers a callback to be executed when the promise is rejected.
+
+#### How Promises Work:
+
+* A promise can be in one of three states:
+  * **Pending**: The operation is still in progress.
+  * **Resolved** (Fulfilled): The operation completed successfully.
+  * **Rejected**: The operation failed (with an error).
+* You create a promise using the `Promise` constructor, which takes a callback with two parameters: `resolve` and `reject`.
 
 Example:
 
@@ -391,6 +397,17 @@ promise.then(result => {
   console.log(error);   // "Operation failed"
 });
 ```
+
+In this example:
+
+* The `then()` method is used to handle the success of the promise.
+* The `catch()` method is used to handle any errors (rejections).
+
+#### How to Use Promises:
+
+* Use `then()` to handle success.
+* Use `catch()` to handle errors.
+* You can chain multiple `then()` calls to handle sequential asynchronous operations.
 
 ### 5\. **What is async/await in JavaScript?**
 
