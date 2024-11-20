@@ -159,6 +159,8 @@ var unique = myArray.filter((value, index, arr) => arr.indexOf(value) === index)
 ```
 ------------------------------------------
 ### Code 4:String reverse without reversing of individual words (Array of elements can be reverse with reverse() method but for string it is won't possible so required to split 
+
+#### Way 1: Using split, reverse and join
 ```javascript
 and then join().
 function removeDuplicates(){
@@ -169,8 +171,43 @@ function removeDuplicates(){
 console.log(removeDuplicates()) 
 output = "aidnI si ym yrtnuoc"
 ```
-### Code 5:String reverse with reversing of individual words
 
+#### Way 2: Using loop
+```javascript
+function removeDuplicates() {
+   var string = "India is my country";
+   
+   // Initialize an empty string to store the result
+   let reversedString = "";
+   
+   // Reverse the whole string manually
+   for (let i = string.length - 1; i >= 0; i--) {
+       reversedString += string[i];
+   }
+   
+   // Now we reverse the words manually
+   let words = "";
+   let tempWord = "";
+   for (let i = reversedString.length - 1; i >= 0; i--) {
+       if (reversedString[i] === ' ') {
+           // Add the word to the words string with a space
+           words = tempWord + ' ' + words;
+           tempWord = "";  // Reset the temporary word
+       } else {
+           tempWord = reversedString[i] + tempWord;
+       }
+   }
+   // Add the last word
+   words = tempWord + ' ' + words;
+   
+   // Return the final result
+   return words.trim();
+}
+
+console.log(removeDuplicates());
+```
+
+### Code 5:String reverse with reversing of individual words
 #### Way 1: Using split, reverse and join
 ```javascript
 function withoutReverse(){
