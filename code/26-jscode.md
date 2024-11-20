@@ -35,65 +35,9 @@ lengthOfLongestSubstring("dvdf"); // 3
 ### Code 0: How to remove duplicates from an array of objects using JavaScript ?
 
 #### Way 1: Using one of the keys as an index
-```javascript
-function removeDuplicates() { 
-    // Create an array of objects
-    books = [
-        { title: "C++", author: "Bjarne" },
-        { title: "Java", author: "James" },
-        { title: "Python", author: "Guido" },
-        { title: "Java", author: "James" },
-    ];
- 
-    // Declare a new array
-    let newArray = [];
- 
-    // Declare an empty object
-    let uniqueObject = {};
- 
-    // Loop for the array elements
-    for (let i in books) {
- 
-        // Extract the title
-        objTitle = books[i]['title'];
- 
-        // Use the title as the index
-        uniqueObject[objTitle] = books[i];
-    }
- 
-    // Loop to push unique object into array
-    for (i in uniqueObject) {
-        newArray.push(uniqueObject[i]);
-    }
- 
-    // Display the unique objects
-    console.log(newArray);
-}
-removeDuplicates();
-```
 
-#### Way 2: Converting the array to a Set to remove the duplicates
-```javascript
 
-function removeDuplicates() {
-    // Create an array of objects
-    books = [
-        { title: "C++", author: "Bjarne" },
-        { title: "Java", author: "James" },
-        { title: "Python", author: "Guido" },
-        { title: "Java", author: "James" },
-    ];
- 
-    jsonObject = books.map(JSON.stringify);
-    uniqueSet = new Set(jsonObject);
-    uniqueArray = Array.from(uniqueSet).map(JSON.parse);
- 
-    console.log(uniqueArray);
-}
-removeDuplicates();
-```
-
-#### Way 3: Using filter() and includes() Method
+#### Way 2: Using filter() and includes() Method
 
 ```javascript
 const books = [
@@ -109,7 +53,7 @@ const filtered = books.filter(({ title }, index) =>
  
 console.log(filtered);
 ```
-#### Way 4: Using filter() and findIndex() Method
+#### Way 3: Using filter() and findIndex() Method
 ```javascript
 const books = [
     { title: "C++", author: "Bjarne" },
