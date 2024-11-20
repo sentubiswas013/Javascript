@@ -671,7 +671,20 @@ console.log(fibonacciSeries())
 // 1
 // [0, 1, 1, 2, 3]
 ```
-
+------------------------------------------
+### Code 35: Uppercase of each first letter of a words 
+```javascript
+function upperCaseFirsstLetter(){
+   var string ="India is my country";
+   var words = string.toLowerCase().split(" ")
+   for( var i=0; i<words.length; i++) {
+      words[i]=words[i][0].toUpperCase() + words[i].slice(1) //slice is used here to give all the letters except first letter.
+      }
+   return words.join(" ")
+}
+console.log(upperCaseFirsstLetter());
+// output: "India Is My Country"
+```
 ------------------------------------------
 ### Code 26: Finding a missing elements in an array and then add with existing elements. (-1 means if elements not found then it will return always -1 as per rule)
 ```javascript
@@ -844,33 +857,6 @@ for (var i=1; i <= 20; i++)
 // "Fizz"
 // 4
 // "Buzz"
-```
-------------------------------------------
-### Code 35: Uppercase of each first letter of a words 
-```javascript
-function upperCaseFirsstLetter(){
-   var string ="India is my country";
-   var words = string.toLowerCase().split(" ")
-   for( var i=0; i<words.length; i++) {
-      words[i]=words[i][0].toUpperCase() + words[i].slice(1) //slice is used here to give all the letters except first letter.
-      }
-   return words.join(" ")
-}
-console.log(upperCaseFirsstLetter());
-// output: "India Is My Country"
-```
-------------------------------------------
-### Code 36: Uppercase of each first letter of a words using map function
-```javascript
-function upperCaseFirsstLetter(){
-   var string ="India is my country";
-   var words = string.toLowerCase().split(" ").map((ele)=>{
-               return ele[0].toUpperCase() + ele.slice(1)
-   })
-   return words.join(" ")
-}
-console.log(upperCaseFirsstLetter())
-//output:  "India Is My Country"
 ```
 ------------------------------------------
 ### Code 37: To check ending of the string with given character/s using inbuild function
