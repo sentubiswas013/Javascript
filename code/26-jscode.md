@@ -97,7 +97,43 @@ console.log(unique);
 ------------------------------------------
 ### Code 1: Remove Duplicate characters from String
 ```javascript
-#### Way 3
+#### Way 1: 
+function removeDuplicateCharacters() {
+  var string = 'priya riya supriya';
+  let result = '';
+  
+  // Loop through each character in the string
+  for (let i = 0; i < string.length; i++) {
+    let char = string[i];
+    
+    // Check if the character is already in the result
+    if (result.indexOf(char) === -1) {
+      result += char;  // Add the character to the result if it's not a duplicate
+    }
+  }
+  
+  return result;
+}
+
+console.log(removeDuplicateCharacters()); // Output: priya su
+
+#### Way 2: 
+function removeDuplicateCharacters() {
+  var string='priya riya supriya'
+  let result= string.split('').filter((item, index, arr)=> {
+               return arr.indexOf(item) == index;
+               }).join('');
+  return result;
+}
+console.log(removeDuplicateCharacters());
+// output: priya su
+```
+
+------------------------------------------
+### Code 3: Remove Duplicate characters from array of element using filter
+```javascript
+
+#### Way 1
 let arrLeft = [];
     let arrRight = [];
     let result = [];
@@ -114,23 +150,9 @@ let arrLeft = [];
         console.log("result----", result);
     }
    
-  getDuplicate([1,2,3,4,3,7,4,5]); // output  [3, 4]
+getDuplicate([1,2,3,4,3,7,4,5]); // output  [3, 4]
 
-#### Way 3: 
-function removeDuplicateCharacters() {
-  var string='priya riya supriya'
-  let result= string.split('').filter((item, index, arr)=> {
-               return arr.indexOf(item) == index;
-               }).join('');
-  return result;
-}
-console.log(removeDuplicateCharacters());
-// output: priya su
-```
-
-------------------------------------------
-### Code 3: Remove Duplicate characters from array of element using filter
-```javascript
+#### Way 2
 var myArray = ['a', 1, 'a', 2, '1'];
 var unique = myArray.filter((value, index, arr) => arr.indexOf(value) === index);
 // output: ['a', 1, 2, '1']

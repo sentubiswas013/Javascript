@@ -55,23 +55,28 @@
     //     console.log("item---", item.title,  (item.title === 'Java'))
     // })  
 
-    let arrLeft = [];
-    let arrRight = [];
-    let result = [];
-    function getDuplicate(arr) {
+    let arrLeft = '';
+    let arrRight = '';
+    let result = '';
+    function getDuplicate(input) {
+        let arr = input.split(' ')
+        console.log("arr---", arr)
         for (let index = 0; index < arr.length; index++) {
             if(!arrLeft.includes(arr[index])) {
-                arrLeft.push(arr[index]);                
+                arrLeft += arr[index];
+                result += arr[index];
+                // arrLeft.push(arr[index]);   
+                // result.push(arr[index]);             
             } else {
-                arrRight.push(arr[index]);
-                result.push(arr[index]);
+                // arrRight.push(arr[index]);
+                
             }
         }
 
         console.log("result----", result);
     }
    
-    getDuplicate(arr);
+    getDuplicate('priya riya supriya');
 
 
 
