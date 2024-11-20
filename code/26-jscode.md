@@ -434,8 +434,8 @@ checkPalindrome()
 ```
 ------------------------------------------
 ### Code 14: To find Max and Min num from array using functions
+#### Way 1 to get max num using function
 ```javascript
-// Way 2 to get max num using function
 function maxValue(arr) {
   let max = arr[0];
 
@@ -448,8 +448,9 @@ function maxValue(arr) {
 }
 console.log(maxValue([3,6,7,8,0]));
 // output: 8
-
-// Way 2 to get min num using function
+```
+#### Way 2 to get min num using function
+```javascript
 function maxValue(arr) {
   let max = arr[0];
 
@@ -462,11 +463,12 @@ function maxValue(arr) {
 }
 console.log(maxValue([3,6,7,8,0]));
 // output: 0
-
-// Way 3 max using max method
+```
+```javascript
+#### Way 3 max using max method
 Math.max.apply(null,[4,6,1,9])  // output: 9
 
-// Way 3 max using min method
+#### Way 3 max using min method
 Math.min.apply(null,[4,6,1,9])  // output: 1
 ```
 ------------------------------------------
