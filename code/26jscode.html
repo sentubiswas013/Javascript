@@ -55,7 +55,23 @@
     //     console.log("item---", item.title,  (item.title === 'Java'))
     // })  
 
+    let arrLeft = [];
+    let arrRight = [];
+    let result = [];
+    function getDuplicate(books) {
+        for (let index = 0; index < books.length; index++) {
+            if(!arrLeft.includes(books[index].title)) {
+                arrLeft.push(books[index].title);                
+            } else {
+                arrRight.push(books[index].title);
+                result.push(books[index]);
+            }
+        }
 
+        console.log("result----", result);
+    }
+   
+    getDuplicate(books);
 
 
 

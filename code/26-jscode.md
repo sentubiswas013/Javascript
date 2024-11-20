@@ -35,7 +35,32 @@ lengthOfLongestSubstring("dvdf"); // 3
 ### Code 0: How to remove duplicates from an array of objects using JavaScript ?
 
 #### Way 1: Using one of the keys as an index
+```javascript
+  var books = [
+      { title: "C++", author: "Bjarne" },
+      { title: "Java", author: "James" },
+      { title: "Python", author: "Guido" },
+      { title: "Java", author: "James" },
+  ];
 
+   let arrLeft = [];
+    let arrRight = [];
+    let result = [];
+    function getDuplicate(books) {
+        for (let index = 0; index < books.length; index++) {
+            if(!arrLeft.includes(books[index].title)) {
+                arrLeft.push(books[index].title);                
+            } else {
+                arrRight.push(books[index].title);
+                result.push(books[index]);
+            }
+        }
+
+        console.log("result----", result);
+    }
+   
+    getDuplicate(books);
+```
 
 #### Way 2: Using filter() and includes() Method
 
