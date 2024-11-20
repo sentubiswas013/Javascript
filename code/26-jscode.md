@@ -686,6 +686,47 @@ console.log(upperCaseFirsstLetter());
 // output: "India Is My Country"
 ```
 ------------------------------------------
+### Code 53: Unique values only from 2 arrays
+```javascript
+function diffArrayElement(arr1, arr2) {
+  var result =[]
+  for(var i=0; i<arr1.length; i++){
+    if(arr2.indexOf(arr1[i]) === -1){
+      result.push(arr1[i])
+    }
+  }
+
+  for(var j=0; j<arr2.length; j++){
+    if(arr1.indexOf(arr2[j]) === -1){
+      result.push(arr2[j])
+    }
+  }
+  return result
+}
+console.log(diffArrayElement([1,2,3,4], [2,3,4,5])) // output:  [1,5]
+```
+------------------------------------------
+### Code 56: Sum of all numbers from start to end given number
+```javascript
+function sumFromStartToEnd(arr){
+  var start = Math.min(arr[0], arr[1])
+  var end = Math.max(arr[0], arr[1])
+  sum =0
+  for(var i= start; i<=end; i++){
+    sum+=i
+  }
+  return sum
+}
+console.log(sumFromStartToEnd([1,4]))
+// output: 10
+```
+
+
+
+
+
+
+------------------------------------------
 ### Code 26: Finding a missing elements in an array and then add with existing elements. (-1 means if elements not found then it will return always -1 as per rule)
 ```javascript
 function missingElement(){
@@ -1076,62 +1117,6 @@ function characterPresent(arr){
 }
 console.log(characterPresent(["hello","he"]));
 // output: true
-```
-------------------------------------------
-### Code 53: Unique values only from 2 arrays
-```javascript
-function diffArrayElement(arr1, arr2) {
-  var result =[]
-  for(var i=0; i<arr1.length; i++){
-    if(arr2.indexOf(arr1[i]) === -1){
-      result.push(arr1[i])
-    }
-  }
-
-  for(var j=0; j<arr2.length; j++){
-    if(arr1.indexOf(arr2[j]) === -1){
-      result.push(arr2[j])
-    }
-  }
-  return result
-}
-console.log(diffArrayElement([1,2,3,4], [2,3,4,5])) // output:  [1,5]
-```
-------------------------------------------
-### Code 54: Unique values only from 2 arrays
-```javascript
-function diffArrayElement(arr1, arr2){
-var combine = arr1.concat(arr2)
-return combine.filter( (num)=>{
-  if(arr1.indexOf(num)== -1 || arr2.indexOf(num)== -1 ) return num
-})
-}
-console.log(diffArrayElement([1,2,3,4], [2,3,4,5])) // output:  [1,5]
-```
-------------------------------------------
-### Code 55: Remove Duplicates from 2 arrays using Set
-```javascript
-function uniquefromArrays(arr1, arr2){
- let arr = [...arr1, ...arr2]
- let unique = [...new Set(arr)];
- return unique
-}
-console.log(uniquefromArrays([1,2,3,4], [2,3,4,5])) //output: [1,2,3,4,5]
-```
-------------------------------------------
-### Code 56: Sum of all numbers from start to end given number
-```javascript
-function sumFromStartToEnd(arr){
-  var start = Math.min(arr[0], arr[1])
-  var end = Math.max(arr[0], arr[1])
-  sum =0
-  for(var i= start; i<=end; i++){
-    sum+=i
-  }
-  return sum
-}
-console.log(sumFromStartToEnd([1,4]))
-// output: 10
 ```
 ------------------------------------------
 ### Code 57: Remove or Delete elements from an array using various ways
