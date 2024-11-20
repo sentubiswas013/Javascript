@@ -170,9 +170,9 @@ console.log(removeDuplicates())
 output = "aidnI si ym yrtnuoc"
 ```
 ### Code 5:String reverse with reversing of individual words
-```javascript
-#### Way 1: Using split, reverse and join
 
+#### Way 1: Using split, reverse and join
+```javascript
 function withoutReverse(){
    var string ="India is my country"
    let result = string.split('').reverse().join('')
