@@ -31,7 +31,7 @@
     }
     let string = "supriya";
     let stringLong = "supriya is a hahahahaha good girl";
-    var arr = [1,2,3,3,7,4,5];
+    var arr = [1,2,3,4,3,7,4,5];
     var arrLong = [55, 44, 55,67,67,67,67,8,8,8,8,8,65,1,2,3,3,34,5];
 
     for (let index = 0; index < 5; index++) {
@@ -58,20 +58,20 @@
     let arrLeft = [];
     let arrRight = [];
     let result = [];
-    function getDuplicate(books) {
-        for (let index = 0; index < books.length; index++) {
-            if(!arrLeft.includes(books[index].title)) {
-                arrLeft.push(books[index].title);                
+    function getDuplicate(arr) {
+        for (let index = 0; index < arr.length; index++) {
+            if(!arrLeft.includes(arr[index])) {
+                arrLeft.push(arr[index]);                
             } else {
-                arrRight.push(books[index].title);
-                result.push(books[index]);
+                arrRight.push(arr[index]);
+                result.push(arr[index]);
             }
         }
 
         console.log("result----", result);
     }
    
-    getDuplicate(books);
+    getDuplicate(arr);
 
 
 

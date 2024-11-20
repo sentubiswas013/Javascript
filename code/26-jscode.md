@@ -97,6 +97,25 @@ console.log(unique);
 ------------------------------------------
 ### Code 1: Remove Duplicate characters from String
 ```javascript
+#### Way 3
+let arrLeft = [];
+    let arrRight = [];
+    let result = [];
+    function getDuplicate(arr) {
+        for (let index = 0; index < arr.length; index++) {
+            if(!arrLeft.includes(arr[index])) {
+                arrLeft.push(arr[index]);                
+            } else {
+                arrRight.push(arr[index]);
+                result.push(arr[index]);
+            }
+        }
+
+        console.log("result----", result);
+    }
+   
+  getDuplicate([1,2,3,4,3,7,4,5]); // output  [3, 4]
+
 #### Way 3: 
 function removeDuplicateCharacters() {
   var string='priya riya supriya'
