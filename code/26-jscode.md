@@ -409,35 +409,6 @@ longest();
 ### Code 16: To find longest common string from array of strings
 ```javascript
 function longestCommonString(){
-  array=["go","google","gosh"]
-  var arr = array.sort()
-  var i=0;
-  while(arr[0].length>0 && arr[0].charAt(i)===arr[arr.length-1].charAt(i)){
-    i++;
-  }
-  console.log(arr[0].substring(0,i)) // "go"
-  return arr[0].substring(0,i)
-}
-longestCommonString() 
-// output : go
-```
---------------------------------------------------------------------
-```javascript
-function longestCommonString(){
-  array=["got","google","gosh"]
-  var arr = array.sort()
-  var i=0;
-  while(arr[0].length>0 && arr[0][i]===arr[arr.length-1][i]){
-    i++;
-  }
-  console.log(arr[0].slice(0,i))
-}
-longestCommonString() 
-// output : go
-```
---------------------------------------------------------------------
-```javascript
-function longestCommonString(){
  let array=["go","google","gosh"]
   var arr = array.sort((a,b)=>a.length-b.length)
   let result =""
