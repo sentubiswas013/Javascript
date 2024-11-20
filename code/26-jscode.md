@@ -181,7 +181,6 @@ function withoutReverse(){
 console.log(withoutReverse())
 output = "yrtnuoc ym si aidnI"
 ```
-------------------------------------------
 #### Way 2: Using for loop
 ```javascript
 function Reverse(){
