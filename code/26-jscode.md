@@ -171,6 +171,8 @@ output = "aidnI si ym yrtnuoc"
 ```
 ### Code 5:String reverse with reversing of individual words
 ```javascript
+#### Way 1: Using split, reverse and join
+
 function withoutReverse(){
    var string ="India is my country"
    let result = string.split('').reverse().join('')
@@ -180,7 +182,7 @@ console.log(withoutReverse())
 output = "yrtnuoc ym si aidnI"
 ```
 ------------------------------------------
-### Code 6:String reverse without using inbult function
+#### Way 2: Using for loop
 ```javascript
 function Reverse(){
    var string ="India is my country";
