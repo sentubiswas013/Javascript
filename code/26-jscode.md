@@ -77,6 +77,25 @@ console.log(unique);
 ```javascript
 #### Way 1: 
 function removeDuplicateCharacters() {
+    var string = 'priya riya supriya';
+    let result = '';
+    
+    // Loop through each character in the string
+    for (let i = 0; i < string.length; i++) {
+        let char = string[i];
+
+        if (!result.includes(char)) {
+            result += char;
+        }
+
+    }
+    
+    return result;
+    }
+console.log(removeDuplicateCharacters()); // Output: priya su
+
+#### Way 2: 
+function removeDuplicateCharacters() {
   var string = 'priya riya supriya';
   let result = '';
   
@@ -95,7 +114,7 @@ function removeDuplicateCharacters() {
 
 console.log(removeDuplicateCharacters()); // Output: priya su
 
-#### Way 2: 
+#### Way 3: 
 function removeDuplicateCharacters() {
   var string='priya riya supriya'
   let result= string.split('').filter((item, index, arr)=> {

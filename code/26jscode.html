@@ -96,7 +96,24 @@
 
     console.log(checkPalindrome());  // Returns true if palindrome, false otherwise
 
+    function removeDuplicateCharacters() {
+        var string = 'priya riya supriya';
+        let result = '';
+        
+        // Loop through each character in the string
+        for (let i = 0; i < string.length; i++) {
+            let char = string[i];
 
+            if (!result.includes(char)) {
+                result += char;
+            }
+
+        }
+        
+        return result;
+        }
+
+        console.log(removeDuplicateCharacters()); // Output: priya su
 
 
 </script>
