@@ -139,14 +139,7 @@ function removeDuplicateCharacters() {
 console.log(removeDuplicateCharacters());
 // output: priya su
 ```
-------------------------------------------
-### Code 2: Remove Duplicate characters from array of element and find the count of an elements using set object
-```javascript
-var arr = [55, 44, 55,67,67,67,67,8,8,8,8,8,65,1,2,3,3,34,5];
-var unique = [...new Set(arr)]
-console.log(unique) //output: [55, 44, 67, 8, 65, 1, 2, 3, 34, 5]
-console.log(unique.length) //output: 10
-```
+
 ------------------------------------------
 ### Code 3: Remove Duplicate characters from array of element using filter
 ```javascript
@@ -166,24 +159,6 @@ function removeDuplicates(){
 console.log(removeDuplicates()) 
 output = "aidnI si ym yrtnuoc"
 ```
-------------------------------------------
-```javascript
-var reverseWords = function(s) {
-    let res = '';
-    let word = '';
-    for (let c of s) {
-        if (c === ' ') {
-            res += word + c;
-            word = '';
-        } else {
-            word = c + word;
-        }
-    }
-    return res + word;
-};
-console.log(reverseWords("priya bagde"))
-```
-------------------------------------------
 ### Code 5:String reverse with reversing of individual words
 ```javascript
 function withoutReverse(){
@@ -296,63 +271,8 @@ checkPalindrome()
 // output: "Palindrome"
 ```
 ------------------------------------------
-### Code 13: To find longest word from a string using (for of) /*for(var i=0; i>=num; i++) means iterate by indexing*/  /*for (var word of words) means iterate by an elements not 
+### Code 14: To find Max and Min num from array using functions
 ```javascript
-by indexing*/
-function longestWord(){
-   let string = "supriya is a masooooom good girl"
-   var words= string.split(' ')
-   var longest=" "
-   for(var word of words){
-        console.log(word)
-        if (word.length > longest.length)
-        {
-            longest=word;
-         }
-   }
-    return longest.length
-}
-longestWord()
-// Output
-// "supriya"
-// "is"
-// "a"
-// "masooooom"
-// "good"
-// "girl"
-```
----------------------------
-```javascript
-function longestWord(){
-   let string = "supriya is a hahahahaha good girl"
-   var arr= string.split(' ')
-   var longest=" "
-   for(var i=0; i<arr.length; i++){
-      
-        if (arr[i].length > longest.length)
-        {
-            longest=arr[i];
-        }
-   }
-   return longest
-}
-console.log(longestWord());
-// output: hahahahaha
-```
-------------------------------------------
-### Code 14: To find longest word from a string using functions
-```javascript
-function findLongestWord() {
-  var str = "Priya is a goog girl and having hardworking skill"
-  var longestWord = str.split(' ').sort((a, b) => {return b.length - a.length }); //in desc order //from greater to smallest word
-     console.log(longestWord[0]);
-     console.log(longestWord[0].length); 
-}
-findLongestWord();
-// Output
-// "hardworking"
-// 11
-
 // Way 2 to get max num using function
 function maxValue(arr) {
   let max = arr[0];
