@@ -309,28 +309,6 @@ const numbers = [5, 3, 8, 4, 2];
 console.log(insertionSort(numbers)); // [2, 3, 4, 5, 8]
 ```
 
-### Explanation of Sorting Algorithms
-
-1. **Bubble Sort**:
-
-   * Time complexity: O(n²)
-   * It's simple but inefficient for large datasets because it repeatedly swaps adjacent elements.
-
-2. **Selection Sort**:
-
-   * Time complexity: O(n²)
-   * Like Bubble Sort, it repeatedly selects the smallest (or largest) item and moves it to the correct position.
-
-3. **Insertion Sort**:
-
-   * Time complexity: O(n²) in the worst case, but it can be more efficient than Bubble and Selection Sort for nearly sorted arrays.
-
-### When to Use:
-
-* **Bubble Sort**: Simple, but slow for large datasets.
-* **Selection Sort**: Slightly more efficient than Bubble Sort in some cases but still not ideal for large datasets.
-* **Insertion Sort**: Efficient for small or nearly sorted datasets.
-
 ### 4\. **Example with `Array.sort()` (Built-in Method)**
 
 While using loops is great for learning, the built-in `Array.prototype.sort()` method is much more efficient for real-world use cases.
