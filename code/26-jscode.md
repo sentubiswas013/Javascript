@@ -130,7 +130,7 @@ console.log(removeDuplicateCharacters());
 ```
 
 ------------------------------------------
-### Code 3: Remove Duplicate characters from array of element using filter
+### Code 3: Remove Duplicate characters from array of element using filter or for loop
 ```javascript
 
 #### Way 1
