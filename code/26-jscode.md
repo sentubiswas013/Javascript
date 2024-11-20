@@ -480,10 +480,31 @@ javascriptCopy codeconst numbers = [5, 3, 8, 4, 2];
 const sortedArray = numbers.sort((a, b) => a - b); // Ascending order
 console.log(sortedArray); // [2, 3, 4, 5, 8]
 ```
+------------------------------------------
+### Code 25: Fibonacci Series (0,1,1,2,3,5,8,13....) where keeping in array
+```javascript
+function listFibonacci(n) {
+var arr = [0, 1]
+  for (var  i = 1; i < n; i++) 
+    arr.push(arr[i] + arr[i - 1])
 
-This one-liner is efficient and recommended for most use cases.
+  return arr
+}
+console.log(listFibonacci(4))
+// output: [0, 1, 1, 2, 3]
+```
+-----------------------------------------------------------------------
+```javascript
+function listFibonacci(n) {
+var arr = [0, 1]
+  for (var  i = 0; i < n; i++) 
+    arr.push(arr[i] + arr[i + 1])
 
-
+  return arr
+}
+console.log(listFibonacci(4))
+// output: [0, 1, 1, 2, 3, 5]
+```
 ------------------------------------------
 ### Code 7: Find factorial of user input number
 ```javascript
@@ -650,31 +671,7 @@ console.log(fibonacciSeries())
 // 1
 // [0, 1, 1, 2, 3]
 ```
-------------------------------------------
-### Code 25: Fibonacci Series (0,1,1,2,3,5,8,13....) where keeping in array
-```javascript
-function listFibonacci(n) {
-var arr = [0, 1]
-  for (var  i = 1; i < n; i++) 
-    arr.push(arr[i] + arr[i - 1])
 
-  return arr
-}
-console.log(listFibonacci(4))
-// output: [0, 1, 1, 2, 3]
-```
------------------------------------------------------------------------
-```javascript
-function listFibonacci(n) {
-var arr = [0, 1]
-  for (var  i = 0; i < n; i++) 
-    arr.push(arr[i] + arr[i + 1])
-
-  return arr
-}
-console.log(listFibonacci(4))
-// output: [0, 1, 1, 2, 3, 5]
-```
 ------------------------------------------
 ### Code 26: Finding a missing elements in an array and then add with existing elements. (-1 means if elements not found then it will return always -1 as per rule)
 ```javascript
