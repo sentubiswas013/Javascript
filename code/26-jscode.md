@@ -73,7 +73,7 @@ console.log(unique);
 ```
 
 ------------------------------------------
-### Code 1: Remove Duplicate characters from String
+### Code 3: Remove Duplicate characters from String
 ```javascript
 #### Way 1: 
 function removeDuplicateCharacters() {
@@ -108,7 +108,7 @@ console.log(removeDuplicateCharacters());
 ```
 
 ------------------------------------------
-### Code 3: Remove Duplicate characters from array of element using filter or for loop
+### Code 4: Remove Duplicate characters from array of element using filter or for loop
 ```javascript
 
 #### Way 1
@@ -136,7 +136,7 @@ var unique = myArray.filter((value, index, arr) => arr.indexOf(value) === index)
 // output: ['a', 1, 2, '1']
 ```
 ------------------------------------------
-### Code 4:String reverse without reversing of individual words (Array of elements can be reverse with reverse() method but for string it is won't possible so required to split 
+### Code 5: String reverse without reversing of individual words (Array of elements can be reverse with reverse() method but for string it is won't possible so required to split 
 
 #### Way 1: Using split, reverse and join
 ```javascript
@@ -184,7 +184,7 @@ function removeDuplicates() {
 console.log(removeDuplicates());
 ```
 
-### Code 5:String reverse with reversing of individual words
+### Code 6: String reverse with reversing of individual words
 #### Way 1: Using split, reverse and join
 ```javascript
 function withoutReverse(){
@@ -209,7 +209,7 @@ output = "yrtnuoc ym si aidnI"
 ```
 
 ------------------------------------------
-### Code 9: Swapping of 2 numbers with third variable
+### Code 7: Swapping of 2 numbers with third variable
 ```javascript
 let a=10;
 let b=20;
@@ -221,7 +221,7 @@ console.log (a,b,c)
 // output : 20, 10, 10
 ```
 ------------------------------------------
-### Code 10: Swapping of 2 numbers without third variable
+### Code 8: Swapping of 2 numbers without third variable
 ```javascript
 let a=10; 
 let b=20;
@@ -232,7 +232,7 @@ console.log (a,b)
 // output : 20, 10
 ```
 ------------------------------------------
-### Code 12: To check the string or number is palindrome or not( ex: 121,madam,anna) using diving length by 2 and then comparing
+### Code 9: To check the string or number is palindrome or not( ex: 121,madam,anna) using diving length by 2 and then comparing
 #### Way 1
 ```javascript
   function checkPalindrome() {
@@ -271,7 +271,7 @@ checkPalindrome()
 // output: "Palindrome"
 ```
 ------------------------------------------
-### Code 14: To find Max and Min num from array using functions
+### Code 10: To find Max and Min num from array using functions
 #### Way 1 to get max num using function
 ```javascript
 function maxValue(arr) {
@@ -310,7 +310,7 @@ Math.max.apply(null,[4,6,1,9])  // output: 9
 Math.min.apply(null,[4,6,1,9])  // output: 1
 ```
 ------------------------------------------
-### Code 15: To find longest word from a string using custom code
+### Code 11: To find longest word from a string using custom code
 ```javascript
 function longest() {
   var str ="Priya is a good girl and having hardworking skills"
@@ -328,7 +328,7 @@ longest();
 // Output: hardworking
 ```
 ------------------------------------------
-### Code 16: To find longest common string from array of strings
+### Code 12: To find longest common string from array of strings
 ```javascript
 function longestCommonString(){
  let array=["go","google","gosh"]
@@ -345,7 +345,7 @@ console.log(longestCommonString())
 // output : go
 ```
 ------------------------------------------
-### Code 17: To find vowels and its count in a given string
+### Code 13: To find vowels and its count in a given string
 ```javascript
 function vowelCounts(){
   vowels=["a","i","e","o","u"]
@@ -370,7 +370,7 @@ vowelCounts()
 
 ```
 ------------------------------------------
-### Code 6:sort array data in javascript using loop
+### Code 14:sort array data in javascript using loop
 You can sort an array in JavaScript using a loop, though the built-in `Array.prototype.sort()` is usually more efficient. However, if you want to implement sorting manually using a loop, you can use sorting algorithms like **Bubble Sort**, **Selection Sort**, or **Insertion Sort**.
 
 Here are examples of each:
@@ -430,7 +430,7 @@ console.log(selectionSort(numbers)); // [2, 3, 4, 5, 8]
 Insertion Sort works by taking one element at a time and inserting it into the correct position in the already sorted part of the array.
 
 ```javascript
-javascriptCopy codefunction insertionSort(arr) {
+codefunction insertionSort(arr) {
   const n = arr.length;
   for (let i = 1; i < n; i++) {
     let key = arr[i];
@@ -459,7 +459,7 @@ const sortedArray = numbers.sort((a, b) => a - b); // Ascending order
 console.log(sortedArray); // [2, 3, 4, 5, 8]
 ```
 ------------------------------------------
-### Code 25: Fibonacci Series (0,1,1,2,3,5,8,13....) where keeping in array
+### Code 15: Fibonacci Series (0,1,1,2,3,5,8,13....) where keeping in array
 ```javascript
 function listFibonacci(n) {
 var arr = [0, 1]
@@ -484,7 +484,7 @@ console.log(listFibonacci(4))
 // output: [0, 1, 1, 2, 3, 5]
 ```
 ------------------------------------------
-### Code 7: Find factorial of user input number
+### Code 16: Find factorial of user input number
 ```javascript
 const number = parseInt(prompt('Enter a positive integer: '));
 if (number < 0) { console.log('Error! Factorial for negative number does not exist.')}
@@ -498,7 +498,7 @@ else {
 }
 ```
 ------------------------------------------
-### Code 8:Anagram
+### Code 17:Anagram
 ```javascript
 function checkStringsAnagram() {
 var a="Army";
