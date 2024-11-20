@@ -722,9 +722,81 @@ console.log(sumFromStartToEnd([1,4]))
 ```
 
 
-
-
-
+------------------------------------------
+### Code 72: Star Pattern
+```javascript
+for(var i=1; i<=5;i++){ //use to create new row
+  for(var j=i; j<=5; j++){ //use to add in existing row
+    document.write("*")
+  }
+  document.write("<br/>")
+}
+*****
+****
+***
+**
+*
+```
+------------------------------------------
+### Code 73: Star Pattern
+```javascript
+for(var i=1; i<=5;i++){ //use to create new row
+  for(var j=1; j<=5; j++){ //use to add in existing row
+    document.write("*")
+  }
+  document.write("<br/>")
+}
+*****
+*****
+*****
+*****
+*****
+```
+------------------------------------------
+### Code 74: Star Pattern
+```javascript
+for(var i=1; i<=5;i++){ //use to create new row
+  for(var j=i; j<=5; j++){ //use to add in existing row
+    document.write(i)
+  }
+  document.write("<br/>")
+}
+11111
+2222
+333
+44
+5
+```
+------------------------------------------
+### Code 75: Star Pattern
+```javascript
+for(var i=1; i<=5;i++){ //use to create new row
+  for(var j=i; j<=5; j++){ //use to add in existing row
+    document.write(j)
+  }
+  document.write("<br/>")
+}
+12345
+2345
+345
+45
+5
+```
+------------------------------------------
+### Code 76: Star Pattern
+```javascript
+for(var i=1; i<=5;i++){ //use to create new row
+  for(var j=1; j<=i; j++){ //use to add in existing row
+    document.write("*")
+  }
+  document.write("<br/>")
+}
+*
+**
+***
+****
+*****
+```
 
 ------------------------------------------
 ### Code 26: Finding a missing elements in an array and then add with existing elements. (-1 means if elements not found then it will return always -1 as per rule)
@@ -1431,81 +1503,6 @@ function findLength(arr){
   return arr.length;
 }
 console.log(findLength([50,60,70,80,90]))
-```
-------------------------------------------
-### Code 72: Star Pattern
-```javascript
-for(var i=1; i<=5;i++){ //use to create new row
-  for(var j=i; j<=5; j++){ //use to add in existing row
-    document.write("*")
-  }
-  document.write("<br/>")
-}
-*****
-****
-***
-**
-*
-```
-------------------------------------------
-### Code 73: Star Pattern
-```javascript
-for(var i=1; i<=5;i++){ //use to create new row
-  for(var j=1; j<=5; j++){ //use to add in existing row
-    document.write("*")
-  }
-  document.write("<br/>")
-}
-*****
-*****
-*****
-*****
-*****
-```
-------------------------------------------
-### Code 74: Star Pattern
-```javascript
-for(var i=1; i<=5;i++){ //use to create new row
-  for(var j=i; j<=5; j++){ //use to add in existing row
-    document.write(i)
-  }
-  document.write("<br/>")
-}
-11111
-2222
-333
-44
-5
-```
-------------------------------------------
-### Code 75: Star Pattern
-```javascript
-for(var i=1; i<=5;i++){ //use to create new row
-  for(var j=i; j<=5; j++){ //use to add in existing row
-    document.write(j)
-  }
-  document.write("<br/>")
-}
-12345
-2345
-345
-45
-5
-```
-------------------------------------------
-### Code 76: Star Pattern
-```javascript
-for(var i=1; i<=5;i++){ //use to create new row
-  for(var j=1; j<=i; j++){ //use to add in existing row
-    document.write("*")
-  }
-  document.write("<br/>")
-}
-*
-**
-***
-****
-*****
 ```
 ------------------------------------------
 ### Code 77: To find the square root
