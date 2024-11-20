@@ -116,6 +116,43 @@
         console.log(removeDuplicateCharacters()); // Output: priya su
 
 
+        function maxValue (arr) {
+            let max = '';
+            for (let index = 0; index < arr.length; index++) {
+                if(arr[index] > max) {
+                    max = arr[index]
+                }
+            }
+            console.log("max----", max);
+        }
+
+       //  maxValue([4,0,3,1,9])
+       function minValue(arr) {
+        let min = arr[0];
+
+        for (let val of arr) {
+            if (val < min) {
+                min = val;
+            }
+        }
+            return min;
+        }
+        console.log(minValue([3,6,7,8,1]));
+
+       function minValue(arr) {
+            let min = Infinity;  // Initialize min to a very large number
+            for (let index = 0; index < arr.length; index++) {
+                if (arr[index] < min) {  // Compare the current value with the current min
+                    min = arr[index];  // Update min if a smaller value is found
+                }
+            }
+            console.log("min----", min);  // Log the minimum value
+        }
+
+        minValue([4, 5, 3, 1, 9]);
+
+
+
 </script>
 
 </body>

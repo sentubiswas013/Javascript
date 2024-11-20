@@ -308,18 +308,29 @@ console.log(maxValue([3,6,7,8,0]));
 ```
 #### Way 2 to get min num using function
 ```javascript
-function maxValue(arr) {
-  let max = arr[0];
+function minValue(arr) {
+let min = arr[0];
 
-  for (let val of arr) {
-    if (val <> max) {
-      max = val;
+for (let val of arr) {
+    if (val < min) {
+        min = val;
     }
-  }
-  return max;
 }
-console.log(maxValue([3,6,7,8,0]));
-// output: 0
+    return min;
+}
+console.log(minValue([3,6,7,8,1])); // output: 1
+
+function minValue(arr) {
+    let min = Infinity;  // Initialize min to a very large number
+    for (let index = 0; index < arr.length; index++) {
+        if (arr[index] < min) {  // Compare the current value with the current min
+            min = arr[index];  // Update min if a smaller value is found
+        }
+    }
+    console.log("min----", min);  // Log the minimum value
+}
+
+minValue([4, 5, 3, 1, 9]); // output: 1
 ```
 ```javascript
 #### Way 3 max using max method
