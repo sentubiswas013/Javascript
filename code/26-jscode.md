@@ -162,7 +162,6 @@ var unique = myArray.filter((value, index, arr) => arr.indexOf(value) === index)
 
 #### Way 1: Using split, reverse and join
 ```javascript
-and then join().
 function removeDuplicates(){
    var string ="India is my country"
    let result = string.split('').reverse().join('').split(' ').reverse().join(' ')
