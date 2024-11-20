@@ -193,6 +193,121 @@ console.log(Reverse())
 output = "yrtnuoc ym si aidnI"
 ```
 ------------------------------------------
+### Code 6:sort array data in javascript using loop
+You can sort an array in JavaScript using a loop, though the built-in `Array.prototype.sort()` is usually more efficient. However, if you want to implement sorting manually using a loop, you can use sorting algorithms like **Bubble Sort**, **Selection Sort**, or **Insertion Sort**.
+
+Here are examples of each:
+
+### 1\. **Bubble Sort (Simple and easy to understand)**
+
+Bubble Sort repeatedly steps through the list, compares adjacent items, and swaps them if they are in the wrong order.
+
+```javascript
+javascriptCopy codefunction bubbleSort(arr) {
+  const n = arr.length;
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // Swap elements
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+
+const numbers = [5, 3, 8, 4, 2];
+console.log(bubbleSort(numbers)); // [2, 3, 4, 5, 8]
+```
+
+### 2\. **Selection Sort**
+
+Selection Sort works by repeatedly finding the minimum (or maximum) element from the unsorted part and putting it at the beginning (or end).
+
+```javascript
+javascriptCopy codefunction selectionSort(arr) {
+  const n = arr.length;
+  for (let i = 0; i < n - 1; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < n; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    // Swap the found minimum element with the first element
+    let temp = arr[i];
+    arr[i] = arr[minIndex];
+    arr[minIndex] = temp;
+  }
+  return arr;
+}
+
+const numbers = [5, 3, 8, 4, 2];
+console.log(selectionSort(numbers)); // [2, 3, 4, 5, 8]
+```
+
+### 3\. **Insertion Sort**
+
+Insertion Sort works by taking one element at a time and inserting it into the correct position in the already sorted part of the array.
+
+```javascript
+javascriptCopy codefunction insertionSort(arr) {
+  const n = arr.length;
+  for (let i = 1; i < n; i++) {
+    let key = arr[i];
+    let j = i - 1;
+    // Move elements of arr[0..i-1], that are greater than key, to one position ahead
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j = j - 1;
+    }
+    arr[j + 1] = key;
+  }
+  return arr;
+}
+
+const numbers = [5, 3, 8, 4, 2];
+console.log(insertionSort(numbers)); // [2, 3, 4, 5, 8]
+```
+
+### Explanation of Sorting Algorithms
+
+1. **Bubble Sort**:
+
+   * Time complexity: O(n²)
+   * It's simple but inefficient for large datasets because it repeatedly swaps adjacent elements.
+
+2. **Selection Sort**:
+
+   * Time complexity: O(n²)
+   * Like Bubble Sort, it repeatedly selects the smallest (or largest) item and moves it to the correct position.
+
+3. **Insertion Sort**:
+
+   * Time complexity: O(n²) in the worst case, but it can be more efficient than Bubble and Selection Sort for nearly sorted arrays.
+
+### When to Use:
+
+* **Bubble Sort**: Simple, but slow for large datasets.
+* **Selection Sort**: Slightly more efficient than Bubble Sort in some cases but still not ideal for large datasets.
+* **Insertion Sort**: Efficient for small or nearly sorted datasets.
+
+### 4\. **Example with `Array.sort()` (Built-in Method)**
+
+While using loops is great for learning, the built-in `Array.prototype.sort()` method is much more efficient for real-world use cases.
+
+```javascript
+javascriptCopy codeconst numbers = [5, 3, 8, 4, 2];
+const sortedArray = numbers.sort((a, b) => a - b); // Ascending order
+console.log(sortedArray); // [2, 3, 4, 5, 8]
+```
+
+This one-liner is efficient and recommended for most use cases.
+
+
+------------------------------------------
 ### Code 7: Find factorial of user input number
 ```javascript
 const number = parseInt(prompt('Enter a positive integer: '));
