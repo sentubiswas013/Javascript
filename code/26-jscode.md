@@ -376,24 +376,28 @@ console.log (a,b)
 // output : 20, 10
 ```
 ------------------------------------------
-### Code 11: To check the string or number is palindrome or not( ex: 121,madam,anna) using reverse method
-```javascript
-function checkPalindrome() {
-  const string = "anmna"
-  let arr= string.split('').reverse().join('')
-  //console.log(arr)
-  if (string==arr){
-      console.log("Palindrome")
-  }
-  else{
-      console.log("Not Palindrome")
-  }
-}
-checkPalindrome()
-// output: "Palindrome"
-```
-------------------------------------------
 ### Code 12: To check the string or number is palindrome or not( ex: 121,madam,anna) using diving length by 2 and then comparing
+#### Way 1
+```javascript
+  function checkPalindrome() {
+      const string = "12321";
+      let isPalindrome = true;  // Initial assumption is that the string is a palindrome
+      let len = string.length;
+      let j = len - 1;
+
+          for (let i = 0; i < len / 2; i++) {  // Only need to loop halfway through the string
+              if (string[i] !== string[j]) {
+                  isPalindrome = false;  // If a mismatch is found, set to false
+                  break;  // Exit the loop early as we already know it's not a palindrome
+              }
+              j--;  // Move the pointer towards the middle
+          }
+      return isPalindrome;
+  }
+
+  console.log(checkPalindrome());  // Returns true if palindrome, false otherwise
+```
+#### Way 2
 ```javascript
 function checkPalindrome(){
    const string = "12321"

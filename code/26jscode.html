@@ -76,7 +76,26 @@
         console.log("result----", result);
     }
    
-    getDuplicate('priya riya supriya');
+    // getDuplicate('priya riya supriya');
+
+    function checkPalindrome() {
+        const string = "12321";
+        let isPalindrome = true;  // Initial assumption is that the string is a palindrome
+        let len = string.length;
+        let j = len - 1;
+
+            for (let i = 0; i < len / 2; i++) {  // Only need to loop halfway through the string
+                if (string[i] !== string[j]) {
+                    isPalindrome = false;  // If a mismatch is found, set to false
+                    break;  // Exit the loop early as we already know it's not a palindrome
+                }
+                j--;  // Move the pointer towards the middle
+            }
+        return isPalindrome;
+    }
+
+    console.log(checkPalindrome());  // Returns true if palindrome, false otherwise
+
 
 
 
