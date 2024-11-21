@@ -1648,7 +1648,7 @@ Here's an example of a function that updates the text content of an element by i
 Usage:
 
 ```javascript
- codeupdateTextContent('myElement', 'New text content!');
+ updateTextContent('myElement', 'New text content!');
 ```
 
 ### 3\. **Explain the difference between `addEventListener()` and `onclick`.**
@@ -1662,7 +1662,7 @@ Usage:
   Example:
 
   ```javascript
-   codeelement.addEventListener('click', function() {
+   element.addEventListener('click', function() {
     console.log('Element clicked');
   });
   ```
@@ -1675,7 +1675,7 @@ Usage:
   Example:
 
   ```javascript
-   codeelement.onclick = function() {
+   element.onclick = function() {
     console.log('Element clicked');
   };
   ```
