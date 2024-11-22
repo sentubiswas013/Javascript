@@ -681,75 +681,9 @@ Let me know if you need more details or modifications to these implementations!
 
 Sure! Here are detailed answers to your JavaScript questions:
 
-### 1\. **Difference Between Synchronous and Asynchronous Functions in JavaScript**
 
-* **Synchronous Functions**:
 
-  * Synchronous functions execute code in a sequential manner.
-  * The program waits for each operation to complete before moving on to the next one.
-  * If a synchronous function takes a long time (e.g., a network request), it will block the entire execution, leading to performance issues or UI freezing.
 
-  **Example**:
-
-  ```javascript
-   codeconsole.log("Start");
-  console.log("Middle");
-  console.log("End");
-  ```
-
-  Output:
-
-  ```sql
-  sqlCopy codeStart
-  Middle
-  End
-  ```
-
-* **Asynchronous Functions**:
-
-  * Asynchronous functions allow the code to execute without blocking the program. They execute independently of the main program flow.
-  * They usually involve callbacks, promises, or `async/await` to handle operations that take time (e.g., file I/O, network requests).
-
-  **Example (using `setTimeout`)**:
-
-  ```javascript
-   codeconsole.log("Start");
-  setTimeout(() => {
-    console.log("Middle");
-  }, 1000); // Delayed by 1 second
-  console.log("End");
-  ```
-
-  Output:
-
-  ```sql
-  sqlCopy codeStart
-  End
-  Middle (after 1 second)
-  ```
-
-### 2\. **What is the prototype chain in JavaScript?**
-
-The **prototype chain** is a mechanism by which objects in JavaScript inherit properties and methods from other objects. Each object has a hidden internal property `[[Prototype]]` (often accessed via `__proto__`), which points to another object. When a property or method is accessed on an object, JavaScript looks at the object's prototype chain to see if the property exists. This continues up the chain until the property is found or the chain reaches `null` (the end).
-
-Example:
-
-```javascript
- function Animal(name) {
-  this.name = name;
-}
-
-Animal.prototype.speak = function() {
-  console.log(`${this.name} makes a noise.`);
-};
-
-const dog = new Animal("Dog");
-dog.speak(); // Dog makes a noise.
-
-console.log(dog.__proto__ === Animal.prototype); // true
-```
-
-In this example, `dog` inherits from `Animal.prototype`.
 
 ### 3\. **How would you implement inheritance in JavaScript (both classical and prototypal)?**
 

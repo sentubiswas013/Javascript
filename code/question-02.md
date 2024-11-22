@@ -647,26 +647,51 @@ Here's a simplified flow:
 
 This allows JavaScript to handle asynchronous events efficiently without blocking the execution of other tasks.
 
-### 9\. **What is the difference between synchronous and asynchronous code?**
+### 1\. **Difference Between Synchronous and Asynchronous Functions in JavaScript**
 
-* **Synchronous code**: Executes sequentially, blocking the next operation until the current one is completed.
-* **Asynchronous code**: Executes independently, allowing other operations to run without waiting for it to complete.
+* **Synchronous Functions**:
 
-Example:
+  * Synchronous functions execute code in a sequential manner.
+  * The program waits for each operation to complete before moving on to the next one.
+  * If a synchronous function takes a long time (e.g., a network request), it will block the entire execution, leading to performance issues or UI freezing.
 
-* Synchronous: Code is executed in sequence, blocking the next operation until the current one is finished.
+  **Example**:
 
   ```javascript
-  console.log("First");
-  console.log("Second");
+  console.log("Start");
+  console.log("Middle");
+  console.log("End");
   ```
 
-* Asynchronous (with `setTimeout`): Code that runs in the background without blocking the main thread. Operations like HTTP requests, timers, and file I/O are asynchronous.
+  Output:
+
+  ```sql
+  Start
+  Middle
+  End
+  ```
+
+* **Asynchronous Functions**:
+
+  * Asynchronous functions allow the code to execute without blocking the program. They execute independently of the main program flow.
+  * They usually involve callbacks, promises, or `async/await` to handle operations that take time (e.g., file I/O, network requests).
+
+  **Example (using `setTimeout`)**:
 
   ```javascript
-  console.log("First");
-  setTimeout(() => console.log("Second"), 1000);
-  console.log("Third");
+  console.log("Start");
+  setTimeout(() => {
+    console.log("Middle");
+  }, 1000); // Delayed by 1 second
+  console.log("End");
+  ```
+
+  Output:
+
+  ```sql
+  Start
+  End
+  Middle (after 1 second)
   ```
 
 ### 10\. **How does JavaScript handle asynchronous code (callbacks, promises, async/await)?**
@@ -957,9 +982,28 @@ Sure! Let's dive into these JavaScript concepts in detail.
 
 ---
 
-### 1\. **What is the prototype chain in JavaScript?**
+### 2\. **What is the prototype chain in JavaScript?**
 
-The **prototype chain** is a fundamental feature in JavaScript that allows objects to inherit properties and methods from other objects. Every JavaScript object has a `[[Prototype]]` property (also accessible via `__proto__`), which refers to another object. If a property or method is called on an object and it doesn’t exist on that object, JavaScript looks up the chain to the object's prototype, then the prototype's prototype, and so on, until it either finds the property or reaches the end of the chain (i.e., `Object.prototype`, which is `null`).
+The **prototype chain** is a mechanism by which objects in JavaScript inherit properties and methods from other objects. Each object has a hidden internal property `[[Prototype]]` (often accessed via `__proto__`), which points to another object. When a property or method is accessed on an object, JavaScript looks at the object's prototype chain to see if the property exists. This continues up the chain until the property is found or the chain reaches `null` (the end).
+
+Example:
+
+```javascript
+ function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.speak = function() {
+  console.log(`${this.name} makes a noise.`);
+};
+
+const dog = new Animal("Dog");
+dog.speak(); // Dog makes a noise.
+
+console.log(dog.__proto__ === Animal.prototype); // true
+```
+
+In this example, `dog` inherits from `Animal.prototype`.
 
 ### 2\. **What is the `bind()` method used for in JavaScript?**
 
