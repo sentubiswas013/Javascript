@@ -35,36 +35,6 @@ Example:
 }
 ```
 
-### 11\. **Can you explain the difference between synchronous and asynchronous execution in JavaScript?**
-
-* **Synchronous execution** means that operations are performed one after another, blocking the thread until each operation completes.
-
-* **Asynchronous execution** allows operations to be initiated and executed independently, without blocking the thread. The result is typically handled with callbacks, promises, or async/await.
-
-Example of synchronous:
-
-```javascript
- codeconsole.log("First");
-console.log("Second");
-```
-
-Example of asynchronous:
-
-```javascript
- codesetTimeout(() => console.log("Asynchronous"), 0);
-console.log("Synchronous");
-```
-
-Output:
-
-```mathematica
-mathematicaCopy codeSynchronous
-Asynchronous
-```
-
----
-
-Let me know if you'd like more clarification or deeper examples on any of these!
 
 ### Performance Optimization
 
