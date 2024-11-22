@@ -656,6 +656,28 @@ Example:
   const { name, age } = person;  // name = "Alice", age = 25
   ```
 
+### 1\. **What are template literals and how are they used?**
+
+Template literals are a feature in JavaScript that allows you to work with strings in a more flexible way. They are enclosed by backticks (`` ` ``) instead of single or double quotes, and allow for embedding expressions inside the string using `${}`.
+
+**Example:**
+
+```javascript
+ codelet name = "Alice";
+let age = 30;
+let greeting = `Hello, my name is ${name} and I am ${age} years old.`;
+console.log(greeting); 
+// Output: Hello, my name is Alice and I am 30 years old.
+```
+
+You can also create multi-line strings without needing escape characters:
+
+```javascript
+ codelet message = `This is a string
+that spans multiple lines.`;
+console.log(message);
+```
+
 ### 15\. **How does JavaScript handle errors with try, catch, and finally?**
 
 In JavaScript, errors in asynchronous code can be handled in two main ways:
