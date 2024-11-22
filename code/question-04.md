@@ -87,15 +87,6 @@ console.log(employee.job); // Engineer (own property)
 
 ---
 
-### 10\. **What is the event loop in JavaScript? How does the call stack, event queue, and microtask queue work together?**
-
-The **event loop** is the mechanism that handles asynchronous operations in JavaScript. It continually checks the call stack, event queue, and microtask queue to execute code.
-
-* **Call Stack**: Where functions are executed. If a function calls another function, the new function is added to the top of the stack.
-* **Event Queue**: Holds messages (events) waiting to be processed, and their associated callback functions.
-* **Microtask Queue**: Holds promises and their `.then()`/`.catch()` callbacks, which are processed before the event queue.
-
-The event loop processes the **call stack** first, then the **microtask queue**, and then the **event queue**.
 
 ---
 

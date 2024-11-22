@@ -234,14 +234,6 @@ Sass (Syntactically Awesome Stylesheets) and LESS are two popular preprocessors.
 ## JavaScript (Vanilla JS)
 ---
 
-### 5. Event Loop in JavaScript and How Asynchronous Code is Handled:
-
-The event loop is responsible for handling asynchronous operations in JavaScript. It ensures that non-blocking code (like I/O operations, timers, or event listeners) is executed after the main thread finishes executing synchronous code.
-
-- **How it works**:
-  JavaScript has a single-threaded event loop. When a function is executed, it goes onto the call stack.
-  When asynchronous tasks (like setTimeout, fetch(), or event listeners) are encountered, they are sent to the callback queue (or task queue) once they are ready to be executed.
-  The event loop checks if the call stack is empty. If it is, it pushes the next task from the queue onto the stack.
 
 ### 6. Promise vs. Callback Function in JavaScript:
 
