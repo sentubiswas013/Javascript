@@ -675,14 +675,6 @@ Let me know if you need more details or modifications to these implementations!
 
 
 
-
-
----
-
-
-
----
-
 ### 6\. **What are Promises and async/await? How are they different from callbacks?**
 
 #### **Promises**
