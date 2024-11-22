@@ -618,21 +618,36 @@ Example:
 
 ### 15\. **How does JavaScript handle errors with try, catch, and finally?**
 
+In JavaScript, errors in asynchronous code can be handled in two main ways:
+
+1. **Using `.catch()` with Promises**: If the promise is rejected, the error can be caught using `.catch()`.
+
+   ```javascript
+    myPromise.then(result => {
+     console.log(result);
+   }).catch(error => {
+     console.log('Error:', error);
+   });
+   ```
+
+2. **Using `try/catch` with async/await**: If you are using `async`/`await`, you can handle errors more synchronously inside a `try/catch` block.
+
+   ```javascript
+    async function fetchData() {
+     try {
+       let data = await someAsyncOperation();
+       console.log(data);
+     } catch (error) {
+       console.log('Error:', error);
+     }
+   }
+   ```
+  
 * **`try`**: Executes code that might throw an error.
 * **`catch`**: Handles errors if any occur in the `try` block.
 * **`finally`**: Executes code after `try`/`catch`, regardless of whether an error occurred.
 
-Example:
-
-```javascript
-try {
-  let result = riskyOperation();
-} catch (error) {
-  console.error("An error occurred", error);
-} finally {
-  console.log("Always runs");
-}
-```
+In both cases, you handle the error where the promise or asynchronous function is invoked.
 
 ### 16\. **What are modules in JavaScript, and how do you export and import them?**
 
