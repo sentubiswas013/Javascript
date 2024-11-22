@@ -1065,17 +1065,32 @@ Here, "Middle" is logged after 1 second without blocking "End".
 
 ### 7\. **Explain the concept of "callback hell" and how to avoid it.**
 
+A **callback** is a function passed as an argument to another function that is executed once the asynchronous operation completes.
+
 * **Callback Hell** (or Pyramid of Doom) refers to nested callbacks that make code hard to read, understand, and maintain. This usually happens when you have multiple asynchronous operations that depend on each other.
+
+#### Problem of "Callback Hell":
+
+* When you have multiple asynchronous operations that depend on each other, you may end up with deeply nested callbacks, often referred to as **callback hell** or **pyramid of doom**.
+* This can make the code hard to read, maintain, and debug.
 
 Example:
 
 ```javascript
-asyncFunction1(function(err, result1) {
-  asyncFunction2(function(err, result2) {
-    asyncFunction3(function(err, result3) {
-      // And so on...
+doSomething(function(err, result) {
+  if (err) {
+    console.error(err);
+  } else {
+    doAnotherThing(result, function(err, result2) {
+      if (err) {
+        console.error(err);
+      } else {
+        doYetAnotherThing(result2, function(err, result3) {
+          // and so on...
+        });
+      }
     });
-  });
+  }
 });
 ```
 
