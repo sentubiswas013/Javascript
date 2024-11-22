@@ -3271,6 +3271,27 @@ A **Progressive Web App (PWA)** is a web application that uses modern web capabi
    });
    ```
 
+
+### 33\. **What are service workers in JavaScript? How do they enable progressive web apps (PWAs)?**
+
+A **service worker** is a script that runs in the background of a web browser, separate from a web page, and can intercept network requests to serve content, even when the user is offline.
+
+**How Service Workers Enable PWAs**:
+
+* **Offline Functionality**: Service workers can cache assets and serve them when the user is offline.
+* **Background Sync**: They enable background sync, allowing the app to send data when the connection is restored.
+* **Push Notifications**: Service workers enable push notifications to be delivered to the user even when the app is not open.
+
+Example of registering a service worker:
+
+```js
+ codeif ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then(reg => console.log('Service Worker registered:', reg))
+    .catch(err => console.error('Service Worker registration failed:', err));
+}
+```
+
 ### 57\. **How do you use local storage and session storage in JavaScript? When should you choose one over the other?**
 
 **Local Storage**:
