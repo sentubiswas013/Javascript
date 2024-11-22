@@ -176,6 +176,46 @@
 
     name();
 
+    // (function(){
+    //     console.log("Hello World")
+    // })()
+
+    let a = 10;
+    let b = 20;
+    let c;
+
+    // a = a + b // 10+20 = 30
+    // b = a - b // 30-20 = 10
+    // a = a - b // 30-10 = 20
+
+    // c = a; console.log("--", c);  // 10 
+    // a = b; console.log("--", b);  // 10 
+    // b = c; console.log("--", a);  //   
+
+    // console.log("--", a,b,c);
+
+
+    // let arr = [3,5,2,5,6,2];
+    // result = new Set(arr);
+    // console.log(result)
+
+
+    function maxValue(val) {
+        let max = 0;
+        let min = Infinity;
+
+        for (let index = 0; index < val.length; index++) {
+            console.log("val[index]---", val[index]);
+            if(val[index] > max)        
+                max =  val[index]
+            if (val[index] < max)
+                min =  val[index]
+        }
+        console.log("max---", max, min)
+    }
+
+    maxValue([3,5,2,5,6,2, 9, 0])
+
 </script>
 
 </body>

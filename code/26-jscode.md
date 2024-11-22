@@ -376,6 +376,7 @@ console.log(longestCommonString())
 ```
 ------------------------------------------
 ### Code 13: To find vowels and its count in a given string
+#### Way 1 using while loop
 ```javascript
 function vowelCounts(){
   vowels=["a","i","e","o","u"]
@@ -399,6 +400,40 @@ vowelCounts()
 // 2
 
 ```
+#### Way 2 using loop
+```javascript
+function countVowels(str) {
+  let vowels = 'aeiouAEIOU'; // String containing all vowels (both lowercase and uppercase)
+  let vowelCount = 0; // Variable to keep track of the count of vowels
+  let vowelList = []; // Array to store vowels found in the string
+
+  // Loop through each character of the string
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+
+    // Check if the current character is a vowel
+    if (vowels.includes(char)) {
+      vowelCount++; // Increment the vowel count
+      vowelList.push(char); // Add the vowel to the list
+    }
+  }
+
+  // Return the count and the list of vowels found
+  return {
+    count: vowelCount,
+    vowels: vowelList
+  };
+}
+
+// Example usage:
+let inputString = "Hello World!";
+let result = countVowels(inputString);
+
+console.log("Vowels found:", result.vowels.join(", "));
+console.log("Total vowels count:", result.count);
+
+```
+
 ------------------------------------------
 ### Code 14:sort array data in javascript using loop
 You can sort an array in JavaScript using a loop, though the built-in `Array.prototype.sort()` is usually more efficient. However, if you want to implement sorting manually using a loop, you can use sorting algorithms like **Bubble Sort**, **Selection Sort**, or **Insertion Sort**.
