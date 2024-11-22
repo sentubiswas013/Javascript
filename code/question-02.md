@@ -348,23 +348,49 @@ increment(); // 2
 
   Function expressions are not hoisted. The function is only available after the assignment.
 
-### 3\. **What is the purpose of setTimeout() and setInterval()?**
+### 6\. **What Are `setTimeout` and `setInterval`? How Do They Differ?**
 
-* **`setTimeout()`**: Executes a function once after a specified delay.
+Both `setTimeout` and `setInterval` are used to schedule asynchronous functions to be executed after a delay.
+
+* **`setTimeout`**: Executes a function once after a specified delay (in milliseconds).
 
   ```javascript
-  setTimeout(() => {
-    console.log("Executed after 2 seconds");
+   codesetTimeout(() => {
+    console.log("This runs after 2 seconds.");
   }, 2000);
   ```
 
-* **`setInterval()`**: Repeatedly executes a function at specified intervals (in milliseconds).
+* **`setInterval`**: Executes a function repeatedly, with a specified delay between each execution.
 
   ```javascript
-  setInterval(() => {
-    console.log("Executed every 2 seconds");
+   codesetInterval(() => {
+    console.log("This runs every 2 seconds.");
   }, 2000);
   ```
+
+#### Key Differences:
+
+* `setTimeout` runs the function **once** after the specified delay.
+* `setInterval` runs the function **repeatedly** at intervals.
+* Both functions return an identifier that can be used to **clear** them (using `clearTimeout()` or `clearInterval()`).
+
+Example of clearing a timer:
+
+```javascript
+ codelet timerId = setInterval(() => {
+  console.log("This will repeat every second.");
+}, 1000);
+
+// Stop the interval after 5 seconds
+setTimeout(() => {
+  clearInterval(timerId);
+  console.log("Interval cleared.");
+}, 5000);
+```
+
+### Conclusion
+
+These are core concepts in JavaScript for handling asynchronous behavior and managing operations like promises, async/await, event loops, and timers. By understanding these, you can write more efficient and readable asynchronous code.
 
 ### 4\. **Explain the concept of promises and how then() and catch() work.**
 
