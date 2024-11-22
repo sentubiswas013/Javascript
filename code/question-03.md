@@ -672,51 +672,7 @@ Let me know if you need more details or modifications to these implementations!
 
 ---
 
-### 2\. **Explain the concept of memoization and provide an example.**
 
-#### **Memoization**:
-
-Memoization is an optimization technique used to speed up repeated function calls by storing (or "memoizing") the results of expensive function calls. When the function is called again with the same arguments, it returns the cached result instead of recomputing it.
-
-This is particularly useful for functions with high computational cost and overlapping subproblems (e.g., recursive algorithms).
-
-#### **Example**:
-
-Here's a simple example of memoization for the Fibonacci sequence calculation:
-
-```javascript
- function memoize(fn) {
-  const cache = {};
-  return function(...args) {
-    const key = JSON.stringify(args); // Create a unique key for each set of arguments
-    if (key in cache) {
-      return cache[key];
-    } else {
-      const result = fn(...args);
-      cache[key] = result;
-      return result;
-    }
-  };
-}
-
-// Regular Fibonacci function (recursive)
-function fibonacci(n) {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-// Memoized Fibonacci function
-const memoizedFibonacci = memoize(fibonacci);
-
-console.log(memoizedFibonacci(40)); // Much faster after the first computation
-```
-
-**Why it works**:
-
-* The first time `fibonacci(40)` is called, the function will compute the result.
-* For subsequent calls, it will use the cached result, drastically reducing the time complexity.
-
----
 
 ### 3\. **How do you handle memory leaks in JavaScript?**
 

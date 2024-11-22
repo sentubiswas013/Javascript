@@ -909,9 +909,51 @@ console.log(gen.next().value); // 2
   Reflect.set(target, 'prop', value);
   ```
 
-### 12\. **What is memory management and garbage collection in JavaScript?**
+### 2\. **Explain the concept of memoization and provide an example.**
 
-Memory management in JavaScript involves allocating and freeing up memory when objects are no longer needed. **Garbage Collection (GC)** automatically reclaims memory used by objects that are no longer reachable or referenced. JavaScript's garbage collector mainly uses **mark-and-sweep** and **reference counting** algorithms.
+#### **Memoization**:
+
+Memoization is an optimization technique used to speed up repeated function calls by storing (or "memoizing") the results of expensive function calls. When the function is called again with the same arguments, it returns the cached result instead of recomputing it.
+
+This is particularly useful for functions with high computational cost and overlapping subproblems (e.g., recursive algorithms).
+
+#### **Example**:
+
+Here's a simple example of memoization for the Fibonacci sequence calculation:
+
+```javascript
+ function memoize(fn) {
+  const cache = {};
+  return function(...args) {
+    const key = JSON.stringify(args); // Create a unique key for each set of arguments
+    if (key in cache) {
+      return cache[key];
+    } else {
+      const result = fn(...args);
+      cache[key] = result;
+      return result;
+    }
+  };
+}
+
+// Regular Fibonacci function (recursive)
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Memoized Fibonacci function
+const memoizedFibonacci = memoize(fibonacci);
+
+console.log(memoizedFibonacci(40)); // Much faster after the first computation
+```
+
+**Why it works**:
+
+* The first time `fibonacci(40)` is called, the function will compute the result.
+* For subsequent calls, it will use the cached result, drastically reducing the time complexity.
+
+---
 
 ### 13\. **How does JavaScript handle concurrency with async/await, Promises, and Event Loop?**
 
