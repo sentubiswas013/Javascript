@@ -685,58 +685,6 @@ Sure! Here are detailed answers to your JavaScript questions:
 
 
 
-### 3\. **How would you implement inheritance in JavaScript (both classical and prototypal)?**
-
-There are two main approaches to inheritance in JavaScript: **Classical Inheritance** (using constructor functions) and **Prototypal Inheritance**.
-
-* **Classical Inheritance** (via constructor functions): JavaScript doesn't have classical inheritance like other OOP languages (e.g., Java, C++), but you can simulate it using constructor functions and setting the prototype chain manually.
-
-  Example:
-
-  ```javascript
-   function Animal(name) {
-    this.name = name;
-  }
-
-  Animal.prototype.speak = function() {
-    console.log(this.name + ' makes a noise.');
-  };
-
-  function Dog(name) {
-    Animal.call(this, name); // Call parent constructor
-  }
-
-  Dog.prototype = Object.create(Animal.prototype); // Inherit from Animal
-  Dog.prototype.constructor = Dog;
-
-  const dog = new Dog('Buddy');
-  dog.speak(); // Buddy makes a noise.
-  ```
-
-* **Prototypal Inheritance** (using ES6 `class` syntax): ES6 introduced the `class` syntax to make inheritance clearer.
-
-  Example:
-
-  ```javascript
-   codeclass Animal {
-    constructor(name) {
-      this.name = name;
-    }
-    
-    speak() {
-      console.log(this.name + ' makes a noise.');
-    }
-  }
-
-  class Dog extends Animal {
-    constructor(name) {
-      super(name); // Call the parent constructor
-    }
-  }
-
-  const dog = new Dog('Buddy');
-  dog.speak(); // Buddy makes a noise.
-  ```
 
 ### 4\. **What is a JavaScript module and how do you work with modules in modern JavaScript?**
 

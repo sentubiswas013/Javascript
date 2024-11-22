@@ -1483,38 +1483,59 @@ The **event loop** is a mechanism that handles the execution of multiple pieces 
 
 ---
 
-### 4\. **How does JavaScript handle inheritance?**
 
-JavaScript uses **prototype-based inheritance**.
+### 3\. **How would you implement inheritance in JavaScript (both classical and prototypal)?**
 
-* **Prototype Chain**: Every object in JavaScript has a prototype object. When you try to access a property or method on an object, JavaScript first checks if the object has it. If not, it looks at the object's prototype, then the prototype's prototype, and so on until it reaches `null`.
+There are two main approaches to inheritance in JavaScript: **Classical Inheritance** (using constructor functions) and **Prototypal Inheritance**.
 
-* **ES6 Class Syntax**: While JavaScript is prototype-based, ES6 introduced `class` syntax to simplify object-oriented patterns. However, it is still based on prototype inheritance under the hood.
+* **Classical Inheritance** (via constructor functions): JavaScript doesn't have classical inheritance like other OOP languages (e.g., Java, C++), but you can simulate it using constructor functions and setting the prototype chain manually.
 
-Example:
+  Example:
 
-```javascript
-class Animal {
-  constructor(name) {
+  ```javascript
+   function Animal(name) {
     this.name = name;
   }
-  
-  speak() {
-    console.log(`${this.name} makes a sound`);
+
+  Animal.prototype.speak = function() {
+    console.log(this.name + ' makes a noise.');
+  };
+
+  function Dog(name) {
+    Animal.call(this, name); // Call parent constructor
   }
-}
 
-class Dog extends Animal {
-  speak() {
-    console.log(`${this.name} barks`);
+  Dog.prototype = Object.create(Animal.prototype); // Inherit from Animal
+  Dog.prototype.constructor = Dog;
+
+  const dog = new Dog('Buddy');
+  dog.speak(); // Buddy makes a noise.
+  ```
+
+* **Prototypal Inheritance** (using ES6 `class` syntax): ES6 introduced the `class` syntax to make inheritance clearer.
+
+  Example:
+
+  ```javascript
+   codeclass Animal {
+    constructor(name) {
+      this.name = name;
+    }
+    
+    speak() {
+      console.log(this.name + ' makes a noise.');
+    }
   }
-}
 
-const dog = new Dog('Buddy');
-dog.speak(); // Buddy barks
-```
+  class Dog extends Animal {
+    constructor(name) {
+      super(name); // Call the parent constructor
+    }
+  }
 
-Here, `Dog` inherits from `Animal` using `extends`, and both classes use prototype chains to establish inheritance.
+  const dog = new Dog('Buddy');
+  dog.speak(); // Buddy makes a noise.
+  ```
 
 ---
 
