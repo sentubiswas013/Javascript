@@ -495,11 +495,25 @@ document.querySelector('#parent').addEventListener('click', function(event) {
 });
 ```
 
-### 8\. **What is the event loop in JavaScript?**
+### 8\. **What is the Event Loop in JavaScript? How It Works**
 
 The **event loop** is a mechanism that handles asynchronous operations in JavaScript. It continuously checks the call stack and the message queue. When the call stack is empty, it pushes tasks from the message queue to the call stack for execution.
 
-* The event loop enables JavaScript to execute asynchronous code, like setTimeout, promises, and I/O operations, without blocking the main thread.
+#### How it Works:
+
+* JavaScript is single-threaded, meaning it can only execute one operation at a time.
+* The event loop continuously checks the **call stack** for functions that need to be executed.
+* When asynchronous code (like a `setTimeout`, promise, or event listener) is invoked, it is added to the **message queue** (also called the **task queue**).
+* The event loop moves tasks from the message queue to the call stack for execution when the call stack is empty.
+
+Here's a simplified flow:
+
+1. **Call Stack**: Synchronous code gets pushed onto the stack and executed.
+2. **Web APIs** (like `setTimeout`): Asynchronous operations are handled by the browser or Node.js environment (outside the main thread).
+3. **Message Queue**: Once an asynchronous task completes, it moves to the message queue.
+4. The **Event Loop** checks if the call stack is empty. If it is, it pushes the next task from the queue onto the call stack.
+
+This allows JavaScript to handle asynchronous events efficiently without blocking the execution of other tasks.
 
 ### 9\. **What is the difference between synchronous and asynchronous code?**
 
