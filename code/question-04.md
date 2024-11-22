@@ -69,50 +69,6 @@ In React, when the state of a component changes, the Virtual DOM is updated firs
 
 ---
 
-### 32\. **What are the differences between `fetch` and `XMLHttpRequest` for making HTTP requests?**
-
-* **`fetch`**:
-
-  * **Modern API**: Based on promises, making it easier to work with asynchronous code using `async`/`await`.
-  * **Better API**: Provides a cleaner and more flexible syntax for making requests and handling responses.
-  * **Default response**: The response object must be explicitly parsed (e.g., `.json()`, `.text()`).
-  * **CORS**: Handles CORS (Cross-Origin Resource Sharing) more naturally.
-
-  Example:
-
-  ```js
-   codefetch('https://api.example.com/data')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-  ```
-
-* **`XMLHttpRequest`**:
-
-  * **Older API**: More verbose and callback-based.
-  * **Callback-based**: Requires setting up callbacks for different stages of the request (open, send, onreadystatechange).
-  * **Less Flexible**: Has less support for modern features like promises.
-
-  Example:
-
-  ```js
-   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://api.example.com/data', true);
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  };
-  xhr.send();
-  ```
-
-**Key Differences**:
-
-1. **API style**: `fetch` is promise-based, while `XMLHttpRequest` is callback-based.
-2. **Browser support**: `fetch` is newer and not supported in older browsers like Internet Explorer, while `XMLHttpRequest` is widely supported.
-3. **Flexibility**: `fetch` is simpler and more flexible, while `XMLHttpRequest` requires more boilerplate code.
-
----
 
 ### 33\. **What are service workers in JavaScript? How do they enable progressive web apps (PWAs)?**
 

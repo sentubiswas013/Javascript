@@ -380,25 +380,48 @@ console.log(applyFunction(square, 5));  // Output: 25
 
 ---
 
-### 12. fetch() API vs. XMLHttpRequest:
+### 32\. **What are the differences between `fetch` and `XMLHttpRequest` for making HTTP requests?**
 
-- **fetch()**: Modern, promise-based API for making HTTP requests. It provides a cleaner, more readable syntax for handling asynchronous requests.
+* **`fetch`**:
 
-```javascript
-fetch('https://api.example.com/data')
-  .then(response => response.json())
-  .then(data => console.log(data));
-```
+  * **Modern API**: Based on promises, making it easier to work with asynchronous code using `async`/`await`.
+  * **Better API**: Provides a cleaner and more flexible syntax for making requests and handling responses.
+  * **Default response**: The response object must be explicitly parsed (e.g., `.json()`, `.text()`).
+  * **CORS**: Handles CORS (Cross-Origin Resource Sharing) more naturally.
 
-- **XMLHttpRequest**: Older, callback-based method for making HTTP requests. It is more verbose and harder to work with compared to fetch().
+  Example:
 
-```javascript
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://api.example.com/data', true);
-    xhr.onload = () => console.log(xhr.responseText);
-    xhr.send();
-    sql
-```
+  ```js
+   codefetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+  ```
+
+* **`XMLHttpRequest`**:
+
+  * **Older API**: More verbose and callback-based.
+  * **Callback-based**: Requires setting up callbacks for different stages of the request (open, send, onreadystatechange).
+  * **Less Flexible**: Has less support for modern features like promises.
+
+  Example:
+
+  ```js
+   var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.example.com/data', true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log(JSON.parse(xhr.responseText));
+    }
+  };
+  xhr.send();
+  ```
+
+**Key Differences**:
+
+1. **API style**: `fetch` is promise-based, while `XMLHttpRequest` is callback-based.
+2. **Browser support**: `fetch` is newer and not supported in older browsers like Internet Explorer, while `XMLHttpRequest` is widely supported.
+3. **Flexibility**: `fetch` is simpler and more flexible, while `XMLHttpRequest` requires more boilerplate code.
 
 ---
 
