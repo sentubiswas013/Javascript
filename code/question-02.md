@@ -489,23 +489,43 @@ fetchData();
 * `async`/`await` makes code appear synchronous and easier to understand, while Promises are asynchronous and often require `.then()` and `.catch()` for handling success and errors.
 * Error handling with `async/await` is done using `try`/`catch`, which can be more intuitive compared to `.catch()` with promises.
 
-### 6\. **What are arrow functions, and how do they differ from regular functions?**
+### 5\. **What are arrow functions and how do they differ from regular functions?**
 
-Arrow functions are a shorthand syntax for writing functions. They are more concise and do not have their own `this`, `arguments`, `super`, or `new.target`. Arrow functions inherit `this` from their lexical scope.
+Arrow functions are a shorthand syntax for writing functions in JavaScript. They are more concise than traditional function expressions and they do not have their own `this`, `arguments`, `super`, or `new.target` bindings.
 
-Example:
+**Example:**
 
 ```javascript
-// Regular function
-function sum(a, b) {
-  return a + b;
-}
-
-// Arrow function
-const sum = (a, b) => a + b;
+ const add = (a, b) => a + b;
+console.log(add(2, 3)); // 5
 ```
 
-**Difference**: Arrow functions are not hoisted and do not have their own `this`.
+**Differences from Regular Functions:**
+
+1. **Syntax:** Arrow functions have a more concise syntax, especially when there is a single expression (no need for the `return` keyword).
+2. **`this` Binding:** Arrow functions do not have their own `this`; they inherit `this` from the surrounding context. In contrast, regular functions define their own `this`.
+
+**Example:**
+
+```javascript
+ code// Arrow function does not have its own `this`
+const person = {
+  name: "Alice",
+  greet: () => {
+    console.log(this.name);  // `this` refers to the global object, not the `person`
+  }
+};
+person.greet();  // undefined (or global object depending on the environment)
+
+// Regular function has its own `this`
+const person2 = {
+  name: "Alice",
+  greet: function() {
+    console.log(this.name);  // `this` refers to the `person2` object
+  }
+};
+person2.greet();  // Alice
+```
 
 ### 7\. **What is event delegation in JavaScript?**
 
@@ -638,23 +658,134 @@ Example:
   const obj2 = { ...obj1, age: 25 };  // { name: "Alice", age: 25 }
   ```
 
-### 14\. **What is destructuring in JavaScript?**
+### 14\. **Explain destructuring in JavaScript. Provide examples for both objects and arrays.?**
 
-**Destructuring** allows you to extract values from arrays or objects into variables in a concise way.
+Destructuring allows you to extract values from arrays or objects into individual variables. It makes your code more concise and readable.
 
-* **Array Destructuring**:
+#### **Object Destructuring**
 
-  ```javascript
-   const arr = [1, 2, 3];
-  const [a, b] = arr;  // a = 1, b = 2
-  ```
+You can destructure an object to extract values based on the property names.
 
-* **Object Destructuring**:
+**Example:**
 
-  ```javascript
-   const person = { name: "Alice", age: 25 };
-  const { name, age } = person;  // name = "Alice", age = 25
-  ```
+```javascript
+ const person = { name: "Alice", age: 30, city: "New York" };
+
+// Destructuring
+const { name, age, city } = person;
+console.log(name); // Alice
+console.log(age);  // 30
+console.log(city); // New York
+```
+
+You can also rename variables during destructuring:
+
+```javascript
+ const person = { name: "Alice", age: 30 };
+const { name: fullName, age: yearsOld } = person;
+console.log(fullName); // Alice
+console.log(yearsOld); // 30
+```
+
+#### **Array Destructuring**
+
+You can destructure arrays to extract values based on position.
+
+**Example:**
+
+```javascript
+ const colors = ["red", "green", "blue"];
+
+// Destructuring
+const [first, second, third] = colors;
+console.log(first);  // red
+console.log(second); // green
+console.log(third);  // blue
+```
+
+You can also skip elements:
+
+```javascript
+ const colors = ["red", "green", "blue"];
+const [, , third] = colors;
+console.log(third); // blue
+```
+
+### 3\. **What are default parameters in JavaScript functions?**
+
+In JavaScript, default parameters allow you to specify default values for function parameters. If the argument is not passed when calling the function, the default value is used.
+
+**Example:**
+
+```javascript
+ function greet(name = "Guest") {
+  console.log(`Hello, ${name}!`);
+}
+
+greet();         // Output: Hello, Guest!
+greet("Alice");  // Output: Hello, Alice!
+```
+
+You can also use expressions as default values:
+
+```javascript
+ function calculatePrice(price, tax = price * 0.1) {
+  return price + tax;
+}
+
+console.log(calculatePrice(100));    // 110 (tax is 10% by default)
+console.log(calculatePrice(100, 20)); // 120 (tax is provided as 20)
+```
+
+---
+
+### 4\. **Explain the concept of spread and rest operators in JavaScript.**
+
+Both the spread (`...`) and rest (`...`) operators use the same syntax but serve different purposes.
+
+#### **Spread Operator (`...`)**
+
+The spread operator allows you to expand elements from an array or object into individual elements.
+
+**Example with Arrays:**
+
+```javascript
+ const arr = [1, 2, 3];
+const newArr = [...arr, 4, 5];
+console.log(newArr); // [1, 2, 3, 4, 5]
+```
+
+**Example with Objects:**
+
+```javascript
+ const person = { name: "Alice", age: 30 };
+const personCopy = { ...person, city: "New York" };
+console.log(personCopy); // { name: "Alice", age: 30, city: "New York" }
+```
+
+#### **Rest Operator (`...`)**
+
+The rest operator collects multiple elements and stores them in an array. It is typically used in function arguments or when destructuring.
+
+**Example with Functions:**
+
+```javascript
+ function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sum(1, 2, 3)); // 6
+console.log(sum(5, 10, 15, 20)); // 50
+```
+
+**Example with Destructuring:**
+
+```javascript
+ const arr = [1, 2, 3, 4, 5];
+const [first, second, ...rest] = arr;
+console.log(first);  // 1
+console.log(second); // 2
+console.log(rest);   // [3, 4, 5]
+```
 
 ### 1\. **What are template literals and how are they used?**
 
