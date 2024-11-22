@@ -409,14 +409,30 @@ In this example:
 * Use `catch()` to handle errors.
 * You can chain multiple `then()` calls to handle sequential asynchronous operations.
 
-### 5\. **What is async/await in JavaScript?**
+### 5\. **What is async/await in JavaScript? and Difference Between Async/Await and Promises**
 
-**`async/await`** is a modern syntax for handling asynchronous code in a more synchronous-like fashion.
+`async`/`await` is syntax sugar built on top of Promises to make asynchronous code easier to write and read. They are not different technologies, but rather a more readable way to work with Promises.
 
-* **`async`**: Marks a function as asynchronous and automatically returns a promise.
-* **`await`**: Pauses the execution of the `async` function until a promise is resolved.
+#### Promises:
 
-Example:
+* Promises require chaining `.then()` and `.catch()` methods to handle results and errors.
+
+Using promises:
+
+```javascript
+ codefetchData().then(data => {
+  console.log(data);
+}).catch(error => {
+  console.log(error);
+});
+```
+
+#### async/await:
+
+* `async` marks a function as asynchronous, meaning it will return a promise.
+* `await` pauses the execution of the function until the promise is resolved or rejected.
+
+Using async/await:
 
 ```javascript
 async function fetchData() {
@@ -427,6 +443,11 @@ async function fetchData() {
 
 fetchData();
 ```
+
+#### Key Differences:
+
+* `async`/`await` makes code appear synchronous and easier to understand, while Promises are asynchronous and often require `.then()` and `.catch()` for handling success and errors.
+* Error handling with `async/await` is done using `try`/`catch`, which can be more intuitive compared to `.catch()` with promises.
 
 ### 6\. **What are arrow functions, and how do they differ from regular functions?**
 
@@ -902,32 +923,6 @@ Sure! Let's go through each of the JavaScript questions one by one:
 
 * Closures are useful for data encapsulation and creating private variables.
 * They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
-
----
-
-### 2\. **What is the difference between call() and apply() in JavaScript?**
-
-Both `call()` and `apply()` are methods used to invoke a function with a specific `this` context and pass arguments, but the way arguments are provided is different.
-
-* **`call()`**: The arguments are passed individually, separated by commas.
-
-  ```javascript
-   function greet(name, age) {
-    console.log(`${name} is ${age} years old.`);
-  }
-
-  greet.call(null, 'Alice', 30); // Alice is 30 years old.
-  ```
-
-* **`apply()`**: The arguments are passed as an array (or array-like object).
-
-  ```javascript
-  greet.apply(null, ['Bob', 25]); // Bob is 25 years old.
-  ```
-
-### Key Difference:
-
-* `call()` passes arguments one by one, while `apply()` takes an array of arguments.
 
 ---
 
