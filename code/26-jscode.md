@@ -433,12 +433,28 @@ console.log("Vowels found:", result.vowels.join(", "));
 console.log("Total vowels count:", result.count);
 
 ```
-
 ------------------------------------------
 ### Code 14:sort array data in javascript using loop
 You can sort an array in JavaScript using a loop, though the built-in `Array.prototype.sort()` is usually more efficient. However, if you want to implement sorting manually using a loop, you can use sorting algorithms like **Bubble Sort**, **Selection Sort**, or **Insertion Sort**.
 
-Here are examples of each:
+### 1\. **Sort data suign simple way**
+```javascript
+let arr = [3, 5, 2, 5, 6, 2, 9, 0];
+
+// Bubble Sort implementation
+for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+            // Swap the elements
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+    }
+}
+
+console.log(arr);
+```
 
 ### 1\. **Bubble Sort (Simple and easy to understand)**
 

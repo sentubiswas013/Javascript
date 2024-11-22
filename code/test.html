@@ -200,21 +200,41 @@
     // console.log(result)
 
 
-    function maxValue(val) {
-        let max = 0;
-        let min = Infinity;
+    // function maxValue(val) {
+    //     let max = 0;
+    //     let min = Infinity;
 
-        for (let index = 0; index < val.length; index++) {
-            console.log("val[index]---", val[index]);
-            if(val[index] > max)        
-                max =  val[index]
-            if (val[index] < max)
-                min =  val[index]
+    //     for (let index = 0; index < val.length; index++) {
+    //         console.log("val[index]---", val[index]);
+    //         if(val[index] > max)        
+    //             max =  val[index]
+    //         if (val[index] < max)
+    //             min =  val[index]
+    //     }
+    //     console.log("max---", max, min)
+    // }
+
+    // maxValue([3,5,2,5,6,2, 9, 0])
+
+    function longStr() {
+        let str = "We are Bharatiya, and Bengali";
+        let arrTemp = str.split(' ');
+        let min = Infinity
+        let longWord = '';
+
+        for (let index = 0; index < arrTemp.length; index++) {
+            // console.log("arrTemp[index]----", arrTemp[index]);
+
+            if(arrTemp[index].length < longWord.length) {
+                min = arrTemp[index].length
+                longWord = arrTemp[index];
+            }
         }
-        console.log("max---", max, min)
+
+        console.log("longWord----", longWord)
     }
 
-    maxValue([3,5,2,5,6,2, 9, 0])
+    longStr();
 
 </script>
 
