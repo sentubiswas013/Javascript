@@ -420,11 +420,25 @@ In this example:
 Using promises:
 
 ```javascript
- codefetchData().then(data => {
-  console.log(data);
-}).catch(error => {
-  console.log(error);
-});
+function resolveAfter2Seconds() {
+   return new Promise((resolve) => {
+     setTimeout(() => {
+       resolve('resolved');
+     }, 2000);
+   });
+ }
+
+ async function asyncCall() {
+   console.log('calling');
+   const result = await resolveAfter2Seconds();
+   console.log(result);
+   // Expected output: "resolved"
+ }
+ asyncCall();
+
+ // Output:
+ // "calling"
+ // "resolved"
 ```
 
 #### async/await:
