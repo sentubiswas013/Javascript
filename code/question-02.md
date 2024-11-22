@@ -1047,6 +1047,51 @@ The **event loop** coordinates asynchronous tasks while executing the synchronou
 
 ---
 
+### 3\. **How do you handle memory leaks in JavaScript?**
+
+Memory leaks occur when objects are no longer in use but are still being referenced, preventing the garbage collector from freeing up the memory. Here's how you can handle and prevent memory leaks in JavaScript:
+
+#### a. **Use `WeakMap` or `WeakSet` for Caching**
+
+* If you need to store references to objects, use `WeakMap` or `WeakSet`. These types allow garbage collection to remove objects when they are no longer referenced.
+
+#### b. **Remove Event Listeners**
+
+* Always remove event listeners when they're no longer needed. For example:
+  ```javascript
+   const button = document.querySelector('button');
+  function handleClick() { console.log('clicked'); }
+  button.addEventListener('click', handleClick);
+
+  // When done
+  button.removeEventListener('click', handleClick);
+  ```
+
+#### c. **Clear Timeouts and Intervals**
+
+* When using `setTimeout` or `setInterval`, make sure to clear them when they are no longer needed.
+  ```javascript
+   const intervalId = setInterval(() => { console.log('Running'); }, 1000);
+
+  // Clear when done
+  clearInterval(intervalId);
+  ```
+
+#### d. **Avoid Global Variables**
+
+* Limit the use of global variables, as they stay in memory for the duration of the page's lifecycle.
+
+#### e. **Check Detached DOM Elements**
+
+* Ensure that DOM nodes that are removed from the page are properly cleaned up, as references to them can prevent garbage collection.
+
+#### f. **Profiling and Monitoring**
+
+* Use browser developer tools to profile memory usage and track potential leaks, especially in long-running applications.
+
+---
+
+
 
 ## Miscellaneous/Conceptual Questions
 
