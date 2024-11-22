@@ -1,7 +1,4 @@
 **\# JavaScript Interview Questions & Answers**
-
-Certainly! Below is a list of JavaScript-related questions that span beginner to advanced topics:
-
 ## Beginner-Level Questions
 ---
 
