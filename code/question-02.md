@@ -249,6 +249,23 @@ In global scope, `this` refers to the global object (`window` in browsers).
   - **Arrow functions**: Arrow functions do not have their own `this`; instead, they inherit `this` from their surrounding (lexical) context.
   - **Explicit binding**: Methods like `call()`, `apply()`, and `bind()` can explicitly set the value of `this`.
 
+Example:
+
+```javascript
+ function regularFunc() {
+  console.log(this); // Global object (window in browsers)
+}
+
+const obj = {
+  method() {
+    console.log(this); // obj
+  }
+};
+
+const arrowFunc = () => {
+  console.log(this); // Inherits from surrounding context
+};
+```
 
 ### 6\. **What is the difference between a forEach and a for loop in JavaScript?**
 

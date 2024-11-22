@@ -35,35 +35,6 @@ Example:
 }
 ```
 
----
-
-### 5\. **Describe how `this` works in JavaScript. How does its value change in different contexts (e.g., regular functions, arrow functions, methods, constructors)?**
-
-* **In regular functions**, `this` refers to the global object (`window` in browsers, `global` in Node.js), or `undefined` in strict mode.
-
-* **In arrow functions**, `this` is lexically inherited from the surrounding context, meaning it doesn't change based on how the function is invoked.
-
-* **In methods**, `this` refers to the object that owns the method (e.g., inside an object method).
-
-* **In constructors**, `this` refers to the newly created instance of the object.
-
-Example:
-
-```javascript
- function regularFunc() {
-  console.log(this); // Global object (window in browsers)
-}
-
-const obj = {
-  method() {
-    console.log(this); // obj
-  }
-};
-
-const arrowFunc = () => {
-  console.log(this); // Inherits from surrounding context
-};
-```
 
 ---
 
