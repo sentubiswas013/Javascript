@@ -981,64 +981,6 @@ A **Progressive Web App (PWA)** is a type of web application that combines the b
 
 4. **Make the App Work Offline**: By using caching strategies in the Service Worker, you ensure the app can load content even when there's no network connection.
 
-### 3\. **How do you handle authentication and authorization in a frontend application?**
-
-Authentication and authorization are key aspects of security in frontend applications.
-
-- **Authentication** is the process of verifying the identity of the user (e.g., through login credentials).
-- **Authorization** is the process of determining what actions or resources the authenticated user is allowed to access.
-
-**How to handle authentication in frontend apps:**
-
-1. **Use a Backend API for Authentication**: The frontend app sends login credentials (e.g., username and password) to a backend server via a secure API. The backend validates the credentials and returns an authentication token (like a JWT or session cookie).
-
-2. **Store the Token Securely**:
-
-   - **JWT (JSON Web Token)**: Store the token in `localStorage` or `sessionStorage` for client-side access. However, these methods are vulnerable to XSS attacks, so careful handling is necessary.
-   - **HttpOnly Cookies**: A more secure approach is to store the token in a cookie with the `HttpOnly` and `Secure` flags, which prevents JavaScript access and ensures the token is only sent over HTTPS.
-
-3. **Sending Authentication Tokens**: Once the token is stored, it is sent in HTTP headers (usually the `Authorization` header with the "Bearer" prefix) when making requests to protected API endpoints.
-
-4. **Managing Authorization**:
-
-   - Use roles and permissions stored in the token payload (for JWT) to determine what parts of the app the user can access.
-   - On each route or component, check the user’s role or permissions before rendering protected content.
-   - Redirect users to login or an error page if they are not authorized to access a certain part of the app.
-
-5. **Token Expiry and Refresh**: JWTs have an expiry time. To maintain the user session, you can implement a token refresh mechanism where the frontend automatically requests a new token from the backend before the current token expires.
-
-### 4\. **What are the advantages and disadvantages of single-page applications (SPAs)?**
-
-A **Single-Page Application (SPA)** is a web application that loads a single HTML page and dynamically updates as the user interacts with the app. SPAs are built using JavaScript frameworks like React, Angular, and Vue.js.
-
-**Advantages of SPAs:**
-
-- **Fast and Responsive**: Once the page is loaded, only necessary data is fetched, making subsequent interactions feel faster, as the app does not need to reload entire pages.
-- **Seamless User Experience**: SPAs provide a fluid, app-like experience with smooth transitions between views without page reloads.
-- **Reduced Server Load**: Since only data (not full HTML pages) is sent over the network, SPAs reduce the load on the server.
-
-**Disadvantages of SPAs:**
-
-- **Initial Load Time**: The first load can be slow, as the browser needs to load a significant amount of JavaScript and other assets.
-- **SEO Challenges**: Since content is rendered dynamically in the browser, it can be challenging for search engines to index the content (although this can be mitigated with SSR, prerendering, or tools like prerender.io).
-- **Complexity**: Managing state and routing can become complex as the application grows, especially in large-scale apps with many dynamic views.
-- **Browser History and Back Button**: SPAs need to implement client-side routing properly to manage browser history and the back button, which can be challenging without proper setup.
-
-### 5\. **What is Server-Side Rendering (SSR), and how does it impact SEO?**
-
-**Server-Side Rendering (SSR)** refers to the process of rendering the HTML of a web page on the server before sending it to the client. In SSR, the server processes the request, renders the content (often using a JavaScript framework like React, Angular, or Vue), and then sends the fully rendered HTML to the browser.
-
-**How SSR Impacts SEO:**
-
-- **Better SEO**: Since search engine crawlers can read the fully rendered HTML content (rather than waiting for JavaScript to run), SSR significantly improves SEO. Search engines can easily index the content and rank the page, which is crucial for content-heavy websites.
-- **Faster First Load**: SSR provides a faster initial load because the browser receives fully rendered HTML, which reduces the time it takes to display the content compared to client-side rendering.
-
-**Trade-Offs of SSR:**
-
-- **Server Load**: SSR requires more server resources since the server needs to generate the HTML for each request, which can increase latency and load on the server.
-- **Complexity**: SSR adds complexity to the app architecture, especially in managing server-side rendering logic alongside client-side interactivity.
-
-By combining SSR with client-side hydration, modern frameworks (like Next.js for React or Nuxt.js for Vue) offer hybrid solutions that provide the best of both worlds: fast initial rendering for SEO and a dynamic, client-side app for subsequent interactions.
 
 ## 3. Architecture & Design Patterns
 
