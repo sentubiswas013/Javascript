@@ -453,7 +453,7 @@ for (let i = 0; i < arr.length; i++) {
     }
 }
 
-console.log(arr);
+console.log(arr); // [0,2,2,3,5,5,6,9]
 ```
 
 ### 1\. **Bubble Sort (Simple and easy to understand)**

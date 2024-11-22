@@ -225,7 +225,7 @@
         for (let index = 0; index < arrTemp.length; index++) {
             // console.log("arrTemp[index]----", arrTemp[index]);
 
-            if(arrTemp[index].length < longWord.length) {
+            if(arrTemp[index].length < min) {
                 min = arrTemp[index].length
                 longWord = arrTemp[index];
             }
@@ -233,8 +233,23 @@
 
         console.log("longWord----", longWord)
     }
+    // longStr();
 
-    longStr();
+    let arr = [3, 5, 2, 5, 6, 2, 9, 0];
+
+    // Bubble Sort implementation
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap the elements
+                let temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    console.log(arr);
 
 </script>
 
