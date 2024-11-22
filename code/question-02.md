@@ -963,15 +963,75 @@ JavaScript uses an **event loop** to manage asynchronous operations, allowing no
 * **async/await**: Allows asynchronous code to be written in a synchronous-like style.
 * The **Event Loop** ensures that asynchronous callbacks are processed after the current stack of synchronous operations is completed.
 
-### 14\. **What is debouncing and throttling in JavaScript, and how do they work?**
+### 4\. **What is throttling and debouncing? How do they help with performance?**
 
-* **Debouncing**: Ensures that a function is only called after a certain delay, preventing excessive function calls. Commonly used for events like scrolling, resizing, or keypresses.
-* **Throttling**: Ensures that a function is called at most once in a specified period, regardless of how many times the event is triggered.
+#### **Throttling**:
 
-Example:
+Throttling ensures that a function is called at most once in a specified interval, no matter how frequently the event is triggered. This is useful for limiting the rate of execution during events that fire frequently (e.g., scrolling, resizing).
 
-* **Debounce**: Delay before firing the function after the last event.
-* **Throttle**: Limit the number of times the function is called within a time window.
+* **Use case**: If you have a scroll event handler that updates the UI on every scroll, throttling can make sure the handler runs only once every 100ms, for example.
+
+```javascript
+ code// Throttling example
+function throttle(fn, wait) {
+  let lastTime = 0;
+  return function(...args) {
+    const now = Date.now();
+    if (now - lastTime >= wait) {
+      lastTime = now;
+      fn(...args);
+    }
+  };
+}
+
+window.addEventListener('scroll', throttle(() => {
+  console.log('Scrolled!');
+}, 200));
+```
+
+#### **Debouncing**:
+
+Debouncing ensures that a function is called only after a certain delay, and the call is made only after the event stops firing for a specified period. It's useful for input fields or search bars where you only want to make the request after the user stops typing.
+
+* **Use case**: In a search box, you only want to make a search request after the user has stopped typing for a certain duration.
+
+```javascript
+ code// Debouncing example
+function debounce(fn, delay) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
+}
+
+const input = document.querySelector('input');
+input.addEventListener('input', debounce(() => {
+  console.log('Searching...');
+}, 500));
+```
+
+---
+
+### **How do throttling and debouncing help with performance?**
+
+* **Throttling**:
+
+  * Throttling ensures that functions, especially those triggered by frequent events (like scrolling, resizing, or mouse movements), do not execute too many times in a short period. It improves performance by reducing the number of expensive operations that happen in quick succession.
+
+* **Debouncing**:
+
+  * Debouncing is helpful for scenarios where you only want to respond after the event has settled down. This is especially useful in situations like form validation or search queries, where making requests or calculations on every keystroke could lead to unnecessary server calls or processing.
+
+Both techniques help in preventing excessive function executions, which can lead to performance bottlenecks, especially in complex or resource-heavy operations.
+
+---
+
+### Summary:
+
+* **Memoization** is an optimization technique that caches function results to avoid redundant computations.
+* **Memory leaks** in JavaScript can be prevented by clearing event listeners, intervals, and using weak references.
+* **Throttling** and **debouncing** limit the frequency of function executions during frequent events, improving performance by reducing unnecessary computations.
 
 ### 15\. **How do you optimize performance in large-scale JavaScript applications?**
 
