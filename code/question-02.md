@@ -317,6 +317,75 @@ greet('Alice', afterGreet); // Output: Hello, Alice
                             //         Goodbye!
 ```
 
+
+### 6. Promise vs. Callback Function in JavaScript:
+
+- **Callback**:
+  A function passed as an argument to another function, which is executed when the task is completed.
+  Can lead to "callback hell" or "pyramid of doom" when nesting multiple callbacks.
+
+```javascript
+    doSomething(function(result) {
+    doSomethingElse(result, function(newResult) {
+        doFinalThing(newResult);
+    });
+    });
+```
+
+- **Promise**:
+  Represents a value that may be available now or in the future. It is an object that can be in one of three states: pending, fulfilled, or rejected.
+  Helps avoid callback hell by chaining .then() and .catch() for handling success and failure.
+
+```javascript
+doSomething()
+  .then(result => doSomethingElse(result))
+  .then(newResult => doFinalThing(newResult))
+  .catch(error => console.error(error));
+```
+
+
+### 24\. **What are higher-order functions in JavaScript? Can you provide an example?**
+
+A higher-order function is a function that either:
+
+1. Takes one or more functions as arguments, or
+2. Returns a function as its result.
+
+* **Example**:
+
+```js
+ function applyFunction(fn, x) {
+  return fn(x);
+}
+
+const square = (n) => n * n;
+console.log(applyFunction(square, 5));  // Output: 25
+```
+
+`applyFunction` is a higher-order function because it takes a function (`fn`) as an argument.
+
+---
+
+### 12. fetch() API vs. XMLHttpRequest:
+
+- **fetch()**: Modern, promise-based API for making HTTP requests. It provides a cleaner, more readable syntax for handling asynchronous requests.
+
+```javascript
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+- **XMLHttpRequest**: Older, callback-based method for making HTTP requests. It is more verbose and harder to work with compared to fetch().
+
+```javascript
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.example.com/data', true);
+    xhr.onload = () => console.log(xhr.responseText);
+    xhr.send();
+    sql
+```
+
 ---
 
 ## Intermediate-Level Questions

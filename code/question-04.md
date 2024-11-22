@@ -484,27 +484,6 @@ console.log(sum(1, 2, 3));  // Output: 6
 
 ---
 
-### 24\. **What are higher-order functions in JavaScript? Can you provide an example?**
-
-A higher-order function is a function that either:
-
-1. Takes one or more functions as arguments, or
-2. Returns a function as its result.
-
-* **Example**:
-
-```js
- function applyFunction(fn, x) {
-  return fn(x);
-}
-
-const square = (n) => n * n;
-console.log(applyFunction(square, 5));  // Output: 25
-```
-
-`applyFunction` is a higher-order function because it takes a function (`fn`) as an argument.
-
----
 
 ### 25\. **What is a generator function in JavaScript? How does it differ from regular functions?**
 
