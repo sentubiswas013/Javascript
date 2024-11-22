@@ -489,6 +489,92 @@ fetchData();
 * `async`/`await` makes code appear synchronous and easier to understand, while Promises are asynchronous and often require `.then()` and `.catch()` for handling success and errors.
 * Error handling with `async/await` is done using `try`/`catch`, which can be more intuitive compared to `.catch()` with promises.
 
+### 6\. **What are Promises and async/await? How are they different from callbacks?**
+
+#### **Promises**
+
+A **Promise** is an object representing the eventual completion or failure of an asynchronous operation. It is used to handle asynchronous operations in a more readable way than using callbacks.
+
+**Example of a Promise:**
+
+```javascript
+ const myPromise = new Promise((resolve, reject) => {
+  let success = true;
+  if (success) {
+    resolve("Operation was successful!");
+  } else {
+    reject("Something went wrong.");
+  }
+});
+
+myPromise
+  .then(result => console.log(result))  // Output: Operation was successful!
+  .catch(error => console.log(error));  // Output: Something went wrong.
+```
+
+#### **Async/Await**
+
+`async` and `await` are syntax sugar built on top of Promises. `async` is used to declare a function that returns a Promise, and `await` is used to pause the execution of the function until a Promise is resolved.
+
+**Example:**
+
+```javascript
+ codeasync function fetchData() {
+  try {
+    let response = await fetch("https://api.example.com/data");
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+fetchData();
+```
+
+#### **Differences from Callbacks**
+
+* **Callbacks** involve passing a function as an argument to another function and executing it once the asynchronous task is done. This can lead to "callback hell" when there are many nested callbacks.
+* **Promises** represent a value that may be available now, or in the future, and they provide a more readable way to chain asynchronous operations.
+* **Async/Await** makes asynchronous code look and behave more like synchronous code, making it easier to understand and debug.
+
+**Example with Callback:**
+
+```javascript
+ function fetchData(callback) {
+  setTimeout(() => {
+    callback(null, "Data fetched");
+  }, 1000);
+}
+
+fetchData((error, result) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(result);  // Output: Data fetched
+  }
+});
+```
+
+**Example with Promise:**
+
+```javascript
+ function fetchData() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve("Data fetched"), 1000);
+  });
+}
+
+fetchData().then(result => console.log(result)); // Output: Data fetched
+```
+
+In summary:
+
+* **Callbacks** can lead to nesting issues.
+* **Promises** provide a cleaner, more manageable way to handle async operations.
+* **Async/Await** makes code look synchronous and is easier to work with than nested promises or callbacks.
+
+
 ### 5\. **What are arrow functions and how do they differ from regular functions?**
 
 Arrow functions are a shorthand syntax for writing functions in JavaScript. They are more concise than traditional function expressions and they do not have their own `this`, `arguments`, `super`, or `new.target` bindings.
