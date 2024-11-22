@@ -783,31 +783,44 @@ This allows JavaScript to handle asynchronous events efficiently without blockin
 * **Promises**: Represent a value that may be available now or in the future, allowing chaining of `.then()` and `.catch()`.
 * **Async/Await**: Allows asynchronous code to be written in a synchronous style, simplifying handling of asynchronous operations.
 
-### 11\. **What is the difference between call(), apply(), and bind() in JavaScript?**
 
-These methods are used to change the context (`this`) of a function.
+### 14\. **What is the difference between the `apply()`, `call()`, and `bind()` methods in JavaScript? How can each be used effectively?**
 
-* **`call()`**: Invokes the function immediately with a specified `this` value and arguments.
+The `apply()`, `call()`, and `bind()` methods are used to set the context (`this`) of a function and call it with specific arguments, but they differ in their usage and behavior:
 
-  ```javascript
-   function greet(name) {
-    console.log(`Hello, ${name}`);
-  }
-  greet.call(this, 'Alice');
-  ```
+* **`call()`**:
 
-* **`apply()`**: Similar to `call()`, but arguments are passed as an array.
+  * **Usage**: Immediately invokes the function with a specified `this` value and arguments provided individually.
+  * **Example**:
+    ```javascript
+     function greet(name) {
+      console.log(`Hello, ${name}`);
+    }
+    greet.call(null, 'Alice'); // "Hello, Alice"
+    ```
 
-  ```javascript
-  greet.apply(this, ['Alice']);
-  ```
+* **`apply()`**:
 
-* **`bind()`**: Returns a new function with a specified `this` value, but it does not invoke the function immediately.
+  * **Usage**: Similar to `call()`, but arguments are passed as an array (or an array-like object).
+  * **Example**:
+    ```javascript
+     function greet(name, age) {
+      console.log(`Hello, ${name}. You are ${age} years old.`);
+    }
+    greet.apply(null, ['Bob', 30]); // "Hello, Bob. You are 30 years old."
+    ```
 
-  ```javascript
-   const greetAlice = greet.bind(this, 'Alice');
-  greetAlice();
-  ```
+* **`bind()`**:
+
+  * **Usage**: Returns a new function with a bound `this` value and optional arguments. Unlike `call()` and `apply()`, `bind()` does not invoke the function immediately but creates a new function that can be called later.
+  * **Example**:
+    ```javascript
+     function greet(name) {
+      console.log(`Hello, ${name}`);
+    }
+    const greetAlice = greet.bind(null, 'Alice');
+    greetAlice(); // "Hello, Alice"
+    ```
 
 ### 12\. **What are the map(), filter(), and reduce() methods?**
 

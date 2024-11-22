@@ -194,43 +194,6 @@ To measure and improve the performance of a JavaScript application in the browse
    * Use the browser's **Memory Tab** to identify memory leaks.
    * Optimize object creation and avoid unnecessary global variables.
 
-### 14\. **What is the difference between the `apply()`, `call()`, and `bind()` methods in JavaScript? How can each be used effectively?**
-
-The `apply()`, `call()`, and `bind()` methods are used to set the context (`this`) of a function and call it with specific arguments, but they differ in their usage and behavior:
-
-* **`call()`**:
-
-  * **Usage**: Immediately invokes the function with a specified `this` value and arguments provided individually.
-  * **Example**:
-    ```javascript
-     function greet(name) {
-      console.log(`Hello, ${name}`);
-    }
-    greet.call(null, 'Alice'); // "Hello, Alice"
-    ```
-
-* **`apply()`**:
-
-  * **Usage**: Similar to `call()`, but arguments are passed as an array (or an array-like object).
-  * **Example**:
-    ```javascript
-     function greet(name, age) {
-      console.log(`Hello, ${name}. You are ${age} years old.`);
-    }
-    greet.apply(null, ['Bob', 30]); // "Hello, Bob. You are 30 years old."
-    ```
-
-* **`bind()`**:
-
-  * **Usage**: Returns a new function with a bound `this` value and optional arguments. Unlike `call()` and `apply()`, `bind()` does not invoke the function immediately but creates a new function that can be called later.
-  * **Example**:
-    ```javascript
-     function greet(name) {
-      console.log(`Hello, ${name}`);
-    }
-    const greetAlice = greet.bind(null, 'Alice');
-    greetAlice(); // "Hello, Alice"
-    ```
 
 ### 15\. **Explain debouncing and throttling. When would you use each of them?**
 
