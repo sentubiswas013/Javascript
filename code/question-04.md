@@ -35,32 +35,6 @@ Example:
 }
 ```
 
-
----
-
-### 8\. **Explain the concepts of prototypal inheritance and prototype chain in JavaScript.**
-
-**Prototypal inheritance** is a feature where objects can inherit properties and methods from other objects. Each object has an internal link to a prototype object, and it looks up properties on this prototype if they're not found on the object itself.
-
-* Every JavaScript object has a prototype (`Object.prototype` is at the top of the chain).
-* The prototype chain allows for inheritance from parent objects.
-
-Example:
-
-```javascript
- const person = { name: "Alice" };
-const employee = Object.create(person);
-employee.job = "Engineer";
-
-console.log(employee.name); // Alice (inherited from person)
-console.log(employee.job); // Engineer (own property)
-```
-
----
-
-
----
-
 ### 11\. **Can you explain the difference between synchronous and asynchronous execution in JavaScript?**
 
 * **Synchronous execution** means that operations are performed one after another, blocking the thread until each operation completes.
