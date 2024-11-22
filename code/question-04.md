@@ -3,27 +3,6 @@ Here’s a list of advanced JavaScript questions that would be appropriate for a
 ### Core JavaScript Concepts
 
 
-### 26\. **What is a `Set` in JavaScript, and how does it differ from an array? When would you use it?**
-
-A `Set` is a collection of unique values in JavaScript. Unlike arrays, sets do not allow duplicates.
-
-* **Example**:
-
-```js
- const set = new Set([1, 2, 3, 3, 4]);
-console.log(set);  // Output: Set { 1, 2, 3, 4 }
-```
-
-**Differences**:
-
-* Sets do not allow duplicate values.
-* Sets are optimized for checking the existence of values.
-
-**When to use**:
-
-* When you need to store unique values or efficiently check if a value exists.
-
----
 
 ### 27\. **What are `WeakMap` and `WeakSet`? How are they different from `Map` and `Set`?**
 
@@ -44,42 +23,6 @@ weakMap.set(obj, 'value');
 
 ---
 
-### 28\. **What are `Proxy` and `Reflect` in JavaScript, and what are their use cases?**
-
-* **Proxy**: A `Proxy` is a mechanism for defining custom behavior for fundamental operations (e.g., property lookup, assignment). It allows you to intercept and customize operations on objects.
-
-```js
- const handler = {
-  get: (target, prop) => {
-    if (prop === 'name') {
-      return 'Alice';
-    }
-    return prop in target ? target[prop] : `Property ${prop} not found`;
-  }
-};
-
-const person = new Proxy({}, handler);
-console.log(person.name);  // Output: Alice
-```
-
-* **Reflect**: The `Reflect` object provides methods for interceptable operations. It's often used in conjunction with `Proxy` to provide default behavior.
-
-```js
- const target = { name: 'Alice' };
-const handler = {
-  get: (target, prop) => Reflect.get(...arguments),
-};
-
-const person = new Proxy(target, handler);
-console.log(person.name);  // Output: Alice
-```
-
-**Use cases**:
-
-* **Proxy** is useful for logging, data validation, property access control, or virtualizing object behavior.
-* **Reflect** is useful for handling operations with a more standardized approach, often alongside `Proxy` for default behavior.
-
----
 
 These explanations cover a wide range of JavaScript topics. If you need any clarifications or further details, feel free to ask!
 

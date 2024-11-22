@@ -1033,6 +1033,30 @@ that spans multiple lines.`;
 console.log(message);
 ```
 
+
+### 26\. **What is a `Set` in JavaScript, and how does it differ from an array? When would you use it?**
+
+A `Set` is a collection of unique values in JavaScript. Unlike arrays, sets do not allow duplicates.
+
+* **Example**:
+
+```js
+ const set = new Set([1, 2, 3, 3, 4]);
+console.log(set);  // Output: Set { 1, 2, 3, 4 }
+```
+
+**Differences**:
+
+* Sets do not allow duplicate values.
+* Sets are optimized for checking the existence of values.
+
+**When to use**:
+
+* When you need to store unique values or efficiently check if a value exists.
+
+---
+
+
 ### 15\. **How does JavaScript handle errors with try, catch, and finally?**
 
 In JavaScript, errors in asynchronous code can be handled in two main ways:
@@ -1327,19 +1351,42 @@ A **generator** is a special type of function that can be paused and resumed. It
 
 These are the core concepts you're asking about in JavaScript! Let me know if you'd like further explanations or examples.
 
-### 11\. **What are the Proxy and Reflect objects in JavaScript?**
+### 28\. **What are `Proxy` and `Reflect` in JavaScript, and what are their use cases?**
 
-* **Proxy**: A special object that allows you to define custom behavior for fundamental operations (e.g., property lookup, assignment, function invocation). Example:
+* **Proxy**: A `Proxy` is a mechanism for defining custom behavior for fundamental operations (e.g., property lookup, assignment). It allows you to intercept and customize operations on objects.
 
-  ```javascript
-   const proxy = new Proxy(target, handler);
-  ```
+```js
+ const handler = {
+  get: (target, prop) => {
+    if (prop === 'name') {
+      return 'Alice';
+    }
+    return prop in target ? target[prop] : `Property ${prop} not found`;
+  }
+};
 
-* **Reflect**: A built-in object that provides methods for intercepting and manipulating JavaScript operations (e.g., getting and setting properties). It is often used in conjunction with `Proxy`. Example:
+const person = new Proxy({}, handler);
+console.log(person.name);  // Output: Alice
+```
 
-  ```javascript
-  Reflect.set(target, 'prop', value);
-  ```
+* **Reflect**: The `Reflect` object provides methods for interceptable operations. It's often used in conjunction with `Proxy` to provide default behavior.
+
+```js
+ const target = { name: 'Alice' };
+const handler = {
+  get: (target, prop) => Reflect.get(...arguments),
+};
+
+const person = new Proxy(target, handler);
+console.log(person.name);  // Output: Alice
+```
+
+**Use cases**:
+
+* **Proxy** is useful for logging, data validation, property access control, or virtualizing object behavior.
+* **Reflect** is useful for handling operations with a more standardized approach, often alongside `Proxy` for default behavior.
+
+---
 
 ### 2\. **Explain the concept of memoization and provide an example.**
 
