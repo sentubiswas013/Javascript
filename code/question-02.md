@@ -60,32 +60,6 @@ JavaScript has seven basic data types:
 5 == '5'  // true because type coercion occurs
 5 === '5' // false because types are different (number vs. string)
 ```
-
-### 5\. **How do you create a function in JavaScript?**
-
-There are multiple ways to define functions in JavaScript:
-
-1. **Function Declaration**:
-
-   ```javascript
-    function greet() {
-     console.log('Hello!');
-   }
-   ```
-
-2. **Function Expression**:
-
-   ```javascript
-    const greet = function() {
-     console.log('Hello!');
-   };
-   ```
-
-3. **Arrow Function**:
-
-   ```javascript
-    const greet = () => console.log('Hello!');
-
     
 ### 2\. **What is the difference between function declarations and function expressions?**
 
@@ -107,8 +81,10 @@ There are multiple ways to define functions in JavaScript:
   };
   ```
 
-  Function expressions are not hoisted. The function is only available after the assignment.
-   ```
+* **Arrow Function**:
+
+   ```javascript
+    const greet = () => console.log('Hello!');
 
 ### 7\. **What is the purpose of the `typeof` operator?**
 
