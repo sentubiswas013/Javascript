@@ -222,7 +222,7 @@ console.log(fruits[1]);     // Access the second element 'banana'
     console.log("Hello");
   };
   ```
-* **Arrow Function**:
+* **Arrow Function**: Arrow functions are a shorthand syntax for writing functions in JavaScript. They are more concise than traditional function expressions and they do not have their own this, arguments, super, or new.target bindings.
   ```javascript
     const greet = () => console.log('Hello!');
   ```
