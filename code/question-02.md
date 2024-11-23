@@ -1803,14 +1803,6 @@ console.log(memoizedFibonacci(40)); // Much faster after the first computation
 
 ---
 
-### 13\. **How does JavaScript handle concurrency with async/await, Promises, and Event Loop?**
-
-JavaScript uses an **event loop** to manage asynchronous operations, allowing non-blocking execution.
-
-* **Promises**: Represent a value that may be available now, in the future, or never.
-* **async/await**: Allows asynchronous code to be written in a synchronous-like style.
-* The **Event Loop** ensures that asynchronous callbacks are processed after the current stack of synchronous operations is completed.
-
 ### 4\. **What is throttling and debouncing? How do they help with performance?**
 
 #### **Throttling**:
