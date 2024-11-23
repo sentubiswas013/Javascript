@@ -1427,7 +1427,7 @@ In summary, the prototype chain allows JavaScript objects to share properties an
 
 The difference between **shallow copy** and **deep copy** in JavaScript comes down to how the objects are copied, particularly when those objects contain other objects or arrays inside them.
 
-### **Shallow Copy**:
+#### **Shallow Copy**:
 A shallow copy means that the top-level properties of the object are copied, but if any of those properties are references to other objects (or arrays), **only the reference** is copied, not the actual data. So, changes to nested objects in the copy will affect the original object, and vice versa.
 
 #### Example of Shallow Copy:
@@ -1445,7 +1445,7 @@ console.log(original.address.city); // 'Los Angeles' — changed because address
 - **Shallow copy** copies only the first level of the object.
 - **Nested objects** (like `address`) are shared between the original and the copy.
 
-### **Deep Copy**:
+#### **Deep Copy**:
 A deep copy means that **all levels of the object** are copied, including any nested objects or arrays. This way, the copy is completely independent of the original object, and changes to any part of the copy won’t affect the original, and vice versa.
 
 #### Example of Deep Copy:
@@ -1463,7 +1463,7 @@ console.log(original.address.city); // 'New York' — unchanged
 - **Deep copy** creates a new object and recursively copies all values, even the nested objects.
 - **No shared references** between the original and the copy.
 
-### Summary:
+#### Summary:
 - **Shallow copy**: Copies the object, but nested objects are shared by reference.
 - **Deep copy**: Copies everything, including nested objects, so no shared references exist.
 
