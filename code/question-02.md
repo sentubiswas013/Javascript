@@ -1,4 +1,3 @@
-**\# JavaScript Interview Questions & Answers**
 ## Beginner-Level Questions
 ---
 
@@ -97,18 +96,6 @@ There are multiple ways to define functions in JavaScript:
    ```javascript
     const greet = () => console.log('Hello!');
    ```
-
-### 6\. **What are the different ways to declare variables in JavaScript?**
-
-* **`var`**: Function-scoped, can be redeclared.
-* **`let`**: Block-scoped, can be reassigned but not redeclared in the same scope.
-* **`const`**: Block-scoped, cannot be reassigned or redeclared.
-
-```javascript
- var a = 1;   // function-scoped
-let b = 2;   // block-scoped
-const c = 3; // block-scoped, cannot be reassigned
-```
 
 ### 7\. **What is the purpose of the `typeof` operator?**
 
