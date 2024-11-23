@@ -62,7 +62,6 @@ JavaScript has seven basic data types:
 ```
     
 ### 2\. **How do you create a function in JavaScript??**
-
 * **Function Declaration**: A named function defined with the `function` keyword.
 
   ```javascript
@@ -71,18 +70,13 @@ JavaScript has seven basic data types:
   }
   ```
 
-  Function declarations are hoisted, meaning they are available throughout the code.
-
 * **Function Expression**: A function assigned to a variable, which may or may not be named.
-
   ```javascript
    const greet = function() {
     console.log("Hello");
   };
   ```
-
 * **Arrow Function**:
-
   ```javascript
     const greet = () => console.log('Hello!');
   ```
