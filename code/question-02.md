@@ -1067,27 +1067,6 @@ weakMap.set(obj, 'value');
 * `WeakMap` and `WeakSet` allow garbage collection of keys/objects.
 * `Map` and `Set` maintain strong references to their elements.
 
-
-### 13\. **What is the spread operator (...), and how is it used?**
-
-The **spread operator** (`...`) is used to unpack elements from an array or object, or to spread values in function calls or array literals.
-
-Example:
-
-* **Arrays**:
-
-  ```javascript
-   const arr1 = [1, 2];
-  const arr2 = [...arr1, 3, 4];  // [1, 2, 3, 4]
-  ```
-
-* **Objects**:
-
-  ```javascript
-   const obj1 = { name: "Alice" };
-  const obj2 = { ...obj1, age: 25 };  // { name: "Alice", age: 25 }
-  ```
-
 ### 14\. **Explain destructuring in JavaScript. Provide examples for both objects and arrays.?**
 
 Destructuring allows you to extract values from arrays or objects into individual variables. It makes your code more concise and readable.
