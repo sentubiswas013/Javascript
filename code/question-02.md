@@ -1987,21 +1987,6 @@ To **optimize the critical rendering path**, consider the following strategies:
 - **Resource Prioritization:** Use techniques like `preload` and `prefetch` to prioritize important resources early in the loading process.
 - **Lazy Loading:** Defer loading of non-essential images, videos, and other resources until they are needed (e.g., when they come into view).
 
-### 2\. **How do you optimize the rendering performance of a web application?**
-
-Optimizing rendering performance involves minimizing the time it takes for the browser to render content, ensuring a smooth user experience. Key techniques include:
-
-- **Minimize Reflows and Repaints:** Reflows (layout recalculations) and repaints (rendering updates) are costly in terms of performance. Reduce DOM manipulation that triggers these operations and batch changes when possible.
-- **Efficient CSS:** Avoid complex selectors and unnecessary style recalculations. Use `will-change` judiciously to tell the browser in advance about potential changes (e.g., animations or transformations).
-- **Avoid Large JavaScript Frameworks:** Minimize the use of large JavaScript libraries if they are not necessary, and consider using more lightweight alternatives.
-- **Virtual DOM (React, etc.):** Use a virtual DOM to minimize the number of direct DOM manipulations, improving rendering efficiency.
-- **Image Optimization:** Compress images, use modern formats like WebP, and implement responsive images with the `srcset` attribute to serve the appropriate resolution.
-- **Use Hardware Acceleration:** Utilize CSS properties that are GPU-accelerated, such as `transform` and `opacity`, rather than properties like `top` or `left` for animations.
-- **Web Font Optimization:** Use font-display strategies like `font-display: swap` to prevent invisible text while the font is loading.
-- **Lazy Loading:** Lazy load non-visible content (images, scripts, etc.) to reduce initial page load time.
-- **Avoid Long JavaScript Tasks:** Break long JavaScript execution tasks into smaller chunks using techniques like `requestIdleCallback`, `setTimeout`, or `Web Workers`.
-
-
 ### 4\. **Explain the concept of a Service Worker and its role in Progressive Web Apps (PWAs).**
 
 A **Service Worker** is a JavaScript file that runs in the background of a web application, separate from the main browser thread. It intercepts network requests, allowing developers to manage caching, background sync, and push notifications even when the app is not open or the device is offline.
