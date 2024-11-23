@@ -1037,7 +1037,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
 ### 12\. **What are the map(), filter(), and reduce() methods?**
 The `map()`, `filter()`, and `reduce()` methods are built-in Python functions that are used to process and transform iterables (like lists, tuples, etc.) in a functional programming style. Here's an explanation of each:
 
-### 1. `map()`
+#### 1. `map()`
 
 - **Purpose:** `map()` is used to apply a given function to all items in an iterable (like a list or tuple) and return an iterator that produces the results.
 - **Syntax:**
@@ -1055,7 +1055,7 @@ The `map()`, `filter()`, and `reduce()` methods are built-in Python functions th
   ```
   In this example, the `lambda` function squares each number in the list.
 
-### 2. `filter()`
+#### 2. `filter()`
 
 - **Purpose:** `filter()` is used to filter out elements from an iterable based on a condition provided by a function. It returns an iterator that contains only those items for which the function returns `True`.
 - **Syntax:**
@@ -1073,7 +1073,7 @@ The `map()`, `filter()`, and `reduce()` methods are built-in Python functions th
   ```
   Here, the `lambda` function filters out the odd numbers, keeping only the even ones.
 
-### 3. `reduce()`
+#### 3. `reduce()`
 
 - **Purpose:** `reduce()` is used to apply a binary function (a function that takes two arguments) cumulatively to the items of an iterable. It reduces the iterable to a single value.
 - **Syntax:**
@@ -1093,13 +1093,13 @@ The `map()`, `filter()`, and `reduce()` methods are built-in Python functions th
   ```
   In this example, the `lambda` function multiplies all the numbers together, resulting in the product `24`.
 
-### Key Differences:
+#### Key Differences:
 
 - **map()**: Transforms each item of the iterable individually by applying a function.
 - **filter()**: Filters items from an iterable based on a condition (function returns `True` or `False`).
 - **reduce()**: Reduces an iterable to a single value by cumulatively applying a binary function.
 
-### Conclusion:
+#### Conclusion:
 These functions are useful for applying transformations and filters to iterables in a concise and functional way, without the need for explicit loops. They are often used in combination with lambda functions to keep the code compact and readable.
 
 ### 27\. **What are `WeakMap` and `WeakSet`? How are they different from `Map` and `Set`?**
