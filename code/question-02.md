@@ -3144,10 +3144,9 @@ Although **SQL Injection** primarily affects the backend (database layer), front
 In summary, while frontend applications themselves don’t directly interact with databases, they must be cautious about the data they send to the backend and ensure proper backend validation and sanitization to prevent SQL injection attacks.
 
 ### Tooling and Build Systems
+---
 
-Sure, here are the answers to the questions:
-
-### 51\. **What is Webpack, and what role does it play in frontend development? How do you configure it for optimizing JS bundles?**
+### 1\. **What is Webpack, and what role does it play in frontend development? How do you configure it for optimizing JS bundles?**
 
 **Webpack** is a popular JavaScript module bundler used in frontend development. It allows developers to bundle all assets (JavaScript files, CSS, images, etc.) into a single or multiple optimized bundles, improving the performance and organization of code in a web application. Webpack also provides features like hot module replacement, code splitting, and tree shaking.
 
@@ -3187,7 +3186,7 @@ Sure, here are the answers to the questions:
    },
    ```
 
-### 52\. **What are Babel and TypeScript? What are the main differences, and when would you choose one over the other?**
+### 2\. **What are Babel and TypeScript? What are the main differences, and when would you choose one over the other?**
 
 * **Babel**: A JavaScript compiler that allows you to write code using the latest ECMAScript features (such as ES6/ES7) and convert it into a backward-compatible version that runs in older browsers.
 * **TypeScript**: A superset of JavaScript that adds optional static typing to the language. It also includes features from the latest JavaScript standards, but with type-checking capabilities and tools for better code quality and developer experience.
@@ -3203,7 +3202,7 @@ Sure, here are the answers to the questions:
 * **Babel**: Choose Babel if you just need to ensure compatibility with older browsers and you're using modern JavaScript syntax without the need for type checking. It's also preferable if you're working on a large JavaScript codebase without introducing strict typing.
 * **TypeScript**: Choose TypeScript if you're building a large-scale application where code maintainability, scalability, and type safety are important. It’s great for catching errors at compile time and improving collaboration among developers.
 
-### 53\. **How do you use ESLint and Prettier for ensuring consistent code style and quality in a JavaScript project?**
+### 3\. **How do you use ESLint and Prettier for ensuring consistent code style and quality in a JavaScript project?**
 
 * **ESLint**: ESLint is a static code analysis tool used to identify and fix problems in JavaScript code, enforcing coding standards and improving code quality. It checks for issues such as unused variables, inconsistent formatting, and potential errors.
 
@@ -3248,7 +3247,7 @@ Sure, here are the answers to the questions:
   }
   ```
 
-### 54\. **What are the differences between traditional JavaScript testing libraries (e.g., Mocha, Chai) and modern ones like Jest and Cypress?**
+### 4\. **What are the differences between traditional JavaScript testing libraries (e.g., Mocha, Chai) and modern ones like Jest and Cypress?**
 
 * **Mocha**: A flexible JavaScript testing framework for running unit tests. It provides a test runner but leaves other aspects (like assertions) to be handled by other libraries (e.g., Chai).
 * **Chai**: An assertion library commonly used with Mocha for writing assertions in tests.
@@ -3264,7 +3263,7 @@ Sure, here are the answers to the questions:
 * **Jest**: A one-stop solution with built-in testing tools, making it easier to set up and use. It works well for unit and integration testing.
 * **Cypress**: Focuses on end-to-end (E2E) testing, providing real-time browser testing and debugging capabilities.
 
-### 55\. **How do you implement Continuous Integration (CI) and Continuous Deployment (CD) for a frontend application?**
+### 5\. **How do you implement Continuous Integration (CI) and Continuous Deployment (CD) for a frontend application?**
 
 1. **CI (Continuous Integration)**: CI ensures that developers frequently integrate their code into a shared repository. The integration is verified automatically by building and running tests.
 
@@ -3291,7 +3290,7 @@ Sure, here are the answers to the questions:
    * After passing CI, the build artifacts (e.g., bundled JavaScript) are deployed to hosting platforms like **Netlify**, **Vercel**, or **AWS**.
    * Example: Set up a deployment pipeline in GitHub Actions to deploy the build to a cloud platform like Netlify or Vercel after tests are successful.
 
-### 56\. **What is a Progressive Web App (PWA), and how would you go about implementing one using JavaScript?**
+### 6\. **What is a Progressive Web App (PWA), and how would you go about implementing one using JavaScript?**
 
 A **Progressive Web App (PWA)** is a web application that uses modern web capabilities to offer a user experience similar to native mobile apps. PWAs are reliable, fast, and can be installed on the user's device.
 
@@ -3339,7 +3338,7 @@ A **Progressive Web App (PWA)** is a web application that uses modern web capabi
    ```
 
 
-### 33\. **What are service workers in JavaScript? How do they enable progressive web apps (PWAs)?**
+### 7\. **What are service workers in JavaScript? How do they enable progressive web apps (PWAs)?**
 
 A **service worker** is a script that runs in the background of a web browser, separate from a web page, and can intercept network requests to serve content, even when the user is offline.
 
@@ -3359,7 +3358,7 @@ Example of registering a service worker:
 }
 ```
 
-### 57\. **How do you use local storage and session storage in JavaScript? When should you choose one over the other?**
+### 8\. **How do you use local storage and session storage in JavaScript? When should you choose one over the other?**
 
 **Local Storage**:
 
@@ -3390,11 +3389,6 @@ let sessionID = sessionStorage.getItem('sessionID');
 
 * **Local Storage**: Use for long-term data that should persist even when the user navigates away or closes the browser.
 * **Session Storage**: Use for short-term, session-specific data that should not persist after the user closes the tab or browser.
-
-
-
-Let me know if you need further clarification or additional information!
-
 
 ### **Interview Preparation Tips**
 
