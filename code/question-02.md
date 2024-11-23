@@ -885,6 +885,25 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
   const sum = numbers.reduce((acc, curr) => acc + curr, 0);  // 6
   ```
 
+
+### 27\. **What are `WeakMap` and `WeakSet`? How are they different from `Map` and `Set`?**
+
+* **WeakMap**: A collection of key-value pairs where the keys are objects, and the values can be any type. If the key object is garbage collected, the corresponding entry in the `WeakMap` is automatically removed.
+
+```js
+ codelet obj = {};
+const weakMap = new WeakMap();
+weakMap.set(obj, 'value');
+```
+
+* **WeakSet**: A collection of unique objects. Similar to `WeakMap`, the objects are weakly referenced, so if the object is no longer referenced elsewhere, it will be garbage collected.
+
+**Differences**:
+
+* `WeakMap` and `WeakSet` allow garbage collection of keys/objects.
+* `Map` and `Set` maintain strong references to their elements.
+
+
 ### 13\. **What is the spread operator (...), and how is it used?**
 
 The **spread operator** (`...`) is used to unpack elements from an array or object, or to spread values in function calls or array literals.
@@ -2227,6 +2246,8 @@ Usage:
 This will create a new `<div>` element with the specified text and append it to the `body` of the document.
 
 ---
+
+
 
 
 ## 3. Architecture & Design Patterns

@@ -4,26 +4,6 @@ Here’s a list of advanced JavaScript questions that would be appropriate for a
 
 
 
-### 27\. **What are `WeakMap` and `WeakSet`? How are they different from `Map` and `Set`?**
-
-* **WeakMap**: A collection of key-value pairs where the keys are objects, and the values can be any type. If the key object is garbage collected, the corresponding entry in the `WeakMap` is automatically removed.
-
-```js
- codelet obj = {};
-const weakMap = new WeakMap();
-weakMap.set(obj, 'value');
-```
-
-* **WeakSet**: A collection of unique objects. Similar to `WeakMap`, the objects are weakly referenced, so if the object is no longer referenced elsewhere, it will be garbage collected.
-
-**Differences**:
-
-* `WeakMap` and `WeakSet` allow garbage collection of keys/objects.
-* `Map` and `Set` maintain strong references to their elements.
-
----
-
-
 These explanations cover a wide range of JavaScript topics. If you need any clarifications or further details, feel free to ask!
 
 ### Advanced Topics
