@@ -1541,17 +1541,31 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
 
 ### 7\. **What is the purpose of the `Symbol` type in JavaScript?**
 
-`Symbol` is a primitive data type introduced in ES6, used to create **unique identifiers** for object properties. Symbols are often used to avoid property name collisions, particularly for non-enumerable properties.
+The `Symbol` type in JavaScript is used to create **unique identifiers**. These identifiers are different from regular strings or numbers because each `Symbol` is guaranteed to be unique, even if they have the same description.
 
-Example:
+Here’s a simple explanation of its key purposes:
 
-```javascript
- const sym = Symbol('description');
-const obj = {
-  [sym]: 'value'
-};
-console.log(obj[sym]); // 'value'
-```
+1. **Unique Property Keys**: Symbols can be used as keys for object properties. Since each symbol is unique, there’s no risk of a property key accidentally conflicting with another property in the object.
+
+   ```javascript
+   const symbol1 = Symbol('key');
+   const symbol2 = Symbol('key');
+   console.log(symbol1 === symbol2); // false, they are unique
+   ```
+
+2. **Private/Hidden Properties**: When you use symbols as object keys, the properties are not easily accessible by typical methods like `Object.keys()`, which helps keep them hidden or private.
+
+   ```javascript
+   const secret = Symbol('secret');
+   const obj = { [secret]: 'hidden value' };
+   console.log(obj[secret]); // 'hidden value'
+   ```
+
+3. **Avoiding Conflicts**: Since each symbol is unique, they are often used in libraries or code modules to avoid naming conflicts between different parts of a program.
+
+4. **Special Internal Use**: JavaScript itself uses symbols for special tasks (like defining how objects should be iterated over), and you can use these special symbols too.
+
+In short, `Symbols` are mainly used to create unique, non-conflicting property keys and to hide data in a way that is not easily accessed or changed by other parts of the code.
 
 ### 8\. **How does JavaScript event delegation work, and why is it useful?**
 
