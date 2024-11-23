@@ -904,57 +904,76 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
     ```
 
 ### 30\. **What are the map(), filter(), and reduce() methods?**
-The `map()`, `filter()`, and `reduce()` methods are built-in Python functions that are used to process and transform iterables (like lists, tuples, etc.) in a functional programming style. Here's an explanation of each:
+In JavaScript, the `map()`, `filter()`, and `reduce()` methods are used to work with arrays in a functional way. They are **higher-order functions** that allow you to manipulate and process array elements in different ways. Here's a simple explanation of each:
 
-#### 1. `map()` is used to apply a given function to all items in an iterable (like a list or tuple) and return an iterator that produces the results.
+### 1. `map()`:
+The `map()` method creates a new array by applying a given function to each element of the original array.
 
-  ```
-  - `function`: A function that will be applied to each element of the iterable.
-  - `iterable`: The iterable (list, tuple, etc.) whose elements the function will be applied to.
+**Syntax**:
+```javascript
+let newArray = array.map(callback(currentValue, index, array));
+```
 
-- **Example:**
-  ```python
-  numbers = [1, 2, 3, 4]
-  squared = map(lambda x: x ** 2, numbers)
-  print(list(squared))  # Output: [1, 4, 9, 16]
-  ```
-  In this example, the `lambda` function squares each number in the list.
+- **callback**: A function that is called for each element in the array.
+- **currentValue**: The current element being processed.
+- **index** (optional): The index of the current element.
+- **array** (optional): The original array.
 
-#### 2. `filter()` is used to filter out elements from an iterable based on a condition provided by a function. It returns an iterator that contains only those items for which the function returns `True`.
+**Example**:
+```javascript
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map(num => num * 2);  // [2, 4, 6, 8]
+console.log(doubled);
+```
 
-  - `function`: A function that returns `True` or `False` for each item in the iterable.
-  - `iterable`: The iterable to be filtered.
+### 2. `filter()`:
+The `filter()` method creates a new array with all elements that pass the test implemented by the provided function.
 
-- **Example:**
-  ```python
-  numbers = [1, 2, 3, 4, 5, 6]
-  even_numbers = filter(lambda x: x % 2 == 0, numbers)
-  print(list(even_numbers))  # Output: [2, 4, 6]
-  ```
-  Here, the `lambda` function filters out the odd numbers, keeping only the even ones.
+**Syntax**:
+```javascript
+let newArray = array.filter(callback(currentValue, index, array));
+```
 
-#### 3. `reduce()` is used to apply a binary function (a function that takes two arguments) cumulatively to the items of an iterable. It reduces the iterable to a single value.
+- **callback**: A function that tests each element in the array.
+- **currentValue**: The current element being processed.
+- **index** (optional): The index of the current element.
+- **array** (optional): The original array.
 
-  - `function`: A binary function that takes two arguments.
-  - `iterable`: The iterable whose elements will be reduced to a single value.
+**Example**:
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter(num => num % 2 === 0);  // [2, 4]
+console.log(evenNumbers);
+```
 
-- **Example:**
-  ```python
-  from functools import reduce
-  numbers = [1, 2, 3, 4]
-  product = reduce(lambda x, y: x * y, numbers)
-  print(product)  # Output: 24
-  ```
-  In this example, the `lambda` function multiplies all the numbers together, resulting in the product `24`.
+### 3. `reduce()`:
+The `reduce()` method applies a function to accumulate or reduce the array to a single value. This is useful for operations like summing values, concatenating strings, or building an object.
 
-#### Key Differences:
+**Syntax**:
+```javascript
+let result = array.reduce(callback(accumulator, currentValue, index, array), initialValue);
+```
 
-- **map()**: Transforms each item of the iterable individually by applying a function.
-- **filter()**: Filters items from an iterable based on a condition (function returns `True` or `False`).
-- **reduce()**: Reduces an iterable to a single value by cumulatively applying a binary function.
+- **callback**: A function that is called for each element in the array.
+- **accumulator**: The accumulated value returned by the previous call of the callback.
+- **currentValue**: The current element being processed.
+- **index** (optional): The index of the current element.
+- **array** (optional): The original array.
+- **initialValue** (optional): A starting value for the accumulator.
 
-#### Conclusion:
-These functions are useful for applying transformations and filters to iterables in a concise and functional way, without the need for explicit loops. They are often used in combination with lambda functions to keep the code compact and readable.
+**Example**:
+```javascript
+const numbers = [1, 2, 3, 4];
+const sum = numbers.reduce((acc, num) => acc + num, 0);  // 10
+console.log(sum);
+```
+
+### Key Differences:
+- **`map()`**: Transforms each element of the array and creates a new array with the transformed values.
+- **`filter()`**: Filters out elements based on a condition and creates a new array with the elements that meet the condition.
+- **`reduce()`**: Reduces the array to a single value, like a sum or product, by applying a function to each element.
+
+These methods are very powerful and commonly used in JavaScript to handle arrays efficiently in a clean and readable manner.
 
 ### 31\. **What are `WeakMap` and `WeakSet`? How are they different from `Map` and `Set`?**
 
