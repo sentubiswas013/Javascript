@@ -3143,8 +3143,7 @@ Although **SQL Injection** primarily affects the backend (database layer), front
 
 In summary, while frontend applications themselves don’t directly interact with databases, they must be cautious about the data they send to the backend and ensure proper backend validation and sanitization to prevent SQL injection attacks.
 
----
-### Tooling and Build Systems
+## Tooling and Build Systems
 ---
 
 ### 1\. **What is Webpack, and what role does it play in frontend development? How do you configure it for optimizing JS bundles?**
