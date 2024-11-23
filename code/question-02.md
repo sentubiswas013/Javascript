@@ -1858,45 +1858,45 @@ Optimizing JavaScript code for better performance involves several strategies:
 
 - **Minimize DOM Manipulations**
 
-* Direct manipulation of the DOM is one of the slowest operations in JavaScript. Try to minimize it by:
+  * Direct manipulation of the DOM is one of the slowest operations in JavaScript. Try to minimize it by:
   * Batch DOM updates (e.g., using `documentFragment` or `innerHTML` to make bulk changes).
   * Use virtual DOM frameworks (e.g., React, Vue) for efficient updates.
 
 - **Avoid Repeated Computations**
 
-* Avoid recalculating the same values multiple times, especially in loops. Cache values if necessary.
+  * Avoid recalculating the same values multiple times, especially in loops. Cache values if necessary.
 
 - **Asynchronous Programming**
 
-* Use asynchronous operations (Promises, `async/await`) instead of blocking operations. This can help with UI responsiveness and prevent the thread from being blocked for long tasks (e.g., API calls).
+  * Use asynchronous operations (Promises, `async/await`) instead of blocking operations. This can help with UI responsiveness and prevent the thread from being blocked for long tasks (e.g., API calls).
 
 - **Use Efficient Data Structures**
 
-* Choose the right data structure for the task at hand:
+  * Choose the right data structure for the task at hand:
   * Arrays are good for ordered collections.
   * Objects or Maps are better for key-value lookups.
   * Sets can be useful for unique values.
 
 - **Debounce and Throttle Events**
 
-* Use debouncing and throttling to manage performance of high-frequency events (scrolling, resizing, keypress).
+  * Use debouncing and throttling to manage performance of high-frequency events (scrolling, resizing, keypress).
 
 - **Minimize Memory Leaks**
 
-* Ensure to clear intervals, timeouts, and event listeners that are no longer needed.
-* Avoid unnecessary global variables and always clean up references to DOM elements and data when they are no longer in use.
+  * Ensure to clear intervals, timeouts, and event listeners that are no longer needed.
+  * Avoid unnecessary global variables and always clean up references to DOM elements and data when they are no longer in use.
 
 - **Lazy Loading**
 
-* Only load assets (images, scripts) when they are needed, instead of all upfront.
+  * Only load assets (images, scripts) when they are needed, instead of all upfront.
 
 #### h. **Use Web Workers for Heavy Computation**
 
-* Move heavy computation to Web Workers to keep the UI thread responsive.
+  * Move heavy computation to Web Workers to keep the UI thread responsive.
 
 - **Reduce HTTP Requests**
 
-* Minimize the number of HTTP requests and use bundling or HTTP/2 to reduce latency.
+  * Minimize the number of HTTP requests and use bundling or HTTP/2 to reduce latency.
 
 
 
