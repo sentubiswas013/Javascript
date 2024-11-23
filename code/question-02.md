@@ -1895,31 +1895,6 @@ There are two main approaches to inheritance in JavaScript: **Classical Inherita
   dog.speak(); // Buddy makes a noise.
   ```
 
-
-### 6\. **What is the difference between synchronous and asynchronous programming in JavaScript?**
-
-* **Synchronous**: In synchronous programming, tasks are executed one after another in sequence. Each task must finish before the next one begins. This can block execution, especially for time-consuming tasks (e.g., file I/O, HTTP requests).
-
-* **Asynchronous**: Asynchronous programming allows tasks to run independently, and the program doesn't wait for one task to finish before moving on to the next one. This helps avoid blocking the main thread and improves performance, especially for I/O-bound operations.
-
-Example of synchronous:
-
-```javascript
-console.log('Start');
-console.log('Middle');
-console.log('End');
-```
-
-Example of asynchronous (using `setTimeout`):
-
-```javascript
-console.log('Start');
-setTimeout(() => console.log('Middle'), 1000);
-console.log('End');
-```
-
-Here, "Middle" is logged after 1 second without blocking "End".
-
 ### 7\. **Explain the concept of "callback hell" and how to avoid it.**
 
 A **callback** is a function passed as an argument to another function that is executed once the asynchronous operation completes.
@@ -1969,36 +1944,6 @@ async function fetchData() {
   }
 }
 ```
-
-### 8\. **What are the different ways to handle errors in JavaScript?**
-
-There are several ways to handle errors in JavaScript:
-
-* **`try...catch`**: The most common way to catch and handle errors in synchronous code.
-
-  ```javascript
-  try {
-    throw new Error('Something went wrong');
-  } catch (err) {
-    console.error(err.message);
-  }
-  ```
-
-* **Promises**: For asynchronous operations, you can use `.catch()` to handle errors.
-
-  ```javascript
-  someAsyncFunction().catch(err => console.error(err));
-  ```
-
-* **Async/Await**: Use `try...catch` around `await` to handle errors in asynchronous code.
-
-  ```javascript
-  try {
-    const data = await fetchData();
-  } catch (err) {
-    console.error(err);
-  }
-  ```
 
 ### 9\. **What is the purpose of JavaScript's eval() function?**
 
