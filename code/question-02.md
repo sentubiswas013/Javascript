@@ -1671,18 +1671,6 @@ input.addEventListener('input', debounce(() => {
 }, 500));
 ```
 
-### **How do throttling and debouncing help with performance?**
-
-* **Throttling**:
-
-  * Throttling ensures that functions, especially those triggered by frequent events (like scrolling, resizing, or mouse movements), do not execute too many times in a short period. It improves performance by reducing the number of expensive operations that happen in quick succession.
-
-* **Debouncing**:
-
-  * Debouncing is helpful for scenarios where you only want to respond after the event has settled down. This is especially useful in situations like form validation or search queries, where making requests or calculations on every keystroke could lead to unnecessary server calls or processing.
-
-Both techniques help in preventing excessive function executions, which can lead to performance bottlenecks, especially in complex or resource-heavy operations.
-
 #### Summary:
 
 * **Memoization** is an optimization technique that caches function results to avoid redundant computations.
