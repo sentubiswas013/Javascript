@@ -455,7 +455,8 @@ doSomething()
   .catch(error => console.error(error));
 ```
 
-### 1\. **What is closure in JavaScript?**
+### 1\. **What is closure and lexical scoping in JavaScript?**
+* **Lexical Scoping**: This means that the scope of variables is determined by where they are declared in the code. In JavaScript, functions are lexically scoped, meaning they "remember" the environment in which they were created, even if they are executed outside of that environment.
 
 A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope.In other words, a closure allows a function to access variables from its outer function even after the outer function has finished executing.
 
@@ -474,6 +475,12 @@ const closureFunction = outer();
 closureFunction(); // Output: I am from outer!
 ```
 Here, `inner()` is a closure because it remembers and can access `outerVariable` even after `outer()` has finished executing.
+
+**Usefulness in frontend development:**
+
+* Closures are useful for data encapsulation and creating private variables.
+* They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
+
 
 ### 24\. **What are higher-order functions in JavaScript? Can you provide an example?**
 In JavaScript, higher-order functions are functions that can **take other functions as arguments** or **return functions as results**. This concept allows for more flexible and reusable code.
@@ -1828,32 +1835,6 @@ Example:
  code"use strict";
 x = 10; // Throws an error because x is not declared
 ```
-
-### 1\. **What are closures and lexical scoping?**
-
-* **Lexical Scoping**: This means that the scope of variables is determined by where they are declared in the code. In JavaScript, functions are lexically scoped, meaning they "remember" the environment in which they were created, even if they are executed outside of that environment.
-
-* **Closures**: A closure is a function that retains access to its lexical scope (variables) even after the function that created those variables has finished executing. This is powerful because it allows for private data encapsulation and function factory patterns.
-
-  Example:
-
-  ```javascript
-   function outer() {
-    let x = 10;
-    return function inner() {
-      console.log(x);  // `inner` has access to `x` because of the closure
-    };
-  }
-
-  const myClosure = outer();
-  myClosure();  // 10
-  ```
-
-  **Usefulness in frontend development:**
-
-* Closures are useful for data encapsulation and creating private variables.
-* They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
-
 
 ### 3\. **What is the JavaScript event loop, and how does it affect performance?**
 
