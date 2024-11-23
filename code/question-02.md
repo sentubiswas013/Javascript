@@ -125,6 +125,76 @@ console.log(y); // ReferenceError: Cannot access 'y' before initialization
 let y = 10;
 ```
 
+
+
+### 12\. **What are JavaScript objects? How do you create one?**
+
+In JavaScript, an **object** is a collection of key-value pairs where each key is a **property** (a string) and each value can be any valid JavaScript data type, including functions, arrays, or other objects. Objects are a fundamental part of JavaScript and are used to store and manage data in a structured way.
+
+### Key Characteristics of JavaScript Objects:
+- **Keys/Properties**: These are strings (or Symbols), which are used to identify each value in the object. They are also referred to as "properties."
+- **Values**: These can be any data type, including primitive types (numbers, strings, booleans, etc.), arrays, functions, or other objects.
+
+### Creating a JavaScript Object:
+There are several ways to create an object in JavaScript. Here are the two most common methods:
+
+### 1. **Object Literal Notation** (most common):
+This is the simplest and most common way to create objects in JavaScript. You define an object using curly braces `{}` with key-value pairs inside.
+
+```javascript
+// Object with properties and values
+const person = {
+  name: 'Alice',
+  age: 25,
+  isStudent: true,
+  greet: function() {
+    console.log('Hello, ' + this.name);
+  }
+};
+
+// Accessing properties
+console.log(person.name); // Output: Alice
+console.log(person.age);  // Output: 25
+
+// Calling a method
+person.greet(); // Output: Hello, Alice
+```
+
+### 2. **Using the `new Object()` Syntax**:
+This method creates an object by using the `Object` constructor. It's less common than the object literal notation.
+
+```javascript
+// Creating an object using the Object constructor
+const person = new Object();
+person.name = 'Alice';
+person.age = 25;
+person.isStudent = true;
+person.greet = function() {
+  console.log('Hello, ' + this.name);
+};
+
+// Accessing properties and calling method
+console.log(person.name); // Output: Alice
+person.greet(); // Output: Hello, Alice
+```
+
+### Adding/Modifying Properties:
+You can also add new properties or modify existing ones after an object has been created:
+
+```javascript
+person.city = 'New York';  // Adding a new property
+person.age = 26;           // Modifying an existing property
+
+console.log(person.city);  // Output: New York
+console.log(person.age);   // Output: 26
+```
+
+### Summary:
+- JavaScript objects are collections of properties (key-value pairs).
+- You can create an object using the object literal notation `{}` or by using the `new Object()` syntax.
+- You can access object properties using dot notation (`object.property`) or bracket notation (`object['property']`).
+
+
 ### 9\. **What are JavaScript arrays, and how do you create one?**
 
 In JavaScript, an **array** is a special variable that can hold multiple values at once. Arrays allow you to store collections of data in a single variable. Each value in an array is called an **element**, and each element is indexed, meaning it has a position in the array. The index of the first element is `0`, the second is `1`, and so on.
@@ -199,20 +269,6 @@ let fruits = ['apple', 'banana', 'cherry'];
 for (const fruit of fruits) {
   console.log(fruit); // apple, banana, cherry
 }
-```
-
-### 12\. **What are JavaScript objects? How do you create one?**
-
-Objects in JavaScript are collections of key-value pairs. You create an object using curly braces `{}`.
-
-```javascript
- const person = {
-  name: 'John',
-  age: 30,
-  greet() {
-    console.log('Hello!');
-  }
-};
 ```
 
 ### 13\. **What is the difference between `null` and `undefined`?**
