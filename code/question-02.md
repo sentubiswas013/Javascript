@@ -131,14 +131,14 @@ let y = 10;
 
 In JavaScript, an **object** is a collection of key-value pairs where each key is a **property** (a string) and each value can be any valid JavaScript data type, including functions, arrays, or other objects. Objects are a fundamental part of JavaScript and are used to store and manage data in a structured way.
 
-### Key Characteristics of JavaScript Objects:
+#### Key Characteristics of JavaScript Objects:
 - **Keys/Properties**: These are strings (or Symbols), which are used to identify each value in the object. They are also referred to as "properties."
 - **Values**: These can be any data type, including primitive types (numbers, strings, booleans, etc.), arrays, functions, or other objects.
 
-### Creating a JavaScript Object:
+#### Creating a JavaScript Object:
 There are several ways to create an object in JavaScript. Here are the two most common methods:
 
-### 1. **Object Literal Notation** (most common):
+#### 1. **Object Literal Notation** (most common):
 This is the simplest and most common way to create objects in JavaScript. You define an object using curly braces `{}` with key-value pairs inside.
 
 ```javascript
@@ -160,7 +160,7 @@ console.log(person.age);  // Output: 25
 person.greet(); // Output: Hello, Alice
 ```
 
-### 2. **Using the `new Object()` Syntax**:
+#### 2. **Using the `new Object()` Syntax**:
 This method creates an object by using the `Object` constructor. It's less common than the object literal notation.
 
 ```javascript
@@ -178,7 +178,7 @@ console.log(person.name); // Output: Alice
 person.greet(); // Output: Hello, Alice
 ```
 
-### Adding/Modifying Properties:
+#### Adding/Modifying Properties:
 You can also add new properties or modify existing ones after an object has been created:
 
 ```javascript
@@ -189,7 +189,7 @@ console.log(person.city);  // Output: New York
 console.log(person.age);   // Output: 26
 ```
 
-### Summary:
+#### Summary:
 - JavaScript objects are collections of properties (key-value pairs).
 - You can create an object using the object literal notation `{}` or by using the `new Object()` syntax.
 - You can access object properties using dot notation (`object.property`) or bracket notation (`object['property']`).
