@@ -27,7 +27,7 @@ var z = 15; // Function-scoped
 
 This table summarizes the key differences between `var`, `let`, and `const`.
 
-### 8\. **What is hoisting in JavaScript? How does it work with variables and functions?**
+### 3\. **What is hoisting in JavaScript? How does it work with variables and functions?**
 
 * **Hoisting** is JavaScript's behavior of moving variable and function declarations to the top of their containing scope during the compile phase, before code execution begins.
 
@@ -43,7 +43,7 @@ console.log(y); // ReferenceError: Cannot access 'y' before initialization
 let y = 10;
 ```
 
-### 3\. **What are the data types in JavaScript?**
+### 4\. **What are the data types in JavaScript?**
 
 JavaScript has seven basic data types:
 - **`Primitive`**:
@@ -66,7 +66,7 @@ JavaScript has seven basic data types:
 - **`Key Differences between Primitive and Non-Primitive Data Types`**:
 <table><thead><tr><th align="left"><strong>Feature</strong></th><th><strong>Primitive Data Types</strong></th><th><strong>Non-Primitive Data Types</strong></th></tr></thead><tbody><tr><td><strong>Memory</strong></td><td>Stored in stack memory</td><td>Stored in heap memory</td></tr><tr><td><strong>Size</strong></td><td>Fixed size</td><td>Varies (depends on the data structure or object)</td></tr><tr><td><strong>Value or Reference</strong></td><td>Holds the actual value</td><td>Holds a reference to the value (pointer to an object)</td></tr><tr><td><strong>Complexity</strong></td><td>Simple and atomic</td><td>More complex and can store multiple values</td></tr><tr><td><strong>Example</strong></td><td><code>int</code>, <code>char</code>, <code>boolean</code>, <code>float</code></td><td><code>String</code>, <code>Array</code>, <code>Object</code>, <code>Class</code>, <code>Interface</code></td></tr><tr><td><strong>Mutability</strong></td><td>Immutable (except in some languages like Java)</td><td>Mutable or immutable depending on the type</td></tr></tbody></table>
 
-### 4\. **What is the difference between `==` and `===`?**
+### 5\. **What is the difference between `==` and `===`?**
 
 * `==`: Compares values for equality with type coercion. It tries to convert the operands to the same type before comparing them. This can lead to unexpected results
 * `===`: Compares values for equality without type coercion (strict equality). It is the **strict equality** operator, meaning it checks both value and type, and does **not perform type coercion**
@@ -77,7 +77,7 @@ JavaScript has seven basic data types:
 ```
     
 
-### 7\. **What is the purpose of the `typeof` operator?**
+### 6\. **What is the purpose of the `typeof` operator?**
 
 The `typeof` operator returns a string indicating the type of a variable or expression.
 
@@ -89,11 +89,7 @@ typeof undefined; // 'undefined'
 typeof null;      // 'object' (a known JavaScript quirk)
 ```
 
-
-
-
-
-### 12\. **What are JavaScript objects? How do you create one?**
+### 7\. **What are JavaScript objects? How do you create one?**
 
 In JavaScript, an **object** is a collection of key-value pairs where each key is a **property** (a string) and each value can be any valid JavaScript data type, including functions, arrays, or other objects. Objects are a fundamental part of JavaScript and are used to store and manage data in a structured way.
 
@@ -161,7 +157,7 @@ console.log(person.age);   // Output: 26
 - You can access object properties using dot notation (`object.property`) or bracket notation (`object['property']`).
 
 
-### 9\. **What are JavaScript arrays, and how do you create?**
+### 8\. **What are JavaScript arrays, and how do you create?**
 
 In JavaScript, an **array** is a special variable that can hold multiple values at once. Arrays allow you to store collections of data in a single variable. Each value in an array is called an **element**, and each element is indexed, meaning it has a position in the array. The index of the first element is `0`, the second is `1`, and so on.
 
@@ -194,7 +190,7 @@ Arrays in JavaScript can hold elements of any type: numbers, strings, objects, o
 - `.includes()`: Checks if an array contains a specific element.
 
 
-### 10\. **How do you add, remove, or access elements in an array?**
+### 9\. **How do you add, remove, or access elements in an array?**
 
 * **Add**: `push()` to add to the end, `unshift()` to add to the beginning.
 * **Remove**: `pop()` to remove from the end, `shift()` to remove from the beginning.
@@ -208,7 +204,7 @@ fruits.shift();             // Removes 'grape'
 console.log(fruits[1]);     // Access the second element 'banana'
 ```
 
-### 2\. **How do you create a function in JavaScript??**
+### 10\. **How do you create a function in JavaScript??**
 * **Function Declaration**: A named function defined with the `function` keyword.
   ```javascript
    function greet() {
@@ -257,7 +253,7 @@ for (const fruit of fruits) {
 ```
 
 
-### 6\. **What is the difference between a forEach and a for loop in JavaScript?**
+### 12\. **What is the difference between a forEach and a for loop in JavaScript?**
 
 * **`forEach`**:
 
@@ -286,7 +282,7 @@ for (const fruit of fruits) {
   }
   ```
 
-  ### Summary of Differences
+### Summary of Differences
 
 | Feature                | `forEach`                                        | `for`                                              |
 |------------------------|--------------------------------------------------|----------------------------------------------------|
@@ -298,7 +294,7 @@ for (const fruit of fruits) {
 | **Use Case**           | Cleaner for simple iterations over arrays        | More flexibility and control, especially for complex loops |
 
 
-### 17\. **What is the purpose of `break` and `continue` statements?**
+### 13\. **What is the purpose of `break` and `continue` statements?**
 
 * `break`: Exits a loop or switch statement immediately.
 * `continue`: Skips the current iteration of a loop and continues with the next iteration.
@@ -315,7 +311,7 @@ for (const fruit of fruits) {
 }
 ```
 
-### 13\. **What is the difference between `null` and `undefined`?**
+### 14\. **What is the difference between `null` and `undefined`?**
 
 * `undefined` means a variable has been declared but not assigned a value.
 * `null` is an intentional absence of any value (i.e., "empty").
@@ -328,7 +324,7 @@ let y = null;
 console.log(y);  // null
 ```
 
-### 14\. **How do you handle events in JavaScript?**
+### 15\. **How do you handle events in JavaScript?**
 
 You can handle events by attaching event listeners to DOM elements using methods like `addEventListener`.
 
@@ -339,7 +335,7 @@ button.addEventListener('click', function() {
 });
 ```
 
-### 15\. **What is the `this` keyword in JavaScript?**
+### 16\. **What is the `this` keyword in JavaScript?**
 In JavaScript, the `this` keyword refers to the current context or object in which the function is called. It provides a way to access properties and methods of the object that the function is associated with.
 
 - In **regular functions**, `this` refers to the global object (in browsers, it's the `window` object).
@@ -368,7 +364,7 @@ person.greet(); // Output: Alice
 - **Explicit binding**: Using `call()`, `apply()`, or `bind()`, you can set the value of `this` manually.
 
 
-### 18\. **What is a callback function in JavaScript?**
+### 17\. **What is a callback function in JavaScript?**
 
 A callback function is a function passed as an argument to another function, and it is executed after the completion of the main function.
 
@@ -387,7 +383,7 @@ greet('Alice', afterGreet); // Output: Hello, Alice
 ```
 
 
-### 4\. **What is promises and how then() and catch() work.**
+### 18\. **What is promises and how then() and catch() work.**
 
 A **promise** represents the eventual completion (or failure) of an asynchronous operation. It can be in one of three states: **pending**, **fulfilled**, or **rejected**.
 
@@ -430,7 +426,7 @@ In this example:
 * Use `catch()` to handle errors.
 * You can chain multiple `then()` calls to handle sequential asynchronous operations.
 
-### 6. Promise vs. Callback Function in JavaScript:
+### 19. Promise vs. Callback Function in JavaScript:
 
 - **Callback**:
   A function passed as an argument to another function, which is executed when the task is completed.
@@ -455,7 +451,7 @@ doSomething()
   .catch(error => console.error(error));
 ```
 
-### 1\. **What is closure and lexical scoping in JavaScript?**
+### 20\. **What is closure and lexical scoping in JavaScript?**
 * **Lexical Scoping**: This means that the scope of variables is determined by where they are declared in the code. In JavaScript, functions are lexically scoped, meaning they "remember" the environment in which they were created, even if they are executed outside of that environment.
 
 A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope.In other words, a closure allows a function to access variables from its outer function even after the outer function has finished executing.
@@ -482,7 +478,7 @@ Here, `inner()` is a closure because it remembers and can access `outerVariable`
 * They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
 
 
-### 24\. **What are higher-order functions in JavaScript? Can you provide an example?**
+### 21\. **What are higher-order functions in JavaScript? Can you provide an example?**
 In JavaScript, higher-order functions are functions that can **take other functions as arguments** or **return functions as results**. This concept allows for more flexible and reusable code.
 
 #### In simple terms:
@@ -541,7 +537,7 @@ console.log(triple(4)); // Output: 12
 - They are powerful tools in JavaScript and are commonly used in methods like `map`, `filter`, `reduce`, and more.
 
 
-### 5\. **What is async/await in JavaScript? and Difference Between Async/Await and Promises**
+### 22\. **What is async/await in JavaScript? and Difference Between Async/Await and Promises**
 
 `async`/`await` is syntax sugar built on top of Promises to make asynchronous code easier to write and read. They are not different technologies, but rather a more readable way to work with Promises.
 
@@ -595,7 +591,7 @@ fetchData();
 * `async`/`await` makes code appear synchronous and easier to understand, while Promises are asynchronous and often require `.then()` and `.catch()` for handling success and errors.
 * Error handling with `async/await` is done using `try`/`catch`, which can be more intuitive compared to `.catch()` with promises.
 
-### 6\. **What are Promises and async/await? How are they different from callbacks?**
+### 23\. **What are Promises and async/await? How are they different from callbacks?**
 
 #### **Promises**
 
@@ -680,7 +676,7 @@ In summary:
 * **Promises** provide a cleaner, more manageable way to handle async operations.
 * **Async/Await** makes code look synchronous and is easier to work with than nested promises or callbacks.
 
-### 32\. **What are the differences between `fetch` and `XMLHttpRequest` for making HTTP requests?**
+### 24\. **What are the differences between `fetch` and `XMLHttpRequest` for making HTTP requests?**
 
 * **`fetch`**:
 
@@ -723,7 +719,7 @@ In summary:
 2. **Browser support**: `fetch` is newer and not supported in older browsers like Internet Explorer, while `XMLHttpRequest` is widely supported.
 3. **Flexibility**: `fetch` is simpler and more flexible, while `XMLHttpRequest` requires more boilerplate code.
 
-### 6\. **What Are `setTimeout` and `setInterval`? How Do They Differ?**
+### 25\. **What Are `setTimeout` and `setInterval`? How Do They Differ?**
 
 Both `setTimeout` and `setInterval` are used to schedule asynchronous functions to be executed after a delay.
 
@@ -768,7 +764,7 @@ setTimeout(() => {
 These are core concepts in JavaScript for handling asynchronous behavior and managing operations like promises, async/await, event loops, and timers. By understanding these, you can write more efficient and readable asynchronous code.
 
 
-### 5\. **What are arrow functions and how do they differ from regular functions?**
+### 26\. **What are arrow functions and how do they differ from regular functions?**
 
 Arrow functions are a shorthand syntax for writing functions in JavaScript. They are more concise than traditional function expressions and they do not have their own `this`, `arguments`, `super`, or `new.target` bindings.
 
@@ -806,7 +802,7 @@ const person2 = {
 person2.greet();  // Alice
 ```
 
-### 8\. **What is the Event Loop in JavaScript? How It Works**
+### 27\. **What is the Event Loop in JavaScript? How It Works**
 
 The **event loop** is a mechanism that handles asynchronous operations in JavaScript. It continuously checks the call stack and the message queue. When the call stack is empty, it pushes tasks from the message queue to the call stack for execution.
 
@@ -831,7 +827,7 @@ This allows JavaScript to handle asynchronous events efficiently without blockin
 * Asynchronous code (e.g., setTimeout, AJAX, Promises) does not block the main thread. However, if there are too many tasks in the event queue or long-running operations on the call stack, it can delay the execution of further tasks and cause performance issues like UI freezes.
 
 
-### 1\. **Difference Between Synchronous and Asynchronous Functions in JavaScript**
+### 28\. **Difference Between Synchronous and Asynchronous Functions in JavaScript**
 
 * **Synchronous Functions**:
 
@@ -878,7 +874,7 @@ This allows JavaScript to handle asynchronous events efficiently without blockin
   Middle (after 1 second)
   ```
 
-### 14\. **What is the difference between the `apply()`, `call()`, and `bind()` methods in JavaScript? How can each be used effectively?**
+### 29\. **What is the difference between the `apply()`, `call()`, and `bind()` methods in JavaScript? How can each be used effectively?**
 
 The `apply()`, `call()`, and `bind()` methods are used to set the context (`this`) of a function and call it with specific arguments, but they differ in their usage and behavior:
 
@@ -907,7 +903,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
     greetAlice(); // "Hello, Alice"
     ```
 
-### 12\. **What are the map(), filter(), and reduce() methods?**
+### 30\. **What are the map(), filter(), and reduce() methods?**
 The `map()`, `filter()`, and `reduce()` methods are built-in Python functions that are used to process and transform iterables (like lists, tuples, etc.) in a functional programming style. Here's an explanation of each:
 
 #### 1. `map()` is used to apply a given function to all items in an iterable (like a list or tuple) and return an iterator that produces the results.
@@ -960,7 +956,7 @@ The `map()`, `filter()`, and `reduce()` methods are built-in Python functions th
 #### Conclusion:
 These functions are useful for applying transformations and filters to iterables in a concise and functional way, without the need for explicit loops. They are often used in combination with lambda functions to keep the code compact and readable.
 
-### 27\. **What are `WeakMap` and `WeakSet`? How are they different from `Map` and `Set`?**
+### 31\. **What are `WeakMap` and `WeakSet`? How are they different from `Map` and `Set`?**
 
 * **WeakMap**: A collection of key-value pairs where the keys are objects, and the values can be any type. If the key object is garbage collected, the corresponding entry in the `WeakMap` is automatically removed.
 
@@ -977,7 +973,7 @@ weakMap.set(obj, 'value');
 * `WeakMap` and `WeakSet` allow garbage collection of keys/objects.
 * `Map` and `Set` maintain strong references to their elements.
 
-### 14\. **Explain destructuring in JavaScript. Provide examples for both objects and arrays.?**
+### 32\. **Explain destructuring in JavaScript. Provide examples for both objects and arrays.?**
 
 Destructuring allows you to extract values from arrays or objects into individual variables. It makes your code more concise and readable.
 
@@ -1030,7 +1026,7 @@ const [, , third] = colors;
 console.log(third); // blue
 ```
 
-### 3\. **What are default parameters in JavaScript functions?**
+### 33\. **What are default parameters in JavaScript functions?**
 
 In JavaScript, default parameters allow you to specify default values for function parameters. If the argument is not passed when calling the function, the default value is used.
 
@@ -1056,7 +1052,7 @@ console.log(calculatePrice(100));    // 110 (tax is 10% by default)
 console.log(calculatePrice(100, 20)); // 120 (tax is provided as 20)
 ```
 
-### 4\. **Explain the concept of spread and rest operators in JavaScript.**
+### 34\. **Explain the concept of spread and rest operators in JavaScript.**
 
 Both the spread (`...`) and rest (`...`) operators use the same syntax but serve different purposes.
 
@@ -1104,7 +1100,7 @@ console.log(second); // 2
 console.log(rest);   // [3, 4, 5]
 ```
 
-### 1\. **What are template literals and how are they used?**
+### 35\. **What are template literals and how are they used?**
 
 Template literals are a feature in JavaScript that allows you to work with strings in a more flexible way. They are enclosed by backticks (`` ` ``) instead of single or double quotes, and allow for embedding expressions inside the string using `${}`.
 
@@ -1127,7 +1123,7 @@ console.log(message);
 ```
 
 
-### 26\. **What is a `Set` in JavaScript, and how does it differ from an array? When would you use it?**
+### 36\. **What is a `Set` in JavaScript, and how does it differ from an array? When would you use it?**
 
 A `Set` is a collection of unique values in JavaScript. Unlike arrays, sets do not allow duplicates.
 
@@ -1148,9 +1144,7 @@ console.log(set);  // Output: Set { 1, 2, 3, 4 }
 * When you need to store unique values or efficiently check if a value exists.
 
 
-
-
-### 15\. **How does JavaScript handle errors with try, catch, and finally?**
+### 37\. **How does JavaScript handle errors with try, catch, and finally?**
 
 In JavaScript, errors in asynchronous code can be handled in two main ways:
 
@@ -1183,7 +1177,7 @@ In JavaScript, errors in asynchronous code can be handled in two main ways:
 
 In both cases, you handle the error where the promise or asynchronous function is invoked.
 
-### 4\. **What is a JavaScript module and how do you work with modules in modern JavaScript?**
+### 38\. **What is a JavaScript module and how do you work with modules in modern JavaScript?**
 
 A **JavaScript module** is a piece of code that is self-contained and can be imported and exported between different files. It allows for better organization, encapsulation, and reusability of code.
 
@@ -1230,7 +1224,7 @@ A **JavaScript module** is a piece of code that is self-contained and can be imp
 ## Advanced-Level Questions
 ---
 
-### 2\. **What is the prototype chain in JavaScript?**
+### 39\. **What is the prototype chain in JavaScript?**
 
 In JavaScript, the **prototype chain** is a way that objects can inherit properties and methods from other objects. It's like a chain of objects, where each object has a reference to another object, and that object may have its own reference to another, and so on.
 
@@ -1258,7 +1252,7 @@ console.log(dog.eats);   // true, found on animal (dog's prototype)
 
 In summary, the prototype chain allows JavaScript objects to share properties and methods, making the language more flexible and efficient.
 
-### 3\. **What is the difference between a shallow copy and a deep copy?**
+### 40\. **What is the difference between a shallow copy and a deep copy?**
 
 The difference between **shallow copy** and **deep copy** in JavaScript comes down to how the objects are copied, particularly when those objects contain other objects or arrays inside them.
 
@@ -1303,7 +1297,7 @@ console.log(original.address.city); // 'New York' — unchanged
 - **Deep copy**: Copies everything, including nested objects, so no shared references exist.
 
 
-### 4\. **What are IIFE (Immediately Invoked Function Expressions), and when are they used?**
+### 41\. **What are IIFE (Immediately Invoked Function Expressions), and when are they used?**
 
 An **IIFE** is a function expression that is defined and executed immediately. It is often used to create a new scope to avoid polluting the global namespace or to encapsulate logic within a function.
 
@@ -1318,7 +1312,7 @@ Example:
 
 IIFE is commonly used in JavaScript modules, closures, and when you want to avoid polluting the global scope.
 
-### 5\. **What is the difference between `Object.create()` and the `new` keyword in JavaScript?**
+### 42\. **What is the difference between `Object.create()` and the `new` keyword in JavaScript?**
 
 * **`Object.create(proto)`**: Creates a new object with the specified prototype object (`proto`). It doesn't run a constructor function. Example:
 
@@ -1335,7 +1329,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
   const person = new Person('Alice');
   ```
 
-### 6\. **Explain the concept of JavaScript design patterns, such as Singleton or Module.**
+### 43\. **Explain the concept of JavaScript design patterns, such as Singleton or Module.**
 
 * **Design Patterns** are reusable solutions to common software design problems. In JavaScript, some common patterns are:
 
@@ -1371,7 +1365,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
     })();
     ```
 
-### 7\. **What is the purpose of the `Symbol` type in JavaScript?**
+### 44\. **What is the purpose of the `Symbol` type in JavaScript?**
 
 The `Symbol` type in JavaScript is used to create **unique identifiers**. These identifiers are different from regular strings or numbers because each `Symbol` is guaranteed to be unique, even if they have the same description.
 
@@ -1399,7 +1393,7 @@ Here’s a simple explanation of its key purposes:
 
 In short, `Symbols` are mainly used to create unique, non-conflicting property keys and to hide data in a way that is not easily accessed or changed by other parts of the code.
 
-### 8\. **How does JavaScript event delegation work, and why is it useful?**
+### 45\. **How does JavaScript event delegation work, and why is it useful?**
 JavaScript event delegation is a technique where instead of attaching event listeners to individual elements, you attach a single event listener to a parent element. This parent then "delegates" the event to the correct child element when it is triggered.
 
 #### How It Works:
@@ -1447,7 +1441,7 @@ document.getElementById("parent").addEventListener("click", function(event) {
 
 In summary, event delegation makes it easier to handle events on dynamically generated or large numbers of child elements, improving performance and keeping the code simpler and more maintainable.
 
-### 9\. **What are Web Workers, and how do they work in JavaScript?**
+### 46\. **What are Web Workers, and how do they work in JavaScript?**
 
 **Web Workers** in JavaScript allow you to run scripts in the background on a separate thread, so they don't block the main thread (the UI thread). This is especially useful for performing time-consuming tasks like data processing or network requests without freezing the user interface.
 
@@ -1515,7 +1509,7 @@ worker.terminate();  // Stop the worker
 
 In short, **Web Workers** are great for offloading heavy tasks from the main UI thread to improve performance and responsiveness in JavaScript applications.
 
-### 7\. **What are JavaScript generators and how are they used?**
+### 47\. **What are JavaScript generators and how are they used?**
 
 A **generator** is a special type of function that can be paused and resumed. It uses the `function*` syntax and the `yield` keyword to yield multiple values over time, rather than returning a single value.
 
@@ -1552,7 +1546,7 @@ A **generator** is a special type of function that can be paused and resumed. It
 
 These are the core concepts you're asking about in JavaScript! Let me know if you'd like further explanations or examples.
 
-### 28\. **What are `Proxy` and `Reflect` in JavaScript, and what are their use cases?**
+### 48\. **What are `Proxy` and `Reflect` in JavaScript, and what are their use cases?**
 
 * **Proxy**: A `Proxy` is a mechanism for defining custom behavior for fundamental operations (e.g., property lookup, assignment). It allows you to intercept and customize operations on objects.
 
@@ -1588,8 +1582,7 @@ console.log(person.name);  // Output: Alice
 * **Reflect** is useful for handling operations with a more standardized approach, often alongside `Proxy` for default behavior.
 
 
-
-### 2\. **Explain the concept of memoization and provide an example.**
+### 49\. **Explain the concept of memoization and provide an example.**
 
 #### **Memoization**:
 
@@ -1635,7 +1628,7 @@ console.log(memoizedFibonacci(40)); // Much faster after the first computation
 
 
 
-### 4\. **What is throttling and debouncing? How do they help with performance?**
+### 50\. **What is throttling and debouncing? How do they help with performance?**
 
 #### **Throttling**:
 
@@ -1689,7 +1682,7 @@ input.addEventListener('input', debounce(() => {
 * **Memory leaks** in JavaScript can be prevented by clearing event listeners, intervals, and using weak references.
 * **Throttling** and **debouncing** limit the frequency of function executions during frequent events, improving performance by reducing unnecessary computations.
 
-### 4\. ** How to store token and secure the application in angular and reactjs application **
+### 51\. ** How to store token and secure the application in angular and reactjs application **
 
 Do not store JWT tokens in localStorage or sessionStorage. Use HttpOnly cookies or store the token in memory (e.g., React state or Angular service) and pass it in API request headers.
 Implement route protection to prevent unauthorized access to parts of the app (e.g., React Router's ProtectedRoute or Angular's Route Guards).
@@ -1697,7 +1690,7 @@ Use HTTPS to protect data in transit.
 Set up security headers to protect against XSS, CSRF, and other attacks.
 Always validate tokens on the backend and keep token expiration and revocation mechanisms in place.
 
-### 3\. **How do you handle authentication and authorization in a frontend application?**
+### 52\. **How do you handle authentication and authorization in a frontend application?**
 
 Authentication and authorization are key aspects of security in frontend applications.
 
@@ -1723,7 +1716,7 @@ Authentication and authorization are key aspects of security in frontend applica
 
 5. **Token Expiry and Refresh**: JWTs have an expiry time. To maintain the user session, you can implement a token refresh mechanism where the frontend automatically requests a new token from the backend before the current token expires.
 
-### 4\. **What are the advantages and disadvantages of single-page applications (SPAs)?**
+### 53\. **What are the advantages and disadvantages of single-page applications (SPAs)?**
 
 A **Single-Page Application (SPA)** is a web application that loads a single HTML page and dynamically updates as the user interacts with the app. SPAs are built using JavaScript frameworks like React, Angular, and Vue.js.
 
