@@ -27,6 +27,21 @@ var z = 15; // Function-scoped
 
 This table summarizes the key differences between `var`, `let`, and `const`.
 
+### 8\. **What is hoisting in JavaScript? How does it work with variables and functions?**
+
+* **Hoisting** is JavaScript's behavior of moving variable and function declarations to the top of their containing scope during the compile phase, before code execution begins.
+
+  * **For functions**: Function declarations (not expressions) are hoisted with both their definition and value, meaning you can call them before they appear in the code.
+
+  * **For variables**: With `var`, only the declaration (not the initialization) is hoisted, so the variable is initialized as `undefined`. With `let` and `const`, only the declaration is hoisted, but not the initialization, leading to a "temporal dead zone" if you try to access them before the declaration.
+
+```javascript
+ codeconsole.log(x); // undefined
+var x = 5; 
+
+console.log(y); // ReferenceError: Cannot access 'y' before initialization
+let y = 10;
+```
 
 ### 3\. **What are the data types in JavaScript?**
 
@@ -61,25 +76,6 @@ JavaScript has seven basic data types:
 5 === '5' // false because types are different (number vs. string)
 ```
     
-### 2\. **How do you create a function in JavaScript??**
-* **Function Declaration**: A named function defined with the `function` keyword.
-
-  ```javascript
-   function greet() {
-    console.log("Hello");
-  }
-  ```
-
-* **Function Expression**: A function assigned to a variable, which may or may not be named.
-  ```javascript
-   const greet = function() {
-    console.log("Hello");
-  };
-  ```
-* **Arrow Function**:
-  ```javascript
-    const greet = () => console.log('Hello!');
-  ```
 
 ### 7\. **What is the purpose of the `typeof` operator?**
 
@@ -93,21 +89,7 @@ typeof undefined; // 'undefined'
 typeof null;      // 'object' (a known JavaScript quirk)
 ```
 
-### 8\. **What is hoisting in JavaScript? How does it work with variables and functions?**
 
-* **Hoisting** is JavaScript's behavior of moving variable and function declarations to the top of their containing scope during the compile phase, before code execution begins.
-
-  * **For functions**: Function declarations (not expressions) are hoisted with both their definition and value, meaning you can call them before they appear in the code.
-
-  * **For variables**: With `var`, only the declaration (not the initialization) is hoisted, so the variable is initialized as `undefined`. With `let` and `const`, only the declaration is hoisted, but not the initialization, leading to a "temporal dead zone" if you try to access them before the declaration.
-
-```javascript
- codeconsole.log(x); // undefined
-var x = 5; 
-
-console.log(y); // ReferenceError: Cannot access 'y' before initialization
-let y = 10;
-```
 
 
 
@@ -225,6 +207,29 @@ fruits.pop();               // Removes 'orange'
 fruits.shift();             // Removes 'grape'
 console.log(fruits[1]);     // Access the second element 'banana'
 ```
+
+
+
+### 2\. **How do you create a function in JavaScript??**
+* **Function Declaration**: A named function defined with the `function` keyword.
+
+  ```javascript
+   function greet() {
+    console.log("Hello");
+  }
+  ```
+
+* **Function Expression**: A function assigned to a variable, which may or may not be named.
+  ```javascript
+   const greet = function() {
+    console.log("Hello");
+  };
+  ```
+* **Arrow Function**:
+  ```javascript
+    const greet = () => console.log('Hello!');
+  ```
+
 
 ### 11\. **What is a loop? What are the different types of loops in JavaScript?**
 
