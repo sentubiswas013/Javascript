@@ -898,12 +898,8 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
 ### 12\. **What are the map(), filter(), and reduce() methods?**
 The `map()`, `filter()`, and `reduce()` methods are built-in Python functions that are used to process and transform iterables (like lists, tuples, etc.) in a functional programming style. Here's an explanation of each:
 
-#### 1. `map()`
+#### 1. `map()` is used to apply a given function to all items in an iterable (like a list or tuple) and return an iterator that produces the results.
 
-- **Purpose:** `map()` is used to apply a given function to all items in an iterable (like a list or tuple) and return an iterator that produces the results.
-- **Syntax:**
-  ```python
-  map(function, iterable)
   ```
   - `function`: A function that will be applied to each element of the iterable.
   - `iterable`: The iterable (list, tuple, etc.) whose elements the function will be applied to.
@@ -916,13 +912,8 @@ The `map()`, `filter()`, and `reduce()` methods are built-in Python functions th
   ```
   In this example, the `lambda` function squares each number in the list.
 
-#### 2. `filter()`
+#### 2. `filter()` is used to filter out elements from an iterable based on a condition provided by a function. It returns an iterator that contains only those items for which the function returns `True`.
 
-- **Purpose:** `filter()` is used to filter out elements from an iterable based on a condition provided by a function. It returns an iterator that contains only those items for which the function returns `True`.
-- **Syntax:**
-  ```python
-  filter(function, iterable)
-  ```
   - `function`: A function that returns `True` or `False` for each item in the iterable.
   - `iterable`: The iterable to be filtered.
 
@@ -934,14 +925,8 @@ The `map()`, `filter()`, and `reduce()` methods are built-in Python functions th
   ```
   Here, the `lambda` function filters out the odd numbers, keeping only the even ones.
 
-#### 3. `reduce()`
+#### 3. `reduce()` is used to apply a binary function (a function that takes two arguments) cumulatively to the items of an iterable. It reduces the iterable to a single value.
 
-- **Purpose:** `reduce()` is used to apply a binary function (a function that takes two arguments) cumulatively to the items of an iterable. It reduces the iterable to a single value.
-- **Syntax:**
-  ```python
-  from functools import reduce
-  reduce(function, iterable)
-  ```
   - `function`: A binary function that takes two arguments.
   - `iterable`: The iterable whose elements will be reduced to a single value.
 
