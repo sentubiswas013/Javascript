@@ -1619,7 +1619,7 @@ In summary, event delegation makes it easier to handle events on dynamically gen
 
 **Web Workers** in JavaScript allow you to run scripts in the background on a separate thread, so they don't block the main thread (the UI thread). This is especially useful for performing time-consuming tasks like data processing or network requests without freezing the user interface.
 
-### How Web Workers work:
+#### How Web Workers work:
 1. **Main Thread vs Worker Thread**:
    - The **main thread** is where the UI runs, including things like rendering the webpage and handling user interactions.
    - A **Web Worker** runs in the background, separate from the main thread, so it doesn't interfere with the UI.
@@ -1673,11 +1673,11 @@ worker.onerror = function(error) {
 worker.terminate();  // Stop the worker
 ```
 
-### Benefits of Web Workers:
+#### Benefits of Web Workers:
 - **Non-blocking**: They allow you to do heavy computation or network operations without blocking the main UI thread.
 - **Improved Performance**: By using multiple threads, you can make your web application more responsive.
 
-### Limitations:
+#### Limitations:
 - Web workers cannot access the DOM or window objects directly, so they’re typically used for computation-heavy tasks or background processing.
 - They are limited to their own isolated environment, meaning they cannot share global state.
 
