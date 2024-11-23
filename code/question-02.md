@@ -2307,8 +2307,6 @@ To measure and improve the performance of a JavaScript application in the browse
 
 ## JavaScript and the DOM
 ---
-Here are the answers to the JavaScript-related questions you posed:
-
 ### 1\. **How can you select an element in the DOM using JavaScript?**
 
 In JavaScript, you can select an element in the DOM using several methods:
@@ -2465,10 +2463,8 @@ This will create a new `<div>` element with the specified text and append it to 
 
 
 
-## 3. Architecture & Design Patterns
-
-Certainly! Here are answers to the questions you've posed, organized clearly to provide a comprehensive understanding.
-
+## Architecture & Design Patterns
+---
 ### 1\. **How do you structure your frontend application for scalability and maintainability?**
 
 A scalable and maintainable frontend application typically follows certain principles and patterns to ensure growth and easy management:
