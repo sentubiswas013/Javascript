@@ -61,7 +61,7 @@ JavaScript has seven basic data types:
 5 === '5' // false because types are different (number vs. string)
 ```
     
-### 2\. **What is the difference between function declarations and function expressions?**
+### 2\. **How do you create a function in JavaScript??**
 
 * **Function Declaration**: A named function defined with the `function` keyword.
 
@@ -83,8 +83,9 @@ JavaScript has seven basic data types:
 
 * **Arrow Function**:
 
-   ```javascript
+  ```javascript
     const greet = () => console.log('Hello!');
+  ```
 
 ### 7\. **What is the purpose of the `typeof` operator?**
 
