@@ -1035,28 +1035,72 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
     ```
 
 ### 12\. **What are the map(), filter(), and reduce() methods?**
+The `map()`, `filter()`, and `reduce()` methods are built-in Python functions that are used to process and transform iterables (like lists, tuples, etc.) in a functional programming style. Here's an explanation of each:
 
-* **`map()`**: Creates a new array by applying a function to each element in an existing array.
+### 1. `map()`
 
-  ```javascript
-   const numbers = [1, 2, 3];
-  const squares = numbers.map(x => x * x);  // [1, 4, 9]
+- **Purpose:** `map()` is used to apply a given function to all items in an iterable (like a list or tuple) and return an iterator that produces the results.
+- **Syntax:**
+  ```python
+  map(function, iterable)
   ```
+  - `function`: A function that will be applied to each element of the iterable.
+  - `iterable`: The iterable (list, tuple, etc.) whose elements the function will be applied to.
 
-* **`filter()`**: Creates a new array with elements that pass a given condition.
-
-  ```javascript
-   const numbers = [1, 2, 3, 4];
-  const evenNumbers = numbers.filter(x => x % 2 === 0);  // [2, 4]
+- **Example:**
+  ```python
+  numbers = [1, 2, 3, 4]
+  squared = map(lambda x: x ** 2, numbers)
+  print(list(squared))  # Output: [1, 4, 9, 16]
   ```
+  In this example, the `lambda` function squares each number in the list.
 
-* **`reduce()`**: Reduces the array to a single value based on a function.
+### 2. `filter()`
 
-  ```javascript
-   const numbers = [1, 2, 3];
-  const sum = numbers.reduce((acc, curr) => acc + curr, 0);  // 6
+- **Purpose:** `filter()` is used to filter out elements from an iterable based on a condition provided by a function. It returns an iterator that contains only those items for which the function returns `True`.
+- **Syntax:**
+  ```python
+  filter(function, iterable)
   ```
+  - `function`: A function that returns `True` or `False` for each item in the iterable.
+  - `iterable`: The iterable to be filtered.
 
+- **Example:**
+  ```python
+  numbers = [1, 2, 3, 4, 5, 6]
+  even_numbers = filter(lambda x: x % 2 == 0, numbers)
+  print(list(even_numbers))  # Output: [2, 4, 6]
+  ```
+  Here, the `lambda` function filters out the odd numbers, keeping only the even ones.
+
+### 3. `reduce()`
+
+- **Purpose:** `reduce()` is used to apply a binary function (a function that takes two arguments) cumulatively to the items of an iterable. It reduces the iterable to a single value.
+- **Syntax:**
+  ```python
+  from functools import reduce
+  reduce(function, iterable)
+  ```
+  - `function`: A binary function that takes two arguments.
+  - `iterable`: The iterable whose elements will be reduced to a single value.
+
+- **Example:**
+  ```python
+  from functools import reduce
+  numbers = [1, 2, 3, 4]
+  product = reduce(lambda x, y: x * y, numbers)
+  print(product)  # Output: 24
+  ```
+  In this example, the `lambda` function multiplies all the numbers together, resulting in the product `24`.
+
+### Key Differences:
+
+- **map()**: Transforms each item of the iterable individually by applying a function.
+- **filter()**: Filters items from an iterable based on a condition (function returns `True` or `False`).
+- **reduce()**: Reduces an iterable to a single value by cumulatively applying a binary function.
+
+### Conclusion:
+These functions are useful for applying transformations and filters to iterables in a concise and functional way, without the need for explicit loops. They are often used in combination with lambda functions to keep the code compact and readable.
 
 ### 27\. **What are `WeakMap` and `WeakSet`? How are they different from `Map` and `Set`?**
 
