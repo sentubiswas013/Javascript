@@ -608,12 +608,6 @@ console.log(triple(4)); // Output: 12
 2. **Browser support**: `fetch` is newer and not supported in older browsers like Internet Explorer, while `XMLHttpRequest` is widely supported.
 3. **Flexibility**: `fetch` is simpler and more flexible, while `XMLHttpRequest` requires more boilerplate code.
 
----
-
-## Intermediate-Level Questions
-
-Sure! Here are the answers to the list of JavaScript questions:
-
 ### 1\. **What is closure in JavaScript?**
 
 A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope. This happens because JavaScript functions are first-class objects and they maintain references to the environment in which they were created.
@@ -890,7 +884,7 @@ Arrow functions are a shorthand syntax for writing functions in JavaScript. They
 **Example:**
 
 ```javascript
- const add = (a, b) => a + b;
+const add = (a, b) => a + b;
 console.log(add(2, 3)); // 5
 ```
 
@@ -1001,13 +995,6 @@ This allows JavaScript to handle asynchronous events efficiently without blockin
   End
   Middle (after 1 second)
   ```
-
-### 10\. **How does JavaScript handle asynchronous code (callbacks, promises, async/await)?**
-
-* **Callbacks**: Functions passed as arguments to other functions to be executed later, usually once an asynchronous operation is completed.
-* **Promises**: Represent a value that may be available now or in the future, allowing chaining of `.then()` and `.catch()`.
-* **Async/Await**: Allows asynchronous code to be written in a synchronous style, simplifying handling of asynchronous operations.
-
 
 ### 14\. **What is the difference between the `apply()`, `call()`, and `bind()` methods in JavaScript? How can each be used effectively?**
 
