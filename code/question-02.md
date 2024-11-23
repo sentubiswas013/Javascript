@@ -1617,17 +1617,71 @@ In summary, event delegation makes it easier to handle events on dynamically gen
 
 ### 9\. **What are Web Workers, and how do they work in JavaScript?**
 
-**Web Workers** allow JavaScript to run in the background on a separate thread, without blocking the main thread. They are useful for tasks that are CPU-intensive or require heavy computations (e.g., large data processing) without freezing the UI.
+**Web Workers** in JavaScript allow you to run scripts in the background on a separate thread, so they don't block the main thread (the UI thread). This is especially useful for performing time-consuming tasks like data processing or network requests without freezing the user interface.
 
-Example:
+### How Web Workers work:
+1. **Main Thread vs Worker Thread**:
+   - The **main thread** is where the UI runs, including things like rendering the webpage and handling user interactions.
+   - A **Web Worker** runs in the background, separate from the main thread, so it doesn't interfere with the UI.
+
+2. **Creating a Web Worker**:
+   - To create a worker, you use the `Worker` constructor and pass it the path to a JavaScript file that will be executed in the background.
 
 ```javascript
- const worker = new Worker('worker.js');
-worker.postMessage('Hello Worker!');
-worker.onmessage = function(event) {
-  console.log('Received from worker:', event.data);
+// Main thread
+const worker = new Worker('worker.js');  // Creates a new worker
+
+// worker.js (the script executed by the worker)
+self.onmessage = function(event) {
+    console.log('Message from main thread:', event.data);
+    // Perform some background task...
+    self.postMessage('Task done');  // Send message back to the main thread
 };
 ```
+
+3. **Communication**:
+   - Workers can't directly access the DOM (they're isolated), and the main thread can't access the worker's variables directly.
+   - Communication between the main thread and the worker happens through **messages** using `postMessage()` and `onmessage`.
+
+   - **Main thread sends a message to the worker**:
+     ```javascript
+     worker.postMessage('Start task');
+     ```
+
+   - **Worker sends a message back to the main thread**:
+     ```javascript
+     self.postMessage('Task done');
+     ```
+
+4. **Handling Messages**:
+   - The main thread listens for messages from the worker using `onmessage` and can also listen for errors with `onerror`.
+
+```javascript
+worker.onmessage = function(event) {
+    console.log('Message from worker:', event.data);
+};
+
+worker.onerror = function(error) {
+    console.log('Error in worker:', error.message);
+};
+```
+
+5. **Terminating a Worker**:
+   - Once the worker has finished its job, it can be terminated with `terminate()` from the main thread. This stops the worker immediately.
+   
+```javascript
+worker.terminate();  // Stop the worker
+```
+
+### Benefits of Web Workers:
+- **Non-blocking**: They allow you to do heavy computation or network operations without blocking the main UI thread.
+- **Improved Performance**: By using multiple threads, you can make your web application more responsive.
+
+### Limitations:
+- Web workers cannot access the DOM or window objects directly, so they’re typically used for computation-heavy tasks or background processing.
+- They are limited to their own isolated environment, meaning they cannot share global state.
+
+In short, **Web Workers** are great for offloading heavy tasks from the main UI thread to improve performance and responsiveness in JavaScript applications.
 
 ### 7\. **What are JavaScript generators and how are they used?**
 
