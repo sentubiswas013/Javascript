@@ -1290,9 +1290,6 @@ console.log(original.address.city); // 'New York' — unchanged
 - **Shallow copy**: Copies the object, but nested objects are shared by reference.
 - **Deep copy**: Copies everything, including nested objects, so no shared references exist.
 
-In simple terms:  
-- **Shallow copy** is like copying the surface level.  
-- **Deep copy** is like copying everything, even the parts inside.
 
 ### 4\. **What are IIFE (Immediately Invoked Function Expressions), and when are they used?**
 
