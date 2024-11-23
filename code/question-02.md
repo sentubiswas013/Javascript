@@ -161,7 +161,7 @@ console.log(person.age);   // Output: 26
 - You can access object properties using dot notation (`object.property`) or bracket notation (`object['property']`).
 
 
-### 9\. **What are JavaScript arrays, and how do you create one?**
+### 9\. **What are JavaScript arrays, and how do you create?**
 
 In JavaScript, an **array** is a special variable that can hold multiple values at once. Arrays allow you to store collections of data in a single variable. Each value in an array is called an **element**, and each element is indexed, meaning it has a position in the array. The index of the first element is `0`, the second is `1`, and so on.
 
@@ -208,11 +208,8 @@ fruits.shift();             // Removes 'grape'
 console.log(fruits[1]);     // Access the second element 'banana'
 ```
 
-
-
 ### 2\. **How do you create a function in JavaScript??**
 * **Function Declaration**: A named function defined with the `function` keyword.
-
   ```javascript
    function greet() {
     console.log("Hello");
@@ -229,7 +226,6 @@ console.log(fruits[1]);     // Access the second element 'banana'
   ```javascript
     const greet = () => console.log('Hello!');
   ```
-
 
 ### 11\. **What is a loop? What are the different types of loops in JavaScript?**
 
@@ -285,105 +281,24 @@ button.addEventListener('click', function() {
 ```
 
 ### 15\. **What is the `this` keyword in JavaScript?**
-In JavaScript, the `this` keyword refers to the context in which a function is executed, and its value is determined by how a function is called. It is a reference to the object that is currently being operated on or the object that "owns" the method. The behavior of `this` can vary depending on the situation:
+In JavaScript, the `this` keyword refers to the current context or object in which the function is called. It provides a way to access properties and methods of the object that the function is associated with.
 
-#### 1. **Global Context (Outside Any Function or Object)**
-In the global execution context (outside of any functions or objects), `this` refers to the **global object**:
-   - In browsers, it refers to the `window` object.
-   - In Node.js, it refers to the `global` object.
-   
-   ```javascript
-   console.log(this); // In browsers, logs the 'window' object.
-   ```
+- In **regular functions**, `this` refers to the global object (in browsers, it's the `window` object).
+- In **methods**, `this` refers to the object that owns the method.
+- In **arrow functions**, `this` is lexically bound, meaning it takes the value of `this` from the surrounding context where the function is defined.
 
-#### 2. **Inside a Function (Default Behavior)**
-In a regular function, `this` refers to the **global object** (in non-strict mode). However, in **strict mode**, `this` is `undefined` inside a function.
+Example:
 
-   ```javascript
-   function showThis() {
-     console.log(this); // In non-strict mode: 'this' is the global object (window in browsers)
-   }
-   showThis();
-   ```
+```javascript
+const person = {
+  name: "Alice",
+  greet: function() {
+    console.log(this.name); // "this" refers to the "person" object
+  }
+};
 
-   In **strict mode**:
-   ```javascript
-   'use strict';
-   function showThis() {
-     console.log(this); // 'this' is undefined in strict mode
-   }
-   showThis();
-   ```
-
-#### 3. **Inside an Object Method**
-When a function is invoked as a method of an object, `this` refers to the object that owns the method.
-
-   ```javascript
-   const person = {
-     name: 'Alice',
-     greet: function() {
-       console.log(this.name); // 'this' refers to the 'person' object
-     }
-   };
-   person.greet(); // Logs: 'Alice'
-   ```
-
-#### 4. **In a Constructor Function**
-In a constructor function (used with the `new` keyword), `this` refers to the newly created instance of the object.
-
-   ```javascript
-   function Person(name) {
-     this.name = name;
-   }
-
-   const person1 = new Person('Bob');
-   console.log(person1.name); // 'Bob'
-   ```
-
-#### 5. **Arrow Functions**
-Arrow functions have a **lexical** binding of `this`, meaning they do not have their own `this` value. Instead, they inherit `this` from the surrounding context where the arrow function was created (the **lexical scope**).
-
-   ```javascript
-   const person = {
-     name: 'Charlie',
-     greet: function() {
-       setTimeout(() => {
-         console.log(this.name); // 'this' refers to the outer 'person' object
-       }, 1000);
-     }
-   };
-   person.greet(); // Logs: 'Charlie'
-   ```
-
-#### 6. **Event Handlers**
-When a function is used as an event handler, `this` refers to the element that triggered the event.
-
-   ```javascript
-   const button = document.querySelector('button');
-   button.addEventListener('click', function() {
-     console.log(this); // 'this' refers to the button element
-   });
-   ```
-
-#### 7. **Explicit Binding (call, apply, bind)**
-You can explicitly set the value of `this` using the methods `call()`, `apply()`, and `bind()`.
-
-   - **call()** and **apply()** allow you to invoke a function with a specified `this` value immediately:
-     ```javascript
-     function greet() {
-       console.log(`Hello, ${this.name}`);
-     }
-
-     const person = { name: 'David' };
-     greet.call(person); // Logs: 'Hello, David'
-     ```
-
-   - **bind()** creates a new function with a specific `this` value:
-     ```javascript
-     const boundGreet = greet.bind(person);
-     boundGreet(); // Logs: 'Hello, David'
-     ```
-
+person.greet(); // Output: Alice
+```
 #### Summary of `this`:
 - **Global context**: Refers to the global object (in browsers, `window`).
 - **Function context**: Refers to the global object (non-strict mode) or `undefined` (strict mode).
