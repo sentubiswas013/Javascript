@@ -2015,38 +2015,6 @@ Optimizing rendering performance involves minimizing the time it takes for the b
 - **Lazy Loading:** Lazy load non-visible content (images, scripts, etc.) to reduce initial page load time.
 - **Avoid Long JavaScript Tasks:** Break long JavaScript execution tasks into smaller chunks using techniques like `requestIdleCallback`, `setTimeout`, or `Web Workers`.
 
-### 3\. **What are Web Workers, and when would you use them?**
-
-**Web Workers** are a way to run JavaScript in the background on a separate thread, outside of the main UI thread. This allows for concurrent execution of tasks without blocking the main thread, enabling more responsive user interfaces and improved performance for resource-intensive tasks.
-
-- **Use Cases:**
-
-  - **Data Processing:** When performing complex or long-running computations (e.g., image processing, file manipulation, heavy algorithms) that might otherwise block the main thread and cause the UI to freeze.
-  - **Real-time Operations:** For tasks like background synchronization, data fetching, or real-time messaging that don’t need to interrupt user interaction.
-  - **Parallelism:** Running multiple tasks in parallel, such as processing large datasets, without slowing down the main thread.
-
-- **Example:**
-
-  ```javascript
-   const worker = new Worker('worker.js');
-  worker.postMessage(data); // Send data to the worker
-
-  worker.onmessage = function(event) {
-    console.log('Received from worker: ', event.data);
-  };
-  ```
-
-  In `worker.js`:
-
-  ```javascript
-   codeonmessage = function(event) {
-    let data = event.data;
-    let result = performHeavyCalculation(data);
-    postMessage(result);
-  };
-  ```
-
-Web Workers are particularly useful in web applications that require significant computation, such as games, scientific calculations, and data visualization.
 
 ### 4\. **Explain the concept of a Service Worker and its role in Progressive Web Apps (PWAs).**
 
