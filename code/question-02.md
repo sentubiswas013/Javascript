@@ -510,15 +510,15 @@ doSomething()
 ### 24\. **What are higher-order functions in JavaScript? Can you provide an example?**
 In JavaScript, higher-order functions are functions that can **take other functions as arguments** or **return functions as results**. This concept allows for more flexible and reusable code.
 
-### In simple terms:
+#### In simple terms:
 - A higher-order function is a function that either:
   1. Accepts one or more functions as arguments, or
   2. Returns a function as its result.
 
-### Why is it useful?
+#### Why is it useful?
 Higher-order functions help you abstract common patterns of code, allowing for more modular, concise, and readable programs. For example, you can create functions that modify other functions or control how other functions are executed.
 
-### Example of a Higher-Order Function:
+#### Example of a Higher-Order Function:
 Let's look at an example using `map`, a common higher-order function in JavaScript:
 
 ```javascript
@@ -533,12 +533,12 @@ const doubledNumbers = numbers.map(function(number) {
 console.log(doubledNumbers); // Output: [2, 4, 6, 8]
 ```
 
-### Explanation:
+#### Explanation:
 1. The `map` function is a higher-order function because it **takes a function** as an argument.
 2. The function passed to `map` (in this case, `function(number) { return number * 2; }`) is applied to each element in the `numbers` array.
 3. The result is a new array with the numbers doubled: `[2, 4, 6, 8]`.
 
-### Another Example: Returning a Function
+#### Another Example: Returning a Function
 
 You can also have higher-order functions that **return a function**:
 
@@ -556,12 +556,12 @@ console.log(double(4)); // Output: 8
 console.log(triple(4)); // Output: 12
 ```
 
-### Explanation:
+#### Explanation:
 - The `multiplier` function is a higher-order function because it **returns a function**.
 - When you call `multiplier(2)`, it returns a new function that doubles a number.
 - Similarly, calling `multiplier(3)` returns a new function that triples a number.
 
-### In summary:
+#### In summary:
 - **Higher-order functions** are functions that either accept functions as arguments or return functions as values.
 - They are powerful tools in JavaScript and are commonly used in methods like `map`, `filter`, `reduce`, and more.
 
