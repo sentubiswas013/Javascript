@@ -533,93 +533,6 @@ console.log(triple(4)); // Output: 12
 - **Higher-order functions** are functions that either accept functions as arguments or return functions as values.
 - They are powerful tools in JavaScript and are commonly used in methods like `map`, `filter`, `reduce`, and more.
 
-### 32\. **What are the differences between `fetch` and `XMLHttpRequest` for making HTTP requests?**
-
-* **`fetch`**:
-
-  * **Modern API**: Based on promises, making it easier to work with asynchronous code using `async`/`await`.
-  * **Better API**: Provides a cleaner and more flexible syntax for making requests and handling responses.
-  * **Default response**: The response object must be explicitly parsed (e.g., `.json()`, `.text()`).
-  * **CORS**: Handles CORS (Cross-Origin Resource Sharing) more naturally.
-
-  Example:
-
-  ```js
-   codefetch('https://api.example.com/data')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-  ```
-
-* **`XMLHttpRequest`**:
-
-  * **Older API**: More verbose and callback-based.
-  * **Callback-based**: Requires setting up callbacks for different stages of the request (open, send, onreadystatechange).
-  * **Less Flexible**: Has less support for modern features like promises.
-
-  Example:
-
-  ```js
-   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://api.example.com/data', true);
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  };
-  xhr.send();
-  ```
-
-**Key Differences**:
-
-1. **API style**: `fetch` is promise-based, while `XMLHttpRequest` is callback-based.
-2. **Browser support**: `fetch` is newer and not supported in older browsers like Internet Explorer, while `XMLHttpRequest` is widely supported.
-3. **Flexibility**: `fetch` is simpler and more flexible, while `XMLHttpRequest` requires more boilerplate code.
-
-### 6\. **What Are `setTimeout` and `setInterval`? How Do They Differ?**
-
-Both `setTimeout` and `setInterval` are used to schedule asynchronous functions to be executed after a delay.
-
-* **`setTimeout`**: Executes a function once after a specified delay (in milliseconds).
-
-  ```javascript
-   codesetTimeout(() => {
-    console.log("This runs after 2 seconds.");
-  }, 2000);
-  ```
-
-* **`setInterval`**: Executes a function repeatedly, with a specified delay between each execution.
-
-  ```javascript
-   codesetInterval(() => {
-    console.log("This runs every 2 seconds.");
-  }, 2000);
-  ```
-
-#### Key Differences:
-
-* `setTimeout` runs the function **once** after the specified delay.
-* `setInterval` runs the function **repeatedly** at intervals.
-* Both functions return an identifier that can be used to **clear** them (using `clearTimeout()` or `clearInterval()`).
-
-Example of clearing a timer:
-
-```javascript
- codelet timerId = setInterval(() => {
-  console.log("This will repeat every second.");
-}, 1000);
-
-// Stop the interval after 5 seconds
-setTimeout(() => {
-  clearInterval(timerId);
-  console.log("Interval cleared.");
-}, 5000);
-```
-
-### Conclusion
-
-These are core concepts in JavaScript for handling asynchronous behavior and managing operations like promises, async/await, event loops, and timers. By understanding these, you can write more efficient and readable asynchronous code.
-
 
 ### 5\. **What is async/await in JavaScript? and Difference Between Async/Await and Promises**
 
@@ -759,6 +672,93 @@ In summary:
 * **Callbacks** can lead to nesting issues.
 * **Promises** provide a cleaner, more manageable way to handle async operations.
 * **Async/Await** makes code look synchronous and is easier to work with than nested promises or callbacks.
+
+### 32\. **What are the differences between `fetch` and `XMLHttpRequest` for making HTTP requests?**
+
+* **`fetch`**:
+
+  * **Modern API**: Based on promises, making it easier to work with asynchronous code using `async`/`await`.
+  * **Better API**: Provides a cleaner and more flexible syntax for making requests and handling responses.
+  * **Default response**: The response object must be explicitly parsed (e.g., `.json()`, `.text()`).
+  * **CORS**: Handles CORS (Cross-Origin Resource Sharing) more naturally.
+
+  Example:
+
+  ```js
+   codefetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+  ```
+
+* **`XMLHttpRequest`**:
+
+  * **Older API**: More verbose and callback-based.
+  * **Callback-based**: Requires setting up callbacks for different stages of the request (open, send, onreadystatechange).
+  * **Less Flexible**: Has less support for modern features like promises.
+
+  Example:
+
+  ```js
+   var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.example.com/data', true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log(JSON.parse(xhr.responseText));
+    }
+  };
+  xhr.send();
+  ```
+
+**Key Differences**:
+
+1. **API style**: `fetch` is promise-based, while `XMLHttpRequest` is callback-based.
+2. **Browser support**: `fetch` is newer and not supported in older browsers like Internet Explorer, while `XMLHttpRequest` is widely supported.
+3. **Flexibility**: `fetch` is simpler and more flexible, while `XMLHttpRequest` requires more boilerplate code.
+
+### 6\. **What Are `setTimeout` and `setInterval`? How Do They Differ?**
+
+Both `setTimeout` and `setInterval` are used to schedule asynchronous functions to be executed after a delay.
+
+* **`setTimeout`**: Executes a function once after a specified delay (in milliseconds).
+
+  ```javascript
+   codesetTimeout(() => {
+    console.log("This runs after 2 seconds.");
+  }, 2000);
+  ```
+
+* **`setInterval`**: Executes a function repeatedly, with a specified delay between each execution.
+
+  ```javascript
+   codesetInterval(() => {
+    console.log("This runs every 2 seconds.");
+  }, 2000);
+  ```
+
+#### Key Differences:
+
+* `setTimeout` runs the function **once** after the specified delay.
+* `setInterval` runs the function **repeatedly** at intervals.
+* Both functions return an identifier that can be used to **clear** them (using `clearTimeout()` or `clearInterval()`).
+
+Example of clearing a timer:
+
+```javascript
+ codelet timerId = setInterval(() => {
+  console.log("This will repeat every second.");
+}, 1000);
+
+// Stop the interval after 5 seconds
+setTimeout(() => {
+  clearInterval(timerId);
+  console.log("Interval cleared.");
+}, 5000);
+```
+
+### Conclusion
+
+These are core concepts in JavaScript for handling asynchronous behavior and managing operations like promises, async/await, event loops, and timers. By understanding these, you can write more efficient and readable asynchronous code.
 
 
 ### 5\. **What are arrow functions and how do they differ from regular functions?**
