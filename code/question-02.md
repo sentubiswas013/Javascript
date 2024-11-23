@@ -1941,6 +1941,261 @@ Memory leaks occur when objects are no longer in use but are still being referen
 
 * Use browser developer tools to profile memory usage and track potential leaks, especially in long-running applications.
 
+### 7\. **How does JavaScript work with Webpack, Babel, and other bundlers?**
+
+* **Webpack** is a module bundler that takes your JavaScript files, along with CSS, images, and other assets, and bundles them into a set of optimized files that can be loaded by the browser. It allows you to use modern JavaScript features (like ES6 modules) and compile them down to code that works in all browsers.
+* **Babel** is a JavaScript compiler that converts modern JavaScript (like ES6 or JSX) into backward-compatible versions of JavaScript. It works as a transpiler, allowing you to use the latest JavaScript syntax today without worrying about browser support.
+* **Other Bundlers**: Other bundlers like **Parcel** or **Rollup** work similarly to Webpack but with different setups and trade-offs. Rollup, for example, is known for optimizing libraries, while Parcel requires zero configuration to get started.
+
+Together, **Webpack** and **Babel** (often integrated with other tools) allow developers to write modern JavaScript and have it work in older browsers without needing to manually handle the complexities of compatibility and performance optimizations.
+
+### 5\. **Explain the concept of "strict mode" in JavaScript.**
+
+**Strict mode** is a way to opt into a stricter version of JavaScript that helps to catch common coding mistakes and improve performance. It restricts certain actions and throws more exceptions. It is enabled by adding `"use strict";` at the beginning of a script or function.
+
+Key differences in strict mode:
+
+* Disallows the use of undeclared variables.
+* Prevents assignment to read-only properties.
+* Disallows `eval` and `with`.
+* Prevents the use of `this` in global context (it will be `undefined`).
+
+Example:
+
+```javascript
+ code"use strict";
+x = 10; // Throws an error because x is not declared
+```
+
+### 1\. **What are closures and lexical scoping?**
+
+* **Lexical Scoping**: This means that the scope of variables is determined by where they are declared in the code. In JavaScript, functions are lexically scoped, meaning they "remember" the environment in which they were created, even if they are executed outside of that environment.
+
+* **Closures**: A closure is a function that retains access to its lexical scope (variables) even after the function that created those variables has finished executing. This is powerful because it allows for private data encapsulation and function factory patterns.
+
+  Example:
+
+  ```javascript
+   function outer() {
+    let x = 10;
+    return function inner() {
+      console.log(x);  // `inner` has access to `x` because of the closure
+    };
+  }
+
+  const myClosure = outer();
+  myClosure();  // 10
+  ```
+
+  **Usefulness in frontend development:**
+
+* Closures are useful for data encapsulation and creating private variables.
+* They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
+
+
+### 3\. **What is the JavaScript event loop, and how does it affect performance?**
+
+The **event loop** is a mechanism that handles the execution of multiple pieces of code in JavaScript. JavaScript is single-threaded, meaning it executes code line-by-line in one thread. The event loop ensures that tasks are executed asynchronously by managing the call stack and the event queue.
+
+* **Call Stack**: The call stack contains functions that are currently being executed.
+* **Event Queue**: When asynchronous operations (like timers or HTTP requests) complete, their callbacks are placed in the event queue.
+* **Event Loop**: The event loop checks if the call stack is empty, and if it is, it moves tasks from the event queue to the call stack.
+
+**Impact on performance**:
+
+* Asynchronous code (e.g., setTimeout, AJAX, Promises) does not block the main thread. However, if there are too many tasks in the event queue or long-running operations on the call stack, it can delay the execution of further tasks and cause performance issues like UI freezes.
+
+
+### 3\. **How would you implement inheritance in JavaScript (both classical and prototypal)?**
+
+There are two main approaches to inheritance in JavaScript: **Classical Inheritance** (using constructor functions) and **Prototypal Inheritance**.
+
+* **Classical Inheritance** (via constructor functions): JavaScript doesn't have classical inheritance like other OOP languages (e.g., Java, C++), but you can simulate it using constructor functions and setting the prototype chain manually.
+
+  Example:
+
+  ```javascript
+   function Animal(name) {
+    this.name = name;
+  }
+
+  Animal.prototype.speak = function() {
+    console.log(this.name + ' makes a noise.');
+  };
+
+  function Dog(name) {
+    Animal.call(this, name); // Call parent constructor
+  }
+
+  Dog.prototype = Object.create(Animal.prototype); // Inherit from Animal
+  Dog.prototype.constructor = Dog;
+
+  const dog = new Dog('Buddy');
+  dog.speak(); // Buddy makes a noise.
+  ```
+
+* **Prototypal Inheritance** (using ES6 `class` syntax): ES6 introduced the `class` syntax to make inheritance clearer.
+
+  Example:
+
+  ```javascript
+   codeclass Animal {
+    constructor(name) {
+      this.name = name;
+    }
+    
+    speak() {
+      console.log(this.name + ' makes a noise.');
+    }
+  }
+
+  class Dog extends Animal {
+    constructor(name) {
+      super(name); // Call the parent constructor
+    }
+  }
+
+  const dog = new Dog('Buddy');
+  dog.speak(); // Buddy makes a noise.
+  ```
+
+
+
+### 5\. **What is the role of the fetch API in JavaScript?**
+
+The **Fetch API** provides a modern, promise-based approach to making asynchronous HTTP requests (replacing older methods like `XMLHttpRequest`).
+
+* **Usage**: It is used to request resources (like data from a server) and handle the response asynchronously.
+
+Example:
+
+```javascript
+ fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+```
+
+* **Benefits**: Fetch is cleaner, returns Promises, and is more flexible (supports `GET`, `POST`, etc.). It's built on top of the Promise API and is easier to work with for modern asynchronous operations.
+
+
+
+### 6\. **What is the difference between synchronous and asynchronous programming in JavaScript?**
+
+* **Synchronous**: In synchronous programming, tasks are executed one after another in sequence. Each task must finish before the next one begins. This can block execution, especially for time-consuming tasks (e.g., file I/O, HTTP requests).
+
+* **Asynchronous**: Asynchronous programming allows tasks to run independently, and the program doesn't wait for one task to finish before moving on to the next one. This helps avoid blocking the main thread and improves performance, especially for I/O-bound operations.
+
+Example of synchronous:
+
+```javascript
+console.log('Start');
+console.log('Middle');
+console.log('End');
+```
+
+Example of asynchronous (using `setTimeout`):
+
+```javascript
+console.log('Start');
+setTimeout(() => console.log('Middle'), 1000);
+console.log('End');
+```
+
+Here, "Middle" is logged after 1 second without blocking "End".
+
+### 7\. **Explain the concept of "callback hell" and how to avoid it.**
+
+A **callback** is a function passed as an argument to another function that is executed once the asynchronous operation completes.
+
+* **Callback Hell** (or Pyramid of Doom) refers to nested callbacks that make code hard to read, understand, and maintain. This usually happens when you have multiple asynchronous operations that depend on each other.
+
+#### Problem of "Callback Hell":
+
+* When you have multiple asynchronous operations that depend on each other, you may end up with deeply nested callbacks, often referred to as **callback hell** or **pyramid of doom**.
+* This can make the code hard to read, maintain, and debug.
+
+Example:
+
+```javascript
+doSomething(function(err, result) {
+  if (err) {
+    console.error(err);
+  } else {
+    doAnotherThing(result, function(err, result2) {
+      if (err) {
+        console.error(err);
+      } else {
+        doYetAnotherThing(result2, function(err, result3) {
+          // and so on...
+        });
+      }
+    });
+  }
+});
+```
+
+**Avoiding Callback Hell**:
+
+1. **Promises**: Use Promises to flatten nested callbacks and chain them in a more readable way.
+2. **Async/Await**: This syntax makes asynchronous code look more like synchronous code and avoids deeply nested callbacks.
+
+Example using async/await:
+
+```javascript
+async function fetchData() {
+  try {
+    const result1 = await asyncFunction1();
+    const result2 = await asyncFunction2();
+    const result3 = await asyncFunction3();
+  } catch (err) {
+    console.error(err);
+  }
+}
+```
+
+### 8\. **What are the different ways to handle errors in JavaScript?**
+
+There are several ways to handle errors in JavaScript:
+
+* **`try...catch`**: The most common way to catch and handle errors in synchronous code.
+
+  ```javascript
+  try {
+    throw new Error('Something went wrong');
+  } catch (err) {
+    console.error(err.message);
+  }
+  ```
+
+* **Promises**: For asynchronous operations, you can use `.catch()` to handle errors.
+
+  ```javascript
+  someAsyncFunction().catch(err => console.error(err));
+  ```
+
+* **Async/Await**: Use `try...catch` around `await` to handle errors in asynchronous code.
+
+  ```javascript
+  try {
+    const data = await fetchData();
+  } catch (err) {
+    console.error(err);
+  }
+  ```
+
+### 9\. **What is the purpose of JavaScript's eval() function?**
+
+The `eval()` function evaluates JavaScript code represented as a string. While it can be powerful, it is also dangerous because it allows execution of arbitrary code, which can lead to security vulnerabilities (e.g., code injection).
+
+Example:
+
+```javascript
+eval('console.log("Hello from eval!")'); // Outputs: Hello from eval!
+```
+
+**Caution**: Avoid using `eval()` unless absolutely necessary due to potential security risks and performance concerns. It can also hinder optimizations by JavaScript engines.
+
 
 ## JavaScript and the DOM
 ---
@@ -2305,268 +2560,6 @@ Example pipeline for CI/CD:
 1. Code is pushed to the repository.
 2. CI tool runs linting, tests, and builds the project.
 3. If tests pass, deploy the project to the staging or production environment.
-
-
-## Miscellaneous/Conceptual Questions
----
-### 7\. **How does JavaScript work with Webpack, Babel, and other bundlers?**
-
-* **Webpack** is a module bundler that takes your JavaScript files, along with CSS, images, and other assets, and bundles them into a set of optimized files that can be loaded by the browser. It allows you to use modern JavaScript features (like ES6 modules) and compile them down to code that works in all browsers.
-* **Babel** is a JavaScript compiler that converts modern JavaScript (like ES6 or JSX) into backward-compatible versions of JavaScript. It works as a transpiler, allowing you to use the latest JavaScript syntax today without worrying about browser support.
-* **Other Bundlers**: Other bundlers like **Parcel** or **Rollup** work similarly to Webpack but with different setups and trade-offs. Rollup, for example, is known for optimizing libraries, while Parcel requires zero configuration to get started.
-
-Together, **Webpack** and **Babel** (often integrated with other tools) allow developers to write modern JavaScript and have it work in older browsers without needing to manually handle the complexities of compatibility and performance optimizations.
-
-### 5\. **Explain the concept of "strict mode" in JavaScript.**
-
-**Strict mode** is a way to opt into a stricter version of JavaScript that helps to catch common coding mistakes and improve performance. It restricts certain actions and throws more exceptions. It is enabled by adding `"use strict";` at the beginning of a script or function.
-
-Key differences in strict mode:
-
-* Disallows the use of undeclared variables.
-* Prevents assignment to read-only properties.
-* Disallows `eval` and `with`.
-* Prevents the use of `this` in global context (it will be `undefined`).
-
-Example:
-
-```javascript
- code"use strict";
-x = 10; // Throws an error because x is not declared
-```
-
-### 1\. **What are closures and lexical scoping?**
-
-* **Lexical Scoping**: This means that the scope of variables is determined by where they are declared in the code. In JavaScript, functions are lexically scoped, meaning they "remember" the environment in which they were created, even if they are executed outside of that environment.
-
-* **Closures**: A closure is a function that retains access to its lexical scope (variables) even after the function that created those variables has finished executing. This is powerful because it allows for private data encapsulation and function factory patterns.
-
-  Example:
-
-  ```javascript
-   function outer() {
-    let x = 10;
-    return function inner() {
-      console.log(x);  // `inner` has access to `x` because of the closure
-    };
-  }
-
-  const myClosure = outer();
-  myClosure();  // 10
-  ```
-
-  **Usefulness in frontend development:**
-
-* Closures are useful for data encapsulation and creating private variables.
-* They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
-
-
-### 3\. **What is the JavaScript event loop, and how does it affect performance?**
-
-The **event loop** is a mechanism that handles the execution of multiple pieces of code in JavaScript. JavaScript is single-threaded, meaning it executes code line-by-line in one thread. The event loop ensures that tasks are executed asynchronously by managing the call stack and the event queue.
-
-* **Call Stack**: The call stack contains functions that are currently being executed.
-* **Event Queue**: When asynchronous operations (like timers or HTTP requests) complete, their callbacks are placed in the event queue.
-* **Event Loop**: The event loop checks if the call stack is empty, and if it is, it moves tasks from the event queue to the call stack.
-
-**Impact on performance**:
-
-* Asynchronous code (e.g., setTimeout, AJAX, Promises) does not block the main thread. However, if there are too many tasks in the event queue or long-running operations on the call stack, it can delay the execution of further tasks and cause performance issues like UI freezes.
-
-
-### 3\. **How would you implement inheritance in JavaScript (both classical and prototypal)?**
-
-There are two main approaches to inheritance in JavaScript: **Classical Inheritance** (using constructor functions) and **Prototypal Inheritance**.
-
-* **Classical Inheritance** (via constructor functions): JavaScript doesn't have classical inheritance like other OOP languages (e.g., Java, C++), but you can simulate it using constructor functions and setting the prototype chain manually.
-
-  Example:
-
-  ```javascript
-   function Animal(name) {
-    this.name = name;
-  }
-
-  Animal.prototype.speak = function() {
-    console.log(this.name + ' makes a noise.');
-  };
-
-  function Dog(name) {
-    Animal.call(this, name); // Call parent constructor
-  }
-
-  Dog.prototype = Object.create(Animal.prototype); // Inherit from Animal
-  Dog.prototype.constructor = Dog;
-
-  const dog = new Dog('Buddy');
-  dog.speak(); // Buddy makes a noise.
-  ```
-
-* **Prototypal Inheritance** (using ES6 `class` syntax): ES6 introduced the `class` syntax to make inheritance clearer.
-
-  Example:
-
-  ```javascript
-   codeclass Animal {
-    constructor(name) {
-      this.name = name;
-    }
-    
-    speak() {
-      console.log(this.name + ' makes a noise.');
-    }
-  }
-
-  class Dog extends Animal {
-    constructor(name) {
-      super(name); // Call the parent constructor
-    }
-  }
-
-  const dog = new Dog('Buddy');
-  dog.speak(); // Buddy makes a noise.
-  ```
-
-
-
-### 5\. **What is the role of the fetch API in JavaScript?**
-
-The **Fetch API** provides a modern, promise-based approach to making asynchronous HTTP requests (replacing older methods like `XMLHttpRequest`).
-
-* **Usage**: It is used to request resources (like data from a server) and handle the response asynchronously.
-
-Example:
-
-```javascript
- fetch('https://api.example.com/data')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
-```
-
-* **Benefits**: Fetch is cleaner, returns Promises, and is more flexible (supports `GET`, `POST`, etc.). It's built on top of the Promise API and is easier to work with for modern asynchronous operations.
-
-
-
-### 6\. **What is the difference between synchronous and asynchronous programming in JavaScript?**
-
-* **Synchronous**: In synchronous programming, tasks are executed one after another in sequence. Each task must finish before the next one begins. This can block execution, especially for time-consuming tasks (e.g., file I/O, HTTP requests).
-
-* **Asynchronous**: Asynchronous programming allows tasks to run independently, and the program doesn't wait for one task to finish before moving on to the next one. This helps avoid blocking the main thread and improves performance, especially for I/O-bound operations.
-
-Example of synchronous:
-
-```javascript
-console.log('Start');
-console.log('Middle');
-console.log('End');
-```
-
-Example of asynchronous (using `setTimeout`):
-
-```javascript
-console.log('Start');
-setTimeout(() => console.log('Middle'), 1000);
-console.log('End');
-```
-
-Here, "Middle" is logged after 1 second without blocking "End".
-
-
-
-### 7\. **Explain the concept of "callback hell" and how to avoid it.**
-
-A **callback** is a function passed as an argument to another function that is executed once the asynchronous operation completes.
-
-* **Callback Hell** (or Pyramid of Doom) refers to nested callbacks that make code hard to read, understand, and maintain. This usually happens when you have multiple asynchronous operations that depend on each other.
-
-#### Problem of "Callback Hell":
-
-* When you have multiple asynchronous operations that depend on each other, you may end up with deeply nested callbacks, often referred to as **callback hell** or **pyramid of doom**.
-* This can make the code hard to read, maintain, and debug.
-
-Example:
-
-```javascript
-doSomething(function(err, result) {
-  if (err) {
-    console.error(err);
-  } else {
-    doAnotherThing(result, function(err, result2) {
-      if (err) {
-        console.error(err);
-      } else {
-        doYetAnotherThing(result2, function(err, result3) {
-          // and so on...
-        });
-      }
-    });
-  }
-});
-```
-
-**Avoiding Callback Hell**:
-
-1. **Promises**: Use Promises to flatten nested callbacks and chain them in a more readable way.
-2. **Async/Await**: This syntax makes asynchronous code look more like synchronous code and avoids deeply nested callbacks.
-
-Example using async/await:
-
-```javascript
-async function fetchData() {
-  try {
-    const result1 = await asyncFunction1();
-    const result2 = await asyncFunction2();
-    const result3 = await asyncFunction3();
-  } catch (err) {
-    console.error(err);
-  }
-}
-```
-
-### 8\. **What are the different ways to handle errors in JavaScript?**
-
-There are several ways to handle errors in JavaScript:
-
-* **`try...catch`**: The most common way to catch and handle errors in synchronous code.
-
-  ```javascript
-  try {
-    throw new Error('Something went wrong');
-  } catch (err) {
-    console.error(err.message);
-  }
-  ```
-
-* **Promises**: For asynchronous operations, you can use `.catch()` to handle errors.
-
-  ```javascript
-  someAsyncFunction().catch(err => console.error(err));
-  ```
-
-* **Async/Await**: Use `try...catch` around `await` to handle errors in asynchronous code.
-
-  ```javascript
-  try {
-    const data = await fetchData();
-  } catch (err) {
-    console.error(err);
-  }
-  ```
-
-### 9\. **What is the purpose of JavaScript's eval() function?**
-
-The `eval()` function evaluates JavaScript code represented as a string. While it can be powerful, it is also dangerous because it allows execution of arbitrary code, which can lead to security vulnerabilities (e.g., code injection).
-
-Example:
-
-```javascript
-eval('console.log("Hello from eval!")'); // Outputs: Hello from eval!
-```
-
-**Caution**: Avoid using `eval()` unless absolutely necessary due to potential security risks and performance concerns. It can also hinder optimizations by JavaScript engines.
-
-
 
 
 ### Performance Optimization
