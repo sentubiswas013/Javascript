@@ -256,57 +256,6 @@ for (const fruit of fruits) {
 }
 ```
 
-### 13\. **What is the difference between `null` and `undefined`?**
-
-* `undefined` means a variable has been declared but not assigned a value.
-* `null` is an intentional absence of any value (i.e., "empty").
-
-```javascript
-let x;
-console.log(x);  // undefined
-
-let y = null;
-console.log(y);  // null
-```
-
-### 14\. **How do you handle events in JavaScript?**
-
-You can handle events by attaching event listeners to DOM elements using methods like `addEventListener`.
-
-```javascript
- const button = document.querySelector('button');
-button.addEventListener('click', function() {
-  alert('Button clicked!');
-});
-```
-
-### 15\. **What is the `this` keyword in JavaScript?**
-In JavaScript, the `this` keyword refers to the current context or object in which the function is called. It provides a way to access properties and methods of the object that the function is associated with.
-
-- In **regular functions**, `this` refers to the global object (in browsers, it's the `window` object).
-- In **methods**, `this` refers to the object that owns the method.
-- In **arrow functions**, `this` is lexically bound, meaning it takes the value of `this` from the surrounding context where the function is defined.
-
-Example:
-
-```javascript
-const person = {
-  name: "Alice",
-  greet: function() {
-    console.log(this.name); // "this" refers to the "person" object
-  }
-};
-
-person.greet(); // Output: Alice
-```
-#### Summary of `this`:
-- **Global context**: Refers to the global object (in browsers, `window`).
-- **Function context**: Refers to the global object (non-strict mode) or `undefined` (strict mode).
-- **Method of an object**: Refers to the object the method is called on.
-- **Constructor function**: Refers to the newly created object.
-- **Arrow functions**: Inherit `this` from their surrounding context.
-- **Event handler**: Refers to the element that triggered the event.
-- **Explicit binding**: Using `call()`, `apply()`, or `bind()`, you can set the value of `this` manually.
 
 ### 6\. **What is the difference between a forEach and a for loop in JavaScript?**
 
@@ -365,6 +314,59 @@ person.greet(); // Output: Alice
   console.log(i);  // 0, 1, 3
 }
 ```
+
+### 13\. **What is the difference between `null` and `undefined`?**
+
+* `undefined` means a variable has been declared but not assigned a value.
+* `null` is an intentional absence of any value (i.e., "empty").
+
+```javascript
+let x;
+console.log(x);  // undefined
+
+let y = null;
+console.log(y);  // null
+```
+
+### 14\. **How do you handle events in JavaScript?**
+
+You can handle events by attaching event listeners to DOM elements using methods like `addEventListener`.
+
+```javascript
+ const button = document.querySelector('button');
+button.addEventListener('click', function() {
+  alert('Button clicked!');
+});
+```
+
+### 15\. **What is the `this` keyword in JavaScript?**
+In JavaScript, the `this` keyword refers to the current context or object in which the function is called. It provides a way to access properties and methods of the object that the function is associated with.
+
+- In **regular functions**, `this` refers to the global object (in browsers, it's the `window` object).
+- In **methods**, `this` refers to the object that owns the method.
+- In **arrow functions**, `this` is lexically bound, meaning it takes the value of `this` from the surrounding context where the function is defined.
+
+Example:
+
+```javascript
+const person = {
+  name: "Alice",
+  greet: function() {
+    console.log(this.name); // "this" refers to the "person" object
+  }
+};
+
+person.greet(); // Output: Alice
+```
+#### Summary of `this`:
+- **Global context**: Refers to the global object (in browsers, `window`).
+- **Function context**: Refers to the global object (non-strict mode) or `undefined` (strict mode).
+- **Method of an object**: Refers to the object the method is called on.
+- **Constructor function**: Refers to the newly created object.
+- **Arrow functions**: Inherit `this` from their surrounding context.
+- **Event handler**: Refers to the element that triggered the event.
+- **Explicit binding**: Using `call()`, `apply()`, or `bind()`, you can set the value of `this` manually.
+
 
 ### 18\. **What is a callback function in JavaScript?**
 
