@@ -2675,9 +2675,7 @@ Example pipeline for CI/CD:
 
 
 ## Miscellaneous/Conceptual Questions
-
-Sure! Let's go through each of the JavaScript questions one by one:
-
+---
 ### 5\. **Explain the concept of "strict mode" in JavaScript.**
 
 **Strict mode** is a way to opt into a stricter version of JavaScript that helps to catch common coding mistakes and improve performance. It restricts certain actions and throws more exceptions. It is enabled by adding `"use strict";` at the beginning of a script or function.
@@ -2938,7 +2936,7 @@ eval('console.log("Hello from eval!")'); // Outputs: Hello from eval!
   
 
 ## Bonus: JavaScript Frameworks and Libraries
-
+---
 Here’s an in-depth look at the questions you’ve asked, covering various concepts related to JavaScript frameworks and bundlers:
 
 ### 1\. **What is the Virtual DOM, and how does it work in React?**
@@ -3057,12 +3055,8 @@ Angular provides a robust set of lifecycle hooks tied to the component lifecycle
 
 
 
-## 5. Soft Skills & Leadership
-
-Here are answers to the questions you've posed, which can be applied to maintaining high standards in a frontend development team:
-
-
-
+## Soft Skills & Leadership
+---
 ### 1\. **How do you ensure consistency and code quality in a large team of frontend developers?**
 
 To ensure consistency and code quality in a large team of frontend developers, I would use several practices:
@@ -3171,10 +3165,8 @@ By combining these strategies, I ensure that I stay up-to-date with new technolo
 
 Let me know if you need further details on any of these topics!
 
-## 4. Collaboration & Tools
-
-Here are responses to the questions you provided, as if I were answering as a seasoned developer or team lead:
-
+## Collaboration & Tools
+---
 ### 1\. **How do you approach mentoring junior developers?**
 
 Mentoring junior developers is a rewarding experience that requires patience and clear communication. I focus on a few key strategies:
@@ -3247,8 +3239,8 @@ Ultimately, the project was successful, delivered on time, and received positive
 Let me know if you’d like me to expand on any specific answer or adapt them further!
 
 
-### Security and Best Practices
-
+## Security and Best Practices
+---
 ### 46\. **What is Cross-Site Scripting (XSS), and how can you prevent it in a JavaScript application?**
 
 **Cross-Site Scripting (XSS)** is a vulnerability that allows an attacker to inject malicious scripts into web pages viewed by other users. The attacker exploits the trust a user has in a particular website, injecting harmful JavaScript code that can manipulate page content, steal data (like cookies), or perform actions on behalf of the user.
