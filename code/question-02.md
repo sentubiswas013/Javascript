@@ -2165,7 +2165,7 @@ Memory leaks occur when objects are no longer in use but are still being referen
 
 
 ### Performance Optimization
-
+---
 ### 12\. **What are some techniques to optimize the performance of a JavaScript-heavy web application?**
 
 There are several strategies to optimize the performance of a JavaScript-heavy web application:
