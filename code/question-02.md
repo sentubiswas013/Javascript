@@ -412,6 +412,25 @@ doSomething()
   .catch(error => console.error(error));
 ```
 
+### 1\. **What is closure in JavaScript?**
+
+A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope. This happens because JavaScript functions are first-class objects and they maintain references to the environment in which they were created.
+
+Example:
+
+```javascript
+ function outer() {
+  let counter = 0;
+  return function inner() {
+    counter++;
+    console.log(counter);
+  };
+}
+
+const increment = outer();  // closure is created here
+increment(); // 1
+increment(); // 2
+```
 
 ### 24\. **What are higher-order functions in JavaScript? Can you provide an example?**
 In JavaScript, higher-order functions are functions that can **take other functions as arguments** or **return functions as results**. This concept allows for more flexible and reusable code.
@@ -513,26 +532,6 @@ console.log(triple(4)); // Output: 12
 1. **API style**: `fetch` is promise-based, while `XMLHttpRequest` is callback-based.
 2. **Browser support**: `fetch` is newer and not supported in older browsers like Internet Explorer, while `XMLHttpRequest` is widely supported.
 3. **Flexibility**: `fetch` is simpler and more flexible, while `XMLHttpRequest` requires more boilerplate code.
-
-### 1\. **What is closure in JavaScript?**
-
-A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope. This happens because JavaScript functions are first-class objects and they maintain references to the environment in which they were created.
-
-Example:
-
-```javascript
- function outer() {
-  let counter = 0;
-  return function inner() {
-    counter++;
-    console.log(counter);
-  };
-}
-
-const increment = outer();  // closure is created here
-increment(); // 1
-increment(); // 2
-```
 
 ### 6\. **What Are `setTimeout` and `setInterval`? How Do They Differ?**
 
