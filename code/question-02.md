@@ -3084,7 +3084,7 @@ Let me know if you’d like me to expand on any specific answer or adapt them fu
 
 ## Security and Best Practices
 ---
-### 46\. **What is Cross-Site Scripting (XSS), and how can you prevent it in a JavaScript application?**
+### 1\. **What is Cross-Site Scripting (XSS), and how can you prevent it in a JavaScript application?**
 
 **Cross-Site Scripting (XSS)** is a vulnerability that allows an attacker to inject malicious scripts into web pages viewed by other users. The attacker exploits the trust a user has in a particular website, injecting harmful JavaScript code that can manipulate page content, steal data (like cookies), or perform actions on behalf of the user.
 
@@ -3096,7 +3096,7 @@ Let me know if you’d like me to expand on any specific answer or adapt them fu
 4. **Use HTTPOnly and Secure Cookies**: For session management, set the `HttpOnly` flag on cookies to prevent JavaScript from accessing them.
 5. **Avoid Inline JavaScript**: Avoid using inline JavaScript and event handlers (e.g., `onclick="..."`) to minimize the risk of executing malicious scripts.
 
-### 47\. **What is Cross-Origin Resource Sharing (CORS), and how do you handle CORS issues in frontend applications?**
+### 2\. **What is Cross-Origin Resource Sharing (CORS), and how do you handle CORS issues in frontend applications?**
 
 **Cross-Origin Resource Sharing (CORS)** is a security feature implemented by browsers to restrict web pages from making requests to domains other than their own, preventing potential malicious activities such as cross-site request forgery (CSRF).
 
@@ -3106,7 +3106,7 @@ Let me know if you’d like me to expand on any specific answer or adapt them fu
 2. **Proxy Requests**: If you cannot control the server, you can set up a proxy server to relay the requests from your frontend to the backend, bypassing the CORS restrictions.
 3. **Using JSONP or iframe (for legacy cases)**: For legacy systems that don't support CORS, alternatives like JSONP (for GET requests) or using cross-domain iframes might be viable.
 
-### 48\. **How do you securely store sensitive data (e.g., tokens) in the frontend?**
+### 3\. **How do you securely store sensitive data (e.g., tokens) in the frontend?**
 
 Storing sensitive data (like JWT tokens or API keys) in the frontend needs to be done with caution to avoid potential security risks.
 
@@ -3117,7 +3117,7 @@ Storing sensitive data (like JWT tokens or API keys) in the frontend needs to be
 3. **Short-Lived Tokens**: Use short-lived access tokens combined with refresh tokens for improved security. This limits the window of opportunity for an attacker if the token is compromised.
 4. **Encrypt Sensitive Data**: If you must store sensitive information on the client-side, ensure that it is encrypted and cannot be easily extracted or decrypted by attackers.
 
-### 49\. **What is the Same-Origin Policy, and how does it affect JavaScript execution in the browser?**
+### 4\. **What is the Same-Origin Policy, and how does it affect JavaScript execution in the browser?**
 
 The **Same-Origin Policy (SOP)** is a security measure implemented by web browsers to restrict web pages from making requests to a domain other than the one that served the web page. This policy helps prevent malicious websites from accessing data from another domain (e.g., stealing cookies or making unauthorized API requests).
 
@@ -3127,7 +3127,7 @@ The **Same-Origin Policy (SOP)** is a security measure implemented by web browse
 * SOP limits the ability to interact with content from other origins, unless explicitly allowed by the target server (using CORS).
 * If a web page attempts to access resources (e.g., API endpoints, iframes, etc.) from another domain without the proper CORS headers, the browser will block the request.
 
-### 50\. **How do you prevent SQL Injection attacks or other security vulnerabilities in JavaScript-based frontend applications?**
+### 5\. **How do you prevent SQL Injection attacks or other security vulnerabilities in JavaScript-based frontend applications?**
 
 SQL Injection is an attack where malicious SQL queries are injected into input fields to manipulate the database.
 
@@ -3143,6 +3143,7 @@ Although **SQL Injection** primarily affects the backend (database layer), front
 
 In summary, while frontend applications themselves don’t directly interact with databases, they must be cautious about the data they send to the backend and ensure proper backend validation and sanitization to prevent SQL injection attacks.
 
+---
 ### Tooling and Build Systems
 ---
 
