@@ -387,6 +387,49 @@ greet('Alice', afterGreet); // Output: Hello, Alice
 ```
 
 
+### 4\. **What is promises and how then() and catch() work.**
+
+A **promise** represents the eventual completion (or failure) of an asynchronous operation. It can be in one of three states: **pending**, **fulfilled**, or **rejected**.
+
+
+#### How Promises Work:
+
+* A promise can be in one of three states:
+  * **Pending**: The operation is still in progress.
+  * **Resolved** (Fulfilled): The operation completed successfully.
+  * **Rejected**: The operation failed (with an error).
+* You create a promise using the `Promise` constructor, which takes a callback with two parameters: `resolve` and `reject`.
+
+Example:
+
+```javascript
+ const promise = new Promise((resolve, reject) => {
+  let success = true;
+  if (success) {
+    resolve("Operation successful");
+  } else {
+    reject("Operation failed");
+  }
+});
+
+promise.then(result => {
+  console.log(result);  // "Operation successful"
+}).catch(error => {
+  console.log(error);   // "Operation failed"
+});
+```
+
+In this example:
+
+* The `then()` method is used to handle the success of the promise.
+* The `catch()` method is used to handle any errors (rejections).
+
+#### How to Use Promises:
+
+* Use `then()` to handle success.
+* Use `catch()` to handle errors.
+* You can chain multiple `then()` calls to handle sequential asynchronous operations.
+
 ### 6. Promise vs. Callback Function in JavaScript:
 
 - **Callback**:
@@ -577,48 +620,6 @@ setTimeout(() => {
 
 These are core concepts in JavaScript for handling asynchronous behavior and managing operations like promises, async/await, event loops, and timers. By understanding these, you can write more efficient and readable asynchronous code.
 
-### 4\. **Explain the concept of promises and how then() and catch() work.**
-
-A **promise** represents the eventual completion (or failure) of an asynchronous operation. It can be in one of three states: **pending**, **fulfilled**, or **rejected**.
-
-
-#### How Promises Work:
-
-* A promise can be in one of three states:
-  * **Pending**: The operation is still in progress.
-  * **Resolved** (Fulfilled): The operation completed successfully.
-  * **Rejected**: The operation failed (with an error).
-* You create a promise using the `Promise` constructor, which takes a callback with two parameters: `resolve` and `reject`.
-
-Example:
-
-```javascript
- const promise = new Promise((resolve, reject) => {
-  let success = true;
-  if (success) {
-    resolve("Operation successful");
-  } else {
-    reject("Operation failed");
-  }
-});
-
-promise.then(result => {
-  console.log(result);  // "Operation successful"
-}).catch(error => {
-  console.log(error);   // "Operation failed"
-});
-```
-
-In this example:
-
-* The `then()` method is used to handle the success of the promise.
-* The `catch()` method is used to handle any errors (rejections).
-
-#### How to Use Promises:
-
-* Use `then()` to handle success.
-* Use `catch()` to handle errors.
-* You can chain multiple `then()` calls to handle sequential asynchronous operations.
 
 ### 5\. **What is async/await in JavaScript? and Difference Between Async/Await and Promises**
 
