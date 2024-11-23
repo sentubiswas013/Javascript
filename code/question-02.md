@@ -826,6 +826,11 @@ Here's a simplified flow:
 
 This allows JavaScript to handle asynchronous events efficiently without blocking the execution of other tasks.
 
+**Impact on performance**:
+
+* Asynchronous code (e.g., setTimeout, AJAX, Promises) does not block the main thread. However, if there are too many tasks in the event queue or long-running operations on the call stack, it can delay the execution of further tasks and cause performance issues like UI freezes.
+
+
 ### 1\. **Difference Between Synchronous and Asynchronous Functions in JavaScript**
 
 * **Synchronous Functions**:
@@ -1835,18 +1840,6 @@ Example:
  code"use strict";
 x = 10; // Throws an error because x is not declared
 ```
-
-### 3\. **What is the JavaScript event loop, and how does it affect performance?**
-
-The **event loop** is a mechanism that handles the execution of multiple pieces of code in JavaScript. JavaScript is single-threaded, meaning it executes code line-by-line in one thread. The event loop ensures that tasks are executed asynchronously by managing the call stack and the event queue.
-
-* **Call Stack**: The call stack contains functions that are currently being executed.
-* **Event Queue**: When asynchronous operations (like timers or HTTP requests) complete, their callbacks are placed in the event queue.
-* **Event Loop**: The event loop checks if the call stack is empty, and if it is, it moves tasks from the event queue to the call stack.
-
-**Impact on performance**:
-
-* Asynchronous code (e.g., setTimeout, AJAX, Promises) does not block the main thread. However, if there are too many tasks in the event queue or long-running operations on the call stack, it can delay the execution of further tasks and cause performance issues like UI freezes.
 
 
 ### 3\. **How would you implement inheritance in JavaScript (both classical and prototypal)?**
