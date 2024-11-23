@@ -433,6 +433,18 @@ You can explicitly set the value of `this` using the methods `call()`, `apply()`
   }
   ```
 
+  ### Summary of Differences
+
+| Feature                | `forEach`                                        | `for`                                              |
+|------------------------|--------------------------------------------------|----------------------------------------------------|
+| **Syntax**             | Array method with a callback function            | Traditional loop with start, condition, and increment |
+| **Return Value**       | Always returns `undefined`                      | No specific return value (can return in function)  |
+| **Breaking**           | Cannot break or continue                         | Supports `break` and `continue`                    |
+| **Performance**        | Slower due to function call overhead             | Generally faster                                  |
+| **Async Handling**     | Does not handle `async` well                     | Can work with `async/await`                        |
+| **Use Case**           | Cleaner for simple iterations over arrays        | More flexibility and control, especially for complex loops |
+
+
 ### 17\. **What is the purpose of `break` and `continue` statements?**
 
 * `break`: Exits a loop or switch statement immediately.
