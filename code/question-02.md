@@ -85,6 +85,29 @@ There are multiple ways to define functions in JavaScript:
 
    ```javascript
     const greet = () => console.log('Hello!');
+
+    
+### 2\. **What is the difference between function declarations and function expressions?**
+
+* **Function Declaration**: A named function defined with the `function` keyword.
+
+  ```javascript
+   function greet() {
+    console.log("Hello");
+  }
+  ```
+
+  Function declarations are hoisted, meaning they are available throughout the code.
+
+* **Function Expression**: A function assigned to a variable, which may or may not be named.
+
+  ```javascript
+   const greet = function() {
+    console.log("Hello");
+  };
+  ```
+
+  Function expressions are not hoisted. The function is only available after the assignment.
    ```
 
 ### 7\. **What is the purpose of the `typeof` operator?**
@@ -617,28 +640,6 @@ const increment = outer();  // closure is created here
 increment(); // 1
 increment(); // 2
 ```
-
-### 2\. **What is the difference between function declarations and function expressions?**
-
-* **Function Declaration**: A named function defined with the `function` keyword.
-
-  ```javascript
-   function greet() {
-    console.log("Hello");
-  }
-  ```
-
-  Function declarations are hoisted, meaning they are available throughout the code.
-
-* **Function Expression**: A function assigned to a variable, which may or may not be named.
-
-  ```javascript
-   const greet = function() {
-    console.log("Hello");
-  };
-  ```
-
-  Function expressions are not hoisted. The function is only available after the assignment.
 
 ### 6\. **What Are `setTimeout` and `setInterval`? How Do They Differ?**
 
