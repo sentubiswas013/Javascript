@@ -1890,7 +1890,7 @@ Optimizing JavaScript code for better performance involves several strategies:
 
   * Only load assets (images, scripts) when they are needed, instead of all upfront.
 
-#### h. **Use Web Workers for Heavy Computation**
+- **Use Web Workers for Heavy Computation**
 
   * Move heavy computation to Web Workers to keep the UI thread responsive.
 
