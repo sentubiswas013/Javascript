@@ -1224,16 +1224,16 @@ A **JavaScript module** is a piece of code that is self-contained and can be imp
 ## Advanced-Level Questions
 ---
 
-### 39\. **What is the prototype chain in JavaScript?**
+### 1\. **What is the prototype chain in JavaScript?**
 
 In JavaScript, the **prototype chain** is a way that objects can inherit properties and methods from other objects. It's like a chain of objects, where each object has a reference to another object, and that object may have its own reference to another, and so on.
 
-### How it works:
+#### How it works:
 1. **Every object has a prototype** — a reference to another object.
 2. When you try to access a property or method on an object, JavaScript checks if that object has it. If not, it checks the prototype (the object it points to), and continues up the chain until it finds the property or reaches the end of the chain.
 3. The end of the chain is `Object.prototype`, which is the root object that all JavaScript objects inherit from.
 
-### Simple Example:
+#### Simple Example:
 ```javascript
 const animal = {
   eats: true
@@ -1246,13 +1246,13 @@ console.log(dog.barks);  // true, found on dog
 console.log(dog.eats);   // true, found on animal (dog's prototype)
 ```
 
-### Key Points:
+#### Key Points:
 - **`dog`** has a property `barks`, but it also inherits from **`animal`**, so it can access properties from the `animal` object, like `eats`.
 - If `dog` doesn't have a property, JavaScript looks for it in `animal` (and keeps looking up the chain if necessary).
 
 In summary, the prototype chain allows JavaScript objects to share properties and methods, making the language more flexible and efficient.
 
-### 40\. **What is the difference between a shallow copy and a deep copy?**
+### 2\. **What is the difference between a shallow copy and a deep copy?**
 
 The difference between **shallow copy** and **deep copy** in JavaScript comes down to how the objects are copied, particularly when those objects contain other objects or arrays inside them.
 
@@ -1297,7 +1297,7 @@ console.log(original.address.city); // 'New York' — unchanged
 - **Deep copy**: Copies everything, including nested objects, so no shared references exist.
 
 
-### 41\. **What are IIFE (Immediately Invoked Function Expressions), and when are they used?**
+### 3\. **What are IIFE (Immediately Invoked Function Expressions), and when are they used?**
 
 An **IIFE** is a function expression that is defined and executed immediately. It is often used to create a new scope to avoid polluting the global namespace or to encapsulate logic within a function.
 
@@ -1312,7 +1312,7 @@ Example:
 
 IIFE is commonly used in JavaScript modules, closures, and when you want to avoid polluting the global scope.
 
-### 42\. **What is the difference between `Object.create()` and the `new` keyword in JavaScript?**
+### 4\. **What is the difference between `Object.create()` and the `new` keyword in JavaScript?**
 
 * **`Object.create(proto)`**: Creates a new object with the specified prototype object (`proto`). It doesn't run a constructor function. Example:
 
@@ -1329,7 +1329,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
   const person = new Person('Alice');
   ```
 
-### 43\. **Explain the concept of JavaScript design patterns, such as Singleton or Module.**
+### 5\. **Explain the concept of JavaScript design patterns, such as Singleton or Module.**
 
 * **Design Patterns** are reusable solutions to common software design problems. In JavaScript, some common patterns are:
 
@@ -1365,7 +1365,7 @@ IIFE is commonly used in JavaScript modules, closures, and when you want to avoi
     })();
     ```
 
-### 44\. **What is the purpose of the `Symbol` type in JavaScript?**
+### 6\. **What is the purpose of the `Symbol` type in JavaScript?**
 
 The `Symbol` type in JavaScript is used to create **unique identifiers**. These identifiers are different from regular strings or numbers because each `Symbol` is guaranteed to be unique, even if they have the same description.
 
@@ -1393,7 +1393,7 @@ Here’s a simple explanation of its key purposes:
 
 In short, `Symbols` are mainly used to create unique, non-conflicting property keys and to hide data in a way that is not easily accessed or changed by other parts of the code.
 
-### 45\. **How does JavaScript event delegation work, and why is it useful?**
+### 7\. **How does JavaScript event delegation work, and why is it useful?**
 JavaScript event delegation is a technique where instead of attaching event listeners to individual elements, you attach a single event listener to a parent element. This parent then "delegates" the event to the correct child element when it is triggered.
 
 #### How It Works:
@@ -1441,7 +1441,7 @@ document.getElementById("parent").addEventListener("click", function(event) {
 
 In summary, event delegation makes it easier to handle events on dynamically generated or large numbers of child elements, improving performance and keeping the code simpler and more maintainable.
 
-### 46\. **What are Web Workers, and how do they work in JavaScript?**
+### 8\. **What are Web Workers, and how do they work in JavaScript?**
 
 **Web Workers** in JavaScript allow you to run scripts in the background on a separate thread, so they don't block the main thread (the UI thread). This is especially useful for performing time-consuming tasks like data processing or network requests without freezing the user interface.
 
@@ -1509,7 +1509,7 @@ worker.terminate();  // Stop the worker
 
 In short, **Web Workers** are great for offloading heavy tasks from the main UI thread to improve performance and responsiveness in JavaScript applications.
 
-### 47\. **What are JavaScript generators and how are they used?**
+### 9\. **What are JavaScript generators and how are they used?**
 
 A **generator** is a special type of function that can be paused and resumed. It uses the `function*` syntax and the `yield` keyword to yield multiple values over time, rather than returning a single value.
 
@@ -1546,7 +1546,7 @@ A **generator** is a special type of function that can be paused and resumed. It
 
 These are the core concepts you're asking about in JavaScript! Let me know if you'd like further explanations or examples.
 
-### 48\. **What are `Proxy` and `Reflect` in JavaScript, and what are their use cases?**
+### 10\. **What are `Proxy` and `Reflect` in JavaScript, and what are their use cases?**
 
 * **Proxy**: A `Proxy` is a mechanism for defining custom behavior for fundamental operations (e.g., property lookup, assignment). It allows you to intercept and customize operations on objects.
 
@@ -1582,7 +1582,7 @@ console.log(person.name);  // Output: Alice
 * **Reflect** is useful for handling operations with a more standardized approach, often alongside `Proxy` for default behavior.
 
 
-### 49\. **Explain the concept of memoization and provide an example.**
+### 11\. **Explain the concept of memoization and provide an example.**
 
 #### **Memoization**:
 
@@ -1628,7 +1628,7 @@ console.log(memoizedFibonacci(40)); // Much faster after the first computation
 
 
 
-### 50\. **What is throttling and debouncing? How do they help with performance?**
+### 12\. **What is throttling and debouncing? How do they help with performance?**
 
 #### **Throttling**:
 
@@ -1682,7 +1682,7 @@ input.addEventListener('input', debounce(() => {
 * **Memory leaks** in JavaScript can be prevented by clearing event listeners, intervals, and using weak references.
 * **Throttling** and **debouncing** limit the frequency of function executions during frequent events, improving performance by reducing unnecessary computations.
 
-### 51\. ** How to store token and secure the application in angular and reactjs application **
+### 13\. ** How to store token and secure the application in angular and reactjs application **
 
 Do not store JWT tokens in localStorage or sessionStorage. Use HttpOnly cookies or store the token in memory (e.g., React state or Angular service) and pass it in API request headers.
 Implement route protection to prevent unauthorized access to parts of the app (e.g., React Router's ProtectedRoute or Angular's Route Guards).
@@ -1716,7 +1716,7 @@ Authentication and authorization are key aspects of security in frontend applica
 
 5. **Token Expiry and Refresh**: JWTs have an expiry time. To maintain the user session, you can implement a token refresh mechanism where the frontend automatically requests a new token from the backend before the current token expires.
 
-### 53\. **What are the advantages and disadvantages of single-page applications (SPAs)?**
+### 14\. **What are the advantages and disadvantages of single-page applications (SPAs)?**
 
 A **Single-Page Application (SPA)** is a web application that loads a single HTML page and dynamically updates as the user interacts with the app. SPAs are built using JavaScript frameworks like React, Angular, and Vue.js.
 
@@ -1733,7 +1733,7 @@ A **Single-Page Application (SPA)** is a web application that loads a single HTM
 - **Complexity**: Managing state and routing can become complex as the application grows, especially in large-scale apps with many dynamic views.
 - **Browser History and Back Button**: SPAs need to implement client-side routing properly to manage browser history and the back button, which can be challenging without proper setup.
 
-### 5\. **What is Server-Side Rendering (SSR), and how does it impact SEO?**
+### 15\. **What is Server-Side Rendering (SSR), and how does it impact SEO?**
 
 **Server-Side Rendering (SSR)** refers to the process of rendering the HTML of a web page on the server before sending it to the client. In SSR, the server processes the request, renders the content (often using a JavaScript framework like React, Angular, or Vue), and then sends the fully rendered HTML to the browser.
 
@@ -1766,7 +1766,7 @@ The **event loop** coordinates asynchronous tasks while executing the synchronou
 * **sessionStorage**: Stores data for the duration of the page session (data is cleared when the page is closed).
 * **Cookies**: Can store data with an expiration date and are sent with every HTTP request.
 
-### 3\. **How do you handle memory leaks in JavaScript?**
+### 18\. **How do you handle memory leaks in JavaScript?**
 
 Memory leaks occur when objects are no longer in use but are still being referenced, preventing the garbage collector from freeing up the memory. Here's how you can handle and prevent memory leaks in JavaScript:
 
@@ -1808,7 +1808,7 @@ Memory leaks occur when objects are no longer in use but are still being referen
 
 * Use browser developer tools to profile memory usage and track potential leaks, especially in long-running applications.
 
-### 7\. **How does JavaScript work with Webpack, Babel, and other bundlers?**
+### 19\. **How does JavaScript work with Webpack, Babel, and other bundlers?**
 
 * **Webpack** is a module bundler that takes your JavaScript files, along with CSS, images, and other assets, and bundles them into a set of optimized files that can be loaded by the browser. It allows you to use modern JavaScript features (like ES6 modules) and compile them down to code that works in all browsers.
 * **Babel** is a JavaScript compiler that converts modern JavaScript (like ES6 or JSX) into backward-compatible versions of JavaScript. It works as a transpiler, allowing you to use the latest JavaScript syntax today without worrying about browser support.
@@ -1816,7 +1816,7 @@ Memory leaks occur when objects are no longer in use but are still being referen
 
 Together, **Webpack** and **Babel** (often integrated with other tools) allow developers to write modern JavaScript and have it work in older browsers without needing to manually handle the complexities of compatibility and performance optimizations.
 
-### 5\. **Explain the concept of "strict mode" in JavaScript.**
+### 20\. **Explain the concept of "strict mode" in JavaScript.**
 
 **Strict mode** is a way to opt into a stricter version of JavaScript that helps to catch common coding mistakes and improve performance. It restricts certain actions and throws more exceptions. It is enabled by adding `"use strict";` at the beginning of a script or function.
 
