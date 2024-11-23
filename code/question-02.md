@@ -1,6 +1,5 @@
 ## Beginner-Level Questions
 ---
-
 ### 1\. **What is JavaScript?**
 
 JavaScript is a dynamic, interpreted programming language primarily used for creating interactive effects within web browsers. It allows developers to build interactive features on websites such as form validation, animations, and dynamic content updates.
