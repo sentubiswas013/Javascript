@@ -296,44 +296,113 @@ button.addEventListener('click', function() {
 ```
 
 ### 15\. **What is the `this` keyword in JavaScript?**
+In JavaScript, the `this` keyword refers to the context in which a function is executed, and its value is determined by how a function is called. It is a reference to the object that is currently being operated on or the object that "owns" the method. The behavior of `this` can vary depending on the situation:
 
-The `this` keyword refers to the context in which a function is called. Its value is determined by how the function is invoked.
+### 1. **Global Context (Outside Any Function or Object)**
+In the global execution context (outside of any functions or objects), `this` refers to the **global object**:
+   - In browsers, it refers to the `window` object.
+   - In Node.js, it refers to the `global` object.
+   
+   ```javascript
+   console.log(this); // In browsers, logs the 'window' object.
+   ```
 
-```javascript
- const person = {
-  name: 'Alice',
-  greet: function() {
-    console.log(`Hello, ${this.name}`);
-  }
-};
-person.greet(); // Hello, Alice
-```
-In global scope, `this` refers to the global object (`window` in browsers).
+### 2. **Inside a Function (Default Behavior)**
+In a regular function, `this` refers to the **global object** (in non-strict mode). However, in **strict mode**, `this` is `undefined` inside a function.
 
-- **Context-dependent**:
-  - **Global context**: In the global execution context (outside any function), `this` refers to the global object (`window` in browsers, `global` in Node.js).
-  - **Inside a method**: When used inside an object method, `this` refers to the object itself.
-  - **Inside a constructor**: In a constructor function, `this` refers to the newly created object.
-  - **Arrow functions**: Arrow functions do not have their own `this`; instead, they inherit `this` from their surrounding (lexical) context.
-  - **Explicit binding**: Methods like `call()`, `apply()`, and `bind()` can explicitly set the value of `this`.
+   ```javascript
+   function showThis() {
+     console.log(this); // In non-strict mode: 'this' is the global object (window in browsers)
+   }
+   showThis();
+   ```
 
-Example:
+   In **strict mode**:
+   ```javascript
+   'use strict';
+   function showThis() {
+     console.log(this); // 'this' is undefined in strict mode
+   }
+   showThis();
+   ```
 
-```javascript
- function regularFunc() {
-  console.log(this); // Global object (window in browsers)
-}
+### 3. **Inside an Object Method**
+When a function is invoked as a method of an object, `this` refers to the object that owns the method.
 
-const obj = {
-  method() {
-    console.log(this); // obj
-  }
-};
+   ```javascript
+   const person = {
+     name: 'Alice',
+     greet: function() {
+       console.log(this.name); // 'this' refers to the 'person' object
+     }
+   };
+   person.greet(); // Logs: 'Alice'
+   ```
 
-const arrowFunc = () => {
-  console.log(this); // Inherits from surrounding context
-};
-```
+### 4. **In a Constructor Function**
+In a constructor function (used with the `new` keyword), `this` refers to the newly created instance of the object.
+
+   ```javascript
+   function Person(name) {
+     this.name = name;
+   }
+
+   const person1 = new Person('Bob');
+   console.log(person1.name); // 'Bob'
+   ```
+
+### 5. **Arrow Functions**
+Arrow functions have a **lexical** binding of `this`, meaning they do not have their own `this` value. Instead, they inherit `this` from the surrounding context where the arrow function was created (the **lexical scope**).
+
+   ```javascript
+   const person = {
+     name: 'Charlie',
+     greet: function() {
+       setTimeout(() => {
+         console.log(this.name); // 'this' refers to the outer 'person' object
+       }, 1000);
+     }
+   };
+   person.greet(); // Logs: 'Charlie'
+   ```
+
+### 6. **Event Handlers**
+When a function is used as an event handler, `this` refers to the element that triggered the event.
+
+   ```javascript
+   const button = document.querySelector('button');
+   button.addEventListener('click', function() {
+     console.log(this); // 'this' refers to the button element
+   });
+   ```
+
+### 7. **Explicit Binding (call, apply, bind)**
+You can explicitly set the value of `this` using the methods `call()`, `apply()`, and `bind()`.
+
+   - **call()** and **apply()** allow you to invoke a function with a specified `this` value immediately:
+     ```javascript
+     function greet() {
+       console.log(`Hello, ${this.name}`);
+     }
+
+     const person = { name: 'David' };
+     greet.call(person); // Logs: 'Hello, David'
+     ```
+
+   - **bind()** creates a new function with a specific `this` value:
+     ```javascript
+     const boundGreet = greet.bind(person);
+     boundGreet(); // Logs: 'Hello, David'
+     ```
+
+### Summary of `this`:
+- **Global context**: Refers to the global object (in browsers, `window`).
+- **Function context**: Refers to the global object (non-strict mode) or `undefined` (strict mode).
+- **Method of an object**: Refers to the object the method is called on.
+- **Constructor function**: Refers to the newly created object.
+- **Arrow functions**: Inherit `this` from their surrounding context.
+- **Event handler**: Refers to the element that triggered the event.
+- **Explicit binding**: Using `call()`, `apply()`, or `bind()`, you can set the value of `this` manually.
 
 ### 6\. **What is the difference between a forEach and a for loop in JavaScript?**
 
