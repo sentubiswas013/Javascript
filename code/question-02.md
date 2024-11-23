@@ -2333,40 +2333,9 @@ To measure and improve the performance of a JavaScript application in the browse
 
   * **Video or Other Resources**: Similar to images, you can load videos or other media when they are about to be viewed.
 
-### 18\. **What are Web Workers in JavaScript, and when would you use them?**
-
-* **Web Workers**: Web Workers allow you to run JavaScript code in the background on a separate thread, without blocking the main UI thread.
-
-* **Use Cases**:
-
-  * For computationally expensive tasks like data processing, calculations, or image manipulation, where the task could slow down the UI if run on the main thread.
-  * For handling large datasets or performing intensive computations without freezing the page.
-
-* **Example**:
-
-  ```javascript
-   const worker = new Worker('worker.js');
-  worker.postMessage('Hello, worker!');
-
-  worker.onmessage = function(e) {
-    console.log('Message from worker:', e.data);
-  };
-  ```
-
-  **worker.js**:
-
-  ```javascript
-   codeonmessage = function(e) {
-    postMessage('Received message: ' + e.data);
-  };
-  ```
-
-  Since Web Workers run in isolation, they cannot directly manipulate the DOM. They are ideal for offloading heavy processing tasks without blocking the UI.
-
-
 
 ## JavaScript and the DOM
-
+---
 Here are the answers to the JavaScript-related questions you posed:
 
 ### 1\. **How can you select an element in the DOM using JavaScript?**
