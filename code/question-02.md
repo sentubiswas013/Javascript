@@ -915,20 +915,6 @@ const person2 = {
 person2.greet();  // Alice
 ```
 
-### 7\. **What is event delegation in JavaScript?**
-
-**Event delegation** is a technique where instead of adding event listeners to individual child elements, you add a single event listener to a parent element. The event listener is triggered when an event bubbles up from a child element.
-
-Example:
-
-```javascript
-document.querySelector('#parent').addEventListener('click', function(event) {
-  if (event.target && event.target.matches('button')) {
-    console.log('Button clicked!');
-  }
-});
-```
-
 ### 8\. **What is the Event Loop in JavaScript? How It Works**
 
 The **event loop** is a mechanism that handles asynchronous operations in JavaScript. It continuously checks the call stack and the message queue. When the call stack is empty, it pushes tasks from the message queue to the call stack for execution.
