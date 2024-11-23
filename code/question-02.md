@@ -870,10 +870,7 @@ This allows JavaScript to handle asynchronous events efficiently without blockin
 
 The `apply()`, `call()`, and `bind()` methods are used to set the context (`this`) of a function and call it with specific arguments, but they differ in their usage and behavior:
 
-* **`call()`**:
-
-  * **Usage**: Immediately invokes the function with a specified `this` value and arguments provided individually.
-  * **Example**:
+* **`call()`**: Immediately invokes the function with a specified `this` value and arguments provided individually.
     ```javascript
      function greet(name) {
       console.log(`Hello, ${name}`);
@@ -881,10 +878,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
     greet.call(null, 'Alice'); // "Hello, Alice"
     ```
 
-* **`apply()`**:
-
-  * **Usage**: Similar to `call()`, but arguments are passed as an array (or an array-like object).
-  * **Example**:
+* **`apply()`**: Similar to `call()`, but arguments are passed as an array (or an array-like object).
     ```javascript
      function greet(name, age) {
       console.log(`Hello, ${name}. You are ${age} years old.`);
@@ -892,10 +886,7 @@ The `apply()`, `call()`, and `bind()` methods are used to set the context (`this
     greet.apply(null, ['Bob', 30]); // "Hello, Bob. You are 30 years old."
     ```
 
-* **`bind()`**:
-
-  * **Usage**: Returns a new function with a bound `this` value and optional arguments. Unlike `call()` and `apply()`, `bind()` does not invoke the function immediately but creates a new function that can be called later.
-  * **Example**:
+* **`bind()`**: Returns a new function with a bound `this` value and optional arguments. Unlike `call()` and `apply()`, `bind()` does not invoke the function immediately but creates a new function that can be called later.
     ```javascript
      function greet(name) {
       console.log(`Hello, ${name}`);
