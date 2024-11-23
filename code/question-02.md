@@ -1219,8 +1219,6 @@ console.log(calculatePrice(100));    // 110 (tax is 10% by default)
 console.log(calculatePrice(100, 20)); // 120 (tax is provided as 20)
 ```
 
----
-
 ### 4\. **Explain the concept of spread and rest operators in JavaScript.**
 
 Both the spread (`...`) and rest (`...`) operators use the same syntax but serve different purposes.
@@ -1312,7 +1310,7 @@ console.log(set);  // Output: Set { 1, 2, 3, 4 }
 
 * When you need to store unique values or efficiently check if a value exists.
 
----
+
 
 
 ### 15\. **How does JavaScript handle errors with try, catch, and finally?**
@@ -1755,7 +1753,7 @@ console.log(person.name);  // Output: Alice
 * **Proxy** is useful for logging, data validation, property access control, or virtualizing object behavior.
 * **Reflect** is useful for handling operations with a more standardized approach, often alongside `Proxy` for default behavior.
 
----
+
 
 ### 2\. **Explain the concept of memoization and provide an example.**
 
@@ -1801,7 +1799,7 @@ console.log(memoizedFibonacci(40)); // Much faster after the first computation
 * The first time `fibonacci(40)` is called, the function will compute the result.
 * For subsequent calls, it will use the cached result, drastically reducing the time complexity.
 
----
+
 
 ### 4\. **What is throttling and debouncing? How do they help with performance?**
 
@@ -1851,8 +1849,6 @@ input.addEventListener('input', debounce(() => {
 }, 500));
 ```
 
----
-
 ### **How do throttling and debouncing help with performance?**
 
 * **Throttling**:
@@ -1865,9 +1861,7 @@ input.addEventListener('input', debounce(() => {
 
 Both techniques help in preventing excessive function executions, which can lead to performance bottlenecks, especially in complex or resource-heavy operations.
 
----
-
-### Summary:
+#### Summary:
 
 * **Memoization** is an optimization technique that caches function results to avoid redundant computations.
 * **Memory leaks** in JavaScript can be prevented by clearing event listeners, intervals, and using weak references.
@@ -1934,7 +1928,6 @@ There are several techniques to optimize the performance of a web application:
 - **Server-Side Rendering (SSR)**: Pre-render parts of your web application on the server to send a fully rendered page to the client, reducing the time it takes for the page to be visible.
 - **Optimize JavaScript Execution**: Profile and optimize your JavaScript to minimize unnecessary reflows and repaints in the browser, reduce complexity, and improve responsiveness.
 
----
 
 ### 2\. **How can you reduce the page load time of a website?**
 
@@ -2189,8 +2182,6 @@ The **event loop** coordinates asynchronous tasks while executing the synchronou
 * **sessionStorage**: Stores data for the duration of the page session (data is cleared when the page is closed).
 * **Cookies**: Can store data with an expiration date and are sent with every HTTP request.
 
----
-
 ### 3\. **How do you handle memory leaks in JavaScript?**
 
 Memory leaks occur when objects are no longer in use but are still being referenced, preventing the garbage collector from freeing up the memory. Here's how you can handle and prevent memory leaks in JavaScript:
@@ -2232,9 +2223,6 @@ Memory leaks occur when objects are no longer in use but are still being referen
 #### f. **Profiling and Monitoring**
 
 * Use browser developer tools to profile memory usage and track potential leaks, especially in long-running applications.
-
----
-
 
 
 ### Performance Optimization
@@ -2564,7 +2552,7 @@ Usage:
 
 This will create a new `<div>` element with the specified text and append it to the `body` of the document.
 
----
+
 
 
 
@@ -2829,7 +2817,7 @@ x = 10; // Throws an error because x is not declared
 * Closures are useful for data encapsulation and creating private variables.
 * They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
 
----
+
 
 ### 3\. **What is the JavaScript event loop, and how does it affect performance?**
 
@@ -2843,7 +2831,7 @@ The **event loop** is a mechanism that handles the execution of multiple pieces 
 
 * Asynchronous code (e.g., setTimeout, AJAX, Promises) does not block the main thread. However, if there are too many tasks in the event queue or long-running operations on the call stack, it can delay the execution of further tasks and cause performance issues like UI freezes.
 
----
+
 
 
 ### 3\. **How would you implement inheritance in JavaScript (both classical and prototypal)?**
@@ -2899,7 +2887,7 @@ There are two main approaches to inheritance in JavaScript: **Classical Inherita
   dog.speak(); // Buddy makes a noise.
   ```
 
----
+
 
 ### 5\. **What is the role of the fetch API in JavaScript?**
 
@@ -2918,7 +2906,7 @@ Example:
 
 * **Benefits**: Fetch is cleaner, returns Promises, and is more flexible (supports `GET`, `POST`, etc.). It's built on top of the Promise API and is easier to work with for modern asynchronous operations.
 
----
+
 
 ### 6\. **What is the difference between synchronous and asynchronous programming in JavaScript?**
 
@@ -2944,7 +2932,7 @@ console.log('End');
 
 Here, "Middle" is logged after 1 second without blocking "End".
 
----
+
 
 ### 7\. **Explain the concept of "callback hell" and how to avoid it.**
 
@@ -2996,7 +2984,7 @@ async function fetchData() {
 }
 ```
 
----
+
 
 ### 8\. **What are the different ways to handle errors in JavaScript?**
 
@@ -3028,7 +3016,7 @@ There are several ways to handle errors in JavaScript:
   }
   ```
 
----
+
 
 ### 9\. **What is the purpose of JavaScript's eval() function?**
 
@@ -3042,7 +3030,7 @@ eval('console.log("Hello from eval!")'); // Outputs: Hello from eval!
 
 **Caution**: Avoid using `eval()` unless absolutely necessary due to potential security risks and performance concerns. It can also hinder optimizations by JavaScript engines.
 
----
+
   
 
 ## Bonus: JavaScript Frameworks and Libraries
@@ -3162,14 +3150,14 @@ Vue's lifecycle hooks allow you to execute code at various stages, similar to Re
 
 Angular provides a robust set of lifecycle hooks tied to the component lifecycle and change detection system, allowing for finer control over how components interact with the application’s state and UI.
 
----
+
 
 
 ## 5. Soft Skills & Leadership
 
 Here are answers to the questions you've posed, which can be applied to maintaining high standards in a frontend development team:
 
----
+
 
 ### 1\. **How do you ensure consistency and code quality in a large team of frontend developers?**
 
@@ -3182,7 +3170,7 @@ To ensure consistency and code quality in a large team of frontend developers, I
 - **CI/CD Pipelines**: Setting up continuous integration pipelines (e.g., using **GitHub Actions** or **GitLab CI**) that run automated tests and linting checks with each commit to catch potential issues early.
 - **Modular Architecture**: Encouraging the use of modular and reusable code through a component-based architecture (e.g., React, Vue.js) helps keep code maintainable and reduces duplication.
 
----
+
 
 ### 2\. **Can you explain the importance of code reviews? How do you approach code reviews?**
 
@@ -3201,7 +3189,7 @@ Code reviews are essential for maintaining high-quality, maintainable code. Here
 - **Context**: Encourage developers to add context to their pull requests (PRs), such as why certain decisions were made, so the reviewer can better understand the reasoning behind the code.
 - **Positive Reinforcement**: Acknowledge good practices, improvements, and clever solutions to encourage the team and build morale.
 
----
+
 
 ### 3\. **What version control tools do you use? Can you explain some advanced Git concepts, such as rebasing and branching strategies?**
 
@@ -3664,7 +3652,7 @@ let sessionID = sessionStorage.getItem('sessionID');
 * **Local Storage**: Use for long-term data that should persist even when the user navigates away or closes the browser.
 * **Session Storage**: Use for short-term, session-specific data that should not persist after the user closes the tab or browser.
 
----
+
 
 Let me know if you need further clarification or additional information!
 
