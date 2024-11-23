@@ -131,7 +131,7 @@ In JavaScript, an **array** is a special variable that can hold multiple values 
 
 Arrays in JavaScript can hold elements of any type: numbers, strings, objects, other arrays, and even functions.
 
-### Syntax to Create an Array
+#### Syntax to Create an Array
 
 1. **Using Array Literals**:
    This is the most common way to create an array.
@@ -149,7 +149,7 @@ Arrays in JavaScript can hold elements of any type: numbers, strings, objects, o
 
    **Note**: If you pass a single numeric value (e.g., `new Array(5)`), it creates an array with that many empty slots (5 slots in this case). This is different from a standard array initialization.
 
-### Common Array Methods
+#### Common Array Methods
 
 - `.map()`: Transforms each element of the array.
 - `.filter()`: Creates a new array with elements that pass a test.
