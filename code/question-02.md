@@ -414,23 +414,23 @@ doSomething()
 
 ### 1\. **What is closure in JavaScript?**
 
-A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope. This happens because JavaScript functions are first-class objects and they maintain references to the environment in which they were created.
+A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope.In other words, a closure allows a function to access variables from its outer function even after the outer function has finished executing.
 
 Example:
 
 ```javascript
- function outer() {
-  let counter = 0;
+function outer() {
+  let outerVariable = 'I am from outer!';
+
   return function inner() {
-    counter++;
-    console.log(counter);
+    console.log(outerVariable); // inner function has access to outerVariable
   };
 }
 
-const increment = outer();  // closure is created here
-increment(); // 1
-increment(); // 2
+const closureFunction = outer(); 
+closureFunction(); // Output: I am from outer!
 ```
+Here, `inner()` is a closure because it remembers and can access `outerVariable` even after `outer()` has finished executing.
 
 ### 24\. **What are higher-order functions in JavaScript? Can you provide an example?**
 In JavaScript, higher-order functions are functions that can **take other functions as arguments** or **return functions as results**. This concept allows for more flexible and reusable code.
