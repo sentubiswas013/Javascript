@@ -1896,26 +1896,6 @@ There are two main approaches to inheritance in JavaScript: **Classical Inherita
   ```
 
 
-
-### 5\. **What is the role of the fetch API in JavaScript?**
-
-The **Fetch API** provides a modern, promise-based approach to making asynchronous HTTP requests (replacing older methods like `XMLHttpRequest`).
-
-* **Usage**: It is used to request resources (like data from a server) and handle the response asynchronously.
-
-Example:
-
-```javascript
- fetch('https://api.example.com/data')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
-```
-
-* **Benefits**: Fetch is cleaner, returns Promises, and is more flexible (supports `GET`, `POST`, etc.). It's built on top of the Promise API and is easier to work with for modern asynchronous operations.
-
-
-
 ### 6\. **What is the difference between synchronous and asynchronous programming in JavaScript?**
 
 * **Synchronous**: In synchronous programming, tasks are executed one after another in sequence. Each task must finish before the next one begins. This can block execution, especially for time-consuming tasks (e.g., file I/O, HTTP requests).
