@@ -26,16 +26,17 @@ The terms you’ve listed — **closure**, **callback**, **HOC (Higher Order Com
    
    Example:
    ```javascript
-   function fetchData(callback) {
-     setTimeout(() => {
-       const data = "some data";
-       callback(data);
-     }, 1000);
-   }
-   
-   fetchData(function(data) {
-     console.log(data); // "some data"
-   });
+  function greet(name, callback) {
+    console.log(`Hello, ${name}`);
+    callback();
+  }
+
+  function afterGreet() {
+    console.log('Goodbye!');
+  }
+
+  greet('Alice', afterGreet); // Output: Hello, Alice
+                              //         Goodbye!
    ```
 
 ### 3. **Higher Order Component (HOC)**
