@@ -612,6 +612,8 @@ Two strings are anagrams if they contain the same characters in the same frequen
     
     return Object.values(charCount).every(count => count === 0);
 }
+areAnagrams("listen", "silent"); // Returns true
+areAnagrams("hello", "world");   // Returns false
 ```
 
 ### 8\. **Check If a Number Is Prime**

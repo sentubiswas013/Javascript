@@ -1,3 +1,24 @@
+Some Coding list
+
+### **Reverse a string without using built-in methods:**
+### **Remove duplicate values from an array:**
+### **Remove Duplicate characters from String**
+### **Find the longest word in a string:**
+### **Check if a string is a palindrome:**
+### **Swapping of 2 numbers with third variable**
+### **To find Max and Min num from array using functions**
+### **Merge two sorted arrays into a single sorted array**
+### **Flatten a nested array (array of arrays):**
+### **To find vowels and its count in a given string**
+### **Sort array data in javascript using loop**
+
+### **Find the missing number in an array containing numbers from 1 to n:**
+### **Find the First Non-Repeating Character in a String**
+### **Find the Factorial of a Number**
+### **Implement Fibonacci Sequence**
+### **Check If a Number Is Prime**
+
+
 The terms you’ve listed — **closure**, **callback**, **HOC (Higher Order Component)**, **promise**, **observable**, and **memory leak** — are commonly used in JavaScript, React, and programming in general. Here’s a brief explanation of each concept:
 
 ### 1. **Closure**
