@@ -442,6 +442,171 @@ export class FilterPipe implements PipeTransform {
   <ng-content></ng-content>
   ```
 
+
+### **8\. How to implement authgaurd n angular?**
+In Angular, an `AuthGuard` is used to protect routes from unauthorized access by ensuring the user is authenticated before they can access specific parts of the application. If the user is not authenticated, the guard can redirect them to a login page or a specific route.
+
+Here's a step-by-step guide to implement an `AuthGuard` in Angular:
+
+### 1. Create an Authentication Service
+First, you need a service to handle authentication. This service should manage user login status, store tokens, and provide a method to check if a user is authenticated.
+
+#### Example Authentication Service (`auth.service.ts`):
+```typescript
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  private isAuthenticated: boolean = false;
+
+  constructor(private router: Router) {}
+
+  // Simulate user login (You can replace this with actual authentication logic)
+  login(username: string, password: string): boolean {
+    // Implement your login logic here
+    // Example: if the credentials are correct, set `isAuthenticated` to true
+    if (username === 'user' && password === 'password') {
+      this.isAuthenticated = true;
+      return true;
+    }
+    return false;
+  }
+
+  // Method to check if user is authenticated
+  isLoggedIn(): boolean {
+    return this.isAuthenticated;
+  }
+
+  // Log out the user
+  logout(): void {
+    this.isAuthenticated = false;
+    this.router.navigate(['/login']); // Redirect to login page on logout
+  }
+}
+```
+
+### 2. Create an AuthGuard
+Now, you need to create the `AuthGuard` that will protect your routes.
+
+#### Example AuthGuard (`auth.guard.ts`):
+```typescript
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    // Check if the user is authenticated
+    if (this.authService.isLoggedIn()) {
+      return true; // User is authenticated, allow access to the route
+    } else {
+      // User is not authenticated, redirect to login page
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }
+}
+```
+
+### 3. Define Routes and Protect with the AuthGuard
+Next, you need to apply the `AuthGuard` to specific routes in your routing module. The `AuthGuard` will ensure that users who are not logged in cannot access those routes.
+
+#### Example Routes (`app-routing.module.ts`):
+```typescript
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth.guard';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }, // Protect this route
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
+```
+
+In this example, the `dashboard` route is protected by the `AuthGuard`, meaning only authenticated users can access it.
+
+### 4. Implement Login and Logout Functionality
+You need to handle user login and logout in your components. The login form will use the `AuthService` to authenticate the user, and the logout button will log the user out and redirect them to the login page.
+
+#### Example Login Component (`login.component.ts`):
+```typescript
+import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+})
+export class LoginComponent {
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  login() {
+    if (this.authService.login(this.username, this.password)) {
+      this.router.navigate(['/dashboard']); // Redirect to dashboard if login is successful
+    } else {
+      this.errorMessage = 'Invalid credentials'; // Show error message on failed login
+    }
+  }
+}
+```
+
+#### Example Logout in Dashboard (`dashboard.component.ts`):
+```typescript
+import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+})
+export class DashboardComponent {
+  constructor(private authService: AuthService) {}
+
+  logout() {
+    this.authService.logout();
+  }
+}
+```
+
+### 5. Test the Application
+- If the user is authenticated (i.e., logged in), they should be able to access protected routes (e.g., `/dashboard`).
+- If the user is not authenticated, they will be redirected to the login page.
+
+### Summary
+- **AuthService** handles login, logout, and the user's authentication status.
+- **AuthGuard** checks if the user is authenticated before allowing access to specific routes.
+- Routes are configured in the **app-routing.module.ts**, with `canActivate` using the `AuthGuard` to protect routes.
+
+This implementation provides a basic structure for managing authentication in Angular with route guards. You can enhance this with real authentication APIs, token management, etc., depending on your application's requirements.
+
 * \*\*\`
 
 ### **3\. Angular Performance Optimization**
