@@ -319,7 +319,9 @@ for (let val of arr) {
     return min;
 }
 console.log(minValue([3,6,7,8,1])); // output: 1
-
+```
+#### Way 3 to get min num using loop
+```javascript
 function minValue(arr) {
     let min = Infinity;  // Initialize min to a very large number
     for (let index = 0; index < arr.length; index++) {
@@ -332,6 +334,7 @@ function minValue(arr) {
 
 minValue([4, 5, 3, 1, 9]); // output: 1
 ```
+#### Way 4 using inbuilt function
 ```javascript
 #### Way 3 max using max method
 Math.max.apply(null,[4,6,1,9])  // output: 9
@@ -340,7 +343,9 @@ Math.max.apply(null,[4,6,1,9])  // output: 9
 Math.min.apply(null,[4,6,1,9])  // output: 1
 ```
 ------------------------------------------
-### Code 11: To find longest word from a string using custom code
+### Code 11: To find longest snd shortesh word from a string using custom code
+
+#### Way1 to get longest number using loop
 ```javascript
 function longest() {
   var str ="Priya is a good girl and having hardworking skills"
@@ -357,6 +362,25 @@ function longest() {
 longest();
 // Output: hardworking
 ```
+#### Way1 to get shortest number using loop
+```javascript
+function shortest() {
+  var str ="Priya is a good girl and having hardworking skills"
+  var words = str.split(' ');
+  var shortest = ''; 
+  let shortestNum = Infinity;
+  for (var i = 0; i < words.length; i++) {
+    if (words[i].length < shortestNum) {
+        shortestNum = words[i].length; 
+        shortest = words[i]
+    }
+  }
+  console.log("====", shortest)
+  return shortest;
+}
+shortest();
+```
+
 ------------------------------------------
 ### Code 12: To find longest common string from array of strings
 ```javascript
@@ -369,6 +393,7 @@ function longestCommonString(){
       result+=arr[0][i]
     }
   }
+  console.log("result---", result);
   return result
 }
 console.log(longestCommonString())
