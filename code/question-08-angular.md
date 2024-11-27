@@ -1468,6 +1468,102 @@ These operators are used to manage the inner observables in higher-order mapping
   });
   ```
 
+Here are some advanced Angular interview questions that may be asked by companies like TalentRank, which assess a deeper understanding of Angular concepts and the ability to implement complex features in real-world applications:
+
+### 57. **Explain the difference between `ngOnInit()` and `constructor()` in Angular. When would you use each one?**
+
+   - **Answer**: `ngOnInit()` is a lifecycle hook that is called after Angular has initialized all data-bound properties of a component. It is typically used for logic that requires data binding or initialization of data that may come from services. The `constructor()` is a standard TypeScript feature used to initialize a class instance, but Angular recommends placing component initialization logic (such as fetching data or subscriptions) inside `ngOnInit()` instead of the `constructor()`.
+
+### 58. **What is the difference between `ngFor` and `ngForOf`?**
+
+   - **Answer**: `ngFor` is an alias for `ngForOf` directive. `ngForOf` is a lower-level implementation of the directive that works with iterable objects, like arrays. While they are functionally equivalent, `ngFor` is the preferred shorthand for most applications.
+
+### 59. **How does Angular change detection work? What are the different strategies available?**
+
+   - **Answer**: Angular uses a change detection mechanism to update the view whenever the model changes. The two primary change detection strategies are:
+     - **Default**: Checks every component in the tree for changes.
+     - **OnPush**: Only checks components when one of its input properties has changed, or an event has occurred within the component, or manually triggered change detection is invoked.
+
+   You can optimize performance by using `OnPush`, as Angular will check only the components that need to be checked.
+
+### 60. **What are Angular decorators and name a few common ones?**
+
+   - **Answer**: Decorators are special functions in Angular that are used to attach metadata to classes. Common Angular decorators include:
+     - `@Component()`: Defines a component.
+     - `@NgModule()`: Defines an Angular module.
+     - `@Injectable()`: Marks a class as available to be injected into other classes.
+     - `@Input()` and `@Output()`: Used for passing data between components.
+     - `@ViewChild()` and `@ContentChild()`: Used to access child components or elements.
+
+### 61. **What is the role of `ngZone` in Angular, and how does it help with performance optimization?**
+
+   - **Answer**: `ngZone` is an Angular service that allows you to run code inside or outside Angular’s change detection mechanism. It is particularly useful for optimizing performance by ensuring that Angular’s change detection cycle runs only when necessary. For example, if you are working with external libraries or performing long-running tasks, you can execute them outside of Angular's zone to avoid unnecessary change detection cycles.
+
+### 62. **Explain the concept of lazy loading in Angular. How does it improve performance?**
+
+   - **Answer**: Lazy loading is the technique where modules are loaded only when they are needed (on-demand), rather than loading all modules at the start. This helps in reducing the initial loading time of the application and improves performance, as unnecessary code is not loaded until the user navigates to the relevant route.
+
+   In Angular, lazy loading can be implemented using the `loadChildren` property in the route configuration.
+
+### 63. **What is a `Subject` and `BehaviorSubject` in Angular RxJS? How are they different?**
+
+   - **Answer**: 
+     - A **`Subject`** is a special type of `Observable` that allows values to be multicast to many Observers. It doesn't store the last emitted value.
+     - A **`BehaviorSubject`** is a type of `Subject` that requires an initial value and always returns the current value to new subscribers. Unlike a `Subject`, it maintains the last value emitted, making it useful for state management or components that need to know the current state on subscription.
+
+### 64. **What is the purpose of the `ngModule` and how does it work in Angular?**
+
+   - **Answer**: An `NgModule` in Angular is a container that holds the components, directives, pipes, and services for a specific part of the application. It provides a way to organize and structure the application into cohesive blocks of functionality. Every Angular app has at least one module, the root module (`AppModule`), which bootstraps the application and declares other modules, components, and services.
+
+### 65. **What is Dependency Injection (DI) in Angular? Explain how it works.**
+
+   - **Answer**: Dependency Injection (DI) is a design pattern used in Angular to manage how services and objects are created and injected into components, directives, or other services. Angular’s DI system allows you to define the dependencies that a class needs, and Angular will automatically provide those dependencies, either from its internal DI container or from external sources. This promotes loose coupling and makes the application more modular and testable.
+
+### 70. **What are interceptors in Angular? How do you use them?**
+
+   - **Answer**: Interceptors are Angular services that can modify HTTP requests and responses. They can be used to add authentication tokens, log request and response details, handle errors globally, and more. Interceptors are implemented by creating a class that implements the `HttpInterceptor` interface and using `HttpClientModule` to configure them globally.
+
+### 71. **How do you implement routing in Angular, and what are the different navigation methods available?**
+
+   - **Answer**: Angular provides a powerful routing module to navigate between views or components. You define routes in the routing module by associating paths with components. There are several navigation methods:
+     - `Router.navigate()`: Programmatically navigates to a path.
+     - `RouterLink`: A directive to link to a path from the template.
+     - `ActivatedRoute`: Provides access to the current route and its parameters.
+     
+     You can also implement route guards to protect certain routes based on user roles or authentication status.
+
+### 72. **What are Angular Guards? Explain the different types of guards.**
+
+   - **Answer**: Angular Guards are used to prevent or allow navigation to a route based on certain conditions. There are four types of guards:
+     - **CanActivate**: Determines if a route can be activated.
+     - **CanActivateChild**: Determines if child routes can be activated.
+     - **CanDeactivate**: Determines if a user can leave the current route.
+     - **Resolve**: Used to resolve data before a route is activated.
+
+### 73. **How would you optimize performance in an Angular application?**
+
+   - **Answer**: Some techniques to optimize Angular application performance include:
+     - **Lazy Loading**: Load modules only when needed.
+     - **Ahead-of-Time (AOT) Compilation**: Pre-compiling the application during build time instead of runtime.
+     - **Change Detection Strategy**: Use `OnPush` change detection strategy to reduce unnecessary checks.
+     - **Track By Function**: Use `trackBy` in `ngFor` to optimize DOM rendering.
+     - **Avoid Complex Computations in Templates**: Perform complex operations in the component rather than in the template to avoid recalculating on every change detection cycle.
+     - **Tree Shaking**: Remove unused code during build time.
+
+### 74. **What is the purpose of Angular’s `Renderer2`?**
+
+   - **Answer**: `Renderer2` is a service that allows safe manipulation of the DOM, abstracting away direct access to DOM elements. It provides methods like `createElement`, `setAttribute`, `appendChild`, and `removeChild`, ensuring that the DOM manipulation remains platform-agnostic (e.g., server-side rendering).
+
+### 75. **Explain the difference between `ngOnChanges` and `ngDoCheck`.**
+
+   - **Answer**:
+     - **`ngOnChanges`** is called whenever an input property of a component changes. It receives a `SimpleChanges` object which contains the current and previous values of the properties.
+     - **`ngDoCheck`** is called during every change detection cycle, regardless of whether the inputs have changed. It is useful for detecting and reacting to changes that Angular’s default change detection mechanism doesn’t catch (e.g., mutations in arrays or objects).
+
+### 76. **What are "observables" in Angular? How do they differ from "Promises"?**
+
+   - **Answer**: Observables are streams of data that can emit multiple values over time, while Promises represent a single value at some point in the future. Observables can be subscribed to and unsubscribed from, making them more flexible for handling asynchronous operations like HTTP requests, user inputs, or WebSocket messages.
+
 
 ### **5\. Angular Testing**
 
