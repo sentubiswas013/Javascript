@@ -538,6 +538,18 @@ function About() {
 ```
 In this example, `React Router` enables navigation between the Home and About components using the URL.
 
+### 33/0. **What are the `<Router>` components of React Router v6?**
+
+    React Router v6 provides below 4 `<Router>` components:
+
+    1.  `<BrowserRouter>`:Uses the HTML5 history API for standard web apps.
+    2.  `<HashRouter>`:Uses hash-based routing for static servers.
+    3.  `<MemoryRouter>`:Uses in-memory routing for testing and non-browser environments.
+    4.  `<StaticRouter>`:Provides static routing for server-side rendering (SSR).
+
+    The above components will create _browser_, _hash_, _memory_ and _static_ history instances. React Router v6 makes the properties and methods of the `history` instance associated with your router available through the context in the `router` object.
+
+
 ### 34. **What is lazy loading in React?**
 **Lazy loading** in React refers to dynamically loading a component only when it is required, which can reduce the initial loading time of an application. This is especially useful for large applications where you don't need to load all components upfront.
 
