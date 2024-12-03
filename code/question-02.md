@@ -1,3284 +1,1900 @@
-## Beginner-Level Questions
----
-### 1\. **What is JavaScript?**
+Here are 100 essential JavaScript interview questions, categorized into various topics like basic concepts, advanced topics, and practical coding challenges. These questions will help you prepare for a variety of JavaScript interview scenarios:
 
-JavaScript is a dynamic, interpreted programming language primarily used for creating interactive effects within web browsers. It allows developers to build interactive features on websites such as form validation, animations, and dynamic content updates.
+### **1. Basic JavaScript Concepts**
 
-### 2\. **What is the difference between `let`, `const`, and `var`?**
+#### 1. **What are the different data types in JavaScript?**
+   JavaScript has both **primitive** and **non-primitive** (or **reference**) data types:
+   - **Primitive data types**: 
+     - `string`: Represents a sequence of characters. Example: `"hello"`
+     - `number`: Represents numeric values. Example: `42`
+     - `bigint`: Represents large integers. Example: `123456789012345678901234567890n`
+     - `boolean`: Represents `true` or `false`. Example: `true`
+     - `undefined`: Represents an uninitialized variable or an absent value. Example: `let a;`
+     - `symbol`: Represents a unique identifier, often used for object property keys. Example: `Symbol('description')`
+     - `null`: Represents the intentional absence of any object value. Example: `let a = null;`
+   - **Non-primitive data types**:
+     - `object`: Includes collections of key-value pairs, such as arrays, functions, and plain objects. Example: `let obj = { key: 'value' };`
 
-* `let`: Declares a block-scoped variable that can be reassigned.
-* `const`: Declares a block-scoped variable whose value cannot be reassigned after initialization.
-* `var`: Declares a function-scoped variable, which can be re-declared and reassigned (not recommended due to its behavior with hoisting).
+#### 2. **What is the difference between `var`, `let`, and `const`?**
+   - **`var`**:
+     - Declares variables with function or global scope (depending on where it's declared).
+     - Variables are **hoisted** (the declaration is moved to the top of its scope).
+     - Can be reassigned and redeclared.
+   - **`let`**:
+     - Declares block-scoped variables (limited to the block, statement, or expression in which it is used).
+     - Cannot be redeclared in the same scope, but can be reassigned.
+     - **Not hoisted** in the same way as `var` (it’s in a "temporal dead zone" from the start of the block until the declaration is encountered).
+   - **`const`**:
+     - Declares block-scoped variables.
+     - **Cannot be reassigned** after initial assignment.
+     - Its value must be assigned at declaration time.
 
-```javascript
-let x = 5; // Can be reassigned
-const y = 10; // Cannot be reassigned
-var z = 15; // Function-scoped
-```
-
-
-| **Feature**          | **`var`**                                      | **`let`**                                      | **`const`**                                    |
-|----------------------|------------------------------------------------|------------------------------------------------|------------------------------------------------|
-| **Scope**            | Function-scoped (or globally-scoped)           | Block-scoped (only accessible within the block) | Block-scoped                                  |
-| **Hoisting**         | Hoisted but initialized with `undefined`       | Hoisted but not initialized (Temporal Dead Zone) | Hoisted but not initialized (Temporal Dead Zone)|
-| **Re-declaration**   | Can be re-declared in the same scope           | Cannot be re-declared in the same scope         | Cannot be re-declared in the same scope        |
-| **Mutability**       | Value can be reassigned                        | Value can be reassigned                        | Value cannot be reassigned. If an object/array, properties/elements can be modified. |
-| **Use**              | Outdated due to scoping and hoisting issues    | Preferred for variables that will change        | Used for constants or values that should not change |
-
-This table summarizes the key differences between `var`, `let`, and `const`.
-
-### 3\. **What is hoisting in JavaScript? How does it work with variables and functions?**
-
-* **Hoisting** is JavaScript's behavior of moving variable and function declarations to the top of their containing scope during the compile phase, before code execution begins.
-
-  * **For functions**: Function declarations (not expressions) are hoisted with both their definition and value, meaning you can call them before they appear in the code.
-
-  * **For variables**: With `var`, only the declaration (not the initialization) is hoisted, so the variable is initialized as `undefined`. With `let` and `const`, only the declaration is hoisted, but not the initialization, leading to a "temporal dead zone" if you try to access them before the declaration.
-
-```javascript
- codeconsole.log(x); // undefined
-var x = 5; 
-
-console.log(y); // ReferenceError: Cannot access 'y' before initialization
-let y = 10;
-```
-
-### 4\. **What are the data types in JavaScript?**
-
-JavaScript has seven basic data types:
-- **`Primitive`**:
-* `String` (e.g., `"hello"`)
-* `Number` (e.g., `42`)
-* `BigInt` (e.g., `9007199254740991n`)
-* `Boolean` (e.g., `true` or `false`)
-* `undefined` (e.g., a variable that is declared but not assigned a value)
-* `null` (e.g., an explicitly assigned empty value)
-* `Symbol` (e.g., `Symbol('desc')`)
-* `Object` (e.g., arrays, functions, and plain objects)
-
-- **`Non-Primitive`**:
-* `Object` (e.g., `"let person = { name: "John", age: 25 }"`)
-* `Array` (e.g., `"let fruits = ["apple", "banana", "cherry"]"`)
-* `Function` (e.g., `"function greet() { console.log("Hello, world!"); }"`)
-* `Date` (e.g., `"let today = new Date();"`)
-* `RegExp ` (e.g., `"let regex = /abc/;"`)
-
-- **`Key Differences between Primitive and Non-Primitive Data Types`**:
-<table><thead><tr><th align="left"><strong>Feature</strong></th><th><strong>Primitive Data Types</strong></th><th><strong>Non-Primitive Data Types</strong></th></tr></thead><tbody><tr><td><strong>Memory</strong></td><td>Stored in stack memory</td><td>Stored in heap memory</td></tr><tr><td><strong>Size</strong></td><td>Fixed size</td><td>Varies (depends on the data structure or object)</td></tr><tr><td><strong>Value or Reference</strong></td><td>Holds the actual value</td><td>Holds a reference to the value (pointer to an object)</td></tr><tr><td><strong>Complexity</strong></td><td>Simple and atomic</td><td>More complex and can store multiple values</td></tr><tr><td><strong>Example</strong></td><td><code>int</code>, <code>char</code>, <code>boolean</code>, <code>float</code></td><td><code>String</code>, <code>Array</code>, <code>Object</code>, <code>Class</code>, <code>Interface</code></td></tr><tr><td><strong>Mutability</strong></td><td>Immutable (except in some languages like Java)</td><td>Mutable or immutable depending on the type</td></tr></tbody></table>
-
-### 5\. **What is the difference between `==` and `===`?**
-
-* `==`: Compares values for equality with type coercion. It tries to convert the operands to the same type before comparing them. This can lead to unexpected results
-* `===`: Compares values for equality without type coercion (strict equality). It is the **strict equality** operator, meaning it checks both value and type, and does **not perform type coercion**
-
-```javascript
-5 == '5'  // true because type coercion occurs
-5 === '5' // false because types are different (number vs. string)
-```
-    
-
-### 6\. **What is the purpose of the `typeof` operator?**
-
-The `typeof` operator returns a string indicating the type of a variable or expression.
-
-```javascript
-typeof 'hello';   // 'string'
-typeof 42;        // 'number'
-typeof true;      // 'boolean'
-typeof undefined; // 'undefined'
-typeof null;      // 'object' (a known JavaScript quirk)
-```
-
-### 7\. **What are JavaScript objects? How do you create one?**
-
-In JavaScript, an **object** is a collection of key-value pairs where each key is a **property** (a string) and each value can be any valid JavaScript data type, including functions, arrays, or other objects. Objects are a fundamental part of JavaScript and are used to store and manage data in a structured way.
-
-#### Key Characteristics of JavaScript Objects:
-- **Keys/Properties**: These are strings (or Symbols), which are used to identify each value in the object. They are also referred to as "properties."
-- **Values**: These can be any data type, including primitive types (numbers, strings, booleans, etc.), arrays, functions, or other objects.
-
-#### Creating a JavaScript Object:
-There are several ways to create an object in JavaScript. Here are the two most common methods:
-
-#### 1. **Object Literal Notation** (most common):
-This is the simplest and most common way to create objects in JavaScript. You define an object using curly braces `{}` with key-value pairs inside.
-
-```javascript
-// Object with properties and values
-const person = {
-  name: 'Alice',
-  age: 25,
-  isStudent: true,
-  greet: function() {
-    console.log('Hello, ' + this.name);
-  }
-};
-
-// Accessing properties
-console.log(person.name); // Output: Alice
-console.log(person.age);  // Output: 25
-
-// Calling a method
-person.greet(); // Output: Hello, Alice
-```
-
-#### 2. **Using the `new Object()` Syntax**:
-This method creates an object by using the `Object` constructor. It's less common than the object literal notation.
-
-```javascript
-// Creating an object using the Object constructor
-const person = new Object();
-person.name = 'Alice';
-person.age = 25;
-person.isStudent = true;
-person.greet = function() {
-  console.log('Hello, ' + this.name);
-};
-
-// Accessing properties and calling method
-console.log(person.name); // Output: Alice
-person.greet(); // Output: Hello, Alice
-```
-
-#### Adding/Modifying Properties:
-You can also add new properties or modify existing ones after an object has been created:
-
-```javascript
-person.city = 'New York';  // Adding a new property
-person.age = 26;           // Modifying an existing property
-
-console.log(person.city);  // Output: New York
-console.log(person.age);   // Output: 26
-```
-
-#### Summary:
-- JavaScript objects are collections of properties (key-value pairs).
-- You can create an object using the object literal notation `{}` or by using the `new Object()` syntax.
-- You can access object properties using dot notation (`object.property`) or bracket notation (`object['property']`).
-
-
-### 8\. **What are JavaScript arrays, and how do you create?**
-
-In JavaScript, an **array** is a special variable that can hold multiple values at once. Arrays allow you to store collections of data in a single variable. Each value in an array is called an **element**, and each element is indexed, meaning it has a position in the array. The index of the first element is `0`, the second is `1`, and so on.
-
-Arrays in JavaScript can hold elements of any type: numbers, strings, objects, other arrays, and even functions.
-
-#### Syntax to Create an Array
-
-1. **Using Array Literals**:
-   This is the most common way to create an array.
-
+#### 3. **What is a closure in JavaScript?**
+   A **closure** is a function that **retains access** to variables from its lexical scope, even after the outer function has finished execution. This happens because the inner function "remembers" the environment in which it was created.
+   Example:
    ```javascript
-   let fruits = ["apple", "banana", "cherry"];
+   function outer() {
+     let count = 0;
+     function inner() {
+       return count++;
+     }
+     return inner;
+   }
+   const increment = outer();
+   console.log(increment()); // 0
+   console.log(increment()); // 1
    ```
 
-2. **Using the `new Array()` Constructor**:
-   You can also create an array using the `Array` constructor, but this is less commonly used.
+#### 4. **What is the `this` keyword in JavaScript?**
+   The `this` keyword refers to the **context** in which a function is called. It can vary depending on how the function is invoked:
+   - In a **regular function**, `this` refers to the global object (in non-strict mode) or `undefined` (in strict mode).
+   - In an **object method**, `this` refers to the object the method is called on.
+   - In **arrow functions**, `this` is **lexically bound** (it doesn't create its own `this` value but inherits it from the outer function).
 
+#### 5. **What are the primitive data types in JavaScript?**
+   - `string`
+   - `number`
+   - `bigint`
+   - `boolean`
+   - `undefined`
+   - `symbol`
+   - `null` (while technically not an object, it's often treated like one in JavaScript)
+
+#### 6. **What is the difference between `==` and `===` in JavaScript?**
+   - **`==` (loose equality)**: Compares values for equality **after type coercion** (converts values to the same type before comparison).
+   - **`===` (strict equality)**: Compares values for equality **without type coercion** (both the value and the type must be the same).
+
+   Example:
    ```javascript
-   let numbers = new Array(1, 2, 3);
+   5 == '5';  // true (because '5' is converted to number)
+   5 === '5'; // false (different types: number vs string)
    ```
 
-   **Note**: If you pass a single numeric value (e.g., `new Array(5)`), it creates an array with that many empty slots (5 slots in this case). This is different from a standard array initialization.
+#### 7. **What are the JavaScript data structures, and when would you use them?**
+   - **Arrays**: Ordered collections, used when the order of elements matters.
+   - **Objects**: Key-value pairs, used to represent a collection of related data.
+   - **Sets**: A collection of unique values (no duplicates).
+   - **Maps**: A collection of key-value pairs where keys can be any type, useful for storing and retrieving values based on custom keys.
 
-#### Common Array Methods
+#### 8. **What is the `undefined` value in JavaScript?**
+   `undefined` is a primitive value in JavaScript that indicates the absence of a value. It is automatically assigned to variables that are declared but not initialized or to function parameters that are not passed any arguments.
+   Example:
+   ```javascript
+   let a;
+   console.log(a); // undefined
+   ```
 
-- `.map()`: Transforms each element of the array.
-- `.filter()`: Creates a new array with elements that pass a test.
-- `.reduce()`: Reduces the array to a single value based on a function.
-- `.find()`: Returns the first element that satisfies a condition.
-- `.includes()`: Checks if an array contains a specific element.
+#### 9. **What is the `null` value in JavaScript? How is it different from `undefined`?**
+   `null` is a special value in JavaScript that represents the intentional absence of any object or value. It is explicitly assigned to variables to indicate that they have no value.
+   - **`undefined`** is the default value when a variable is declared but not initialized.
+   - **`null`** is assigned to indicate the absence of a value intentionally.
 
+   Example:
+   ```javascript
+   let a = null;    // Explicitly assigned
+   let b;           // Implicitly undefined
+   ```
 
-### 9\. **How do you add, remove, or access elements in an array?**
+#### 10. **What is hoisting in JavaScript?**
+   Hoisting is a JavaScript behavior where **declarations** (but not initializations) of variables and functions are moved to the top of their containing scope during the compilation phase.
+   - **Function declarations** are hoisted with their definitions.
+   - **`var` variables** are hoisted, but only their declarations, not their assignments.
+   - **`let` and `const`** are hoisted, but they are not initialized until the code execution reaches the declaration line. Accessing them before that results in a ReferenceError (due to the "temporal dead zone").
 
-* **Add**: `push()` to add to the end, `unshift()` to add to the beginning.
-* **Remove**: `pop()` to remove from the end, `shift()` to remove from the beginning.
-* **Access**: Use the index (starting from 0).
+   Example:
+   ```javascript
+   console.log(a); // undefined (hoisted but not assigned)
+   var a = 5;
 
-```javascript
-fruits.push('orange');      // Adds 'orange' to the end
-fruits.unshift('grape');    // Adds 'grape' to the beginning
-fruits.pop();               // Removes 'orange'
-fruits.shift();             // Removes 'grape'
-console.log(fruits[1]);     // Access the second element 'banana'
-```
+   myFunction();   // works because function declarations are hoisted
+   function myFunction() {
+     console.log('Hello');
+   }
+   ```
 
-### 10\. **How do you create a function in JavaScript??**
-* **Function Declaration**: A named function defined with the `function` keyword.
-  ```javascript
+Here are the answers to the next set of JavaScript questions:
+
+### **11. Explain event delegation in JavaScript.**
+   **Event delegation** is a technique where you attach a single event listener to a parent element, and the event is triggered by the child elements that match a specified selector. This method relies on the event bubbling process, where an event that occurs on a child element bubbles up to its parent elements. It improves performance, especially when you have a large number of child elements, by reducing the number of event listeners attached.
+
+   Example:
+   ```javascript
+   document.getElementById('parent').addEventListener('click', function(event) {
+     if (event.target && event.target.matches('button.classname')) {
+       console.log('Button clicked:', event.target);
+     }
+   });
+   ```
+
+   In this example, even though multiple buttons may be added dynamically, only one event listener is attached to the parent element (`#parent`).
+
+### **12. What are arrow functions, and how do they differ from regular functions?**
+   **Arrow functions** are a shorthand way of writing functions in JavaScript. They differ from regular functions in several ways:
+   - Syntax: Arrow functions are more concise.
+     ```javascript
+     // Regular function:
+     const add = function(a, b) { return a + b; };
+
+     // Arrow function:
+     const add = (a, b) => a + b;
+     ```
+   - **`this` binding**: In regular functions, `this` refers to the context in which the function was called. In arrow functions, `this` is lexically bound, meaning it inherits `this` from the surrounding context at the time the function is defined.
+     ```javascript
+     function RegularFunction() {
+       this.value = 1;
+       setTimeout(function() {
+         this.value++; // `this` refers to the global object or undefined in strict mode
+       }, 1000);
+     }
+
+     const ArrowFunction = () => {
+       this.value = 1;
+       setTimeout(() => {
+         this.value++; // `this` refers to the outer function's `this`
+       }, 1000);
+     };
+     ```
+
+### **13. What is a prototype in JavaScript?**
+   Every JavaScript object has a **prototype**. A prototype is an object that is associated with every function and object by default. It allows objects to inherit properties and methods from other objects. When you try to access a property or method on an object, JavaScript will look for it on the object itself. If it's not found, JavaScript will look for it on the object's prototype, and so on, up the prototype chain.
+   
+   Example:
+   ```javascript
+   function Person(name) {
+     this.name = name;
+   }
+
+   Person.prototype.greet = function() {
+     console.log('Hello ' + this.name);
+   };
+
+   const john = new Person('John');
+   john.greet(); // Hello John
+   ```
+
+### **14. What is an IIFE (Immediately Invoked Function Expression)?**
+   An **IIFE** is a function that is defined and executed immediately after its creation. It is often used to create a local scope and avoid polluting the global namespace.
+   
+   Example:
+   ```javascript
+   (function() {
+     console.log('I am an IIFE');
+   })();
+   
+   // OR with an arrow function:
+   (() => {
+     console.log('I am an IIFE with arrow function');
+   })();
+   ```
+
+   IIFEs are commonly used to avoid polluting the global scope and to create closures.
+
+### **15. What is the difference between a function declaration and a function expression?**
+   - **Function Declaration**: A function is declared using the `function` keyword, and it is **hoisted** to the top of its scope. This means the function can be called before it is defined in the code.
+     ```javascript
+     function greet() {
+       console.log('Hello');
+     }
+     greet(); // works even before the function declaration
+     ```
+   - **Function Expression**: A function is assigned to a variable or property. It is **not hoisted**, so it can only be called after the expression is executed.
+     ```javascript
+     const greet = function() {
+       console.log('Hello');
+     };
+     greet(); // works only after the function expression
+     ```
+
+### **16. What is the use of the `bind` method in JavaScript?**
+   The `bind()` method creates a new function that, when called, has its `this` value set to the specified value. This is useful for situations where you want to explicitly set `this` for a function, especially in event handlers or callbacks.
+
+   Example:
+   ```javascript
    function greet() {
-    console.log("Hello");
-  }
-  ```
-
-* **Function Expression**: A function assigned to a variable, which may or may not be named.
-  ```javascript
-   const greet = function() {
-    console.log("Hello");
-  };
-  ```
-* **Arrow Function**: Arrow functions are a shorthand syntax for writing functions in JavaScript. They are more concise than traditional function expressions and they do not have their own this, arguments, super, or new.target bindings.
-  ```javascript
-    const greet = () => console.log('Hello!');
-  ```
-
-### 11\. **What is a loop? What are the different types of loops in JavaScript?**
-
-A loop allows you to repeat a block of code multiple times.
-
-Types of loops:
-
-* **`for` loop**: Iterates a specific number of times.
-* **`while` loop**: Loops as long as the condition is true.
-* **`do...while` loop**: Loops at least once and then checks the condition.
-* **`for...of` loop**: Iterates over iterable objects (e.g., arrays).
-* **`for...in` loop**: Iterates over object properties.
-
-```javascript
- for (let i = 0; i < 5; i++) {
-  console.log(i); // 0, 1, 2, 3, 4
-}
-
-let i = 0;
-while (i < 5) {
-  console.log(i);
-  i++;
-}
-
-let fruits = ['apple', 'banana', 'cherry'];
-for (const fruit of fruits) {
-  console.log(fruit); // apple, banana, cherry
-}
-```
-
-
-### 12\. **What is the difference between a forEach and a for loop in JavaScript?**
-
-* **`forEach`**:
-
-  * `forEach` is an array method that iterates over each item in an array.
-  * It does not support breaking out of the loop (i.e., no `break` statement).
-  * It can't be used with other iterable objects like objects or sets.
-
-  Example:
-
-  ```javascript
-   const arr = [1, 2, 3];
-  arr.forEach(item => console.log(item));
-  ```
-
-* **`for` Loop**:
-
-  * The `for` loop is a general-purpose loop and can be used for any iterable, including arrays, objects, and more.
-  * You can control the loop's flow using `break`, `continue`, and other loop control mechanisms.
-
-  Example:
-
-  ```javascript
-   const arr = [1, 2, 3];
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
-  }
-  ```
-
-### Summary of Differences
-
-| Feature                | `forEach`                                        | `for`                                              |
-|------------------------|--------------------------------------------------|----------------------------------------------------|
-| **Syntax**             | Array method with a callback function            | Traditional loop with start, condition, and increment |
-| **Return Value**       | Always returns `undefined`                      | No specific return value (can return in function)  |
-| **Breaking**           | Cannot break or continue                         | Supports `break` and `continue`                    |
-| **Performance**        | Slower due to function call overhead             | Generally faster                                  |
-| **Async Handling**     | Does not handle `async` well                     | Can work with `async/await`                        |
-| **Use Case**           | Cleaner for simple iterations over arrays        | More flexibility and control, especially for complex loops |
-
-
-### 13\. **What is the purpose of `break` and `continue` statements?**
-
-* `break`: Exits a loop or switch statement immediately.
-* `continue`: Skips the current iteration of a loop and continues with the next iteration.
-
-```javascript
- for (let i = 0; i < 5; i++) {
-  if (i === 2) {
-    continue;  // Skips the iteration where i === 2
-  }
-  if (i === 4) {
-    break;     // Exits the loop when i === 4
-  }
-  console.log(i);  // 0, 1, 3
-}
-```
-
-### 14\. **What is the difference between `null` and `undefined`?**
-
-* `undefined` means a variable has been declared but not assigned a value.
-* `null` is an intentional absence of any value (i.e., "empty").
-
-```javascript
-let x;
-console.log(x);  // undefined
-
-let y = null;
-console.log(y);  // null
-```
-
-### 15\. **How do you handle events in JavaScript?**
-
-You can handle events by attaching event listeners to DOM elements using methods like `addEventListener`.
-
-```javascript
- const button = document.querySelector('button');
-button.addEventListener('click', function() {
-  alert('Button clicked!');
-});
-```
-
-### 16\. **What is the `this` keyword in JavaScript?**
-In JavaScript, the `this` keyword refers to the current context or object in which the function is called. It provides a way to access properties and methods of the object that the function is associated with.
-
-- In **regular functions**, `this` refers to the global object (in browsers, it's the `window` object).
-- In **methods**, `this` refers to the object that owns the method.
-- In **arrow functions**, `this` is lexically bound, meaning it takes the value of `this` from the surrounding context where the function is defined.
-
-Example:
-
-```javascript
-const person = {
-  name: "Alice",
-  greet: function() {
-    console.log(this.name); // "this" refers to the "person" object
-  }
-};
-
-person.greet(); // Output: Alice
-```
-#### Summary of `this`:
-- **Global context**: Refers to the global object (in browsers, `window`).
-- **Function context**: Refers to the global object (non-strict mode) or `undefined` (strict mode).
-- **Method of an object**: Refers to the object the method is called on.
-- **Constructor function**: Refers to the newly created object.
-- **Arrow functions**: Inherit `this` from their surrounding context.
-- **Event handler**: Refers to the element that triggered the event.
-- **Explicit binding**: Using `call()`, `apply()`, or `bind()`, you can set the value of `this` manually.
-
-
-### 17\. **What is a callback function in JavaScript?**
-
-A callback function is a function passed as an argument to another function, and it is executed after the completion of the main function.
-
-```javascript
- function greet(name, callback) {
-  console.log(`Hello, ${name}`);
-  callback();
-}
-
-function afterGreet() {
-  console.log('Goodbye!');
-}
-
-greet('Alice', afterGreet); // Output: Hello, Alice
-                            //         Goodbye!
-```
-
-
-### 18\. **What is promises and how then() and catch() work.**
-
-A **promise** represents the eventual completion (or failure) of an asynchronous operation. It can be in one of three states: **pending**, **fulfilled**, or **rejected**.
-
-
-#### How Promises Work:
-
-* A promise can be in one of three states:
-  * **Pending**: The operation is still in progress.
-  * **Resolved** (Fulfilled): The operation completed successfully.
-  * **Rejected**: The operation failed (with an error).
-* You create a promise using the `Promise` constructor, which takes a callback with two parameters: `resolve` and `reject`.
-
-Example:
-
-```javascript
- const promise = new Promise((resolve, reject) => {
-  let success = true;
-  if (success) {
-    resolve("Operation successful");
-  } else {
-    reject("Operation failed");
-  }
-});
-
-promise.then(result => {
-  console.log(result);  // "Operation successful"
-}).catch(error => {
-  console.log(error);   // "Operation failed"
-});
-```
-
-In this example:
-
-* The `then()` method is used to handle the success of the promise.
-* The `catch()` method is used to handle any errors (rejections).
-
-#### How to Use Promises:
-
-* Use `then()` to handle success.
-* Use `catch()` to handle errors.
-* You can chain multiple `then()` calls to handle sequential asynchronous operations.
-
-### 19. Promise vs. Callback Function in JavaScript:
-
-- **Callback**:
-  A function passed as an argument to another function, which is executed when the task is completed.
-  Can lead to "callback hell" or "pyramid of doom" when nesting multiple callbacks.
-
-```javascript
-    doSomething(function(result) {
-    doSomethingElse(result, function(newResult) {
-        doFinalThing(newResult);
-    });
-    });
-```
-
-- **Promise**:
-  Represents a value that may be available now or in the future. It is an object that can be in one of three states: pending, fulfilled, or rejected.
-  Helps avoid callback hell by chaining .then() and .catch() for handling success and failure.
-
-```javascript
-doSomething()
-  .then(result => doSomethingElse(result))
-  .then(newResult => doFinalThing(newResult))
-  .catch(error => console.error(error));
-```
-
-### 20\. **What is closure and lexical scoping in JavaScript?**
-* **Lexical Scoping**: This means that the scope of variables is determined by where they are declared in the code. In JavaScript, functions are lexically scoped, meaning they "remember" the environment in which they were created, even if they are executed outside of that environment.
-
-A **closure** is a function that "remembers" its lexical scope even when the function is executed outside that scope.In other words, a closure allows a function to access variables from its outer function even after the outer function has finished executing.
-
-Example:
-
-```javascript
-function outer() {
-  let outerVariable = 'I am from outer!';
-
-  return function inner() {
-    console.log(outerVariable); // inner function has access to outerVariable
-  };
-}
-
-const closureFunction = outer(); 
-closureFunction(); // Output: I am from outer!
-```
-Here, `inner()` is a closure because it remembers and can access `outerVariable` even after `outer()` has finished executing.
-
-**Usefulness in frontend development:**
-
-* Closures are useful for data encapsulation and creating private variables.
-* They help in implementing function factories, event listeners, and callbacks that need access to the outer scope (e.g., preserving state in asynchronous callbacks or keeping track of event listeners).
-
-
-### 21\. **What are higher-order functions in JavaScript? Can you provide an example?**
-In JavaScript, higher-order functions are functions that can **take other functions as arguments** or **return functions as results**. This concept allows for more flexible and reusable code.
-
-#### In simple terms:
-- A higher-order function is a function that either:
-  1. Accepts one or more functions as arguments, or
-  2. Returns a function as its result.
-
-#### Why is it useful?
-Higher-order functions help you abstract common patterns of code, allowing for more modular, concise, and readable programs. For example, you can create functions that modify other functions or control how other functions are executed.
-
-#### Example of a Higher-Order Function:
-Let's look at an example using `map`, a common higher-order function in JavaScript:
-
-```javascript
-// The function `map` is a higher-order function because it takes a function as an argument.
-const numbers = [1, 2, 3, 4];
-
-// `map` takes a function as a parameter to transform each element of the array
-const doubledNumbers = numbers.map(function(number) {
-  return number * 2; // This function doubles each number in the array
-});
-
-console.log(doubledNumbers); // Output: [2, 4, 6, 8]
-```
-
-#### Explanation:
-1. The `map` function is a higher-order function because it **takes a function** as an argument.
-2. The function passed to `map` (in this case, `function(number) { return number * 2; }`) is applied to each element in the `numbers` array.
-3. The result is a new array with the numbers doubled: `[2, 4, 6, 8]`.
-
-#### Another Example: Returning a Function
-
-You can also have higher-order functions that **return a function**:
-
-```javascript
-function multiplier(factor) {
-  return function(number) {
-    return number * factor;
-  };
-}
-
-const double = multiplier(2); // Creates a function that doubles numbers
-const triple = multiplier(3); // Creates a function that triples numbers
-
-console.log(double(4)); // Output: 8
-console.log(triple(4)); // Output: 12
-```
-
-#### Explanation:
-- The `multiplier` function is a higher-order function because it **returns a function**.
-- When you call `multiplier(2)`, it returns a new function that doubles a number.
-- Similarly, calling `multiplier(3)` returns a new function that triples a number.
-
-#### In summary:
-- **Higher-order functions** are functions that either accept functions as arguments or return functions as values.
-- They are powerful tools in JavaScript and are commonly used in methods like `map`, `filter`, `reduce`, and more.
-
-
-### 22\. **What is async/await in JavaScript? and Difference Between Async/Await and Promises**
-
-`async`/`await` is syntax sugar built on top of Promises to make asynchronous code easier to write and read. They are not different technologies, but rather a more readable way to work with Promises.
-
-#### Promises:
-
-* Promises require chaining `.then()` and `.catch()` methods to handle results and errors.
-
-Using promises:
-
-```javascript
-function resolveAfter2Seconds() {
-   return new Promise((resolve) => {
+     console.log('Hello, ' + this.name);
+   }
+
+   const person = { name: 'John' };
+   const greetPerson = greet.bind(person);
+   greetPerson(); // Hello, John
+   ```
+
+   The `bind()` method is also commonly used in React for handling events.
+
+### **17. What is the purpose of the `call()` and `apply()` methods in JavaScript?**
+   Both `call()` and `apply()` are used to invoke a function with a specific `this` context and pass arguments to it. The primary difference between them is how arguments are passed:
+   - **`call()`**: Arguments are passed individually after the `this` context.
+     ```javascript
+     function greet(age, country) {
+       console.log('Hello, ' + this.name + '. Age: ' + age + ', Country: ' + country);
+     }
+     const person = { name: 'John' };
+     greet.call(person, 25, 'USA');
+     ```
+   - **`apply()`**: Arguments are passed as an array.
+     ```javascript
+     greet.apply(person, [25, 'USA']);
+     ```
+
+### **18. What is the use of `setTimeout()` and `setInterval()`?**
+   - **`setTimeout()`**: Executes a function or a specified block of code once after a specified delay (in milliseconds).
+     ```javascript
      setTimeout(() => {
-       resolve('resolved');
+       console.log('Hello after 2 seconds');
      }, 2000);
-   });
- }
-
- async function asyncCall() {
-   console.log('calling');
-   const result = await resolveAfter2Seconds();
-   console.log(result);
-   // Expected output: "resolved"
- }
- asyncCall();
-
- // Output:
- // "calling"
- // "resolved"
-```
-
-#### async/await:
-
-* `async` marks a function as asynchronous, meaning it will return a promise.
-* `await` pauses the execution of the function until the promise is resolved or rejected.
-
-Using async/await:
-
-```javascript
-async function fetchData() {
-  let result = await fetch('https://api.example.com/data');
-  let data = await result.json();
-  console.log(data);
-}
-
-fetchData();
-```
-
-#### Key Differences:
-
-* `async`/`await` makes code appear synchronous and easier to understand, while Promises are asynchronous and often require `.then()` and `.catch()` for handling success and errors.
-* Error handling with `async/await` is done using `try`/`catch`, which can be more intuitive compared to `.catch()` with promises.
-
-### 23\. **What are Promises and async/await? How are they different from callbacks?**
-
-#### **Promises**
-
-A **Promise** is an object representing the eventual completion or failure of an asynchronous operation. It is used to handle asynchronous operations in a more readable way than using callbacks.
-
-**Example of a Promise:**
-
-```javascript
- const myPromise = new Promise((resolve, reject) => {
-  let success = true;
-  if (success) {
-    resolve("Operation was successful!");
-  } else {
-    reject("Something went wrong.");
-  }
-});
-
-myPromise
-  .then(result => console.log(result))  // Output: Operation was successful!
-  .catch(error => console.log(error));  // Output: Something went wrong.
-```
-
-#### **Async/Await**
-
-`async` and `await` are syntax sugar built on top of Promises. `async` is used to declare a function that returns a Promise, and `await` is used to pause the execution of the function until a Promise is resolved.
-
-**Example:**
-
-```javascript
- codeasync function fetchData() {
-  try {
-    let response = await fetch("https://api.example.com/data");
-    let data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-fetchData();
-```
-
-#### **Differences from Callbacks**
-
-* **Callbacks** involve passing a function as an argument to another function and executing it once the asynchronous task is done. This can lead to "callback hell" when there are many nested callbacks.
-* **Promises** represent a value that may be available now, or in the future, and they provide a more readable way to chain asynchronous operations.
-* **Async/Await** makes asynchronous code look and behave more like synchronous code, making it easier to understand and debug.
-
-**Example with Callback:**
-
-```javascript
- function fetchData(callback) {
-  setTimeout(() => {
-    callback(null, "Data fetched");
-  }, 1000);
-}
-
-fetchData((error, result) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(result);  // Output: Data fetched
-  }
-});
-```
-
-**Example with Promise:**
-
-```javascript
- function fetchData() {
-  return new Promise(resolve => {
-    setTimeout(() => resolve("Data fetched"), 1000);
-  });
-}
-
-fetchData().then(result => console.log(result)); // Output: Data fetched
-```
-
-In summary:
-
-* **Callbacks** can lead to nesting issues.
-* **Promises** provide a cleaner, more manageable way to handle async operations.
-* **Async/Await** makes code look synchronous and is easier to work with than nested promises or callbacks.
-
-### 24\. **What are the differences between `fetch` and `XMLHttpRequest` for making HTTP requests?**
-
-* **`fetch`**:
-
-  * **Modern API**: Based on promises, making it easier to work with asynchronous code using `async`/`await`.
-  * **Better API**: Provides a cleaner and more flexible syntax for making requests and handling responses.
-  * **Default response**: The response object must be explicitly parsed (e.g., `.json()`, `.text()`).
-  * **CORS**: Handles CORS (Cross-Origin Resource Sharing) more naturally.
-
-  Example:
-
-  ```js
-   codefetch('https://api.example.com/data')
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-  ```
-
-* **`XMLHttpRequest`**:
-
-  * **Older API**: More verbose and callback-based.
-  * **Callback-based**: Requires setting up callbacks for different stages of the request (open, send, onreadystatechange).
-  * **Less Flexible**: Has less support for modern features like promises.
-
-  Example:
-
-  ```js
-   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://api.example.com/data', true);
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  };
-  xhr.send();
-  ```
-
-**Key Differences**:
-
-1. **API style**: `fetch` is promise-based, while `XMLHttpRequest` is callback-based.
-2. **Browser support**: `fetch` is newer and not supported in older browsers like Internet Explorer, while `XMLHttpRequest` is widely supported.
-3. **Flexibility**: `fetch` is simpler and more flexible, while `XMLHttpRequest` requires more boilerplate code.
-
-### 25\. **What Are `setTimeout` and `setInterval`? How Do They Differ?**
-
-Both `setTimeout` and `setInterval` are used to schedule asynchronous functions to be executed after a delay.
-
-* **`setTimeout`**: Executes a function once after a specified delay (in milliseconds).
-
-  ```javascript
-   codesetTimeout(() => {
-    console.log("This runs after 2 seconds.");
-  }, 2000);
-  ```
-
-* **`setInterval`**: Executes a function repeatedly, with a specified delay between each execution.
-
-  ```javascript
-   codesetInterval(() => {
-    console.log("This runs every 2 seconds.");
-  }, 2000);
-  ```
-
-#### Key Differences:
-
-* `setTimeout` runs the function **once** after the specified delay.
-* `setInterval` runs the function **repeatedly** at intervals.
-* Both functions return an identifier that can be used to **clear** them (using `clearTimeout()` or `clearInterval()`).
-
-Example of clearing a timer:
-
-```javascript
- codelet timerId = setInterval(() => {
-  console.log("This will repeat every second.");
-}, 1000);
-
-// Stop the interval after 5 seconds
-setTimeout(() => {
-  clearInterval(timerId);
-  console.log("Interval cleared.");
-}, 5000);
-```
-
-### Conclusion
-
-These are core concepts in JavaScript for handling asynchronous behavior and managing operations like promises, async/await, event loops, and timers. By understanding these, you can write more efficient and readable asynchronous code.
-
-
-### 26\. **What are arrow functions and how do they differ from regular functions?**
-
-Arrow functions are a shorthand syntax for writing functions in JavaScript. They are more concise than traditional function expressions and they do not have their own `this`, `arguments`, `super`, or `new.target` bindings.
-
-**Example:**
-
-```javascript
-const add = (a, b) => a + b;
-console.log(add(2, 3)); // 5
-```
-
-**Differences from Regular Functions:**
-
-1. **Syntax:** Arrow functions have a more concise syntax, especially when there is a single expression (no need for the `return` keyword).
-2. **`this` Binding:** Arrow functions do not have their own `this`; they inherit `this` from the surrounding context. In contrast, regular functions define their own `this`.
-
-**Example:**
-
-```javascript
- code// Arrow function does not have its own `this`
-const person = {
-  name: "Alice",
-  greet: () => {
-    console.log(this.name);  // `this` refers to the global object, not the `person`
-  }
-};
-person.greet();  // undefined (or global object depending on the environment)
-
-// Regular function has its own `this`
-const person2 = {
-  name: "Alice",
-  greet: function() {
-    console.log(this.name);  // `this` refers to the `person2` object
-  }
-};
-person2.greet();  // Alice
-```
-
-### 27\. **What is the Event Loop in JavaScript? How It Works**
-
-The **event loop** is a mechanism that handles asynchronous operations in JavaScript. It continuously checks the call stack and the message queue. When the call stack is empty, it pushes tasks from the message queue to the call stack for execution.
-
-#### How it Works:
-
-* JavaScript is single-threaded, meaning it can only execute one operation at a time.
-* The event loop continuously checks the **call stack** for functions that need to be executed.
-* When asynchronous code (like a `setTimeout`, promise, or event listener) is invoked, it is added to the **message queue** (also called the **task queue**).
-* The event loop moves tasks from the message queue to the call stack for execution when the call stack is empty.
-
-Here's a simplified flow:
-
-1. **Call Stack**: Synchronous code gets pushed onto the stack and executed.
-2. **Web APIs** (like `setTimeout`): Asynchronous operations are handled by the browser or Node.js environment (outside the main thread).
-3. **Message Queue**: Once an asynchronous task completes, it moves to the message queue.
-4. The **Event Loop** checks if the call stack is empty. If it is, it pushes the next task from the queue onto the call stack.
-
-This allows JavaScript to handle asynchronous events efficiently without blocking the execution of other tasks.
-
-**Impact on performance**:
-
-* Asynchronous code (e.g., setTimeout, AJAX, Promises) does not block the main thread. However, if there are too many tasks in the event queue or long-running operations on the call stack, it can delay the execution of further tasks and cause performance issues like UI freezes.
-
-
-### 28\. **Difference Between Synchronous and Asynchronous Functions in JavaScript**
-
-* **Synchronous Functions**:
-
-  * Synchronous functions execute code in a sequential manner.
-  * The program waits for each operation to complete before moving on to the next one.
-  * If a synchronous function takes a long time (e.g., a network request), it will block the entire execution, leading to performance issues or UI freezing.
-
-  **Example**:
-
-  ```javascript
-  console.log("Start");
-  console.log("Middle");
-  console.log("End");
-  ```
-
-  Output:
-
-  ```sql
-  Start
-  Middle
-  End
-  ```
-
-* **Asynchronous Functions**:
-
-  * Asynchronous functions allow the code to execute without blocking the program. They execute independently of the main program flow.
-  * They usually involve callbacks, promises, or `async/await` to handle operations that take time (e.g., file I/O, network requests).
-
-  **Example (using `setTimeout`)**:
-
-  ```javascript
-  console.log("Start");
-  setTimeout(() => {
-    console.log("Middle");
-  }, 1000); // Delayed by 1 second
-  console.log("End");
-  ```
-
-  Output:
-
-  ```sql
-  Start
-  End
-  Middle (after 1 second)
-  ```
-
-### 29\. **What is the difference between the `apply()`, `call()`, and `bind()` methods in JavaScript? How can each be used effectively?**
-
-The `apply()`, `call()`, and `bind()` methods are used to set the context (`this`) of a function and call it with specific arguments, but they differ in their usage and behavior:
-
-* **`call()`**: Immediately invokes the function with a specified `this` value and arguments provided individually.
-    ```javascript
-     function greet(name) {
-      console.log(`Hello, ${name}`);
-    }
-    greet.call(null, 'Alice'); // "Hello, Alice"
-    ```
-
-* **`apply()`**: Similar to `call()`, but arguments are passed as an array (or an array-like object).
-    ```javascript
-     function greet(name, age) {
-      console.log(`Hello, ${name}. You are ${age} years old.`);
-    }
-    greet.apply(null, ['Bob', 30]); // "Hello, Bob. You are 30 years old."
-    ```
-
-* **`bind()`**: Returns a new function with a bound `this` value and optional arguments. Unlike `call()` and `apply()`, `bind()` does not invoke the function immediately but creates a new function that can be called later.
-    ```javascript
-     function greet(name) {
-      console.log(`Hello, ${name}`);
-    }
-    const greetAlice = greet.bind(null, 'Alice');
-    greetAlice(); // "Hello, Alice"
-    ```
-
-### 30\. **What are the map(), filter(), and reduce() methods?**
-In JavaScript, the `map()`, `filter()`, and `reduce()` methods are used to work with arrays in a functional way. They are **higher-order functions** that allow you to manipulate and process array elements in different ways. Here's a simple explanation of each:
-
-### 1. `map()`:
-The `map()` method creates a new array by applying a given function to each element of the original array.
-
-**Syntax**:
-```javascript
-let newArray = array.map(callback(currentValue, index, array));
-```
-
-- **callback**: A function that is called for each element in the array.
-- **currentValue**: The current element being processed.
-- **index** (optional): The index of the current element.
-- **array** (optional): The original array.
-
-**Example**:
-```javascript
-const numbers = [1, 2, 3, 4];
-const doubled = numbers.map(num => num * 2);  // [2, 4, 6, 8]
-console.log(doubled);
-```
-
-### 2. `filter()`:
-The `filter()` method creates a new array with all elements that pass the test implemented by the provided function.
-
-**Syntax**:
-```javascript
-let newArray = array.filter(callback(currentValue, index, array));
-```
-
-- **callback**: A function that tests each element in the array.
-- **currentValue**: The current element being processed.
-- **index** (optional): The index of the current element.
-- **array** (optional): The original array.
-
-**Example**:
-```javascript
-const numbers = [1, 2, 3, 4, 5];
-const evenNumbers = numbers.filter(num => num % 2 === 0);  // [2, 4]
-console.log(evenNumbers);
-```
-
-### 3. `reduce()`:
-The `reduce()` method applies a function to accumulate or reduce the array to a single value. This is useful for operations like summing values, concatenating strings, or building an object.
-
-**Syntax**:
-```javascript
-let result = array.reduce(callback(accumulator, currentValue, index, array), initialValue);
-```
-
-- **callback**: A function that is called for each element in the array.
-- **accumulator**: The accumulated value returned by the previous call of the callback.
-- **currentValue**: The current element being processed.
-- **index** (optional): The index of the current element.
-- **array** (optional): The original array.
-- **initialValue** (optional): A starting value for the accumulator.
-
-**Example**:
-```javascript
-const numbers = [1, 2, 3, 4];
-const sum = numbers.reduce((acc, num) => acc + num, 0);  // 10
-console.log(sum);
-```
-
-### Key Differences:
-- **`map()`**: Transforms each element of the array and creates a new array with the transformed values.
-- **`filter()`**: Filters out elements based on a condition and creates a new array with the elements that meet the condition.
-- **`reduce()`**: Reduces the array to a single value, like a sum or product, by applying a function to each element.
-
-These methods are very powerful and commonly used in JavaScript to handle arrays efficiently in a clean and readable manner.
-
-### 31\. **What are `WeakMap` and `WeakSet`? How are they different from `Map` and `Set`?**
-
-* **WeakMap**: A collection of key-value pairs where the keys are objects, and the values can be any type. If the key object is garbage collected, the corresponding entry in the `WeakMap` is automatically removed.
-
-```js
- codelet obj = {};
-const weakMap = new WeakMap();
-weakMap.set(obj, 'value');
-```
-
-* **WeakSet**: A collection of unique objects. Similar to `WeakMap`, the objects are weakly referenced, so if the object is no longer referenced elsewhere, it will be garbage collected.
-
-**Differences**:
-
-* `WeakMap` and `WeakSet` allow garbage collection of keys/objects.
-* `Map` and `Set` maintain strong references to their elements.
-
-### 32\. **Explain destructuring in JavaScript. Provide examples for both objects and arrays.?**
-
-Destructuring allows you to extract values from arrays or objects into individual variables. It makes your code more concise and readable.
-
-#### **Object Destructuring**
-
-You can destructure an object to extract values based on the property names.
-
-**Example:**
-
-```javascript
- const person = { name: "Alice", age: 30, city: "New York" };
-
-// Destructuring
-const { name, age, city } = person;
-console.log(name); // Alice
-console.log(age);  // 30
-console.log(city); // New York
-```
-
-You can also rename variables during destructuring:
-
-```javascript
- const person = { name: "Alice", age: 30 };
-const { name: fullName, age: yearsOld } = person;
-console.log(fullName); // Alice
-console.log(yearsOld); // 30
-```
-
-#### **Array Destructuring**
-
-You can destructure arrays to extract values based on position.
-
-**Example:**
-
-```javascript
- const colors = ["red", "green", "blue"];
-
-// Destructuring
-const [first, second, third] = colors;
-console.log(first);  // red
-console.log(second); // green
-console.log(third);  // blue
-```
-
-You can also skip elements:
-
-```javascript
- const colors = ["red", "green", "blue"];
-const [, , third] = colors;
-console.log(third); // blue
-```
-
-### 33\. **What are default parameters in JavaScript functions?**
-
-In JavaScript, default parameters allow you to specify default values for function parameters. If the argument is not passed when calling the function, the default value is used.
-
-**Example:**
-
-```javascript
- function greet(name = "Guest") {
-  console.log(`Hello, ${name}!`);
-}
-
-greet();         // Output: Hello, Guest!
-greet("Alice");  // Output: Hello, Alice!
-```
-
-You can also use expressions as default values:
-
-```javascript
- function calculatePrice(price, tax = price * 0.1) {
-  return price + tax;
-}
-
-console.log(calculatePrice(100));    // 110 (tax is 10% by default)
-console.log(calculatePrice(100, 20)); // 120 (tax is provided as 20)
-```
-
-### 34\. **Explain the concept of spread and rest operators in JavaScript.**
-
-Both the spread (`...`) and rest (`...`) operators use the same syntax but serve different purposes.
-
-#### **Spread Operator (`...`)**
-
-The spread operator allows you to expand elements from an array or object into individual elements.
-
-**Example with Arrays:**
-
-```javascript
- const arr = [1, 2, 3];
-const newArr = [...arr, 4, 5];
-console.log(newArr); // [1, 2, 3, 4, 5]
-```
-
-**Example with Objects:**
-
-```javascript
- const person = { name: "Alice", age: 30 };
-const personCopy = { ...person, city: "New York" };
-console.log(personCopy); // { name: "Alice", age: 30, city: "New York" }
-```
-
-#### **Rest Operator (`...`)**
-
-The rest operator collects multiple elements and stores them in an array. It is typically used in function arguments or when destructuring.
-
-**Example with Functions:**
-
-```javascript
- function sum(...numbers) {
-  return numbers.reduce((total, num) => total + num, 0);
-}
-console.log(sum(1, 2, 3)); // 6
-console.log(sum(5, 10, 15, 20)); // 50
-```
-
-**Example with Destructuring:**
-
-```javascript
- const arr = [1, 2, 3, 4, 5];
-const [first, second, ...rest] = arr;
-console.log(first);  // 1
-console.log(second); // 2
-console.log(rest);   // [3, 4, 5]
-```
-
-### 35\. **What are template literals and how are they used?**
-
-Template literals are a feature in JavaScript that allows you to work with strings in a more flexible way. They are enclosed by backticks (`` ` ``) instead of single or double quotes, and allow for embedding expressions inside the string using `${}`.
-
-**Example:**
-
-```javascript
- codelet name = "Alice";
-let age = 30;
-let greeting = `Hello, my name is ${name} and I am ${age} years old.`;
-console.log(greeting); 
-// Output: Hello, my name is Alice and I am 30 years old.
-```
-
-You can also create multi-line strings without needing escape characters:
-
-```javascript
- codelet message = `This is a string
-that spans multiple lines.`;
-console.log(message);
-```
-
-
-### 36\. **What is a `Set` in JavaScript, and how does it differ from an array? When would you use it?**
-
-A `Set` is a collection of unique values in JavaScript. Unlike arrays, sets do not allow duplicates.
-
-* **Example**:
-
-```js
- const set = new Set([1, 2, 3, 3, 4]);
-console.log(set);  // Output: Set { 1, 2, 3, 4 }
-```
-
-**Differences**:
-
-* Sets do not allow duplicate values.
-* Sets are optimized for checking the existence of values.
-
-**When to use**:
-
-* When you need to store unique values or efficiently check if a value exists.
-
-
-### 37\. **How does JavaScript handle errors with try, catch, and finally?**
-
-In JavaScript, errors in asynchronous code can be handled in two main ways:
-
-1. **Using `.catch()` with Promises**: If the promise is rejected, the error can be caught using `.catch()`.
-
+     ```
+   - **`setInterval()`**: Executes a function or block of code repeatedly with a specified time interval (in milliseconds).
+     ```javascript
+     setInterval(() => {
+       console.log('Hello every 2 seconds');
+     }, 2000);
+     ```
+
+### **19. What is the difference between `call()` and `apply()` methods in JavaScript?**
+   This question is a repeat of question **17**, but to summarize:
+   - **`call()`**: Accepts arguments as a **comma-separated list**.
+   - **`apply()`**: Accepts arguments as an **array**.
+
+   Both methods allow you to control the `this` context for the function.
+
+### **20. How do you clone an object in JavaScript?**
+   There are multiple ways to clone an object in JavaScript:
+   - **Using `Object.assign()`** (shallow copy):
+     ```javascript
+     const original = { a: 1, b: 2 };
+     const clone = Object.assign({}, original);
+     ```
+   - **Using the spread operator** (shallow copy):
+     ```javascript
+     const original = { a: 1, b: 2 };
+     const clone = { ...original };
+     ```
+   - **Using `JSON.parse()` and `JSON.stringify()`** (deep copy, but works only for objects with JSON-safe values):
+     ```javascript
+     const original = { a: 1, b: { c: 3 } };
+     const clone = JSON.parse(JSON.stringify(original));
+     ```
+   - **Using libraries** like Lodash (`_.cloneDeep()`) for deep cloning with more control over complex objects.
+
+### **2. Arrays and Objects**
+Here are the answers to the next set of JavaScript questions:
+
+### **21. How can you merge two arrays in JavaScript?**
+   You can merge two arrays in JavaScript using several methods:
+   - **Using the `concat()` method**:
+     ```javascript
+     const array1 = [1, 2, 3];
+     const array2 = [4, 5, 6];
+     const mergedArray = array1.concat(array2);
+     ```
+   - **Using the spread operator** (ES6):
+     ```javascript
+     const array1 = [1, 2, 3];
+     const array2 = [4, 5, 6];
+     const mergedArray = [...array1, ...array2];
+     ```
+
+   Both methods result in a new array with elements from both arrays.
+
+### **22. What is the difference between `slice()` and `splice()` in JavaScript?**
+   - **`slice()`**:
+     - Does not modify the original array.
+     - Returns a shallow copy of a portion of the array.
+     - Takes two arguments: start index (inclusive) and end index (exclusive).
+     - Syntax: `array.slice(startIndex, endIndex)`
+     ```javascript
+     const arr = [1, 2, 3, 4, 5];
+     const slicedArray = arr.slice(1, 4); // [2, 3, 4]
+     ```
+
+   - **`splice()`**:
+     - Modifies the original array.
+     - Can remove elements, add new elements, or replace elements.
+     - Takes at least two arguments: the starting index and the number of elements to remove (optional). Additional arguments can be added to insert new elements.
+     - Syntax: `array.splice(startIndex, deleteCount, item1, item2, ...)`
+     ```javascript
+     const arr = [1, 2, 3, 4, 5];
+     arr.splice(2, 2, 'a', 'b'); // arr becomes [1, 2, 'a', 'b', 5]
+     ```
+
+### **23. How do you remove duplicates from an array in JavaScript?**
+   There are a few ways to remove duplicates:
+   - **Using a `Set`** (modern and simple):
+     ```javascript
+     const arr = [1, 2, 3, 2, 4, 1];
+     const uniqueArray = [...new Set(arr)];
+     ```
+   - **Using `filter()` and `indexOf()`**:
+     ```javascript
+     const arr = [1, 2, 3, 2, 4, 1];
+     const uniqueArray = arr.filter((value, index, self) => self.indexOf(value) === index);
+     ```
+
+### **24. What are the different ways to loop through an array in JavaScript?**
+   There are multiple ways to loop through an array in JavaScript:
+   - **For loop**:
+     ```javascript
+     const arr = [1, 2, 3, 4];
+     for (let i = 0; i < arr.length; i++) {
+       console.log(arr[i]);
+     }
+     ```
+   - **For...of loop** (ES6):
+     ```javascript
+     for (const value of arr) {
+       console.log(value);
+     }
+     ```
+   - **forEach()**:
+     ```javascript
+     arr.forEach(value => {
+       console.log(value);
+     });
+     ```
+   - **map()** (for transforming arrays):
+     ```javascript
+     const squaredArr = arr.map(value => value * value);
+     ```
+   - **for...in loop** (not typically recommended for arrays, used for object keys):
+     ```javascript
+     for (const index in arr) {
+       console.log(arr[index]);
+     }
+     ```
+
+### **25. How do you sort an array of objects based on a property in JavaScript?**
+   You can use the `sort()` method to sort an array of objects based on a specific property:
+   - **Example**: Sorting by `age` property in an array of objects.
    ```javascript
-    myPromise.then(result => {
-     console.log(result);
-   }).catch(error => {
-     console.log('Error:', error);
+   const people = [
+     { name: 'John', age: 25 },
+     { name: 'Jane', age: 30 },
+     { name: 'Bob', age: 20 }
+   ];
+   people.sort((a, b) => a.age - b.age); // Sorts by age in ascending order
+   console.log(people);
+   ```
+
+   For descending order, simply reverse the subtraction:
+   ```javascript
+   people.sort((a, b) => b.age - a.age); // Sorts by age in descending order
+   ```
+
+### **26. What is the difference between `Object.assign()` and the spread operator (`...`)?**
+   Both **`Object.assign()`** and the **spread operator** are used to create shallow copies of objects or merge them, but they differ in syntax and behavior:
+   - **`Object.assign()`**:
+     - Copies all properties from one or more source objects to a target object.
+     - Modifies the target object and returns it.
+     ```javascript
+     const obj1 = { a: 1, b: 2 };
+     const obj2 = { c: 3 };
+     const mergedObj = Object.assign({}, obj1, obj2); // Creates a shallow copy
+     ```
+   - **Spread operator**:
+     - Creates a shallow copy of an object.
+     - More concise syntax compared to `Object.assign()`.
+     ```javascript
+     const obj1 = { a: 1, b: 2 };
+     const obj2 = { c: 3 };
+     const mergedObj = { ...obj1, ...obj2 }; // Creates a shallow copy
+     ```
+
+   Both methods perform shallow copies, meaning nested objects are still referenced by the original object.
+
+### **27. How do you check if an object is an array in JavaScript?**
+   You can check if an object is an array using:
+   - **`Array.isArray()`**:
+     ```javascript
+     const arr = [1, 2, 3];
+     console.log(Array.isArray(arr)); // true
+     ```
+   - **`instanceof`**:
+     ```javascript
+     console.log(arr instanceof Array); // true
+     ```
+
+   `Array.isArray()` is the recommended method, as it works across all environments (including iframes).
+
+### **28. What is object destructuring in JavaScript?**
+   **Object destructuring** allows you to extract properties from objects and assign them to variables in a more concise syntax.
+   - **Example**:
+     ```javascript
+     const person = { name: 'John', age: 25, city: 'New York' };
+     const { name, age } = person; // Destructuring
+     console.log(name, age); // 'John', 25
+     ```
+   You can also assign default values and rename properties during destructuring:
+   ```javascript
+   const { name: fullName = 'Unknown' } = person;
+   ```
+
+### **29. How can you merge two objects in JavaScript?**
+   You can merge two objects in JavaScript using:
+   - **`Object.assign()`**:
+     ```javascript
+     const obj1 = { a: 1, b: 2 };
+     const obj2 = { b: 3, c: 4 };
+     const mergedObj = Object.assign({}, obj1, obj2); // Merges obj1 and obj2
+     ```
+   - **Spread operator (`...`)**:
+     ```javascript
+     const obj1 = { a: 1, b: 2 };
+     const obj2 = { b: 3, c: 4 };
+     const mergedObj = { ...obj1, ...obj2 }; // Merges obj1 and obj2
+     ```
+
+   In both methods, if the objects have properties with the same name, the value from the second object will overwrite the value from the first object.
+
+### **30. What is the difference between `for...in` and `for...of` loops in JavaScript?**
+   - **`for...in`**:
+     - Iterates over the **keys** (or property names) of an object or the indexes of an array.
+     - Not recommended for arrays, as it can iterate over inherited properties.
+     ```javascript
+     const arr = [1, 2, 3];
+     for (const index in arr) {
+       console.log(index); // 0, 1, 2 (index)
+     }
+     ```
+   - **`for...of`**:
+     - Iterates over the **values** of an iterable object (like an array, string, or set).
+     - Works well with arrays to get the values directly.
+     ```javascript
+     const arr = [1, 2, 3];
+     for (const value of arr) {
+       console.log(value); // 1, 2, 3 (values)
+     }
+     ```
+
+   - **Summary**:
+     - Use `for...in` for objects (to iterate over properties).
+     - Use `for...of` for arrays and other iterable objects (to iterate over values).
+
+
+### **3. Functions and Scope**
+Here are the answers to the next set of JavaScript questions:
+
+### **31. What is the difference between local scope and global scope in JavaScript?**
+   - **Local Scope**: A variable or function declared within a function is in the **local scope** and can only be accessed within that function. Once the function execution is complete, local variables are destroyed.
+     ```javascript
+     function example() {
+       let localVar = 'I am local';
+       console.log(localVar); // Accessible here
+     }
+     console.log(localVar); // Error: localVar is not defined
+     ```
+
+   - **Global Scope**: A variable or function declared outside any function is in the **global scope** and can be accessed from anywhere in the code.
+     ```javascript
+     let globalVar = 'I am global';
+     function example() {
+       console.log(globalVar); // Accessible here
+     }
+     console.log(globalVar); // Accessible here too
+     ```
+
+   In JavaScript, global variables can be accessed throughout the entire program, whereas local variables are confined to the function where they are declared.
+
+### **32. What is lexical scoping in JavaScript?**
+   **Lexical scoping** means that the accessibility of variables is determined by where they are defined in the source code. In JavaScript, this refers to the scope in which a function is created. The inner function can access variables from its own scope as well as from any outer (enclosing) function's scope, but not vice versa.
+
+   Example:
+   ```javascript
+   function outer() {
+     let outerVar = 'I am from outer';
+     function inner() {
+       console.log(outerVar); // inner function can access outerVar
+     }
+     inner();
+   }
+   outer();
+   ```
+
+   In this example, the inner function can access `outerVar` because `inner()` is lexically scoped within `outer()`.
+
+### **33. What is the difference between function expressions and function declarations?**
+   - **Function Declaration**: A function is declared with the `function` keyword, and it is **hoisted** to the top of its scope, meaning it can be called before its definition.
+     ```javascript
+     function greet() {
+       console.log('Hello');
+     }
+     greet(); // Works even before the function definition
+     ```
+
+   - **Function Expression**: A function is assigned to a variable and is **not hoisted**. It can only be called after the function expression is assigned to the variable.
+     ```javascript
+     const greet = function() {
+       console.log('Hello');
+     };
+     greet(); // Works only after the function expression
+     ```
+
+   The key difference is that **function declarations are hoisted** while function expressions are **not**.
+
+### **34. What is the use of the `arguments` object in JavaScript?**
+   The `arguments` object is an **array-like object** available inside all non-arrow functions that contains all the arguments passed to the function, regardless of the number of parameters defined in the function.
+
+   Example:
+   ```javascript
+   function sum() {
+     let total = 0;
+     for (let i = 0; i < arguments.length; i++) {
+       total += arguments[i];
+     }
+     return total;
+   }
+   console.log(sum(1, 2, 3)); // 6
+   ```
+
+   The `arguments` object does not work with arrow functions and cannot be used with them. It is useful for functions where the number of arguments is not fixed.
+
+### **35. What is the purpose of the `default` keyword in JavaScript functions?**
+   The `default` keyword is used to assign default values to function parameters when no argument or `undefined` is passed.
+
+   Example:
+   ```javascript
+   function greet(name = 'Guest') {
+     console.log('Hello, ' + name);
+   }
+   greet(); // Hello, Guest
+   greet('John'); // Hello, John
+   ```
+
+   In this example, if no value is passed for the `name` parameter, it defaults to `'Guest'`.
+
+### **36. How can you return multiple values from a function in JavaScript?**
+   JavaScript functions can only return one value. However, you can return multiple values using objects, arrays, or other data structures.
+
+   - **Using an object**:
+     ```javascript
+     function getPersonInfo() {
+       return { name: 'John', age: 30 };
+     }
+     const person = getPersonInfo();
+     console.log(person.name, person.age); // John, 30
+     ```
+
+   - **Using an array**:
+     ```javascript
+     function getCoordinates() {
+       return [10, 20];
+     }
+     const [x, y] = getCoordinates();
+     console.log(x, y); // 10, 20
+     ```
+
+   This way, you can return multiple values by packaging them into a single object or array.
+
+### **37. What are higher-order functions in JavaScript?**
+   A **higher-order function** is a function that:
+   - Takes one or more functions as arguments.
+   - Returns a function as a result.
+
+   Higher-order functions are a key feature in functional programming. They allow you to abstract operations and create more flexible, reusable code.
+
+   Example:
+   ```javascript
+   function multiplier(factor) {
+     return function(number) {
+       return number * factor;
+     };
+   }
+   const double = multiplier(2);
+   console.log(double(5)); // 10
+   ```
+
+   In this example, `multiplier` is a higher-order function because it returns a function that multiplies its argument by a specific factor.
+
+### **38. What is recursion in JavaScript? Can you provide an example?**
+   **Recursion** is when a function calls itself to solve a problem. A base case is usually defined to prevent infinite recursion.
+
+   Example (factorial function):
+   ```javascript
+   function factorial(n) {
+     if (n === 0) return 1; // base case
+     return n * factorial(n - 1); // recursive case
+   }
+   console.log(factorial(5)); // 120
+   ```
+
+   In this example, the `factorial` function calls itself with a reduced value of `n` until it reaches the base case (`n === 0`).
+
+### **39. What is a callback function in JavaScript?**
+   A **callback function** is a function passed as an argument to another function, which is then executed after some operation (e.g., asynchronous code) is completed.
+
+   Example:
+   ```javascript
+   function fetchData(callback) {
+     setTimeout(() => {
+       console.log('Data fetched');
+       callback(); // Calling the callback function
+     }, 1000);
+   }
+
+   fetchData(function() {
+     console.log('Callback executed');
    });
    ```
 
-2. **Using `try/catch` with async/await**: If you are using `async`/`await`, you can handle errors more synchronously inside a `try/catch` block.
+   In this example, `fetchData` accepts a callback function that is executed once the data fetching operation completes.
 
+### **40. How do you handle errors in JavaScript?**
+   Errors in JavaScript can be handled using `try`, `catch`, and `finally` blocks:
+   - **`try`**: Wraps code that may throw an error.
+   - **`catch`**: Handles the error if one is thrown.
+   - **`finally`**: Executes code after the `try` and `catch`, regardless of whether an error was thrown or not.
+
+   Example:
    ```javascript
-    async function fetchData() {
+   try {
+     const result = someUndefinedFunction();
+   } catch (error) {
+     console.error('An error occurred:', error);
+   } finally {
+     console.log('This will always run');
+   }
+   ```
+
+   This ensures that errors are caught and handled properly, and cleanup code is always executed with the `finally` block.
+
+### **4. Asynchronous JavaScript**
+Here are the answers to the next set of JavaScript questions:
+
+### **41. What is the event loop in JavaScript?**
+   The **event loop** is a fundamental part of JavaScript's concurrency model. It allows JavaScript to perform non-blocking operations, even though JavaScript is single-threaded. The event loop continuously checks the call stack and the message queue (also called the event queue).
+   
+   - If the call stack is empty, it pushes the first task in the event queue to the call stack and executes it.
+   - The event loop allows JavaScript to handle asynchronous operations (like I/O tasks, setTimeout, and network requests) without blocking the main execution thread.
+
+   Example:
+   ```javascript
+   console.log('Start');
+   setTimeout(() => console.log('Inside Timeout'), 0);
+   console.log('End');
+   // Output: Start, End, Inside Timeout
+   ```
+
+   Here, the `setTimeout` function doesn't block the main thread; the event loop ensures that the timeout callback executes after the current call stack is empty.
+
+### **42. What is a promise in JavaScript? How does it work?**
+   A **Promise** in JavaScript is an object representing the eventual completion (or failure) of an asynchronous operation and its resulting value. It is used to handle asynchronous operations and avoid callback hell.
+
+   A promise can be in one of the following states:
+   - **Pending**: The promise is still being processed.
+   - **Resolved** (Fulfilled): The operation was successful, and the promise has a result.
+   - **Rejected**: The operation failed, and the promise has an error.
+
+   Example:
+   ```javascript
+   let promise = new Promise((resolve, reject) => {
+     let success = true;
+     if (success) {
+       resolve('Operation was successful');
+     } else {
+       reject('Operation failed');
+     }
+   });
+
+   promise.then(result => console.log(result))
+          .catch(error => console.log(error));
+   ```
+
+   The promise is initially in the "pending" state, and depending on the outcome, it either resolves or rejects.
+
+### **43. What are the states of a promise?**
+   A promise has three states:
+   1. **Pending**: The promise is neither resolved nor rejected; it is still in progress.
+   2. **Fulfilled** (Resolved): The asynchronous operation has completed successfully, and the promise now has a result.
+   3. **Rejected**: The asynchronous operation has failed, and the promise is rejected with an error or failure reason.
+
+   The state transitions occur like this:
+   - A promise starts in the `pending` state.
+   - It can transition to `fulfilled` if the operation completes successfully.
+   - It can transition to `rejected` if the operation encounters an error.
+
+### **44. How can you handle asynchronous operations in JavaScript?**
+   Asynchronous operations can be handled in JavaScript in several ways:
+   1. **Callbacks**: Functions passed as arguments to be executed once an operation is complete.
+   2. **Promises**: Allow chaining `.then()` for success and `.catch()` for error handling.
+   3. **Async/Await**: A more readable and concise way to work with asynchronous code, based on promises.
+
+   Example using `Promise`:
+   ```javascript
+   function fetchData() {
+     return new Promise((resolve, reject) => {
+       setTimeout(() => resolve('Data fetched'), 1000);
+     });
+   }
+
+   fetchData().then(result => console.log(result));
+   ```
+
+### **45. What is `async/await` in JavaScript?**
+   **`async`/`await`** are syntax improvements in JavaScript to work with promises in a cleaner and more readable way:
+   - **`async`** is used to define a function that returns a promise.
+   - **`await`** can be used inside an `async` function to pause execution until the promise is resolved.
+
+   Example:
+   ```javascript
+   async function fetchData() {
+     let data = await new Promise(resolve => setTimeout(() => resolve('Data fetched'), 1000));
+     console.log(data);
+   }
+   fetchData(); // Output: Data fetched
+   ```
+
+   With `async/await`, you can handle asynchronous operations in a synchronous-like manner, avoiding the need for chaining `.then()` and `.catch()`.
+
+### **46. What is the difference between `async/await` and promises?**
+   - **Promises** are the core mechanism for handling asynchronous operations, and you can chain `.then()` and `.catch()` for handling the result or error.
+   - **`async/await`** is a syntactical sugar over promises. It makes asynchronous code look synchronous, making it easier to read and write.
+
+   **Key differences**:
+   - `async/await` makes asynchronous code look more like synchronous code, improving readability.
+   - Promises involve chaining `.then()` for success and `.catch()` for error handling.
+   - `async/await` avoids callback-style nesting and makes error handling easier with `try/catch`.
+
+   Example using promises:
+   ```javascript
+   getData()
+     .then(result => console.log(result))
+     .catch(error => console.log(error));
+   ```
+
+   Example using async/await:
+   ```javascript
+   try {
+     const result = await getData();
+     console.log(result);
+   } catch (error) {
+     console.log(error);
+   }
+   ```
+
+### **47. How does JavaScript handle multiple asynchronous operations in sequence?**
+   JavaScript handles multiple asynchronous operations in sequence by chaining promises or using `async/await`. When one asynchronous operation completes, the next one can be executed.
+
+   - **With Promises**:
+     ```javascript
+     fetchData1()
+       .then(result1 => {
+         return fetchData2(result1);
+       })
+       .then(result2 => {
+         return fetchData3(result2);
+       })
+       .catch(error => console.log(error));
+     ```
+
+   - **With Async/Await**:
+     ```javascript
+     async function runAsync() {
+       try {
+         const result1 = await fetchData1();
+         const result2 = await fetchData2(result1);
+         const result3 = await fetchData3(result2);
+       } catch (error) {
+         console.log(error);
+       }
+     }
+     runAsync();
+     ```
+
+   Both methods ensure that each asynchronous operation completes before the next one begins.
+
+### **48. What is the purpose of `Promise.all()` and `Promise.race()`?**
+   - **`Promise.all()`**: Waits for all promises to resolve or one to reject. It returns a promise that resolves when all input promises are resolved.
+     ```javascript
+     Promise.all([fetchData1(), fetchData2()])
+       .then(results => console.log(results))
+       .catch(error => console.log(error));
+     ```
+
+   - **`Promise.race()`**: Waits for the first promise to resolve or reject, and returns the result of that promise. It is useful when you want to handle the first completion (either resolved or rejected).
+     ```javascript
+     Promise.race([fetchData1(), fetchData2()])
+       .then(result => console.log(result))
+       .catch(error => console.log(error));
+     ```
+
+### **49. How do you handle errors in an async function?**
+   Errors in an `async` function can be handled using a `try/catch` block. If an error occurs inside an `await` expression, it will be caught in the `catch` block.
+
+   Example:
+   ```javascript
+   async function fetchData() {
      try {
-       let data = await someAsyncOperation();
-       console.log(data);
+       const data = await fetch('https://api.example.com');
+       const jsonData = await data.json();
+       console.log(jsonData);
      } catch (error) {
-       console.log('Error:', error);
+       console.log('Error fetching data:', error);
+     }
+   }
+   fetchData();
+   ```
+
+   This ensures that any errors in the asynchronous operation are properly handled.
+
+### **50. What is a callback hell, and how can you avoid it?**
+   **Callback hell** refers to the situation where multiple nested callbacks lead to code that is difficult to read and maintain, typically resulting in deeply nested structures.
+
+   Example of callback hell:
+   ```javascript
+   getData(function(a) {
+     getData2(a, function(b) {
+       getData3(b, function(c) {
+         // More callbacks...
+       });
+     });
+   });
+   ```
+
+   To avoid callback hell:
+   - **Use Promises**: This allows chaining, making the code more readable.
+   - **Use `async/await`**: This flattens the nested structure and provides a more synchronous flow of control.
+
+   Example using `async/await`:
+   ```javascript
+   async function fetchData() {
+     const a = await getData();
+     const b = await getData2(a);
+     const c = await getData3(b);
+     // More code...
+   }
+   fetchData();
+   ```
+
+   By using promises or `async/await`, you can avoid the nested callbacks and make the code cleaner and more maintainable.
+
+---
+
+### **5. ES6 and Beyond**
+Here are the answers to the next set of JavaScript questions:
+
+### **51. What are template literals in JavaScript?**
+   **Template literals** are a new way to work with strings in JavaScript introduced in ES6. They allow for easier string interpolation, multi-line strings, and embedding expressions inside strings.
+
+   Key features:
+   - **String interpolation**: Using `${}` to embed expressions inside strings.
+   - **Multi-line strings**: Template literals allow strings to span multiple lines without needing escape characters.
+
+   Example:
+   ```javascript
+   const name = 'Alice';
+   const age = 25;
+   const greeting = `Hello, my name is ${name} and I am ${age} years old.`;
+   console.log(greeting); // Hello, my name is Alice and I am 25 years old.
+   ```
+
+   - Multi-line example:
+   ```javascript
+   const message = `This is
+   a multi-line
+   string.`;
+   console.log(message);
+   ```
+
+### **52. What are the new features introduced in ES6?**
+   ES6 (ECMAScript 2015) introduced several important features:
+   - **Let and Const**: New ways to declare variables with block-scoping (`let`) and constants (`const`).
+   - **Arrow Functions**: A concise way to define functions with lexical `this`.
+   - **Classes**: Syntactic sugar over prototype-based inheritance.
+   - **Template Literals**: String interpolation and multi-line strings.
+   - **Destructuring Assignment**: A way to unpack values from arrays or objects into variables.
+   - **Default Parameters**: Allows default values for function parameters.
+   - **Rest/Spread Operators**: For handling variable numbers of arguments and copying objects/arrays.
+   - **Promises**: For handling asynchronous operations more effectively.
+   - **Modules**: `import` and `export` for modular code.
+   - **Map and Set**: New collection types for unique values and key-value pairs.
+   - **Generators**: Functions that can pause and resume execution (`yield`).
+
+### **53. What is a set and a map in JavaScript?**
+   - **Set**: A collection of unique values. A set does not allow duplicate values, and the values are ordered.
+   
+     Example:
+     ```javascript
+     const mySet = new Set([1, 2, 3, 2, 1]);
+     console.log(mySet); // Set {1, 2, 3}
+     ```
+     A `Set` can be iterated in the order of insertion.
+
+   - **Map**: A collection of key-value pairs where keys can be of any data type, and the keys are unique.
+   
+     Example:
+     ```javascript
+     const myMap = new Map();
+     myMap.set('name', 'Alice');
+     myMap.set('age', 25);
+     console.log(myMap.get('name')); // Alice
+     ```
+     A `Map` maintains the insertion order of the keys.
+
+### **54. What are generator functions in JavaScript?**
+   **Generator functions** are functions that can yield multiple values over time, allowing you to pause their execution and resume it later. Generator functions use the `function*` syntax and the `yield` keyword.
+
+   Example:
+   ```javascript
+   function* countUpTo(max) {
+     let count = 0;
+     while (count <= max) {
+       yield count; // Pauses execution and returns the value
+       count++;
+     }
+   }
+
+   const counter = countUpTo(3);
+   console.log(counter.next().value); // 0
+   console.log(counter.next().value); // 1
+   console.log(counter.next().value); // 2
+   console.log(counter.next().value); // 3
+   console.log(counter.next().value); // undefined (end of generator)
+   ```
+
+   The `next()` method is used to resume the function from where it was paused.
+
+### **55. How does destructuring work in JavaScript?**
+   **Destructuring** allows you to unpack values from arrays or properties from objects into variables.
+
+   - **Array Destructuring**:
+     ```javascript
+     const arr = [1, 2, 3];
+     const [a, b, c] = arr;
+     console.log(a, b, c); // 1, 2, 3
+     ```
+
+   - **Object Destructuring**:
+     ```javascript
+     const person = { name: 'Alice', age: 25 };
+     const { name, age } = person;
+     console.log(name, age); // Alice, 25
+     ```
+
+   You can also use default values, renaming, and nested destructuring.
+
+### **56. What is the spread operator, and how do you use it?**
+   The **spread operator** (`...`) allows you to unpack elements from arrays or objects and insert them into other arrays or objects. It can also be used to copy arrays/objects or merge them.
+
+   - **In Arrays**:
+     ```javascript
+     const arr1 = [1, 2, 3];
+     const arr2 = [...arr1, 4, 5];
+     console.log(arr2); // [1, 2, 3, 4, 5]
+     ```
+
+   - **In Objects**:
+     ```javascript
+     const obj1 = { a: 1, b: 2 };
+     const obj2 = { ...obj1, c: 3 };
+     console.log(obj2); // { a: 1, b: 2, c: 3 }
+     ```
+
+   The spread operator is used to spread elements of an iterable (like an array or object) into a new array or object.
+
+### **57. What is the rest parameter in JavaScript?**
+   The **rest parameter** (`...`) is used to collect all remaining arguments passed to a function into an array. It allows for a variable number of arguments to be passed to a function.
+
+   Example:
+   ```javascript
+   function sum(...numbers) {
+     return numbers.reduce((acc, num) => acc + num, 0);
+   }
+   console.log(sum(1, 2, 3, 4)); // 10
+   ```
+
+   The rest parameter must be the last parameter in the function definition, and it gathers all the remaining arguments into an array.
+
+### **58. What are `Promise.allSettled()`, `Promise.any()`, and `Promise.finally()`?**
+   - **`Promise.allSettled()`**: Returns a promise that resolves after all of the input promises have settled (either resolved or rejected). It provides an array of results, each being an object with `status` and either `value` or `reason`.
+
+     Example:
+     ```javascript
+     const promises = [Promise.resolve(1), Promise.reject('Error')];
+     Promise.allSettled(promises).then(results => console.log(results));
+     // Output: [{ status: 'fulfilled', value: 1 }, { status: 'rejected', reason: 'Error' }]
+     ```
+
+   - **`Promise.any()`**: Returns a promise that resolves as soon as one of the input promises resolves. If all promises reject, it returns an aggregate error.
+
+     Example:
+     ```javascript
+     const promises = [Promise.reject('Error 1'), Promise.resolve(2), Promise.resolve(3)];
+     Promise.any(promises).then(result => console.log(result)); // 2
+     ```
+
+   - **`Promise.finally()`**: Executes a callback when the promise is settled (resolved or rejected), regardless of the outcome. It's used for cleanup actions.
+
+     Example:
+     ```javascript
+     Promise.resolve('Done').finally(() => console.log('Cleanup actions here'));
+     ```
+
+### **59. How do you create a class in JavaScript?**
+   You can create a class using the `class` keyword, introduced in ES6. A class defines a blueprint for creating objects with shared properties and methods.
+
+   Example:
+   ```javascript
+   class Person {
+     constructor(name, age) {
+       this.name = name;
+       this.age = age;
+     }
+
+     greet() {
+       console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+     }
+   }
+
+   const person1 = new Person('Alice', 25);
+   person1.greet(); // Hello, my name is Alice and I am 25 years old.
+   ```
+
+   The `constructor` method is used to initialize the object's properties, and methods can be added to the class to define behavior.
+
+### **60. What is the difference between `class` and `function` constructors in JavaScript?**
+   - **Class Constructors**: Introduced in ES6, classes are a syntactical sugar over JavaScript's prototype-based inheritance. The `constructor` method is used to initialize new instances of the class.
+
+     Example:
+     ```javascript
+     class Person {
+       constructor(name, age) {
+         this.name = name;
+         this.age = age;
+       }
+     }
+     ```
+
+   - **Function Constructors**: Before classes, functions were used to create objects with shared methods via prototypes. A function constructor is a regular function used to initialize an object.
+
+     Example:
+     ```javascript
+     function Person(name, age) {
+       this.name = name;
+       this.age = age;
+     }
+     ```
+
+   **Differences**:
+   - Classes use the `class` keyword and have a `constructor` method.
+   - Function constructors are created using regular functions and set properties directly via `this`.
+   - Class constructors provide better readability and use the modern object-oriented approach compared to function constructors.
+
+---
+
+
+### **6. Error Handling and Debugging**
+Here are the answers to the next set of JavaScript questions:
+
+### **61. What is try-catch in JavaScript? How does it work?**
+   The **`try...catch`** statement in JavaScript is used to handle exceptions (runtime errors). It allows you to define a block of code to execute, and if an error occurs, it can be caught and handled gracefully.
+
+   - **`try` block**: Contains code that may throw an exception.
+   - **`catch` block**: Contains code that handles the error if an exception is thrown in the `try` block.
+
+   Example:
+   ```javascript
+   try {
+     let result = 10 / 0;
+     console.log(result); // This won't throw an error, but division by zero is problematic.
+   } catch (error) {
+     console.error('An error occurred:', error.message);
+   }
+   ```
+
+   - Optionally, there is also a **`finally` block** that runs after `try` and `catch`, whether an error occurred or not. It's often used for cleanup code.
+
+   Example with `finally`:
+   ```javascript
+   try {
+     let data = JSON.parse('{"name": "John"}');
+     console.log(data);
+   } catch (error) {
+     console.error('Error parsing JSON:', error);
+   } finally {
+     console.log('This will always run, regardless of an error.');
+   }
+   ```
+
+### **62. What is the difference between `throw` and `return` in JavaScript?**
+   - **`throw`**: The `throw` statement is used to throw an exception or an error manually. Once an exception is thrown, the execution of the current function is stopped, and control is passed to the nearest `catch` block (if available). It is used for error handling.
+
+     Example:
+     ```javascript
+     function checkNumber(num) {
+       if (num < 0) {
+         throw new Error('Negative number is not allowed');
+       }
+       return num;
+     }
+     ```
+
+   - **`return`**: The `return` statement is used to return a value from a function. It stops the execution of the function and passes the value back to the calling code.
+
+     Example:
+     ```javascript
+     function add(a, b) {
+       return a + b; // Return the sum of a and b
+     }
+     ```
+
+   **Difference**:
+   - `throw` is used for raising errors and interrupting execution flow.
+   - `return` is used to exit a function and return a result to the caller.
+
+### **63. How do you handle exceptions in JavaScript?**
+   Exceptions are handled using the **`try...catch`** statement in JavaScript. This allows you to handle potential errors without breaking the flow of your program.
+
+   Example:
+   ```javascript
+   try {
+     let result = riskyFunction();
+     console.log(result);
+   } catch (error) {
+     console.error('An error occurred:', error.message);
+   }
+   ```
+
+   - **`try` block**: Wraps the code that may throw an error.
+   - **`catch` block**: Catches the error if one occurs and allows you to handle it.
+   - Optionally, a **`finally` block** can be used to execute code that should run after the `try` and `catch`, regardless of whether an error occurred.
+
+   For example, you might use `try...catch` to handle network requests, parsing errors, or accessing properties of undefined objects.
+
+### **64. What are some common JavaScript debugging techniques?**
+   Some common debugging techniques in JavaScript include:
+   - **Console logging (`console.log()`)**: The simplest and most commonly used debugging technique. You can log variables, functions, and execution flow.
+     ```javascript
+     console.log(myVariable);
+     ```
+   - **Using `debugger` statement**: Inserting a `debugger;` statement in the code will pause execution at that point, allowing you to inspect variables and execution flow in the browser's developer tools.
+     ```javascript
+     function myFunction() {
+       debugger; // Code execution pauses here
+     }
+     ```
+   - **Browser Developer Tools**: All modern browsers provide developer tools (DevTools), where you can set breakpoints, inspect variables, and step through code. This is a powerful way to track down issues.
+   - **Error stack traces**: When an error occurs, JavaScript provides a stack trace in the console, showing where the error originated.
+   - **Using `try...catch` blocks**: To catch runtime errors and log or handle them, you can use `try...catch`.
+   - **Linting tools**: Use tools like ESLint to detect potential issues before running the code.
+
+### **65. What is the difference between `Error` and `TypeError` in JavaScript?**
+   - **`Error`**: The generic `Error` object is used when an error occurs that doesn't fit into any specific category. It is the base class for other error types in JavaScript. You can throw an instance of the `Error` class or extend it to create custom errors.
+
+     Example:
+     ```javascript
+     const error = new Error('Something went wrong');
+     throw error; // This throws a generic error
+     ```
+
+   - **`TypeError`**: A `TypeError` occurs when a value is not of the expected type. It is a specific subclass of `Error`, and it is thrown when an operation is performed on an inappropriate data type.
+
+     Example:
+     ```javascript
+     let num = null;
+     console.log(num.toUpperCase()); // Throws a TypeError because `null` does not have a `toUpperCase` method.
+     ```
+
+   **Difference**:
+   - `Error` is the base class for general errors.
+   - `TypeError` is a specialized error that specifically deals with invalid data types or operations that cannot be performed on the given data type.
+
+---
+
+
+### **7. JavaScript Modules**
+Here are the answers to the next set of JavaScript questions:
+
+### **66. What is the difference between `import` and `require` in JavaScript?**
+   - **`import`**: The `import` statement is part of the **ES6 Modules** (ESM) system. It is used to load modules in a more structured and standardized way in modern JavaScript (especially for client-side JavaScript and modules in Node.js with ES module support).
+     - Syntax:
+       ```javascript
+       import { myFunction } from './myModule.js';
+       ```
+     - It is **asynchronous** and **hoisted** (meaning imports are resolved before the code is executed).
+     - `import` only works with JavaScript modules that use the `export` syntax.
+
+   - **`require`**: The `require` function is used in the **CommonJS** module system (mainly in Node.js for server-side code).
+     - Syntax:
+       ```javascript
+       const myModule = require('./myModule');
+       ```
+     - It is **synchronous** and **not hoisted** (you must call `require()` before using the imported values).
+     - CommonJS uses `module.exports` and `exports` to export objects and functions.
+
+   **Key Differences**:
+   - `import` is part of ES6 Modules, whereas `require` is used with CommonJS.
+   - `import` is asynchronous and allows static analysis (more optimized for bundlers), while `require` is synchronous and used mostly on the server side.
+   - `import` has better support for tree-shaking (removing unused code).
+
+### **67. What is the purpose of the `export` keyword in JavaScript?**
+   The **`export`** keyword is used to make functions, objects, or variables accessible to other files or modules. It is a way to define which parts of a module should be shared or exposed.
+
+   - **Named export**: Allows you to export multiple items from a module.
+     ```javascript
+     // myModule.js
+     export const name = 'Alice';
+     export function greet() {
+       console.log('Hello!');
+     }
+     ```
+
+   - **Default export**: You can use the default keyword to export a single value, function, or object.
+     ```javascript
+     // myModule.js
+     export default function() {
+       console.log('This is a default export');
+     }
+     ```
+
+   The **`export`** keyword helps to separate the module's internal logic from what is made available to other parts of the program, providing a clean and modular code structure.
+
+### **68. How do you implement modules in JavaScript?**
+   JavaScript modules can be implemented using **ES6 modules** (introduced in ECMAScript 2015). A module is simply a file that can export its code (functions, variables, or objects) to be used by other files. To implement modules, you need to use `export` and `import` to share and receive functionality.
+
+   - **Exporting**:
+     You can either use **named exports** or **default exports** to share functionality from a module.
+
+     - **Named exports**:
+       ```javascript
+       // myModule.js
+       export const foo = 'bar';
+       export function greet() {
+         console.log('Hello!');
+       }
+       ```
+
+     - **Default export**:
+       ```javascript
+       // myModule.js
+       export default function() {
+         console.log('This is the default function');
+       }
+       ```
+
+   - **Importing**:
+     To use the exported code, you need to import it into another module.
+     
+     - **Named imports**:
+       ```javascript
+       // anotherModule.js
+       import { foo, greet } from './myModule.js';
+       console.log(foo); // bar
+       greet(); // Hello!
+       ```
+
+     - **Default import**:
+       ```javascript
+       // anotherModule.js
+       import myFunction from './myModule.js';
+       myFunction(); // This is the default function
+       ```
+
+   JavaScript modules can be used in both client-side (in modern browsers) and server-side (Node.js) environments, though the syntax and support may vary.
+
+### **69. What is the `default` export in JavaScript modules?**
+   The **`default` export** allows you to export a single entity from a module. When a module has a default export, you can import it without using curly braces `{}`.
+
+   - **Example of default export**:
+     ```javascript
+     // myModule.js
+     export default function greet() {
+       console.log('Hello!');
+     }
+     ```
+
+   - **Importing the default export**:
+     ```javascript
+     // anotherModule.js
+     import greet from './myModule.js';
+     greet(); // Hello!
+     ```
+
+   You can only have one **default export** per module, but you can have multiple named exports alongside it.
+
+### **70. What are the benefits of using modules in JavaScript?**
+   The use of modules in JavaScript provides several benefits:
+
+   - **Encapsulation**: Modules allow you to encapsulate your code, hiding implementation details and exposing only the necessary functionality.
+   - **Maintainability**: By dividing your code into smaller, reusable modules, you make your codebase easier to maintain and test.
+   - **Reusability**: Modules can be easily reused in different parts of your project or across different projects.
+   - **Avoiding global namespace pollution**: Using modules prevents the need to put everything in the global scope, which can lead to naming conflicts.
+   - **Code organization**: Modules help to organize code in a more logical and modular way, making it easier to navigate and collaborate in large codebases.
+   - **Tree-shaking**: With modern bundlers like Webpack, unused code can be removed automatically (tree-shaking), leading to smaller bundle sizes and improved performance.
+
+   Overall, JavaScript modules promote better software architecture by enabling separation of concerns and better code organization.
+
+---
+
+
+### **8. Browser and DOM**
+Here are the answers to the next set of JavaScript questions:
+
+### **71. What is the DOM (Document Object Model) in JavaScript?**
+   The **Document Object Model (DOM)** is an interface that allows JavaScript to interact with and manipulate the structure of an HTML or XML document. It represents the document as a tree of nodes, where each node is an object corresponding to part of the document (elements, attributes, text, etc.).
+
+   In simpler terms, the DOM provides a way for JavaScript to access and modify the content, structure, and style of web pages dynamically. Every HTML element on a page is represented as a node in the DOM.
+
+   Example:
+   ```html
+   <div id="myDiv">Hello, World!</div>
+   ```
+   In JavaScript, you can manipulate this element:
+   ```javascript
+   const myDiv = document.getElementById('myDiv');
+   myDiv.textContent = 'New Text';
+   ```
+
+### **72. How do you manipulate the DOM using JavaScript?**
+   Manipulating the DOM in JavaScript involves accessing and changing elements of the page. Here are some common operations:
+
+   - **Selecting elements**: 
+     - `getElementById()`, `getElementsByClassName()`, `getElementsByTagName()`, `querySelector()`, `querySelectorAll()`.
+   - **Changing content**: 
+     - `textContent`, `innerText`, `innerHTML`.
+   - **Changing attributes**: 
+     - `setAttribute()`, `getAttribute()`.
+   - **Creating elements**: 
+     - `createElement()`, `appendChild()`, `removeChild()`, `insertBefore()`.
+   - **Adding/Removing classes**: 
+     - `classList.add()`, `classList.remove()`, `classList.toggle()`.
+   - **Event handling**: 
+     - `addEventListener()`.
+
+   Example:
+   ```javascript
+   const button = document.querySelector('button');
+   button.addEventListener('click', () => {
+     const div = document.createElement('div');
+     div.textContent = 'New content';
+     document.body.appendChild(div);
+   });
+   ```
+
+### **73. What is event propagation in JavaScript?**
+   **Event propagation** refers to the way events move through the DOM when they are triggered. It happens in two phases: **bubbling** and **capturing**.
+
+   - **Capturing phase**: The event starts at the root of the DOM and travels down to the target element.
+   - **Bubbling phase**: The event starts from the target element and bubbles up to the root.
+
+   The default behavior is event bubbling, where events trigger handlers in the order from the target element to the root.
+
+### **74. What is event bubbling and capturing in JavaScript?**
+   - **Event Bubbling**: In this phase, when an event is triggered on an element, it first triggers the event handler of that element, then propagates up to its parent elements, and continues up to the root.
+   
+     Example:
+     ```javascript
+     document.getElementById('parent').addEventListener('click', () => {
+       console.log('Parent clicked');
+     });
+     document.getElementById('child').addEventListener('click', () => {
+       console.log('Child clicked');
+     });
+     // Clicking on #child will trigger both the child and parent events (bubbling).
+     ```
+   
+   - **Event Capturing**: The event starts from the root of the DOM and propagates down to the target element. This phase can be used by specifying the third argument as `true` in `addEventListener()`.
+
+     Example:
+     ```javascript
+     document.getElementById('parent').addEventListener('click', () => {
+       console.log('Parent clicked');
+     }, true); // Capturing phase
+     ```
+
+### **75. How do you prevent the default action of an event in JavaScript?**
+   You can prevent the default behavior of an event by calling the **`preventDefault()`** method on the event object. This is commonly used to stop the browser’s default behavior, like preventing form submission or link navigation.
+
+   Example:
+   ```javascript
+   document.querySelector('form').addEventListener('submit', (event) => {
+     event.preventDefault(); // Prevents form submission
+     console.log('Form submission prevented');
+   });
+   ```
+
+### **76. What is the difference between `addEventListener()` and `onclick`?**
+   - **`addEventListener()`**: This method allows you to add multiple event listeners to an element, enabling multiple functions to handle the same event. It is more flexible and allows you to specify the phase of event propagation (capturing or bubbling).
+
+     Example:
+     ```javascript
+     element.addEventListener('click', function() {
+       console.log('Clicked!');
+     });
+     ```
+
+   - **`onclick`**: The `onclick` property can only be used to assign a single event handler to an element. If you assign a new function to `onclick`, it will replace the existing one.
+
+     Example:
+     ```javascript
+     element.onclick = function() {
+       console.log('Clicked!');
+     };
+     ```
+
+   **Key Difference**:
+   - `addEventListener()` can handle multiple events for the same element, while `onclick` can only bind one event handler.
+
+### **77. What is `localStorage` and `sessionStorage` in JavaScript?**
+   Both **`localStorage`** and **`sessionStorage`** are used to store data on the client-side in the browser's storage, but they differ in terms of persistence:
+
+   - **`localStorage`**: Stores data persistently with no expiration time. The data remains available even after the browser is closed and reopened.
+     - Example:
+       ```javascript
+       localStorage.setItem('name', 'Alice');
+       const name = localStorage.getItem('name');
+       ```
+
+   - **`sessionStorage`**: Stores data for the duration of the page session (as long as the browser tab is open). The data is cleared when the tab or browser is closed.
+     - Example:
+       ```javascript
+       sessionStorage.setItem('name', 'Alice');
+       const name = sessionStorage.getItem('name');
+       ```
+
+### **78. How do you make an AJAX request in JavaScript?**
+   AJAX (Asynchronous JavaScript and XML) is a technique used to make asynchronous requests to the server without refreshing the page. The simplest way is using **`XMLHttpRequest`** or **`Fetch API`**.
+
+   Example using **`XMLHttpRequest`**:
+   ```javascript
+   const xhr = new XMLHttpRequest();
+   xhr.open('GET', 'https://api.example.com/data', true);
+   xhr.onload = () => {
+     if (xhr.status === 200) {
+       console.log(xhr.responseText);
+     }
+   };
+   xhr.send();
+   ```
+
+   Example using **`Fetch API`** (modern approach):
+   ```javascript
+   fetch('https://api.example.com/data')
+     .then(response => response.json())
+     .then(data => console.log(data))
+     .catch(error => console.error('Error:', error));
+   ```
+
+### **79. What are `XMLHttpRequest` and `Fetch` API in JavaScript?**
+   - **`XMLHttpRequest`**: This is the older way to make asynchronous requests in JavaScript. It is used to send HTTP requests to the server and handle responses asynchronously.
+   - **`Fetch API`**: This is a modern, Promise-based alternative to `XMLHttpRequest`. It provides a more flexible and cleaner syntax for handling HTTP requests and responses, supporting asynchronous operations.
+
+   **Difference**:
+   - `Fetch` is Promise-based, making it easier to work with asynchronous code compared to `XMLHttpRequest`, which uses callbacks.
+   - `Fetch` also allows better handling of response types, such as JSON, and avoids some of the complexity of `XMLHttpRequest`.
+
+### **80. How do you handle cookies in JavaScript?**
+   In JavaScript, cookies can be accessed and modified using the `document.cookie` property. To create, read, or delete cookies, you can set the cookie string in the format `name=value`, optionally with additional attributes like `expires`, `path`, and `domain`.
+
+   Example:
+   - **Creating a cookie**:
+     ```javascript
+     document.cookie = "username=JohnDoe; expires=Thu, 18 Dec 2024 12:00:00 UTC; path=/";
+     ```
+
+   - **Reading cookies**:
+     ```javascript
+     const cookies = document.cookie;
+     console.log(cookies); // Displays all cookies as a string
+     ```
+
+   - **Deleting a cookie**:
+     ```javascript
+     document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+     ```
+
+   **Note**: Cookies are small pieces of data stored in the user's browser and sent with each HTTP request to the same domain.
+
+---
+
+
+### **9. Performance Optimization**
+Here are the answers to the next set of JavaScript questions:
+
+### **81. What are memory leaks in JavaScript, and how do you prevent them?**
+   **Memory leaks** occur when the memory that is no longer in use (for example, unused objects or variables) is not properly released, leading to unnecessary memory consumption that could eventually slow down the application or cause it to crash.
+
+   **Common causes of memory leaks** in JavaScript include:
+   - **Global variables**: Variables not properly scoped, especially when they are unintentionally declared in the global scope.
+   - **Event listeners**: Not removing event listeners that are no longer needed, leading to retaining references to DOM elements.
+   - **Closures**: Functions holding references to outer scope variables that are no longer necessary.
+   - **Detached DOM elements**: When elements are removed from the DOM but are still referenced by JavaScript, they remain in memory.
+
+   **How to prevent memory leaks**:
+   - **Proper variable scoping**: Use `let`, `const`, or block-level scoping to avoid unnecessary global variables.
+   - **Remove event listeners**: Always remove event listeners with `removeEventListener()` when they are no longer needed.
+   - **Clear intervals/timeouts**: Use `clearInterval()` or `clearTimeout()` to cancel any setInterval or setTimeout when they are not required.
+   - **Avoid circular references**: Ensure objects don't reference each other in such a way that they prevent garbage collection.
+   - **Garbage collection**: JavaScript's automatic garbage collection should handle most memory management tasks, but developers should be mindful of potential issues that prevent it.
+
+   **Example**:
+   ```javascript
+   const element = document.getElementById('myElement');
+   const handleClick = () => {
+     console.log('Element clicked');
+   };
+   element.addEventListener('click', handleClick);
+
+   // When no longer needed, remove the event listener
+   element.removeEventListener('click', handleClick);
+   ```
+
+### **82. How can you optimize the performance of a JavaScript application?**
+   Optimizing the performance of a JavaScript application can involve several strategies, including:
+
+   - **Minimize DOM manipulations**: Access the DOM as little as possible. Batch DOM updates together to minimize reflows and repaints.
+   - **Use event delegation**: Instead of attaching event listeners to every single item, attach one listener to a parent and handle events at the parent level.
+   - **Debounce and throttle**: Limit the rate at which functions like scroll or resize events are executed to reduce the load.
+   - **Asynchronous operations**: Use `async/await`, `Promise`, or web workers to handle long-running operations in the background.
+   - **Lazy loading**: Load non-essential resources only when they are needed (e.g., images, scripts, etc.).
+   - **Minify and bundle assets**: Reduce the size of your JavaScript and CSS files by minifying and bundling them.
+   - **Optimize loops and recursion**: Avoid unnecessary computations and deep recursion. Use `for` loops or optimized methods like `map()`, `reduce()`.
+   - **Use requestAnimationFrame**: For animations or visual updates, `requestAnimationFrame` should be used instead of `setTimeout` or `setInterval` to optimize rendering.
+   - **Leverage caching**: Use browser caching, service workers, or cache-control headers for assets that don't change often.
+
+### **83. What is lazy loading in JavaScript?**
+   **Lazy loading** is a technique where resources (such as images, videos, or even JavaScript files) are loaded only when they are needed. This can significantly reduce the initial load time of the application, improving the overall performance.
+
+   **Lazy loading use cases**:
+   - **Images**: Only load images when they enter the viewport.
+   - **JavaScript modules**: Load JavaScript modules only when a user interacts with certain parts of the page, like clicking a button or scrolling.
+
+   **How to implement lazy loading**:
+   - For images:
+     ```html
+     <img src="placeholder.jpg" data-src="actual-image.jpg" class="lazyload">
+     ```
+
+     ```javascript
+     // Lazy load script
+     document.addEventListener('DOMContentLoaded', () => {
+       const images = document.querySelectorAll('img.lazyload');
+       const observer = new IntersectionObserver((entries) => {
+         entries.forEach(entry => {
+           if (entry.isIntersecting) {
+             entry.target.src = entry.target.dataset.src;
+             entry.target.classList.remove('lazyload');
+             observer.unobserve(entry.target);
+           }
+         });
+       });
+       images.forEach(img => observer.observe(img));
+     });
+     ```
+
+   - For JavaScript modules:
+     ```javascript
+     document.getElementById('loadButton').addEventListener('click', () => {
+       import('./myModule.js').then(module => {
+         module.doSomething();
+       });
+     });
+     ```
+
+### **84. How do you improve the rendering performance of a website using JavaScript?**
+   Improving rendering performance is critical to making your website feel fast and responsive. Here are strategies to improve the rendering performance of a website:
+
+   - **Minimize reflows and repaints**: Reflows occur when changes in DOM elements (e.g., size, layout) cause the browser to recalculate styles and render. Avoid making multiple changes to the DOM in a single event handler.
+   - **Use `requestAnimationFrame` for animations**: Instead of using `setTimeout` or `setInterval`, use `requestAnimationFrame` for smoother animations that sync with the browser’s rendering cycle.
+   - **Use CSS transitions and animations instead of JavaScript**: CSS is optimized for animations and transitions, whereas JavaScript animations may cause performance issues.
+   - **Avoid large complex DOM trees**: Minimize the number of elements on a page to reduce the overhead of rendering.
+   - **Use GPU acceleration for heavy CSS effects**: Leverage CSS properties like `transform` and `opacity`, which are handled by the GPU and provide smoother animations.
+   - **Limit the use of third-party scripts**: Each third-party script can add overhead to your page load time and render performance, so use them judiciously.
+
+   Example:
+   ```javascript
+   // Using requestAnimationFrame for smoother animation
+   function animate() {
+     // Perform animation logic here
+     requestAnimationFrame(animate);
+   }
+   animate();
+   ```
+
+### **85. What is debounce and throttle in JavaScript?**
+   **Debounce** and **throttle** are techniques used to optimize performance for frequently occurring events like scrolling, resizing, or keypresses.
+
+   - **Debounce**: Limits the rate at which a function is invoked. It ensures the function is only called once after a specified delay, triggered by the end of a series of rapid events. It’s useful for search input or resizing events where you don't want to trigger the action every time an event occurs.
+
+     Example (Debouncing a keypress event):
+     ```javascript
+     function debounce(func, delay) {
+       let timeout;
+       return function() {
+         clearTimeout(timeout);
+         timeout = setTimeout(() => func.apply(this, arguments), delay);
+       };
+     }
+
+     const searchInput = document.getElementById('search');
+     searchInput.addEventListener('input', debounce(function() {
+       console.log('Search query:', this.value);
+     }, 300));
+     ```
+
+   - **Throttle**: Ensures a function is called at most once every specified interval, regardless of how many times the event is triggered. It’s useful for events like scrolling or window resizing where you don't want to perform the action too frequently.
+
+     Example (Throttling a scroll event):
+     ```javascript
+     function throttle(func, limit) {
+       let lastFunc;
+       let lastTime;
+       return function() {
+         const now = new Date();
+         if (!lastTime || now - lastTime >= limit) {
+           func.apply(this, arguments);
+           lastTime = now;
+         } else {
+           clearTimeout(lastFunc);
+           lastFunc = setTimeout(() => {
+             func.apply(this, arguments);
+             lastTime = now;
+           }, limit - (now - lastTime));
+         }
+       };
+     }
+
+     window.addEventListener('scroll', throttle(() => {
+       console.log('Scrolling...');
+     }, 1000));
+     ```
+
+   **Key Difference**:
+   - **Debounce** delays the execution of a function until after a certain amount of idle time has passed (ideal for scenarios like searching).
+   - **Throttle** ensures that the function is called at regular intervals (ideal for scenarios like scrolling or resizing).
+
+---
+
+### **10. Testing and Tools**
+Here are the answers to the next set of JavaScript testing-related questions:
+
+### **86. What is unit testing in JavaScript?**
+   **Unit testing** is the process of testing individual units or components of a program to ensure they work as expected. In JavaScript, unit testing typically involves testing small pieces of functionality, such as a single function, method, or class. The goal is to verify that each part of the application performs as intended, with tests written for specific scenarios to catch bugs early in development.
+
+   **Example of unit test in JavaScript**:
+   ```javascript
+   // Function to be tested
+   function add(a, b) {
+     return a + b;
+   }
+
+   // Unit test for the add function
+   describe('add function', () => {
+     it('should add two numbers correctly', () => {
+       assert.strictEqual(add(2, 3), 5);
+     });
+   });
+   ```
+
+### **87. What are some popular testing frameworks in JavaScript?**
+   Some popular **JavaScript testing frameworks** include:
+
+   1. **Jest**: A widely used testing framework developed by Facebook. It is great for unit and integration tests and supports mocking, code coverage, and asynchronous testing.
+   2. **Mocha**: A flexible testing framework for JavaScript that can be used with assertion libraries like Chai. Mocha is highly configurable and widely used in Node.js testing.
+   3. **Jasmine**: A behavior-driven testing framework for JavaScript. It provides an easy-to-use syntax and comes with built-in assertions.
+   4. **Ava**: A minimalistic testing framework that supports parallel test execution, making it faster for large test suites.
+   5. **QUnit**: A powerful testing framework, often used for testing jQuery code but can be used for any JavaScript testing.
+   6. **Karma**: A test runner that can execute tests in multiple browsers and integrate with other frameworks like Jasmine, Mocha, and QUnit.
+
+### **88. What is TDD (Test-Driven Development)?**
+   **Test-Driven Development (TDD)** is a software development methodology where tests are written before the code itself. The process typically follows this cycle:
+   1. **Write a failing test**: Write a test that defines the expected behavior of a small piece of functionality.
+   2. **Write code to pass the test**: Write the minimum amount of code necessary to make the test pass.
+   3. **Refactor**: Clean up the code while ensuring the test still passes.
+
+   TDD helps ensure that the code is thoroughly tested from the outset, promotes better design, and encourages small, manageable changes.
+
+   **TDD Example**:
+   - **Test**: Write a test for a function that checks if a number is even.
+   ```javascript
+   it('should return true for even numbers', () => {
+     assert.isTrue(isEven(2));
+   });
+   ```
+   - **Code**: Write just enough code to pass the test.
+   ```javascript
+   function isEven(number) {
+     return number % 2 === 0;
+   }
+   ```
+   - **Refactor**: After the test passes, you can improve or optimize the code.
+
+### **89. How do you write asynchronous tests in JavaScript?**
+   Asynchronous tests are written to test functions or code that operate asynchronously (e.g., functions using `setTimeout`, promises, or async/await).
+
+   - **Using Jest**:
+     Jest supports asynchronous tests through `done`, `async/await`, and promises.
+
+     **Example with `done`**:
+     ```javascript
+     it('should fetch data from the server', (done) => {
+       fetchData((data) => {
+         expect(data).toBe('some data');
+         done();  // Inform Jest that the test is complete
+       });
+     });
+     ```
+
+     **Example with async/await**:
+     ```javascript
+     it('should fetch data asynchronously', async () => {
+       const data = await fetchData();
+       expect(data).toBe('some data');
+     });
+     ```
+
+     **Example with Promises**:
+     ```javascript
+     it('should fetch data from the server', () => {
+       return fetchData().then((data) => {
+         expect(data).toBe('some data');
+       });
+     });
+     ```
+
+### **90. What is the difference between `assert` and `expect` in JavaScript testing?**
+   - **`assert`** is a basic function provided by most assertion libraries, including Node.js’ built-in `assert` module and others like Chai. It provides a straightforward way to check whether an expression evaluates to true. If it doesn't, the test fails.
+
+     **Example with `assert`**:
+     ```javascript
+     const assert = require('assert');
+     assert.strictEqual(add(2, 3), 5);
+     ```
+
+   - **`expect`** is a more readable and expressive way to write assertions. It is commonly used in frameworks like Jest and Chai. `expect` provides a variety of chained methods (e.g., `.toBe()`, `.toEqual()`, `.toHaveLength()`) for more specific checks, making tests easier to read and understand.
+
+     **Example with `expect`**:
+     ```javascript
+     test('adds 2 + 3 to equal 5', () => {
+       expect(add(2, 3)).toBe(5);
+     });
+     ```
+
+   **Key Differences**:
+   - **`assert`** is simpler and more bare-bones, often requiring fewer lines of code but less flexibility for more complex assertions.
+   - **`expect`** is more powerful and expressive, allowing for more readable tests with better syntax for complex assertions.
+
+---
+
+
+### **11. JavaScript Best Practices**
+Here are the answers to your final set of JavaScript-related questions:
+
+### **91. What are some best practices for writing clean, maintainable JavaScript code?**
+   Best practices for writing clean and maintainable JavaScript code include:
+   - **Use descriptive variable and function names**: Make code self-documenting by using meaningful names.
+   - **Follow a consistent coding style**: Use consistent indentation, naming conventions, and code structure. Tools like ESLint can help enforce style guidelines.
+   - **Avoid global variables**: Minimize the use of global variables to avoid conflicts. Use `let`, `const`, or block-level scoping.
+   - **Write modular code**: Break your code into smaller, reusable functions or modules.
+   - **Comment your code**: Write comments where necessary to explain complex logic.
+   - **Use functions and classes appropriately**: Keep functions small and focused on a single task (Single Responsibility Principle).
+   - **Avoid deeply nested code**: Refactor deeply nested code into smaller functions to improve readability.
+   - **Write tests**: Unit tests help ensure code correctness and can serve as documentation for expected behavior.
+
+### **92. How do you avoid callback hell in JavaScript?**
+   **Callback hell** occurs when you have deeply nested callbacks that make the code difficult to read and maintain. To avoid callback hell:
+   - **Use Promises**: Promises allow you to chain asynchronous operations and handle them more cleanly.
+   - **Use async/await**: Introduced in ES6, `async/await` allows you to write asynchronous code that looks like synchronous code, reducing nesting.
+   - **Refactor complex code into functions**: Break large, complex callback chains into smaller, more manageable functions.
+   - **Use libraries**: There are libraries like `async.js` that help manage asynchronous flow without callback hell.
+
+   **Example** using async/await:
+   ```javascript
+   async function fetchData() {
+     try {
+       const data1 = await getData1();
+       const data2 = await getData2(data1);
+       console.log(data2);
+     } catch (error) {
+       console.error(error);
      }
    }
    ```
-  
-* **`try`**: Executes code that might throw an error.
-* **`catch`**: Handles errors if any occur in the `try` block.
-* **`finally`**: Executes code after `try`/`catch`, regardless of whether an error occurred.
 
-In both cases, you handle the error where the promise or asynchronous function is invoked.
+### **93. What is the importance of code minification in JavaScript?**
+   **Code minification** reduces the size of JavaScript files by removing unnecessary characters (like spaces, newlines, and comments), which results in faster loading times for web pages. Minification is crucial for:
+   - **Reducing bandwidth usage**: Smaller files consume less data, leading to faster downloads, especially important for mobile users.
+   - **Improving page load time**: Smaller files reduce the time it takes to load and execute JavaScript on the client-side.
+   - **Obfuscation**: Minification can make it harder to reverse-engineer your code.
 
-### 38\. **What is a JavaScript module and how do you work with modules in modern JavaScript?**
+   Tools like `UglifyJS`, `Terser`, or Webpack's built-in minification capabilities are commonly used for this purpose.
 
-A **JavaScript module** is a piece of code that is self-contained and can be imported and exported between different files. It allows for better organization, encapsulation, and reusability of code.
+### **94. How do you handle large-scale JavaScript applications?**
+   Handling large-scale JavaScript applications involves using best practices to ensure the code is modular, maintainable, and scalable:
+   - **Modularize code**: Break the application into smaller, reusable modules using **ES6 modules** or **CommonJS**.
+   - **Use state management**: In large applications, managing state becomes important. Use tools like **Redux** or **Vuex** for centralized state management.
+   - **Follow a component-based architecture**: In frameworks like React or Vue.js, structure your code around reusable components.
+   - **Implement lazy loading**: Load only necessary parts of the application on demand to optimize initial loading time.
+   - **Automate testing and build processes**: Use testing frameworks and build tools to automate the testing and deployment of your application.
+   - **Use a task runner**: Tools like **Webpack** or **Parcel** help bundle your code, optimize assets, and handle different environments.
 
-* **Using ES6 Modules**: In modern JavaScript (ES6 and later), the `import` and `export` statements are used to work with modules.
+### **95. What are some security considerations when working with JavaScript?**
+   Some key security considerations when working with JavaScript include:
+   - **Cross-Site Scripting (XSS)**: Avoid injecting user input directly into the DOM. Use methods like `textContent` and `setAttribute` to safely insert dynamic content.
+   - **Cross-Site Request Forgery (CSRF)**: Protect against CSRF by using tokens for state-changing requests and checking them on the server.
+   - **Secure HTTP headers**: Set appropriate HTTP headers such as **Content Security Policy (CSP)**, **X-Content-Type-Options**, and **X-XSS-Protection**.
+   - **Avoid eval()**: `eval()` can execute arbitrary code, making it a security risk. Avoid using it whenever possible.
+   - **Use HTTPS**: Ensure all communication between the client and server happens over HTTPS to prevent man-in-the-middle attacks.
 
-  **Exporting**:
+### **96. How do you manage JavaScript dependencies in a project?**
+   To manage JavaScript dependencies, use **package managers** such as:
+   - **npm (Node Package Manager)**: The most common package manager for JavaScript projects. It is used to install, update, and manage project dependencies.
+   - **Yarn**: A fast, secure, and reliable alternative to npm, offering features like deterministic dependency resolution.
+   - **Webpack**: A module bundler that also helps manage JavaScript dependencies by bundling various assets together.
 
-  ```javascript
-   code// math.js
-  export function add(a, b) {
-    return a + b;
-  }
-
-  export const pi = 3.14;
-  ```
-
-  **Importing**:
-
-  ```javascript
-   code// app.js
-  import { add, pi } from './math.js';
-
-  console.log(add(2, 3));  // 5
-  console.log(pi);  // 3.14
-  ```
-
-  **Default Export**: You can also have a default export for a single value or function in a module.
-
-  ```javascript
-   code// myModule.js
-  export default function() {
-    console.log("This is a default export");
-  }
-  ```
-
-  **Importing Default Export**:
-
-  ```javascript
-   code// app.js
-  import myFunction from './myModule.js';
-  myFunction();  // This is a default export
-  ```
-
-## Advanced-Level Questions
----
-
-### 1\. **What is the prototype chain in JavaScript?**
-
-In JavaScript, the **prototype chain** is a way that objects can inherit properties and methods from other objects. It's like a chain of objects, where each object has a reference to another object, and that object may have its own reference to another, and so on.
-
-#### How it works:
-1. **Every object has a prototype** — a reference to another object.
-2. When you try to access a property or method on an object, JavaScript checks if that object has it. If not, it checks the prototype (the object it points to), and continues up the chain until it finds the property or reaches the end of the chain.
-3. The end of the chain is `Object.prototype`, which is the root object that all JavaScript objects inherit from.
-
-#### Simple Example:
-```javascript
-const animal = {
-  eats: true
-};
-
-const dog = Object.create(animal);  // dog has animal as its prototype
-dog.barks = true;
-
-console.log(dog.barks);  // true, found on dog
-console.log(dog.eats);   // true, found on animal (dog's prototype)
-```
-
-#### Key Points:
-- **`dog`** has a property `barks`, but it also inherits from **`animal`**, so it can access properties from the `animal` object, like `eats`.
-- If `dog` doesn't have a property, JavaScript looks for it in `animal` (and keeps looking up the chain if necessary).
-
-In summary, the prototype chain allows JavaScript objects to share properties and methods, making the language more flexible and efficient.
-
-### 2\. **What is the difference between a shallow copy and a deep copy?**
-
-The difference between **shallow copy** and **deep copy** in JavaScript comes down to how the objects are copied, particularly when those objects contain other objects or arrays inside them.
-
-#### **Shallow Copy**:
-A shallow copy means that the top-level properties of the object are copied, but if any of those properties are references to other objects (or arrays), **only the reference** is copied, not the actual data. So, changes to nested objects in the copy will affect the original object, and vice versa.
-
-#### Example of Shallow Copy:
-```javascript
-const original = { name: 'John', address: { city: 'New York' } };
-const shallowCopy = { ...original };  // Shallow copy
-
-shallowCopy.name = 'Jane';
-shallowCopy.address.city = 'Los Angeles';
-
-console.log(original.name); // 'John' — unaffected
-console.log(original.address.city); // 'Los Angeles' — changed because address was copied by reference
-```
-
-- **Shallow copy** copies only the first level of the object.
-- **Nested objects** (like `address`) are shared between the original and the copy.
-
-#### **Deep Copy**:
-A deep copy means that **all levels of the object** are copied, including any nested objects or arrays. This way, the copy is completely independent of the original object, and changes to any part of the copy won’t affect the original, and vice versa.
-
-#### Example of Deep Copy:
-```javascript
-const original = { name: 'John', address: { city: 'New York' } };
-const deepCopy = JSON.parse(JSON.stringify(original));  // Deep copy
-
-deepCopy.name = 'Jane';
-deepCopy.address.city = 'Los Angeles';
-
-console.log(original.name); // 'John' — unchanged
-console.log(original.address.city); // 'New York' — unchanged
-```
-
-- **Deep copy** creates a new object and recursively copies all values, even the nested objects.
-- **No shared references** between the original and the copy.
-
-#### Summary:
-- **Shallow copy**: Copies the object, but nested objects are shared by reference.
-- **Deep copy**: Copies everything, including nested objects, so no shared references exist.
-
-
-### 3\. **What are IIFE (Immediately Invoked Function Expressions), and when are they used?**
-
-An **IIFE** is a function expression that is defined and executed immediately. It is often used to create a new scope to avoid polluting the global namespace or to encapsulate logic within a function.
-
-Example:
-
-```javascript
-(function() {
-  // This function runs immediately
-  console.log('Hello from IIFE');
-})();
-```
-
-IIFE is commonly used in JavaScript modules, closures, and when you want to avoid polluting the global scope.
-
-### 4\. **What is the difference between `Object.create()` and the `new` keyword in JavaScript?**
-
-* **`Object.create(proto)`**: Creates a new object with the specified prototype object (`proto`). It doesn't run a constructor function. Example:
-
-  ```javascript
-   const obj = Object.create(protoObject);
-  ```
-
-* **`new` keyword**: Creates a new object, sets the prototype to the constructor's prototype, and executes the constructor function. Example:
-
-  ```javascript
-   function Person(name) {
-    this.name = name;
-  }
-  const person = new Person('Alice');
-  ```
-
-### 5\. **Explain the concept of JavaScript design patterns, such as Singleton or Module.**
-
-* **Design Patterns** are reusable solutions to common software design problems. In JavaScript, some common patterns are:
-
-  * **Singleton Pattern**: Ensures that a class has only one instance and provides a global point of access to that instance.
-
-    ```javascript
-     const Singleton = (function() {
-      let instance;
-      function createInstance() {
-        return new Object('I am a singleton');
-      }
-      return {
-        getInstance: function() {
-          if (!instance) {
-            instance = createInstance();
-          }
-          return instance;
-        }
-      };
-    })();
-    ```
-
-  * **Module Pattern**: Used to encapsulate private data and expose only certain methods, maintaining a clean namespace.
-
-    ```javascript
-     const Module = (function() {
-      let privateVar = 'I am private';
-      return {
-        publicMethod: function() {
-          console.log(privateVar);
-        }
-      };
-    })();
-    ```
-
-### 6\. **What is the purpose of the `Symbol` type in JavaScript?**
-
-The `Symbol` type in JavaScript is used to create **unique identifiers**. These identifiers are different from regular strings or numbers because each `Symbol` is guaranteed to be unique, even if they have the same description.
-
-Here’s a simple explanation of its key purposes:
-
-1. **Unique Property Keys**: Symbols can be used as keys for object properties. Since each symbol is unique, there’s no risk of a property key accidentally conflicting with another property in the object.
-
-   ```javascript
-   const symbol1 = Symbol('key');
-   const symbol2 = Symbol('key');
-   console.log(symbol1 === symbol2); // false, they are unique
+   **Example** of installing a dependency with npm:
+   ```bash
+   npm install lodash
    ```
 
-2. **Private/Hidden Properties**: When you use symbols as object keys, the properties are not easily accessible by typical methods like `Object.keys()`, which helps keep them hidden or private.
-
+   Then, you can import the package in your code:
    ```javascript
-   const secret = Symbol('secret');
-   const obj = { [secret]: 'hidden value' };
-   console.log(obj[secret]); // 'hidden value'
+   import _ from 'lodash';
    ```
 
-3. **Avoiding Conflicts**: Since each symbol is unique, they are often used in libraries or code modules to avoid naming conflicts between different parts of a program.
-
-4. **Special Internal Use**: JavaScript itself uses symbols for special tasks (like defining how objects should be iterated over), and you can use these special symbols too.
-
-In short, `Symbols` are mainly used to create unique, non-conflicting property keys and to hide data in a way that is not easily accessed or changed by other parts of the code.
-
-### 7\. **How does JavaScript event delegation work, and why is it useful?**
-JavaScript event delegation is a technique where instead of attaching event listeners to individual elements, you attach a single event listener to a parent element. This parent then "delegates" the event to the correct child element when it is triggered.
-
-#### How It Works:
-1. **Attach an Event Listener to the Parent:**
-   Instead of attaching an event listener to each individual child element, you add it to a common parent element. 
-
-2. **Event Bubbling:**
-   When an event (like a click) occurs on a child element, it "bubbles" up through the DOM (Document Object Model) hierarchy. This means that the event reaches the parent element, even though it was triggered on the child.
-
-3. **Identify the Target:**
-   In the event handler, you can check which child element the event actually came from using `event.target`. This lets you handle the event as if it was directly attached to that child element.
-
-#### Example:
-
-Suppose you have a list of items and you want to detect clicks on any item:
-
-```html
-<ul id="parent">
-  <li>Item 1</li>
-  <li>Item 2</li>
-  <li>Item 3</li>
-</ul>
-```
-
-Instead of attaching a click event listener to each `<li>`, you attach one to the `<ul>`:
-
-```javascript
-document.getElementById("parent").addEventListener("click", function(event) {
-  if (event.target.tagName === "LI") {
-    alert("You clicked on: " + event.target.textContent);
-  }
-});
-```
-
-#### Why It's Useful:
-
-1. **Efficiency:**
-   - Instead of adding multiple event listeners to each child element, you add just one on the parent. This can reduce memory usage and improve performance, especially when dealing with many child elements.
-
-2. **Dynamic Content:**
-   - If you add or remove child elements dynamically (e.g., through JavaScript), you don't need to reattach event listeners to the new elements. The parent event listener will still work for any new child elements.
-
-3. **Cleaner Code:**
-   - It helps keep your code more organized and reduces duplication by managing events from one central place.
-
-In summary, event delegation makes it easier to handle events on dynamically generated or large numbers of child elements, improving performance and keeping the code simpler and more maintainable.
-
-### 8\. **What are Web Workers, and how do they work in JavaScript?**
-
-**Web Workers** in JavaScript allow you to run scripts in the background on a separate thread, so they don't block the main thread (the UI thread). This is especially useful for performing time-consuming tasks like data processing or network requests without freezing the user interface.
-
-#### How Web Workers work:
-1. **Main Thread vs Worker Thread**:
-   - The **main thread** is where the UI runs, including things like rendering the webpage and handling user interactions.
-   - A **Web Worker** runs in the background, separate from the main thread, so it doesn't interfere with the UI.
-
-2. **Creating a Web Worker**:
-   - To create a worker, you use the `Worker` constructor and pass it the path to a JavaScript file that will be executed in the background.
-
-```javascript
-// Main thread
-const worker = new Worker('worker.js');  // Creates a new worker
-
-// worker.js (the script executed by the worker)
-self.onmessage = function(event) {
-    console.log('Message from main thread:', event.data);
-    // Perform some background task...
-    self.postMessage('Task done');  // Send message back to the main thread
-};
-```
-
-3. **Communication**:
-   - Workers can't directly access the DOM (they're isolated), and the main thread can't access the worker's variables directly.
-   - Communication between the main thread and the worker happens through **messages** using `postMessage()` and `onmessage`.
-
-   - **Main thread sends a message to the worker**:
-     ```javascript
-     worker.postMessage('Start task');
-     ```
-
-   - **Worker sends a message back to the main thread**:
-     ```javascript
-     self.postMessage('Task done');
-     ```
-
-4. **Handling Messages**:
-   - The main thread listens for messages from the worker using `onmessage` and can also listen for errors with `onerror`.
-
-```javascript
-worker.onmessage = function(event) {
-    console.log('Message from worker:', event.data);
-};
-
-worker.onerror = function(error) {
-    console.log('Error in worker:', error.message);
-};
-```
-
-5. **Terminating a Worker**:
-   - Once the worker has finished its job, it can be terminated with `terminate()` from the main thread. This stops the worker immediately.
-   
-```javascript
-worker.terminate();  // Stop the worker
-```
-
-#### Benefits of Web Workers:
-- **Non-blocking**: They allow you to do heavy computation or network operations without blocking the main UI thread.
-- **Improved Performance**: By using multiple threads, you can make your web application more responsive.
-
-#### Limitations:
-- Web workers cannot access the DOM or window objects directly, so they’re typically used for computation-heavy tasks or background processing.
-- They are limited to their own isolated environment, meaning they cannot share global state.
-
-In short, **Web Workers** are great for offloading heavy tasks from the main UI thread to improve performance and responsiveness in JavaScript applications.
-
-### 9\. **What are JavaScript generators and how are they used?**
-
-A **generator** is a special type of function that can be paused and resumed. It uses the `function*` syntax and the `yield` keyword to yield multiple values over time, rather than returning a single value.
-
-* **Generator Syntax**:
-
-  ```javascript
-   function* myGenerator() {
-    yield 1;
-    yield 2;
-    yield 3;
-  }
-
-  const gen = myGenerator();
-  console.log(gen.next().value); // 1
-  console.log(gen.next().value); // 2
-  console.log(gen.next().value); // 3
-  console.log(gen.next().done);  // true
-  ```
-
-* **Usage**:
-
-  * **Iterating over data**: Generators can be useful for handling large data streams or lazy evaluation (only generating values when needed).
-  * **Asynchronous programming**: Generators were used in combination with `co` or `async/await` before `async/await` was introduced in ES6+.
-
-  Example of generator-based asynchronous flow:
-
-  ```javascript
-   function* fetchData() {
-    const response1 = yield fetch('url1');
-    const response2 = yield fetch('url2');
-    return [response1, response2];
-  }
-  ```
-
-These are the core concepts you're asking about in JavaScript! Let me know if you'd like further explanations or examples.
-
-### 10\. **What are `Proxy` and `Reflect` in JavaScript, and what are their use cases?**
-
-* **Proxy**: A `Proxy` is a mechanism for defining custom behavior for fundamental operations (e.g., property lookup, assignment). It allows you to intercept and customize operations on objects.
-
-```js
- const handler = {
-  get: (target, prop) => {
-    if (prop === 'name') {
-      return 'Alice';
-    }
-    return prop in target ? target[prop] : `Property ${prop} not found`;
-  }
-};
-
-const person = new Proxy({}, handler);
-console.log(person.name);  // Output: Alice
-```
-
-* **Reflect**: The `Reflect` object provides methods for interceptable operations. It's often used in conjunction with `Proxy` to provide default behavior.
-
-```js
- const target = { name: 'Alice' };
-const handler = {
-  get: (target, prop) => Reflect.get(...arguments),
-};
-
-const person = new Proxy(target, handler);
-console.log(person.name);  // Output: Alice
-```
-
-**Use cases**:
-
-* **Proxy** is useful for logging, data validation, property access control, or virtualizing object behavior.
-* **Reflect** is useful for handling operations with a more standardized approach, often alongside `Proxy` for default behavior.
-
-
-### 11\. **Explain the concept of memoization and provide an example.**
-
-#### **Memoization**:
-
-Memoization is an optimization technique used to speed up repeated function calls by storing (or "memoizing") the results of expensive function calls. When the function is called again with the same arguments, it returns the cached result instead of recomputing it.
-
-This is particularly useful for functions with high computational cost and overlapping subproblems (e.g., recursive algorithms).
-
-#### **Example**:
-
-Here's a simple example of memoization for the Fibonacci sequence calculation:
-
-```javascript
- function memoize(fn) {
-  const cache = {};
-  return function(...args) {
-    const key = JSON.stringify(args); // Create a unique key for each set of arguments
-    if (key in cache) {
-      return cache[key];
-    } else {
-      const result = fn(...args);
-      cache[key] = result;
-      return result;
-    }
-  };
-}
-
-// Regular Fibonacci function (recursive)
-function fibonacci(n) {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-// Memoized Fibonacci function
-const memoizedFibonacci = memoize(fibonacci);
-
-console.log(memoizedFibonacci(40)); // Much faster after the first computation
-```
-
-**Why it works**:
-
-* The first time `fibonacci(40)` is called, the function will compute the result.
-* For subsequent calls, it will use the cached result, drastically reducing the time complexity.
-
-
-
-### 12\. **What is throttling and debouncing? How do they help with performance?**
-
-#### **Throttling**:
-
-Throttling ensures that a function is called at most once in a specified interval, no matter how frequently the event is triggered. This is useful for limiting the rate of execution during events that fire frequently (e.g., scrolling, resizing).
-
-* **Use case**: If you have a scroll event handler that updates the UI on every scroll, throttling can make sure the handler runs only once every 100ms, for example.
-
-```javascript
- code// Throttling example
-function throttle(fn, wait) {
-  let lastTime = 0;
-  return function(...args) {
-    const now = Date.now();
-    if (now - lastTime >= wait) {
-      lastTime = now;
-      fn(...args);
-    }
-  };
-}
-
-window.addEventListener('scroll', throttle(() => {
-  console.log('Scrolled!');
-}, 200));
-```
-
-#### **Debouncing**:
-
-Debouncing ensures that a function is called only after a certain delay, and the call is made only after the event stops firing for a specified period. It's useful for input fields or search bars where you only want to make the request after the user stops typing.
-
-* **Use case**: In a search box, you only want to make a search request after the user has stopped typing for a certain duration.
-
-```javascript
- code// Debouncing example
-function debounce(fn, delay) {
-  let timeoutId;
-  return function(...args) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn(...args), delay);
-  };
-}
-
-const input = document.querySelector('input');
-input.addEventListener('input', debounce(() => {
-  console.log('Searching...');
-}, 500));
-```
-
-#### Summary:
-
-* **Memoization** is an optimization technique that caches function results to avoid redundant computations.
-* **Memory leaks** in JavaScript can be prevented by clearing event listeners, intervals, and using weak references.
-* **Throttling** and **debouncing** limit the frequency of function executions during frequent events, improving performance by reducing unnecessary computations.
-
-### 13\. ** How to store token and secure the application in angular and reactjs application **
-
-Do not store JWT tokens in localStorage or sessionStorage. Use HttpOnly cookies or store the token in memory (e.g., React state or Angular service) and pass it in API request headers.
-Implement route protection to prevent unauthorized access to parts of the app (e.g., React Router's ProtectedRoute or Angular's Route Guards).
-Use HTTPS to protect data in transit.
-Set up security headers to protect against XSS, CSRF, and other attacks.
-Always validate tokens on the backend and keep token expiration and revocation mechanisms in place.
-
-### 52\. **How do you handle authentication and authorization in a frontend application?**
-
-Authentication and authorization are key aspects of security in frontend applications.
-
-- **Authentication** is the process of verifying the identity of the user (e.g., through login credentials).
-- **Authorization** is the process of determining what actions or resources the authenticated user is allowed to access.
-
-**How to handle authentication in frontend apps:**
-
-1. **Use a Backend API for Authentication**: The frontend app sends login credentials (e.g., username and password) to a backend server via a secure API. The backend validates the credentials and returns an authentication token (like a JWT or session cookie).
-
-2. **Store the Token Securely**:
-
-   - **JWT (JSON Web Token)**: Store the token in `localStorage` or `sessionStorage` for client-side access. However, these methods are vulnerable to XSS attacks, so careful handling is necessary.
-   - **HttpOnly Cookies**: A more secure approach is to store the token in a cookie with the `HttpOnly` and `Secure` flags, which prevents JavaScript access and ensures the token is only sent over HTTPS.
-
-3. **Sending Authentication Tokens**: Once the token is stored, it is sent in HTTP headers (usually the `Authorization` header with the "Bearer" prefix) when making requests to protected API endpoints.
-
-4. **Managing Authorization**:
-
-   - Use roles and permissions stored in the token payload (for JWT) to determine what parts of the app the user can access.
-   - On each route or component, check the user’s role or permissions before rendering protected content.
-   - Redirect users to login or an error page if they are not authorized to access a certain part of the app.
-
-5. **Token Expiry and Refresh**: JWTs have an expiry time. To maintain the user session, you can implement a token refresh mechanism where the frontend automatically requests a new token from the backend before the current token expires.
-
-### 14\. **What are the advantages and disadvantages of single-page applications (SPAs)?**
-
-A **Single-Page Application (SPA)** is a web application that loads a single HTML page and dynamically updates as the user interacts with the app. SPAs are built using JavaScript frameworks like React, Angular, and Vue.js.
-
-**Advantages of SPAs:**
-
-- **Fast and Responsive**: Once the page is loaded, only necessary data is fetched, making subsequent interactions feel faster, as the app does not need to reload entire pages.
-- **Seamless User Experience**: SPAs provide a fluid, app-like experience with smooth transitions between views without page reloads.
-- **Reduced Server Load**: Since only data (not full HTML pages) is sent over the network, SPAs reduce the load on the server.
-
-**Disadvantages of SPAs:**
-
-- **Initial Load Time**: The first load can be slow, as the browser needs to load a significant amount of JavaScript and other assets.
-- **SEO Challenges**: Since content is rendered dynamically in the browser, it can be challenging for search engines to index the content (although this can be mitigated with SSR, prerendering, or tools like prerender.io).
-- **Complexity**: Managing state and routing can become complex as the application grows, especially in large-scale apps with many dynamic views.
-- **Browser History and Back Button**: SPAs need to implement client-side routing properly to manage browser history and the back button, which can be challenging without proper setup.
-
-### 15\. **What is Server-Side Rendering (SSR), and how does it impact SEO?**
-
-**Server-Side Rendering (SSR)** refers to the process of rendering the HTML of a web page on the server before sending it to the client. In SSR, the server processes the request, renders the content (often using a JavaScript framework like React, Angular, or Vue), and then sends the fully rendered HTML to the browser.
-
-**How SSR Impacts SEO:**
-
-- **Better SEO**: Since search engine crawlers can read the fully rendered HTML content (rather than waiting for JavaScript to run), SSR significantly improves SEO. Search engines can easily index the content and rank the page, which is crucial for content-heavy websites.
-- **Faster First Load**: SSR provides a faster initial load because the browser receives fully rendered HTML, which reduces the time it takes to display the content compared to client-side rendering.
-
-**Trade-Offs of SSR:**
-
-- **Server Load**: SSR requires more server resources since the server needs to generate the HTML for each request, which can increase latency and load on the server.
-- **Complexity**: SSR adds complexity to the app architecture, especially in managing server-side rendering logic alongside client-side interactivity.
-
-By combining SSR with client-side hydration, modern frameworks (like Next.js for React or Nuxt.js for Vue) offer hybrid solutions that provide the best of both worlds: fast initial rendering for SEO and a dynamic, client-side app for subsequent interactions.
-
-### 16\. **Explain how JavaScript works in the browser: What happens when a webpage loads?**
-
-When a webpage loads, the browser performs the following steps:
-
-1. **Parsing HTML**: Builds the DOM (Document Object Model).
-2. **Parsing CSS**: Builds the CSSOM (CSS Object Model).
-3. **Rendering**: Combines DOM and CSSOM to render the page.
-4. **JavaScript Execution**: Executes any embedded JavaScript, modifying the DOM/CSSOM and handling events.
-
-The **event loop** coordinates asynchronous tasks while executing the synchronous code.
-
-### 17\. **What is the difference between localStorage, sessionStorage, and cookies in JavaScript?**
-
-* **localStorage**: Stores data persistently, even after the browser is closed.
-* **sessionStorage**: Stores data for the duration of the page session (data is cleared when the page is closed).
-* **Cookies**: Can store data with an expiration date and are sent with every HTTP request.
-
-### 18\. **How do you handle memory leaks in JavaScript?**
-
-Memory leaks occur when objects are no longer in use but are still being referenced, preventing the garbage collector from freeing up the memory. Here's how you can handle and prevent memory leaks in JavaScript:
-
-#### a. **Use `WeakMap` or `WeakSet` for Caching**
-
-* If you need to store references to objects, use `WeakMap` or `WeakSet`. These types allow garbage collection to remove objects when they are no longer referenced.
-
-#### b. **Remove Event Listeners**
-
-* Always remove event listeners when they're no longer needed. For example:
-  ```javascript
-   const button = document.querySelector('button');
-  function handleClick() { console.log('clicked'); }
-  button.addEventListener('click', handleClick);
-
-  // When done
-  button.removeEventListener('click', handleClick);
-  ```
-
-#### c. **Clear Timeouts and Intervals**
-
-* When using `setTimeout` or `setInterval`, make sure to clear them when they are no longer needed.
-  ```javascript
-   const intervalId = setInterval(() => { console.log('Running'); }, 1000);
-
-  // Clear when done
-  clearInterval(intervalId);
-  ```
-
-#### d. **Avoid Global Variables**
-
-* Limit the use of global variables, as they stay in memory for the duration of the page's lifecycle.
-
-#### e. **Check Detached DOM Elements**
-
-* Ensure that DOM nodes that are removed from the page are properly cleaned up, as references to them can prevent garbage collection.
-
-#### f. **Profiling and Monitoring**
-
-* Use browser developer tools to profile memory usage and track potential leaks, especially in long-running applications.
-
-### 19\. **How does JavaScript work with Webpack, Babel, and other bundlers?**
-
-* **Webpack** is a module bundler that takes your JavaScript files, along with CSS, images, and other assets, and bundles them into a set of optimized files that can be loaded by the browser. It allows you to use modern JavaScript features (like ES6 modules) and compile them down to code that works in all browsers.
-* **Babel** is a JavaScript compiler that converts modern JavaScript (like ES6 or JSX) into backward-compatible versions of JavaScript. It works as a transpiler, allowing you to use the latest JavaScript syntax today without worrying about browser support.
-* **Other Bundlers**: Other bundlers like **Parcel** or **Rollup** work similarly to Webpack but with different setups and trade-offs. Rollup, for example, is known for optimizing libraries, while Parcel requires zero configuration to get started.
-
-Together, **Webpack** and **Babel** (often integrated with other tools) allow developers to write modern JavaScript and have it work in older browsers without needing to manually handle the complexities of compatibility and performance optimizations.
-
-### 20\. **Explain the concept of "strict mode" in JavaScript.**
-
-**Strict mode** is a way to opt into a stricter version of JavaScript that helps to catch common coding mistakes and improve performance. It restricts certain actions and throws more exceptions. It is enabled by adding `"use strict";` at the beginning of a script or function.
-
-Key differences in strict mode:
-
-* Disallows the use of undeclared variables.
-* Prevents assignment to read-only properties.
-* Disallows `eval` and `with`.
-* Prevents the use of `this` in global context (it will be `undefined`).
-
-Example:
-
-```javascript
- code"use strict";
-x = 10; // Throws an error because x is not declared
-```
-
-
-### 3\. **How would you implement inheritance in JavaScript (both classical and prototypal)?**
-
-There are two main approaches to inheritance in JavaScript: **Classical Inheritance** (using constructor functions) and **Prototypal Inheritance**.
-
-* **Classical Inheritance** (via constructor functions): JavaScript doesn't have classical inheritance like other OOP languages (e.g., Java, C++), but you can simulate it using constructor functions and setting the prototype chain manually.
-
-  Example:
-
-  ```javascript
-   function Animal(name) {
-    this.name = name;
-  }
-
-  Animal.prototype.speak = function() {
-    console.log(this.name + ' makes a noise.');
-  };
-
-  function Dog(name) {
-    Animal.call(this, name); // Call parent constructor
-  }
-
-  Dog.prototype = Object.create(Animal.prototype); // Inherit from Animal
-  Dog.prototype.constructor = Dog;
-
-  const dog = new Dog('Buddy');
-  dog.speak(); // Buddy makes a noise.
-  ```
-
-* **Prototypal Inheritance** (using ES6 `class` syntax): ES6 introduced the `class` syntax to make inheritance clearer.
-
-  Example:
-
-  ```javascript
-   codeclass Animal {
-    constructor(name) {
-      this.name = name;
-    }
-    
-    speak() {
-      console.log(this.name + ' makes a noise.');
-    }
-  }
-
-  class Dog extends Animal {
-    constructor(name) {
-      super(name); // Call the parent constructor
-    }
-  }
-
-  const dog = new Dog('Buddy');
-  dog.speak(); // Buddy makes a noise.
-  ```
-
-### 7\. **Explain the concept of "callback hell" and how to avoid it.**
-
-A **callback** is a function passed as an argument to another function that is executed once the asynchronous operation completes.
-
-* **Callback Hell** (or Pyramid of Doom) refers to nested callbacks that make code hard to read, understand, and maintain. This usually happens when you have multiple asynchronous operations that depend on each other.
-
-#### Problem of "Callback Hell":
-
-* When you have multiple asynchronous operations that depend on each other, you may end up with deeply nested callbacks, often referred to as **callback hell** or **pyramid of doom**.
-* This can make the code hard to read, maintain, and debug.
-
-Example:
-
-```javascript
-doSomething(function(err, result) {
-  if (err) {
-    console.error(err);
-  } else {
-    doAnotherThing(result, function(err, result2) {
-      if (err) {
-        console.error(err);
-      } else {
-        doYetAnotherThing(result2, function(err, result3) {
-          // and so on...
-        });
-      }
-    });
-  }
-});
-```
-
-**Avoiding Callback Hell**:
-
-1. **Promises**: Use Promises to flatten nested callbacks and chain them in a more readable way.
-2. **Async/Await**: This syntax makes asynchronous code look more like synchronous code and avoids deeply nested callbacks.
-
-Example using async/await:
-
-```javascript
-async function fetchData() {
-  try {
-    const result1 = await asyncFunction1();
-    const result2 = await asyncFunction2();
-    const result3 = await asyncFunction3();
-  } catch (err) {
-    console.error(err);
-  }
-}
-```
-
-### 9\. **What is the purpose of JavaScript's eval() function?**
-
-The `eval()` function evaluates JavaScript code represented as a string. While it can be powerful, it is also dangerous because it allows execution of arbitrary code, which can lead to security vulnerabilities (e.g., code injection).
-
-Example:
-
-```javascript
-eval('console.log("Hello from eval!")'); // Outputs: Hello from eval!
-```
-
-**Caution**: Avoid using `eval()` unless absolutely necessary due to potential security risks and performance concerns. It can also hinder optimizations by JavaScript engines.
-
-
-## JavaScript and the DOM
----
-### 1\. **How can you select an element in the DOM using JavaScript?**
-
-In JavaScript, you can select an element in the DOM using several methods:
-
-* **`getElementById()`**: Selects an element by its `id` attribute.
-
-  ```javascript
-   const element = document.getElementById('myElement');
-  ```
-
-* **`getElementsByClassName()`**: Selects all elements with a specific class.
-
-  ```javascript
-   const elements = document.getElementsByClassName('myClass');
-  ```
-
-* **`getElementsByTagName()`**: Selects all elements with a specific tag name.
-
-  ```javascript
-   const elements = document.getElementsByTagName('div');
-  ```
-
-* **`querySelector()`**: Selects the first matching element that matches a CSS selector.
-
-  ```javascript
-   const element = document.querySelector('.myClass');
-  ```
-
-* **`querySelectorAll()`**: Selects all matching elements (returns a NodeList).
-
-  ```javascript
-   const elements = document.querySelectorAll('div.myClass');
-  ```
-
-### 2\. **Write a function that updates the text content of an HTML element.**
-
-Here's an example of a function that updates the text content of an element by its `id`:
-
-```javascript
- function updateTextContent(elementId, newText) {
-  const element = document.getElementById(elementId);
-  if (element) {
-    element.textContent = newText;
-  }
-}
-```
-
-Usage:
-
-```javascript
- updateTextContent('myElement', 'New text content!');
-```
-
-### 3\. **Explain the difference between `addEventListener()` and `onclick`.**
-
-* **`addEventListener()`**:
-
-  * This method is more flexible and modern. It allows you to attach multiple event listeners to the same element, for different event types.
-  * It does not overwrite existing event listeners, so it allows for better modularity and multiple handlers for the same event.
-  * It also supports event capturing and bubbling.
-
-  Example:
-
-  ```javascript
-   element.addEventListener('click', function() {
-    console.log('Element clicked');
-  });
-  ```
-
-* **`onclick`**:
-
-  * This is an older, simpler way of attaching an event handler. It allows only one function to be assigned to the `onclick` property of an element, meaning if you set it again, it will overwrite the previous one.
-  * It doesn’t support event capturing.
-
-  Example:
-
-  ```javascript
-   element.onclick = function() {
-    console.log('Element clicked');
-  };
-  ```
-
-### 4\. **What is the purpose of event bubbling and capturing in JavaScript?**
-
-Event bubbling and capturing are two phases of event propagation in the DOM:
-
-* **Event Bubbling**:
-
-  * This is the default behavior where an event starts from the innermost target element and bubbles up to the outer elements (parent elements) until it reaches the root (`document`).
-  * It is useful when you want to handle events on a parent element and have the same event handler for multiple child elements.
-
-  Example:
-
-  ```javascript
-   codedocument.getElementById('parent').addEventListener('click', function() {
-    console.log('Parent clicked');
-  });
-
-  document.getElementById('child').addEventListener('click', function() {
-    console.log('Child clicked');
-  });
-  ```
-
-  In this case, clicking the `child` will log both "Child clicked" and "Parent clicked" (due to bubbling).
-
-* **Event Capturing**:
-
-  * In capturing, the event starts at the outermost parent element and propagates down to the target element.
-  * This phase is not commonly used, but can be enabled by specifying `{ capture: true }` when adding an event listener.
-
-  Example:
-
-  ```javascript
-   codedocument.getElementById('parent').addEventListener('click', function() {
-    console.log('Parent clicked');
-  }, true);  // This enables capturing
-  ```
-
-  In this case, clicking on the child element would log "Parent clicked" first, followed by "Child clicked" (because of capturing).
-
-### 5\. **How would you dynamically add a new element to the DOM?**
-
-You can dynamically create and add an element to the DOM using the following steps:
-
-1. **Create a new element** with `document.createElement()`.
-2. **Set its attributes** or content (e.g., using `textContent`, `classList`, etc.).
-3. **Append it to a parent element** using `appendChild()` or `insertBefore()`.
-
-Example:
-
-```javascript
- function addNewElement() {
-  // Step 1: Create a new <div> element
-  const newDiv = document.createElement('div');
-  
-  // Step 2: Set the text content
-  newDiv.textContent = 'This is a dynamically added element';
-  
-  // Step 3: Append the new element to the body or a specific container
-  document.body.appendChild(newDiv);
-}
-```
-
-Usage:
-
-```javascript
- codeaddNewElement();
-```
-
-This will create a new `<div>` element with the specified text and append it to the `body` of the document.
-
-
-## Architecture & Design Patterns
----
-### 1\. **How do you structure your frontend application for scalability and maintainability?**
-
-A scalable and maintainable frontend application typically follows certain principles and patterns to ensure growth and easy management:
-
-- **Modularization**: Break down the app into small, reusable components (UI components, utility functions, etc.). This can be done by following principles of **component-based architecture** and **separation of concerns**.
-
-- **Folder structure**: Organize the project by feature or domain (also known as feature-first structure), such as having folders for `components`, `services`, `utils`, `assets`, `store`, and `styles`. This keeps everything related to a specific feature or domain in one place.
-
-- **State management**: Use a state management solution like Redux, MobX, or React Context API for managing application-wide state in a predictable way.
-
-- **Routing**: Use client-side routing (with libraries like React Router, Vue Router, etc.) to handle navigation between different parts of your app.
-
-- **Modular CSS**: Use **CSS-in-JS** (e.g., Styled Components), **Sass**/ **SCSS**, or **CSS Modules** to keep styles scoped to specific components.
-
-- **Type safety**: Use TypeScript to enforce type safety across your app, which helps prevent bugs and makes the codebase easier to scale.
-
-- **Testing**: Write unit tests for components, integration tests for state management, and end-to-end (E2E) tests to simulate real user behavior (using tools like Jest, Mocha, Cypress, or React Testing Library).
-
-### 2\. **Can you explain the concept of component-based architecture in frontend frameworks?**
-
-Component-based architecture is a software design pattern commonly used in modern frontend frameworks (like React, Vue, and Angular). It encourages building applications by composing smaller, reusable components that represent distinct parts of the UI and business logic.
-
-- **Encapsulation**: Each component is self-contained, managing its own state and logic.
-- **Reusability**: Components can be reused across the application, which reduces duplication and promotes maintainability.
-- **Composability**: Components can be combined to build more complex UIs, creating a flexible and modular structure.
-- **Declarative UI**: Components declaratively define how the UI should look based on their state and props, making it easier to reason about the application flow.
-
-Examples of components in React:
-
-```js
- function Button({ label, onClick }) {
-  return <button onClick={onClick}>{label}</button>;
-}
-
-function App() {
-  return <Button label="Click me" onClick={() => alert("Button clicked")} />;
-}
-```
-
-### 3\. **What is the difference between Functional and Object-Oriented Programming (OOP) in JavaScript?**
-
-- **Functional Programming (FP)**:
-
-  - **Pure Functions**: Functions should avoid side effects and return the same result for the same input.
-  - **Immutability**: Data should not be mutated; instead, new data is returned.
-  - **First-Class Functions**: Functions are treated as first-class citizens, meaning they can be assigned to variables, passed as arguments, and returned from other functions.
-  - **Higher-Order Functions**: Functions that take other functions as arguments or return them as values.
-  - **Example**:
-    ```js
-     const sum = (a, b) => a + b;
-    const numbers = [1, 2, 3];
-    const total = numbers.map(num => sum(num, 2)); // [3, 4, 5]
-    ```
-
-- **Object-Oriented Programming (OOP)**:
-
-  - **Objects**: Encapsulate data and behavior (methods) into objects.
-  - **Classes**: Blueprints for creating objects, with attributes (properties) and methods.
-  - **Inheritance**: Create new classes that inherit properties and methods from other classes.
-  - **Polymorphism**: The ability of different objects to respond to the same method in different ways.
-  - **Encapsulation**: Grouping related data and methods within objects to limit the scope of variables.
-  - **Example**:
-
-    ```js
-     codeclass Animal {
-      constructor(name) {
-        this.name = name;
-      }
-      speak() {
-        console.log(`${this.name} makes a sound`);
-      }
-    }
-
-    class Dog extends Animal {
-      speak() {
-        console.log(`${this.name} barks`);
-      }
-    }
-
-    const dog = new Dog('Buddy');
-    dog.speak(); // Buddy barks
-    ```
-
-### 4\. **What are design patterns in frontend development? Can you name some commonly used ones?**
-
-Design patterns are general reusable solutions to common problems in software design. In frontend development, they can help structure your code to make it more maintainable, extensible, and understandable. Some common design patterns are:
-
-- **Module Pattern**: Encapsulates functionality into a single object, preventing conflicts in the global namespace.
-
-  ```js
-   const myModule = (() => {
-    let privateVar = 'I am private';
-    return {
-      publicMethod: () => console.log(privateVar),
-    };
-  })();
-  ```
-
-- **Singleton Pattern**: Ensures that a class has only one instance and provides a global access point to it.
-
-  ```js
-   codeclass Singleton {
-    constructor() {
-      if (!Singleton.instance) {
-        Singleton.instance = this;
-      }
-      return Singleton.instance;
-    }
-  }
-  ```
-
-- **Observer Pattern**: Allows a subject to notify multiple observers (subscribers) about changes without knowing who or what is receiving the notification (used for event handling).
-
-  ```js
-   codeclass Subject {
-    constructor() {
-      this.observers = [];
-    }
-
-    addObserver(observer) {
-      this.observers.push(observer);
-    }
-
-    notifyObservers() {
-      this.observers.forEach(observer => observer.update());
-    }
-  }
-  ```
-
-- **Factory Pattern**: Used to create objects without specifying the exact class of the object that will be created.
-
-  ```js
-   codeclass AnimalFactory {
-    createAnimal(type) {
-      if (type === 'dog') return new Dog();
-      if (type === 'cat') return new Cat();
-    }
-  }
-  ```
-
-### 5\. **What is the role of Webpack, and how do you configure it for optimization?**
-
-**Webpack** is a module bundler for JavaScript applications. It takes all the assets (JavaScript, CSS, images, etc.) and bundles them into smaller files that can be efficiently loaded by the browser.
-
-- **Loaders**: Transform files before bundling, such as transpiling TypeScript or SCSS into JavaScript and CSS, respectively.
-- **Plugins**: Perform additional tasks like minifying files, optimizing images, injecting environment variables, and more.
-
-**Configuration for optimization**:
-
-- **Code splitting**: Use `splitChunksPlugin` to separate vendor libraries and application code.
-
-  ```js
-   codeoptimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  };
-  ```
-
-- **Tree shaking**: Remove unused code by using ES6 module syntax (`import`/`export`) and enabling the `mode: 'production'` option to trigger optimization.
-
-- **Minification**: Use plugins like `TerserWebpackPlugin` for JavaScript minification.
-
-- **Caching**: Enable long-term caching by adding hashes to file names (`[contenthash]`).
-
-  ```js
-   codeoutput: {
-    filename: '[name].[contenthash].js',
-  };
-  ```
-
-### 6\. **What is tree shaking, and how does it improve performance in a modern frontend build process?**
-
-**Tree shaking** is a process of eliminating dead code (unused code) from your final bundle. It’s possible in modern JavaScript thanks to the static structure of ES6 modules (`import` and `export`), which allow tools like Webpack to analyze and determine which parts of your code aren’t being used.
-
-**Benefits**:
-
-- **Reduces bundle size**: Only the necessary code is included in the final bundle.
-- **Improves performance**: Smaller bundles load faster, leading to improved page load times.
-
-### 7\. **How would you approach testing in a frontend application?**
-
-Testing ensures your frontend app behaves as expected. A comprehensive testing approach includes:
-
-- **Unit tests**: Test individual functions, methods, or components in isolation. Use frameworks like **Jest** or **Mocha**.
-- **Integration tests**: Test how components work together, e.g., component interactions with API services or state management.
-- **End-to-end tests (E2E)**: Test the entire user flow of the application to simulate how real users interact with the app. Tools like **Cypress** or **Selenium** are commonly used.
-- **Snapshot testing**: Ensure that UI components render correctly. **Jest** and **React Testing Library** can be used for this purpose.
-
-### 8\. **What is Continuous Integration/Continuous Deployment (CI/CD), and how do you implement it in frontend development?**
-
-**CI/CD** are practices that help automate the development lifecycle:
-
-- **Continuous Integration (CI)**: The practice of frequently integrating code into a shared repository. It’s supported by automated tests that run on each code commit to ensure that new changes don’t break the existing codebase.
-
-- **Continuous Deployment (CD)**: The practice of automatically deploying code to production (or staging) after successful integration. This ensures that changes reach users quickly and consistently.
-
-**Implementation**:
-
-- Set up automated builds and tests using CI services like **GitHub Actions**, **GitLab CI**, or **CircleCI**.
-- Configure deployment pipelines to deploy to cloud services like **Netlify**, **Vercel**, or **AWS** after successful tests.
-
-Example pipeline for CI/CD:
-
-1. Code is pushed to the repository.
-2. CI tool runs linting, tests, and builds the project.
-3. If tests pass, deploy the project to the staging or production environment.
-
-### RxJS usefull questions
----
-Here are some common RxJS interview questions along with their answers:
-
-### 1. **What is RxJS and how does it work?**
-   **Answer:**  
-   RxJS (Reactive Extensions for JavaScript) is a library for composing asynchronous and event-based programs using observable sequences and LINQ-style query operators. It provides a way to handle asynchronous data streams with operators like `map`, `filter`, `merge`, `concat`, etc.
-
-   **How it works:**  
-   RxJS works by creating Observables, which are streams of data that can be observed. Observers subscribe to these Observables to listen to the events or changes in the data. The stream of events can be transformed or manipulated using various operators, and subscribers receive updates when new data is emitted.
-
-### 2. **What is the difference between an Observable and a Promise?**
-   **Answer:**
-   - **Observable**: It represents a stream of data that can emit multiple values over time. It is lazy, meaning that the code inside the Observable doesn't run until someone subscribes to it.
-   - **Promise**: Represents a single future value (either resolved or rejected). It is eager, meaning the code inside the Promise runs immediately when the promise is created.
-
-   **Key differences**:
-   - Observable can emit multiple values over time, whereas Promise only emits one value.
-   - Observable can be cancelled (unsubscribed), whereas Promise cannot be cancelled once started.
-   - Observable supports operators like `map`, `filter`, `merge`, etc., to manipulate the stream of data.
-
-### 3. **Explain the concept of "Subjects" in RxJS.**
-   **Answer:**  
-   A **Subject** is a special type of Observable that allows values to be multicasted to many Observers. It acts as both an Observable and an Observer, meaning you can subscribe to it and also send data to it using the `next()`, `error()`, or `complete()` methods. 
-
-   **Types of Subjects**:
-   - **Subject**: A regular subject that emits values to all subscribers when `next()` is called.
-   - **BehaviorSubject**: Emits the current value (or a default value) to new subscribers, in addition to broadcasting any subsequent values.
-   - **ReplaySubject**: Emits all values (or a specified number) from the past to new subscribers, starting with the most recent one.
-   - **AsyncSubject**: Emits the last value (or an error) when the observable completes.
-
-### 4. **What is an operator in RxJS? Can you name some commonly used operators?**
-   **Answer:**  
-   Operators are functions that transform, filter, or combine Observables in RxJS. They can be thought of as "functions" that are applied to Observables to modify their behavior.
-
-   **Common operators**:
-   - **map()**: Transforms the emitted values by applying a function to each one.
-   - **filter()**: Filters the emitted values based on a condition.
-   - **merge()**: Combines multiple Observables into one.
-   - **concat()**: Combines multiple Observables in a sequential order.
-   - **switchMap()**: Maps the emitted value to a new Observable and cancels any ongoing emissions when a new value is emitted.
-   - **debounceTime()**: Emits the latest value after a certain delay, useful for preventing rapid emissions in a short period.
-   - **take()**: Limits the number of emissions from an Observable.
-   - **catchError()**: Catches errors from the Observable and allows you to handle them.
-
-### 5. **What is the difference between `mergeMap` and `switchMap`?**
-   **Answer:**  
-   - **mergeMap**: Projects each value from the source Observable to an inner Observable and merges the results. The previous inner Observable will not be cancelled when a new value is emitted.
-   - **switchMap**: Projects each value from the source Observable to an inner Observable and unsubscribes from the previous inner Observable when a new value is emitted. This is useful when you want to cancel the previous stream of data when a new value arrives.
-
-   **Use case**:
-   - Use `mergeMap` when you want to process all emissions from the source Observable.
-   - Use `switchMap` when you want to switch to a new Observable and cancel the previous one (e.g., handling user input or network requests).
-
-### 6. **What is the `takeUntil` operator used for?**
-   **Answer:**  
-   The `takeUntil` operator is used to emit values from the source Observable until another Observable emits a value. It can be useful for unsubscribing or completing an observable stream based on the emission from another Observable.
-
-   **Example**: If you want to unsubscribe from an Observable after a certain event (like a button click or timeout), you can use `takeUntil` to manage that.
-
+### **97. What is the importance of modularity in JavaScript development?**
+   **Modularity** is crucial in JavaScript development for several reasons:
+   - **Reusability**: Code can be reused across different parts of the application, reducing duplication.
+   - **Maintainability**: Smaller, self-contained modules are easier to maintain and test.
+   - **Collaboration**: Multiple developers can work on different modules simultaneously without stepping on each other’s toes.
+   - **Scalability**: Modular code makes it easier to scale the application by adding new features without breaking existing functionality.
+
+   JavaScript provides native support for modules via **ES6 modules** (`import/export`), but you can also use **CommonJS** for server-side Node.js development.
+
+### **98. How do you document JavaScript code effectively?**
+   Documenting JavaScript code involves explaining the purpose, functionality, and usage of your code so that others (and your future self) can easily understand it. Best practices include:
+   - **Inline comments**: Use comments to explain non-obvious logic or important decisions.
+   - **Function/method documentation**: Use comments to describe what each function does, its parameters, and its return value.
+   - **JSDoc**: JSDoc is a popular tool to generate documentation for your JavaScript code from specially formatted comments.
+
+   **Example of JSDoc**:
    ```javascript
-   const source = interval(1000);
-   const stop = timer(5000);
-   source.pipe(takeUntil(stop)).subscribe(console.log);
-   ```
-
-   In the example above, the `interval` Observable will emit values every second, but the subscription will automatically be stopped after 5 seconds when the `timer` emits.
-
-### 7. **What are "cold" and "hot" Observables?**
-   **Answer:**
-   - **Cold Observable**: A cold Observable starts producing values only when it is subscribed to. Each subscriber gets a new independent execution of the Observable. Examples are HTTP requests, `Observable.of()`, etc.
-   - **Hot Observable**: A hot Observable shares the same execution across all subscribers. It produces values regardless of the number of subscribers. Examples include `Subject`, `BehaviorSubject`, `EventEmitter`, etc.
-
-   **Key difference**: Cold Observables create independent executions for each subscriber, whereas Hot Observables multicast the same value to all subscribers.
-
-### 8. **How would you handle error handling in RxJS?**
-   **Answer:**  
-   In RxJS, you can handle errors using the `catchError` operator. The `catchError` operator allows you to catch errors emitted by the Observable and either handle them or return a new Observable.
-
-   Example:
-   ```javascript
-   sourceObservable.pipe(
-     catchError(error => of('Error handled'))
-   ).subscribe(
-     data => console.log(data),
-     error => console.error(error)
-   );
-   ```
-
-   In this example, if the `sourceObservable` emits an error, it will be caught by `catchError`, and a new Observable (`of('Error handled')`) will be returned instead of propagating the error.
-
-### 9. **What is the difference between `forkJoin` and `combineLatest`?**
-   **Answer:**
-   - **forkJoin**: It waits for all input Observables to complete and then emits an array of the last emitted values from each Observable. It only emits once, when all Observables complete.
-   
-   - **combineLatest**: It emits the latest values from all the input Observables whenever any of them emits a new value. It will keep emitting as long as any of the Observables emits new data.
-
-   **Use cases**:
-   - Use `forkJoin` when you need to wait for multiple async operations to complete and then combine the results.
-   - Use `combineLatest` when you want to react to the latest values from multiple streams and update accordingly.
-
-### 10. **What is the `share` operator used for in RxJS?**
-   **Answer:**  
-   The `share` operator is used to multicast an Observable to multiple subscribers. It ensures that the underlying Observable is shared among subscribers and that it is only executed once, even if there are multiple subscribers.
-
-   This is often used when you want to avoid re-running expensive operations (like HTTP requests) each time a new subscriber subscribes to the Observable.
-
-   Example:
-   ```javascript
-   const observable = http.get('dataUrl').pipe(share());
-   observable.subscribe(data => console.log(data));
-   observable.subscribe(data => console.log(data));
-   ```
-
-   Here, the HTTP request will only be triggered once, despite two subscriptions.
-
-
-### Performance Optimization
----
-
-### 15\. **How do you optimize performance in large-scale JavaScript applications?**
-Optimizing JavaScript code for better performance involves several strategies:
-
-- **Minimize DOM Manipulations**
-
-  * Direct manipulation of the DOM is one of the slowest operations in JavaScript. Try to minimize it by:
-  * Batch DOM updates (e.g., using `documentFragment` or `innerHTML` to make bulk changes).
-  * Use virtual DOM frameworks (e.g., React, Vue) for efficient updates.
-
-- **Avoid Repeated Computations**
-
-  * Avoid recalculating the same values multiple times, especially in loops. Cache values if necessary.
-
-- **Asynchronous Programming**
-
-  * Use asynchronous operations (Promises, `async/await`) instead of blocking operations. This can help with UI responsiveness and prevent the thread from being blocked for long tasks (e.g., API calls).
-
-- **Use Efficient Data Structures**
-
-  * Choose the right data structure for the task at hand:
-  * Arrays are good for ordered collections.
-  * Objects or Maps are better for key-value lookups.
-  * Sets can be useful for unique values.
-
-- **Debounce and Throttle Events**
-
-  * Use debouncing and throttling to manage performance of high-frequency events (scrolling, resizing, keypress).
-
-- **Minimize Memory Leaks**
-
-  * Ensure to clear intervals, timeouts, and event listeners that are no longer needed.
-  * Avoid unnecessary global variables and always clean up references to DOM elements and data when they are no longer in use.
-
-- **Lazy Loading**
-
-  * Only load assets (images, scripts) when they are needed, instead of all upfront.
-
-- **Use Web Workers for Heavy Computation**
-
-  * Move heavy computation to Web Workers to keep the UI thread responsive.
-
-- **Reduce HTTP Requests**
-
-  * Minimize the number of HTTP requests and use bundling or HTTP/2 to reduce latency.
-
-
-
-### 1\. **What techniques do you use to optimize the performance of a web application?**
-
-There are several techniques to optimize the performance of a web application:
-
-- **Minification and Compression**: Minify JavaScript, CSS, and HTML files to reduce their size and use compression (e.g., GZIP or Brotli) to serve compressed files.
-- **Caching**: Leverage browser caching, HTTP caching headers (Cache-Control, ETag, etc.), and Service Workers for offline support. This reduces the need for repeated requests to the server.
-- **Image Optimization**: Use image formats like WebP, SVG, or responsive images (via the `srcset` attribute) to reduce image size without losing quality.
-- **Lazy Loading**: Delay loading non-critical resources until they're needed (e.g., images, iframes, JavaScript).
-- **Asynchronous Loading**: Load JavaScript asynchronously using the `async` or `defer` attributes, which allows the browser to continue parsing HTML without waiting for the script to execute.
-- **Content Delivery Network (CDN)**: Use a CDN to serve static assets like images, JavaScript, and CSS files from servers closer to the user’s geographical location, improving loading times.
-- **Reduce HTTP Requests**: Minimize the number of requests needed to load a page by combining files (e.g., bundling JavaScript and CSS), using image sprites, or using inline SVGs.
-- **Server-Side Rendering (SSR)**: Pre-render parts of your web application on the server to send a fully rendered page to the client, reducing the time it takes for the page to be visible.
-- **Optimize JavaScript Execution**: Profile and optimize your JavaScript to minimize unnecessary reflows and repaints in the browser, reduce complexity, and improve responsiveness.
-
-
-### 2\. **How can you reduce the page load time of a website?**
-
-To reduce the page load time, you can implement several strategies:
-
-- **Optimize Assets**:
-  - Minimize and compress CSS, JavaScript, and HTML files.
-  - Use image optimization techniques, such as converting to modern formats (e.g., WebP) and reducing file size.
-- **Lazy Load Images and Assets**:
-  - Defer the loading of images and other media files until they are in the viewport (visible to the user).
-- **Use a Content Delivery Network (CDN)**:
-  - Distribute assets through a CDN to deliver content from servers geographically closer to the user.
-- **Enable Browser Caching**:
-  - Set long expiration times for static resources (images, styles, scripts) to avoid re-downloading them on subsequent visits.
-- **Optimize CSS and JavaScript**:
-  - Remove unused CSS and JavaScript to reduce file sizes.
-  - Load JavaScript files asynchronously to prevent blocking page rendering.
-- **HTTP/2 or HTTP/3**:
-  - Use HTTP/2 or HTTP/3 to enable multiplexing, reducing latency by allowing multiple requests to be sent in parallel over a single connection.
-- **Server-Side Optimization**:
-  - Use server-side caching mechanisms like reverse proxies (e.g., Varnish, Nginx) or cache at the database level.
-- **Reduce Initial Payload**:
-  - Use techniques like server-side rendering (SSR) or static site generation (SSG) to reduce the amount of JavaScript and CSS needed to be executed on the client.
-
-
-
-### 4\. **What is code splitting, and why is it important?**
-
-**Code splitting** is a technique where JavaScript code is broken down into smaller bundles or chunks that are loaded only when needed, instead of loading the entire application at once. This reduces the initial load time and makes your app more efficient.
-
-#### **Why is it important?**
-
-- **Improved Performance**: By loading only the necessary code for the current page or feature, you reduce the amount of JavaScript that needs to be parsed and executed on the client.
-- **Faster Initial Load**: The browser can load and render critical parts of your application faster, leading to a better user experience.
-- **Reduced Overhead**: Non-critical code (e.g., components for future routes or features) is not loaded until it's required, saving bandwidth and improving performance.
-
-#### **How Code Splitting Works**:
-
-- **React**: React's `React.lazy()` and `Suspense` can be used to split components.
-- **Webpack**: If you're using Webpack, it automatically splits code based on dynamic `import()` statements, or you can configure it manually.
-
-Example in React:
-
-```jsx
-`const LazyComponent = React.lazy(() => import('./LazyComponent'));
-
-// This component will only be loaded when it is rendered.`
-```
-
-#### **Other Types of Code Splitting**:
-
-- **Route-Based Splitting**: Split your code by routes or pages (e.g., only load the code for the current route).
-- **Component-Based Splitting**: Split code by specific components or features that are needed on a particular page.
-
-### 1\. **What is a critical rendering path, and how can it be optimized?**
-
-The **critical rendering path** is the sequence of steps the browser follows to convert the HTML, CSS, and JavaScript into pixels on the screen. It involves several stages:
-
-- **HTML Parsing:** The browser parses the HTML file to build the DOM (Document Object Model).
-- **CSS Parsing:** The CSS file is parsed to build the CSSOM (CSS Object Model).
-- **Render Tree Construction:** The browser combines the DOM and CSSOM into a render tree, which represents the visible content.
-- **Layout:** The browser calculates the exact position and size of each element in the render tree.
-- **Painting:** The browser paints pixels onto the screen based on the layout.
-
-To **optimize the critical rendering path**, consider the following strategies:
-
-- **Minimize Critical Resources:** Load only the resources that are needed for rendering above-the-fold content first. Reduce the size of CSS and JavaScript files.
-- **Defer Non-Essential JavaScript:** Use the `async` or `defer` attributes for non-critical scripts to prevent them from blocking the rendering of the page.
-- **CSS and JavaScript Minification:** Minify CSS and JavaScript files to reduce their size, making them faster to download.
-- **Critical CSS:** Inline essential CSS for above-the-fold content directly in the HTML and defer non-essential CSS to load later.
-- **Resource Prioritization:** Use techniques like `preload` and `prefetch` to prioritize important resources early in the loading process.
-- **Lazy Loading:** Defer loading of non-essential images, videos, and other resources until they are needed (e.g., when they come into view).
-
-### 4\. **Explain the concept of a Service Worker and its role in Progressive Web Apps (PWAs).**
-
-A **Service Worker** is a JavaScript file that runs in the background of a web application, separate from the main browser thread. It intercepts network requests, allowing developers to manage caching, background sync, and push notifications even when the app is not open or the device is offline.
-
-**Role in PWAs:**
-
-- **Offline Functionality:** A Service Worker enables caching of assets (HTML, CSS, JavaScript, images) and dynamic content, allowing the app to function offline or in low-network conditions. This is a key feature of Progressive Web Apps.
-- **Caching Strategy:** Service Workers can cache resources to make the app faster by serving them from the cache instead of the network. Different caching strategies (e.g., cache-first, network-first) can be implemented for optimal performance.
-- **Background Sync:** Allows applications to sync data with the server in the background. This is useful for sending data collected while offline or when the app comes back online.
-- **Push Notifications:** Service Workers handle push notifications, enabling apps to send updates or alerts to users even when the app is not active.
-- **Improved Load Performance:** By caching and serving resources efficiently, Service Workers reduce page load times and improve the overall user experience.
-
-**Example:**
-
-```javascript
- code// Register Service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-    console.log('Service Worker registered with scope:', registration.scope);
-  }).catch(function(error) {
-    console.log('Service Worker registration failed:', error);
-  });
-}
-```
-
-In `service-worker.js`:
-
-```javascript
- codeself.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open('my-cache').then((cache) => {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/styles.css',
-        '/script.js'
-      ]);
-    })
-  );
-});
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
-});
-```
-
-### 12\. **What are some techniques to optimize the performance of a JavaScript-heavy web application?**
-
-There are several strategies to optimize the performance of a JavaScript-heavy web application:
-
-* **Code Splitting**: Break up your JavaScript bundles into smaller chunks that can be loaded on demand (e.g., using Webpack). This reduces the initial load time.
-
-* **Lazy Loading**: Load JavaScript only when it is needed, e.g., when the user interacts with a particular feature or scrolls to a certain point in the page.
-
-* **Tree Shaking**: Remove unused code during the build process (especially useful for libraries like React or Angular). This can be done using modern bundlers like Webpack or Rollup.
-
-* **Minification and Compression**: Minify and compress your JavaScript files (using tools like UglifyJS or Terser) to reduce the size of the scripts delivered to the client.
-
-* **Asynchronous Loading**: Use the `async` or `defer` attributes when loading JavaScript scripts to avoid blocking the DOM parsing.
-
-* **Efficient DOM Manipulation**: Reduce DOM interactions and try to batch DOM updates rather than manipulating it repeatedly in a loop. Use `requestAnimationFrame` for visual changes.
-
-* **Caching**: Cache assets and use HTTP/2 or Service Workers to store JavaScript files locally in the browser for subsequent visits.
-
-* **Use of Web Workers**: Offload expensive computations to background threads using Web Workers, thus freeing up the main thread for UI updates.
-
-* **Optimize Loops and Recursions**: Avoid deeply nested loops or recursive calls that can overwhelm the call stack and degrade performance.
-
-* **Use of Virtualization**: Implement techniques like infinite scroll and virtualization (e.g., using libraries like React Window) for rendering large datasets.
-
-### 13\. **How would you measure and improve the performance of a JavaScript application in the browser?**
-
-To measure and improve the performance of a JavaScript application in the browser, you can follow these steps:
-
-#### Measuring Performance:
-
-1. **Use Browser DevTools**:
-
-   * **Performance Tab**: Record the performance of your app to analyze resource consumption (CPU, memory), rendering times, and event listeners.
-   * **Network Tab**: Measure the size and load time of resources, including JavaScript, CSS, and images.
-   * **Lighthouse Audits**: Run performance audits using Chrome’s Lighthouse tool to get a comprehensive performance report.
-
-2. **Console Profiling**: Use `console.time()` and `console.timeEnd()` to measure the time taken by specific code sections.
-
-3. **User Timing API**: Use `performance.mark()` and `performance.measure()` to capture custom timing metrics in your app.
-
-4. **Third-Party Tools**: Tools like **WebPageTest** or **GTmetrix** can provide more detailed performance analysis across different devices and network conditions.
-
-#### Improving Performance:
-
-1. **Optimize Rendering**:
-
-   * Reduce layout and paint times by reducing the complexity of the DOM.
-   * Use `requestAnimationFrame` for smoother animations.
-   * Minimize reflows and repaints by batching DOM changes.
-
-2. **Reduce JavaScript Execution Time**:
-
-   * Minify and compress JavaScript files.
-   * Optimize event listeners and reduce unnecessary event handler registrations.
-
-3. **Lazy Load Non-Essential Resources**:
-
-   * Defer loading JavaScript that is not critical for the initial page render.
-   * Use `async`/`defer` for non-blocking script loading.
-
-4. **Improve Network Efficiency**:
-
-   * Use HTTP/2 to speed up request multiplexing.
-   * Implement caching strategies for assets.
-   * Reduce the number of HTTP requests (combine small files).
-
-5. **Memory Management**:
-
-   * Use the browser's **Memory Tab** to identify memory leaks.
-   * Optimize object creation and avoid unnecessary global variables.
-
-
-### 15\. **Explain debouncing and throttling. When would you use each of them?**
-
-* **Debouncing**:
-
-  * **Definition**: A technique to ensure that a function is not called too frequently. It delays the invocation of the function until a certain amount of time has passed since the last invocation.
-  * **Use Case**: Ideal for events that fire frequently, such as resizing or typing in an input field, where you only want to execute the function after the user has stopped for a specified delay.
-  * **Example**: Typing in a search box — wait until the user stops typing for a set period before executing the search function.
-
-* **Throttling**:
-
-  * **Definition**: A technique that ensures a function is called at most once in a specified period of time, regardless of how many times the event is triggered.
-  * **Use Case**: Best for events that may fire repeatedly, such as scrolling or window resizing, where you want to limit the number of times a function is executed during continuous activity.
-  * **Example**: Preventing excessive API calls when scrolling a page — only call the function every 500 milliseconds or so.
-
-### 16\. **What is a memory leak in JavaScript, and how can you prevent or fix them in a large-scale web app?**
-
-* **Memory Leak**: A memory leak occurs when your program holds onto memory that is no longer needed, causing the application to use more memory than necessary, which can lead to performance issues or crashes.
-
-* **Common Causes**:
-
-  * **Forgotten timers or intervals**: Timers (`setTimeout`/`setInterval`) are not cleared.
-  * **Unclosed event listeners**: Event listeners are not removed when no longer needed.
-  * **Detached DOM nodes**: DOM nodes are removed from the document but still referenced in JavaScript.
-  * **Global variables**: Unused global variables that are not garbage collected.
-
-* **Prevention/Fix**:
-
-  * **Remove event listeners**: Always remove event listeners when they are no longer required using `removeEventListener`.
-  * **Clear timers/intervals**: Use `clearTimeout` and `clearInterval` when you're done with them.
-  * **Avoid global variables**: Use local variables and let/const instead of var to reduce the risk of accidental global variables.
-  * **Weak References**: Use `WeakMap` or `WeakSet` to store objects that might be garbage collected if there are no other references.
-  * **Profiling**: Use the **Memory Tab** in DevTools to detect memory leaks by taking heap snapshots and tracking memory usage over time.
-
-### 17\. **What is lazy loading and how can you implement it with JavaScript?**
-
-* **Lazy Loading**: A design pattern where non-essential resources are only loaded when they are needed, such as when the user scrolls to a particular section of a page.
-
-* **How to Implement**:
-
-  * **Images**: Load images only when they come into the viewport (using the `IntersectionObserver` API).
-
-    ```javascript
-     const images = document.querySelectorAll('img[data-src]');
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.src = entry.target.dataset.src;
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-    images.forEach(image => observer.observe(image));
-    ```
-
-  * **JavaScript**: Use dynamic `import()` to load JavaScript modules on demand.
-
-    ```javascript
-     codebutton.addEventListener('click', () => {
-      import('./module.js').then(module => {
-        // Use the module
-      });
-    });
-    ```
-
-  * **Video or Other Resources**: Similar to images, you can load videos or other media when they are about to be viewed.
-
-
-
-
-
-## Security and Best Practices
----
-### 1\. **What is Cross-Site Scripting (XSS), and how can you prevent it in a JavaScript application?**
-
-**Cross-Site Scripting (XSS)** is a vulnerability that allows an attacker to inject malicious scripts into web pages viewed by other users. The attacker exploits the trust a user has in a particular website, injecting harmful JavaScript code that can manipulate page content, steal data (like cookies), or perform actions on behalf of the user.
-
-#### Prevention of XSS:
-
-1. **Input Validation and Sanitization**: Always validate and sanitize user input to ensure that only safe data is processed. Use libraries like DOMPurify for sanitizing HTML content.
-2. **Escape User Inputs**: When displaying data entered by users, ensure that it is properly escaped (e.g., turning `<` into `<`) to prevent it from being interpreted as HTML/JavaScript.
-3. **Content Security Policy (CSP)**: Implement CSP headers to restrict the sources from which scripts can be loaded.
-4. **Use HTTPOnly and Secure Cookies**: For session management, set the `HttpOnly` flag on cookies to prevent JavaScript from accessing them.
-5. **Avoid Inline JavaScript**: Avoid using inline JavaScript and event handlers (e.g., `onclick="..."`) to minimize the risk of executing malicious scripts.
-
-### 2\. **What is Cross-Origin Resource Sharing (CORS), and how do you handle CORS issues in frontend applications?**
-
-**Cross-Origin Resource Sharing (CORS)** is a security feature implemented by browsers to restrict web pages from making requests to domains other than their own, preventing potential malicious activities such as cross-site request forgery (CSRF).
-
-#### Handling CORS Issues:
-
-1. **Server-Side Configuration**: To allow cross-origin requests, the server must include specific CORS headers (e.g., `Access-Control-Allow-Origin`). This is typically done in the server response to indicate which domains are permitted to access the resources.
-2. **Proxy Requests**: If you cannot control the server, you can set up a proxy server to relay the requests from your frontend to the backend, bypassing the CORS restrictions.
-3. **Using JSONP or iframe (for legacy cases)**: For legacy systems that don't support CORS, alternatives like JSONP (for GET requests) or using cross-domain iframes might be viable.
-
-### 3\. **How do you securely store sensitive data (e.g., tokens) in the frontend?**
-
-Storing sensitive data (like JWT tokens or API keys) in the frontend needs to be done with caution to avoid potential security risks.
-
-#### Best Practices:
-
-1. **Avoid Local Storage/Session Storage**: These are vulnerable to XSS attacks, as any malicious script running on the page can access data stored here.
-2. **Use HTTPOnly Cookies**: Store tokens in cookies with the `HttpOnly` flag to prevent JavaScript from accessing them. Also, set the `Secure` flag to ensure cookies are only sent over HTTPS.
-3. **Short-Lived Tokens**: Use short-lived access tokens combined with refresh tokens for improved security. This limits the window of opportunity for an attacker if the token is compromised.
-4. **Encrypt Sensitive Data**: If you must store sensitive information on the client-side, ensure that it is encrypted and cannot be easily extracted or decrypted by attackers.
-
-### 4\. **What is the Same-Origin Policy, and how does it affect JavaScript execution in the browser?**
-
-The **Same-Origin Policy (SOP)** is a security measure implemented by web browsers to restrict web pages from making requests to a domain other than the one that served the web page. This policy helps prevent malicious websites from accessing data from another domain (e.g., stealing cookies or making unauthorized API requests).
-
-#### Impact of SOP:
-
-* JavaScript running in a browser is allowed to make requests (such as XMLHttpRequest or fetch) only to the same domain that served the page.
-* SOP limits the ability to interact with content from other origins, unless explicitly allowed by the target server (using CORS).
-* If a web page attempts to access resources (e.g., API endpoints, iframes, etc.) from another domain without the proper CORS headers, the browser will block the request.
-
-### 5\. **How do you prevent SQL Injection attacks or other security vulnerabilities in JavaScript-based frontend applications?**
-
-SQL Injection is an attack where malicious SQL queries are injected into input fields to manipulate the database.
-
-Although **SQL Injection** primarily affects the backend (database layer), frontend applications can play a role in preventing these attacks by ensuring safe interaction with the backend:
-
-#### Prevention Measures:
-
-1. **Never Trust User Input**: Always sanitize and validate any user input that will be used in SQL queries, even in the backend.
-2. **Use Prepared Statements/Parameterized Queries**: Ensure that SQL queries are constructed using parameterized queries or prepared statements, which separate the query logic from user inputs, preventing attackers from injecting malicious SQL.
-3. **Frontend Validation**: While SQL injection is mainly a backend concern, input validation on the frontend can help mitigate risky inputs before they are sent to the server. This can include checks for unexpected characters or patterns that might be indicative of SQL injection attempts.
-4. **Escape User Input**: On the frontend, escape characters like `'`, `"`, `;`, and `--` that are common in SQL injection attacks.
-5. **Use ORM (Object-Relational Mapping)**: If possible, use an ORM (like Sequelize, TypeORM, etc.) in the backend, which inherently uses parameterized queries and abstracts direct SQL interactions, making it less prone to injection attacks.
-
-In summary, while frontend applications themselves don’t directly interact with databases, they must be cautious about the data they send to the backend and ensure proper backend validation and sanitization to prevent SQL injection attacks.
-
-
-### Tooling and Build Systems
----
-
-### 1\. **What is Webpack, and what role does it play in frontend development? How do you configure it for optimizing JS bundles?**
-
-**Webpack** is a popular JavaScript module bundler used in frontend development. It allows developers to bundle all assets (JavaScript files, CSS, images, etc.) into a single or multiple optimized bundles, improving the performance and organization of code in a web application. Webpack also provides features like hot module replacement, code splitting, and tree shaking.
-
-**Role in Frontend Development:**
-
-* Bundles multiple files (JavaScript, CSS, images) into fewer, more manageable files, improving loading times.
-* Supports module-based development, so developers can import and export code across multiple files.
-* Optimizes code through techniques like minification, tree shaking (removing unused code), and code splitting (loading parts of the application only when needed).
-
-**Configuring for Optimizing JS Bundles:** To configure Webpack for optimizing JS bundles, you can use the following techniques:
-
-1. **Minification**: Use the `TerserWebpackPlugin` to minify the JavaScript code for smaller file sizes.
-   ```javascript
-    const TerserPlugin = require('terser-webpack-plugin');
-   module.exports = {
-     optimization: {
-       minimize: true,
-       minimizer: [new TerserPlugin()],
-     },
-   };
-   ```
-2. **Tree Shaking**: Ensure that your code is written in a modular way and use ES6 module syntax (`import`/`export`). Webpack can eliminate unused code through tree shaking.
-3. **Code Splitting**: Divide large bundles into smaller chunks, which can be loaded on demand. Use `optimization.splitChunks` to achieve this.
-   ```javascript
-    codemodule.exports = {
-     optimization: {
-       splitChunks: {
-         chunks: 'all',
-       },
-     },
-   };
-   ```
-4. **Caching**: Use `ContentHash` in filenames to enable better long-term caching.
-   ```javascript
-    codeoutput: {
-     filename: '[name].[contenthash].js',
-   },
-   ```
-
-### 2\. **What are Babel and TypeScript? What are the main differences, and when would you choose one over the other?**
-
-* **Babel**: A JavaScript compiler that allows you to write code using the latest ECMAScript features (such as ES6/ES7) and convert it into a backward-compatible version that runs in older browsers.
-* **TypeScript**: A superset of JavaScript that adds optional static typing to the language. It also includes features from the latest JavaScript standards, but with type-checking capabilities and tools for better code quality and developer experience.
-
-**Main Differences:**
-
-* **Typing**: TypeScript is strongly typed, while Babel only transpiles JavaScript without adding any type safety.
-* **Tooling and Features**: TypeScript offers features like interfaces, generics, and enums, which aren't available in Babel (unless used with separate type-checking tools).
-* **Compilation**: Babel focuses on transforming JavaScript syntax, while TypeScript performs both type checking and transformation.
-
-**When to Choose One:**
-
-* **Babel**: Choose Babel if you just need to ensure compatibility with older browsers and you're using modern JavaScript syntax without the need for type checking. It's also preferable if you're working on a large JavaScript codebase without introducing strict typing.
-* **TypeScript**: Choose TypeScript if you're building a large-scale application where code maintainability, scalability, and type safety are important. It’s great for catching errors at compile time and improving collaboration among developers.
-
-### 3\. **How do you use ESLint and Prettier for ensuring consistent code style and quality in a JavaScript project?**
-
-* **ESLint**: ESLint is a static code analysis tool used to identify and fix problems in JavaScript code, enforcing coding standards and improving code quality. It checks for issues such as unused variables, inconsistent formatting, and potential errors.
-
-  **Setup for ESLint**:
-
-  1. Install ESLint and the required plugins:
-     ```bash
-     bashCopy codenpm install eslint --save-dev
-     npx eslint --init
-     ```
-  2. Configure ESLint rules in the `.eslintrc` file.
-  3. Run ESLint to check the code:
-     ```bash
-     bashCopy codenpx eslint .
-     ```
-
-* **Prettier**: Prettier is a code formatter that ensures consistent code style (like indentation, spacing, and line breaks) across a project. It focuses purely on formatting and does not analyze code for errors.
-
-  **Setup for Prettier**:
-
-  1. Install Prettier:
-     ```bash
-     bashCopy codenpm install --save-dev prettier
-     ```
-  2. Add a `.prettierrc` configuration file to define style preferences.
-  3. Run Prettier to format the code:
-     ```bash
-     bashCopy codenpx prettier --write .
-     ```
-
-* **Integrating ESLint and Prettier**: You can integrate both tools by using plugins that allow Prettier to be run alongside ESLint. For example, use `eslint-plugin-prettier` and `eslint-config-prettier` to ensure ESLint and Prettier don’t conflict:
-
-  ```bash
-  bashCopy codenpm install eslint-plugin-prettier eslint-config-prettier --save-dev
-  ```
-
-  Then, in `.eslintrc`:
-
-  ```json
-  jsonCopy code{
-    "extends": ["plugin:prettier/recommended"]
-  }
-  ```
-
-### 4\. **What are the differences between traditional JavaScript testing libraries (e.g., Mocha, Chai) and modern ones like Jest and Cypress?**
-
-* **Mocha**: A flexible JavaScript testing framework for running unit tests. It provides a test runner but leaves other aspects (like assertions) to be handled by other libraries (e.g., Chai).
-* **Chai**: An assertion library commonly used with Mocha for writing assertions in tests.
-
-**Modern Testing Libraries**:
-
-* **Jest**: A JavaScript testing framework that includes a test runner, assertion library, and mocking capabilities. It is more opinionated than Mocha and integrates well with React applications. Jest is fast, has built-in coverage reporting, and can mock functions or modules easily.
-* **Cypress**: An end-to-end testing framework that focuses on testing the entire web application in a browser, simulating user interactions. It is often used for integration testing and browser automation.
-
-**Key Differences**:
-
-* **Mocha/Chai**: Requires more configuration and the use of multiple libraries for different aspects of testing (assertions, spies, mocks).
-* **Jest**: A one-stop solution with built-in testing tools, making it easier to set up and use. It works well for unit and integration testing.
-* **Cypress**: Focuses on end-to-end (E2E) testing, providing real-time browser testing and debugging capabilities.
-
-### 5\. **How do you implement Continuous Integration (CI) and Continuous Deployment (CD) for a frontend application?**
-
-1. **CI (Continuous Integration)**: CI ensures that developers frequently integrate their code into a shared repository. The integration is verified automatically by building and running tests.
-
-   * Use a CI service like **GitHub Actions**, **CircleCI**, or **Jenkins**.
-   * Set up a configuration file (e.g., `.github/workflows` for GitHub Actions) to automate tests and builds.
-   * Example for GitHub Actions:
-     ```yaml
-     yamlCopy codename: Build and Test
-     on: [push]
-     jobs:
-       build:
-         runs-on: ubuntu-latest
-         steps:
-           - name: Checkout code
-             uses: actions/checkout@v2
-           - name: Install dependencies
-             run: npm install
-           - name: Run tests
-             run: npm test
-     ```
-
-2. **CD (Continuous Deployment)**: CD automates the deployment of the application to production (or staging) once the tests pass.
-
-   * After passing CI, the build artifacts (e.g., bundled JavaScript) are deployed to hosting platforms like **Netlify**, **Vercel**, or **AWS**.
-   * Example: Set up a deployment pipeline in GitHub Actions to deploy the build to a cloud platform like Netlify or Vercel after tests are successful.
-
-### 6\. **What is a Progressive Web App (PWA), and how would you go about implementing one using JavaScript?**
-
-A **Progressive Web App (PWA)** is a web application that uses modern web capabilities to offer a user experience similar to native mobile apps. PWAs are reliable, fast, and can be installed on the user's device.
-
-**Key Features of PWAs**:
-
-* **Service Workers**: Scripts that run in the background and enable offline support, push notifications, and caching.
-* **Web App Manifest**: A JSON file that defines how the app appears when installed on the user's device (e.g., icons, splash screen, etc.).
-
-**Steps to Implement a PWA**:
-
-1. **Create a Web App Manifest** (`manifest.json`):
-   ```json
-   jsonCopy code{
-     "name": "My App",
-     "short_name": "App",
-     "start_url": "/",
-     "display": "standalone",
-     "background_color": "#ffffff",
-     "icons": [{ "src": "icon.png", "sizes": "192x192", "type": "image/png" }]
+   /**
+    * Adds two numbers together.
+    * @param {number} a - The first number.
+    * @param {number} b - The second number.
+    * @returns {number} The sum of a and b.
+    */
+   function add(a, b) {
+     return a + b;
    }
    ```
-2. **Implement Service Worker**: Register a service worker to handle caching and offline functionality.
-   ```javascript
-    codeif ('serviceWorker' in navigator) {
-     window.addEventListener('load', () => {
-       navigator.serviceWorker.register('/service-worker.js')
-         .then((registration) => {
-           console.log('Service Worker registered with scope:', registration.scope);
-         })
-         .catch((error) => {
-           console.log('Service Worker registration failed:', error);
-         });
-     });
-   }
-   ```
-3. **Caching Resources** in Service Worker (`service-worker.js`):
-   ```javascript
-    codeself.addEventListener('install', (event) => {
-     event.waitUntil(
-       caches.open('my-cache').then((cache) => {
-         return cache.addAll(['/index.html', '/styles.css', '/script.js']);
-       })
-     );
-   });
-   ```
 
-### 7\. **What are service workers in JavaScript? How do they enable progressive web apps (PWAs)?**
-
-A **service worker** is a script that runs in the background of a web browser, separate from a web page, and can intercept network requests to serve content, even when the user is offline.
-
-**How Service Workers Enable PWAs**:
-
-* **Offline Functionality**: Service workers can cache assets and serve them when the user is offline.
-* **Background Sync**: They enable background sync, allowing the app to send data when the connection is restored.
-* **Push Notifications**: Service workers enable push notifications to be delivered to the user even when the app is not open.
-
-Example of registering a service worker:
-
-```js
- codeif ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js')
-    .then(reg => console.log('Service Worker registered:', reg))
-    .catch(err => console.error('Service Worker registration failed:', err));
-}
-```
-
-### 8\. **How do you use local storage and session storage in JavaScript? When should you choose one over the other?**
-
-**Local Storage**:
-
-* Provides persistent storage that survives page reloads and even browser restarts.
-* Data is stored as key-value pairs and can hold up to 5-10MB of data.
-* Ideal for saving user preferences or application state that needs to persist across sessions.
-
-**Example**:
-
-```javascript
- codelocalStorage.setItem('theme', 'dark');
-let theme = localStorage.getItem('theme');
-```
-
-**Session Storage**:
-
-* Data is only available for the duration of the page session. It is cleared when the browser or tab is closed.
-* Ideal for storing data that should only last for the lifetime of the session (e.g., authentication tokens, temporary form data).
-
-**Example**:
-
-```javascript
- codesessionStorage.setItem('sessionID', 'abc123');
-let sessionID = sessionStorage.getItem('sessionID');
-```
-
-**When to Use**:
-
-* **Local Storage**: Use for long-term data that should persist even when the user navigates away or closes the browser.
-* **Session Storage**: Use for short-term, session-specific data that should not persist after the user closes the tab or browser.
-
-
-## Collaboration & Tools
----
-### 1\. **How do you approach mentoring junior developers?**
-
-Mentoring junior developers is a rewarding experience that requires patience and clear communication. I focus on a few key strategies:
-
-- **Understanding their learning style**: Some juniors may prefer hands-on experience, while others may lean towards theoretical explanations. I try to gauge their preferred learning methods early on and tailor my approach accordingly.
-- **Providing clear explanations**: When introducing new concepts, I make sure to explain the "why" behind decisions, not just the "how." I often use analogies to simplify difficult concepts.
-- **Encouraging problem-solving**: I try to guide them to think critically rather than just providing solutions. I ask open-ended questions to help them arrive at the answer themselves, which builds their confidence and ability to troubleshoot independently.
-- **Setting achievable goals**: I break down tasks into manageable pieces and celebrate progress along the way, which keeps them motivated.
-- **Creating a safe environment for learning**: I encourage them to ask questions and be curious without the fear of judgment. Mistakes are opportunities for growth, and I reinforce that mindset.
-
-### 2\. **Tell me about a time when you had to resolve a conflict within your development team. How did you handle it?**
-
-In one instance, two developers had different approaches to implementing a new feature. One preferred a more traditional, well-tested approach, while the other wanted to experiment with a cutting-edge solution. This led to tension and delayed the project timeline.
-
-I handled the situation by:
-
-- **Listening to both sides**: I scheduled a one-on-one meeting with each developer to understand their reasoning. One was concerned about maintainability, and the other was excited by the potential for innovation.
-- **Fostering collaboration**: I brought the two together and encouraged a constructive discussion. I asked them to present the pros and cons of each approach, and together we evaluated the risks, benefits, and time investment.
-- **Compromising**: We found a middle ground by combining elements of both approaches, allowing us to use the new technology but with additional safeguards to ensure long-term stability.
-- **Focusing on the project’s goals**: I reminded everyone of the shared goal — delivering a robust product on time — and encouraged them to put aside personal preferences in favor of the team’s success.
-
-The resolution improved team cohesion and the feature was successfully delivered within the revised timeline.
-
-### 3\. **What strategies do you use to keep a project on track and meet deadlines?**
-
-Keeping a project on track requires clear planning, communication, and monitoring. Here are my strategies:
-
-- **Set clear goals and milestones**: I break the project down into smaller, manageable tasks and set clear deadlines for each. I ensure everyone knows their responsibilities and how their work contributes to the overall goal.
-- **Regular check-ins**: I hold regular status meetings to discuss progress, challenges, and roadblocks. This ensures that issues are identified early and can be addressed before they become blockers.
-- **Prioritize effectively**: I use a prioritization matrix (such as MoSCoW or Eisenhower) to determine what tasks are most urgent and important. I ensure that the team focuses on delivering the most critical features first, rather than getting bogged down by low-priority tasks.
-- **Manage scope creep**: I work with stakeholders to clearly define the scope at the beginning and push back when new requests threaten to derail the timeline. If changes are necessary, I assess the impact on the project timeline and resources.
-- **Use agile practices**: I encourage an iterative approach, where we deliver incremental features and seek feedback quickly. This helps keep the project moving forward while allowing flexibility for adjustments.
-
-### 4\. **How do you handle pressure and prioritize tasks when working on multiple projects?**
-
-Handling pressure effectively is about staying organized and keeping a clear focus. Here’s how I approach it:
-
-- **Time management**: I create detailed schedules and prioritize tasks based on deadlines, importance, and impact. I use tools like task boards, Gantt charts, or simple to-do lists to manage and track progress.
-- **Delegate effectively**: When working on multiple projects, I delegate tasks based on team members' strengths and workloads. I trust my team and make sure they are clear on their responsibilities.
-- **Stay adaptable**: I understand that priorities can shift, so I stay flexible and make adjustments as needed. I regularly reassess tasks to ensure I'm focusing on what is most important at any given time.
-- **Break tasks into smaller chunks**: When feeling overwhelmed, I break down tasks into smaller, more manageable pieces. This helps prevent feeling buried in the work and allows me to make steady progress.
-- **Self-care**: I make sure to take regular breaks and maintain a healthy work-life balance. This helps me stay focused and avoid burnout.
-
-### 5\. **How would you explain complex frontend concepts to a non-technical stakeholder?**
-
-When explaining frontend concepts to non-technical stakeholders, I focus on clarity and relatability:
-
-- **Use analogies**: I relate technical concepts to familiar, everyday experiences. For example, explaining a "responsive design" as something like "a website that adjusts its layout like a photo album that resizes itself depending on whether you're looking at it on your phone, tablet, or computer."
-- **Focus on the outcome**: Instead of diving into the technical details, I highlight the value and benefits to the business. For example, instead of discussing CSS and JavaScript, I might explain how a smooth user experience leads to higher customer satisfaction, which in turn can lead to more conversions.
-- **Visuals**: Whenever possible, I use wireframes, mockups, or simple diagrams to illustrate concepts visually. This helps stakeholders see the ideas in a way that's easy to grasp.
-- **Avoid jargon**: I steer clear of terms like “DOM,” “API,” or “webpack” and focus on simple language that highlights the impact of our work.
-- **Stay patient and open to questions**: I recognize that some concepts can be difficult to understand at first, so I encourage questions and provide as much clarity as needed.
-
-### 6\. **Describe a project where you were the lead frontend developer. What challenges did you face, and how did you overcome them?**
-
-One project I led as the frontend developer was building a new user dashboard for a SaaS platform. The dashboard was crucial for users to interact with the platform’s core features, and we had tight deadlines to deliver a polished product.
-
-Challenges faced:
-
-- **Unclear requirements**: The initial requirements were vague, and there was ongoing back-and-forth between stakeholders about what should be prioritized in the UI.
-  - _Solution_: I organized a series of discovery meetings with stakeholders to clarify requirements and set expectations. We created a prioritized feature list to guide development and avoided scope creep.
-- **Performance issues**: As the dashboard grew more feature-rich, we faced performance bottlenecks, particularly with rendering complex data visualizations.
-  - _Solution_: I implemented lazy loading for some components and used code-splitting to improve load times. We also optimized the rendering of charts by using a lightweight charting library and minimizing unnecessary re-renders.
-- **Cross-team collaboration**: The frontend team had to work closely with backend engineers, especially since the dashboard required integration with several APIs.
-  - _Solution_: I set up regular syncs between the frontend and backend teams to ensure smooth communication and catch any integration issues early.
-
-Ultimately, the project was successful, delivered on time, and received positive feedback from users. We made sure to gather user feedback after launch, which helped us make improvements in the next iteration.
-
-
-## Soft Skills & Leadership
----
-### 1\. **How do you ensure consistency and code quality in a large team of frontend developers?**
-
-To ensure consistency and code quality in a large team of frontend developers, I would use several practices:
-
-- **Code Style Guidelines**: Establishing clear code style guidelines (e.g., following a style guide like Airbnb’s JavaScript style guide) and enforcing them through linters (ESLint for JavaScript/TypeScript, Prettier for code formatting).
-- **Pre-commit Hooks**: Using tools like **Husky** to run linters and formatters before code is committed, ensuring that all code adheres to the defined standards.
-- **Component Libraries/Design Systems**: Implementing a shared component library or design system (e.g., Storybook, Material UI, or a custom solution) to ensure UI consistency across the application.
-- **Automated Tests**: Writing unit tests (with **Jest** or **Mocha**) and end-to-end tests (with **Cypress** or **Playwright**) to ensure that the application works as expected. Test coverage tools like **Istanbul** can also be used to track coverage levels.
-- **CI/CD Pipelines**: Setting up continuous integration pipelines (e.g., using **GitHub Actions** or **GitLab CI**) that run automated tests and linting checks with each commit to catch potential issues early.
-- **Modular Architecture**: Encouraging the use of modular and reusable code through a component-based architecture (e.g., React, Vue.js) helps keep code maintainable and reduces duplication.
-
-### 2\. **Can you explain the importance of code reviews? How do you approach code reviews?**
-
-Code reviews are essential for maintaining high-quality, maintainable code. Here’s why they are important:
-
-- **Knowledge Sharing**: Code reviews provide an opportunity for team members to learn from each other, share best practices, and align on the coding standards.
-- **Error Prevention**: They help catch bugs and potential issues that might be overlooked during solo development. Even experienced developers miss things, so peer reviews act as an additional layer of quality control.
-- **Consistency**: Reviews ensure that the codebase remains consistent in terms of style, architecture, and implementation.
-- **Team Collaboration**: Code reviews foster collaboration and communication among team members, helping to strengthen team dynamics.
-
-**Approach to Code Reviews:**
-
-- **Automated Pre-Checks**: Ensure that code passes automated linting, tests, and builds before initiating a review. This minimizes the cognitive load on reviewers.
-- **Focus on Intent**: Instead of focusing solely on minor style issues, I review whether the intent of the code is clear, if it solves the problem efficiently, and if it's future-proof.
-- **Actionable Feedback**: Provide constructive, actionable feedback. Instead of just pointing out flaws, I suggest improvements or alternatives when applicable.
-- **Context**: Encourage developers to add context to their pull requests (PRs), such as why certain decisions were made, so the reviewer can better understand the reasoning behind the code.
-- **Positive Reinforcement**: Acknowledge good practices, improvements, and clever solutions to encourage the team and build morale.
-
-### 3\. **What version control tools do you use? Can you explain some advanced Git concepts, such as rebasing and branching strategies?**
-
-**Version Control Tools**:  
-The most commonly used version control tool is **Git**. For hosting Git repositories, I use platforms like **GitHub**, **GitLab**, or **Bitbucket**.
-
-**Advanced Git Concepts:**
-
-- **Rebasing**: Rebasing is a way of integrating changes from one branch (usually the main or master branch) into your feature branch, but unlike merging, it rewrites the commit history to maintain a linear progression. This is particularly useful in keeping a clean, readable commit history.  
-  **Example**: `git rebase main` will reapply your feature branch’s commits on top of the latest changes from the `main` branch.
-
-  **When to Use**: Rebasing is great for updating your feature branch before merging it into the main branch, but it should be avoided on shared branches (i.e., branches that others are working on) to prevent confusion.
-
-- **Branching Strategies**:
-
-  - **Git Flow**: A widely used branching strategy that uses separate branches for features, releases, and hotfixes. It’s suited for larger projects with more structured release cycles.
-    - `master/main` – stable production code.
-    - `develop` – ongoing development.
-    - `feature/*` – branches for new features.
-    - `release/*` – preparing for a release.
-    - `hotfix/*` – quick fixes to production.
-  - **GitHub Flow**: A simpler branching strategy where developers create feature branches directly off `main` and merge them back into `main` once complete. It’s common in smaller projects or teams practicing continuous deployment.
-  - **Trunk-Based Development**: A strategy where all developers work directly in the `main` branch or a single trunk branch, typically using feature flags for incomplete work. This is a more modern approach for teams practicing continuous integration and delivery.
-
-**Good Practices with Git**:
-
-- Always pull the latest changes before pushing (`git pull --rebase`).
-- Keep commits small and focused. Use meaningful commit messages.
-- Use descriptive branch names to indicate the purpose of the work (`feature/login-form`, `bugfix/navbar-bug`).
-- Regularly push changes to remote repositories to avoid merge conflicts.
-
-
-### 4\. **How do you approach documentation in your development process?**
-
-Documentation is crucial for maintaining a maintainable and scalable codebase. My approach to documentation includes:
-
-- **Code-Level Documentation**: I ensure that code is self-documenting by using meaningful variable, function, and class names. I also write inline comments where necessary, explaining why certain decisions were made or complex logic is used.
-- **README Files**: For each project or feature, I ensure that a clear README file is provided that explains the purpose of the project, setup instructions, and basic usage.
-- **Architecture and Design Docs**: I document the high-level architecture and important design decisions, especially if there are non-trivial components or flows that developers will need to understand. This can include diagrams (using tools like **Lucidchart** or **Mermaid**) or detailed written explanations.
-- **API Documentation**: For frontend-backend integration, I document API endpoints using tools like **Swagger** or **Postman** and ensure that the endpoints are versioned and clearly explained.
-- **Developer Guides**: In larger teams, creating a developer handbook or contributing guide that outlines coding standards, project-specific patterns, and best practices is important.
-- **Change Logs**: Maintaining a change log with each release helps communicate new features, fixes, and breaking changes clearly to the development team and stakeholders.
-
-
-### 5\. **Have you used any task runners or build tools like Gulp, Grunt, or Webpack? How would you configure them for an optimized frontend workflow?**
-
-Yes, I’ve used **Webpack** extensively, and I have some experience with **Gulp**. Here’s how I would configure them for an optimized frontend workflow:
-
-- **Webpack**:
-
-  - **Module Bundling**: Webpack is excellent for bundling JavaScript, CSS, and even images into optimized bundles. I’d set up **loaders** (like Babel for JS/JSX, Sass for styles) and **plugins** (like HtmlWebpackPlugin for HTML templates) for efficient bundling.
-  - **Code Splitting**: I would configure code splitting in Webpack to ensure that common code is separated into smaller chunks, which improves page load performance. **Dynamic imports** and the `SplitChunksPlugin` are used for this.
-  - **Tree Shaking**: To remove unused code from production builds, enabling **tree shaking** is essential. This is typically done with ES6 modules and the `mode: 'production'` configuration in Webpack.
-  - **Caching and Optimizing Assets**: Using **content-based hashing** for filenames helps with caching, ensuring that users only download updated assets when the content changes.
-  - **Minification and Compression**: I’d use **TerserPlugin** for JS minification and **CSSMinimizerPlugin** for CSS. Additionally, using **image compression** tools like **ImageWebpackLoader** to optimize images for production would be part of the build process.
-
-- **Gulp**: While not as common as Webpack for modern projects, Gulp can still be useful for automating smaller tasks like:
-
-  - Running linters, tests, or other checks during development.
-  - Minifying assets, compiling Sass, or automating other build-related tasks.
-
-### 6\. **How do you keep up with new trends and technologies in frontend development?**
-
-Staying current in frontend development requires a combination of several strategies:
-
-- **Following Industry Blogs and News**: Websites like **CSS-Tricks**, **Smashing Magazine**, **Dev.to**, and **Medium** are great resources. I also follow relevant tags (like #frontend, #webdev, #javascript) on platforms like **Twitter** and **Reddit**.
-- **Attending Conferences and Meetups**: Whether virtual or in-person, attending events like **JSConf**, **React Conf**, and **FrontendConf** helps me stay informed about the latest trends and connect with other professionals.
-- **Online Courses and Tutorials**: I regularly take courses on platforms like **Udemy**, **Egghead.io**, and **Frontend Masters** to stay updated on new tools, frameworks, and techniques.
-- **Open Source Contribution**: Contributing to or reviewing open-source projects helps me learn from the community and stay on top of innovative ideas.
-- **Experimenting with New Tools**: I try to dedicate time to experimenting with new frameworks, libraries, and build tools in side projects to get hands-on experience before they become mainstream.
-
-By combining these strategies, I ensure that I stay up-to-date with new technologies and trends, while also honing my existing skills.
-
-
-## **Interview Preparation Tips**
----
-1. **Understand the fundamentals**:
-
-   * Be comfortable with **scoping** (global vs. local), **closures**, and **prototypal inheritance**. These are core to understanding how JavaScript works, especially when it comes to asynchronous behavior, performance, and debugging.
-
-2. **Practice coding**:
-
-   * Regular practice helps refine your problem-solving skills and speed. Platforms like **LeetCode**, **HackerRank**, **Codewars**, and **Exercism** provide a wide range of algorithmic challenges, which are common in interviews.
-
-3. **Know the latest features**:
-
-   * ES6+ brought many enhancements like **arrow functions**, **destructuring**, **async/await**, and **promises**. Knowing when and how to use these features makes your code cleaner and easier to maintain.
-
-4. **Solve problems in different ways**:
-
-   * Always explore multiple approaches to solving a problem. For example, you could solve a sorting problem using different algorithms like **QuickSort**, **MergeSort**, or **BubbleSort**. Make sure you can discuss the time complexity and space complexity of your solutions (e.g., O(n log n) vs O(n²)).
-
-Good luck with your interview preparation!
+### **99. How do you ensure cross-browser compatibility with JavaScript?**
+   Ensuring **cross-browser compatibility** involves writing code that works consistently across all major browsers:
+   - **Use feature detection**: Avoid browser detection. Use libraries like **Modernizr** to check if a feature is supported by the browser.
+   - **Polyfills**: Use polyfills to add support for newer JavaScript features in older browsers.
+   - **Test across multiple browsers**: Regularly test your code in different browsers (Chrome, Firefox, Safari, Internet Explorer, Edge, etc.).
+   - **Use CSS prefixes**: For experimental CSS features, use vendor-specific prefixes (e.g., `-webkit-` for Chrome/Safari).
+   - **Avoid browser-specific quirks**: Be mindful of known differences in JavaScript engines across browsers and avoid relying on browser-specific behaviors.
+   - **Use CSS resets**: Normalize styles with CSS resets or libraries like **Normalize.css** to address cross-browser style inconsistencies.
+
+### **100. What are design patterns in JavaScript?**
+   **Design patterns** are general solutions to commonly occurring problems in software design. In JavaScript, common design patterns include:
+   - **Singleton**: Ensures a class has only one instance and provides a global access point to that instance.
+   - **Module**: Organizes code into separate, reusable modules (e.g., using ES6 `import/export` or IIFEs).
+   - **Observer**: Allows objects to observe the state changes in another object, useful for event-driven programming.
+   - **Factory**: Creates objects without having to specify the exact class of object that will be created.
+   - **Prototype**: Involves creating new objects based on an existing prototype object, leveraging inheritance.
+   - **Decorator**: Allows the behavior of an object to be modified or extended dynamically.
+   - **Command**: Encapsulates a request as an object, allowing for parameterization of clients with queues or requests.
+
+   Design patterns help structure the code more efficiently and solve problems in a reusable manner.
