@@ -1,1462 +1,1752 @@
-## **Basic Java Questions**
-Here are the answers to the Java-related questions you asked:
-
-### 1. **What are the differences between `==` and `equals()` in Java?**
-   - **`==`**: It is a reference comparison operator. It checks if two references point to the same object in memory.
-   - **`equals()`**: It is a method in the `Object` class (which can be overridden) that checks if two objects are logically equivalent, i.e., they have the same state/content.
-
-   Example:
-   ```java
-   String str1 = new String("Java");
-   String str2 = new String("Java");
-
-   System.out.println(str1 == str2);       // false, different memory locations
-   System.out.println(str1.equals(str2));  // true, same content
-   ```
-
-### 2. **What is the purpose of the `final` keyword in Java?**
-   - **`final`** can be used with variables, methods, and classes:
-     - **Final variable**: The value cannot be changed after initialization.
-     - **Final method**: The method cannot be overridden by subclasses.
-     - **Final class**: The class cannot be subclassed.
-   Example:
-   ```java
-   final int x = 10;
-   // x = 20; // Compilation error, value cannot be changed
-   ```
-
-### 3. **What is the difference between `int` and `Integer`?**
-   - **`int`** is a primitive data type in Java. It holds integer values directly.
-   - **`Integer`** is a wrapper class in Java that wraps the primitive `int` type in an object, allowing it to be used in places where objects are required, such as in collections like `ArrayList`.
-
-   Example:
-   ```java
-   int a = 10;  // primitive type
-   Integer b = new Integer(10);  // Wrapper class (deprecated in newer Java versions)
-   ```
-
-### 4. **What is the default value of an instance variable in Java?**
-   - The default value of an instance variable depends on its type:
-     - **Numeric types (int, double, etc.)**: `0`
-     - **Boolean**: `false`
-     - **Object references**: `null`
-
-### 5. **What is the use of the `static` keyword?**
-   - The `static` keyword is used for memory management. It is used to:
-     - Create class-level variables or methods that belong to the class rather than instances.
-     - Create a block of code that is executed only once, when the class is loaded.
-   Example:
-   ```java
-   static int count = 0; // Shared across all instances of the class
-   ```
-
-### 6. **Explain the concept of method overloading and method overriding.**
-   - **Method Overloading**: It occurs when a class has more than one method with the same name, but different parameter lists (either in number or type). It is resolved at compile time.
-     Example:
-     ```java
-     void display(int a) {}
-     void display(String b) {}
-     ```
-
-   - **Method Overriding**: It occurs when a subclass provides its own implementation of a method that is already defined in its superclass. It is resolved at runtime.
-     Example:
-     ```java
-     class Parent {
-         void display() { System.out.println("Parent display"); }
-     }
-
-     class Child extends Parent {
-         @Override
-         void display() { System.out.println("Child display"); }
-     }
-     ```
-
-### 7. **What is the purpose of `super` keyword in Java?**
-   - The `super` keyword is used to refer to the superclass (parent class) of the current object. It is often used to:
-     - Call a constructor of the superclass.
-     - Access superclass methods or fields.
-   Example:
-   ```java
-   class Animal {
-       void sound() { System.out.println("Animal sound"); }
-   }
-
-   class Dog extends Animal {
-       void sound() { 
-           super.sound();  // Calls the sound() method from Animal
-           System.out.println("Dog barks");
-       }
-   }
-   ```
-
-### 8. **What is the difference between a constructor and a method?**
-   - **Constructor**:
-     - A special method that is called when an object is instantiated.
-     - It has no return type and the same name as the class.
-     - It is used to initialize an object.
-   - **Method**:
-     - A block of code that performs a specific task and can return a value (or void).
-     - It can be called multiple times.
-
-### 9. **What is the difference between `ArrayList` and `LinkedList`?**
-   - **`ArrayList`**: 
-     - Uses a dynamic array for storing elements.
-     - Provides fast access to elements (O(1) time complexity for accessing by index).
-     - Slow insertions or deletions in the middle (O(n) time complexity).
-   - **`LinkedList`**: 
-     - Uses a doubly linked list for storing elements.
-     - Slower access by index (O(n) time complexity).
-     - Fast insertions and deletions (O(1) time complexity) when at the beginning or middle.
-
-### 10. **How does Java handle memory management?**
-   - Java uses **automatic garbage collection** to manage memory. The Java Virtual Machine (JVM) automatically removes objects that are no longer in use (i.e., not referenced) to free up memory.
-   - Java also has **Heap** (for dynamic memory allocation) and **Stack** (for storing method calls and local variables).
-
-### 11. **What are wrapper classes in Java?**
-   - Wrapper classes are used to convert primitive data types into objects. Each primitive type has a corresponding wrapper class in Java:
-     - `int` → `Integer`
-     - `char` → `Character`
-     - `boolean` → `Boolean`
-     - `double` → `Double`
-   - These wrapper classes are part of `java.lang` package.
-
-### 12. **What are the four access modifiers in Java?**
-   - **`public`**: The member is accessible from any other class.
-   - **`private`**: The member is accessible only within the same class.
-   - **`protected`**: The member is accessible within the same package and by subclasses.
-   - **Default (no modifier)**: The member is accessible only within the same package.
-
-### 13. **What is a singleton class? How do you create one in Java?**
-   - A **singleton class** is a class that allows only one instance to be created. It is often used for global state or managing resources.
-   - To create a singleton class:
-     1. Make the constructor private.
-     2. Provide a public static method that returns the single instance of the class.
-     3. Use a static variable to store the instance.
-   Example:
-   ```java
-   public class Singleton {
-       private static Singleton instance;
-       private Singleton() {}
-       public static Singleton getInstance() {
-           if (instance == null) {
-               instance = new Singleton();
-           }
-           return instance;
-       }
-   }
-   ```
-
-### 14. **Explain the concept of immutability in Java.**
-   - An **immutable class** is a class whose objects cannot be modified after they are created. The state of the object is fixed once it is constructed.
-   - **String** is an example of an immutable class. To create an immutable class:
-     1. Make the class `final`.
-     2. Make all fields `private` and `final`.
-     3. Provide no setter methods.
-     4. Ensure deep copies of mutable fields are returned in getter methods.
-
-### 15. **What is the difference between `String`, `StringBuilder`, and `StringBuffer`?**
-   - **`String`**: Immutable, meaning any modification creates a new object.
-   - **`StringBuilder`**: Mutable, but not thread-safe. It is faster than `StringBuffer` when thread safety is not a concern.
-   - **`StringBuffer`**: Mutable and thread-safe, but slower than `StringBuilder`.
-
-
-## **Object-Oriented Programming (OOP) Concepts**
-Here are the explanations of the Java-related Object-Oriented Programming (OOP) concepts you asked about:
-
-### 1. **What are the main principles of Object-Oriented Programming(OOP)?**
-   - **Encapsulation:** It involves bundling the data (variables) and methods (functions) that operate on the data within one unit (class). This helps in restricting direct access to some of an object's components and can protect the object's integrity by preventing unintended interference.
-   - **Abstraction:** It hides the complex implementation details and shows only the essential features of the object. This makes it easier to manage complexity by focusing on what an object does rather than how it does it.
-   - **Inheritance:** It allows a new class (subclass) to inherit the attributes and methods of an existing class (superclass). This promotes code reuse.
-   - **Polymorphism:** It allows objects to be treated as instances of their parent class, while allowing methods to behave differently based on the object’s actual class. This enables a single interface to represent different underlying forms.
-
-### 2. **Can you explain the concept of polymorphism with an example?**
-   **Polymorphism** is the ability for different classes to respond to the same method in different ways. There are two types of polymorphism: **compile-time (method overloading)** and **runtime (method overriding)**.
-
-   **Example (Method Overriding - Runtime Polymorphism):**
-
-   ```java
-   class Animal {
-       void sound() {
-           System.out.println("Animal makes a sound");
-       }
-   }
-
-   class Dog extends Animal {
-       void sound() {
-           System.out.println("Dog barks");
-       }
-   }
-
-   class Cat extends Animal {
-       void sound() {
-           System.out.println("Cat meows");
-       }
-   }
-
-   public class TestPolymorphism {
-       public static void main(String[] args) {
-           Animal myDog = new Dog();
-           Animal myCat = new Cat();
-           myDog.sound();  // Outputs: Dog barks
-           myCat.sound();  // Outputs: Cat meows
-       }
-   }
-   ```
-
-   In this example, although both `myDog` and `myCat` are of type `Animal`, they call the `sound()` method that is overridden in the `Dog` and `Cat` classes. This is polymorphism in action.
-
-### 3. **What is inheritance in Java? How is it implemented?**
-   **Inheritance** allows one class (subclass) to acquire the properties and behaviors (methods) of another class (superclass). It is implemented using the `extends` keyword.
-
-   **Example:**
-
-   ```java
-   class Animal {
-       void eat() {
-           System.out.println("This animal eats");
-       }
-   }
-
-   class Dog extends Animal {
-       void bark() {
-           System.out.println("The dog barks");
-       }
-   }
-
-   public class TestInheritance {
-       public static void main(String[] args) {
-           Dog dog = new Dog();
-           dog.eat();  // Inherited method from Animal class
-           dog.bark(); // Method of Dog class
-       }
-   }
-   ```
-
-   In this example, the `Dog` class inherits the `eat()` method from the `Animal` class and can also define its own methods, like `bark()`.
-
-### 4. **What is abstraction? How do you achieve it in Java?**
-   **Abstraction** is the concept of hiding the complex implementation details of a system and exposing only the necessary functionality. In Java, abstraction is achieved using **abstract classes** and **interfaces**.
-
-   **Example of Abstraction with an Abstract Class:**
-
-   ```java
-   abstract class Animal {
-       abstract void sound(); // Abstract method
-
-       void sleep() {
-           System.out.println("This animal sleeps");
-       }
-   }
-
-   class Dog extends Animal {
-       void sound() {
-           System.out.println("Dog barks");
-       }
-   }
-
-   public class TestAbstraction {
-       public static void main(String[] args) {
-           Dog dog = new Dog();
-           dog.sound();  // Dog barks
-           dog.sleep();  // This animal sleeps
-       }
-   }
-   ```
-
-   In this example, `sound()` is an abstract method that must be implemented by subclasses, while `sleep()` is a concrete method.
-
-### 5. **What is the Difference Between an Abstract Class and an Interface:**
-   - **Abstract Class:**
-     - Can have both abstract (without implementation) and concrete (with implementation) methods.
-     - Can have constructors, instance variables, and non-static methods.
-     - A class can inherit only one abstract class (single inheritance).
-   
-   - **Interface:**
-     - Can only have abstract methods (until Java 8, after which it can also have default and static methods).
-     - Cannot have constructors or instance variables (only constants, i.e., `public static final` variables).
-     - A class can implement multiple interfaces (multiple inheritance).
-
-   **Example:**
-   
-   ```java
-   abstract class Animal {
-       abstract void sound();
-   }
-
-   interface Pet {
-       void play();
-   }
-
-   class Dog extends Animal implements Pet {
-       void sound() {
-           System.out.println("Dog barks");
-       }
-
-       public void play() {
-           System.out.println("Dog plays with a ball");
-       }
-   }
-   ```
-
-### 6. **What is the Purpose of the `interface` Keyword:**
-   The `interface` keyword is used to declare an interface in Java. An interface defines a contract (a set of methods) that implementing classes must follow. Interfaces are used to achieve abstraction and multiple inheritance.
-
-### 7. **What is the Use of the `this` Keyword:**
-   The `this` keyword refers to the current object of the class. It is used to:
-   - Differentiate instance variables from local variables with the same name.
-   - Invoke the current class’s method.
-   - Pass the current object as a parameter to another method or constructor.
-
-   **Example:**
-
-   ```java
-   class Person {
-       String name;
-
-       Person(String name) {
-           this.name = name;  // Refers to the instance variable 'name'
-       }
-
-       void display() {
-           System.out.println("Name: " + this.name);  // Refers to the instance variable 'name'
-       }
-   }
-
-   public class TestThis {
-       public static void main(String[] args) {
-           Person person = new Person("John");
-           person.display();
-       }
-   }
-   ```
-
-### 8. **What is Composition in Java and How it Differs from Inheritance:**
-   **Composition** is a design principle in which one class contains an instance of another class to reuse its functionality. It represents a **"has-a"** relationship, while **inheritance** represents a **"is-a"** relationship.
-
-   **Example of Composition:**
-
-   ```java
-   class Engine {
-       void start() {
-           System.out.println("Engine starts");
-       }
-   }
-
-   class Car {
-       private Engine engine;
-
-       Car() {
-           engine = new Engine();  // Car "has-a" Engine
-       }
-
-       void startCar() {
-           engine.start();  // Car uses the Engine to start
-       }
-   }
-
-   public class TestComposition {
-       public static void main(String[] args) {
-           Car car = new Car();
-           car.startCar();  // Engine starts
-       }
-   }
-   ```
-
-   **Difference from Inheritance:**
-   - In **inheritance**, a subclass is a type of the superclass (e.g., a `Dog` is an `Animal`).
-   - In **composition**, a class contains objects of other classes (e.g., a `Car` has an `Engine`).
-
----
-
-These are the key principles and concepts related to Java and OOP. If you have any follow-up questions or need further explanations, feel free to ask!
-
-## **Java Collections Framework**
-### 1. What is the Java Collections Framework?
-The **Java Collections Framework** is a unified architecture that provides a set of classes and interfaces for storing and manipulating groups of objects. It includes several classes that implement common data structures (like lists, sets, and maps), as well as algorithms for sorting and searching. The framework helps to perform various operations such as insertion, deletion, and traversal on data structures. It consists of:
-- **Interfaces**: e.g., `List`, `Set`, `Map`, `Queue`
-- **Implementations**: e.g., `ArrayList`, `HashSet`, `HashMap`, `LinkedList`
-- **Algorithms**: e.g., sorting, searching
-- **Utility classes**: e.g., `Collections`, `Arrays`
-
-### 2. Explain the difference between Set, List, and Map.
-- **Set**: A collection that does not allow duplicate elements and does not guarantee any order of elements. Examples: `HashSet`, `TreeSet`, `LinkedHashSet`.
-  - Use: When you need a unique collection of items.
+Here’s a comprehensive list of **100 Java interview questions** that cover a wide range of Java concepts, including basic, advanced, and practical aspects of Java programming:
+
+### **Core Java Concepts:**
+Here are the answers to your Java-related questions:
+
+### 1. **What is Java, and what are its main features?**
+
+Java is a high-level, object-oriented programming language designed to have as few implementation dependencies as possible. It was developed by Sun Microsystems (now owned by Oracle). Java is widely used for building platform-independent applications, including web and mobile apps. Key features of Java include:
+
+- **Platform Independence**: Java programs can run on any device or platform with a Java Virtual Machine (JVM) installed.
+- **Object-Oriented**: Java follows the principles of object-oriented programming (OOP), such as inheritance, polymorphism, encapsulation, and abstraction.
+- **Security**: Java provides a secure environment for developing applications, including features like bytecode verification.
+- **Multithreading**: Java supports multithreaded programming, allowing efficient use of resources.
+- **Automatic Memory Management**: Java handles memory management through garbage collection.
+
+### 2. **What are the differences between Java and other programming languages like C or C++?**
+
+- **Platform Independence**: Unlike C and C++, which are compiled into platform-specific machine code, Java is compiled into bytecode that runs on the JVM, allowing Java programs to be platform-independent.
+- **Memory Management**: Java uses automatic garbage collection for memory management, whereas C and C++ require manual memory management using pointers and `malloc/free`.
+- **Object-Oriented**: Java is a strictly object-oriented language (everything is an object), whereas C is procedural, and C++ supports both procedural and object-oriented paradigms.
+- **Pointers**: Java does not support direct pointers, unlike C and C++, which use pointers to reference memory locations.
+
+### 3. **What is the JVM, JRE, and JDK? How do they differ?**
+
+- **JVM (Java Virtual Machine)**: The JVM is the runtime environment that executes Java bytecode. It provides platform independence by translating the bytecode into native code for the specific platform it runs on.
+- **JRE (Java Runtime Environment)**: The JRE is a package that includes the JVM along with libraries and other components required to run Java applications. It does not include development tools.
+- **JDK (Java Development Kit)**: The JDK is a full development kit that includes the JRE and additional tools needed to develop Java applications, such as compilers (javac) and debuggers.
+
+### 4. **Explain the concept of Object-Oriented Programming (OOP).**
+
+Object-Oriented Programming (OOP) is a programming paradigm based on the concept of "objects," which contain both data (fields/variables) and methods (functions). OOP encourages the following principles:
+
+- **Encapsulation**: Bundling data and methods that operate on that data within one unit (class).
+- **Inheritance**: The ability of a new class to inherit properties and behaviors from an existing class.
+- **Polymorphism**: The ability to take many forms, allowing methods or objects to behave differently based on their context.
+- **Abstraction**: Hiding complex implementation details and showing only the essential features of an object.
+
+### 5. **What are the four pillars of Object-Oriented Programming (OOP)?**
+
+The four pillars of OOP are:
+
+- **Encapsulation**: Wrapping data and methods into a single unit (class) and restricting access to some components using access modifiers.
+- **Inheritance**: The ability of a class to inherit the properties and behaviors of another class.
+- **Polymorphism**: Allowing one entity to take multiple forms (e.g., method overloading, method overriding).
+- **Abstraction**: Hiding the implementation details and showing only the necessary functionality to the user.
+
+### 6. **What is a class in Java? How is it different from an object?**
+
+- **Class**: A class is a blueprint or template for creating objects in Java. It defines attributes (variables) and behaviors (methods) that the objects created from it will have.
+- **Object**: An object is an instance of a class. It represents a concrete entity created using the class blueprint. While a class is a template, an object is a real-world instance.
+
+### 7. **What is the difference between instance variables and class variables?**
+
+- **Instance Variables**: These are variables defined inside a class but outside any method, constructor, or block. They are unique to each instance of the class, meaning each object has its own copy of instance variables.
   
-- **List**: An ordered collection (sequence) that allows duplicates and maintains the insertion order. Examples: `ArrayList`, `LinkedList`, `Vector`.
-  - Use: When you need an ordered collection where duplicates are allowed.
+- **Class Variables (Static Variables)**: These are variables defined with the `static` keyword. They belong to the class itself, rather than any instance, and all instances of the class share the same value for class variables.
 
-- **Map**: A collection of key-value pairs, where each key is unique, and the value can be duplicated. Examples: `HashMap`, `TreeMap`, `LinkedHashMap`.
-  - Use: When you need to store data in key-value pairs.
+### 8. **What is a constructor in Java? How is it different from a method?**
 
-### 3. What is the difference between HashSet and TreeSet?
-- **HashSet**: 
-  - Does not maintain any order of elements.
-  - Faster operations (constant time complexity on average for basic operations like add, remove).
-  - Uses a hash table for storage.
+- **Constructor**: A constructor is a special method that is used to initialize objects. It has the same name as the class and is invoked when an object of the class is created. Constructors do not have a return type.
   
-- **TreeSet**: 
-  - Maintains elements in a sorted order (natural order or a custom comparator).
-  - Slower operations compared to `HashSet` (logarithmic time complexity for basic operations).
-  - Implements a Red-Black tree for storage.
+- **Method**: A method is a function defined in a class that describes the behavior of the object. Methods have a return type and are used to perform specific operations or calculations.
 
-### 4. What is a HashMap? How does it work internally?
-A **HashMap** is a collection class that implements the `Map` interface, and it stores key-value pairs. Internally, it works by using a **hash table**:
-- The key's hashcode is calculated using the `hashCode()` method, and it determines the index in the array where the value is stored.
-- If two keys hash to the same index (a collision), a **linked list** or **tree structure** is used to store multiple entries at the same index.
-- Operations like `get()`, `put()`, and `remove()` are generally **O(1)** on average, but can degrade to **O(n)** in the worst case if there are too many collisions.
+### 9. **What is the purpose of the `this` keyword in Java?**
 
-### 5. What is the difference between Hashtable and HashMap?
-- **Hashtable**:
-  - Synchronized: It is thread-safe, meaning multiple threads can access it simultaneously without causing data corruption.
-  - It does not allow null keys or values.
-  - Part of the original version of Java, now considered legacy.
+The `this` keyword in Java refers to the current object, and it is used in the following scenarios:
+- To refer to instance variables when they are shadowed by method or constructor parameters.
+- To call the current object's method or constructor.
+- To pass the current object as a parameter to other methods or constructors.
+
+### 10. **Explain the concept of method overloading in Java.**
+
+Method overloading in Java occurs when multiple methods have the same name but differ in their parameter lists (either in the number or type of parameters). The return type can be the same or different, but overloading is determined based on the method's signature (name + parameter list).
+
+Example:
+```java
+class Example {
+    void display(int a) {
+        System.out.println(a);
+    }
+
+    void display(String a) {
+        System.out.println(a);
+    }
+}
+```
+Here are the answers to the additional Java-related questions:
+
+### 11. **What is method overriding in Java?**
+
+Method overriding in Java occurs when a subclass provides a specific implementation of a method that is already defined in its superclass. The method in the subclass must have the same name, return type, and parameters as the method in the superclass. Overriding allows the subclass to offer a more specific behavior for a method inherited from the superclass.
+
+- **Key points**:
+  - The method in the subclass overrides the inherited method from the parent class.
+  - The `@Override` annotation is used (though optional) to indicate that the method is overriding a method in the superclass.
+  - Overriding is used for runtime polymorphism.
+
+**Example**:
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+```
+In this example, the `Dog` class overrides the `sound()` method of the `Animal` class.
+
+### 12. **What is the difference between `==` and `equals()` in Java?**
+
+- **`==`**: The `==` operator is used for reference comparison. It checks if two references point to the exact same object in memory (i.e., it compares object addresses).
   
-- **HashMap**:
-  - Not synchronized: It is not thread-safe, but it provides better performance in single-threaded or explicitly synchronized environments.
-  - Allows one null key and multiple null values.
-  - A more modern implementation compared to `Hashtable`.
+- **`equals()`**: The `equals()` method is used to compare the contents or state of two objects. It is used to check if two objects are logically equivalent (depending on how `equals()` is implemented in the class). The `equals()` method can be overridden to provide custom equality logic.
 
-### 6. What is a LinkedHashMap and when should you use it?
-A **LinkedHashMap** is a subclass of `HashMap` that maintains the **insertion order** of its elements. It uses a doubly-linked list to preserve the order in which entries were added.
-- **Use case**: When you need the performance benefits of a `HashMap`, but also need the order of elements to be predictable (based on insertion order).
+**Example**:
+```java
+String a = new String("Hello");
+String b = new String("Hello");
 
-### 7. What is the difference between ArrayList and Vector?
-- **ArrayList**:
-  - Part of the `java.util` package.
-  - Not synchronized (not thread-safe).
-  - Offers better performance in single-threaded environments.
-  - Grows dynamically as needed.
+System.out.println(a == b);       // false (different memory references)
+System.out.println(a.equals(b));  // true (same value)
+```
+
+### 13. **What are access modifiers in Java, and how do they work?**
+
+Access modifiers in Java are keywords that define the visibility or accessibility of classes, methods, and variables. The main access modifiers are:
+
+- **`public`**: The member is accessible from any class.
+- **`private`**: The member is accessible only within the same class.
+- **`protected`**: The member is accessible within the same package or by subclasses (even in different packages).
+- **Default (no modifier)**: The member is accessible only within the same package.
+
+### 14. **What is the difference between `public`, `private`, `protected`, and default access modifiers?**
+
+- **`public`**: The class, method, or variable is accessible from any other class, regardless of the package.
+- **`private`**: The class, method, or variable is accessible only within the same class.
+- **`protected`**: The class, method, or variable is accessible within the same package and by subclasses, even if they are in different packages.
+- **Default (no modifier)**: The class, method, or variable is accessible only within classes that belong to the same package.
+
+### 15. **What is a static method in Java?**
+
+A static method is a method that belongs to the class rather than to instances of the class. It can be called without creating an instance of the class. Static methods can access static variables and other static methods directly but cannot access instance variables or instance methods without creating an object.
+
+**Example**:
+```java
+class MyClass {
+    static void greet() {
+        System.out.println("Hello, World!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass.greet(); // No object is required to call this static method
+    }
+}
+```
+
+### 16. **What is a static block in Java?**
+
+A static block (or static initializer) is a block of code inside a class that is executed only once, when the class is first loaded into memory. It is typically used to initialize static variables or perform one-time setup tasks.
+
+**Example**:
+```java
+class MyClass {
+    static {
+        System.out.println("Static block executed");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();  // Static block is executed when the class is loaded
+    }
+}
+```
+
+### 17. **What is the difference between a final class, final method, and final variable?**
+
+- **`final class`**: A class declared as `final` cannot be subclassed. For example, the `String` class is `final`, meaning you cannot extend it.
   
-- **Vector**:
-  - Also part of `java.util` but is considered legacy.
-  - Synchronized (thread-safe).
-  - Slower than `ArrayList` due to synchronization overhead.
-  - Grows dynamically by doubling its size.
-
-### 8. What is the Queue interface? Can you explain its implementation?
-The **Queue** interface represents a collection designed for holding elements prior to processing. It is typically used to implement data structures like queues, where elements are processed in a First-In-First-Out (FIFO) manner. 
-- Common implementations of `Queue` include: `LinkedList`, `PriorityQueue`, `ArrayDeque`.
-- Key methods include: 
-  - `offer(E e)`: Inserts an element if possible, returns false if the queue is full.
-  - `poll()`: Retrieves and removes the head of the queue, or returns null if the queue is empty.
-  - `peek()`: Retrieves, but does not remove, the head of the queue.
-
-### 9. What is a PriorityQueue?
-A **PriorityQueue** is a queue where elements are ordered based on their **natural ordering** or a **custom comparator** provided at the time of creation. Unlike a regular queue (FIFO), the highest (or lowest) priority element is served first.
-- It is implemented using a heap (usually a binary heap), so the operations like insertions and removals happen in logarithmic time.
-- Use case: When you need a queue with prioritization of elements (e.g., for implementing a scheduling system).
-
-### 10. What is the difference between Iterator and ListIterator?
-- **Iterator**:
-  - Works with any `Collection` (e.g., `List`, `Set`).
-  - Supports basic operations like `next()`, `hasNext()`, and `remove()`.
-  - It is **one-way traversal** (forward only).
+- **`final method`**: A method declared as `final` cannot be overridden by subclasses.
   
-- **ListIterator**:
-  - Only works with `List` implementations (e.g., `ArrayList`, `LinkedList`).
-  - Supports all `Iterator` methods plus additional methods like `previous()`, `hasPrevious()`, `set()`, and `add()`.
-  - It allows **two-way traversal** (both forward and backward).
+- **`final variable`**: A variable declared as `final` cannot have its value changed once it is initialized. This makes the variable a constant if it's a primitive type or an immutable reference if it's an object.
 
-## **Java Memory Management**
-Here are detailed answers to your Java-related questions:
+**Example**:
+```java
+final class MyClass { }  // Cannot be subclassed
 
-### 1. **What is the Java Memory Model (JMM)?**
+class Base {
+    final void myMethod() { }  // Cannot be overridden by subclasses
+}
 
-The **Java Memory Model (JMM)** defines how threads interact through memory and what behaviors are allowed in concurrent programming. It is a part of the Java specification that provides guarantees on the visibility of variables, ordering of reads and writes to memory, and synchronization mechanisms, especially in multithreaded environments. 
+final int myVar = 10;  // Cannot be reassigned
+```
 
-The JMM ensures that:
-- **Visibility**: Changes made by one thread to a variable are visible to other threads.
-- **Atomicity**: A thread's actions (e.g., reading/writing a variable) are performed atomically.
-- **Ordering**: It specifies the ordering constraints on reads and writes to ensure threads interact in a predictable manner.
+### 18. **What is the difference between `String`, `StringBuilder`, and `StringBuffer` in Java?**
 
-It defines the rules for synchronization (e.g., `synchronized` blocks, `volatile` variables), ensuring that code execution is safe when accessed by multiple threads.
+- **`String`**: Immutable, meaning once a `String` object is created, its value cannot be changed. Operations that modify a `String` create a new `String` object.
+- **`StringBuilder`**: Mutable, used for manipulating strings when you need to modify them frequently. It is more efficient than `String` for such tasks.
+- **`StringBuffer`**: Similar to `StringBuilder`, but it is **synchronized**, making it thread-safe. It is slower than `StringBuilder` because of the synchronization overhead.
 
-### 2. **What is Garbage Collection? How does it work in Java?**
+### 19. **What is the significance of `hashCode()` and `equals()` methods?**
 
-**Garbage Collection (GC)** in Java is the process of automatically identifying and reclaiming memory that is no longer in use, specifically objects that are no longer reachable from the root of the object graph. The goal is to free up memory and prevent memory leaks, which are issues that arise when memory is not properly released.
-
-In Java, the **Garbage Collector (GC)** works in the following steps:
-- **Marking**: The GC identifies all reachable objects (i.e., objects that can be accessed by any thread in the application).
-- **Sweeping**: The GC reclaims the memory of unreferenced objects (objects that cannot be accessed).
-- **Compacting**: Some GC implementations (like the Generational Garbage Collection) might compact memory to reduce fragmentation.
-
-Garbage collection in Java is automatic, but it can be influenced by JVM parameters. Common garbage collection algorithms include **Serial GC**, **Parallel GC**, **CMS (Concurrent Mark-Sweep)**, and **G1 GC (Garbage-First)**.
-
-### 3. **What is the Role of the finalize() Method in Java?**
-
-The **`finalize()`** method in Java is a method of the `java.lang.Object` class, which is called by the Garbage Collector before an object is destroyed. The idea is that it gives the object a chance to release resources (like file handles, network connections, etc.) before it is reclaimed by the garbage collector.
-
-However, the use of `finalize()` is discouraged for several reasons:
-- **Unpredictability**: The execution of `finalize()` is not guaranteed to happen immediately when the object becomes unreachable.
-- **Performance**: It introduces overhead in garbage collection because the JVM needs to schedule finalization, and it can delay memory reclamation.
-- **Resource leaks**: It's not guaranteed that the `finalize()` method will be called at all if the JVM crashes or if the object is not garbage collected.
-
-Due to these issues, `finalize()` is considered obsolete, and it's better to use `try-with-resources` or explicit resource management patterns like `AutoCloseable` for managing resources.
-
-### 4. **What are Memory Leaks in Java? How can they be avoided?**
-
-A **memory leak** in Java occurs when an application holds references to objects that are no longer needed, preventing the garbage collector from reclaiming their memory. Over time, this can lead to increased memory usage and eventually cause an `OutOfMemoryError`.
-
-To avoid memory leaks:
-- **Avoid long-lived references**: If objects are no longer needed, nullify their references or use weak references.
-- **Use proper resource management**: Always close resources like database connections, file streams, etc., using `try-with-resources` or `finally` blocks.
-- **Use memory profiling tools**: Tools like VisualVM, YourKit, and JProfiler can help detect memory leaks by showing which objects are taking up memory.
-
-### 5. **What are Soft References and Weak References in Java?**
-
-In Java, references to objects can be categorized as:
-- **Strong References**: The default type of reference. If an object has a strong reference, it will not be garbage collected.
-- **Soft References**: A **soft reference** is a type of reference that allows the object to be garbage collected only if the JVM is running low on memory. Soft references are useful for implementing memory-sensitive caches.
-    - Example: `SoftReference<Object> obj = new SoftReference<>(new Object());`
-- **Weak References**: A **weak reference** allows an object to be garbage collected even if it is still referenced. When the garbage collector runs, it will reclaim memory for objects that are only weakly reachable (i.e., there are no strong references).
-    - Example: `WeakReference<Object> obj = new WeakReference<>(new Object());`
-- **Phantom References**: These are used for more advanced use cases like post-mortem cleanup or finalization of objects.
-
-### 6. **What are the Different Types of Memory Areas in Java (Heap, Stack, etc.)?**
-
-Java memory is divided into several areas, each serving a different purpose:
-
-- **Heap**: The heap is used for storing objects created dynamically during the execution of a Java program. It is divided into generations: **Young Generation** (where new objects are created) and **Old Generation** (where long-lived objects are moved). The **Garbage Collector** primarily operates on the heap.
-
-- **Stack**: Each thread in a Java program has its own stack, which stores method frames (local variables, method calls, etc.). The stack is used for managing method execution. It operates on a last-in, first-out (LIFO) basis. Once a method call completes, the stack frame is popped off the stack.
-
-- **Method Area**: This memory area stores class-level information such as method code, class variables (static fields), and metadata. It is shared among all threads in the JVM.
-
-- **Program Counter (PC) Register**: Each thread has a program counter register that stores the address of the next instruction to be executed. It keeps track of the thread's execution.
-
-- **Native Method Stack**: This memory area is used for native (non-Java) code execution. If a program calls native methods (e.g., written in C or C++), the native method stack stores those calls.
-
-Understanding how these memory areas work helps in writing efficient Java code and diagnosing memory issues in applications.
-
-## **Exception Handling**
-Here are the answers to the Java-related questions:
-
-### 1. What is the difference between `throw` and `throws`?
-
-- **`throw`**: The `throw` keyword is used to **explicitly throw an exception** in a method or block of code. When an exception is thrown, it immediately stops the normal flow of the program and transfers control to the nearest matching `catch` block or, if not handled, the method’s caller.
+- **`hashCode()`**: The `hashCode()` method returns an integer value (hash code) that represents the memory address of the object or a value derived from its state. It is used in hashing-based collections like `HashMap` and `HashSet` to efficiently locate objects.
   
-  Example:
+- **`equals()`**: The `equals()` method is used to compare two objects for equality based on their content or state. The `hashCode()` method must be overridden if `equals()` is overridden to ensure correct behavior in collections that rely on hashing (like `HashMap`).
+
+### 20. **What is an abstract class, and how is it different from an interface?**
+
+- **Abstract Class**: An abstract class is a class that cannot be instantiated directly. It can contain abstract methods (without implementation) and concrete methods (with implementation). An abstract class allows some methods to be implemented while leaving others to be implemented by subclasses.
+  
+- **Interface**: An interface is a contract that defines a set of abstract methods that implementing classes must provide implementations for. Interfaces cannot contain any method implementations (unless using default or static methods from Java 8 onwards), and all methods are implicitly abstract by default.
+
+**Differences**:
+- A class can implement multiple interfaces but can inherit from only one abstract class (Java doesn't support multiple inheritance for classes).
+- An abstract class can have instance variables, constructors, and methods with body, while interfaces cannot (unless using default/static methods in Java 8+).
+
+**Example**:
+```java
+// Abstract class
+abstract class Animal {
+    abstract void sound();
+    void breathe() {
+        System.out.println("Breathing");
+    }
+}
+
+// Interface
+interface AnimalBehavior {
+    void sound();
+}
+```
+
+### **Object-Oriented Concepts:**
+Here are the answers to your Java-related questions:
+
+### 21. **What is polymorphism in Java?**
+
+Polymorphism in Java refers to the ability of an object to take on many forms. It allows one interface to be used for a general class of actions, with the specific action determined by the object that is calling it. There are two types of polymorphism in Java:
+
+- **Compile-time polymorphism (Method Overloading)**: Occurs when multiple methods with the same name but different parameters exist in the same class.
+- **Runtime polymorphism (Method Overriding)**: Occurs when a subclass provides a specific implementation of a method that is already defined in its superclass.
+
+**Example**:
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Animal animal = new Dog();
+        animal.sound();  // Runtime polymorphism: Dog barks
+    }
+}
+```
+
+### 22. **What is the difference between method overloading and method overriding?**
+
+- **Method Overloading**: Involves defining multiple methods with the same name in a class, but with different parameters (different number or types of parameters). It occurs at **compile-time**.
+  - **Example**: Different versions of a `print` method with different parameter types.
+  
+- **Method Overriding**: Occurs when a subclass provides its specific implementation of a method already defined in the superclass. It occurs at **runtime**.
+  - **Example**: Overriding the `toString()` method in a subclass.
+
+### 23. **What is inheritance in Java? Explain with an example.**
+
+Inheritance in Java is a mechanism where one class (the subclass or child class) inherits the fields and methods of another class (the superclass or parent class). It promotes code reusability and method overriding.
+
+**Example**:
+```java
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();  // Inherited method
+        dog.bark(); // Dog's own method
+    }
+}
+```
+Here, `Dog` inherits the `eat()` method from `Animal` class.
+
+### 24. **What is encapsulation? Why is it important in Java?**
+
+Encapsulation is the concept of bundling the data (variables) and the methods that operate on the data into a single unit, a class. It also involves controlling access to the data by using access modifiers (`private`, `public`, etc.). It helps in hiding the internal state of the object and restricting direct access to its fields, providing controlled access through getter and setter methods.
+
+**Importance**:
+- Helps in data hiding, reducing complexity, and increasing security.
+- Improves maintainability by controlling how data is accessed and modified.
+
+**Example**:
+```java
+class Person {
+    private String name; // private field
+    
+    public String getName() { // getter
+        return name;
+    }
+
+    public void setName(String name) { // setter
+        this.name = name;
+    }
+}
+```
+
+### 25. **What is the difference between composition and inheritance?**
+
+- **Composition**: In composition, a class contains references to objects of other classes, allowing one class to be composed of multiple other classes. It is a "has-a" relationship.
+  - **Example**: A `Car` has an `Engine`.
+
+- **Inheritance**: In inheritance, a subclass inherits properties and behaviors from a superclass, establishing an "is-a" relationship.
+  - **Example**: A `Dog` is an `Animal`.
+
+Composition is generally favored over inheritance as it provides better flexibility and avoids the complexities of multiple inheritance.
+
+### 26. **What is abstraction in Java, and how is it implemented?**
+
+Abstraction is the process of hiding implementation details and showing only essential features to the user. It helps in reducing complexity and allows focusing on high-level functionalities. In Java, abstraction can be achieved using:
+
+- **Abstract classes**: A class that cannot be instantiated and may have abstract methods (methods without implementation).
+- **Interfaces**: A contract that defines methods that must be implemented by a class.
+
+**Example of Abstract Class**:
+```java
+abstract class Animal {
+    abstract void sound();  // Abstract method
+    
+    void breathe() {  // Concrete method
+        System.out.println("Breathing");
+    }
+}
+```
+
+**Example of Interface**:
+```java
+interface Animal {
+    void sound();  // Abstract method
+}
+
+class Dog implements Animal {
+    public void sound() {
+        System.out.println("Barking");
+    }
+}
+```
+
+### 27. **What is the `super` keyword in Java?**
+
+The `super` keyword is used to refer to the superclass (parent class) of the current object. It can be used to:
+
+- Access superclass methods.
+- Call the superclass constructor.
+
+**Example**:
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        super.sound();  // Calling superclass method
+        System.out.println("Dog barks");
+    }
+}
+```
+
+### 28. **What is the `instanceof` keyword in Java?**
+
+The `instanceof` keyword is used to check whether an object is an instance of a particular class or subclass or implements a specific interface. It returns `true` if the object is an instance of the specified type, otherwise `false`.
+
+**Example**:
+```java
+String str = "Hello";
+System.out.println(str instanceof String);  // true
+```
+
+### 29. **Can you override a `private` or `static` method in Java?**
+
+- **Private methods**: Cannot be overridden because they are not visible to the subclass. They are only accessible within the same class.
+  
+- **Static methods**: Can be hidden (not overridden) in a subclass. Static methods are resolved at compile time, so they are bound to the class rather than the object.
+
+**Example**:
+```java
+class Parent {
+    private void display() {
+        System.out.println("Parent display");
+    }
+}
+
+class Child extends Parent {
+    // Cannot override private method
+    // private void display() {}  // This will cause a compile-time error
+}
+```
+
+### 30. **What is the difference between an interface and an abstract class?**
+
+- **Interface**:
+  - Cannot have any method implementations (prior to Java 8).
+  - All methods are implicitly `abstract` unless defined as `default` or `static` (Java 8+).
+  - A class can implement multiple interfaces (supports multiple inheritance).
+  - Interfaces are used to define a contract that multiple classes can implement.
+
+- **Abstract Class**:
+  - Can have both abstract and concrete (implemented) methods.
+  - A class can inherit only one abstract class (single inheritance).
+  - Abstract classes are used when we want to provide a common base with shared functionality, while allowing some methods to be abstract.
+
+### 31. **How do you implement multiple inheritance in Java?**
+
+Java does not support multiple inheritance for classes to avoid ambiguity. However, multiple inheritance can be achieved through interfaces, where a class can implement multiple interfaces.
+
+**Example**:
+```java
+interface A {
+    void methodA();
+}
+
+interface B {
+    void methodB();
+}
+
+class C implements A, B {
+    public void methodA() {
+        System.out.println("Method A");
+    }
+
+    public void methodB() {
+        System.out.println("Method B");
+    }
+}
+```
+
+### 32. **Can a class implement multiple interfaces in Java? How?**
+
+Yes, a class can implement multiple interfaces in Java by separating the interface names with a comma. This allows a class to inherit behavior from more than one interface.
+
+**Example**:
+```java
+interface A {
+    void methodA();
+}
+
+interface B {
+    void methodB();
+}
+
+class MyClass implements A, B {
+    public void methodA() {
+        System.out.println("Method A");
+    }
+
+    public void methodB() {
+        System.out.println("Method B");
+    }
+}
+```
+
+### 33. **What is the use of `default` methods in interfaces in Java?**
+
+The `default` keyword in interfaces (introduced in Java 8) allows you to define concrete methods in interfaces. This enables adding new methods to interfaces without breaking the existing implementations. The `default` method provides a default behavior that can be used by implementing classes.
+
+**Example**:
+```java
+interface MyInterface {
+    default void greet() {
+        System.out.println("Hello, World!");
+    }
+}
+
+class MyClass implements MyInterface {
+    // Inheriting the default greet() method
+}
+
+public class Test {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.greet();  // Outputs: Hello, World!
+    }
+}
+```
+
+### **Memory Management and Garbage Collection:**
+Here are the answers to your Java-related questions:
+
+### 34. **What is garbage collection in Java?**
+
+Garbage collection (GC) in Java is the process of automatically identifying and reclaiming memory that is no longer in use by the program. It is a part of Java’s memory management system. The primary goal of garbage collection is to free up memory by removing objects that are no longer reachable from the program, thus preventing memory leaks and improving performance.
+
+### 35. **How does garbage collection work in Java?**
+
+Garbage collection works by automatically identifying objects that are no longer referenced by the program. The JVM (Java Virtual Machine) uses several algorithms to perform garbage collection, such as the **Mark-and-Sweep** algorithm, the **Generational Garbage Collection** algorithm, and others. Here’s an overview of how it typically works:
+
+1. **Marking phase**: The garbage collector identifies which objects are still being referenced and which are not.
+2. **Sweeping phase**: The garbage collector removes unreferenced objects, reclaiming their memory.
+3. **Compaction**: After sweeping, the memory may be fragmented. Compaction may be performed to move the remaining objects together to reduce fragmentation.
+
+Garbage collection in Java is automatic, but developers can suggest or trigger garbage collection using `System.gc()` (though this is not guaranteed to actually perform GC).
+
+### 36. **What is the role of the `finalize()` method in garbage collection?**
+
+The `finalize()` method in Java is a method that is called by the garbage collector before an object is destroyed. It provides an opportunity to release resources or perform cleanup tasks before the object’s memory is reclaimed. However, `finalize()` is rarely used and has been largely replaced by other resource management techniques (like `try-with-resources` and `AutoCloseable`).
+
+- **Note**: `finalize()` is not guaranteed to be called, and it is not recommended to rely on it for important cleanup tasks.
+
+```java
+protected void finalize() throws Throwable {
+    // Cleanup code, e.g., releasing resources
+    super.finalize();
+}
+```
+
+### 37. **What is memory leak, and how can you prevent it in Java?**
+
+A **memory leak** in Java occurs when an application consumes memory but fails to release it when no longer needed. This happens when objects are no longer used but are still being referenced, preventing the garbage collector from reclaiming their memory.
+
+**How to prevent memory leaks**:
+- **Avoid unnecessary object references**: Ensure objects that are no longer needed are dereferenced (set to `null`).
+- **Use try-with-resources**: For managing resources like file streams, database connections, etc., which automatically close and release resources.
+- **Profile memory usage**: Use tools like **VisualVM** or **JProfiler** to monitor memory and identify potential leaks.
+
+### 38. **Explain the concept of heap and stack memory in Java.**
+
+- **Heap Memory**: Heap is used to store objects in Java. It is shared among all threads and is managed by the garbage collector. Objects created using `new` (like instances of classes) are allocated in the heap. The heap is large and can be expanded dynamically, but memory allocation and deallocation are slower than in stack memory.
+
+- **Stack Memory**: Stack is used to store method frames and local variables. Each thread has its own stack, and the memory is organized in a last-in, first-out (LIFO) manner. Stack memory is faster but limited in size. Once a method call is completed, the stack space for local variables is freed.
+
+### 39. **What is the `WeakReference` in Java?**
+
+A `WeakReference` is a reference type in Java that does not prevent an object from being garbage-collected. Unlike a strong reference (the default reference type in Java), a weak reference allows the object to be collected by the garbage collector when there are no strong references to it.
+
+- **Use case**: Weak references are commonly used in **caching** or **memory-sensitive data structures** where you want objects to be automatically discarded when memory is needed.
+
+```java
+import java.lang.ref.WeakReference;
+
+class MyObject {
+    // Some fields and methods
+}
+
+public class WeakReferenceExample {
+    public static void main(String[] args) {
+        MyObject obj = new MyObject();
+        WeakReference<MyObject> weakRef = new WeakReference<>(obj);
+
+        // obj can now be garbage collected when weakRef is the only reference
+    }
+}
+```
+
+### 40. **How do you create a memory leak in Java?**
+
+A memory leak in Java can occur if you hold onto references to objects that are no longer needed, preventing the garbage collector from reclaiming their memory. Common ways to create a memory leak:
+
+- Storing objects in static fields or collections, which arent cleared even after the objects are no longer needed.
+- Creating circular references (e.g., two objects referencing each other) that are not cleared.
+- Not releasing resources like database connections, sockets, or file streams.
+
+**Example of a memory leak**:
+```java
+import java.util.ArrayList;
+
+public class MemoryLeakExample {
+    static ArrayList<MyObject> list = new ArrayList<>();
+    
+    public static void main(String[] args) {
+        while (true) {
+            list.add(new MyObject());  // Objects are never removed, causing a memory leak
+        }
+    }
+}
+```
+
+### 41. **What is the difference between `Shallow Copy` and `Deep Copy` in Java?**
+
+- **Shallow Copy**: A shallow copy creates a new object but does not recursively copy the objects contained within the original object. Instead, it copies references to the objects, so both the original and copied objects refer to the same objects.
+
+  **Example**:
   ```java
-  if (age < 18) {
-      throw new IllegalArgumentException("Age must be 18 or above");
+  class MyObject {
+      int value;
   }
+
+  MyObject original = new MyObject();
+  original.value = 10;
+  MyObject shallowCopy = original; // Both point to the same object
   ```
 
-- **`throws`**: The `throws` keyword is used in a **method signature** to indicate that the method can throw certain exceptions. It is used to declare exceptions that might be thrown within the method, but the actual handling of the exceptions is left to the caller of the method.
+- **Deep Copy**: A deep copy creates a new object and also recursively copies the objects contained within it. This ensures that the original and copied objects do not share any references.
 
-  Example:
+  **Example**:
   ```java
-  public void readFile(String filename) throws IOException {
-      // Code that might throw IOException
+  class MyObject {
+      int value;
   }
+
+  MyObject original = new MyObject();
+  original.value = 10;
+  MyObject deepCopy = new MyObject();
+  deepCopy.value = original.value;  // New copy of the value, no shared references
   ```
 
-### 2. What is the difference between checked and unchecked exceptions?
+**Key difference**:  
+- **Shallow copy** copies references, meaning changes to nested objects affect both the original and copied objects.
+- **Deep copy** creates independent objects, so changes to one do not affect the other.
 
-- **Checked exceptions**: These are exceptions that **must be declared** in the method signature using the `throws` keyword or handled within the method using a `try-catch` block. They are typically exceptions that can be anticipated and recovered from, such as `IOException`, `SQLException`, etc. These exceptions are subclasses of `Exception` but not of `RuntimeException`.
+### **Exception Handling:**
+Here are the answers to your Java-related questions on exceptions:
 
-  Example:
+### 42. **What is an exception in Java?**
+
+An exception in Java is an event that disrupts the normal flow of the program. It is an object that represents an abnormal condition or error that occurs during the execution of a program. Exceptions can be caused by various issues such as invalid input, network failures, division by zero, or resource unavailability.
+
+Java provides a robust exception handling mechanism to manage such situations and allow the program to recover or terminate gracefully.
+
+### 43. **What is the difference between `checked` and `unchecked` exceptions?**
+
+- **Checked Exceptions**: These are exceptions that are checked at compile-time. The compiler forces you to handle these exceptions either using a `try-catch` block or by declaring them in the method signature using the `throws` keyword. Common examples include `IOException`, `SQLException`, etc.
+
+- **Unchecked Exceptions**: These are exceptions that are not checked at compile-time but are checked at runtime. They are subclasses of `RuntimeException` and do not need to be explicitly handled. Examples include `NullPointerException`, `ArrayIndexOutOfBoundsException`, etc.
+
+**Key Difference**:
+- **Checked Exceptions** must be explicitly handled or declared.
+- **Unchecked Exceptions** can be optionally handled and are not required to be declared.
+
+### 44. **How do you handle exceptions in Java?**
+
+Exceptions in Java are handled using a combination of `try`, `catch`, and `finally` blocks:
+
+1. **`try` block**: You write code that might throw an exception in the `try` block.
+2. **`catch` block**: If an exception occurs, it is caught by the `catch` block, where you can handle it (e.g., logging the error or retrying).
+3. **`finally` block**: Code inside the `finally` block is always executed, regardless of whether an exception was thrown or not. It is typically used for cleanup operations (e.g., closing files or releasing resources).
+
+**Example**:
+```java
+try {
+    int result = 10 / 0;  // Will throw ArithmeticException
+} catch (ArithmeticException e) {
+    System.out.println("Error: " + e.getMessage());
+} finally {
+    System.out.println("This block is always executed.");
+}
+```
+
+### 45. **What is the purpose of `try`, `catch`, `finally` blocks in Java?**
+
+- **`try` block**: Encapsulates code that might throw an exception. It defines a scope where the exception might occur.
+- **`catch` block**: Handles the exception if it occurs within the `try` block. You can specify the type of exception to catch.
+- **`finally` block**: Executes code after the `try` and `catch` blocks, regardless of whether an exception was thrown or not. It is commonly used for cleanup operations, such as closing database connections or releasing resources.
+
+### 46. **What is the difference between `throw` and `throws` in Java?**
+
+- **`throw`**: It is used to explicitly throw an exception from a method or block of code. You can throw both checked and unchecked exceptions using `throw`.
+
+  **Example**:
+  ```java
+  throw new ArithmeticException("Cannot divide by zero");
+  ```
+
+- **`throws`**: It is used in the method signature to declare that a method might throw one or more exceptions. This is mainly used for checked exceptions. The caller of the method must handle or declare the exception.
+
+  **Example**:
   ```java
   public void readFile() throws IOException {
-      // Code that might throw IOException
+      // code that may throw IOException
   }
   ```
 
-- **Unchecked exceptions**: These are exceptions that do **not need to be declared or caught**. They are typically programming bugs or unexpected events, such as `NullPointerException`, `ArrayIndexOutOfBoundsException`, etc. They are subclasses of `RuntimeException`.
+### 47. **What is a `RuntimeException`?**
 
-  Example:
-  ```java
-  public void processData() {
-      String str = null;
-      str.length();  // This will throw NullPointerException
-  }
-  ```
+`RuntimeException` is a subclass of `Exception` and represents exceptions that can occur during the runtime of the program. These exceptions are **unchecked**, meaning they do not need to be explicitly declared or handled. They usually indicate programming errors, such as logic errors, invalid input, or improper resource handling.
 
-### 3. How do you create a custom exception in Java?
+**Common examples**:
+- `NullPointerException`
+- `ArrayIndexOutOfBoundsException`
+- `ArithmeticException`
 
-To create a custom exception in Java, you need to extend the `Exception` class (for checked exceptions) or `RuntimeException` class (for unchecked exceptions).
+### 48. **Can a `finally` block throw an exception in Java?**
 
-Example of a custom exception:
+Yes, a `finally` block can throw an exception in Java. However, if an exception is thrown in the `finally` block, it will override any exception that was already thrown in the `try` or `catch` block. If both the `try` block and `finally` block throw exceptions, the exception thrown by the `finally` block will be propagated to the caller.
+
+**Example**:
 ```java
-public class InvalidAgeException extends Exception {
-    // Constructor
-    public InvalidAgeException(String message) {
+public void test() {
+    try {
+        System.out.println("In try block");
+        throw new RuntimeException("Exception in try");
+    } catch (Exception e) {
+        System.out.println("In catch block");
+        throw new RuntimeException("Exception in catch");
+    } finally {
+        System.out.println("In finally block");
+        throw new RuntimeException("Exception in finally");
+    }
+}
+```
+In this case, the exception from the `finally` block will be propagated, even if an exception occurred in the `try` or `catch`.
+
+### 49. **What is the `Throwable` class in Java?**
+
+`Throwable` is the superclass of all errors and exceptions in Java. It is the root class in the exception hierarchy. `Throwable` has two main subclasses:
+- **`Error`**: Represents serious issues that the application should not attempt to handle (e.g., `OutOfMemoryError`).
+- **`Exception`**: Represents conditions that the application might want to catch and handle (e.g., `IOException`).
+
+`Throwable` provides methods like `getMessage()`, `printStackTrace()`, and others to provide details about the error or exception.
+
+### 50. **How do you create a custom exception in Java?**
+
+To create a custom exception in Java, you need to create a new class that extends `Exception` (for checked exceptions) or `RuntimeException` (for unchecked exceptions). You can add custom constructors to pass messages or error codes.
+
+**Example**:
+```java
+class MyCustomException extends Exception {
+    public MyCustomException(String message) {
         super(message);
     }
 }
-```
 
-Usage:
-```java
-public void checkAge(int age) throws InvalidAgeException {
-    if (age < 18) {
-        throw new InvalidAgeException("Age must be 18 or older");
-    }
-}
-```
-
-### 4. What is the purpose of the `try-catch` block?
-
-The purpose of the `try-catch` block is to **handle exceptions** that may occur during the execution of a program. The `try` block contains the code that might throw an exception, and the `catch` block handles the exception if it is thrown. This prevents the program from crashing and allows you to handle errors gracefully.
-
-Example:
-```java
-try {
-    int result = 10 / 0;  // Division by zero, throws ArithmeticException
-} catch (ArithmeticException e) {
-    System.out.println("Cannot divide by zero");
-}
-```
-
-### 5. What is a `finally` block? Can it be omitted?
-
-- A **`finally` block** is used to ensure that certain code is always executed, regardless of whether an exception occurs or not. It typically contains cleanup code, such as closing files or releasing resources, which must be executed even if an exception was thrown.
-
-Example:
-```java
-try {
-    // Code that may throw exception
-} catch (Exception e) {
-    // Handle exception
-} finally {
-    // Code that will always execute, such as cleanup
-}
-```
-
-- **Can it be omitted?**: Yes, the `finally` block is optional. If there is no need for any cleanup or guaranteed action, it can be omitted. However, it is good practice to use it when dealing with resources like files or database connections.
-
-### 6. Explain the exception propagation mechanism in Java.
-
-Exception propagation refers to the process by which an exception is passed from the method where it occurs to the caller. If an exception is thrown within a method, it propagates (bubbles up) through the method call stack until it is caught by a `catch` block or until the program terminates.
-
-If the method does not handle the exception (i.e., it doesn't have a `try-catch` block or doesn't declare the exception using `throws`), the exception is passed to the method that called it. This continues until the exception is either handled or reaches the `main` method (where the program execution may terminate if uncaught).
-
-Example:
-```java
-public void methodA() {
-    methodB();  // Calls methodB(), which may throw an exception
-}
-
-public void methodB() throws Exception {
-    throw new Exception("Something went wrong");
-}
-
-public static void main(String[] args) {
-    try {
-        new Example().methodA();
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-    }
-}
-```
-
-### 7. What is the `Throwable` class?
-
-`Throwable` is the superclass of all errors and exceptions in Java. It is the root of the exception hierarchy. There are two main subclasses of `Throwable`:
-
-- **`Error`**: Represents serious problems that a reasonable application should not try to catch (e.g., `OutOfMemoryError`, `StackOverflowError`).
-- **`Exception`**: Represents exceptional conditions that an application might want to catch (e.g., `IOException`, `SQLException`, `NullPointerException`).
-
-Example:
-```java
-try {
-    throw new Exception("Custom Exception");
-} catch (Throwable t) {
-    System.out.println("Caught Throwable: " + t.getMessage());
-}
-```
-
-The `Throwable` class provides methods like `getMessage()`, `printStackTrace()`, and `getCause()` that help in handling errors and exceptions.
-
-## **Concurrency and Multithreading**
-Here are the answers to your Java-related questions:
-
-### 1. **What is multithreading in Java?**
-   Multithreading in Java refers to the concurrent execution of more than one part of a program. A thread is the smallest unit of a CPU's execution, and multithreading allows Java programs to perform multiple operations at once. Java provides built-in support for multithreading, enabling efficient CPU utilization and improving the performance of applications, especially in I/O-bound or CPU-bound tasks.
-
-### 2. **Explain the life cycle of a thread in Java.**
-   The life cycle of a thread in Java consists of the following stages:
-   
-   - **New (Born)**: A thread is created but not yet started. This happens when a `Thread` object is instantiated.
-   - **Runnable**: After invoking the `start()` method, the thread enters the runnable state. It is eligible for running but not yet executing. It can be in the ready state, waiting for CPU time.
-   - **Blocked**: A thread moves to the blocked state when it is waiting for a resource (e.g., I/O operation, or locked resource).
-   - **Waiting**: A thread enters the waiting state when it waits for another thread to perform a particular action (like `join()` or `wait()` method).
-   - **Timed Waiting**: A thread enters the timed waiting state when it is waiting for a specific period (using `sleep()` or `join(time)`).
-   - **Terminated (Dead)**: When the thread has completed its task or has been terminated either naturally or by an exception, it enters the terminated state. It can no longer be started again.
-
-### 3. **What is the difference between Thread and Runnable?**
-   - **Thread**: A `Thread` is a class that represents a single thread of execution in a program. It extends the `Thread` class and overrides the `run()` method.
-   - **Runnable**: `Runnable` is an interface that represents a task that can be executed by a thread. It defines the `run()` method, which contains the code to be executed by a thread.
-   
-   **Key Difference**:  
-   - A `Thread` is a complete object that has its own execution mechanism.
-   - `Runnable` is just a task that can be executed by a `Thread`, or by `ExecutorService`.
-
-### 4. **What are synchronization and its types in Java?**
-   **Synchronization** in Java ensures that only one thread can access a critical section of code at a time, thus preventing data corruption in a multithreaded environment.
-   
-   **Types of Synchronization:**
-   - **Method Synchronization**: A method can be synchronized by using the `synchronized` keyword, which ensures that only one thread can execute the method at a time.
-   - **Block Synchronization**: Instead of synchronizing an entire method, you can synchronize a specific block of code within a method using the `synchronized` keyword to limit the scope of synchronization.
-
-### 5. **What is a deadlock? How can you prevent it in Java?**
-   A **deadlock** occurs when two or more threads are blocked forever, each waiting for the other to release resources. This situation occurs when:
-   - Thread A holds a lock and waits for a lock held by Thread B.
-   - Thread B holds a lock and waits for a lock held by Thread A.
-   
-   **Prevention Methods:**
-   - **Lock Ordering**: Ensure that all threads acquire locks in a consistent order.
-   - **Try to Avoid Nested Locks**: Limit the acquisition of multiple locks by any thread.
-   - **Use Timed Locks**: Use `ReentrantLock` with a timeout to avoid waiting indefinitely for a lock.
-   - **Deadlock Detection**: Regularly monitor the application to detect and resolve deadlocks.
-
-### 6. **What are ExecutorService and ThreadPoolExecutor?**
-   - **ExecutorService**: `ExecutorService` is an interface in Java that provides methods for managing a pool of worker threads. It abstracts the thread management and decouples task submission from the details of how each task will be executed.
-   
-   - **ThreadPoolExecutor**: `ThreadPoolExecutor` is a concrete implementation of the `ExecutorService` interface. It provides a pool of threads to execute submitted tasks. It manages the number of threads, task scheduling, and provides functionality like queuing, task rejection, and task execution management.
-
-### 7. **What is the difference between synchronized method and synchronized block?**
-   - **Synchronized Method**: When you declare a method as `synchronized`, it ensures that only one thread can execute that method at a time on the same instance of the object. It locks the object on which the method is called.
-     ```java
-     public synchronized void method() {
-         // critical code
-     }
-     ```
-   
-   - **Synchronized Block**: A synchronized block is a more fine-grained control over synchronization. You can synchronize only a specific part of the method (block of code) rather than the entire method.
-     ```java
-     public void method() {
-         synchronized (this) {
-             // critical code
-         }
-     }
-     ```
-   **Difference**: A synchronized block gives you more control over which parts of the code are synchronized, while a synchronized method locks the entire method.
-
-### 8. **What is the volatile keyword in Java?**
-   The `volatile` keyword in Java is used to indicate that a variable's value will be modified by multiple threads. When a variable is declared as `volatile`, it ensures that reads and writes to the variable are done directly from and to the main memory, rather than caching the value in thread-local memory. This ensures visibility of changes across all threads.
-
-### 9. **What are thread-safe collections in Java?**
-   **Thread-safe collections** are data structures designed to be used safely by multiple threads concurrently. In Java, some collections are inherently thread-safe, while others are not. Examples include:
-   
-   - **Vector**: A thread-safe implementation of a dynamic array.
-   - **Hashtable**: A thread-safe version of a hash map.
-   - **CopyOnWriteArrayList**: A thread-safe variant of `ArrayList`.
-   - **ConcurrentHashMap**: A thread-safe map that allows concurrent access to different segments of the map.
-
-   Additionally, the `Collections.synchronizedList()`, `Collections.synchronizedMap()`, and other synchronized collections can wrap standard collections to make them thread-safe.
-
-
-## **Java 8 and Modern Features**
-Sure! Here are the answers to your Java 8-related questions:
-
-### 1. Major Features Introduced in Java 8:
-Java 8 introduced several key features that enhanced the language and its libraries:
-- **Lambda Expressions**: Allows passing functionality as arguments to methods or creating anonymous methods.
-- **Streams API**: Provides a modern way of working with collections of data, using a functional approach.
-- **Default Methods**: Allows methods with a default implementation in interfaces.
-- **Method References**: Provides a shorthand notation for calling methods (static or instance methods) via their name.
-- **New Date/Time API (java.time package)**: A comprehensive API for working with dates and times, replacing the older `java.util.Date` and `Calendar`.
-- **Optional**: A container object that may or may not contain a non-null value, designed to prevent `NullPointerException`.
-- **Nashorn JavaScript Engine**: A new JavaScript engine, replacing the older Rhino engine.
-
-### 2. What is a Lambda Expression?
-A **Lambda expression** is a way to provide clear and concise syntax for writing anonymous methods (also known as anonymous functions). It enables treating functionality as a method argument, or to create a functional interface in a concise way. A lambda expression consists of:
-- **Parameters**: The input parameters for the function.
-- **Arrow (`->`)**: Separates the parameters and the body.
-- **Body**: The block of code that defines the behavior.
-
-Example:
-```java
-// Lambda expression for adding two numbers
-(int a, int b) -> a + b;
-```
-
-### 3. What is the Functional Interface in Java?
-A **functional interface** is an interface that has exactly one abstract method. Functional interfaces can have multiple default or static methods, but only one abstract method. They are used primarily to represent lambda expressions or method references. A common example is `java.util.function.Function`.
-
-Example:
-```java
-@FunctionalInterface
-public interface MyFunction {
-    int apply(int a, int b);
-}
-```
-The `@FunctionalInterface` annotation is optional but helps to make the code more readable and ensures that the interface has exactly one abstract method.
-
-### 4. What is the Stream API? How Does It Differ from the Traditional Way of Iterating Over Collections?
-The **Stream API** allows for functional-style operations on sequences of elements (e.g., collections) in a declarative manner. It introduces the ability to process data in a sequence of operations like filtering, mapping, and reducing without changing the original data structure. Streams can be processed in a **lazy** and **parallel** fashion.
-
-Key differences from the traditional iteration (using `for` or `Iterator`):
-- **Declarative Style**: Stream operations are more readable and concise.
-- **Chaining**: Operations like `map()`, `filter()`, and `reduce()` can be chained to form complex data transformations in a single expression.
-- **Lazy Evaluation**: Intermediate operations like `filter()` or `map()` are not executed until a terminal operation (like `collect()`, `forEach()`) is invoked.
-- **Parallel Processing**: Streams can be processed in parallel with minimal effort, leveraging multiple cores.
-
-Example of a traditional loop:
-```java
-for (String str : list) {
-    if (str.startsWith("A")) {
-        System.out.println(str);
-    }
-}
-```
-
-Using Stream API:
-```java
-list.stream()
-    .filter(str -> str.startsWith("A"))
-    .forEach(System.out::println);
-```
-
-### 5. Explain the Concept of Optional in Java 8:
-`Optional` is a container object introduced in Java 8 that may or may not contain a non-null value. It is primarily used to avoid `NullPointerException` by explicitly dealing with the presence or absence of values in a safe way. Instead of returning `null` when a value is absent, a method can return `Optional.empty()`.
-
-Common methods of `Optional`:
-- `of(T value)`: Creates an Optional with the specified non-null value.
-- `empty()`: Returns an empty Optional.
-- `isPresent()`: Checks if the value is present.
-- `ifPresent(Consumer<? super T> action)`: Executes a block of code if the value is present.
-- `orElse(T other)`: Returns the value if present, otherwise returns the default value.
-
-Example:
-```java
-Optional<String> name = Optional.of("John");
-name.ifPresent(n -> System.out.println(n)); // Output: John
-```
-
-### 6. What are Method References in Java?
-**Method references** provide a shorthand for writing lambda expressions by directly referring to an existing method. They are often used to make code more readable and concise. There are four types of method references:
-- **Static method reference**: `ClassName::staticMethod`
-- **Instance method reference (of a specific object)**: `instance::instanceMethod`
-- **Instance method reference (of an arbitrary object of a particular type)**: `ClassName::instanceMethod`
-- **Constructor reference**: `ClassName::new`
-
-Example:
-```java
-// Lambda expression
-list.forEach(str -> System.out.println(str));
-
-// Method reference
-list.forEach(System.out::println);
-```
-
-### 7. What is the Default Keyword in Interfaces?
-The `default` keyword in Java 8 allows an interface to provide a default implementation for methods. This enables adding new methods to interfaces without breaking existing implementations. Interfaces can now contain both abstract methods (which need to be implemented) and default methods (which already have a body).
-
-Example:
-```java
-public interface MyInterface {
-    // Abstract method
-    void abstractMethod();
-
-    // Default method
-    default void defaultMethod() {
-        System.out.println("This is a default method.");
-    }
-}
-```
-
-The `default` method allows backward compatibility and makes interfaces more powerful, avoiding the need for all implementing classes to provide their own version of the method.
-
-These are the major features and concepts introduced in Java 8, making the language more expressive, concise, and functional.
-
-## **Design Patterns and Best Practices**
-### 1. What are Design Patterns in Java? 
-Design patterns in Java (and other programming languages) are general, reusable solutions to common problems that occur during software development. These patterns provide a way to structure code in a way that improves maintainability, scalability, and reusability. They offer proven solutions to recurring problems, making code easier to understand and modify. The most common types of design patterns are:
-
-- **Creational Patterns**: Deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. Examples: Singleton, Factory Method, Abstract Factory, Builder, Prototype.
-- **Structural Patterns**: Deal with object composition and typically help to reduce complexities by creating a structure. Examples: Adapter, Decorator, Facade, Composite, Proxy.
-- **Behavioral Patterns**: Focus on communication between objects. Examples: Observer, Strategy, Command, Chain of Responsibility, Iterator.
-
-### 2. Can you explain the Singleton pattern and provide an implementation?
-
-The **Singleton Pattern** ensures that a class has only one instance and provides a global point of access to that instance. This pattern is typically used for managing shared resources, like a connection pool or logging services.
-
-#### Implementation in Java:
-
-```java
-public class Singleton {
-    // Static instance of the Singleton class
-    private static Singleton instance;
-    
-    // Private constructor to prevent instantiation from outside
-    private Singleton() {}
-    
-    // Public method to get the instance, ensuring only one instance is created
-    public static Singleton getInstance() {
-        if (instance == null) {
-            synchronized (Singleton.class) { // Double-checked locking for thread safety
-                if (instance == null) {
-                    instance = new Singleton();
-                }
-            }
-        }
-        return instance;
-    }
-}
-```
-
-### 3. What is the Factory pattern? How does it work in Java?
-
-The **Factory Pattern** is a creational pattern that provides an interface for creating objects, but it allows subclasses to alter the type of objects that will be created. The idea is to delegate the responsibility of object instantiation to a factory class, which encapsulates the logic of object creation.
-
-#### How it Works:
-- The client asks the factory for an object, without specifying the exact class of the object that will be created.
-- The factory decides which class to instantiate and return.
-
-#### Example in Java:
-
-```java
-// Product Interface
-interface Product {
-    void create();
-}
-
-// Concrete Product A
-class ProductA implements Product {
-    @Override
-    public void create() {
-        System.out.println("ProductA created.");
-    }
-}
-
-// Concrete Product B
-class ProductB implements Product {
-    @Override
-    public void create() {
-        System.out.println("ProductB created.");
-    }
-}
-
-// Factory Class
-class ProductFactory {
-    public static Product createProduct(String type) {
-        if (type.equals("A")) {
-            return new ProductA();
-        } else if (type.equals("B")) {
-            return new ProductB();
-        }
-        return null;
-    }
-}
-
-// Client Code
-public class Main {
+public class TestCustomException {
     public static void main(String[] args) {
-        Product productA = ProductFactory.createProduct("A");
-        productA.create();
-        
-        Product productB = ProductFactory.createProduct("B");
-        productB.create();
+        try {
+            throw new MyCustomException("This is a custom exception");
+        } catch (MyCustomException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
 ```
 
-### 4. What is the Observer Pattern
+In this example, `MyCustomException` is a custom checked exception that is thrown and caught in the `main` method. The `getMessage()` method is used to print the exception message.
 
-The **Observer Pattern** is a behavioral design pattern where an object (called the "subject") maintains a list of its dependent observers and notifies them automatically of any state changes, typically by calling one of their methods. It is used when an object needs to notify other objects about changes without knowing who or what those objects are.
+### **Java Collections Framework:**
+Here are the answers to your Java Collections-related questions:
 
-#### Example in Java:
+### 51. **What are the core interfaces in the Java Collections Framework?**
 
+The core interfaces in the Java Collections Framework are:
+
+1. **`Collection`**: The root interface for most collection types (e.g., `List`, `Set`, and `Queue`).
+2. **`List`**: Represents an ordered collection of elements, allowing duplicate elements (e.g., `ArrayList`, `LinkedList`).
+3. **`Set`**: Represents a collection that does not allow duplicate elements (e.g., `HashSet`, `TreeSet`).
+4. **`Queue`**: Represents a collection designed for holding elements prior to processing (e.g., `LinkedList`, `PriorityQueue`).
+5. **`Map`**: Represents an object that maps keys to values, with no duplicate keys (e.g., `HashMap`, `TreeMap`, `LinkedHashMap`).
+6. **`SortedSet`** and **`NavigableSet`**: Extensions of `Set` that maintain order (e.g., `TreeSet`).
+7. **`SortedMap`** and **`NavigableMap`**: Extensions of `Map` that maintain order (e.g., `TreeMap`).
+
+These interfaces define the standard behaviors for collections in Java, while the classes (such as `ArrayList`, `HashMap`) provide the actual implementations.
+
+### 52. **What is the difference between a `List`, `Set`, and `Map` in Java?**
+
+- **`List`**: 
+  - An ordered collection that allows duplicate elements.
+  - Elements are indexed and can be accessed by position.
+  - Example: `ArrayList`, `LinkedList`.
+
+- **`Set`**: 
+  - A collection that does not allow duplicate elements.
+  - No guarantee of the order of elements.
+  - Example: `HashSet`, `TreeSet`.
+
+- **`Map`**: 
+  - A collection that stores key-value pairs, where each key maps to a value.
+  - A `Map` cannot have duplicate keys, but values can be duplicated.
+  - Example: `HashMap`, `TreeMap`.
+
+**Key Differences**:
+- **`List`** allows duplicates and maintains order, while **`Set`** does not allow duplicates and may not guarantee order.
+- **`Map`** stores key-value pairs, unlike `List` and `Set`, which store only individual elements.
+
+### 53. **What is the difference between `ArrayList` and `LinkedList` in Java?**
+
+- **`ArrayList`**:
+  - Implements the `List` interface and uses an array for storage.
+  - Provides fast random access to elements (`O(1)` for get/set).
+  - Insertions or deletions (except at the end) can be slower due to the need to shift elements (`O(n)`).
+  - Better for frequent access or modification of elements by index.
+
+- **`LinkedList`**:
+  - Implements the `List` interface and uses a doubly linked list for storage.
+  - Provides slower random access to elements (`O(n)` for get/set).
+  - Insertions or deletions are faster compared to `ArrayList` (`O(1)` if the position is known).
+  - Better for frequent insertions or deletions of elements.
+
+### 54. **How does a `HashMap` work in Java?**
+
+A **`HashMap`** is an implementation of the `Map` interface that stores key-value pairs. It uses a hash table internally for efficient retrieval. The **hashing** mechanism ensures that keys are evenly distributed across the table, allowing for fast lookups, insertions, and deletions.
+
+- **Hashing**: When a key is inserted into the `HashMap`, its hash code is computed, and the key-value pair is stored in the bucket corresponding to the hash value.
+- **Collisions**: If two keys have the same hash code, they are stored in the same bucket using a linked list or balanced tree (Java 8 introduced tree nodes for long chains to improve performance).
+
+- **Time complexity**: For typical operations (e.g., get, put), the time complexity is `O(1)` in average cases, but it can degrade to `O(n)` in cases of poor hashing or collisions.
+
+### 55. **What is the difference between `HashMap` and `TreeMap`?**
+
+- **`HashMap`**:
+  - Does not maintain any order of the keys.
+  - Provides constant-time complexity (`O(1)`) for basic operations (get, put) under ideal conditions.
+  - It is not thread-safe.
+
+- **`TreeMap`**:
+  - Maintains the keys in **sorted** order (natural ordering or by a comparator).
+  - Provides `O(log n)` time complexity for operations like `get`, `put`, and `remove` because it uses a red-black tree internally.
+  - It is also not thread-safe.
+
+**Key Difference**: 
+- **`HashMap`** is faster for basic operations, but **`TreeMap`** is useful when you need to maintain order among keys.
+
+### 56. **What is the difference between `HashSet` and `TreeSet`?**
+
+- **`HashSet`**:
+  - Implements the `Set` interface and stores elements in an unordered way using a hash table.
+  - Does not maintain any order of elements.
+  - Provides constant-time complexity (`O(1)`) for operations like add, remove, and contains under ideal conditions.
+
+- **`TreeSet`**:
+  - Implements the `Set` interface and stores elements in a **sorted** order, either natural order or using a provided comparator.
+  - Operations like add, remove, and contains have a time complexity of `O(log n)` because it uses a red-black tree.
+
+**Key Difference**: 
+- **`HashSet`** is faster for basic operations but does not maintain order, while **`TreeSet`** maintains a sorted order of elements.
+
+### 57. **What is the difference between `Iterator` and `ListIterator`?**
+
+- **`Iterator`**:
+  - Provides methods to iterate over elements in a collection (e.g., `hasNext()`, `next()`, `remove()`).
+  - Can iterate in only one direction (forward).
+  - Can be used on all collections that implement the `Collection` interface.
+
+- **`ListIterator`**:
+  - Extends `Iterator` and provides additional methods to iterate both forward and backward through a list (e.g., `hasPrevious()`, `previous()`).
+  - Allows modification of elements while iterating (e.g., `set()`, `add()`).
+  - Can only be used with **`List`** collections like `ArrayList` and `LinkedList`.
+
+**Key Difference**: 
+- **`ListIterator`** allows bidirectional iteration and element modification, while **`Iterator`** only supports forward iteration.
+
+### 58. **How do you sort a `List` in Java?**
+
+You can sort a `List` in Java using the `Collections.sort()` method or by using `List.sort()` (introduced in Java 8).
+
+- **Using `Collections.sort()`**:
+  ```java
+  List<Integer> list = Arrays.asList(5, 3, 8, 1);
+  Collections.sort(list);  // Sorts in ascending order
+  ```
+
+- **Using `List.sort()`** (Java 8 and above):
+  ```java
+  list.sort(Comparator.naturalOrder());  // Sorts in ascending order
+  ```
+
+- **Custom sorting**: You can provide a custom comparator for sorting in a specific order:
+  ```java
+  list.sort((a, b) -> b - a);  // Sorts in descending order
+  ```
+
+### 59. **What is the `Comparable` interface in Java?**
+
+The `Comparable` interface is used to define a natural ordering of objects. A class that implements the `Comparable` interface must define the `compareTo(T o)` method, which compares the current object with another object of the same type.
+
+**Example**:
 ```java
-import java.util.ArrayList;
-import java.util.List;
+class Person implements Comparable<Person> {
+    String name;
+    int age;
 
-// Observer interface
-interface Observer {
-    void update(String message);
-}
-
-// Concrete Observer
-class ConcreteObserver implements Observer {
-    private String name;
-
-    public ConcreteObserver(String name) {
+    Person(String name, int age) {
         this.name = name;
+        this.age = age;
     }
 
     @Override
-    public void update(String message) {
-        System.out.println(name + " received: " + message);
-    }
-}
-
-// Subject class
-class Subject {
-    private List<Observer> observers = new ArrayList<>();
-
-    public void addObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    public void notifyObservers(String message) {
-        for (Observer observer : observers) {
-            observer.update(message);
-        }
-    }
-}
-
-// Client Code
-public class Main {
-    public static void main(String[] args) {
-        Subject subject = new Subject();
-
-        Observer observer1 = new ConcreteObserver("Observer 1");
-        Observer observer2 = new ConcreteObserver("Observer 2");
-
-        subject.addObserver(observer1);
-        subject.addObserver(observer2);
-
-        subject.notifyObservers("Hello Observers!");
+    public int compareTo(Person other) {
+        return Integer.compare(this.age, other.age);  // Sort by age
     }
 }
 ```
 
-### 5. What is Dependency Injection
+**Key Points**:
+- `compareTo()` returns a negative value if the current object is less than the other, zero if they are equal, and a positive value if the current object is greater.
 
-**Dependency Injection (DI)** is a design pattern used to implement Inversion of Control (IoC), where the control of object creation and dependency management is shifted from the client (consumer) to an external entity (the injector). DI allows for more modular and testable code by decoupling classes from their dependencies.
+### 60. **What is the `Comparator` interface, and how does it differ from `Comparable`?**
 
-There are three main types of dependency injection:
-1. **Constructor Injection**: Dependencies are provided through the constructor.
-2. **Setter Injection**: Dependencies are set through setter methods.
-3. **Interface Injection**: The dependent class exposes an injector method that the injector calls to provide the dependency.
+The **`Comparator`** interface is used to define an external comparison logic to compare two objects. It is often used when you need to sort objects in multiple ways, or the class does not implement `Comparable`.
 
-#### Example of Constructor Injection:
+- **`compare(T o1, T o2)`** method compares two objects.
+- **`Comparator`** is typically used when you need different sorting strategies for the same class or to sort a class that does not implement `Comparable`.
 
+**Key Difference**:
+- **`Comparable`** is used to define the natural ordering of objects in a class, and the comparison logic is implemented in the class itself.
+- **`Comparator`** is used to define custom ordering externally without modifying the class.
+
+### **Java Streams and Lambda Expressions:**
+Here are the answers to your Java Lambda expressions, Streams, and Optional class-related questions:
+
+### 61. **What are Lambda expressions in Java?**
+
+Lambda expressions in Java are a feature introduced in Java 8 that allow you to write concise, functional-style code. A lambda expression provides a clear and concise way to represent one method interface (functional interface) using an expression. It enables passing behavior as a parameter, making it easier to write more flexible and readable code.
+
+**Syntax**:
 ```java
-class Engine {
-    public void start() {
-        System.out.println("Engine started");
-    }
-}
-
-class Car {
-    private Engine engine;
-
-    // Constructor Injection
-    public Car(Engine engine) {
-        this.engine = engine;
-    }
-
-    public void drive() {
-        engine.start();
-        System.out.println("Car is driving");
-    }
-}
-
-// Client Code
-public class Main {
-    public static void main(String[] args) {
-        Engine engine = new Engine(); // Creating dependency
-        Car car = new Car(engine);    // Injecting dependency
-        car.drive();
-    }
-}
+(parameters) -> expression
 ```
 
-### 6. What is the Difference Between Adapter and Decorator Patterns
+### 62. **How do you define a Lambda expression in Java?**
 
-The **Adapter Pattern** and **Decorator Pattern** are both structural patterns, but they serve different purposes:
+A Lambda expression is defined as a combination of parameters, the `->` symbol (which separates parameters from the body), and an expression or block of code.
 
-- **Adapter Pattern**: 
-  - The Adapter pattern is used to convert the interface of a class into another interface that a client expects.
-  - It allows classes to work together that couldn’t otherwise because of incompatible interfaces.
-  - It doesn't alter the functionality of the object; it just allows communication between incompatible systems.
+**Basic syntax**:
+```java
+(parameters) -> expression
+```
 
-  **Example**: If you have a system expecting objects of type `Car`, but you have objects of type `Motorcycle`, you would use an adapter to convert `Motorcycle` into a `Car`.
+**Example**:
+```java
+// Lambda expression for addition
+(int a, int b) -> a + b
+```
 
+If there is only one parameter, the parentheses can be omitted:
+```java
+x -> x * 2  // Multiplies the input by 2
+```
+
+Lambda expressions are often used to implement functional interfaces, which have exactly one abstract method.
+
+**Example in use**:
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
+numbers.forEach(number -> System.out.println(number));  // Using lambda expression in forEach
+```
+
+### 63. **What is the difference between `Function` and `Consumer` interfaces in Java?**
+
+Both `Function` and `Consumer` are functional interfaces in Java, but they serve different purposes:
+
+- **`Function<T, R>`**: Represents a function that takes an argument of type `T` and returns a result of type `R`. It has one method: `R apply(T t)`.
+  - **Example**: Convert an integer to its square:
+    ```java
+    Function<Integer, Integer> square = x -> x * x;
+    System.out.println(square.apply(5));  // Output: 25
+    ```
+
+- **`Consumer<T>`**: Represents an operation that takes an argument of type `T` and returns no result (void). It is used for operations that perform actions on the argument without returning any result.
+  - **Example**: Print an integer:
+    ```java
+    Consumer<Integer> print = x -> System.out.println(x);
+    print.accept(5);  // Output: 5
+    ```
+
+**Key Difference**: 
+- `Function` produces a result based on the input, while `Consumer` performs an action and does not return any result.
+
+### 64. **What is the purpose of the `Stream` API in Java?**
+
+The **`Stream`** API, introduced in Java 8, provides a high-level abstraction for working with sequences of elements (e.g., collections) in a functional style. It allows you to process data in a declarative manner using operations like filtering, mapping, sorting, and reducing. 
+
+Streams support parallel processing, making it easier to perform operations concurrently on large datasets. They are used for processing collections of objects and can simplify code by allowing operations to be chained together.
+
+### 65. **How do you filter a collection using streams in Java?**
+
+You can filter a collection using the `filter()` method in the `Stream` API. This method takes a `Predicate` (a functional interface that returns a boolean value) to evaluate each element and decide whether to include it in the result.
+
+**Example**:
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+List<Integer> evenNumbers = numbers.stream()
+                                   .filter(n -> n % 2 == 0)
+                                   .collect(Collectors.toList());
+System.out.println(evenNumbers);  // Output: [2, 4, 6]
+```
+
+Here, `filter()` is used to keep only the even numbers from the list.
+
+### 66. **What is the difference between `map()` and `flatMap()` in Java streams?**
+
+- **`map()`**: It transforms each element of the stream by applying a function to it, producing a new stream of elements. The result of the `map()` function is a stream of the transformed elements.
+
+  **Example**:
   ```java
-  class Motorcycle {
-      void driveMotorcycle() {
-          System.out.println("Motorcycle is driving");
-      }
-  }
-
-  class CarAdapter implements Car {
-      private Motorcycle motorcycle;
-
-      public CarAdapter(Motorcycle motorcycle) {
-          this.motorcycle = motorcycle;
-      }
-
-      @Override
-      public void driveCar() {
-          motorcycle.driveMotorcycle();
-      }
-  }
+  List<String> words = Arrays.asList("apple", "banana", "cherry");
+  List<Integer> lengths = words.stream()
+                               .map(String::length)
+                               .collect(Collectors.toList());
+  System.out.println(lengths);  // Output: [5, 6, 6]
   ```
 
-- **Decorator Pattern**:
-  - The Decorator pattern allows you to dynamically add functionality to an object at runtime without modifying its structure.
-  - It is typically used to extend the behavior of a class in a flexible and reusable way.
-  - Decorators "wrap" the original object and add new behavior.
+- **`flatMap()`**: It is used when the transformation function returns a stream of elements, rather than a single element. It flattens the nested streams into a single stream.
 
-  **Example**: If you have a `Car` object and want to add extra features like air conditioning or a sunroof, you can use decorators to add those features at runtime.
-
+  **Example**:
   ```java
-  interface Car {
-      void drive();
-  }
-
-  class BasicCar implements Car {
-      @Override
-      public void drive() {
-          System.out.println("Driving basic car");
-      }
-  }
-
-  class AirConditioningDecorator implements Car {
-      private Car car;
-
-      public AirConditioningDecorator(Car car) {
-          this.car = car;
-      }
-
-      @Override
-      public void drive() {
-          car.drive();
-          System.out.println("Air conditioning on");
-      }
-  }
+  List<List<String>> lists = Arrays.asList(Arrays.asList("a", "b"), Arrays.asList("c", "d"));
+  List<String> flattened = lists.stream()
+                                .flatMap(List::stream)
+                                .collect(Collectors.toList());
+  System.out.println(flattened);  // Output: [a, b, c, d]
   ```
 
-In summary:
-- **Adapter** is used to change the interface of an object to make it compatible with another interface.
-- **Decorator** is used to add new behaviors to an object dynamically.
+**Key Difference**:
+- **`map()`** transforms each element into a single value, resulting in a stream of transformed elements.
+- **`flatMap()`** transforms each element into a stream and then flattens the resulting streams into one.
 
+### 67. **What is the `Optional` class in Java?**
 
+The **`Optional`** class is a container object that may or may not contain a non-null value. It is used to avoid `NullPointerException` by explicitly handling cases where a value may be absent.
 
-## **Java Development Tools and Best Practices**
-Here are the answers to the Java-related questions you asked:
-
-### 1. **Difference Between JDK and JRE:**
-
-- **JDK (Java Development Kit)**:  
-  JDK is a software development kit used to develop Java applications. It includes the JRE (Java Runtime Environment), but also contains development tools like compilers (javac), debuggers, and other tools required for Java application development. It is used by developers to write, compile, and debug Java code.
-
-- **JRE (Java Runtime Environment)**:  
-  JRE is a part of the JDK that is responsible for running Java applications. It includes the JVM (Java Virtual Machine), libraries, and other components necessary to run Java applications but does not contain tools for Java development like compilers.
-
-  **Key Difference**: JDK is used for development, while JRE is used for running Java applications.
-
-### 2. **What is Maven? How Do You Use It in Java Projects?**
-
-- **Maven** is a build automation tool used primarily for Java projects. It manages project dependencies, builds the project, and can be used to automate tasks like testing, packaging, and deployment. Maven uses an XML file called `pom.xml` (Project Object Model) to define project structure, dependencies, plugins, and goals.
-
-  **Steps to use Maven in a Java project:**
-  1. Install Maven on your system.
-  2. Create a `pom.xml` file at the root of your project.
-  3. Add dependencies, plugins, and other configurations to `pom.xml`.
-  4. Run Maven commands (like `mvn clean install`, `mvn package`) to build and manage your project.
-
-### 3. **What is Gradle? How is it Different from Maven?**
-
-- **Gradle** is another build automation tool, but it is more modern and flexible compared to Maven. It uses a Groovy-based DSL (Domain Specific Language) for configuration, and it can also use Kotlin for configuration files. Gradle is known for its performance, incremental builds, and flexibility.
-
-  **Key Differences:**
-  - **Performance**: Gradle generally offers faster build times than Maven, thanks to its incremental build feature.
-  - **Configuration**: Maven uses XML for configuration (`pom.xml`), while Gradle uses Groovy/Kotlin-based scripts (`build.gradle`).
-  - **Flexibility**: Gradle is more flexible and allows for custom build logic, while Maven follows a more rigid structure.
-  - **Dependency Management**: Both Maven and Gradle manage dependencies, but Gradle can handle them more efficiently and with more control.
-
-### 4. **What is the Role of a Build Tool in Java Development?**
-
-A **build tool** in Java development automates the process of compiling, testing, and packaging code. It manages dependencies, creates executable files (like JARs or WARs), and automates repetitive tasks like code formatting and deployment. A build tool is essential for:
-  - Automating project builds and reducing manual intervention.
-  - Ensuring consistency in the build process across different environments.
-  - Managing dependencies and external libraries.
-  - Integrating with continuous integration/continuous deployment (CI/CD) systems.
-
-### 5. **Advantages of Unit Testing:**
-
-Unit testing involves testing individual units (methods or classes) of a program to ensure they behave as expected. The advantages include:
-  - **Catches Bugs Early**: Helps in identifying errors early in the development cycle, making them easier and cheaper to fix.
-  - **Improves Code Quality**: Writing tests encourages developers to write modular, clean, and maintainable code.
-  - **Facilitates Refactoring**: Unit tests act as a safety net when refactoring code, ensuring that changes don't break existing functionality.
-  - **Documentation**: Unit tests can serve as documentation for code behavior and expected outputs.
-  - **Reduces Debugging Time**: Well-written tests help in pinpointing the source of errors quickly.
-
-### 6. **How Would You Perform Debugging in Java?**
-
-Debugging in Java can be performed through the following steps:
-  - **Using an IDE Debugger**: Most IDEs (like IntelliJ IDEA, Eclipse, NetBeans) provide integrated debuggers that allow you to set breakpoints, step through code, inspect variable values, and evaluate expressions during execution.
-  - **Logging**: Add log statements using `System.out.println()` or a logging framework (like SLF4J or Log4J) to trace and diagnose issues in code.
-  - **Unit Tests**: Writing unit tests with edge cases can help in identifying issues early on.
-  - **Command Line Debugging**: For more advanced cases, you can run the Java program in debugging mode using the command line (with `-Xdebug` and `-Xrunjdwp` options).
-
-### 7. **What is the Purpose of JUnit in Java?**
-
-**JUnit** is a widely used testing framework for Java. It is used to write and run repeatable tests for Java programs. JUnit is a core tool in Test-Driven Development (TDD) and provides the following benefits:
-  - **Test Automation**: Automates the testing process, ensuring that tests are run every time there is a change in the code.
-  - **Assertions**: Provides methods to assert conditions, which makes it easy to check if the code behaves as expected.
-  - **Test Suites**: Allows you to group and run multiple test cases together.
-  - **Integration with Build Tools**: Can easily integrate with build tools like Maven and Gradle for running tests during the build process.
-  - **Helps in TDD**: Encourages the practice of writing tests before code, ensuring better code quality and early detection of issues.
-
-These tools and practices are essential for building, testing, and maintaining robust Java applications.
-
-## **Advanced Java Topics**
-Here are the answers to your Java questions:
-
-### 1. **What are the different types of class loaders in Java?**
-In Java, **ClassLoader** is responsible for loading classes into memory. There are three primary types of class loaders:
-
-- **Bootstrap ClassLoader**: This is the parent of all class loaders. It loads core Java classes (e.g., classes from `rt.jar` or `lib/rt.jar` in JDK). It is part of the JVM and is written in native code.
+- **`Optional`** provides methods like `isPresent()`, `ifPresent()`, `get()`, and `orElse()` to check if a value exists and retrieve it if present.
   
-- **Extension ClassLoader**: This class loader loads classes from the extensions directory (usually found at `jre/lib/ext` or specified by the `java.ext.dirs` system property).
-
-- **System/Application ClassLoader**: This is the default class loader that loads classes from the application classpath (defined by the `CLASSPATH` environment variable or `-cp` option). It loads user-defined classes.
-
-In addition to these built-in loaders, **Custom ClassLoaders** can also be created by extending the `ClassLoader` class to load classes from different sources (e.g., from a database or over the network).
-
-### 2. **What is reflection in Java? How is it used?**
-**Reflection** in Java is a mechanism that allows the inspection and modification of runtime behavior of applications. It is used to access class metadata (such as class names, fields, methods, and constructors) and dynamically create or invoke objects.
-
-**Use cases of reflection** include:
-- **Inspecting classes, methods, and fields**: You can retrieve class metadata using methods like `getClass()`, `getDeclaredMethods()`, `getDeclaredFields()`, etc.
-- **Creating instances dynamically**: Using `Class.forName()` and `newInstance()` methods, you can dynamically create objects at runtime.
-- **Invoking methods dynamically**: Reflection allows you to invoke methods on objects without knowing their names at compile time.
-
-For example:
+**Example**:
 ```java
-Class<?> clazz = Class.forName("java.util.ArrayList");
-Object obj = clazz.getDeclaredConstructor().newInstance();
+Optional<String> name = Optional.ofNullable("John");
+System.out.println(name.isPresent());  // Output: true
+System.out.println(name.orElse("Unknown"));  // Output: John
 ```
 
-### 3. **What is the transient keyword in Java?**
-The `transient` keyword in Java is used to mark a field of a class as not being serialized. When an object is serialized (converted into a byte stream for saving or transmission), any field marked as `transient` will be excluded from the serialization process.
+**Key Point**: `Optional` is useful for handling null values in a clean and expressive way.
 
-For example:
+### 68. **How do you use `Collectors` in Java streams?**
+
+The `Collectors` class in Java provides various static methods that are used to collect the elements of a stream into a different form, such as a `List`, `Set`, `Map`, or a single summary result (like sum, average, etc.).
+
+Common methods:
+- **`toList()`**: Collects the stream into a `List`.
+- **`toSet()`**: Collects the stream into a `Set`.
+- **`joining()`**: Concatenates the elements into a single string.
+- **`groupingBy()`**: Groups the elements of the stream by a classifier function.
+- **`partitioningBy()`**: Partitions the elements of the stream into two groups based on a predicate.
+
+**Example**:
 ```java
-class MyClass implements Serializable {
-    private int id;
-    private transient String password; // This field will not be serialized
+List<String> words = Arrays.asList("apple", "banana", "cherry");
+List<String> upperCaseWords = words.stream()
+                                   .map(String::toUpperCase)
+                                   .collect(Collectors.toList());
+System.out.println(upperCaseWords);  // Output: [APPLE, BANANA, CHERRY]
+```
+
+### 69. **What is the difference between `reduce()` and `collect()` methods in Java streams?**
+
+- **`reduce()`**: The `reduce()` method is used to perform a reduction operation on the elements of the stream, which produces a single result (e.g., sum, product). It takes an associative accumulation function and a starting value (optional). The operation is performed iteratively over the stream elements.
+
+  **Example**:
+  ```java
+  List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+  int sum = numbers.stream()
+                   .reduce(0, Integer::sum);
+  System.out.println(sum);  // Output: 15
+  ```
+
+- **`collect()`**: The `collect()` method is a terminal operation that transforms the elements of the stream into a different form, usually a collection like a `List`, `Set`, or `Map`. It uses a `Collector` (e.g., `Collectors.toList()`).
+
+  **Example**:
+  ```java
+  List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+  List<Integer> squares = numbers.stream()
+                                 .map(x -> x * x)
+                                 .collect(Collectors.toList());
+  System.out.println(squares);  // Output: [1, 4, 9, 16, 25]
+  ```
+
+**Key Difference**:
+- **`reduce()`** is used for reducing the stream into a single result.
+- **`collect()`** is used to gather the stream elements into a collection or other data structures.
+
+### **Concurrency and Multithreading:**
+Here are the answers to your questions related to threads and multithreading in Java:
+
+### 70. **What is the difference between process and thread in Java?**
+
+- **Process**: A process is an independent program that runs in its own memory space. It is the execution of a program that is isolated from other processes. A process may contain multiple threads.
+- **Thread**: A thread is the smallest unit of execution within a process. Threads share the same memory space of the process they belong to, making them lightweight compared to processes. Multiple threads within a process can run concurrently and share resources such as memory.
+
+**Key Difference**: Processes run independently, while threads run within a process and share the same resources.
+
+### 71. **What is multithreading in Java? Explain with an example.**
+
+**Multithreading** in Java refers to the concurrent execution of two or more threads within a single process. Java provides built-in support for multithreading, allowing programs to perform multiple tasks simultaneously.
+
+**Example**:
+```java
+class MyThread extends Thread {
+    public void run() {
+        System.out.println(Thread.currentThread().getId() + " is executing");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        MyThread t2 = new MyThread();
+        t1.start(); // Starts thread 1
+        t2.start(); // Starts thread 2
+    }
 }
 ```
+In this example, two threads are created and executed concurrently.
 
-When the object is serialized, the `password` field will not be saved, and it will have a default value when the object is deserialized.
+### 72. **What is the `Thread` class in Java?**
 
-### 4. **What are volatile and atomic variables in Java?**
+The **`Thread`** class in Java is part of the `java.lang` package, and it is used to create and manage threads. It provides several methods for managing thread execution, such as `start()`, `sleep()`, `join()`, and `interrupt()`. By extending the `Thread` class, you can define the code that will run in a thread by overriding its `run()` method.
 
-- **volatile**: The `volatile` keyword in Java ensures that a variable's value is always read from the main memory, not from the thread's local cache. It ensures visibility across threads, meaning changes to the variable are immediately visible to other threads.
-
+**Example**:
 ```java
-private volatile boolean flag; // changes to this variable will be immediately visible to all threads
-```
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
 
-- **Atomic Variables**: Atomic variables are part of the `java.util.concurrent.atomic` package. They provide thread-safe operations on single variables without the need for synchronization. Atomic classes, such as `AtomicInteger`, `AtomicLong`, and `AtomicReference`, support atomic operations like `get()`, `set()`, `increment()`, and `compareAndSet()`.
-
-Example using `AtomicInteger`:
-```java
-AtomicInteger counter = new AtomicInteger(0);
-counter.incrementAndGet(); // thread-safe increment operation
-```
-
-### 5. **What is the java.nio package?**
-The **java.nio** (New I/O) package, introduced in Java 1.4, provides an alternative to the standard I/O classes like `java.io`. It offers a more scalable, efficient way of handling input/output operations. The `java.nio` package is particularly useful for non-blocking, high-performance file and network I/O operations.
-
-Key features of NIO:
-- **Buffers**: Containers for data that can be read from or written to channels (e.g., `ByteBuffer`, `CharBuffer`).
-- **Channels**: Similar to streams but can be used for non-blocking I/O operations (e.g., `FileChannel`, `SocketChannel`).
-- **Selectors**: Used to multiplex I/O operations on multiple channels.
-- **Path and Files**: The `java.nio.file` package offers better file manipulation compared to traditional `java.io.File`.
-
-### 6. **Explain the difference between a File and a Path in Java NIO.**
-- **File (java.io.File)**: This class represents a file or directory in the filesystem. It provides methods to perform basic file operations like creating, deleting, renaming, and checking file attributes. It is part of the legacy I/O API in Java.
-
-- **Path (java.nio.file.Path)**: A `Path` object represents the location of a file or directory in a more flexible and efficient way. It is part of the NIO (New I/O) API and allows you to manipulate file system paths in a more platform-independent manner. It provides more powerful features, such as symbolic links, and offers better support for modern file systems.
-
-For example:
-```java
-// File example
-File file = new File("example.txt");
-
-// Path example
-Path path = Paths.get("example.txt");
-```
-
-### 7. **What is a memory-mapped file in Java?**
-A **memory-mapped file** in Java refers to a file that is mapped directly into the memory space of a process, allowing the contents of the file to be accessed as if they were part of memory. It provides a mechanism for efficiently handling large files or files that need to be shared between processes.
-
-Java provides the `java.nio.MappedByteBuffer` class to work with memory-mapped files. This allows direct manipulation of file contents using buffer operations without needing to explicitly read or write the file via I/O streams. Memory-mapped files can be used for fast I/O operations, such as processing large datasets, database files, or for communication between processes.
-
-Example:
-```java
-RandomAccessFile raf = new RandomAccessFile("largefile.txt", "rw");
-FileChannel channel = raf.getChannel();
-MappedByteBuffer buffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, channel.size());
-buffer.put(0, (byte) 100);  // Modify the file in memory
-```
-
-In this example, the file `largefile.txt` is mapped into memory, and you can modify its contents directly via the `MappedByteBuffer`.
-
-## **Practical Problem Solving**
-Here are the Java solutions to the provided questions:
-
-### 1. **Reverse a String in Java**
-You can reverse a string using `StringBuilder` or a simple loop.
-
-```java
-public class ReverseString {
+public class Main {
     public static void main(String[] args) {
-        String str = "Hello";
-        StringBuilder reversed = new StringBuilder(str);
-        System.out.println("Reversed String: " + reversed.reverse().toString());
+        MyThread t = new MyThread();
+        t.start(); // Starts the thread
     }
 }
 ```
 
-### 2. **Check if a String is a Palindrome**
-A palindrome is a word, phrase, or sequence that reads the same backward as forward.
+### 73. **What is the `Runnable` interface in Java?**
 
+The **`Runnable`** interface is a functional interface in Java that represents a task to be executed by a thread. It has a single abstract method `run()`, which defines the code to be executed by the thread. You can implement `Runnable` if you don't want to extend the `Thread` class.
+
+**Example**:
 ```java
-public class PalindromeCheck {
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Runnable is running");
+    }
+}
+
+public class Main {
     public static void main(String[] args) {
-        String str = "madam";
-        StringBuilder reversed = new StringBuilder(str);
-        if (str.equals(reversed.reverse().toString())) {
-            System.out.println(str + " is a palindrome.");
-        } else {
-            System.out.println(str + " is not a palindrome.");
+        MyRunnable task = new MyRunnable();
+        Thread t = new Thread(task);
+        t.start(); // Starts the thread
+    }
+}
+```
+
+### 74. **How do you create a thread in Java?**
+
+In Java, you can create a thread in two ways:
+1. **By extending the `Thread` class**: Override the `run()` method to define the code to be executed by the thread.
+2. **By implementing the `Runnable` interface**: Implement the `run()` method and pass it to a `Thread` object.
+
+**Example 1 (Extending `Thread` class)**:
+```java
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        t.start(); // Starts the thread
+    }
+}
+```
+
+**Example 2 (Implementing `Runnable` interface)**:
+```java
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Runnable is running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyRunnable task = new MyRunnable();
+        Thread t = new Thread(task);
+        t.start(); // Starts the thread
+    }
+}
+```
+
+### 75. **What is synchronization in Java, and why is it important?**
+
+**Synchronization** in Java is a mechanism that ensures that only one thread can access a particular resource (or code block) at a time. It is used to prevent thread interference and memory consistency errors in a multi-threaded environment.
+
+It is important because:
+- It ensures that shared resources are accessed by only one thread at a time.
+- It prevents inconsistent data due to concurrent modifications by multiple threads.
+
+### 76. **What is the `synchronized` keyword in Java?**
+
+The **`synchronized`** keyword in Java is used to define a block of code or a method that can only be executed by one thread at a time. It is used to ensure that shared resources are accessed in a thread-safe manner.
+
+**Example**:
+```java
+class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Counter counter = new Counter();
+        counter.increment(); // The increment method is synchronized
+    }
+}
+```
+Here, `increment()` is a synchronized method that ensures only one thread can modify `count` at a time.
+
+### 77. **What is the difference between `wait()` and `sleep()` in Java?**
+
+- **`wait()`**: It is used to make a thread pause execution until it is notified by another thread. It is called on an object, and the thread releases the lock on the object while waiting.
+- **`sleep()`**: It pauses the execution of the current thread for a specified amount of time, without releasing the lock. It is called on the `Thread` class.
+
+**Key Difference**: `wait()` is used for thread communication (inter-thread synchronization), while `sleep()` is used to pause the current threads execution for a given duration.
+
+### 78. **What are the thread states in Java?**
+
+A thread in Java can be in one of the following states:
+1. **New**: The thread is created but not yet started.
+2. **Runnable**: The thread is ready to run and is waiting for CPU time.
+3. **Blocked**: The thread is blocked and waiting for a resource (e.g., a synchronized block).
+4. **Waiting**: The thread is waiting indefinitely for another thread to perform a particular action.
+5. **Timed Waiting**: The thread is waiting for a specific period (e.g., using `sleep()` or `join()`).
+6. **Terminated**: The thread has finished execution.
+
+### 79. **What is a deadlock in Java, and how can you prevent it?**
+
+A **deadlock** occurs when two or more threads are blocked indefinitely, each waiting for the other to release a resource. This situation causes the threads to never proceed.
+
+**To prevent deadlock**:
+- Avoid nested locks.
+- Lock resources in a consistent order.
+- Use a timeout to acquire locks, allowing the thread to give up if it cannot acquire the lock in time.
+
+**Example**: Two threads waiting for each other to release locks on different resources can cause a deadlock.
+
+### 80. **What is the `ExecutorService` in Java?**
+
+The **`ExecutorService`** is part of the `java.util.concurrent` package and provides a higher-level replacement for managing threads. It simplifies the process of thread management by allowing you to submit tasks for execution and manage thread pooling efficiently.
+
+It provides methods like `submit()`, `invokeAll()`, and `shutdown()` to manage the execution of tasks. The `ExecutorService` uses thread pools, which helps in improving performance by reusing existing threads instead of creating new ones for each task.
+
+**Example**:
+```java
+ExecutorService executor = Executors.newFixedThreadPool(2);
+executor.submit(() -> System.out.println("Task 1"));
+executor.submit(() -> System.out.println("Task 2"));
+executor.shutdown();
+```
+In this example, two tasks are submitted for execution in a fixed thread pool, and the executor shuts down after the tasks are completed.
+
+### **Java I/O (Input/Output):**
+Here are the answers to your questions regarding Java I/O, serialization, and NIO:
+
+### 81. **What is the difference between `InputStream` and `Reader` in Java?**
+
+- **`InputStream`**: It is an abstract class used for reading byte-based input. It reads data in the form of bytes (8-bit data) and is used for binary data such as images or audio files.
+  - Example classes: `FileInputStream`, `ByteArrayInputStream`.
+
+- **`Reader`**: It is an abstract class used for reading character-based input. It reads data in the form of characters (16-bit data) and is used for text files.
+  - Example classes: `FileReader`, `BufferedReader`.
+
+**Key Difference**: `InputStream` handles byte data, while `Reader` handles character data.
+
+---
+
+### 82. **What is serialization in Java?**
+
+**Serialization** is the process of converting an object's state into a byte stream so that it can be easily stored in a file or transmitted over a network. The serialized object can be later deserialized (reconstructed back) into its original state.
+
+---
+
+### 83. **How do you serialize and deserialize an object in Java?**
+
+- **Serialization**: You use the `ObjectOutputStream` class to serialize an object by writing it to a stream.
+- **Deserialization**: You use the `ObjectInputStream` class to deserialize the object by reading it from a stream.
+
+**Example**:
+```java
+import java.io.*;
+
+class Person implements Serializable {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class SerializationExample {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        // Serialization
+        Person p = new Person("Alice", 25);
+        FileOutputStream fileOut = new FileOutputStream("person.ser");
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(p);
+        out.close();
+        fileOut.close();
+
+        // Deserialization
+        FileInputStream fileIn = new FileInputStream("person.ser");
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        Person deserializedPerson = (Person) in.readObject();
+        in.close();
+        fileIn.close();
+        System.out.println("Name: " + deserializedPerson.name + ", Age: " + deserializedPerson.age);
+    }
+}
+```
+
+---
+
+### 84. **What is the `Serializable` interface in Java?**
+
+The **`Serializable`** interface is a marker interface (it doesn't have any methods) in Java that marks a class as being capable of being serialized. If a class implements this interface, its objects can be serialized into a byte stream and later deserialized.
+
+---
+
+### 85. **What is the purpose of `transient` keyword in Java serialization?**
+
+The **`transient`** keyword is used to indicate that a field of a class should not be serialized. When an object is serialized, any field marked as `transient` will not be included in the serialized data.
+
+**Example**:
+```java
+class Person implements Serializable {
+    String name;
+    transient int age; // This field will not be serialized
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+```
+In this example, the `age` field will not be serialized because it is marked as `transient`.
+
+---
+
+### 86. **What is the difference between `BufferedReader` and `FileReader`?**
+
+- **`FileReader`**: It is a low-level class that reads characters from a file. It reads one character at a time.
+- **`BufferedReader`**: It wraps around a `Reader` (like `FileReader`) and provides buffering for efficient reading of characters, arrays, and lines. It improves performance by reducing the number of I/O operations.
+
+**Key Difference**: `BufferedReader` is more efficient for reading data line-by-line or large chunks of data, while `FileReader` reads data one character at a time.
+
+---
+
+### 87. **How do you read and write data to files in Java?**
+
+To read and write files in Java:
+- **Reading**: Use classes like `FileReader`, `BufferedReader`, `FileInputStream`, or `Scanner`.
+- **Writing**: Use classes like `FileWriter`, `BufferedWriter`, `FileOutputStream`, or `PrintWriter`.
+
+**Example (Reading)**:
+```java
+import java.io.*;
+
+public class ReadFile {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("file.txt"));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
         }
+        reader.close();
     }
 }
 ```
 
-### 3. **Find the Largest Number in an Array of Integers in Java**
-
+**Example (Writing)**:
 ```java
-public class FindLargestNumber {
-    public static void main(String[] args) {
-        int[] arr = {3, 5, 7, 2, 8, 1};
-        int largest = arr[0];
+import java.io.*;
 
-        for (int num : arr) {
-            if (num > largest) {
-                largest = num;
-            }
+public class WriteFile {
+    public static void main(String[] args) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("file.txt"));
+        writer.write("Hello, Java!");
+        writer.close();
+    }
+}
+```
+
+---
+
+### 88. **What are the differences between `FileInputStream` and `FileOutputStream` in Java?**
+
+- **`FileInputStream`**: Used to read data from a file as a byte stream. It is used for reading binary data (e.g., image or audio files).
+- **`FileOutputStream`**: Used to write data to a file as a byte stream. It is used for writing binary data.
+
+**Key Difference**: `FileInputStream` is for reading data, while `FileOutputStream` is for writing data.
+
+---
+
+### 89. **What is NIO (New I/O) in Java, and how is it different from traditional I/O?**
+
+**NIO (New I/O)** is a more scalable and flexible I/O API introduced in Java 1.4, found in the `java.nio` package. It provides faster I/O operations and offers non-blocking, buffer-based I/O operations, and file channel operations. NIO is designed for handling large volumes of data, such as reading/writing large files and handling multiple clients in networking applications.
+
+**Key Differences**:
+- **Blocking vs. Non-Blocking**: Traditional I/O is blocking, while NIO supports non-blocking I/O operations.
+- **Buffer-based I/O**: NIO uses buffers to hold data, making it more efficient than traditional I/O which reads/writes byte-by-byte.
+
+---
+
+### 90. **What is the `Path` class in Java NIO?**
+
+The **`Path`** class, introduced in Java 7, is part of the `java.nio.file` package and represents a path in the filesystem. It can be used to manipulate file and directory paths, and it offers various methods for file operations, such as `resolve()`, `normalize()`, `getFileName()`, and `toAbsolutePath()`.
+
+**Example**:
+```java
+import java.nio.file.*;
+
+public class PathExample {
+    public static void main(String[] args) {
+        Path path = Paths.get("C:/Users/Java/Example.txt");
+        System.out.println("File name: " + path.getFileName());
+        System.out.println("Absolute path: " + path.toAbsolutePath());
+    }
+}
+```
+
+In this example, the `Path` class is used to represent a file path, and you can manipulate it using various methods provided by the class.
+
+### **Java 8 and Later Features:**
+Here are the answers to your Java 8, Java 9, and Java 10-related questions:
+
+### 91. **What are the new features introduced in Java 8?**
+
+Java 8 introduced several significant features, including:
+1. **Lambda Expressions**: Allows you to pass behavior as arguments to methods, enabling functional programming.
+2. **Streams API**: Provides a way to process sequences of elements (e.g., collections) in a declarative manner.
+3. **Default Methods in Interfaces**: Enables interfaces to have methods with implementations.
+4. **Method References**: A shorthand notation for calling methods via a reference to them.
+5. **Optional Class**: Helps to avoid null pointer exceptions by representing the presence or absence of a value.
+6. **New Date and Time API**: Introduced the `java.time` package to simplify date-time operations.
+7. **Nashorn JavaScript Engine**: Allows executing JavaScript code within Java applications.
+8. **Parallel Streams**: Enables parallel processing of data using the Streams API.
+
+---
+
+### 92. **How do you use `default` methods in interfaces in Java 8?**
+
+**Default methods** in interfaces allow you to provide a method body inside the interface itself. They can be called just like regular methods of a class but are part of the interface. This helps to add new methods to interfaces without breaking existing code.
+
+**Example**:
+```java
+interface MyInterface {
+    default void printMessage() {
+        System.out.println("Default method in interface");
+    }
+}
+
+class MyClass implements MyInterface {
+    // No need to override printMessage(), as it's a default method
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.printMessage(); // Calls the default method
+    }
+}
+```
+
+---
+
+### 93. **What is the significance of the `Stream` API in Java 8?**
+
+The **Stream API** in Java 8 provides a new abstraction for processing sequences of elements, such as collections, in a functional and declarative style. The primary benefits are:
+- **Laziness**: Streams can be processed lazily, meaning computations are deferred until the result is needed.
+- **Parallelism**: Streams can be processed in parallel with minimal effort, improving performance.
+- **Concise and Readable Code**: The API simplifies processing large amounts of data through functional-style operations like `filter()`, `map()`, and `reduce()`.
+
+**Example**:
+```java
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+names.stream().filter(name -> name.startsWith("A")).forEach(System.out::println);  // Output: Alice
+```
+
+---
+
+### 94. **What are `Method References` in Java 8?**
+
+**Method References** in Java 8 are a shorthand for calling methods via a reference to the method. They can be used where a lambda expression calls a method.
+
+There are four types of method references:
+1. **Reference to a static method**: `ClassName::staticMethodName`
+2. **Reference to an instance method of a specific object**: `instance::instanceMethod`
+3. **Reference to an instance method of an arbitrary object of a particular type**: `ClassName::instanceMethod`
+4. **Reference to a constructor**: `ClassName::new`
+
+**Example**:
+```java
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+names.forEach(System.out::println);  // Equivalent to names.forEach(name -> System.out.println(name))
+```
+
+---
+
+### 95. **What is the purpose of the `Optional` class in Java 8?**
+
+The **`Optional`** class in Java 8 is used to represent a value that might or might not be present. It helps to avoid `NullPointerException` by explicitly handling the case where a value could be absent.
+
+Methods like `isPresent()`, `ifPresent()`, and `orElse()` are used to check and handle values.
+
+**Example**:
+```java
+Optional<String> name = Optional.of("Alice");
+System.out.println(name.orElse("Unknown"));  // Output: Alice
+
+Optional<String> emptyName = Optional.empty();
+System.out.println(emptyName.orElse("Unknown"));  // Output: Unknown
+```
+
+---
+
+### 96. **What are `CompletableFuture` and `Future` in Java?**
+
+- **`Future`**: Represents the result of an asynchronous computation. It provides methods like `get()`, `cancel()`, and `isDone()` to work with asynchronous tasks.
+- **`CompletableFuture`**: Extends `Future` and adds features for completing asynchronous tasks manually. It also provides methods for combining multiple futures, handling exceptions, and executing tasks in parallel.
+
+**Example**:
+```java
+CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> 42);
+future.thenApply(result -> result * 2).thenAccept(System.out::println);  // Output: 84
+```
+
+---
+
+### 97. **How do you use `LocalDate`, `LocalTime`, and `LocalDateTime` in Java 8?**
+
+Java 8 introduced the **`java.time`** package for handling dates and times more effectively:
+
+- **`LocalDate`**: Represents a date without a time zone (e.g., 2024-12-03).
+- **`LocalTime`**: Represents a time without a date (e.g., 10:30 AM).
+- **`LocalDateTime`**: Represents both a date and a time (e.g., 2024-12-03T10:30).
+
+**Example**:
+```java
+LocalDate date = LocalDate.now();
+LocalTime time = LocalTime.now();
+LocalDateTime dateTime = LocalDateTime.now();
+System.out.println(date);  // Output: 2024-12-03
+System.out.println(time);  // Output: 10:30
+System.out.println(dateTime);  // Output: 2024-12-03T10:30
+```
+
+---
+
+### 98. **What is the `DateTimeFormatter` class in Java?**
+
+The **`DateTimeFormatter`** class is used to format and parse dates and times. It allows you to convert `LocalDate`, `LocalTime`, and `LocalDateTime` objects to strings and vice versa.
+
+**Example**:
+```java
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+LocalDate date = LocalDate.now();
+System.out.println(date.format(formatter));  // Output: 2024-12-03
+```
+
+---
+
+### 99. **How does Java 9’s module system work?**
+
+Java 9 introduced the **module system**, which allows developers to modularize their applications. The key components of the module system are:
+1. **Modules**: Encapsulate packages and make them available to other modules.
+2. **`module-info.java`**: A special file in the root of a module that defines its name, dependencies, and exported packages.
+3. **Dependencies**: A module can declare dependencies on other modules.
+
+**Example (`module-info.java`)**:
+```java
+module mymodule {
+    requires java.base;  // Dependency on the java.base module
+    exports com.example;  // Exports the com.example package
+}
+```
+
+---
+
+### 100. **What is the `var` keyword introduced in Java 10?**
+
+The **`var`** keyword in Java 10 allows local variable type inference. The compiler infers the type of the variable based on the assigned value. It simplifies code, especially in cases of complex generic types.
+
+**Example**:
+```java
+var number = 42;  // Inferred as int
+var message = "Hello, Java!";  // Inferred as String
+```
+
+**Key Point**: The `var` keyword can only be used for local variables with an initializer, and the type must be determinable from the context.
+
+### **Java Frameworks (Bonus):**
+### **1. Explain the concept of Spring Framework and its major components.**
+
+The **Spring Framework** is an open-source framework that provides comprehensive infrastructure support for developing Java applications. It simplifies the development of Java applications by offering solutions to common challenges such as dependency injection, transaction management, and aspect-oriented programming. It is designed to promote loose coupling and ease of testing.
+
+**Major Components of Spring:**
+- **Core Container**: Contains the fundamental features of Spring, including:
+  - **Beans**: Central to the Spring IoC (Inversion of Control) container. Manages objects and their dependencies.
+  - **Context**: A configuration container that holds bean definitions and provides access to them. Typically, it uses an application context.
+  - **Expression Language (SpEL)**: A powerful language for querying and manipulating objects at runtime.
+- **Spring AOP (Aspect-Oriented Programming)**: Allows separation of cross-cutting concerns (such as logging or security) from business logic, improving modularity.
+- **Spring Data Access**: Provides simplified integration with databases through JDBC, JPA, Hibernate, and other persistence technologies.
+- **Spring Web**: A comprehensive module for building web applications, including both traditional MVC-based web apps and RESTful APIs.
+- **Spring Security**: Handles authentication and authorization in web applications, supporting a wide range of authentication mechanisms.
+- **Spring Test**: Provides support for testing Spring-based applications, including integration tests.
+
+---
+
+### **2. What is Spring Boot, and how does it differ from traditional Spring?**
+
+**Spring Boot** is an extension of the Spring Framework that simplifies the setup and development of Spring applications by providing default configurations and an embedded server (like Tomcat or Jetty). It eliminates the need for complex XML configurations and manual setup of various components.
+
+**Key Differences Between Spring Boot and Traditional Spring:**
+- **Auto Configuration**: Spring Boot automatically configures application components based on the libraries present in the classpath. Traditional Spring requires manual configuration, typically through XML files or annotations.
+- **Embedded Server**: Spring Boot supports embedded servers (e.g., Tomcat, Jetty), meaning you don’t need to deploy your application to an external server. Traditional Spring requires you to configure a web server separately (e.g., deploying a WAR file to a servlet container).
+- **Production-Ready Features**: Spring Boot comes with built-in features like health checks, metrics, and application monitoring, which are crucial for production environments.
+- **Simplified Setup**: Spring Boot applications can be set up with minimal configuration and no need for complex XML-based setup, while traditional Spring may require more configuration.
+
+**Example**: With Spring Boot, you can create a simple web app in just a few steps:
+```java
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+This eliminates the need for many configurations and boilerplate code.
+
+---
+
+### **3. What is the difference between Hibernate and JPA?**
+
+**Hibernate** and **JPA (Java Persistence API)** are both used for Object-Relational Mapping (ORM) in Java, but they differ in scope and functionality:
+
+- **JPA** is a specification, which means it defines a standard set of interfaces and annotations for ORM, but it does not provide the implementation itself.
+  - **JPA Providers**: Hibernate is one of the popular implementations of the JPA specification, but others include EclipseLink and OpenJPA.
+  - JPA is part of Java EE (Enterprise Edition), now integrated into Jakarta EE.
+
+- **Hibernate** is an ORM framework and also an implementation of the JPA specification. It provides its own set of features beyond the JPA specification.
+  - **Advanced Features**: Hibernate offers additional features such as caching, query language (HQL), and session management, which are not part of the JPA standard.
+  - **Compatibility**: Hibernate is fully compatible with JPA, meaning it can be used as a JPA provider.
+  
+**Key Differences**:
+- JPA is a specification, and Hibernate is one of its implementations. You can use Hibernate as the JPA provider, or use another provider like EclipseLink.
+- Hibernate offers more features beyond JPA (e.g., caching and custom query mechanisms), while JPA is focused solely on providing a standard for ORM.
+
+---
+
+### **4. How does Spring AOP work?**
+
+**Spring AOP (Aspect-Oriented Programming)** is a programming paradigm that allows for the separation of cross-cutting concerns from the business logic of an application. AOP allows you to define "aspects" (such as logging, security, or transaction management) and apply them to specific points in your application without modifying the core business logic.
+
+**Key Concepts in Spring AOP**:
+- **Aspect**: A module that defines cross-cutting concerns (e.g., logging or transaction management).
+- **Join Point**: A point in the program execution where an aspect can be applied (e.g., method execution).
+- **Advice**: The code that is executed at a particular join point. Types of advice include:
+  - **Before**: Runs before a method execution.
+  - **After**: Runs after a method execution.
+  - **Around**: Can run before and after the method execution, and can also prevent the method from running.
+- **Pointcut**: An expression that matches one or more join points, allowing the advice to be applied at the specified points.
+- **Weaving**: The process of applying aspects to the target objects (can be done at compile time, load time, or runtime).
+
+**Example**:
+```java
+@Aspect
+@Component
+public class LoggingAspect {
+    
+    @Before("execution(* com.example.service.*.*(..))")
+    public void logBefore(JoinPoint joinPoint) {
+        System.out.println("Before method: " + joinPoint.getSignature());
+    }
+}
+```
+In this example, the `logBefore` method will run before any method in `com.example.service` package is executed.
+
+---
+
+### **5. What are RESTful APIs, and how are they built with Spring Boot?**
+
+**RESTful APIs** are a type of web service that follow the principles of **Representational State Transfer (REST)**. REST is an architectural style that allows communication between systems using standard HTTP methods (GET, POST, PUT, DELETE) and standard data formats such as JSON or XML.
+
+**Key Characteristics of RESTful APIs**:
+- **Stateless**: Every request from a client must contain all the information needed to process it, and the server does not store any client context between requests.
+- **Client-Server**: The client and server are separate, and communication happens over HTTP.
+- **Uniform Interface**: The API should have a consistent, well-defined interface (usually defined via URLs).
+- **Cacheable**: Responses can be marked as cacheable or non-cacheable, allowing for performance optimization.
+
+**Building a RESTful API with Spring Boot**:
+Spring Boot provides tools and libraries to easily create RESTful APIs. You can use the `@RestController` annotation to define your endpoints, and `@RequestMapping` or other HTTP-specific annotations to map the methods to specific HTTP requests.
+
+**Example**:
+```java
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Long id) {
+        User user = userService.findById(id);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.ok(user);
+    }
 
-        System.out.println("Largest number in the array: " + largest);
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User createdUser = userService.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 }
 ```
+- **`@RestController`**: Marks the class as a RESTful controller where each method returns a response directly (no need for `@ResponseBody`).
+- **`@GetMapping`, `@PostMapping`, etc.**: Specific HTTP method mappings for creating GET, POST, PUT, DELETE endpoints.
+- **`@RequestBody`**: Binds the request body to a method parameter (e.g., JSON data).
+- **`@PathVariable`**: Extracts variables from the URL (e.g., `/users/{id}`).
 
-### 4. **Fibonacci Sequence Using Recursion and Iteration in Java**
-
-- **Using Recursion:**
-
-```java
-public class FibonacciRecursion {
-    public static void main(String[] args) {
-        int n = 10; // Fibonacci sequence up to the 10th term
-        System.out.println("Fibonacci using Recursion: ");
-        for (int i = 0; i < n; i++) {
-            System.out.print(fibonacci(i) + " ");
-        }
-    }
-
-    public static int fibonacci(int n) {
-        if (n <= 1) {
-            return n;
-        }
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
-}
-```
-
-- **Using Iteration:**
-
-```java
-public class FibonacciIteration {
-    public static void main(String[] args) {
-        int n = 10; // Fibonacci sequence up to the 10th term
-        int a = 0, b = 1;
-        System.out.println("Fibonacci using Iteration: ");
-        for (int i = 0; i < n; i++) {
-            System.out.print(a + " ");
-            int next = a + b;
-            a = b;
-            b = next;
-        }
-    }
-}
-```
-
-### 5. **Sort an Array of Integers in Java**
-
-```java
-import java.util.Arrays;
-
-public class SortArray {
-    public static void main(String[] args) {
-        int[] arr = {5, 3, 8, 6, 2};
-        Arrays.sort(arr);
-        System.out.println("Sorted Array: " + Arrays.toString(arr));
-    }
-}
-```
-
-### 6. **Implement a Stack or Queue Using Java Collections**
-
-- **Using a Stack:**
-
-```java
-import java.util.Stack;
-
-public class StackExample {
-    public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-        
-        System.out.println("Stack: " + stack);
-        System.out.println("Popped element: " + stack.pop());
-        System.out.println("Stack after pop: " + stack);
-    }
-}
-```
-
-- **Using a Queue:**
-
-```java
-import java.util.LinkedList;
-import java.util.Queue;
-
-public class QueueExample {
-    public static void main(String[] args) {
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(10);
-        queue.add(20);
-        queue.add(30);
-        
-        System.out.println("Queue: " + queue);
-        System.out.println("Dequeued element: " + queue.poll());
-        System.out.println("Queue after dequeue: " + queue);
-    }
-}
-```
-
-### 7. **Remove Duplicates from a List in Java**
-
-```java
-import java.util.*;
-
-public class RemoveDuplicates {
-    public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 2, 3, 4, 4, 5));
-        Set<Integer> uniqueSet = new HashSet<>(list);
-        List<Integer> uniqueList = new ArrayList<>(uniqueSet);
-        
-        System.out.println("List with duplicates removed: " + uniqueList);
-    }
-}
-```
-
-These programs cover common operations such as reversing a string, checking for palindromes, finding the largest number, generating Fibonacci sequences, sorting arrays, implementing stacks and queues, and removing duplicates from lists in Java.
+This way, Spring Boot enables the rapid development of RESTful APIs that are easy to consume and test.
