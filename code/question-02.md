@@ -1,6 +1,6 @@
 Here are 100 essential JavaScript interview questions, categorized into various topics like basic concepts, advanced topics, and practical coding challenges. These questions will help you prepare for a variety of JavaScript interview scenarios:
 
-### **1. Basic JavaScript Concepts**
+## **1. Basic JavaScript Concepts**
 
 #### 1. **What are the different data types in JavaScript?**
    JavaScript has both **primitive** and **non-primitive** (or **reference**) data types:
@@ -276,7 +276,7 @@ Here are the answers to the next set of JavaScript questions:
      ```
    - **Using libraries** like Lodash (`_.cloneDeep()`) for deep cloning with more control over complex objects.
 
-### **2. Arrays and Objects**
+## **2. Arrays and Objects**
 Here are the answers to the next set of JavaScript questions:
 
 ### **21. How can you merge two arrays in JavaScript?**
@@ -470,7 +470,7 @@ Here are the answers to the next set of JavaScript questions:
      - Use `for...of` for arrays and other iterable objects (to iterate over values).
 
 
-### **3. Functions and Scope**
+## **3. Functions and Scope**
 Here are the answers to the next set of JavaScript questions:
 
 ### **31. What is the difference between local scope and global scope in JavaScript?**
@@ -656,7 +656,7 @@ Here are the answers to the next set of JavaScript questions:
 
    This ensures that errors are caught and handled properly, and cleanup code is always executed with the `finally` block.
 
-### **4. Asynchronous JavaScript**
+## **4. Asynchronous JavaScript**
 Here are the answers to the next set of JavaScript questions:
 
 ### **41. What is the event loop in JavaScript?**
@@ -868,7 +868,7 @@ Here are the answers to the next set of JavaScript questions:
 
 ---
 
-### **5. ES6 and Beyond**
+## **5. ES6 and Beyond**
 Here are the answers to the next set of JavaScript questions:
 
 ### **51. What are template literals in JavaScript?**
@@ -1081,7 +1081,7 @@ Here are the answers to the next set of JavaScript questions:
 ---
 
 
-### **6. Error Handling and Debugging**
+## **6. Error Handling and Debugging**
 Here are the answers to the next set of JavaScript questions:
 
 ### **61. What is try-catch in JavaScript? How does it work?**
@@ -1200,7 +1200,7 @@ Here are the answers to the next set of JavaScript questions:
 ---
 
 
-### **7. JavaScript Modules**
+## **7. JavaScript Modules**
 Here are the answers to the next set of JavaScript questions:
 
 ### **66. What is the difference between `import` and `require` in JavaScript?**
@@ -1325,7 +1325,7 @@ Here are the answers to the next set of JavaScript questions:
 ---
 
 
-### **8. Browser and DOM**
+## **8. Browser and DOM**
 Here are the answers to the next set of JavaScript questions:
 
 ### **71. What is the DOM (Document Object Model) in JavaScript?**
@@ -1506,7 +1506,7 @@ Here are the answers to the next set of JavaScript questions:
 ---
 
 
-### **9. Performance Optimization**
+## **9. Performance Optimization**
 Here are the answers to the next set of JavaScript questions:
 
 ### **81. What are memory leaks in JavaScript, and how do you prevent them?**
@@ -1663,7 +1663,7 @@ Here are the answers to the next set of JavaScript questions:
 
 ---
 
-### **10. Testing and Tools**
+## **10. Testing and Tools**
 Here are the answers to the next set of JavaScript testing-related questions:
 
 ### **86. What is unit testing in JavaScript?**
