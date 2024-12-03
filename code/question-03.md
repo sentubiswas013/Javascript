@@ -1,6 +1,6 @@
 Here’s a list of 100 common JavaScript interview questions that may be asked by various companies. These questions cover a broad range of topics including basics, advanced concepts, and practical applications:
 
-### Basic JavaScript Concepts
+## Basic JavaScript Concepts
 ### 1. **What is JavaScript and how is it different from Java?**
 
 JavaScript is a dynamic, interpreted programming language primarily used for creating interactive effects within web browsers. It is a multi-paradigm language, supporting event-driven, functional, and imperative programming styles. JavaScript is mainly used for client-side scripting in web applications, though it can also be used server-side with environments like Node.js.
@@ -931,7 +931,7 @@ console.log(gen.next().done);  // true
 - **`next()`**: Resumes the generator function, returning an object with `value` (the yielded value) and `done` (indicates if the generator is finished).
 
 
-### Intermediate JavaScript Concepts
+## Intermediate JavaScript Concepts
 ### 39. **What is event delegation in JavaScript?**
 
 **Event delegation** is a technique in JavaScript where instead of attaching an event listener to each individual element (e.g., each list item), you attach a single event listener to a parent element. This parent listens for events triggered by its child elements, taking advantage of event bubbling.
@@ -1714,7 +1714,7 @@ promise
   });
 ```
 
-### Advanced JavaScript Concepts
+## Advanced JavaScript Concepts
 ### 70. **What is the concept of currying in JavaScript? Can you provide an example?**
 
 **Currying** is a technique in functional programming where a function that takes multiple arguments is transformed into a sequence of functions, each taking one argument.
