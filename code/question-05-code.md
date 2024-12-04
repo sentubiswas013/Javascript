@@ -144,14 +144,24 @@ This program checks if a number is divisible by any number between 2 and the squ
 
 ```javascript
 function isPalindrome(input) {
+  // Convert the input to string if it's a number
   const str = input.toString();
-  const reversedStr = str.split('').reverse().join('');
-  return str === reversedStr;
+
+  // Loop through the string from start to the middle
+  for (let i = 0; i < Math.floor(str.length / 2); i++) {
+    // Compare the character from the start and the end
+    if (str[i] !== str[str.length - 1 - i]) {
+      return false; // If any character doesn't match, it's not a palindrome
+    }
+  }
+
+  return true; // If the loop completes, it's a palindrome
 }
 
 console.log(isPalindrome(121)); // Output: true
 console.log(isPalindrome('madam')); // Output: true
 console.log(isPalindrome('hello')); // Output: false
+```le.log(isPalindrome('hello')); // Output: false
 ```
 
 This function converts the input to a string (if it's a number) and compares it with its reversed version to check for palindrome.
