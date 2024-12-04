@@ -2,9 +2,496 @@ Here’s a list of 100 JavaScript questions similar to the ones you’ve asked f
 
 ### Basic JavaScript Questions:
 
-Here are the JavaScript programs for each of the problems you've listed:
+### Code 0: How to remove duplicates from an array of objects using JavaScript ?
 
-### 1. Reverse a string without using String inbuilt function:
+#### Way 1: Using one of the keys as an index
+```javascript
+  var books = [
+      { title: "C++", author: "Bjarne" },
+      { title: "Java", author: "James" },
+      { title: "Python", author: "Guido" },
+      { title: "Java", author: "James" },
+  ];
+
+   let arrLeft = [];
+    let arrRight = [];
+    let result = [];
+    function getDuplicate(books) {
+        for (let index = 0; index < books.length; index++) {
+            if(!arrLeft.includes(books[index].title)) {
+                arrLeft.push(books[index].title);                
+            } else {
+                arrRight.push(books[index].title);
+                result.push(books[index]);
+            }
+        }
+
+        console.log("result----", result);
+    }
+   
+    getDuplicate(books);
+```
+
+#### Way 2: Using filter() and includes() Method
+
+```javascript
+const books = [
+    { title: "C++", author: "Bjarne" },
+    { title: "Java", author: "James" },
+    { title: "Python", author: "Guido" },
+    { title: "Java", author: "James" },
+];
+ 
+const ids = books.map(({ title }) => title);
+const filtered = books.filter(({ title }, index) =>
+    !ids.includes(title, index + 1));
+ 
+console.log(filtered);
+```
+#### Way 3: Using filter() and findIndex() Method
+```javascript
+const books = [
+    { title: "C++", author: "Bjarne" },
+    { title: "Java", author: "James" },
+    { title: "Python", author: "Guido" },
+    { title: "Java", author: "James" },
+];
+ 
+const unique = books.filter((obj, index) => {
+    return index === books.findIndex(o => obj.title === o.title);
+});
+ 
+console.log(unique);
+```
+
+------------------------------------------
+### Code 3: Remove Duplicate characters from String 
+```javascript
+#### Way 1: using includes method
+function removeDuplicateCharacters() {
+    var string = 'priya riya supriya';
+    let result = '';
+    
+    // Loop through each character in the string
+    for (let i = 0; i < string.length; i++) {
+        let char = string[i];
+
+        if (!result.includes(char)) {
+            result += char;
+        }
+
+    }
+    
+    return result;
+    }
+console.log(removeDuplicateCharacters()); // Output: priya su
+
+#### Way 2: using includes indexOf
+function removeDuplicateCharacters() {
+  var string = 'priya riya supriya';
+  let result = '';
+  
+  // Loop through each character in the string
+  for (let i = 0; i < string.length; i++) {
+    let char = string[i];
+    
+    // Check if the character is already in the result
+    if (result.indexOf(char) === -1) {
+      result += char;  // Add the character to the result if it's not a duplicate
+    }
+  }
+  
+  return result;
+}
+
+console.log(removeDuplicateCharacters()); // Output: priya su
+```
+
+### Code 4: Remove Duplicate characters from array of element using filter or for loop
+```javascript
+
+#### Way 1
+	let arrLeft = [];
+    let arrRight = [];
+    let result = [];
+    function getDuplicate(arr) {
+        for (let index = 0; index < arr.length; index++) {
+            if(!arrLeft.includes(arr[index])) {
+                arrLeft.push(arr[index]);                
+            } else {
+                arrRight.push(arr[index]);
+                result.push(arr[index]);
+            }
+        }
+
+        console.log("result----", result);
+    }
+   
+getDuplicate([1,2,3,4,3,7,4,5]); // output  [3, 4]
+
+#### Way 2
+var myArray = ['a', 1, 'a', 2, '1'];
+var unique = myArray.filter((value, index, arr) => arr.indexOf(value) === index);
+// output: ['a', 1, 2, '1']
+```
+------------------------------------------
+### Code 5: String reverse without reversing of individual words (Array of elements can be reverse with reverse() method but for string it is won't possible so required to split 
+
+#### Way 1: Using split, reverse and join
+```javascript
+function removeDuplicates(){
+   var string ="India is my country"
+   let result = string.split('').reverse().join('').split(' ').reverse().join(' ')
+   return result
+}
+console.log(removeDuplicates()) 
+output = "aidnI si ym yrtnuoc"
+```
+
+#### Way 2: Using loop
+```javascript
+function removeDuplicates() {
+   var string = "India is my country";
+   
+   // Initialize an empty string to store the result
+   let reversedString = "";
+   
+   // Reverse the whole string manually
+   for (let i = string.length - 1; i >= 0; i--) {
+       reversedString += string[i];
+   }
+   
+   // Now we reverse the words manually
+   let words = "";
+   let tempWord = "";
+   for (let i = reversedString.length - 1; i >= 0; i--) {
+       if (reversedString[i] === ' ') {
+           // Add the word to the words string with a space
+           words = tempWord + ' ' + words;
+           tempWord = "";  // Reset the temporary word
+       } else {
+           tempWord = reversedString[i] + tempWord;
+       }
+   }
+   // Add the last word
+   words = tempWord + ' ' + words;
+   
+   // Return the final result
+   return words.trim();
+}
+
+console.log(removeDuplicates());
+```
+
+### Code 6: String reverse with reversing of individual words
+#### Way 1: Using split, reverse and join
+```javascript
+function withoutReverse(){
+   var string ="India is my country"
+   let result = string.split('').reverse().join('')
+   return result
+}
+console.log(withoutReverse())
+output = "yrtnuoc ym si aidnI"
+```
+#### Way 2: Using for loop
+```javascript
+function Reverse(){
+   var string ="India is my country";
+   var result="";
+   for( var i=string.length-1; i>=0 ; i-- ) {
+      result = result+string[i] }
+   return result
+}
+console.log(Reverse())
+output = "yrtnuoc ym si aidnI"
+```
+
+------------------------------------------
+### Code 7: Swapping of 2 numbers with third variable
+```javascript
+let a=10;
+let b=20;
+let c;
+   c=a;
+   a=b;
+   b=c;
+console.log (a,b,c)
+// output : 20, 10, 10
+```
+------------------------------------------
+### Code 8: Swapping of 2 numbers without third variable
+```javascript
+let a=10; 
+let b=20;
+   a=a+b //30
+   b=a-b //10
+   a=a-b //20
+console.log (a,b)
+// output : 20, 10
+```
+------------------------------------------
+### Code 9: To check the string or number is palindrome or not( ex: 121,madam,anna) using diving length by 2 and then comparing
+#### Way 1
+```javascript
+  function checkPalindrome() {
+      const string = "12321";
+      let isPalindrome = true;  // Initial assumption is that the string is a palindrome
+      let len = string.length;
+      let j = len - 1;
+
+          for (let i = 0; i < len / 2; i++) {  // Only need to loop halfway through the string
+              if (string[i] !== string[j]) {
+                  isPalindrome = false;  // If a mismatch is found, set to false
+                  break;  // Exit the loop early as we already know it's not a palindrome
+              }
+              j--;  // Move the pointer towards the middle
+          }
+      return isPalindrome;
+  }
+
+  console.log(checkPalindrome());  // Returns true if palindrome, false otherwise
+```
+#### Way 2
+```javascript
+function checkPalindrome(){
+   const string = "12321"
+   let len = string.length;
+   for (i=0; i<len/2;i++){
+     if (string[i]!==string[len-1-i]){
+         console.log("Not Palindrome")
+     }
+     else{
+         console.log(" Palindrome")
+    }
+   }
+}
+checkPalindrome()
+// output: "Palindrome"
+```
+------------------------------------------
+### Code 10: To find Max and Min num from array using functions
+#### Way 1 to get max num using function
+```javascript
+function maxValue(arr) {
+  let max = arr[0];
+
+  for (let val of arr) {
+    if (val > max) {
+      max = val;
+    }
+  }
+  return max;
+}
+console.log(maxValue([3,6,7,8,0]));
+// output: 8
+```
+#### Way 2 to get min num using loop
+```javascript
+function minValue(arr) {
+    let min = Infinity;  // Initialize min to a very large number
+    for (let index = 0; index < arr.length; index++) {
+        if (arr[index] < min) {  // Compare the current value with the current min
+            min = arr[index];  // Update min if a smaller value is found
+        }
+    }
+    console.log("min----", min);  // Log the minimum value
+}
+
+minValue([4, 5, 3, 1, 9]); // output: 1
+```
+### Code 11: To find longest snd shortesh word from a string using custom code
+
+#### Way1 to get longest number using loop
+```javascript
+function longest() {
+  var str ="Priya is a good girl and having hardworking skills"
+  var words = str.split(' ');
+  var longest = ''; 
+  for (var i = 0; i < words.length; i++) {
+    if (words[i].length > longest.length) {
+      longest = words[i]; 
+    }
+  }
+  console.log(longest)
+  return longest;
+}
+longest();
+// Output: hardworking
+```
+#### Way1 to get shortest number using loop
+```javascript
+function shortest() {
+  var str ="Priya is a good girl and having hardworking skills"
+  var words = str.split(' ');
+  var shortest = ''; 
+  let shortestNum = Infinity;
+  for (var i = 0; i < words.length; i++) {
+    if (words[i].length < shortestNum) {
+        shortestNum = words[i].length; 
+        shortest = words[i]
+    }
+  }
+  console.log("====", shortest)
+  return shortest;
+}
+shortest();
+```
+
+------------------------------------------
+### Code 12: To find longest common string from array of strings
+```javascript
+function longestCommonString(){
+ let array=["go","google","gosh"]
+  var arr = array.sort((a,b)=>a.length-b.length)
+  let result =""
+  for(let i=0; i<arr[0].length; i++){
+    if(arr[0][i]===arr[arr.length-1][i]){
+      result+=arr[0][i]
+    }
+  }
+  console.log("result---", result);
+  return result
+}
+console.log(longestCommonString())
+// output : go
+```
+------------------------------------------
+### Code 13: To find vowels and its count in a given string
+#### Way 1 using while loop
+```javascript
+function vowelCounts(){
+  vowels=["a","i","e","o","u"]
+  var str ="priya"
+  count=0;
+  for(var letter of str.toLowerCase())
+  {
+    if(vowels.includes(letter))
+    {
+      count++;
+      console.log(letter)
+    }
+  }
+  console.log(count)
+  return count
+}
+vowelCounts()
+// output
+// "i"
+// "a"
+// 2
+
+```
+#### Way 2 using loop
+```javascript
+function countVowels(str) {
+  let vowels = 'aeiouAEIOU'; // String containing all vowels (both lowercase and uppercase)
+  let vowelCount = 0; // Variable to keep track of the count of vowels
+  let vowelList = []; // Array to store vowels found in the string
+
+  // Loop through each character of the string
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+
+    // Check if the current character is a vowel
+    if (vowels.includes(char)) {
+      vowelCount++; // Increment the vowel count
+      vowelList.push(char); // Add the vowel to the list
+    }
+  }
+
+  // Return the count and the list of vowels found
+  return {
+    count: vowelCount,
+    vowels: vowelList
+  };
+}
+
+// Example usage:
+let inputString = "Hello World!";
+let result = countVowels(inputString);
+
+console.log("Vowels found:", result.vowels.join(", "));
+console.log("Total vowels count:", result.count);
+
+```
+------------------------------------------
+### Code 14: sort array data in javascript using loop
+### 1\. **Sort data suign simple way**
+```javascript
+let arr = [3, 5, 2, 5, 6, 2, 9, 0];
+
+// Bubble Sort implementation
+for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+            // Swap the elements
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+    }
+}
+
+console.log(arr); // [0,2,2,3,5,5,6,9]
+```
+
+### Code 15: Fibonacci Series (0,1,1,2,3,5,8,13....) where keeping in array
+```javascript
+function listFibonacci(n) {
+var arr = [0, 1]
+  for (var  i = 1; i < n; i++) 
+    arr.push(arr[i] + arr[i - 1])
+
+  return arr
+}
+console.log(listFibonacci(4))
+// output: [0, 1, 1, 2, 3]
+```
+-----------------------------------------------------------------------
+```javascript
+function listFibonacci(n) {
+var arr = [0, 1]
+  for (var  i = 0; i < n; i++) 
+    arr.push(arr[i] + arr[i + 1])
+
+  return arr
+}
+console.log(listFibonacci(4))
+// output: [0, 1, 1, 2, 3, 5]
+```
+------------------------------------------
+### Code 16: Find factorial of user input number
+```javascript
+const number = parseInt(prompt('Enter a positive integer: '));
+if (number < 0) { console.log('Error! Factorial for negative number does not exist.')}
+else if (number === 0) { console.log(`The factorial is 1.`)}
+else {
+    let fact = 1;
+    for (i = 1; i <= number; i++) {
+        fact *= i;
+    }
+    console.log(`The factorial is ${fact}.`);
+}
+```
+------------------------------------------
+### Code 17:Anagram
+```javascript
+function checkStringsAnagram() {
+var a="Army";
+var b="Mary"
+   let str1 =  a.toLowerCase().split('').sort().join('');
+   let str2 =  b.toLowerCase().split('').sort().join('');
+   if(str1 === str2){
+      console.log("True");
+   } 
+   else { 
+      console.log("False");
+   }
+}
+```
+
+### 18. Reverse a string without using String inbuilt function:
 
 ```javascript
 function reverseString(str) {
@@ -20,7 +507,7 @@ console.log(reverseString("Hello")); // Output: "olleH"
 
 This program manually iterates through the string from the last character to the first and appends each character to the `reversed` string.
 
-### 2. Reverse a string without using String inbuilt function `reverse()`:
+### 19. Reverse a string without using String inbuilt function `reverse()`:
 
 This is essentially the same problem as the previous one. So, the answer is the same:
 
@@ -36,7 +523,7 @@ function reverseString(str) {
 console.log(reverseString("JavaScript")); // Output: "tpircSavaJ"
 ```
 
-### 3. Swap two numbers using a third variable:
+### 20. Swap two numbers using a third variable:
 
 ```javascript
 function swapNumbers(a, b) {
@@ -52,7 +539,7 @@ console.log(x, y); // Output: 10 5
 
 Here, a temporary variable `temp` is used to swap the values of `a` and `b`.
 
-### 4. Swap two numbers without using a third variable:
+### 21. Swap two numbers without using a third variable:
 
 ```javascript
 function swapNumbersWithoutTemp(a, b) {
@@ -68,7 +555,7 @@ console.log(x, y); // Output: 10 5
 
 In this case, the values of `a` and `b` are swapped without using a third variable by performing arithmetic operations.
 
-### 5. Count the number of words in a string using HashMap:
+### 22. Count the number of words in a string using HashMap:
 
 ```javascript
 function countWords(str) {
@@ -89,7 +576,7 @@ console.log(result); // Output: Map { 'javascript' => 2, 'is' => 2, 'great' => 1
 
 This program splits the string into words, then uses a `Map` to store the count of each word.
 
-### 6. Iterate HashMap using `while` and `for` loop:
+### 23. Iterate HashMap using `while` and `for` loop:
 
 ```javascript
 // Iterating using a while loop
@@ -122,7 +609,7 @@ iterateWithFor(wordMap); // Output: 'javascript: 2', 'is: 2', ...
 ```
 
 Here are the JavaScript programs for each of the problems you've listed:
-
+---
 ### 1. Find whether a number is prime or not:
 
 ```javascript
