@@ -14,9 +14,6 @@
      - It supports features like lazy loading, AOT (Ahead of Time) compilation, and improved dependency injection.
      - Angular provides better performance, improved tooling, and supports mobile and desktop applications.
 
-### 3. **What is TypeScript**
-    TypeScript is a programming language that is a superset of JavaScript. It adds features like static typing, which helps catch errors during development, and allows developers to define variable types. TypeScript code is compiled into regular JavaScript, which can run in any browser or JavaScript environment. It helps make code more predictable, maintainable, and easier to debug.
-
 5. ### What are the key components of Angular?
     Angular has the key components below,
 
