@@ -301,24 +301,22 @@
     ```
 
   43. ### What is an observer?
-    Observer is an interface for a consumer of push-based notifications delivered by an Observable. It has below structure,
+   Observer is an interface for a consumer of push-based notifications delivered by an Observable. It has below structure,
 
-    ```javascript
-    interface Observer<T> {
-      closed?: boolean;
-      next: (value: T) => void;
-      error: (err: any) => void;
-      complete: () => void;
-    }
-    ```
-    A handler that implements the Observer interface for receiving observable notifications will be passed as a parameter for observable as below,
+   ```javascript
+   interface Observer<T> {
+   closed?: boolean;
+   next: (value: T) => void;
+   error: (err: any) => void;
+   complete: () => void;
+   }
+   ```
+   A handler that implements the Observer interface for receiving observable notifications will be passed as a parameter for observable as below,
 
-    ```javascript
-    myObservable.subscribe(myObserver);
-    ```
-    **Note:** If you don't supply a handler for a notification type, the observer ignores notifications of that type.
-
-  **[⬆ Back to Top](#table-of-contents)**
+   ```javascript
+   myObservable.subscribe(myObserver);
+   ```
+   **Note:** If you don't supply a handler for a notification type, the observer ignores notifications of that type.
 
 45. ### What is multicasting?
     **Multicasting** is a way of sharing a single data stream (like an HTTP request or event) with multiple subscribers without triggering the operation multiple times. This makes the process more efficient, as all subscribers receive the same data from a single execution.
