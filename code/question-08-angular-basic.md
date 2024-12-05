@@ -320,7 +320,7 @@ Usage in the template:
 
 In simple terms, an observable is like a TV channel that you can tune into (subscribe) to receive updates (data or events).
 
-### Key Points:
+#### Key Points:
 
 - **Asynchronous**: Observables can handle data that comes in over time, like the result of an HTTP request or events triggered by the user.
 - **Emit Values**: An observable can emit multiple values (e.g., data, events) over time.
@@ -328,7 +328,7 @@ In simple terms, an observable is like a TV channel that you can tune into (subs
 
   Let see the simple example of observable,
 
-  ### Example of an Observable:
+  #### Example of an Observable:
 
   ```typescript
   import { Observable } from 'rxjs';
