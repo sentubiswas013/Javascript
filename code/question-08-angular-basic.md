@@ -346,31 +346,31 @@
 
     In this case, "HTTP request made" will be logged **only once**, even though there are two subscribers, because of the `share()` operator.
 
-    ### Why Use Multicasting:
+    #### Why Use Multicasting:
     - **Efficiency**: Multicasting reduces unnecessary executions of expensive operations, like HTTP requests or complex calculations.
     - **Shared Data**: It allows multiple parts of the application to listen to and act on the same data stream, such as user input or real-time updates.
       
-    ### In Summary:
+    #### In Summary:
     **Multicasting** in Angular allows multiple subscribers to share the same observable execution, reducing redundant operations and making the application more efficient. You can achieve multicasting using operators like `share()` or `publish()`.
 
-  34. ### What is a bootstrapping module?
-    In Angular, a **bootstrapping module** is the module responsible for initializing and starting up an Angular application. It is the entry point of the application and tells Angular which component to load first when the application starts.
+34. ### What is a bootstrapping module?
+In Angular, a **bootstrapping module** is the module responsible for initializing and starting up an Angular application. It is the entry point of the application and tells Angular which component to load first when the application starts.
 
-    #### Key Points:
-    1. **Root Module**: The bootstrapping module is usually the **root module** (often named `AppModule`).
-    2. **Bootstrapping**: During the bootstrapping process, Angular loads the root component (usually `AppComponent`) and sets up the application for rendering.
-    3. **`platformBrowserDynamic().bootstrapModule()`**: This is the function Angular uses to start the bootstrapping process in the browser. It bootstraps the root module (`AppModule`) and starts the Angular application.
+#### Key Points:
+1. **Root Module**: The bootstrapping module is usually the **root module** (often named `AppModule`).
+2. **Bootstrapping**: During the bootstrapping process, Angular loads the root component (usually `AppComponent`) and sets up the application for rendering.
+3. **`platformBrowserDynamic().bootstrapModule()`**: This is the function Angular uses to start the bootstrapping process in the browser. It bootstraps the root module (`AppModule`) and starts the Angular application.
 
-    #### Example:
-    In the `main.ts` file of an Angular application, you’ll typically see something like this:
+#### Example:
+In the `main.ts` file of an Angular application, you’ll typically see something like this:
 
-    ```typescript
-    import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-    import { AppModule } from './app/app.module';
+```typescript
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 
-    platformBrowserDynamic().bootstrapModule(AppModule)
-      .catch(err => console.error(err));
-    ```
+platformBrowserDynamic().bootstrapModule(AppModule)
+.catch(err => console.error(err));
+```
 
 9. ### What is a template?
     A template is a HTML view where you can display data by binding controls to properties of an Angular component. You can store your component's template in one of two places. You can define it inline using the template property, or you can define the template in a separate HTML file and link to it in the component metadata using the @Component decorator's templateUrl property.
