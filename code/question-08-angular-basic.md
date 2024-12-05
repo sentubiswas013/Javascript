@@ -274,7 +274,7 @@
   42. ### What is an observable?
   An **observable** is a way to manage and work with asynchronous data or events in Angular. It represents a stream of data that can emit multiple values over time, like data from an HTTP request, user input, or a timer. You "subscribe" to an observable to receive the emitted values and react to them as they come in.
 
-    In simple terms, an observable is like a TV channel that you can tune into (subscribe) to receive updates (data or events).
+  In simple terms, an observable is like a TV channel that you can tune into (subscribe) to receive updates (data or events).
 
    ### Key Points:
   - **Asynchronous**: Observables can handle data that comes in over time, like the result of an HTTP request or events triggered by the user.
