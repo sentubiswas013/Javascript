@@ -459,7 +459,7 @@
     ![ScreenShot](images/lifecycle.png)
 
     The description of each lifecycle method is as below,
-    - **`ngOnInit()`**: Called after the component's constructor and after the first `ngOnChanges`. It's used for component initialization, such as fetching data.
+   - **`ngOnInit()`**: Called after the component's constructor and after the first `ngOnChanges`. It's used for component initialization, such as fetching data.
    - **`ngOnChanges()`**: Called when an input property of the component changes. It gets called before `ngOnInit()` and whenever an input property is updated.
    - **`ngDoCheck()`**: Called during every change detection cycle. It's a place to perform custom change detection.
    - **`ngAfterViewInit()`**: Called after the component's view and child views have been initialized.
