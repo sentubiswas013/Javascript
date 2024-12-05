@@ -636,7 +636,7 @@
     #### Example of a Service Provider:
     In an Angular application, you define a provider for a service in the `@NgModule` or `@Component` decorator.
 
-    ```typescript
+   ```typescript
     import { Injectable } from '@angular/core';
 
     @Injectable({
@@ -649,8 +649,7 @@
         return 'Some data from the service';
       }
     }
-    ```
-     ```
+   ```
      **[⬆ Back to Top](#table-of-contents)**
 
 28. ### What are pipes?
