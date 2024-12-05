@@ -633,7 +633,6 @@
 232. ### What is a provider?
      A **provider** in Angular is a mechanism that tells Angular how to create a service or value to be injected into components or other services. It is a key part of the **dependency injection** system in Angular, allowing you to manage the creation and sharing of services.
 
-    #### Example of a Service Provider:
     In an Angular application, you define a provider for a service in the `@NgModule` or `@Component` decorator.
 
    ```typescript
