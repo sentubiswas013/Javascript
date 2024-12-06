@@ -186,51 +186,32 @@ There are three main types of directives:
 
 ### 4. **What are modules in Angular?**
 
-**Modules** in Angular are used to organize an application into cohesive blocks of functionality. Every Angular application has at least one module, known as the root module (`AppModule`). Modules can contain:
+   In Angular, a **module** is a fundamental building block that organizes an Angular application into cohesive blocks of functionality. It is defined by the `@NgModule` decorator and helps in grouping related components, services, directives, and pipes together. Modules are crucial for managing dependencies, organizing the application structure, and improving performance.
 
-- Components
-- Directives
-- Pipes
-- Services
-- Other modules (imported or exported)
+   Lets take an example of **app.module.ts** root module declared with **@NgModule** decorator as below,
+   ```typescript
+   import { NgModule }      from '@angular/core';
+   import { BrowserModule } from '@angular/platform-browser';
+   import { AppComponent }  from './app.component';
 
-
-    Modules are logical boundaries in your application and the application is divided into separate modules to separate the functionality of your application.
-    Lets take an example of **app.module.ts** root module declared with **@NgModule** decorator as below,
-    ```typescript
-    import { NgModule }      from '@angular/core';
-    import { BrowserModule } from '@angular/platform-browser';
-    import { AppComponent }  from './app.component';
-
-    @NgModule ({
-       imports:      [ BrowserModule ],
-       declarations: [ AppComponent ],
-       bootstrap:    [ AppComponent ],
-       providers: []
-    })
-    export class AppModule { }
-    ```
-    The NgModule decorator has five important (among all) options:
-    1. The imports option is used to import other dependent modules. The BrowserModule is required by default for any web based angular application.
-    2. The declarations option is used to define components in the respective module.
-    3. The bootstrap option tells Angular which Component to bootstrap in the application.
-    4. The providers option is used to configure a set of injectable objects that are available in the injector of this module.
-    5. The entryComponents option is a set of components dynamically loaded into the view.
+   @NgModule ({
+      imports:      [ BrowserModule ],
+      declarations: [ AppComponent ],
+      bootstrap:    [ AppComponent ],
+      providers: []
+   })
+   export class AppModule { }
+   ```
+   The NgModule decorator has five important (among all) options:
+   1. The imports option is used to import other dependent modules. The BrowserModule is required by default for any web based angular application.
+   2. The declarations option is used to define components in the respective module.
+   3. The bootstrap option tells Angular which Component to bootstrap in the application.
+   4. The providers option is used to configure a set of injectable objects that are available in the injector of this module.
+   5. The entryComponents option is a set of components dynamically loaded into the view.
 
 ### 6. **What is a service in Angular?**
 
 A **service** in Angular is a class that provides specific functionality, typically handling business logic, HTTP requests, data management, or other application-related tasks. Services are designed to be reusable and are generally injected into components or other services using Angular's **dependency injection** system.
-
-- **Components**:
-
-  - Responsible for the UI (View) of the application.
-  - Can include logic to handle events, user inputs, and display data.
-
-- **Services**:
-  - Contain business logic, data manipulation, and API calls.
-  - Are focused on non-UI aspects of the application.
-  - Do not manage their own views; they are used by components or other services.
-
 
     ```typescript
       import { Injectable } from '@angular/core';
