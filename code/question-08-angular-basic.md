@@ -211,25 +211,25 @@ There are three main types of directives:
 
 ### 6. **What is a service in Angular?**
 
-A **service** in Angular is a class that provides specific functionality, typically handling business logic, HTTP requests, data management, or other application-related tasks. Services are designed to be reusable and are generally injected into components or other services using Angular's **dependency injection** system.
+   In Angular, a **service** is a class that provides specific functionality that can be used across the application. Services in Angular are typically used to encapsulate logic that doesn't directly relate to the view (like business logic, data fetching, etc.) and can be shared across components. They are a key part of Angular's **dependency injection** system, which allows services to be injected into components, other services, or directives.
 
-    ```typescript
-      import { Injectable } from '@angular/core';
-      import { Http } from '@angular/http';
+   ```typescript
+   import { Injectable } from '@angular/core';
+   import { Http } from '@angular/http';
 
-      @Injectable({ // The Injectable decorator is required for dependency injection to work
-        // providedIn option registers the service with a specific NgModule
-        providedIn: 'root',  // This declares the service with the root app (AppModule)
-      })
-      export class RepoService{
-        constructor(private http: Http){
-        }
-
-        fetchAll(){
-          return this.http.get('https://api.github.com/repositories');
-        }
+   @Injectable({ // The Injectable decorator is required for dependency injection to work
+      // providedIn option registers the service with a specific NgModule
+      providedIn: 'root',  // This declares the service with the root app (AppModule)
+   })
+   export class RepoService{
+      constructor(private http: Http){
       }
-    ```
+
+      fetchAll(){
+         return this.http.get('https://api.github.com/repositories');
+      }
+   }
+   ```
 
 ### 8. **What is dependency injection in Angular?**
 
