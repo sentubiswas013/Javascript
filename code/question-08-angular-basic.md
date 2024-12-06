@@ -135,6 +135,16 @@ Some common lifecycle hooks in Angular include:
 - **`ngAfterViewChecked()`**: Called after the component's view and child views have been checked.
 - **`ngOnDestroy()`**: Called just before Angular destroys the component. It is useful for cleanup tasks like unsubscribing from observables or removing event listeners.
 
+### 6. **What is a Decorators in Angular?**
+   In Angular, **decorators** are special functions that add metadata to classes, methods, properties, or parameters. These metadata inform Angular how to process those elements, such as how to handle components, services, or directives.
+
+   Some common Angular decorators are:
+
+   1. **@Component**: Marks a class as an Angular component and defines its metadata, such as template and styles.
+   2. **@Injectable**: Marks a class as available for dependency injection (DI).
+   3. **@Directive**: Marks a class as an Angular directive.
+   4. **@NgModule**: Defines an Angular module and its components, directives, and services.
+
 ### 5. **What is a directive in Angular? Can you name the different types of directives?**
 
 **Directives** are special markers in Angular that modify the behavior of DOM elements. They can be used to change the appearance, structure, or behavior of elements in the view.
