@@ -416,6 +416,42 @@ Usage in the template:
     platformBrowserDynamic().bootstrapModule(AppModule)
     .catch(err => console.error(err));
     ```
+46. ###  Which file load first in angular application
+    In an Angular application, the first file that is loaded and executed is `index.html`. Here's the sequence of how Angular starts:
+
+    ### 1. **`index.html`**
+      - **Location**: `src/index.html`
+      - This file is the entry point for the application in the browser. When you run the Angular app (for example, using `ng serve`), the browser loads this HTML file first.
+      - It contains essential meta tags, links to stylesheets, and the `<app-root></app-root>` tag (or another root component tag depending on your configuration), which acts as the placeholder where Angular will render the application.
+
+    ### 2. **`main.ts`**
+      - **Location**: `src/main.ts`
+      - After the browser loads `index.html`, Angular bootstraps the application by executing the `main.ts` file.
+      - This TypeScript file is the **main entry point** of the Angular application. It imports and bootstraps the root module (`AppModule`).
+        ```typescript
+        platformBrowserDynamic().bootstrapModule(AppModule)
+          .catch(err => console.error(err));
+        ```
+
+    ### 3. **`app.module.ts`**
+      - **Location**: `src/app/app.module.ts`
+      - Once `main.ts` runs and the root module (`AppModule`) is bootstrapped, Angular looks for the `AppModule` class, which defines the core module of the app.
+      - `AppModule` is the starting point for loading other components, services, and other Angular features.
+      - It imports necessary Angular modules (like `BrowserModule`, `FormsModule`, etc.) and declares components (like `AppComponent`).
+
+    ### 4. **`app.component.ts`**
+      - **Location**: `src/app/app.component.ts`
+      - After the root module is initialized, Angular loads the root component (`AppComponent` by default) and renders its template (`app.component.html`).
+      - The root component becomes the basis for the rest of the application's component tree, and Angular's change detection mechanism begins.
+
+    ### Key Load Order:
+    1. **`index.html`**: Loaded by the browser as the entry point.
+    2. **`main.ts`**: Bootstraps the Angular application.
+    3. **`AppModule` (`app.module.ts`)**: Defines the application structure and configuration.
+    4. **`AppComponent` (`app.component.ts`)**: The root component that renders the view.
+
+    In summary, `index.html` is the first file loaded, followed by `main.ts`, which bootstraps `AppModule`, and then `AppComponent` is rendered as the root of the application.
+
 
 46. ###  Once we create project what are files creates and explain those files
 
