@@ -542,35 +542,35 @@ Usage in the template:
     ### 9. **`package-lock.json` or `yarn.lock`**
    - **Purpose**: These files lock the versions of dependencies in a Node.js project to ensure consistency across environments. They specify the exact versions of dependencies and sub-dependencies that were installed when the project was set up.
    
-    #### 5. **`package.json`**
-      - Defines the project's dependencies, scripts, and other metadata. It includes all the npm packages the project relies on (like Angular itself) and scripts like `ng serve`, `ng build`, etc.
+      #### 5. **`package.json`**
+        - Defines the project's dependencies, scripts, and other metadata. It includes all the npm packages the project relies on (like Angular itself) and scripts like `ng serve`, `ng build`, etc.
 
-    #### 6. **`tsconfig.json`**
-      - The TypeScript configuration file. It defines how TypeScript compiles the application, including compiler options and file includes/excludes.
+      #### 6. **`tsconfig.json`**
+        - The TypeScript configuration file. It defines how TypeScript compiles the application, including compiler options and file includes/excludes.
 
-    #### 7. **`tsconfig.app.json`**
-      - This file contains TypeScript settings that are specific to the application. It includes the source files to be compiled and some specific settings for the Angular project.
+      #### 7. **`tsconfig.app.json`**
+        - This file contains TypeScript settings that are specific to the application. It includes the source files to be compiled and some specific settings for the Angular project.
 
-    #### 8. **`tsconfig.spec.json`**
-      - This file contains TypeScript settings for unit testing. It includes the files required for testing and ensures the right environment for test execution.
+      #### 8. **`tsconfig.spec.json`**
+        - This file contains TypeScript settings for unit testing. It includes the files required for testing and ensures the right environment for test execution.
 
-    #### 9. **`karma.conf.js`**
-      - This is the configuration file for Karma, the test runner used by Angular CLI. It defines the testing environment, which browsers to run tests on, and how to execute tests.
+      #### 9. **`karma.conf.js`**
+        - This is the configuration file for Karma, the test runner used by Angular CLI. It defines the testing environment, which browsers to run tests on, and how to execute tests.
 
-    #### 10. **`protractor.conf.js`**
-      - This is the configuration file for Protractor, the end-to-end testing framework. It defines the test framework, the settings for running tests, and other Protractor-related settings.
+      #### 10. **`protractor.conf.js`**
+        - This is the configuration file for Protractor, the end-to-end testing framework. It defines the test framework, the settings for running tests, and other Protractor-related settings.
 
-    #### 11. **`webpack.config.js`** (Optional for Advanced Users)
-      - If you're using custom Webpack configurations (typically in a more advanced Angular setup), this file is where you can define those settings.
+      #### 11. **`webpack.config.js`** (Optional for Advanced Users)
+        - If you're using custom Webpack configurations (typically in a more advanced Angular setup), this file is where you can define those settings.
 
-    #### Summary of Key Files:
-    - **`src/`**: Contains the application source code and assets.
-    - **`angular.json`**: Angular CLI configuration.
-    - **`package.json`**: Project metadata, dependencies, and npm scripts.
-    - **`tsconfig.json`**: TypeScript compiler options.
-    - **`karma.conf.js`** and **`protractor.conf.js`**: Configuration for testing tools.
+      #### Summary of Key Files:
+      - **`src/`**: Contains the application source code and assets.
+      - **`angular.json`**: Angular CLI configuration.
+      - **`package.json`**: Project metadata, dependencies, and npm scripts.
+      - **`tsconfig.json`**: TypeScript compiler options.
+      - **`karma.conf.js`** and **`protractor.conf.js`**: Configuration for testing tools.
 
-    These files form the foundation of an Angular project and help manage building, testing, and serving the application.
+      These files form the foundation of an Angular project and help manage building, testing, and serving the application.
   
 
 9. ### What is a template?
