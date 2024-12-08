@@ -452,6 +452,51 @@ Usage in the template:
 
     In summary, `index.html` is the first file loaded, followed by `main.ts`, which bootstraps `AppModule`, and then `AppComponent` is rendered as the root of the application.
 
+46. ###  If I rename main, will application load
+    No, the application will not load if you rename `main.ts` unless you update the `angular.json` file to point to the new file name.
+
+    Here's why:
+
+    ### 1. **The Role of `main.ts`**
+      - `main.ts` is the **entry point** of your Angular application. It is responsible for bootstrapping the root module (`AppModule`) using the Angular platform browser dynamic method:
+        ```typescript
+        platformBrowserDynamic().bootstrapModule(AppModule)
+          .catch(err => console.error(err));
+        ```
+      - This file is essential for Angular to start the application. If it is renamed, Angular will not be able to find it and will fail to bootstrap the app.
+
+    ### 2. **What Happens if You Rename `main.ts`**
+      - When you rename `main.ts`, the Angular CLI and build process will not automatically know about this change. The application will fail to load because the Angular CLI will still expect to find a file named `main.ts` to begin bootstrapping.
+      
+    ### 3. **How to Fix It**
+      - If you rename `main.ts`, you need to update the `angular.json` configuration file to let the build system know about the new entry file.
+      - **Steps to rename `main.ts` and update the configuration:**
+        1. Rename `main.ts` to your preferred name (e.g., `startup.ts`).
+        2. Open `angular.json` in the project root.
+        3. In the `angular.json` file, locate the `"sourceRoot"` section under the `"projects"` -> `"architect"` -> `"build"` configuration.
+        4. Update the `main` entry in the `"scripts"` or `"build"` section to point to the new file. For example:
+            ```json
+            "projects": {
+              "your-project-name": {
+                "architect": {
+                  "build": {
+                    "options": {
+                      "main": "src/startup.ts",
+                      "index": "src/index.html",
+                      ...
+                    }
+                  }
+                }
+              }
+            }
+            ```
+
+    ### 4. **Additional Considerations**
+      - The `angular.json` file specifies various build and configuration options for your Angular project. By default, it assumes the existence of `main.ts` as the entry point. If you rename it, this configuration file needs to be updated accordingly.
+      - After updating `angular.json`, the Angular CLI will use your renamed file to bootstrap the application, and the application should load correctly.
+
+    ### Conclusion:
+    If you rename `main.ts`, the application will **not load** unless you also update the Angular CLI configuration (in `angular.json`) to point to the new file.
 
 46. ###  Once we create project what are files creates and explain those files
 
