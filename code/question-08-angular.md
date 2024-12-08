@@ -764,13 +764,13 @@ Here, `#myInput` is a reference to the `<input>` element. You can access its val
     - Uses Angular directives like `ngModel`, `ngForm`, `ngModelGroup` for two-way binding.
     - These forms are defined mostly in the template (HTML), with minimal setup in the component class.
     - They are more declarative, easier to use for simple forms, and automatically bind values between the model and view.
-    - They are best for simple forms with basic validation.
+    - Validation is defined using HTML attributes like `required`, `minlength`, `maxlength`, and custom validation directives. The Angular forms module tracks the validity of form controls automatically.
 
     Example of a Template driven form:
 
     ```html
       <form #myForm="ngForm">
-        <input type="text" name="username" ngModel>
+        <input type="text" name="username" ngModel required username>
         <button [disabled]="myForm.invalid">Submit</button>
       </form>
     ```
@@ -781,16 +781,20 @@ Here, `#myInput` is a reference to the `<input>` element. You can access its val
     - Uses `FormGroup`, `FormControl`, and `FormArray` for building and managing the form.
     - Reactive forms offer easier access to the form state and validation, which makes them suitable for large, complex forms.
     - Validation is handled in the component class, making it easier to test.
+    - Validation is handled programmatically using `Validators` within the `FormControl` or `FormGroup` definition. You can also create custom validators to define more complex validation rules.
 
     Example of a reactive form:
 
     ```typescript
-    import { FormGroup, FormControl } from '@angular/forms';
+    import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-    this.myForm = new FormGroup({
-      name: new FormControl(''),
-      email: new FormControl('')
+    this.form = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
     });
+
+    get email() {
+      return this.form.get('email');
+    }
     ```
 
 Template-driven forms are simpler and often used for small forms, while reactive forms are more scalable and suitable for complex forms.
@@ -1282,44 +1286,6 @@ The `app-card` component might look like this:
 ```
 
 In this example, the `ng-content` directive allows the parent content (i.e., the `<h1>` and `<p>` tags) to be projected into the `<app-card>` component.
-
-
----
-
-### 38. **How does Angular handle form validation?**
-
-Angular provides built-in support for **form validation** using both **template-driven** and **reactive** forms.
-
-- **Template-driven forms**: Validation is defined using HTML attributes like `required`, `minlength`, `maxlength`, and custom validation directives. The Angular forms module tracks the validity of form controls automatically.
-
-Example:
-
-```html
-<form #myForm="ngForm">
-  <input name="email" ngModel required email>
-  <button [disabled]="myForm.invalid">Submit</button>
-</form>
-```
-
-- **Reactive forms**: Validation is handled programmatically using `Validators` within the `FormControl` or `FormGroup` definition. You can also create custom validators to define more complex validation rules.
-
-Example of reactive form validation:
-
-```typescript
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-this.form = new FormGroup({
-  email: new FormControl('', [Validators.required, Validators.email]),
-});
-
-get email() {
-  return this.form.get('email');
-}
-```
-
-Angular also provides **async validators** for cases like checking if an email is already taken, which allows for validation with asynchronous calls to a backend API.
-
----
 
 ### 39. **What is a resolver in Angular, and when would you use one?**
 
