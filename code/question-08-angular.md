@@ -1263,7 +1263,8 @@ const routes: Routes = [
 The **`ng-content`** directive is used in Angular to implement **content projection**. It allows the embedding of external content into the component's template. This directive is primarily used in **component-based reusable UI components** (such as modal dialogs, tabs, or cards) where you want to allow users to pass content into the component's template.
 
 #### `ng-content`:
-- **Purpose**: It is used for **content projection** in Angular. It allows you to insert content from a parent component into a child component's template.
+- **Purpose**: Used for **content projection**.
+- **Use**: Allows you to pass content from a parent component into a child component.
 - **Example**: You can use it to pass HTML from a parent component to a child component, and display it in a specific place inside the child.
 
 Example:
@@ -1285,6 +1286,9 @@ The `app-card` component might look like this:
 
 #### `ng-template`:
 - **Purpose**: It is used to **define a block of HTML** that is not rendered immediately. It can be conditionally displayed later, often with structural directives like `*ngIf` or `*ngFor`.
+- **Purpose**: Defines a reusable **template** that is not immediately rendered.
+- **Use**: You can render the content inside `ng-template` later, usually conditionally or dynamically.
+
 - **Example**: You can define hidden content that is only shown when needed.
 
 ```html
@@ -1985,45 +1989,6 @@ Angular is a powerful and full-featured framework that can be an excellent choic
 - **Limited Flexibility**: Being an opinionated framework, Angular enforces a specific structure and way of doing things, which might limit flexibility for certain projects.
 
 **In summary**, Angular is best suited for large-scale, enterprise-level applications that require a robust and well-organized framework. For smaller projects or applications requiring more flexibility, other frameworks like React or Vue might be better suited.
-
-### 51. **Can you explain the use of ngContent and ngTemplate in Angular?**
-
-### 1. **`ngContent`**:
-
-- **Purpose**: Used for **content projection**.
-- **Use**: Allows you to pass content from a parent component into a child component.
-- **Example**: A parent component can place HTML inside a child component, and that content will be rendered inside the child where `ngContent` is defined.
-
-```html
-<!-- Parent Component -->
-<app-card>
-  <h1>Title</h1>
-  <p>Description</p>
-</app-card>
-
-<!-- Child Component -->
-<div class="card">
-  <ng-content></ng-content> <!-- Content from parent will be inserted here -->
-</div>
-```
-
-### 2. **`ngTemplate`**:
-
-- **Purpose**: Defines a reusable **template** that is not immediately rendered.
-- **Use**: You can render the content inside `ng-template` later, usually conditionally or dynamically.
-
-```html
-<ng-template #myTemplate>
-  <p>This is inside the template!</p>
-</ng-template>
-```
-
-- It is often used with directives like `ngIf` or `ngFor` to control when the content should be shown.
-
-In summary:
-
-- `ngContent` is for projecting parent content into a child component.
-- `ngTemplate` is for defining a template that can be rendered later.
 
 ### 52. **How to implement authgaurd n angular?**
 
