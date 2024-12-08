@@ -1600,6 +1600,78 @@ myObservable.subscribe({
   - **`merge`**: Combines multiple observables, emitting values from all of them.
   - **`switchMap`**: Switches to a new observable and cancels the previous one whenever a new value is emitted.
 
+### 55. **How do you handle error handling in RxJS streams?**
+
+In RxJS, error handling can be done using the following strategies:
+
+- **`catchError`**: This operator catches errors in the observable stream and allows you to recover from the error or return an alternative observable (e.g., an empty observable, a default value, etc.).
+- **`retry`**: Retries an operation a given number of times if it fails, useful for transient errors.
+- **`finalize`**: Executes cleanup code or logic when an observable completes or errors out.
+
+#### Example: Using `catchError` for error handling
+
+```typescript
+import  { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+this.dataService.getData().pipe(
+  catchError(error => {
+    console.error('Error occurred:', error);
+    return of([]); // Return an empty array as fallback data
+  })
+).subscribe(data => {
+  console.log(data);
+});
+```
+
+In this example, if an error occurs during the HTTP request, it is caught by `catchError`, and a fallback empty array is returned.
+
+---
+
+### 56. **What is the difference between `switchMap`, `concatMap`, and `mergeMap` in RxJS? Provide examples of when to use each.**
+
+These operators are used to manage the inner observables in higher-order mapping operations. They transform the values emitted by an observable into another observable. The difference lies in how they handle concurrency and the order of emissions.
+
+- **`switchMap`**: If a new value is emitted by the source observable, `switchMap` cancels the previous inner observable and switches to the new one. This is useful when only the result of the latest request is needed (e.g., in search or auto-complete scenarios).
+
+  **Use case**: Fetching the latest search results.
+
+  ```typescript
+  codesearchTerm$ = new Subject<string>();
+
+  this.searchTerm$.pipe(
+    switchMap(term => this.searchService.search(term))
+  ).subscribe(results => {
+    console.log(results);
+  });
+  ```
+
+- **`concatMap`**: This operator ensures that the inner observables are executed one after the other (sequentially). Each inner observable will only start after the previous one completes. This is useful when the order of operations matters (e.g., sequential HTTP requests).
+
+  **Use case**: Uploading files one after the other.
+
+  ```typescript
+  codefileQueue$.pipe(
+    concatMap(file => this.uploadFile(file))
+  ).subscribe(response => {
+    console.log('File uploaded:', response);
+  });
+  ```
+
+- **`mergeMap`**: This operator allows the inner observables to run concurrently, and it merges their results as they complete. It is used when you don't need the operations to be sequential but want them to run in parallel.
+
+  **Use case**: Fetching multiple resources concurrently (e.g., loading user data, comments, and posts in parallel).
+
+  ```typescript
+  codeuser$.pipe(
+    mergeMap(user => this.loadUserPosts(user.id))
+  ).subscribe(posts => {
+    console.log(posts);
+  });
+  ```
+
+Here are some advanced Angular interview questions that may be asked by companies like TalentRank, which assess a deeper understanding of Angular concepts and the ability to implement complex features in real-world applications:
+
 
 ### 43. **How to Handle parallel Service Calls in angular?**
 
@@ -2206,51 +2278,12 @@ this.dataService.getData().pipe(
 
 In this example, if an error occurs during the HTTP request, it is caught by `catchError`, and a fallback empty array is returned.
 
----
 
-### 56. **What is the difference between `switchMap`, `concatMap`, and `mergeMap` in RxJS? Provide examples of when to use each.**
+### 63. **What is a `Subject` and `BehaviorSubject` in Angular RxJS? How are they different?**
 
-These operators are used to manage the inner observables in higher-order mapping operations. They transform the values emitted by an observable into another observable. The difference lies in how they handle concurrency and the order of emissions.
-
-- **`switchMap`**: If a new value is emitted by the source observable, `switchMap` cancels the previous inner observable and switches to the new one. This is useful when only the result of the latest request is needed (e.g., in search or auto-complete scenarios).
-
-  **Use case**: Fetching the latest search results.
-
-  ```typescript
-  codesearchTerm$ = new Subject<string>();
-
-  this.searchTerm$.pipe(
-    switchMap(term => this.searchService.search(term))
-  ).subscribe(results => {
-    console.log(results);
-  });
-  ```
-
-- **`concatMap`**: This operator ensures that the inner observables are executed one after the other (sequentially). Each inner observable will only start after the previous one completes. This is useful when the order of operations matters (e.g., sequential HTTP requests).
-
-  **Use case**: Uploading files one after the other.
-
-  ```typescript
-  codefileQueue$.pipe(
-    concatMap(file => this.uploadFile(file))
-  ).subscribe(response => {
-    console.log('File uploaded:', response);
-  });
-  ```
-
-- **`mergeMap`**: This operator allows the inner observables to run concurrently, and it merges their results as they complete. It is used when you don't need the operations to be sequential but want them to run in parallel.
-
-  **Use case**: Fetching multiple resources concurrently (e.g., loading user data, comments, and posts in parallel).
-
-  ```typescript
-  codeuser$.pipe(
-    mergeMap(user => this.loadUserPosts(user.id))
-  ).subscribe(posts => {
-    console.log(posts);
-  });
-  ```
-
-Here are some advanced Angular interview questions that may be asked by companies like TalentRank, which assess a deeper understanding of Angular concepts and the ability to implement complex features in real-world applications:
+- **Answer**:
+  - A **`Subject`** is a special type of `Observable` that allows values to be multicast to many Observers. It doesn't store the last emitted value.
+  - A **`BehaviorSubject`** is a type of `Subject` that requires an initial value and always returns the current value to new subscribers. Unlike a `Subject`, it maintains the last value emitted, making it useful for state management or components that need to know the current state on subscription.
 
 ### 57. **Explain the difference between `ngOnInit()` and `constructor()` in Angular. When would you use each one?**
 
@@ -2272,12 +2305,6 @@ Here are some advanced Angular interview questions that may be asked by companie
 ### 61. **What is the role of `ngZone` in Angular, and how does it help with performance optimization?**
 
 - **Answer**: `ngZone` is an Angular service that allows you to run code inside or outside Angular’s change detection mechanism. It is particularly useful for optimizing performance by ensuring that Angular’s change detection cycle runs only when necessary. For example, if you are working with external libraries or performing long-running tasks, you can execute them outside of Angular's zone to avoid unnecessary change detection cycles.
-
-### 63. **What is a `Subject` and `BehaviorSubject` in Angular RxJS? How are they different?**
-
-- **Answer**:
-  - A **`Subject`** is a special type of `Observable` that allows values to be multicast to many Observers. It doesn't store the last emitted value.
-  - A **`BehaviorSubject`** is a type of `Subject` that requires an initial value and always returns the current value to new subscribers. Unlike a `Subject`, it maintains the last value emitted, making it useful for state management or components that need to know the current state on subscription.
 
 ### 64. **What is the purpose of the `ngModule` and how does it work in Angular?**
 
