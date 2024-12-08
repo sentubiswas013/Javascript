@@ -486,7 +486,7 @@ Usage in the template:
 
     Here's why:
 
-    ### 1. **The Role of `main.ts`**
+    #### 1. **The Role of `main.ts`**
 
     - `main.ts` is the **entry point** of your Angular application. It is responsible for bootstrapping the root module (`AppModule`) using the Angular platform browser dynamic method:
       ```typescript
@@ -495,11 +495,11 @@ Usage in the template:
       ```
     - This file is essential for Angular to start the application. If it is renamed, Angular will not be able to find it and will fail to bootstrap the app.
 
-    ### 2. **What Happens if You Rename `main.ts`**
+    #### 2. **What Happens if You Rename `main.ts`**
 
     - When you rename `main.ts`, the Angular CLI and build process will not automatically know about this change. The application will fail to load because the Angular CLI will still expect to find a file named `main.ts` to begin bootstrapping.
 
-    ### 3. **How to Fix It**
+    #### 3. **How to Fix It**
 
     - If you rename `main.ts`, you need to update the `angular.json` configuration file to let the build system know about the new entry file.
     - **Steps to rename `main.ts` and update the configuration:**
@@ -523,12 +523,12 @@ Usage in the template:
          }
          ```
 
-    ### 4. **Additional Considerations**
+    #### 4. **Additional Considerations**
 
     - The `angular.json` file specifies various build and configuration options for your Angular project. By default, it assumes the existence of `main.ts` as the entry point. If you rename it, this configuration file needs to be updated accordingly.
     - After updating `angular.json`, the Angular CLI will use your renamed file to bootstrap the application, and the application should load correctly.
 
-    ### Conclusion:
+    #### Conclusion:
 
     If you rename `main.ts`, the application will **not load** unless you also update the Angular CLI configuration (in `angular.json`) to point to the new file.
 
