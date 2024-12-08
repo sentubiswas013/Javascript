@@ -1243,7 +1243,7 @@ const routes: Routes = [
 
 ---
 
-### 37. **What is the purpose of the `ng-content` directive in Angular?**
+### 37. **What is the purpose of the `ng-content` and `ng-template` directive in Angular?**
 
 The **`ng-content`** directive is used in Angular to implement **content projection**. It allows the embedding of external content into the component's template. This directive is primarily used in **component-based reusable UI components** (such as modal dialogs, tabs, or cards) where you want to allow users to pass content into the component's template.
 
