@@ -1518,28 +1518,28 @@ In this example, `getData()` returns an **Observable**, and we use RxJS operator
 
 **Subscribing** in Angular (and RxJS) means telling an observable to start sending its data to you. When you **subscribe** to an observable, you listen for the values it emits (such as results from an HTTP request, user actions, or time-based events).
 
-    #### Key Points:
-    - **Subscribing** means you are "watching" or "listening" to an observable.
-    - You provide a function (or object) that handles the data when it's emitted.
-    - Once subscribed, the observable starts emitting values and the subscriber gets those values automatically.
+#### Key Points:
+- **Subscribing** means you are "watching" or "listening" to an observable.
+- You provide a function (or object) that handles the data when it's emitted.
+- Once subscribed, the observable starts emitting values and the subscriber gets those values automatically.
 
-    #### Example:
-    ```typescript
-    import { Observable } from 'rxjs';
+#### Example:
+```typescript
+import { Observable } from 'rxjs';
 
-    // Create an observable that emits values
-    const myObservable = new Observable(subscriber => {
-      subscriber.next('Hello');
-      subscriber.next('World');
-      subscriber.complete();  // Marks the observable as complete
-    });
+// Create an observable that emits values
+const myObservable = new Observable(subscriber => {
+  subscriber.next('Hello');
+  subscriber.next('World');
+  subscriber.complete();  // Marks the observable as complete
+});
 
-    // Subscribe to the observable
-    myObservable.subscribe({
-      next: (value) => console.log(value),  // Handle each emitted value
-      complete: () => console.log('Done')  // Handle when the observable completes
-    });
-    ```
+// Subscribe to the observable
+myObservable.subscribe({
+  next: (value) => console.log(value),  // Handle each emitted value
+  complete: () => console.log('Done')  // Handle when the observable completes
+});
+```
 
 ### 43. **How to Handle parallel Service Calls in angular?**
 
