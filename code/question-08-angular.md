@@ -136,14 +136,15 @@ Some common lifecycle hooks in Angular include:
 - **`ngOnDestroy()`**: Called just before Angular destroys the component. It is useful for cleanup tasks like unsubscribing from observables or removing event listeners.
 
 ### 6. **What is a Decorators in Angular?**
-   In Angular, **decorators** are special functions that add metadata to classes, methods, properties, or parameters. These metadata inform Angular how to process those elements, such as how to handle components, services, or directives.
 
-   Some common Angular decorators are:
+In Angular, **decorators** are special functions that add metadata to classes, methods, properties, or parameters. These metadata inform Angular how to process those elements, such as how to handle components, services, or directives.
 
-   1. **@Component**: Marks a class as an Angular component and defines its metadata, such as template and styles.
-   2. **@Injectable**: Marks a class as available for dependency injection (DI).
-   3. **@Directive**: Marks a class as an Angular directive.
-   4. **@NgModule**: Defines an Angular module and its components, directives, and services.
+Some common Angular decorators are:
+
+1.  **@Component**: Marks a class as an Angular component and defines its metadata, such as template and styles.
+2.  **@Injectable**: Marks a class as available for dependency injection (DI).
+3.  **@Directive**: Marks a class as an Angular directive.
+4.  **@NgModule**: Defines an Angular module and its components, directives, and services.
 
 ### 5. **What is a directive in Angular? Can you name the different types of directives?**
 
@@ -196,50 +197,53 @@ There are three main types of directives:
 
 ### 4. **What are modules in Angular?**
 
-   In Angular, a **module** is a fundamental building block that organizes an Angular application into cohesive blocks of functionality. It is defined by the `@NgModule` decorator and helps in grouping related components, services, directives, and pipes together. Modules are crucial for managing dependencies, organizing the application structure, and improving performance.
+In Angular, a **module** is a fundamental building block that organizes an Angular application into cohesive blocks of functionality. It is defined by the `@NgModule` decorator and helps in grouping related components, services, directives, and pipes together. Modules are crucial for managing dependencies, organizing the application structure, and improving performance.
 
-   Lets take an example of **app.module.ts** root module declared with **@NgModule** decorator as below,
-   ```typescript
-   import { NgModule }      from '@angular/core';
-   import { BrowserModule } from '@angular/platform-browser';
-   import { AppComponent }  from './app.component';
+Lets take an example of **app.module.ts** root module declared with **@NgModule** decorator as below,
 
-   @NgModule ({
-      imports:      [ BrowserModule ],
-      declarations: [ AppComponent ],
-      bootstrap:    [ AppComponent ],
-      providers: []
-   })
-   export class AppModule { }
-   ```
-   The NgModule decorator has five important (among all) options:
-   1. The imports option is used to import other dependent modules. The BrowserModule is required by default for any web based angular application.
-   2. The declarations option is used to define components in the respective module.
-   3. The bootstrap option tells Angular which Component to bootstrap in the application.
-   4. The providers option is used to configure a set of injectable objects that are available in the injector of this module.
-   5. The entryComponents option is a set of components dynamically loaded into the view.
+```typescript
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent }  from './app.component';
+
+@NgModule ({
+   imports:      [ BrowserModule ],
+   declarations: [ AppComponent ],
+   bootstrap:    [ AppComponent ],
+   providers: []
+})
+export class AppModule { }
+```
+
+The NgModule decorator has five important (among all) options:
+
+1.  The imports option is used to import other dependent modules. The BrowserModule is required by default for any web based angular application.
+2.  The declarations option is used to define components in the respective module.
+3.  The bootstrap option tells Angular which Component to bootstrap in the application.
+4.  The providers option is used to configure a set of injectable objects that are available in the injector of this module.
+5.  The entryComponents option is a set of components dynamically loaded into the view.
 
 ### 6. **What is a service in Angular?**
 
-   In Angular, a **service** is a class that provides specific functionality that can be used across the application. Services in Angular are typically used to encapsulate logic that doesn't directly relate to the view (like business logic, data fetching, etc.) and can be shared across components. They are a key part of Angular's **dependency injection** system, which allows services to be injected into components, other services, or directives.
+In Angular, a **service** is a class that provides specific functionality that can be used across the application. Services in Angular are typically used to encapsulate logic that doesn't directly relate to the view (like business logic, data fetching, etc.) and can be shared across components. They are a key part of Angular's **dependency injection** system, which allows services to be injected into components, other services, or directives.
 
-   ```typescript
-   import { Injectable } from '@angular/core';
-   import { Http } from '@angular/http';
+```typescript
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
-   @Injectable({ // The Injectable decorator is required for dependency injection to work
-      // providedIn option registers the service with a specific NgModule
-      providedIn: 'root',  // This declares the service with the root app (AppModule)
-   })
-   export class RepoService{
-      constructor(private http: Http){
-      }
-
-      fetchAll(){
-         return this.http.get('https://api.github.com/repositories');
-      }
+@Injectable({ // The Injectable decorator is required for dependency injection to work
+   // providedIn option registers the service with a specific NgModule
+   providedIn: 'root',  // This declares the service with the root app (AppModule)
+})
+export class RepoService{
+   constructor(private http: Http){
    }
-   ```
+
+   fetchAll(){
+      return this.http.get('https://api.github.com/repositories');
+   }
+}
+```
 
 ### 8. **What is dependency injection in Angular?**
 
@@ -307,6 +311,7 @@ Usage in the template:
 ```
 
 42. ### What is an observable?
+
     An **observable** is a way to manage and work with asynchronous data or events in Angular. It represents a stream of data that can emit multiple values over time, like data from an HTTP request, user input, or a timer. You "subscribe" to an observable to receive the emitted values and react to them as they come in.
 
     In simple terms, an observable is like a TV channel that you can tune into (subscribe) to receive updates (data or events).
@@ -339,14 +344,15 @@ Usage in the template:
       ```
 
 43. ### What is an observer?
+
     Observer is an interface for a consumer of push-based notifications delivered by an Observable. It has below structure,
 
     ```javascript
     interface Observer<T> {
-    closed?: boolean;
-    next: (value: T) => void;
-    error: (err: any) => void;
-    complete: () => void;
+      closed?: boolean;
+      next: (value: T) => void;
+      error: (err: any) => void;
+      complete: () => void;
     }
     ```
 
@@ -397,6 +403,7 @@ Usage in the template:
     **Multicasting** in Angular allows multiple subscribers to share the same observable execution, reducing redundant operations and making the application more efficient. You can achieve multicasting using operators like `share()` or `publish()`.
 
 46. ### What is a bootstrapping module?
+
     In Angular, a **bootstrapping module** is the module responsible for initializing and starting up an Angular application. It is the entry point of the application and tells Angular which component to load first when the application starts.
 
     #### Key Points:
@@ -416,35 +423,42 @@ Usage in the template:
     platformBrowserDynamic().bootstrapModule(AppModule)
     .catch(err => console.error(err));
     ```
-46. ###  Which file load first in angular application
+
+47. ### Which file load first in angular application
+
     In an Angular application, the first file that is loaded and executed is `index.html`. Here's the sequence of how Angular starts:
 
     #### 1. **`index.html`**
-      - **Location**: `src/index.html`
-      - This file is the entry point for the application in the browser. When you run the Angular app (for example, using `ng serve`), the browser loads this HTML file first.
-      - It contains essential meta tags, links to stylesheets, and the `<app-root></app-root>` tag (or another root component tag depending on your configuration), which acts as the placeholder where Angular will render the application.
+
+    - **Location**: `src/index.html`
+    - This file is the entry point for the application in the browser. When you run the Angular app (for example, using `ng serve`), the browser loads this HTML file first.
+    - It contains essential meta tags, links to stylesheets, and the `<app-root></app-root>` tag (or another root component tag depending on your configuration), which acts as the placeholder where Angular will render the application.
 
     #### 2. **`main.ts`**
-      - **Location**: `src/main.ts`
-      - After the browser loads `index.html`, Angular bootstraps the application by executing the `main.ts` file.
-      - This TypeScript file is the **main entry point** of the Angular application. It imports and bootstraps the root module (`AppModule`).
-        ```typescript
-        platformBrowserDynamic().bootstrapModule(AppModule)
-          .catch(err => console.error(err));
-        ```
+
+    - **Location**: `src/main.ts`
+    - After the browser loads `index.html`, Angular bootstraps the application by executing the `main.ts` file.
+    - This TypeScript file is the **main entry point** of the Angular application. It imports and bootstraps the root module (`AppModule`).
+      ```typescript
+      platformBrowserDynamic().bootstrapModule(AppModule)
+        .catch(err => console.error(err));
+      ```
 
     #### 3. **`app.module.ts`**
-      - **Location**: `src/app/app.module.ts`
-      - Once `main.ts` runs and the root module (`AppModule`) is bootstrapped, Angular looks for the `AppModule` class, which defines the core module of the app.
-      - `AppModule` is the starting point for loading other components, services, and other Angular features.
-      - It imports necessary Angular modules (like `BrowserModule`, `FormsModule`, etc.) and declares components (like `AppComponent`).
+
+    - **Location**: `src/app/app.module.ts`
+    - Once `main.ts` runs and the root module (`AppModule`) is bootstrapped, Angular looks for the `AppModule` class, which defines the core module of the app.
+    - `AppModule` is the starting point for loading other components, services, and other Angular features.
+    - It imports necessary Angular modules (like `BrowserModule`, `FormsModule`, etc.) and declares components (like `AppComponent`).
 
     #### 4. **`app.component.ts`**
-      - **Location**: `src/app/app.component.ts`
-      - After the root module is initialized, Angular loads the root component (`AppComponent` by default) and renders its template (`app.component.html`).
-      - The root component becomes the basis for the rest of the application's component tree, and Angular's change detection mechanism begins.
+
+    - **Location**: `src/app/app.component.ts`
+    - After the root module is initialized, Angular loads the root component (`AppComponent` by default) and renders its template (`app.component.html`).
+    - The root component becomes the basis for the rest of the application's component tree, and Angular's change detection mechanism begins.
 
     #### Key Load Order:
+
     1. **`index.html`**: Loaded by the browser as the entry point.
     2. **`main.ts`**: Bootstraps the Angular application.
     3. **`AppModule` (`app.module.ts`)**: Defines the application structure and configuration.
@@ -452,126 +466,147 @@ Usage in the template:
 
     In summary, `index.html` is the first file loaded, followed by `main.ts`, which bootstraps `AppModule`, and then `AppComponent` is rendered as the root of the application.
 
-46. ###  If I rename `main.ts`, will application load
+48. ### If I rename `main.ts`, will application load
+
     No, the application will not load if you rename `main.ts` unless you update the `angular.json` file to point to the new file name.
 
     Here's why:
 
     ### 1. **The Role of `main.ts`**
-      - `main.ts` is the **entry point** of your Angular application. It is responsible for bootstrapping the root module (`AppModule`) using the Angular platform browser dynamic method:
-        ```typescript
-        platformBrowserDynamic().bootstrapModule(AppModule)
-          .catch(err => console.error(err));
-        ```
-      - This file is essential for Angular to start the application. If it is renamed, Angular will not be able to find it and will fail to bootstrap the app.
+
+    - `main.ts` is the **entry point** of your Angular application. It is responsible for bootstrapping the root module (`AppModule`) using the Angular platform browser dynamic method:
+      ```typescript
+      platformBrowserDynamic().bootstrapModule(AppModule)
+        .catch(err => console.error(err));
+      ```
+    - This file is essential for Angular to start the application. If it is renamed, Angular will not be able to find it and will fail to bootstrap the app.
 
     ### 2. **What Happens if You Rename `main.ts`**
-      - When you rename `main.ts`, the Angular CLI and build process will not automatically know about this change. The application will fail to load because the Angular CLI will still expect to find a file named `main.ts` to begin bootstrapping.
-      
+
+    - When you rename `main.ts`, the Angular CLI and build process will not automatically know about this change. The application will fail to load because the Angular CLI will still expect to find a file named `main.ts` to begin bootstrapping.
+
     ### 3. **How to Fix It**
-      - If you rename `main.ts`, you need to update the `angular.json` configuration file to let the build system know about the new entry file.
-      - **Steps to rename `main.ts` and update the configuration:**
-        1. Rename `main.ts` to your preferred name (e.g., `startup.ts`).
-        2. Open `angular.json` in the project root.
-        3. In the `angular.json` file, locate the `"sourceRoot"` section under the `"projects"` -> `"architect"` -> `"build"` configuration.
-        4. Update the `main` entry in the `"scripts"` or `"build"` section to point to the new file. For example:
-            ```json
-            "projects": {
-              "your-project-name": {
-                "architect": {
-                  "build": {
-                    "options": {
-                      "main": "src/startup.ts",
-                      "index": "src/index.html",
-                      ...
-                    }
-                  }
-                }
-              }
-            }
-            ```
+
+    - If you rename `main.ts`, you need to update the `angular.json` configuration file to let the build system know about the new entry file.
+    - **Steps to rename `main.ts` and update the configuration:**
+      1. Rename `main.ts` to your preferred name (e.g., `startup.ts`).
+      2. Open `angular.json` in the project root.
+      3. In the `angular.json` file, locate the `"sourceRoot"` section under the `"projects"` -> `"architect"` -> `"build"` configuration.
+      4. Update the `main` entry in the `"scripts"` or `"build"` section to point to the new file. For example:
+         ```json
+         "projects": {
+           "your-project-name": {
+             "architect": {
+               "build": {
+                 "options": {
+                   "main": "src/startup.ts",
+                   "index": "src/index.html",
+                   ...
+                 }
+               }
+             }
+           }
+         }
+         ```
 
     ### 4. **Additional Considerations**
-      - The `angular.json` file specifies various build and configuration options for your Angular project. By default, it assumes the existence of `main.ts` as the entry point. If you rename it, this configuration file needs to be updated accordingly.
-      - After updating `angular.json`, the Angular CLI will use your renamed file to bootstrap the application, and the application should load correctly.
+
+    - The `angular.json` file specifies various build and configuration options for your Angular project. By default, it assumes the existence of `main.ts` as the entry point. If you rename it, this configuration file needs to be updated accordingly.
+    - After updating `angular.json`, the Angular CLI will use your renamed file to bootstrap the application, and the application should load correctly.
 
     ### Conclusion:
+
     If you rename `main.ts`, the application will **not load** unless you also update the Angular CLI configuration (in `angular.json`) to point to the new file.
 
-46. ###  Once we create project what are files creates and explain those files
+49. ### Once we create project what are files creates and explain those files
 
     When you create a new Angular project using the Angular CLI (`ng new <project-name>`), several default files and folders are generated in your project directory. These files and folders provide a basic structure for developing Angular applications. Here's a breakdown of the most important files:
 
     #### 1. **`e2e/` (End-to-End Testing Folder)**
-      - **`src/app.e2e-spec.ts`**: Contains the end-to-end test cases for the application. These tests use Protractor to simulate user interactions and test the application from an end-user's perspective.
-      - **`src/app.po.ts`**: Page Object model that defines how to interact with the elements on a page.
+
+    - **`src/app.e2e-spec.ts`**: Contains the end-to-end test cases for the application. These tests use Protractor to simulate user interactions and test the application from an end-user's perspective.
+    - **`src/app.po.ts`**: Page Object model that defines how to interact with the elements on a page.
 
     #### 2. **`node_modules/`**
-      - This folder contains all the npm packages installed for the project, including Angular libraries and any other dependencies you install using `npm install`.
+
+    - This folder contains all the npm packages installed for the project, including Angular libraries and any other dependencies you install using `npm install`.
 
     #### 3. **`src/` (Source Folder)**
-      - This is where all your application code lives. It includes several important subfolders and files.
+
+    - This is where all your application code lives. It includes several important subfolders and files.
 
     #### a. **`src/app/` (Main Application Code)**
-      - **`app.module.ts`**: The root module of your Angular application. It defines the root component and imports other Angular modules that your app requires.
-      - **`app.component.ts`**: The root component of the application. It includes the logic for the main component, typically the one shown when the application starts. It includes a template (`app.component.html`) and styling (`app.component.css`).
-      - **`app.component.html`**: The HTML template for the root component.
-      - **`app.component.css`**: The CSS styles for the root component.
-      - **`app.component.spec.ts`**: Contains unit tests for the `AppComponent`.
+
+    - **`app.module.ts`**: The root module of your Angular application. It defines the root component and imports other Angular modules that your app requires.
+    - **`app.component.ts`**: The root component of the application. It includes the logic for the main component, typically the one shown when the application starts. It includes a template (`app.component.html`) and styling (`app.component.css`).
+    - **`app.component.html`**: The HTML template for the root component.
+    - **`app.component.css`**: The CSS styles for the root component.
+    - **`app.component.spec.ts`**: Contains unit tests for the `AppComponent`.
 
     #### b. **`src/assets/` (Static Files)**
-      - This folder is for static files such as images, fonts, icons, or any other assets your application needs.
+
+    - This folder is for static files such as images, fonts, icons, or any other assets your application needs.
 
     #### c. **`src/environments/` (Environment Configuration)**
-      - **`environment.ts`**: Configuration file for development settings.
-      - **`environment.prod.ts`**: Configuration file for production settings. It typically contains settings like API URLs that should differ between environments (development, production, etc.).
+
+    - **`environment.ts`**: Configuration file for development settings.
+    - **`environment.prod.ts`**: Configuration file for production settings. It typically contains settings like API URLs that should differ between environments (development, production, etc.).
 
     #### d. **`src/favicon.ico`**: The default favicon for your application.
 
     #### e. **`src/index.html`**: The main HTML file that serves as the entry point for the Angular application. It includes the `<app-root></app-root>` tag where the root component is injected.
-      
+
     #### f. **`src/main.ts`**: The main entry point for your application. It bootstraps the root module (`AppModule`).
-      
+
     #### g. **`src/styles.css`**: Global styles for your application. You can add global CSS or include third-party styles here.
 
     #### h. **`src/test.ts`**: The main entry point for running unit tests with the Angular testing framework (Jasmine and Karma).
-      
+
     ### 4. **`angular.json`**
-      - This file contains the configuration settings for the Angular CLI. It defines how the application should be built and served, what assets to include, and other settings like file replacements for different environments.
+
+    - This file contains the configuration settings for the Angular CLI. It defines how the application should be built and served, what assets to include, and other settings like file replacements for different environments.
 
     ### 9. **`package-lock.json` or `yarn.lock`**
-   - **Purpose**: These files lock the versions of dependencies in a Node.js project to ensure consistency across environments. They specify the exact versions of dependencies and sub-dependencies that were installed when the project was set up.
-   
-      #### 5. **`package.json`**
-        - Defines the project's dependencies, scripts, and other metadata. It includes all the npm packages the project relies on (like Angular itself) and scripts like `ng serve`, `ng build`, etc.
 
-      #### 6. **`tsconfig.json`**
-        - The TypeScript configuration file. It defines how TypeScript compiles the application, including compiler options and file includes/excludes.
+- **Purpose**: These files lock the versions of dependencies in a Node.js project to ensure consistency across environments. They specify the exact versions of dependencies and sub-dependencies that were installed when the project was set up.
 
-      #### 7. **`tsconfig.app.json`**
-        - This file contains TypeScript settings that are specific to the application. It includes the source files to be compiled and some specific settings for the Angular project.
+  #### 5. **`package.json`**
 
-      #### 8. **`tsconfig.spec.json`**
-        - This file contains TypeScript settings for unit testing. It includes the files required for testing and ensures the right environment for test execution.
+  - Defines the project's dependencies, scripts, and other metadata. It includes all the npm packages the project relies on (like Angular itself) and scripts like `ng serve`, `ng build`, etc.
 
-      #### 9. **`karma.conf.js`**
-        - This is the configuration file for Karma, the test runner used by Angular CLI. It defines the testing environment, which browsers to run tests on, and how to execute tests.
+  #### 6. **`tsconfig.json`**
 
-      #### 10. **`protractor.conf.js`**
-        - This is the configuration file for Protractor, the end-to-end testing framework. It defines the test framework, the settings for running tests, and other Protractor-related settings.
+  - The TypeScript configuration file. It defines how TypeScript compiles the application, including compiler options and file includes/excludes.
 
-      #### 11. **`webpack.config.js`** (Optional for Advanced Users)
-        - If you're using custom Webpack configurations (typically in a more advanced Angular setup), this file is where you can define those settings.
+  #### 7. **`tsconfig.app.json`**
 
-      #### Summary of Key Files:
-      - **`src/`**: Contains the application source code and assets.
-      - **`angular.json`**: Angular CLI configuration.
-      - **`package.json`**: Project metadata, dependencies, and npm scripts.
-      - **`tsconfig.json`**: TypeScript compiler options.
-      - **`karma.conf.js`** and **`protractor.conf.js`**: Configuration for testing tools.
+  - This file contains TypeScript settings that are specific to the application. It includes the source files to be compiled and some specific settings for the Angular project.
 
-      These files form the foundation of an Angular project and help manage building, testing, and serving the application.
-  
+  #### 8. **`tsconfig.spec.json`**
+
+  - This file contains TypeScript settings for unit testing. It includes the files required for testing and ensures the right environment for test execution.
+
+  #### 9. **`karma.conf.js`**
+
+  - This is the configuration file for Karma, the test runner used by Angular CLI. It defines the testing environment, which browsers to run tests on, and how to execute tests.
+
+  #### 10. **`protractor.conf.js`**
+
+  - This is the configuration file for Protractor, the end-to-end testing framework. It defines the test framework, the settings for running tests, and other Protractor-related settings.
+
+  #### 11. **`webpack.config.js`** (Optional for Advanced Users)
+
+  - If you're using custom Webpack configurations (typically in a more advanced Angular setup), this file is where you can define those settings.
+
+  #### Summary of Key Files:
+
+  - **`src/`**: Contains the application source code and assets.
+  - **`angular.json`**: Angular CLI configuration.
+  - **`package.json`**: Project metadata, dependencies, and npm scripts.
+  - **`tsconfig.json`**: TypeScript compiler options.
+  - **`karma.conf.js`** and **`protractor.conf.js`**: Configuration for testing tools.
+
+  These files form the foundation of an Angular project and help manage building, testing, and serving the application.
 
 9. ### What is a template?
 
@@ -752,11 +787,11 @@ Example:
 
 Here, `#myInput` is a reference to the `<input>` element. You can access its value in the component by passing `myInput.value` to the `logValue` method.
 
-  ### **Intermediate Angular Questions:**
+### **Intermediate Angular Questions:**
 
-  ### 21. **What are Angular forms? What are the two types of forms in Angular?**
+### 21. **What are Angular forms? What are the two types of forms in Angular?**
 
-  **Angular forms** are used for gathering and validating user input. Angular provides two approaches to work with forms:
+**Angular forms** are used for gathering and validating user input. Angular provides two approaches to work with forms:
 
 1.  **Template-driven forms**: These are simple and declarative forms where the form model is defined within the template. The form is automatically created and updated based on the template.
 
@@ -775,8 +810,8 @@ Here, `#myInput` is a reference to the `<input>` element. You can access its val
       </form>
     ```
 
-
 2.  **Reactive forms**: These are more programmatically controlled forms, where the form model is created in the component class. This approach gives more control over form validation, state, and dynamic forms.
+
     - Requires `ReactiveFormsModule`.
     - Uses `FormGroup`, `FormControl`, and `FormArray` for building and managing the form.
     - Reactive forms offer easier access to the form state and validation, which makes them suitable for large, complex forms.
@@ -845,36 +880,36 @@ By using lazy loading, Angular only loads the required modules when the user nav
 
 ### 25. **What is change detection in Angular? How does it work?**
 
-  **Change detection** in Angular refers to the process of checking and updating the view whenever the application's state (the model) changes. Angular uses a mechanism to detect changes in component properties and update the view automatically.
+**Change detection** in Angular refers to the process of checking and updating the view whenever the application's state (the model) changes. Angular uses a mechanism to detect changes in component properties and update the view automatically.
 
-  Angular employs a **change detection strategy**, which can be either:
+Angular employs a **change detection strategy**, which can be either:
 
-  - **Default**: (`ChangeDetectionStrategy.Default`) Angular checks all components in the component tree for changes on each event (such as user input, HTTP response, etc.).
-  - **OnPush**: (`ChangeDetectionStrategy.OnPush`) Angular only checks a component for changes if one of its input properties has changed or an event has occurred within it. This strategy can improve performance by reducing the number of checks Angular performs.
+- **Default**: (`ChangeDetectionStrategy.Default`) Angular checks all components in the component tree for changes on each event (such as user input, HTTP response, etc.).
+- **OnPush**: (`ChangeDetectionStrategy.OnPush`) Angular only checks a component for changes if one of its input properties has changed or an event has occurred within it. This strategy can improve performance by reducing the number of checks Angular performs.
 
-  **`ChangeDetectionStrategy.OnPush`**: When this strategy is used, Angular only checks a component when:
+**`ChangeDetectionStrategy.OnPush`**: When this strategy is used, Angular only checks a component when:
 
-  - Its inputs (bindings) change.
-  - An event is triggered within the component.
-  - It manually triggers change detection (e.g., using `ChangeDetectorRef`).
+- Its inputs (bindings) change.
+- An event is triggered within the component.
+- It manually triggers change detection (e.g., using `ChangeDetectorRef`).
 
-  **Performance Optimization**:
+**Performance Optimization**:
 
-  - Reduces the number of checks Angular performs by limiting change detection to specific cases.
-  - Can dramatically improve performance in large applications with complex component trees, reducing unnecessary re-renders.
+- Reduces the number of checks Angular performs by limiting change detection to specific cases.
+- Can dramatically improve performance in large applications with complex component trees, reducing unnecessary re-renders.
 
-  **Usage Example:**
+**Usage Example:**
 
-  ```typescript
-  @Component({
-    selector: 'app-my-component',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './my-component.component.html'
-  })
-  export class MyComponent {
-    @Input() data: any;
-  }
-  ```
+```typescript
+@Component({
+  selector: 'app-my-component',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './my-component.component.html'
+})
+export class MyComponent {
+  @Input() data: any;
+}
+```
 
 ### 46. **Explain the concept of zones in Angular.**
 
@@ -977,8 +1012,8 @@ Both `localStorage` and `sessionStorage` are web storage APIs that allow data to
   Example:
 
   ```javascript
-  localStorage.setItem('user', JSON.stringify({ name: 'Alice' }));
-  const user = JSON.parse(localStorage.getItem('user'));
+  localStorage.setItem("user", JSON.stringify({ name: "Alice" }));
+  const user = JSON.parse(localStorage.getItem("user"));
   ```
 
 - **`sessionStorage`**:
@@ -990,8 +1025,8 @@ Both `localStorage` and `sessionStorage` are web storage APIs that allow data to
   Example:
 
   ```javascript
-  sessionStorage.setItem('sessionUser', JSON.stringify({ name: 'Bob' }));
-  const sessionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
+  sessionStorage.setItem("sessionUser", JSON.stringify({ name: "Bob" }));
+  const sessionUser = JSON.parse(sessionStorage.getItem("sessionUser"));
   ```
 
 In summary:
@@ -1302,6 +1337,7 @@ const routes: Routes = [
 The **`ng-content`** directive is used in Angular to implement **content projection**. It allows the embedding of external content into the component's template. This directive is primarily used in **component-based reusable UI components** (such as modal dialogs, tabs, or cards) where you want to allow users to pass content into the component's template.
 
 #### `ng-content`:
+
 - **Purpose**: Used for **content projection**.
 - **Use**: Allows you to pass content from a parent component into a child component.
 - **Example**: You can use it to pass HTML from a parent component to a child component, and display it in a specific place inside the child.
@@ -1324,6 +1360,7 @@ The `app-card` component might look like this:
 ```
 
 #### `ng-template`:
+
 - **Purpose**: It is used to **define a block of HTML** that is not rendered immediately. It can be conditionally displayed later, often with structural directives like `*ngIf` or `*ngFor`.
 - **Purpose**: Defines a reusable **template** that is not immediately rendered.
 - **Use**: You can render the content inside `ng-template` later, usually conditionally or dynamically.
@@ -1539,11 +1576,13 @@ In this example, `getData()` returns an **Observable**, and we use RxJS operator
 **Subscribing** in Angular (and RxJS) means telling an observable to start sending its data to you. When you **subscribe** to an observable, you listen for the values it emits (such as results from an HTTP request, user actions, or time-based events).
 
 #### Key Points:
+
 - **Subscribing** means you are "watching" or "listening" to an observable.
 - You provide a function (or object) that handles the data when it's emitted.
 - Once subscribed, the observable starts emitting values and the subscriber gets those values automatically.
 
 #### Example:
+
 ```typescript
 import { Observable } from 'rxjs';
 
@@ -1562,82 +1601,91 @@ myObservable.subscribe({
 ```
 
 ### 43. **Explain operators like `map`, `filter`, `merge`, and `switchMap`**
-  In **RxJS**, operators like `map`, `filter`, `merge`, and `switchMap` are used to manipulate, transform, and combine streams of data in a reactive programming style. Here's a simple explanation of each:
 
-  ### 1. **`map`**
-  - **Purpose**: Transforms the values emitted by an observable by applying a function to each value.
-  - **How it works**: It takes each emitted value from the observable, applies a transformation function, and returns the transformed value.
+In **RxJS**, operators like `map`, `filter`, `merge`, and `switchMap` are used to manipulate, transform, and combine streams of data in a reactive programming style. Here's a simple explanation of each:
 
-  #### Example:
-  ```typescript
-  import { of } from 'rxjs';
-  import { map } from 'rxjs/operators';
+### 1. **`map`**
 
-  const numbers$ = of(1, 2, 3);
-  numbers$.pipe(
-    map(value => value * 2)
-  ).subscribe(result => console.log(result));
-  // Output: 2, 4, 6
-  ```
+- **Purpose**: Transforms the values emitted by an observable by applying a function to each value.
+- **How it works**: It takes each emitted value from the observable, applies a transformation function, and returns the transformed value.
 
-  ### 2. **`filter`**
-  - **Purpose**: Filters the emitted values by applying a condition (predicate function) to each value. Only values that pass the condition are emitted.
-  - **How it works**: It checks each emitted value, and if the condition returns `true`, the value is emitted; otherwise, it’s ignored.
+#### Example:
 
-  #### Example:
-  ```typescript
-  import { of } from 'rxjs';
-  import { filter } from 'rxjs/operators';
+```typescript
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-  const numbers$ = of(1, 2, 3, 4, 5);
-  numbers$.pipe(
-    filter(value => value % 2 === 0)
-  ).subscribe(result => console.log(result));
-  // Output: 2, 4
-  ```
+const numbers$ = of(1, 2, 3);
+numbers$.pipe(
+  map(value => value * 2)
+).subscribe(result => console.log(result));
+// Output: 2, 4, 6
+```
 
-  ### 3. **`merge`**
-  - **Purpose**: Combines multiple observables into a single observable, emitting all values from the source observables as they arrive.
-  - **How it works**: It subscribes to multiple observables and merges their emitted values into one stream. The order of the emitted values is maintained.
+### 2. **`filter`**
 
-  #### Example:
-  ```typescript
-  import { of } from 'rxjs';
-  import { merge } from 'rxjs/operators';
+- **Purpose**: Filters the emitted values by applying a condition (predicate function) to each value. Only values that pass the condition are emitted.
+- **How it works**: It checks each emitted value, and if the condition returns `true`, the value is emitted; otherwise, it’s ignored.
 
-  const obs1$ = of(1, 2);
-  const obs2$ = of(3, 4);
-  obs1$.pipe(
-    merge(obs2$)
-  ).subscribe(result => console.log(result));
-  // Output: 1, 2, 3, 4
-  ```
+#### Example:
 
-  ### 4. **`switchMap`**
-  - **Purpose**: Switches to a new observable, discarding the previous observable's emissions, whenever a new value is emitted by the source observable.
-  - **How it works**: When a new value is emitted by the source observable, it cancels the previous inner observable and subscribes to the new one. This is useful when you need to cancel ongoing operations (like HTTP requests) when a new event happens.
+```typescript
+import { of } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
-  #### Example:
-  ```typescript
-  import { of, interval } from 'rxjs';
-  import { switchMap } from 'rxjs/operators';
+const numbers$ = of(1, 2, 3, 4, 5);
+numbers$.pipe(
+  filter(value => value % 2 === 0)
+).subscribe(result => console.log(result));
+// Output: 2, 4
+```
 
-  const source$ = interval(1000); // Emits 0, 1, 2, 3, etc.
-  source$.pipe(
-    switchMap(value => of(`Switched to: ${value}`))
-  ).subscribe(result => console.log(result));
-  // Output: Switched to: 0
-  //         Switched to: 1
-  //         Switched to: 2
-  // And so on...
-  ```
+### 3. **`merge`**
 
-  ### Summary:
+- **Purpose**: Combines multiple observables into a single observable, emitting all values from the source observables as they arrive.
+- **How it works**: It subscribes to multiple observables and merges their emitted values into one stream. The order of the emitted values is maintained.
 
-  - **`map`**: Transforms emitted values.
-  - **`filter`**: Filters emitted values based on a condition.
-  - **`merge`**: Combines multiple observables, emitting values from all of them.
-  - **`switchMap`**: Switches to a new observable and cancels the previous one whenever a new value is emitted.
+#### Example:
+
+```typescript
+import { of } from 'rxjs';
+import { merge } from 'rxjs/operators';
+
+const obs1$ = of(1, 2);
+const obs2$ = of(3, 4);
+obs1$.pipe(
+  merge(obs2$)
+).subscribe(result => console.log(result));
+// Output: 1, 2, 3, 4
+```
+
+### 4. **`switchMap`**
+
+- **Purpose**: Switches to a new observable, discarding the previous observable's emissions, whenever a new value is emitted by the source observable.
+- **How it works**: When a new value is emitted by the source observable, it cancels the previous inner observable and subscribes to the new one. This is useful when you need to cancel ongoing operations (like HTTP requests) when a new event happens.
+
+#### Example:
+
+```typescript
+import { of, interval } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+const source$ = interval(1000); // Emits 0, 1, 2, 3, etc.
+source$.pipe(
+  switchMap(value => of(`Switched to: ${value}`))
+).subscribe(result => console.log(result));
+// Output: Switched to: 0
+//         Switched to: 1
+//         Switched to: 2
+// And so on...
+```
+
+### Summary:
+
+- **`map`**: Transforms emitted values.
+- **`filter`**: Filters emitted values based on a condition.
+- **`merge`**: Combines multiple observables, emitting values from all of them.
+- **`switchMap`**: Switches to a new observable and cancels the previous one whenever a new value is emitted.
 
 ### 55. **How do you handle error handling in RxJS streams?**
 
@@ -1711,64 +1759,63 @@ These operators are used to manage the inner observables in higher-order mapping
 
 Here are some advanced Angular interview questions that may be asked by companies like TalentRank, which assess a deeper understanding of Angular concepts and the ability to implement complex features in real-world applications:
 
-
 ### 43. **How to Handle parallel Service Calls in angular?**
 
 To handle parallel service calls in Angular, you can use **RxJS operators** to manage multiple HTTP requests simultaneously. Here's a simple explanation of how to do it:
 
-  #### Step-by-Step Guide
+#### Step-by-Step Guide
 
-  #### 1. **Using `forkJoin` (Most Common)**
+#### 1. **Using `forkJoin` (Most Common)**
 
-  `forkJoin` is used when you want to make multiple HTTP requests at the same time and wait until **all of them finish**. It will emit the results **only when all requests are successful**.
+`forkJoin` is used when you want to make multiple HTTP requests at the same time and wait until **all of them finish**. It will emit the results **only when all requests are successful**.
 
-  - **When to Use:** When you want all the HTTP requests to complete before you do anything with the results.
+- **When to Use:** When you want all the HTTP requests to complete before you do anything with the results.
 
-  #### Example:
+#### Example:
 
-  ```typescript
-  import { Component, OnInit } from '@angular/core';
-  import { HttpClient } from '@angular/common/http';
-  import { forkJoin } from 'rxjs';
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { forkJoin } from 'rxjs';
 
-  @Component({
-    selector: 'app-parallel-requests',
-    templateUrl: './parallel-requests.component.html',
-    styleUrls: ['./parallel-requests.component.css']
-  })
-  export class ParallelRequestsComponent implements OnInit {
+@Component({
+  selector: 'app-parallel-requests',
+  templateUrl: './parallel-requests.component.html',
+  styleUrls: ['./parallel-requests.component.css']
+})
+export class ParallelRequestsComponent implements OnInit {
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    ngOnInit() {
-      this.getDataFromServices();
-    }
-
-    getDataFromServices() {
-      // Define the API calls (services)
-      const request1 = this.http.get('https://api.example.com/data1');
-      const request2 = this.http.get('https://api.example.com/data2');
-      const request3 = this.http.get('https://api.example.com/data3');
-
-      // Use forkJoin to make the requests in parallel
-      forkJoin([request1, request2, request3]).subscribe(
-        ([response1, response2, response3]) => {
-          console.log('Response from API 1:', response1);
-          console.log('Response from API 2:', response2);
-          console.log('Response from API 3:', response3);
-        },
-        (error) => {
-          console.error('Error:', error);
-        }
-      );
-    }
+  ngOnInit() {
+    this.getDataFromServices();
   }
-  ```
 
-  **Explanation:**
+  getDataFromServices() {
+    // Define the API calls (services)
+    const request1 = this.http.get('https://api.example.com/data1');
+    const request2 = this.http.get('https://api.example.com/data2');
+    const request3 = this.http.get('https://api.example.com/data3');
 
-  - **`forkJoin`** takes an array of observables (requests) and waits for **all** of them to finish. It then emits the results as an array.
-  - If one request fails, the entire operation will fail.
+    // Use forkJoin to make the requests in parallel
+    forkJoin([request1, request2, request3]).subscribe(
+      ([response1, response2, response3]) => {
+        console.log('Response from API 1:', response1);
+        console.log('Response from API 2:', response2);
+        console.log('Response from API 3:', response3);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+}
+```
+
+**Explanation:**
+
+- **`forkJoin`** takes an array of observables (requests) and waits for **all** of them to finish. It then emits the results as an array.
+- If one request fails, the entire operation will fail.
 
 #### 2. **Using `combineLatest` (When You Want Latest Results)**
 
@@ -1923,7 +1970,6 @@ In large-scale applications, NgRx or similar libraries provide a more predictabl
 
 - AOT is preferred for production environments because it produces optimized code and better performance.
 - JIT is typically used during development for faster iteration.
-
 
 ### 47. **What are Angular Universal applications, and how does server-side rendering work in Angular?**
 
@@ -2276,7 +2322,6 @@ this.dataService.getData().pipe(
 ```
 
 In this example, if an error occurs during the HTTP request, it is caught by `catchError`, and a fallback empty array is returned.
-
 
 ### 63. **What is a `Subject` and `BehaviorSubject` in Angular RxJS? How are they different?**
 
