@@ -1601,59 +1601,59 @@ myObservable.subscribe({
 
 To handle parallel service calls in Angular, you can use **RxJS operators** to manage multiple HTTP requests simultaneously. Here's a simple explanation of how to do it:
 
-### Step-by-Step Guide
+  #### Step-by-Step Guide
 
-#### 1. **Using `forkJoin` (Most Common)**
+  #### 1. **Using `forkJoin` (Most Common)**
 
-`forkJoin` is used when you want to make multiple HTTP requests at the same time and wait until **all of them finish**. It will emit the results **only when all requests are successful**.
+  `forkJoin` is used when you want to make multiple HTTP requests at the same time and wait until **all of them finish**. It will emit the results **only when all requests are successful**.
 
-- **When to Use:** When you want all the HTTP requests to complete before you do anything with the results.
+  - **When to Use:** When you want all the HTTP requests to complete before you do anything with the results.
 
-#### Example:
+  #### Example:
 
-```typescript
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
+  ```typescript
+  import { Component, OnInit } from '@angular/core';
+  import { HttpClient } from '@angular/common/http';
+  import { forkJoin } from 'rxjs';
 
-@Component({
-  selector: 'app-parallel-requests',
-  templateUrl: './parallel-requests.component.html',
-  styleUrls: ['./parallel-requests.component.css']
-})
-export class ParallelRequestsComponent implements OnInit {
+  @Component({
+    selector: 'app-parallel-requests',
+    templateUrl: './parallel-requests.component.html',
+    styleUrls: ['./parallel-requests.component.css']
+  })
+  export class ParallelRequestsComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  ngOnInit() {
-    this.getDataFromServices();
+    ngOnInit() {
+      this.getDataFromServices();
+    }
+
+    getDataFromServices() {
+      // Define the API calls (services)
+      const request1 = this.http.get('https://api.example.com/data1');
+      const request2 = this.http.get('https://api.example.com/data2');
+      const request3 = this.http.get('https://api.example.com/data3');
+
+      // Use forkJoin to make the requests in parallel
+      forkJoin([request1, request2, request3]).subscribe(
+        ([response1, response2, response3]) => {
+          console.log('Response from API 1:', response1);
+          console.log('Response from API 2:', response2);
+          console.log('Response from API 3:', response3);
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    }
   }
+  ```
 
-  getDataFromServices() {
-    // Define the API calls (services)
-    const request1 = this.http.get('https://api.example.com/data1');
-    const request2 = this.http.get('https://api.example.com/data2');
-    const request3 = this.http.get('https://api.example.com/data3');
+  **Explanation:**
 
-    // Use forkJoin to make the requests in parallel
-    forkJoin([request1, request2, request3]).subscribe(
-      ([response1, response2, response3]) => {
-        console.log('Response from API 1:', response1);
-        console.log('Response from API 2:', response2);
-        console.log('Response from API 3:', response3);
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
-  }
-}
-```
-
-**Explanation:**
-
-- **`forkJoin`** takes an array of observables (requests) and waits for **all** of them to finish. It then emits the results as an array.
-- If one request fails, the entire operation will fail.
+  - **`forkJoin`** takes an array of observables (requests) and waits for **all** of them to finish. It then emits the results as an array.
+  - If one request fails, the entire operation will fail.
 
 #### 2. **Using `combineLatest` (When You Want Latest Results)**
 
