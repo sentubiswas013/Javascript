@@ -15,6 +15,17 @@ JSX is ultimately compiled into regular JavaScript using a tool like Babel.
 - **React** is the core library that provides tools for building UI components and managing their state.
 - **ReactDOM** is a separate package that deals with rendering React components into the DOM (the web page). It is responsible for managing the interaction between React components and the browser environment, such as rendering components to the screen and updating them as needed.
 
+### 3. **What is the difference between React and ReactDOM?**
+### In Summary:
+  1. **`npm start`** runs `react-scripts start`, which starts the Webpack development server.
+  2. **Webpack** compiles and bundles your app’s files (JS, JSX, CSS) and serves it locally.
+  3. **Babel** transpiles JSX and modern JavaScript into compatible code.
+  4. React initializes your app by rendering components to the DOM.
+  5. Hot Module Replacement ensures your changes are reflected instantly without a full page reload.
+  6. React efficiently updates the DOM using the Virtual DOM and diffing algorithm.
+
+  This process creates an efficient and smooth development environment for building React apps.
+
 ### 4. **What are components in React?**
 Components are the building blocks of a React application. They are reusable, self-contained units that define a part of the user interface. Components can be thought of as JavaScript functions or classes that return JSX, which describes the UI. Components can accept inputs (props) and manage their internal state, making them interactive and dynamic.
 
