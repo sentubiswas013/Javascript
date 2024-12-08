@@ -1261,6 +1261,13 @@ The **Angular CLI** (Command Line Interface) is a powerful tool that helps devel
 
 Key roles and features of Angular CLI:
 
+- **Creating a new Angular project**:
+
+  ```arduino
+  ng new <project-name>
+  ```
+  This command creates a new Angular project with a default structure and sets up all the necessary dependencies.
+
 - **Project setup**: It allows you to quickly generate a new Angular project with a pre-configured build setup.
 - **Generate components, services, modules**: You can generate Angular components, services, modules, pipes, directives, and other files with simple CLI commands.
   ```bash
@@ -3115,62 +3122,6 @@ In summary, file uploads in Angular involve using `HttpClient` with `FormData`, 
    - Avoid relying solely on client-side validation, as attackers can bypass it.
 
 By following these steps, you can significantly reduce the attack surface and improve the security of an Angular application in production.
-
-### **9\. Angular CLI and Build Tools**
-
-### **1\. How would you use Angular CLI to create and manage an Angular application? Can you explain the common commands used in development?**
-
-The **Angular CLI** is a powerful tool that helps you to create, develop, test, and deploy Angular applications. Here are some of the most common commands:
-
-- **Creating a new Angular project**:
-
-  ```arduino
-  ng new <project-name>
-  ```
-
-  This command creates a new Angular project with a default structure and sets up all the necessary dependencies.
-
-- **Serving the application (development server)**:
-
-  ```
-  ng serve
-  ```
-
-  This command compiles the project and starts a development server. It watches for changes and automatically reloads the application in the browser.
-
-- **Generating components, services, and other Angular elements**:
-
-  ```php-template
-  ng generate component <component-name>
-  ng generate service <service-name>
-  ng generate module <module-name>
-  ```
-
-  These commands scaffold components, services, modules, etc., by generating the required files and updating necessary imports and configurations.
-
-- **Building the application for production**:
-
-  ```css
-  ng build --prod
-  ```
-
-  This command compiles the application in production mode, enabling optimizations like Ahead-of-Time (AOT) compilation, minification, and tree-shaking to reduce the final bundle size.
-
-- **Running tests**:
-
-  ```bash
-  ng test
-  ```
-
-  This runs unit tests using Karma and Jasmine by default, and outputs results to the terminal.
-
-- **E2E testing**:
-
-  ```
-  ng e2e
-  ```
-
-  This runs end-to-end tests using Protractor.
 
 ### **2\. What is Angular Universal, and how does it enable server-side rendering (SSR)?**
 
