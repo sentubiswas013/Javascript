@@ -419,12 +419,12 @@ Usage in the template:
 46. ###  Which file load first in angular application
     In an Angular application, the first file that is loaded and executed is `index.html`. Here's the sequence of how Angular starts:
 
-    ### 1. **`index.html`**
+    #### 1. **`index.html`**
       - **Location**: `src/index.html`
       - This file is the entry point for the application in the browser. When you run the Angular app (for example, using `ng serve`), the browser loads this HTML file first.
       - It contains essential meta tags, links to stylesheets, and the `<app-root></app-root>` tag (or another root component tag depending on your configuration), which acts as the placeholder where Angular will render the application.
 
-    ### 2. **`main.ts`**
+    #### 2. **`main.ts`**
       - **Location**: `src/main.ts`
       - After the browser loads `index.html`, Angular bootstraps the application by executing the `main.ts` file.
       - This TypeScript file is the **main entry point** of the Angular application. It imports and bootstraps the root module (`AppModule`).
@@ -433,7 +433,7 @@ Usage in the template:
           .catch(err => console.error(err));
         ```
 
-    ### 3. **`app.module.ts`**
+    #### 3. **`app.module.ts`**
       - **Location**: `src/app/app.module.ts`
       - Once `main.ts` runs and the root module (`AppModule`) is bootstrapped, Angular looks for the `AppModule` class, which defines the core module of the app.
       - `AppModule` is the starting point for loading other components, services, and other Angular features.
@@ -457,14 +457,14 @@ Usage in the template:
 
     When you create a new Angular project using the Angular CLI (`ng new <project-name>`), several default files and folders are generated in your project directory. These files and folders provide a basic structure for developing Angular applications. Here's a breakdown of the most important files:
 
-    ### 1. **`e2e/` (End-to-End Testing Folder)**
+    #### 1. **`e2e/` (End-to-End Testing Folder)**
       - **`src/app.e2e-spec.ts`**: Contains the end-to-end test cases for the application. These tests use Protractor to simulate user interactions and test the application from an end-user's perspective.
       - **`src/app.po.ts`**: Page Object model that defines how to interact with the elements on a page.
 
-    ### 2. **`node_modules/`**
+    #### 2. **`node_modules/`**
       - This folder contains all the npm packages installed for the project, including Angular libraries and any other dependencies you install using `npm install`.
 
-    ### 3. **`src/` (Source Folder)**
+    #### 3. **`src/` (Source Folder)**
       - This is where all your application code lives. It includes several important subfolders and files.
 
     #### a. **`src/app/` (Main Application Code)**
@@ -498,28 +498,28 @@ Usage in the template:
    - **Purpose**: These files lock the versions of dependencies in a Node.js project to ensure consistency across environments. They specify the exact versions of dependencies and sub-dependencies that were installed when the project was set up.
    
 
-    ### 5. **`package.json`**
+    #### 5. **`package.json`**
       - Defines the project's dependencies, scripts, and other metadata. It includes all the npm packages the project relies on (like Angular itself) and scripts like `ng serve`, `ng build`, etc.
 
-    ### 6. **`tsconfig.json`**
+    #### 6. **`tsconfig.json`**
       - The TypeScript configuration file. It defines how TypeScript compiles the application, including compiler options and file includes/excludes.
 
-    ### 7. **`tsconfig.app.json`**
+    #### 7. **`tsconfig.app.json`**
       - This file contains TypeScript settings that are specific to the application. It includes the source files to be compiled and some specific settings for the Angular project.
 
-    ### 8. **`tsconfig.spec.json`**
+    #### 8. **`tsconfig.spec.json`**
       - This file contains TypeScript settings for unit testing. It includes the files required for testing and ensures the right environment for test execution.
 
-    ### 9. **`karma.conf.js`**
+    #### 9. **`karma.conf.js`**
       - This is the configuration file for Karma, the test runner used by Angular CLI. It defines the testing environment, which browsers to run tests on, and how to execute tests.
 
-    ### 10. **`protractor.conf.js`**
+    #### 10. **`protractor.conf.js`**
       - This is the configuration file for Protractor, the end-to-end testing framework. It defines the test framework, the settings for running tests, and other Protractor-related settings.
 
-    ### 11. **`webpack.config.js`** (Optional for Advanced Users)
+    #### 11. **`webpack.config.js`** (Optional for Advanced Users)
       - If you're using custom Webpack configurations (typically in a more advanced Angular setup), this file is where you can define those settings.
 
-    ### Summary of Key Files:
+    #### Summary of Key Files:
     - **`src/`**: Contains the application source code and assets.
     - **`angular.json`**: Angular CLI configuration.
     - **`package.json`**: Project metadata, dependencies, and npm scripts.
