@@ -439,12 +439,12 @@ Usage in the template:
       - `AppModule` is the starting point for loading other components, services, and other Angular features.
       - It imports necessary Angular modules (like `BrowserModule`, `FormsModule`, etc.) and declares components (like `AppComponent`).
 
-    ### 4. **`app.component.ts`**
+    #### 4. **`app.component.ts`**
       - **Location**: `src/app/app.component.ts`
       - After the root module is initialized, Angular loads the root component (`AppComponent` by default) and renders its template (`app.component.html`).
       - The root component becomes the basis for the rest of the application's component tree, and Angular's change detection mechanism begins.
 
-    ### Key Load Order:
+    #### Key Load Order:
     1. **`index.html`**: Loaded by the browser as the entry point.
     2. **`main.ts`**: Bootstraps the Angular application.
     3. **`AppModule` (`app.module.ts`)**: Defines the application structure and configuration.
