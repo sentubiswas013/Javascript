@@ -763,11 +763,7 @@ Here, `#myInput` is a reference to the `<input>` element. You can access its val
     - Uses `ngModel` for two-way binding.
     - Less programmatically complex but harder to scale.
 
-2.  **Reactive forms**: These are more programmatically controlled forms, where the form model is created in the component class. This approach gives more control over form validation, state, and dynamic forms.
-    - Requires `ReactiveFormsModule`.
-    - Uses `FormGroup`, `FormControl`, and `FormArray` for building and managing the form.
-
-Example of a reactive form:
+Example of a Template driven form:
 
 ```typescript
 import { FormGroup, FormControl } from '@angular/forms';
@@ -776,6 +772,19 @@ this.myForm = new FormGroup({
   name: new FormControl(''),
   email: new FormControl('')
 });
+```
+
+2.  **Reactive forms**: These are more programmatically controlled forms, where the form model is created in the component class. This approach gives more control over form validation, state, and dynamic forms.
+    - Requires `ReactiveFormsModule`.
+    - Uses `FormGroup`, `FormControl`, and `FormArray` for building and managing the form.
+
+Example of a reactive form:
+
+```html
+  <form #myForm="ngForm">
+    <input type="text" name="username" ngModel>
+    <button [disabled]="myForm.invalid">Submit</button>
+  </form>
 ```
 
 Template-driven forms are simpler and often used for small forms, while reactive forms are more scalable and suitable for complex forms.
