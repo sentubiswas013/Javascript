@@ -845,24 +845,36 @@ By using lazy loading, Angular only loads the required modules when the user nav
 
 ### 25. **What is change detection in Angular? How does it work?**
 
-**Change detection** in Angular refers to the process of checking and updating the view whenever the application's state (the model) changes. Angular uses a mechanism to detect changes in component properties and update the view automatically.
+  **Change detection** in Angular refers to the process of checking and updating the view whenever the application's state (the model) changes. Angular uses a mechanism to detect changes in component properties and update the view automatically.
 
-Angular employs a **change detection strategy**, which can be either:
+  Angular employs a **change detection strategy**, which can be either:
 
-- **Default**: (`ChangeDetectionStrategy.Default`) Angular checks all components in the component tree for changes on each event (such as user input, HTTP response, etc.).
-- **OnPush**: (`ChangeDetectionStrategy.OnPush`) Angular only checks a component for changes if one of its input properties has changed or an event has occurred within it. This strategy can improve performance by reducing the number of checks Angular performs.
+  - **Default**: (`ChangeDetectionStrategy.Default`) Angular checks all components in the component tree for changes on each event (such as user input, HTTP response, etc.).
+  - **OnPush**: (`ChangeDetectionStrategy.OnPush`) Angular only checks a component for changes if one of its input properties has changed or an event has occurred within it. This strategy can improve performance by reducing the number of checks Angular performs.
 
-#### How Change Detection Works:
+  **`ChangeDetectionStrategy.OnPush`**: When this strategy is used, Angular only checks a component when:
 
-1. **Component State**: Angular tracks the state of a component's properties (e.g., variables, data). These properties can be bound to the view (HTML) using interpolation, property binding, etc.
+  - Its inputs (bindings) change.
+  - An event is triggered within the component.
+  - It manually triggers change detection (e.g., using `ChangeDetectorRef`).
 
-2. **Change Detection Cycle**: When an event (e.g., user interaction, HTTP request, or timer) triggers a change in a component's data, Angular performs the change detection process. The cycle works in two stages:
-   - **Check the component's data**: Angular checks whether the component's model (data) has changed by comparing the current values of the properties with their previous values.
-   - **Update the view**: If any changes are detected, Angular updates the view to reflect the new state.
+  **Performance Optimization**:
 
-3. **Zones**: Angular uses **Zones** (via the `zone.js` library) to automatically detect asynchronous operations (like HTTP requests or timeouts) and trigger change detection when necessary. When an asynchronous event occurs, Angular's zone detects it and runs change detection to update the view.
+  - Reduces the number of checks Angular performs by limiting change detection to specific cases.
+  - Can dramatically improve performance in large applications with complex component trees, reducing unnecessary re-renders.
 
-The change detection process is triggered by events like user interactions, HTTP requests, or timers. When a change is detected, Angular updates the view to reflect the new state.
+  **Usage Example:**
+
+  ```typescript
+  @Component({
+    selector: 'app-my-component',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './my-component.component.html'
+  })
+  export class MyComponent {
+    @Input() data: any;
+  }
+  ```
 
 ### 26. **What are `@Input` and `@Output` decorators in Angular?**
 
@@ -1895,34 +1907,6 @@ Angular is a powerful and full-featured framework that can be an excellent choic
 
 **In summary**, Angular is best suited for large-scale, enterprise-level applications that require a robust and well-organized framework. For smaller projects or applications requiring more flexibility, other frameworks like React or Vue might be better suited.
 
-### 51. **What is the purpose of `ChangeDetectionStrategy.OnPush`? How does it optimize performance?**
-
-Angular uses **change detection** to track and respond to changes in data. By default, Angular uses the `ChangeDetectionStrategy.Default`, where it checks the entire component tree for changes whenever an event occurs (like user interaction, HTTP requests, or timers). This can be inefficient, especially for large apps.
-
-**`ChangeDetectionStrategy.OnPush`**: When this strategy is used, Angular only checks a component when:
-
-- Its inputs (bindings) change.
-- An event is triggered within the component.
-- It manually triggers change detection (e.g., using `ChangeDetectorRef`).
-
-**Performance Optimization**:
-
-- Reduces the number of checks Angular performs by limiting change detection to specific cases.
-- Can dramatically improve performance in large applications with complex component trees, reducing unnecessary re-renders.
-
-**Usage Example:**
-
-```typescript
-@Component({
-  selector: 'app-my-component',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './my-component.component.html'
-})
-export class MyComponent {
-  @Input() data: any;
-}
-```
-
 ### 51. **Can you explain the use of ngContent and ngTemplate in Angular?**
 
 ### 1. **`ngContent`**:
@@ -2231,14 +2215,6 @@ Here are some advanced Angular interview questions that may be asked by companie
 ### 58. **What is the difference between `ngFor` and `ngForOf`?**
 
 - **Answer**: `ngFor` is an alias for `ngForOf` directive. `ngForOf` is a lower-level implementation of the directive that works with iterable objects, like arrays. While they are functionally equivalent, `ngFor` is the preferred shorthand for most applications.
-
-### 59. **How does Angular change detection work? What are the different strategies available?**
-
-- **Answer**: Angular uses a change detection mechanism to update the view whenever the model changes. The two primary change detection strategies are:
-  - **Default**: Checks every component in the tree for changes.
-  - **OnPush**: Only checks components when one of its input properties has changed, or an event has occurred within the component, or manually triggered change detection is invoked.
-
-You can optimize performance by using `OnPush`, as Angular will check only the components that need to be checked.
 
 ### 60. **What are Angular decorators and name a few common ones?**
 
