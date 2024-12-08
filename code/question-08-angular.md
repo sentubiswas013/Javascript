@@ -452,7 +452,7 @@ Usage in the template:
 
     In summary, `index.html` is the first file loaded, followed by `main.ts`, which bootstraps `AppModule`, and then `AppComponent` is rendered as the root of the application.
 
-46. ###  If I rename main, will application load
+46. ###  If I rename `main.ts`, will application load
     No, the application will not load if you rename `main.ts` unless you update the `angular.json` file to point to the new file name.
 
     Here's why:
