@@ -846,8 +846,18 @@ By using lazy loading, Angular only loads the required modules when the user nav
 
 Angular employs a **change detection strategy**, which can be either:
 
-- **Default**: Angular checks all components in the component tree for changes on each event (such as user input, HTTP response, etc.).
-- **OnPush**: Angular only checks a component for changes if one of its input properties has changed or an event has occurred within it. This strategy can improve performance by reducing the number of checks Angular performs.
+- **Default**: (`ChangeDetectionStrategy.Default`) Angular checks all components in the component tree for changes on each event (such as user input, HTTP response, etc.).
+- **OnPush**: (`ChangeDetectionStrategy.OnPush`) Angular only checks a component for changes if one of its input properties has changed or an event has occurred within it. This strategy can improve performance by reducing the number of checks Angular performs.
+
+#### How Change Detection Works:
+
+1. **Component State**: Angular tracks the state of a component's properties (e.g., variables, data). These properties can be bound to the view (HTML) using interpolation, property binding, etc.
+
+2. **Change Detection Cycle**: When an event (e.g., user interaction, HTTP request, or timer) triggers a change in a component's data, Angular performs the change detection process. The cycle works in two stages:
+   - **Check the component's data**: Angular checks whether the component's model (data) has changed by comparing the current values of the properties with their previous values.
+   - **Update the view**: If any changes are detected, Angular updates the view to reflect the new state.
+
+3. **Zones**: Angular uses **Zones** (via the `zone.js` library) to automatically detect asynchronous operations (like HTTP requests or timeouts) and trigger change detection when necessary. When an asynchronous event occurs, Angular's zone detects it and runs change detection to update the view.
 
 The change detection process is triggered by events like user interactions, HTTP requests, or timers. When a change is detected, Angular updates the view to reflect the new state.
 
