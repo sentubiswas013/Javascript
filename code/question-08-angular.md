@@ -2253,12 +2253,6 @@ You can optimize performance by using `OnPush`, as Angular will check only the c
 
 - **Answer**: `ngZone` is an Angular service that allows you to run code inside or outside Angular’s change detection mechanism. It is particularly useful for optimizing performance by ensuring that Angular’s change detection cycle runs only when necessary. For example, if you are working with external libraries or performing long-running tasks, you can execute them outside of Angular's zone to avoid unnecessary change detection cycles.
 
-### 62. **Explain the concept of lazy loading in Angular. How does it improve performance?**
-
-- **Answer**: Lazy loading is the technique where modules are loaded only when they are needed (on-demand), rather than loading all modules at the start. This helps in reducing the initial loading time of the application and improves performance, as unnecessary code is not loaded until the user navigates to the relevant route.
-
-In Angular, lazy loading can be implemented using the `loadChildren` property in the route configuration.
-
 ### 63. **What is a `Subject` and `BehaviorSubject` in Angular RxJS? How are they different?**
 
 - **Answer**:
