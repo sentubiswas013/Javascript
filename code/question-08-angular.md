@@ -3197,33 +3197,6 @@ The `angular.json` file is the central configuration file for Angular projects. 
    ng generate <schematic-name>
    ```
 
-### **5\. What is Ahead-of-Time (AOT) compilation, and how does it differ from Just-in-Time (JIT) compilation?**
-
-**Ahead-of-Time (AOT)** compilation is a build-time process where the Angular template and components are precompiled before the browser even downloads the application. It transforms TypeScript and HTML into efficient JavaScript code that can be run by the browser directly.
-
-- **AOT Compilation**:
-
-  - **Compilation** happens during the build phase.
-  - **Faster loading** since the templates are precompiled and there’s no need to do additional processing at runtime.
-  - **Smaller bundle size** because unnecessary code is removed during the build process (tree-shaking).
-  - **Error detection** is done earlier, since Angular can catch template errors at compile-time.
-  - **Improved performance**: The app starts up faster in the browser because Angular doesn’t need to compile templates during runtime.
-
-- **Just-in-Time (JIT)** compilation:
-
-  - **Compilation** happens at runtime, i.e., when the application is loaded in the browser.
-  - **Slower initial load time** because the browser must compile templates as the app is loaded.
-  - **Larger bundle size** because the compiler and some other runtime dependencies are included in the final bundle.
-  - **Easier development** since you don’t need a separate build process, but can directly work with templates and components.
-
-- **Differences**:
-
-  - **AOT** is generally used for production builds to improve performance and loading times, while **JIT** is used during development for faster iteration and debugging since it allows for changes to be seen immediately without requiring a rebuild.
-
-### **10\. Miscellaneous**
-
-Certainly! Here's how I would answer the questions from the perspective of a Senior Angular Developer:
-
 ### 1\. **What is your experience with integrating Angular with other frameworks or technologies (e.g., Angular with React, Angular with Webpack)?**
 
 Integrating Angular with other frameworks or technologies often arises in scenarios where an existing Angular application needs to work with other parts of the system that are built using different frameworks or tools. Some common examples include:
