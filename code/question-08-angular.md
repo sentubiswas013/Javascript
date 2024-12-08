@@ -876,6 +876,45 @@ By using lazy loading, Angular only loads the required modules when the user nav
   }
   ```
 
+### 46. **Explain the concept of zones in Angular.**
+
+In Angular, **Zones** are an execution context that helps track asynchronous operations (like HTTP requests, user interactions, setTimeout, etc.) and their completion. The concept of zones is implemented using **Zone.js**, a library that provides an API to execute asynchronous code within a specific context, called a **zone**.
+
+- Angular uses zones to automatically **detect changes** in the application when asynchronous operations (such as HTTP requests, timers, or events) complete.
+- Zones allow Angular to **update the view automatically** whenever data changes, without the need for manual triggering of change detection.
+- **NgZone** is an Angular service that allows you to run code inside or outside the Angular zone. When running inside the Angular zone, Angular’s change detection is triggered automatically. When running outside the Angular zone, change detection must be triggered manually.
+
+Example of using `NgZone`:
+
+```typescript
+import { NgZone } from '@angular/core';
+
+@Component({
+  selector: 'app-my-component',
+  template: '<p>{{ message }}</p>'
+})
+export class MyComponent {
+  message = 'Hello';
+
+  constructor(private ngZone: NgZone) {}
+
+  updateMessage() {
+    // Running outside Angular zone
+    this.ngZone.runOutsideAngular(() => {
+      setTimeout(() => {
+        this.message = 'Updated message!';
+        // Running inside Angular zone to trigger change detection
+        this.ngZone.run(() => {
+          console.log('Change detection triggered');
+        });
+      }, 1000);
+    });
+  }
+}
+```
+
+**Zones** are important because they allow Angular to know when async tasks are completed, ensuring the view is always in sync with the data model.
+
 ### 26. **What are `@Input` and `@Output` decorators in Angular?**
 
 **`@Input`** and **`@Output`** are decorators used for passing data between components, specifically from a parent to a child component and vice versa.
@@ -1885,46 +1924,6 @@ In large-scale applications, NgRx or similar libraries provide a more predictabl
 - AOT is preferred for production environments because it produces optimized code and better performance.
 - JIT is typically used during development for faster iteration.
 
-### 46. **Explain the concept of zones in Angular.**
-
-In Angular, **Zones** are an execution context that helps track asynchronous operations (like HTTP requests, user interactions, setTimeout, etc.) and their completion. The concept of zones is implemented using **Zone.js**, a library that provides an API to execute asynchronous code within a specific context, called a **zone**.
-
-- Angular uses zones to automatically **detect changes** in the application when asynchronous operations (such as HTTP requests, timers, or events) complete.
-- Zones allow Angular to **update the view automatically** whenever data changes, without the need for manual triggering of change detection.
-- **NgZone** is an Angular service that allows you to run code inside or outside the Angular zone. When running inside the Angular zone, Angular’s change detection is triggered automatically. When running outside the Angular zone, change detection must be triggered manually.
-
-Example of using `NgZone`:
-
-```typescript
-import { NgZone } from '@angular/core';
-
-@Component({
-  selector: 'app-my-component',
-  template: '<p>{{ message }}</p>'
-})
-export class MyComponent {
-  message = 'Hello';
-
-  constructor(private ngZone: NgZone) {}
-
-  updateMessage() {
-    // Running outside Angular zone
-    this.ngZone.runOutsideAngular(() => {
-      setTimeout(() => {
-        this.message = 'Updated message!';
-        // Running inside Angular zone to trigger change detection
-        this.ngZone.run(() => {
-          console.log('Change detection triggered');
-        });
-      }, 1000);
-    });
-  }
-}
-```
-
-**Zones** are important because they allow Angular to know when async tasks are completed, ensuring the view is always in sync with the data model.
-
----
 
 ### 47. **What are Angular Universal applications, and how does server-side rendering work in Angular?**
 
