@@ -753,78 +753,49 @@ Example:
 
 Here, `#myInput` is a reference to the `<input>` element. You can access its value in the component by passing `myInput.value` to the `logValue` method.
 
-### 20. **What are Angular forms? What are the two types of forms in Angular?**
+  ### **Intermediate Angular Questions:**
 
-**Angular forms** are used for gathering and validating user input. Angular provides two approaches to work with forms:
+  ### 21. **What are Angular forms? What are the two types of forms in Angular?**
+
+  **Angular forms** are used for gathering and validating user input. Angular provides two approaches to work with forms:
 
 1.  **Template-driven forms**: These are simple and declarative forms where the form model is defined within the template. The form is automatically created and updated based on the template.
 
+    - **Template-driven forms**:
     - Requires `FormsModule`.
-    - Uses `ngModel` for two-way binding.
-    - Less programmatically complex but harder to scale.
+    - Uses Angular directives like `ngModel`, `ngForm`, `ngModelGroup` for two-way binding.
+    - These forms are defined mostly in the template (HTML), with minimal setup in the component class.
+    - They are more declarative, easier to use for simple forms, and automatically bind values between the model and view.
+    - They are best for simple forms with basic validation.
 
-Example of a Template driven form:
+    Example of a Template driven form:
 
-```typescript
-import { FormGroup, FormControl } from '@angular/forms';
+    ```html
+      <form #myForm="ngForm">
+        <input type="text" name="username" ngModel>
+        <button [disabled]="myForm.invalid">Submit</button>
+      </form>
+    ```
 
-this.myForm = new FormGroup({
-  name: new FormControl(''),
-  email: new FormControl('')
-});
-```
 
 2.  **Reactive forms**: These are more programmatically controlled forms, where the form model is created in the component class. This approach gives more control over form validation, state, and dynamic forms.
     - Requires `ReactiveFormsModule`.
     - Uses `FormGroup`, `FormControl`, and `FormArray` for building and managing the form.
+    - Reactive forms offer easier access to the form state and validation, which makes them suitable for large, complex forms.
+    - Validation is handled in the component class, making it easier to test.
 
-Example of a reactive form:
+    Example of a reactive form:
 
-```html
-  <form #myForm="ngForm">
-    <input type="text" name="username" ngModel>
-    <button [disabled]="myForm.invalid">Submit</button>
-  </form>
-```
+    ```typescript
+    import { FormGroup, FormControl } from '@angular/forms';
+
+    this.myForm = new FormGroup({
+      name: new FormControl(''),
+      email: new FormControl('')
+    });
+    ```
 
 Template-driven forms are simpler and often used for small forms, while reactive forms are more scalable and suitable for complex forms.
-
-### **Intermediate Angular Questions:**
-
-### 21. **Explain the difference between template-driven and reactive forms.**
-
-**Template-driven forms** and **reactive forms** are two approaches in Angular for handling forms, and they differ primarily in how they are defined and managed.
-
-- **Template-driven forms**:
-
-  - These forms are defined mostly in the template (HTML), with minimal setup in the component class.
-  - They rely on Angular directives like `ngModel`, `ngForm`, `ngModelGroup`, etc.
-  - They are more declarative, easier to use for simple forms, and automatically bind values between the model and view.
-  - They are best for simple forms with basic validation.
-
-  Example:
-
-  ```html
-  <form #myForm="ngForm">
-    <input type="text" name="username" ngModel>
-    <button [disabled]="myForm.invalid">Submit</button>
-  </form>
-  ```
-
-- **Reactive forms**:
-
-  - These forms are defined entirely in the component class, with the form model managed programmatically using `FormGroup`, `FormControl`, and `FormArray`.
-  - They are more imperative and provide greater flexibility, particularly for complex forms or dynamic form fields.
-  - Reactive forms offer easier access to the form state and validation, which makes them suitable for large, complex forms.
-  - Validation is handled in the component class, making it easier to test.
-
-  Example:
-
-  ```typescript
-  this.form = new FormGroup({
-    username: new FormControl('', Validators.required),
-  });
-  ```
 
 ### 22. **What is the purpose of the `ngModel` directive in Angular?**
 
