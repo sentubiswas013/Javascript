@@ -532,7 +532,7 @@ Usage in the template:
 
     If you rename `main.ts`, the application will **not load** unless you also update the Angular CLI configuration (in `angular.json`) to point to the new file.
 
-49. ### Once we create project what are files creates and explain those files
+49. ### Default project files and folder details
 
     When you create a new Angular project using the Angular CLI (`ng new <project-name>`), several default files and folders are generated in your project directory. These files and folders provide a basic structure for developing Angular applications. Here's a breakdown of the most important files:
 
