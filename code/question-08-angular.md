@@ -761,7 +761,6 @@ Here, `#myInput` is a reference to the `<input>` element. You can access its val
 
 1.  **Template-driven forms**: These are simple and declarative forms where the form model is defined within the template. The form is automatically created and updated based on the template.
 
-    - **Template-driven forms**:
     - Requires `FormsModule`.
     - Uses Angular directives like `ngModel`, `ngForm`, `ngModelGroup` for two-way binding.
     - These forms are defined mostly in the template (HTML), with minimal setup in the component class.
