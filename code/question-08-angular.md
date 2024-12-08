@@ -364,6 +364,20 @@ Usage in the template:
 
 **Note:** If you don't supply a handler for a notification type, the observer ignores notifications of that type.
 
+45. ### What is the steps to update Angular older version to current version?
+  1. **Check current version**: `ng --version`.
+  2. **Use the Angular Doc Update Guide** to understand the migration steps.
+  3. **Update global CLI**: `npm install -g @angular/cli@latest`.
+  4. **Update local CLI**: `npm install @angular/cli@latest`.
+  5. **Run `ng update`**: `ng update @angular/cli @angular/core`.
+  6. **Update other libraries**: `ng update @angular/material @angular/animations`.
+  7. **Run `ng update` incrementally** from version 12 → 13 → 14 → 15 → 16 → 17 → 18.
+  8. **Update TypeScript** if needed: `npm install typescript@latest`.
+  9. **Check for breaking changes** and refactor code as needed.
+  10. **Update third-party dependencies**: `npm update`.
+  11. **Test your app** and fix any issues.
+  12. **Commit your changes**.
+
 45. ### What is multicasting?
 
     **Multicasting** is a way of sharing a single data stream (like an HTTP request or event) with multiple subscribers without triggering the operation multiple times. This makes the process more efficient, as all subscribers receive the same data from a single execution.
