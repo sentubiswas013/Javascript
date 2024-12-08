@@ -365,9 +365,9 @@ Usage in the template:
 **Note:** If you don't supply a handler for a notification type, the observer ignores notifications of that type.
 
 45. ### What is the steps to update Angular older version to current version?
-    **Check current version**: `ng --version`.
-    **Use the Angular Doc Update Guide** to understand the migration steps.
-    **Update global CLI**: `npm install -g @angular/cli@latest`.
+    **Check current version: `ng --version`.
+    **Use the Angular Doc Update Guide to understand the migration steps.
+    **Update global CLI: `npm install -g @angular/cli@latest`.
     **Update local CLI**: `npm install @angular/cli@latest`.
     **Run `ng update`**: `ng update @angular/cli @angular/core`.
     **Update other libraries**: `ng update @angular/material @angular/animations`.
