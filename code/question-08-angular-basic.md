@@ -309,52 +309,52 @@ Usage in the template:
 42. ### What is an observable?
     An **observable** is a way to manage and work with asynchronous data or events in Angular. It represents a stream of data that can emit multiple values over time, like data from an HTTP request, user input, or a timer. You "subscribe" to an observable to receive the emitted values and react to them as they come in.
 
-In simple terms, an observable is like a TV channel that you can tune into (subscribe) to receive updates (data or events).
+    In simple terms, an observable is like a TV channel that you can tune into (subscribe) to receive updates (data or events).
 
-#### Key Points:
+    #### Key Points:
 
-- **Asynchronous**: Observables can handle data that comes in over time, like the result of an HTTP request or events triggered by the user.
-- **Emit Values**: An observable can emit multiple values (e.g., data, events) over time.
-- **Subscribe**: To receive the values emitted by an observable, you **subscribe** to it. Once subscribed, the observer (subscriber) will receive data updates automatically.
+    - **Asynchronous**: Observables can handle data that comes in over time, like the result of an HTTP request or events triggered by the user.
+    - **Emit Values**: An observable can emit multiple values (e.g., data, events) over time.
+    - **Subscribe**: To receive the values emitted by an observable, you **subscribe** to it. Once subscribed, the observer (subscriber) will receive data updates automatically.
 
-  Let see the simple example of observable,
+      Let see the simple example of observable,
 
-  #### Example of an Observable:
+      #### Example of an Observable:
 
-  ```typescript
-  import { Observable } from 'rxjs';
+      ```typescript
+      import { Observable } from 'rxjs';
 
-  // Create a simple observable
-  const myObservable = new Observable(subscriber => {
-    subscriber.next('Hello');
-    subscriber.next('World');
-    subscriber.complete();  // Marks the observable as complete
-  });
+      // Create a simple observable
+      const myObservable = new Observable(subscriber => {
+        subscriber.next('Hello');
+        subscriber.next('World');
+        subscriber.complete();  // Marks the observable as complete
+      });
 
-  // Subscribe to the observable
-  myObservable.subscribe({
-    next: (value) => console.log(value),
-    complete: () => console.log('Done')
-  });
-  ```
+      // Subscribe to the observable
+      myObservable.subscribe({
+        next: (value) => console.log(value),
+        complete: () => console.log('Done')
+      });
+      ```
 
 43. ### What is an observer?
     Observer is an interface for a consumer of push-based notifications delivered by an Observable. It has below structure,
 
-```javascript
-interface Observer<T> {
-closed?: boolean;
-next: (value: T) => void;
-error: (err: any) => void;
-complete: () => void;
-}
-```
+    ```javascript
+    interface Observer<T> {
+    closed?: boolean;
+    next: (value: T) => void;
+    error: (err: any) => void;
+    complete: () => void;
+    }
+    ```
 
-A handler that implements the Observer interface for receiving observable notifications will be passed as a parameter for observable as below,
+    A handler that implements the Observer interface for receiving observable notifications will be passed as a parameter for observable as below,
 
-```javascript
-myObservable.subscribe(myObserver);
-```
+    ```javascript
+    myObservable.subscribe(myObserver);
+    ```
 
 **Note:** If you don't supply a handler for a notification type, the observer ignores notifications of that type.
 
@@ -399,23 +399,99 @@ myObservable.subscribe(myObserver);
 46. ### What is a bootstrapping module?
     In Angular, a **bootstrapping module** is the module responsible for initializing and starting up an Angular application. It is the entry point of the application and tells Angular which component to load first when the application starts.
 
-#### Key Points:
+    #### Key Points:
 
-1. **Root Module**: The bootstrapping module is usually the **root module** (often named `AppModule`).
-2. **Bootstrapping**: During the bootstrapping process, Angular loads the root component (usually `AppComponent`) and sets up the application for rendering.
-3. **`platformBrowserDynamic().bootstrapModule()`**: This is the function Angular uses to start the bootstrapping process in the browser. It bootstraps the root module (`AppModule`) and starts the Angular application.
+    1. **Root Module**: The bootstrapping module is usually the **root module** (often named `AppModule`).
+    2. **Bootstrapping**: During the bootstrapping process, Angular loads the root component (usually `AppComponent`) and sets up the application for rendering.
+    3. **`platformBrowserDynamic().bootstrapModule()`**: This is the function Angular uses to start the bootstrapping process in the browser. It bootstraps the root module (`AppModule`) and starts the Angular application.
 
-#### Example:
+    #### Example:
 
-In the `main.ts` file of an Angular application, you’ll typically see something like this:
+    In the `main.ts` file of an Angular application, you’ll typically see something like this:
 
-```typescript
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
+    ```typescript
+    import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+    import { AppModule } from './app/app.module';
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-.catch(err => console.error(err));
-```
+    platformBrowserDynamic().bootstrapModule(AppModule)
+    .catch(err => console.error(err));
+    ```
+
+46. ###  Once we create project what are files creates and explain those files
+
+    When you create a new Angular project using the Angular CLI (`ng new <project-name>`), several default files and folders are generated in your project directory. These files and folders provide a basic structure for developing Angular applications. Here's a breakdown of the most important files:
+
+    ### 1. **`e2e/` (End-to-End Testing Folder)**
+      - **`src/app.e2e-spec.ts`**: Contains the end-to-end test cases for the application. These tests use Protractor to simulate user interactions and test the application from an end-user's perspective.
+      - **`src/app.po.ts`**: Page Object model that defines how to interact with the elements on a page.
+
+    ### 2. **`node_modules/`**
+      - This folder contains all the npm packages installed for the project, including Angular libraries and any other dependencies you install using `npm install`.
+
+    ### 3. **`src/` (Source Folder)**
+      - This is where all your application code lives. It includes several important subfolders and files.
+
+    #### a. **`src/app/` (Main Application Code)**
+      - **`app.module.ts`**: The root module of your Angular application. It defines the root component and imports other Angular modules that your app requires.
+      - **`app.component.ts`**: The root component of the application. It includes the logic for the main component, typically the one shown when the application starts. It includes a template (`app.component.html`) and styling (`app.component.css`).
+      - **`app.component.html`**: The HTML template for the root component.
+      - **`app.component.css`**: The CSS styles for the root component.
+      - **`app.component.spec.ts`**: Contains unit tests for the `AppComponent`.
+
+    #### b. **`src/assets/` (Static Files)**
+      - This folder is for static files such as images, fonts, icons, or any other assets your application needs.
+
+    #### c. **`src/environments/` (Environment Configuration)**
+      - **`environment.ts`**: Configuration file for development settings.
+      - **`environment.prod.ts`**: Configuration file for production settings. It typically contains settings like API URLs that should differ between environments (development, production, etc.).
+
+    #### d. **`src/favicon.ico`**: The default favicon for your application.
+
+    #### e. **`src/index.html`**: The main HTML file that serves as the entry point for the Angular application. It includes the `<app-root></app-root>` tag where the root component is injected.
+      
+    #### f. **`src/main.ts`**: The main entry point for your application. It bootstraps the root module (`AppModule`).
+      
+    #### g. **`src/styles.css`**: Global styles for your application. You can add global CSS or include third-party styles here.
+
+    #### h. **`src/test.ts`**: The main entry point for running unit tests with the Angular testing framework (Jasmine and Karma).
+      
+    ### 4. **`angular.json`**
+      - This file contains the configuration settings for the Angular CLI. It defines how the application should be built and served, what assets to include, and other settings like file replacements for different environments.
+
+    ### 9. **`package-lock.json` or `yarn.lock`**
+   - **Purpose**: These files lock the versions of dependencies in a Node.js project to ensure consistency across environments. They specify the exact versions of dependencies and sub-dependencies that were installed when the project was set up.
+   
+
+    ### 5. **`package.json`**
+      - Defines the project's dependencies, scripts, and other metadata. It includes all the npm packages the project relies on (like Angular itself) and scripts like `ng serve`, `ng build`, etc.
+
+    ### 6. **`tsconfig.json`**
+      - The TypeScript configuration file. It defines how TypeScript compiles the application, including compiler options and file includes/excludes.
+
+    ### 7. **`tsconfig.app.json`**
+      - This file contains TypeScript settings that are specific to the application. It includes the source files to be compiled and some specific settings for the Angular project.
+
+    ### 8. **`tsconfig.spec.json`**
+      - This file contains TypeScript settings for unit testing. It includes the files required for testing and ensures the right environment for test execution.
+
+    ### 9. **`karma.conf.js`**
+      - This is the configuration file for Karma, the test runner used by Angular CLI. It defines the testing environment, which browsers to run tests on, and how to execute tests.
+
+    ### 10. **`protractor.conf.js`**
+      - This is the configuration file for Protractor, the end-to-end testing framework. It defines the test framework, the settings for running tests, and other Protractor-related settings.
+
+    ### 11. **`webpack.config.js`** (Optional for Advanced Users)
+      - If you're using custom Webpack configurations (typically in a more advanced Angular setup), this file is where you can define those settings.
+
+    ### Summary of Key Files:
+    - **`src/`**: Contains the application source code and assets.
+    - **`angular.json`**: Angular CLI configuration.
+    - **`package.json`**: Project metadata, dependencies, and npm scripts.
+    - **`tsconfig.json`**: TypeScript compiler options.
+    - **`karma.conf.js`** and **`protractor.conf.js`**: Configuration for testing tools.
+
+    These files form the foundation of an Angular project and help manage building, testing, and serving the application.
+  
 
 9. ### What is a template?
 
