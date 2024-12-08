@@ -1247,7 +1247,9 @@ const routes: Routes = [
 
 The **`ng-content`** directive is used in Angular to implement **content projection**. It allows the embedding of external content into the component's template. This directive is primarily used in **component-based reusable UI components** (such as modal dialogs, tabs, or cards) where you want to allow users to pass content into the component's template.
 
-- **Content Projection** lets you design a component in such a way that the content inside the component is provided by its parent.
+#### `ng-content`:
+- **Purpose**: It is used for **content projection** in Angular. It allows you to insert content from a parent component into a child component's template.
+- **Example**: You can use it to pass HTML from a parent component to a child component, and display it in a specific place inside the child.
 
 Example:
 
@@ -1266,7 +1268,22 @@ The `app-card` component might look like this:
 </div>
 ```
 
+#### `ng-template`:
+- **Purpose**: It is used to **define a block of HTML** that is not rendered immediately. It can be conditionally displayed later, often with structural directives like `*ngIf` or `*ngFor`.
+- **Example**: You can define hidden content that is only shown when needed.
+
+```html
+<div *ngIf="isVisible; else elseTemplate">
+  <h1>Content visible</h1>
+</div>
+
+<ng-template #elseTemplate>
+  <h1>Content is hidden</h1>
+</ng-template>
+```
+
 In this example, the `ng-content` directive allows the parent content (i.e., the `<h1>` and `<p>` tags) to be projected into the `<app-card>` component.
+
 
 ---
 
