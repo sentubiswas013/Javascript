@@ -2134,7 +2134,7 @@ In Angular, an `AuthGuard` is used to protect routes from unauthorized access by
 
 Here's a step-by-step guide to implement an `AuthGuard` in Angular:
 
-### 1. Create an Authentication Service
+#### 1. Create an Authentication Service
 
 First, you need a service to handle authentication. This service should manage user login status, store tokens, and provide a method to check if a user is authenticated.
 
@@ -2177,7 +2177,7 @@ export class AuthService {
 }
 ```
 
-### 2. Create an AuthGuard
+#### 2. Create an AuthGuard
 
 Now, you need to create the `AuthGuard` that will protect your routes.
 
@@ -2211,7 +2211,7 @@ export class AuthGuard implements CanActivate {
 }
 ```
 
-### 3. Define Routes and Protect with the AuthGuard
+#### 3. Define Routes and Protect with the AuthGuard
 
 Next, you need to apply the `AuthGuard` to specific routes in your routing module. The `AuthGuard` will ensure that users who are not logged in cannot access those routes.
 
