@@ -1351,7 +1351,58 @@ const routes: Routes = [
 ];
 ```
 
----
+### **3\. What are interceptors in Angular? How would you use them for adding headers or logging API requests?**
+
+**Interceptors** in Angular are a powerful mechanism to intercept and modify HTTP requests and responses globally. They are typically used for:
+
+- **Adding Authorization headers (e.g., JWT token)**.
+- **Logging API requests**.
+- **Handling global error management**.
+- **Modifying response data** (e.g., standardizing error messages).
+
+To implement an interceptor, create a service that implements the `HttpInterceptor` interface:
+
+1. **Create the Interceptor**:
+
+   ```typescript
+   import  { Injectable } from '@angular/core';
+   import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+   import { Observable } from 'rxjs';
+
+   @Injectable()
+   export class AuthInterceptor implements HttpInterceptor {
+     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+       const token = localStorage.getItem('authToken');  // Retrieve token from storage
+
+       if (token) {
+         // Clone the request and add the Authorization header
+         const clonedRequest = req.clone({
+           setHeaders: {
+             Authorization: `Bearer ${token}`
+           }
+         });
+         return next.handle(clonedRequest);
+       }
+
+       return next.handle(req);  // Return the original request if no token
+     }
+   }
+   ```
+
+2. **Register the Interceptor**:
+
+   ```typescript
+   import  { NgModule } from '@angular/core';
+   import { HTTP_INTERCEPTORS } from '@angular/common/http';
+   import { AuthInterceptor } from './auth.interceptor';
+
+   @NgModule({
+     providers: [
+       { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+     ]
+   })
+   export class AppModule { }
+   ```
 
 ### 37. **What is the purpose of the `ng-content` and `ng-template` directive in Angular?**
 
@@ -2890,59 +2941,6 @@ codethis.http.get('url').pipe(
   })
 );
 ```
-
-### **3\. What are interceptors in Angular? How would you use them for adding headers or logging API requests?**
-
-**Interceptors** in Angular are a powerful mechanism to intercept and modify HTTP requests and responses globally. They are typically used for:
-
-- **Adding Authorization headers (e.g., JWT token)**.
-- **Logging API requests**.
-- **Handling global error management**.
-- **Modifying response data** (e.g., standardizing error messages).
-
-To implement an interceptor, create a service that implements the `HttpInterceptor` interface:
-
-1. **Create the Interceptor**:
-
-   ```typescript
-   import  { Injectable } from '@angular/core';
-   import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-   import { Observable } from 'rxjs';
-
-   @Injectable()
-   export class AuthInterceptor implements HttpInterceptor {
-     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-       const token = localStorage.getItem('authToken');  // Retrieve token from storage
-
-       if (token) {
-         // Clone the request and add the Authorization header
-         const clonedRequest = req.clone({
-           setHeaders: {
-             Authorization: `Bearer ${token}`
-           }
-         });
-         return next.handle(clonedRequest);
-       }
-
-       return next.handle(req);  // Return the original request if no token
-     }
-   }
-   ```
-
-2. **Register the Interceptor**:
-
-   ```typescript
-   import  { NgModule } from '@angular/core';
-   import { HTTP_INTERCEPTORS } from '@angular/common/http';
-   import { AuthInterceptor } from './auth.interceptor';
-
-   @NgModule({
-     providers: [
-       { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
-     ]
-   })
-   export class AppModule { }
-   ```
 
 ### **4\. How would you handle file uploads in Angular? What are the best practices for handling large files?**
 
