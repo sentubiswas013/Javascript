@@ -387,6 +387,17 @@ console.log("End");
      | Doesn't provide any operators                                      | Provides operators such as map, forEach, filter, reduce, retry, and retryWhen etc        |
      | Cannot be canceled                                                 | Canceled by using unsubscribe() method                                                   |
 
+08. ### What are the differences between Callback Functions and Higher-Order Components
+
+### Key Differences:
+| Feature               | Callback Functions                          | Higher-Order Components (HOCs)                |
+|-----------------------|---------------------------------------------|----------------------------------------------|
+| **Definition**         | A function passed as an argument to be executed later. | A function that takes a component and returns a new component with additional behavior. |
+| **Context**            | General JavaScript, often used for async operations (e.g., event handlers, APIs). | Primarily used in React to enhance or modify components. |
+| **Purpose**            | To handle asynchronous operations or custom actions after a task is complete. | To add reusable functionality to components without changing the component itself. |
+| **Return Value**       | Returns nothing directly; it executes some code when called. | Returns a new component, often with added props or logic. |
+| **Usage**              | Used in async operations (e.g., `setTimeout`, API calls). | Used in React to modify or augment component behavior. |
+
 401. ### What is RxJS
 
      RxJS (Reactive Extensions for JavaScript) is a library for implementing reactive programming using observables that makes it easier to compose asynchronous or callback-based code. It also provides utility functions for creating and working with observables.
