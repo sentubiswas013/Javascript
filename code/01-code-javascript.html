@@ -14,6 +14,7 @@
       var str2 = 'We are Bharatiya';
       var num1 = 10;
       var num1 = 20;
+      var num3;
       var arrStr1 = ['Volvo', 'Jeep', 'Volvo', 'Lincoln', 'TATA', 'Ford'];
       var arrStr2 = ['apple', 'banana', 'cherry', 'apple', 'banana'];
       var arrNum1 = [2, 4, 3, 6, 9, 2, 1, 9];
@@ -25,6 +26,12 @@
         { age: 32, name: 'toby' },
         { age: 19, name: 'John' },
         { age: 20, name: 'spot' }
+      ];
+      var arrObj2 = [
+        { age: 30, name: 'Sentu' },
+        { age: 15, name: 'spot' },
+        { age: 33, name: 'Pintu' },
+        { age: 32, name: 'toby' }
       ];
       var obj1 = {
         name: 'Sentu Biswas',
@@ -121,38 +128,43 @@
 
 
       // How to write Set timeout =========================
-      setTimeout(() => {
-        // console.log("Hello World")
-      }, 1000);
+      function setTimeoutFunc(){
+        setTimeout(() => {
+          // console.log("Hello World")
+        }, 1000);
+      }
+      // setTimeoutFunc();
 
       // How to merge two arr with unique data =========================
-      let = [...new Set(arrNum1)];
-      right = [...new Set(arrNum2)];
-      result = [...new Set([...arrNum1, ...arrNum2])];
-      // console.log("result----", let, right, result);
+      function uniqueData() {
+        let = [...new Set(arrNum1)];
+        right = [...new Set(arrNum2)];
+        result = [...new Set([...arrNum1, ...arrNum2])];
+        // console.log("result----", let, right, result);
+      }
+      // uniqueData();
+      
 
       // How to do shallow copy using Object.assign or spread operator =========================
-      resultObj = Object.assign({}, obj1, obj2);
-      let resultObjTemp = { ...obj1, ...obj2 };
-      // console.log('resultObj----', resultObj, resultObjTemp);
+      function shallowCopy() {
+        resultObj = Object.assign({}, obj1, obj2);
+        let resultObjTemp = { ...obj1, ...obj2 };
+        // console.log('resultObj----', resultObj, resultObjTemp);
 
-      const obj10 = { a: 1, b: 2 };
-      const obj20 = { c: 3 };
-      const mergedObj = Object.assign({}, obj10, obj20); // Creates a shallow copy
-      // console.log('mergedObj----', mergedObj);
-
+        const obj10 = { a: 1, b: 2 };
+        const obj20 = { c: 3 };
+        const mergedObj = Object.assign({}, obj10, obj20); // Creates a shallow copy
+        // console.log('mergedObj----', mergedObj);
+      }
+      shallowCopy();
 
       // How to swap two number =========================
       function numSwap() {
-        let a = 20;
-        let b = 15;
-        let c;
+        num1 = num1+num2;
+        num2 = num1-num2;
+        num1 = num1-num2;
 
-        a = a+b;
-        b = a-b;
-        a = a-b;
-
-        console.log(a, b);
+        console.log(num1, num2);
       }
       // numSwap();
 
@@ -170,8 +182,19 @@
       }
       // swapingABC();
 
-      // How to swap three number =========================
-      
+      // How to remove duplicates from an array of objects using JavaScript ? =========================
+      function removeDuplicateObj() {
+        for (let index = 0; index < arrObj1.length; index++) {
+          const element = arrObj1[index];
+          if(!left.includes(arrObj1[index].name)){
+            left.push(arrObj1[index].name)
+            result.push(arrObj1[index]);
+          }
+          // console.log("element----", element);          
+        }
+        console.log("result--", result)
+      }
+      // removeDuplicateObj();
 
 
 

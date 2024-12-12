@@ -10,164 +10,33 @@
 
 
 <script>
-    var books = [
-        { title: "C++", author: "Bjarne" },
-        { title: "Java", author: "James" },
-        { title: "Python", author: "Guido" },
-        { title: "Java", author: "James" },
-    ];
-    var person = {
-        name: "Sentu",
-        lname: "Biswas",
-        email: "abac@gmail.com",
-        address : {
-            village: "Nazirpur",
-            city: "birnagar",
-            dist: "Nadia",
-            pin: 741127,
-            state: "West Bengal"
-        },
-        contact: 23789234
+    var car = new Vehicle("Honda", "white", "2010", "UK");
+    console.log(car);
+
+    function Vehicle(model, color, year, country) {
+        this.model = model;
+        this.color = color;
+        this.year = year;
+        this.country = country;
     }
-    var obj1 = { fname: "Sentu", lname: "biswas" };
-    var obj2 = { fname: "Pintu", lname: "biswas" }
-    let string = "supriya";
-    let stringLong = "supriya is a hahahahaha good girl"
-    var arrNum = [1,2,3,3,7,4,5,2];
-    var arrLong = [55, 44, 55,67,67,67,67,8,8,8,8,8,65,1,2,3,3,34,5];
 
-    var resultStr = '';
-    var arr1 = [];
-    var arr1 = [];
-    var resultArr = [];
-
-
-    function reverseStr(str) {
-        let strArr = str.split(' ')
-        let longStr = "";
-        let shortStr = "";
-        let shortNum = Infinity;
-
-        for (let index = 0; index < strArr.length; index++) {
-            
-            // for long str
-            if (strArr[index].length > longStr.length) {
-                longStr = strArr[index];
-            }
-            
-            // for short str
-            if(strArr[index].length < shortNum) {
-                shortNum = strArr[index].length;
-                shortStr = strArr[index];
-            }
+    function foo() {
+        let x = (y = 0);
+        x++;
+        y++;
+        return x;
         }
 
-        console.log("longStr-----", longStr);
-        console.log("shortStr----", shortStr);
+    console.log(foo(), typeof x, typeof y);
 
+    function main() {
+    console.log("A");
+    setTimeout(function print() {
+        console.log("B");
+    }, 0);
+    console.log("C");
     }
-    // reverseStr(stringLong);
-
-    function duplicateVal () {
-        let array = [1,4,6,6,5,9,1];
-        let duplicateVal = [];
-        let rightArr = [];
-        for (let index = 0; index < array.length; index++) {
-            if(!duplicateVal.includes(array[index])) {
-                duplicateVal.push(array[index])
-                // duplicateVal = array[index]
-            } else {
-                rightArr.push(array[index])
-            }
-        }
-        console.log("duplicateVal---", duplicateVal, rightArr);
-    }
-    // sduplicateVal();
-
-    function checkPalinDrome() {
-        let str = "12321";
-        let isPalinDrome = false;
-        let j = str.length - 1;
-
-        for (let index = 0; index < str.length; index++) {
-            // const element = array[index];
-            if(str[index] !== str[j]){
-                isPalinDrome = true
-                break
-            }
-            j--
-        }
-        console.log("isPalinDrome---", isPalinDrome);
-    }
-    // checkPalinDrome();
-
-    function reverseNumStr() {
-        let arrNum = [1,4,6,8,9,0];
-        let arrNUmRes  = [];
-        let arrStr = ['a','d','h','k','i'];
-        let arrStrRes  = [];
-
-        // reverse number array
-        for (let index = arrNum.length-1; index >= 0 ; index--) {
-            arrNUmRes.push(arrNum[index])        
-        }
-
-        // reverse string array
-        for (let j = arrStr.length-1; j >= 0 ; j--) {
-            arrStrRes.push(arrStr[j])        
-        }
-
-        console.log("arrNUmRes-----", arrNUmRes, arrStrRes)
-    }
-    // reverseNumStr();
-
-    function sortData() {
-        let array = [1,4,6,8,9,0];
-        for (let i = 0; i < array.length; i++) {
-        // for (let i = 0; i < array.length; i++) {
-
-            for (let j = 0; j < array.length - 1 - i; j++) {
-           //  for (let j = 0; j < array.length - 1 - i; j++) {
-                // let temp = array[j];
-                // array[j] = array[j+1];
-                // array[j+1] = temp;
-                if (array[j] > array[j + 1]) {
-                    let temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-            }
-        }
-        console.log("result----", array);
-    }
-    // sortData();
-
-
-    function fibonacciIterative(n) {
-        let a = 0, b = 1;
-        for (let i = 2; i <= n; i++) {
-            let temp = a + b;
-            a = b;
-            b = temp;
-        }
-        return n === 0 ? a : b;
-    }
-    console.log(fibonacciIterative(5)) 
-
-function vowelCounts(){
-    let vowels=["a","i","e","o","u"];
-    var str ="priya";
-
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-        
-    }
-
-    for(){
-        
-    }
-}
-vowelCounts()
+    main();
 
 </script>
 

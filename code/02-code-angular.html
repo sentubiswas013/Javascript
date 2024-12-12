@@ -46,8 +46,7 @@
       import { Injectable  } from "@angular/core";
       import { httpClient } from "@angular/common/http";
       import { Observable, throwError } from "rxjs/";
-      import { catchError } from "rxjs/operators"
-     
+      import { catchError } from "rxjs/operators";     
 
       @Injectable({
         providedIn: "root"
@@ -66,14 +65,78 @@
         }
       }
 
+       // Write a Authguard =========================
+      import Injectable from "@angular/core";
+      import { CanActivate, ActivatedRouteSnapshot, RoutedStateSnapshot, Router } from "@angular/router";
+      import { CanActivate, ActivatedRouteSnapshot, RoutedStateSnapshot, Router } from "@angular/router"
+ 
+      @Injectable({
+        providedIn: "root"
+      })
 
-      // Write a service and handle error =========================
+      export class Authguard implements CanActivate {
+        constructor ( private authService: authService) { }
+        CanActivate(
+          next: ActivatedRouteSnapshot,
+          state: RoutedStateSnapshot
+        )
+        :boolean{
+          if(this.authService.authenticated(0)){
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }
+      console routes: Routes = [
+        { path: "/home", component: HomeComponent, canActivate=[Authguard] }
+      ]
 
 
+      // Write a Interceptor =========================
+      import { Injectable  } from "@angular/core";
+      import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
+      import { Observable, throwError } from "rxjs/";
+      import { catchError } from "rxjs/operators" 
 
+
+      @Injectable()
+      export class AuthInterceptor implements HttpInterceptor{
+        intercept(req: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<any>> {
+          const token = localStorage.getItem("token");
+          if(token){
+            return next.handle(Request)
+          } 
+        }
+      }
+
+      // Write a custom pipe =========================
+      import { Pipe, PipeTransform } frm "@angular/core";
+      @Pipe({PipeTransform
+        name: "orderBy"
+      })
+
+      export class orderByPipe implements PipeTransform {
+        transForm(valiue: string):string {
+          return valiue;
+        }
+      }
+
+      // Write a custom directive =========================
+      import { Derective, Elementref, Renderer2 } from "@angular/core";
+
+      @Derective({
+        selector: "[highlight]"
+      })
+
+      export class hightLightDerective {
+        constructor(private el: Elementref, private renderer: Renderer2){}
+        this.renderer.setStyle(this.el.nativeElement, 'color', 'red')
+      }
       
+      <p highlight> Hello World </p>
 
-      
+      // Write a router navigation =========================
 
 
 

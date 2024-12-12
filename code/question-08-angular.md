@@ -18,6 +18,33 @@
   - It supports features like lazy loading, AOT (Ahead of Time) compilation, and improved dependency injection.
   - Angular provides better performance, improved tooling, and supports mobile and desktop applications.
 
+
+  Angular 18 introduces several notable features and improvements aimed at enhancing developer productivity, performance, and the overall user experience:
+
+### 2. **What are new feature added in angular 18?**
+
+1. **Zoneless Change Detection**: A significant shift in Angular 18 is the experimental introduction of zoneless change detection, allowing developers to remove `Zone.js`. This reduces application complexity, improves debugging, and decreases bundle size, resulting in faster loading times and better performance.
+
+2. **Stable Deferrable Views**: Previously experimental, `@defer` blocks for lazy loading parts of the UI are now stable, enabling better control over the rendering and performance of large applications.
+
+3. **Material 3 Stabilization**: Angular Material 3 themes and components have reached stability, offering modern UI features and improved documentation.
+
+4. **Enhanced TypeScript Support**: Compatibility with TypeScript 5.4 ensures better type-checking, code readability, and the use of modern TypeScript features.
+
+5. **CLI Improvements**: Updates to the Angular CLI include automated routing setup with `ng generate`, refined linting rules, and other developer-friendly enhancements.
+
+6. **Smaller Bundle Sizes with Ivy**: Improvements to the Ivy rendering engine further reduce bundle sizes and streamline compilation, focusing only on modified application sections.
+
+7. **Internationalization Support**: Enhanced APIs and tools improve localization processes, making it easier to support multilingual applications.
+
+8. **Improved Debugging Tools**: Updates to Angular DevTools offer deeper insights into app performance, dependency management, and state changes for better optimization.
+
+9. **Standalone Components**: Expanded functionality makes standalone components more modular and reusable without dependencies on Angular modules.
+
+10. **Route Redirects with Functions**: This new feature allows dynamic route redirection based on functions instead of static strings, offering better control and flexibility.
+
+These updates reflect Angular's commitment to addressing developer feedback and optimizing both the framework and application development experience. For more details, check out the updates from sources like RadixWeb, Bacancy Technology, and JS Panther.
+
 5. ### What are the key components of Angular?
 
    Angular has the key components below,
