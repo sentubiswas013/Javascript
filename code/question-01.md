@@ -156,6 +156,27 @@ console.log("End");
 // Hello, Ninja!
 ```
 
+### Key Differences:
+
+| **Aspect**               | **Synchronous**                             | **Asynchronous**                              |
+|--------------------------|---------------------------------------------|-----------------------------------------------|
+| **Execution Flow**        | Tasks are executed one after another.      | Tasks can be executed concurrently.          |
+| **Blocking**              | Blocks the program until the task finishes. | Does not block the program; can continue with other tasks. |
+| **Complexity**            | Easier to understand and implement.        | More complex but more efficient for I/O-bound tasks. |
+| **Efficiency**            | Not efficient for tasks that take time (e.g., I/O operations). | More efficient for handling many I/O-bound tasks concurrently. |
+| **Common Use Cases**      | Simple tasks where timing is not critical. | Web servers, network requests, background jobs, etc. |
+| **Example**               | A function waits for a file read to finish before continuing. | A function initiates a file read but continues doing other work until the file is read. |
+
+### Use Cases
+
+- **Synchronous**: 
+  - Suitable for CPU-bound operations, where each task depends on the completion of the previous one (e.g., calculations, data transformations).
+  - Simpler applications with fewer concurrency needs.
+
+- **Asynchronous**: 
+  - Ideal for I/O-bound operations, such as making network requests, reading from disk, or interacting with databases.
+  - Used in environments that require high concurrency, like web servers, real-time applications, or when dealing with a large number of external systems.
+
 
 05. ### What is the difference between Call, Apply and Bind
 
