@@ -1,209 +1,154 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
-
-<script>
-    var books = [
-        { title: "C++", author: "Bjarne" },
-        { title: "Java", author: "James" },
-        { title: "Python", author: "Guido" },
-        { title: "Java", author: "James" },
-    ];
-    var person = {
-        name: "Sentu",
-        lname: "Biswas",
-        email: "abac@gmail.com",
-        address : {
-            village: "Nazirpur",
-            city: "birnagar",
-            dist: "Nadia",
-            pin: 741127,
-            state: "West Bengal"
+  <head>
+    <title>Welcome</title>
+  </head>
+  <body>
+    <h1>&nbsp;</h1>
+    <script>
+      var left = [];
+      var right = [];
+      var result = [];
+      var resultObj = {};
+      var str1 = 'madam';
+      var str2 = 'We are Bharatiya';
+      var num1 = 10;
+      var num1 = 20;
+      var arrStr1 = ['Volvo', 'Jeep', 'Volvo', 'Lincoln', 'TATA', 'Ford'];
+      var arrStr2 = ['apple', 'banana', 'cherry', 'apple', 'banana'];
+      var arrNum1 = [2, 4, 3, 6, 9, 2, 1, 9];
+      var arrNum2 = [1, 5, 9, 4, 7, 2, 3, 7];
+      var arrObj1 = [
+        { age: 40, name: 'fluffy' },
+        { age: 15, name: 'spot' },
+        { age: 24, name: 'fluffy' },
+        { age: 32, name: 'toby' },
+        { age: 19, name: 'John' },
+        { age: 20, name: 'spot' }
+      ];
+      var obj1 = {
+        name: 'Sentu Biswas',
+        age: 30,
+        address: function (address) {
+          console.log(`Hello ${address}`);
         },
-        contact: 23789234
-    }
-    let string = "supriya";
-    let stringLong = "supriya is a hahahahaha good girl";
-    var arr = [1,2,3,4,3,7,4,5];
-    var arrLong = [55, 44, 55,67,67,67,67,8,8,8,8,8,65,1,2,3,3,34,5];
+      };
+      var obj2 = {
+        name: 'Pintu Biswas',
+        age: 25,
+        address: function (address) {
+          console.log(`Hello ${address}`);
+          return address;
+        },
+      };
 
-    for (let index = 0; index < 5; index++) {
-        const element = 5[index];
-        console.log("element----", element)
-    }
-
-    console.log("------------------------------------------");
-    for (const key in person) {
-        if (person.hasOwnProperty.call(person, key)) {
-            const element = person[key];
-            console.log("element----", element)
+      // Write a closures function =========================
+      function clouseFunc() {
+        let name = 'Sentu Biswas';
+        function person() {
+          console.log(name);
         }
-    }
-    console.log("------------------------------------------");
-    books.some((row)=>{
-        console.log("row---", row.title,  (row.title === 'Java'))
-    })  
-    console.log("------------------------------------------");
-    // books.reduce((item)=>{
-    //     console.log("item---", item.title,  (item.title === 'Java'))
-    // })  
+        return person();
+      }
+      // clouseFunc();
 
-    let arrLeft = '';
-    let arrRight = '';
-    let result = '';
-    function getDuplicate(input) {
-        let arr = input.split(' ')
-        console.log("arr---", arr)
-        for (let index = 0; index < arr.length; index++) {
-            if(!arrLeft.includes(arr[index])) {
-                arrLeft += arr[index];
-                result += arr[index];
-                // arrLeft.push(arr[index]);   
-                // result.push(arr[index]);             
-            } else {
-                // arrRight.push(arr[index]);
-                
-            }
+      // Write a method for Call/Apply/Bind function =========================
+      function info(email, phone) {
+        console.log(this.name, this.age, this.address('Nazirpur'));
+        console.log(`Hello World ${email} ${phone}`);
+      }
+      // info.call(obj1, "abc@gmail", 5435435);
+      // info.apply(obj2, ["abc@gmial.com", 64564654])
+      // let info1 = info.bind(obj1);
+      // info1("abc@gmial.com", 64564654)
+
+      // How to write Arrow function =========================
+      add = (a, b) => console.log(a + b);
+      // add(2, 6)
+
+      // How to write Anoumous Function =========================
+      (function helloWorld() {
+        console.log('Hello World');
+      });
+      // ();
+
+      // How to write Set timeout =========================
+      setTimeout(() => {
+        // console.log("Hello World")
+      }, 1000);
+
+      // How to merge two arr with unique data =========================
+      let = [...new Set(arrNum1)];
+      right = [...new Set(arrNum2)];
+      result = [...new Set([...arrNum1, ...arrNum2])];
+      // console.log("result----", let, right, result);
+
+      // How to do shallow copy using Object.assign or spread operator =========================
+      resultObj = Object.assign({}, obj1, obj2);
+      let resultObjTemp = { ...obj1, ...obj2 };
+      // console.log('resultObj----', resultObj, resultObjTemp);
+
+      const obj10 = { a: 1, b: 2 };
+      const obj20 = { c: 3 };
+      const mergedObj = Object.assign({}, obj10, obj20); // Creates a shallow copy
+      // console.log('mergedObj----', mergedObj);
+
+      // How to write Callback fcuntions =========================
+      function callFunc() {
+        console.log("Hello world");
+      }
+      function callBackFunc(callFunc) {
+        console.log("Sentu Biswas")
+        callFunc();
+      }
+      // callBackFunc(callFunc);
+
+      // How to write HOC function =========================
+      function hocFunc(component) {
+        return function enhanceFunc(props){
+            // return(
+            //     <component data={props}/>
+            // )
         }
-
-        console.log("result----", result);
-    }
-   
-    // getDuplicate('priya riya supriya');
-
-    function checkPalindrome() {
-        const string = "12321";
-        let isPalindrome = true;  // Initial assumption is that the string is a palindrome
-        let len = string.length;
-        let j = len - 1;
-
-            for (let i = 0; i < len / 2; i++) {  // Only need to loop halfway through the string
-                if (string[i] !== string[j]) {
-                    isPalindrome = false;  // If a mismatch is found, set to false
-                    break;  // Exit the loop early as we already know it's not a palindrome
-                }
-                j--;  // Move the pointer towards the middle
-            }
-        return isPalindrome;
-    }
-
-    console.log(checkPalindrome());  // Returns true if palindrome, false otherwise
-
-    function removeDuplicateCharacters() {
-        var string = 'priya riya supriya';
-        let result = '';
-        
-        // Loop through each character in the string
-        for (let i = 0; i < string.length; i++) {
-            let char = string[i];
-
-            if (!result.includes(char)) {
-                result += char;
-            }
-
-        }
-        
-        return result;
-        }
-
-        console.log(removeDuplicateCharacters()); // Output: priya su
+      }
 
 
-        function maxValue (arr) {
-            let max = '';
-            for (let index = 0; index < arr.length; index++) {
-                if(arr[index] > max) {
-                    max = arr[index]
-                }
-            }
-            console.log("max----", max);
-        }
-
-       //  maxValue([4,0,3,1,9])
-       function minValue(arr) {
-        let min = arr[0];
-
-        for (let val of arr) {
-            if (val < min) {
-                min = val;
-            }
-        }
-            return min;
-        }
-        console.log(minValue([3,6,7,8,1]));
-
-       function minValue(arr) {
-            let min = Infinity;  // Initialize min to a very large number
-            for (let index = 0; index < arr.length; index++) {
-                if (arr[index] < min) {  // Compare the current value with the current min
-                    min = arr[index];  // Update min if a smaller value is found
-                }
-            }
-            console.log("min----", min);  // Log the minimum value
-        }
-
-        minValue([4, 5, 3, 1, 9]);
-
-        // let a = 10;
-        // let b = 20
-
-        // a = a+b;
-        // b = a-b;
-        // a = a-b
-
-        // console.log("a---b", a, b)
-
-        let a=10;
-        let b=20;
+      // How to swap two number =========================
+      function numSwap() {
+        let a = 20;
+        let b = 15;
         let c;
-        c = a;
-        a = b;
-        b = c;
 
-        console.log("-----", a,b,c)
+        a = a+b;
+        b = a-b;
+        a = a-b;
 
+        console.log(a, b);
+      }
+      // numSwap();
 
-        function info (name, callback){
-            console.log(`Hello, ${name}`);
-            callback();
-        }
+      // How to swap three number =========================
+      function swapingABC(){
+        let a = 20;
+        let b = 15;
+        let c;
 
-        // function greet(name, callback) {
-        //     console.log(`Hello, ${name}`);
-        //     callback();
-        // }
+        c=a;
+        a=b;
+        b=c;
 
-        function details () {
-            console.log('Goodbye!');
-        }
+        console.log("a----", a,b,c);
+      }
+      // swapingABC();
 
-        function afterGreet() {
-            console.log('Goodbye!');
-        }
-
-        // info('Alice', person);
-        info('Alice', details);
-
-        // function greet(name, callback) {
-        //     console.log(`Hello, ${name}`);
-        //     callback();
-        // }
-
-        // function afterGreet() {
-        //     console.log('Goodbye!');
-        // }
-
-        // greet('Alice', afterGreet);
+      
 
 
-</script>
 
-</body>
+
+
+
+    </script>
+  </body>
+  function
 </html>
