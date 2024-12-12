@@ -2288,6 +2288,93 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 ```
+### 53. **Difference between Authentication and Authorization**
+  In the context of **Angular** (or any web application), **authentication** and **authorization** are two critical concepts that deal with security, but they serve different purposes. Here’s the key difference between **authentication** and **authorization**:
+
+  ### 1. **Authentication**
+  **Authentication** is the process of verifying the identity of a user or system. In simple terms, it answers the question: **"Who are you?"** It ensures that the user is who they claim to be.
+
+  - **Purpose**: To confirm the identity of the user.
+  - **What it involves**: Authentication typically involves checking a user's credentials, such as a username and password, using tokens, cookies, or other methods (e.g., OAuth, JWT).
+  - **Example**: A user logging into an Angular application by entering their username and password.
+    
+  ### Authentication in Angular:
+  - In Angular, authentication often happens using services like `HttpClient` to send the user credentials to a backend server, which then validates them and returns an authentication token (e.g., JWT).
+  - After authentication, the user's identity is typically stored in the browser (e.g., in **localStorage**, **sessionStorage**, or an **Angular service**).
+
+  #### Example:
+  ```typescript
+  // Authentication Service in Angular
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class AuthService {
+
+    constructor(private http: HttpClient) {}
+
+    login(username: string, password: string) {
+      return this.http.post<any>('/api/authenticate', { username, password })
+        .pipe(
+          map(response => {
+            // Store JWT token in localStorage if authentication is successful
+            localStorage.setItem('token', response.token);
+            return response;
+          })
+        );
+    }
+  }
+  ```
+
+  ### 2. **Authorization**
+  **Authorization** is the process of determining whether a user has permission to perform a certain action or access a resource. In simple terms, it answers the question: **"What are you allowed to do?"** 
+
+  - **Purpose**: To grant or restrict access to resources or actions based on the authenticated user's roles, permissions, or other attributes.
+  - **What it involves**: After authentication, the system checks the user's roles or permissions and determines whether they are authorized to perform a certain action, such as accessing a specific route, making a request, or viewing certain data.
+  - **Example**: A user with admin privileges can access a dashboard, but a regular user cannot.
+
+  ### Authorization in Angular:
+  - In Angular, authorization can be managed through **route guards**, which prevent unauthorized users from accessing certain routes.
+  - For example, a route guard can check if the user has a valid token or if they belong to a specific user role before allowing access to a route.
+
+  #### Example:
+  ```typescript
+  // Auth Guard to prevent unauthorized access
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class AuthGuard implements CanActivate {
+
+    constructor(private authService: AuthService, private router: Router) {}
+
+    canActivate(): boolean {
+      if (this.authService.isAuthenticated()) {
+        return true;
+      } else {
+        this.router.navigate(['/login']);
+        return false;
+      }
+    }
+  }
+  ```
+
+  ### Key Differences:
+
+  | Aspect                  | Authentication                                      | Authorization                                           |
+  |-------------------------|------------------------------------------------------|---------------------------------------------------------|
+  | **Definition**           | Verifying the identity of a user or system.         | Granting or restricting access based on the user’s identity or role. |
+  | **Purpose**              | To confirm "who the user is."                       | To confirm "what the user can do."                      |
+  | **Process**              | Involves checking credentials like username, password, or tokens. | Involves checking permissions, roles, or other attributes to decide if a user can access a resource. |
+  | **Focus**                | Identity verification (user identification).        | Access control (permissions and rights).                |
+  | **Example**              | Logging in with a username and password.            | Only allowing access to a certain page for an admin user. |
+  | **Tools**                | JWT, OAuth, sessions, cookies.                      | Role-based access control (RBAC), route guards, permission checks. |
+
+  ### Summary:
+  - **Authentication** is about verifying the identity of the user (e.g., username/password check).
+  - **Authorization** is about controlling access to resources based on the user’s identity or role (e.g., allowing admins to access certain parts of the app).
+
+  In an Angular application, you often need both processes:
+  1. **Authentication** to verify the user’s identity.
+  2. **Authorization** to determine what parts of the app the authenticated user is allowed to access.
 
 ### 53. **Implement Login and Logout Functionality**
 

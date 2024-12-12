@@ -42,7 +42,35 @@
         },
       };
 
-      // Write a closures function =========================
+      // Write a service and handle error =========================
+      import { Injectable  } from "@angular/core";
+      import { httpClient } from "@angular/common/http";
+      import { Observable, throwError } from "rxjs/";
+      import { catchError } from "rxjs/operators"
+     
+
+      @Injectable({
+        providedIn: "root"
+      })
+
+      export class UserService () {
+        constructor( private _http: HttpClient ){}
+
+        getUserInfo():Observable<any> {
+          return this.http.get("url")
+          .pipe(
+            catchError((error)=>{
+              console.log("Errpr===", error);
+            })
+          )
+        }
+      }
+
+
+      // Write a service and handle error =========================
+
+
+
       
 
       

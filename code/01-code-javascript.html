@@ -72,6 +72,54 @@
       });
       // ();
 
+      // How to write Callback fcuntions =========================
+      function callFunc() {
+        console.log("Hello world");
+      }
+      function callBackFunc(callFunc) {
+        console.log("Sentu Biswas")
+        callFunc();
+      }
+      // callBackFunc(callFunc);
+
+      // How to write HOC function =========================
+      function hocFunc(component) {
+        return function enhanceFunc(props){
+            // return(
+            //     <component data={props}/>
+            // )
+        }
+      }
+
+      // How to to Promise ===============
+      function promiseFunc() {
+        let promise = new Promise((result, reject) => {
+          if (true) {
+            result("Success")
+          } else {
+            reject("Fail")
+          }
+        }) 
+
+        promise.then((res)=>{
+          console.log("asynchronously executed: ", res);
+        }).catch((error) => {
+          console.log("asynchronously executed: ", error);
+        }).finally(()=>{
+          console.log("Promise done executing;")
+        })
+      }
+      // promiseFunc()
+
+      // How to write async/wait function
+      async function fetchData(params) {
+        let response = await fetch('https://api.example.com');
+        let data = response.data;
+        console.log("Data-----", data);
+      }
+      // fetchData()
+
+
       // How to write Set timeout =========================
       setTimeout(() => {
         // console.log("Hello World")
@@ -92,25 +140,6 @@
       const obj20 = { c: 3 };
       const mergedObj = Object.assign({}, obj10, obj20); // Creates a shallow copy
       // console.log('mergedObj----', mergedObj);
-
-      // How to write Callback fcuntions =========================
-      function callFunc() {
-        console.log("Hello world");
-      }
-      function callBackFunc(callFunc) {
-        console.log("Sentu Biswas")
-        callFunc();
-      }
-      // callBackFunc(callFunc);
-
-      // How to write HOC function =========================
-      function hocFunc(component) {
-        return function enhanceFunc(props){
-            // return(
-            //     <component data={props}/>
-            // )
-        }
-      }
 
 
       // How to swap two number =========================
