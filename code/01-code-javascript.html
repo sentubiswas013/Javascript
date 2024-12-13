@@ -9,16 +9,17 @@
       var left = [];
       var right = [];
       var result = [];
+      var resultStr = '';
       var resultObj = {};
       var str1 = 'madam';
-      var str2 = 'We are Bharatiya';
+      var str2 = 'Priya is a good girl and studing';
       var num1 = 10;
       var num1 = 20;
       var num3;
       var arrStr1 = ['Volvo', 'Jeep', 'Volvo', 'Lincoln', 'TATA', 'Ford'];
       var arrStr2 = ['apple', 'banana', 'cherry', 'apple', 'banana'];
-      var arrNum1 = [2, 4, 3, 6, 9, 2, 1, 9];
-      var arrNum2 = [1, 5, 9, 4, 7, 2, 3, 7];
+      var arrNum1 = [2, 4, 3, 6, 9, 2, 1, 0, 9];
+      var arrNum2 = [6, 5, 9, 4, 7, 2, 3, 7];
       var arrObj1 = [
         { age: 40, name: 'fluffy' },
         { age: 15, name: 'spot' },
@@ -49,7 +50,7 @@
         },
       };
 
-      // Write a closures function =========================
+      // Write a closures function ===============================================================
       function clouseFunc() {
         let name = 'Sentu Biswas';
         function person() {
@@ -59,7 +60,7 @@
       }
       // clouseFunc();
 
-      // Write a method for Call/Apply/Bind function =========================
+      // Write a method for Call/Apply/Bind function ============================================
       function info(email, phone) {
         console.log(this.name, this.age, this.address('Nazirpur'));
         console.log(`Hello World ${email} ${phone}`);
@@ -69,17 +70,17 @@
       // let info1 = info.bind(obj1);
       // info1("abc@gmial.com", 64564654)
 
-      // How to write Arrow function =========================
+      // How to write Arrow function =============================================================
       add = (a, b) => console.log(a + b);
       // add(2, 6)
 
-      // How to write Anoumous Function =========================
+      // How to write Anoumous Function ==========================================================
       (function helloWorld() {
         console.log('Hello World');
       });
       // ();
 
-      // How to write Callback fcuntions =========================
+      // How to write Callback fcuntions =========================================================
       function callFunc() {
         console.log("Hello world");
       }
@@ -89,7 +90,7 @@
       }
       // callBackFunc(callFunc);
 
-      // How to write HOC function =========================
+      // How to write HOC function ================================================================
       function hocFunc(component) {
         return function enhanceFunc(props){
             // return(
@@ -119,15 +120,15 @@
       // promiseFunc()
 
       // How to write async/wait function
-      async function fetchData(params) {
+      async function asuncData(params) {
         let response = await fetch('https://api.example.com');
         let data = response.data;
         console.log("Data-----", data);
       }
-      // fetchData()
+      // asuncData()
 
 
-      // How to write Set timeout =========================
+      // How to write Set timeout ===============================================================
       function setTimeoutFunc(){
         setTimeout(() => {
           // console.log("Hello World")
@@ -135,7 +136,7 @@
       }
       // setTimeoutFunc();
 
-      // How to merge two arr with unique data =========================
+      // How to merge two arr with unique data ====================================================
       function uniqueData() {
         let = [...new Set(arrNum1)];
         right = [...new Set(arrNum2)];
@@ -145,7 +146,7 @@
       // uniqueData();
       
 
-      // How to do shallow copy using Object.assign or spread operator =========================
+      // How to do shallow copy using Object.assign or spread operator ==============================
       function shallowCopy() {
         resultObj = Object.assign({}, obj1, obj2);
         let resultObjTemp = { ...obj1, ...obj2 };
@@ -158,7 +159,7 @@
       }
       shallowCopy();
 
-      // How to swap two number =========================
+      // How to swap two number ======================================================================
       function numSwap() {
         num1 = num1+num2;
         num2 = num1-num2;
@@ -168,7 +169,7 @@
       }
       // numSwap();
 
-      // How to swap three number =========================
+      // How to swap three number ======================================================================
       function swapingABC(){
         let a = 20;
         let b = 15;
@@ -182,7 +183,7 @@
       }
       // swapingABC();
 
-      // How to remove duplicates from an array of objects using JavaScript ? =========================
+      // How to remove duplicates from an array of objects using JavaScript ? ===========================
       function removeDuplicateObj() {
         for (let index = 0; index < arrObj1.length; index++) {
           const element = arrObj1[index];
@@ -196,11 +197,241 @@
       }
       // removeDuplicateObj();
 
+      function removeDuplicateStr() {
+        for (let index = 0; index < arrStr1.length; index++) {
+          const element = arrStr1[index];
+          if(!left.includes(arrStr1[index])){
+            left.push(arrStr1[index]);
+          }
+        }
+        console.log("result--", left)
+      }
+      // removeDuplicateStr();
 
+      // Remove Duplicate characters from String  ===========================================================
+      function findDuplicateRemoveChar(){
+        console.log(str2);
+        let duplicateChar = '';
+        let uniqueChar = '';
+        for (let index = 0; index < str2.length; index++) {
+          // console.log("element----", element);
+          if(!duplicateChar.includes(str2[index])){
+            duplicateChar += str2[index]
+          } else{
+            uniqueChar += str2[index]
+          }
+        }
+        console.log("duplicateChar---", duplicateChar);
+        console.log("uniqueChar------", uniqueChar)
+      }
+      // findDuplicateRemoveChar();
 
+      // String reverse without reverse method  ===============================================================
+      function reverseStr() {
+        for (let index = str2.length-1; index >=0; index--) {
+            resultStr += str2[index];          
+        }
+        console.log("resultStr----", resultStr);
+      } 
+      // reverseStr();
+
+    // How to check the string or number is palindrome or not  =================================================
+    function checkPalindrome() {
+      const string = "12321";
+      let isPalindrome = true;  
+      let len = str1.length;
+      let j = len - 1;
+
+          for (let i = 0; i < len / 2; i++) {  
+              if (string[i] !== string[j]) {
+                  isPalindrome = false;  
+                  break;  
+              }
+              j--;  
+          }
+      console.log(isPalindrome);
+    }
+    // checkPalindrome();
+
+    // How to to get max num from a array  =========================
+    function maxValue(arr) {
+      let max = 0;  
+      for (let index = 0; index < arrNum1.length; index++) {
+          if (arrNum1[index] > max) {  
+            max = arrNum1[index]; 
+          }
+      }
+      console.log("max----", max);  
+    }
+    // maxValue();
+
+    // How to get min num from a array  =========================
+    function minValue(arr) {
+      let min = Infinity;  
+      for (let index = 0; index < arrNum1.length; index++) {
+          if (arrNum1[index] < min) { 
+              min = arrNum1[index]; 
+          }
+      }
+      console.log("min----", min);  
+    }
+    // minValue();
+
+    // How To find longest word from a string using custom code =========================
+    function longestWord() {
+      var words = str2.split(' ');
+      var longest = ''; 
+      for (var i = 0; i < words.length; i++) {
+        if (words[i].length > longest.length) {
+          longest = words[i]; 
+        }
+      }
+      console.log(longest)
+      return longest;
+    }
+    // longest();
+
+    // How To find shortesh word from a string using custom code =========================
+    function shortestWorld() {
+      var words = str2.split(' ');
+      var shortest = ''; 
+      let shortestNum = Infinity;
+      for (var i = 0; i < words.length; i++) {
+        if (words[i].length < shortestNum) {
+            shortestNum = words[i].length; 
+            shortest = words[i]
+        }
+      }
+      console.log("====", shortest)
+      return shortest;
+    }
+    // shortest();
+
+    // How to short array data using Bubble =========================
+    function sortArrUsingBuble(){
+      for (let i = 0; i < arrNum1.length; i++) {
+        for (let j = 0; j < arrNum1.length - 1 - i; j++) {
+            if (arrNum1[j] > arrNum1[j + 1]) {
+                // Swap the elements
+                let temp = arrNum1[j];
+                arrNum1[j] = arrNum1[j + 1];
+                arrNum1[j + 1] = temp;
+            }
+        }
+      }
+      console.log("arrNum1---", arrNum1);
+    }
+    // sortArrUsingBuble();
+
+    // How to count vowels in string =========================
+    function countVowels() {
+      let vowels = 'aeiouAEIOU'; 
+      let vowelCount = 0; 
+      let vowelList = [];
+
+      // Loop through each character of the string
+      for (let i = 0; i < str2.length; i++) {
+
+        if (vowels.includes(str2[i])) {
+          vowelCount++; 
+          vowelList.push(str2[i]); 
+        }
+      }
+      console.log("vowelList---", vowelList, vowelCount);
+    }
+    // countVowels();
+
+    // How to create Fibonacci Series =========================
+    function listFibonacci(n) {
+      var arr = [0, 1]
+        for (var  i = 0; i < n; i++) 
+          arr.push(arr[i] + arr[i + 1])
+
+        console.log(arr)
+      }
+    // listFibonacci(5);
+
+    // Find whether a number is prime or not: =========================
+    function isPrime(num) {
+      if (num <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+    // isPrime(7);
+    // isPrime(10);
+
+    // Find the second-highest number in an array:: =========================
+    function secondHighest(arr) {
+      let highest = -Infinity;
+      let secondHighest = -Infinity;
+
+      for (let num of arr) {
+        if (num > highest) {
+          secondHighest = highest;
+          highest = num;
+        } else if (num > secondHighest && num < highest) {
+          secondHighest = num;
+        }
+      }
+      console.log("secondHighest---", secondHighest)
+    };
+    // secondHighest([10, 5, 8, 12, 7]) // Output: 10
+
+    // Print a multiplication table for a number: =========================
+    function printMultiplicationTable(num) {
+      for (let i = 1; i <= 10; i++) {
+        console.log(`${num} x ${i} = ${num * i}`);
+      }
+    }
+
+    // printMultiplicationTable(5);
+    // Output:
+    // 5 x 1 = 5
+    // 5 x 2 = 10
+
+    // Capitalize the first letter of each word in a string:: =========================
+    function capitalizeFirstLetter(str) {
+      let letter = 
+      str.split(' ') // Split string into words
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize first letter of each word
+        .join(' '); // Join the words back into a string
+
+        console.log("letter----", letter)
+    }
+
+    // capitalizeFirstLetter("hello world"); // Output: "Hello World"
+
+    // Sum all the elements in an array: =========================
+    function sumArray(arr) {
+      let data = arr.reduce((acc, num) => acc + num, 0); // Use reduce to sum the array elements
+      console.log("data----", data)
+    }
+    // sumArray([1, 2, 3, 4, 5]); // Output: 15
+
+    // Calculate the sum of numbers in a specific range: =========================
+    function sumInRange(start, end) {
+      let sum = 0;
+      for (let i = start; i <= end; i++) {
+        sum += i;
+      }
+      console.log(sum);
+    }
+    // sumInRange(1, 5); // Output: 15 (1 + 2 + 3 + 4 + 5)
+    // sumInRange(10, 15); // Output: 75 (10 + 11 + 12 + 13 + 14 + 15)
+
+    // Validate an email address using a regular expression: =========================
+    function isValidEmail(email) {
+      const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      let data = regex.test(email); // Use regex to validate the email format
+      console.log("data-----", data)
+    }
+    isValidEmail("test@example.com"); // Output: true
+    isValidEmail("invalid-email"); // Output: false
 
 
     </script>
   </body>
-  function
+  
 </html>
