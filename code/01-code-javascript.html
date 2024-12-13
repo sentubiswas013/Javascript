@@ -385,7 +385,6 @@
         console.log(`${num} x ${i} = ${num * i}`);
       }
     }
-
     // printMultiplicationTable(5);
     // Output:
     // 5 x 1 = 5
@@ -400,7 +399,6 @@
 
         console.log("letter----", letter)
     }
-
     // capitalizeFirstLetter("hello world"); // Output: "Hello World"
 
     // Sum all the elements in an array: =========================
@@ -427,8 +425,62 @@
       let data = regex.test(email); // Use regex to validate the email format
       console.log("data-----", data)
     }
-    isValidEmail("test@example.com"); // Output: true
-    isValidEmail("invalid-email"); // Output: false
+    // isValidEmail("test@example.com"); // Output: true
+    // isValidEmail("invalid-email"); // Output: false
+
+    // Check if a string is an anagram of another string: =========================
+    function areAnagrams(str1, str2) {
+      if (str1.length !== str2.length) return false;
+
+      const sortedStr1 = str1.split('').sort().join('');
+      const sortedStr2 = str2.split('').sort().join('');
+      
+      return sortedStr1 === sortedStr2;
+    }
+    // console.log(areAnagrams("listen", "silent")); // Output: true
+    // console.log(areAnagrams("hello", "world"));   // Output: false
+
+
+    // Check if a number is a perfect number: =========================
+    function isPerfectNumber(num) {
+      let sum = 0;
+      
+      for (let i = 1; i <= num / 2; i++) {
+        if (num % i === 0) {
+          sum += i;
+        }
+      }
+      
+      return sum === num;
+    }
+    // console.log(isPerfectNumber(28)); // Output: true
+    // console.log(isPerfectNumber(6));  // Output: true
+    // console.log(isPerfectNumber(12)); // Output: false
+
+
+
+    // Implement a simple calculator (addition, subtraction, multiplication, division): =========================
+    function calculator(a, b, operation) {
+      switch (operation) {
+        case 'add':
+          return a + b;
+        case 'subtract':
+          return a - b;
+        case 'multiply':
+          return a * b;
+        case 'divide':
+          if (b === 0) return 'Error: Division by zero';
+          return a / b;
+        default:
+          return 'Invalid operation';
+      }
+    }
+    // console.log(calculator(10, 5, 'add'));      // Output: 15
+    // console.log(calculator(10, 5, 'subtract')); // Output: 5
+    // console.log(calculator(10, 5, 'multiply')); // Output: 50
+    // console.log(calculator(10, 5, 'divide'));   // Output: 2
+    // console.log(calculator(10, 0, 'divide'));   // Output: Error: Division by zero
+
 
 
     </script>
