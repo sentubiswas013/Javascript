@@ -428,6 +428,24 @@
     // isValidEmail("test@example.com"); // Output: true
     // isValidEmail("invalid-email"); // Output: false
 
+    // Find the factorial of a number using recursion: =========================
+    function factorial(n) {
+      if (n === 0 || n === 1) {
+        return 1; // Base case: factorial of 0 or 1 is 1
+      }
+      return n * factorial(n - 1); // Recursive call
+    }
+    // console.log(factorial(5)); // Output: 120
+    // console.log(factorial(0)); // Output: 1
+
+    // Find the common elements in two arrays: =========================
+    function findCommonElements(arr1, arr2) {
+      return arr1.filter(item => arr2.includes(item)); // Filter elements that are present in both arrays
+    }
+    // console.log(findCommonElements([1, 2, 3], [2, 3, 4])); // Output: [2, 3]
+    // console.log(findCommonElements([1, 5, 7], [2, 3, 4])); // Output: []
+
+
     // Check if two strings are permutations of each other: =========================
     function arePermutations(str1, str2) {
       if (str1.length !== str2.length) return false; // Strings must have the same length
