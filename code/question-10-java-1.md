@@ -761,6 +761,21 @@ These interfaces define the standard behaviors for collections in Java, while th
 - **`List`** allows duplicates and maintains order, while **`Set`** does not allow duplicates and may not guarantee order.
 - **`Map`** stores key-value pairs, unlike `List` and `Set`, which store only individual elements.
 
+### Summary of Key Differences:
+| Feature                 | **List**                        | **Set**                          | **Map**                          |
+|-------------------------|---------------------------------|----------------------------------|----------------------------------|
+| **Order**               | Maintains insertion order       | No guaranteed order             | Maintains key order (or sorted)  |
+| **Duplicates**          | Allows duplicates               | No duplicates                   | No duplicate keys, values can repeat |
+| **Access**              | Indexed (via `get(index)`)     | No index-based access           | Key-based access (`get(key)`)   |
+| **Usage**               | Ordered collection, with duplicates | Unordered collection, unique items | Key-value storage, unique keys   |
+| **Examples**            | `ArrayList`, `LinkedList`       | `HashSet`, `TreeSet`, `LinkedHashSet` | `HashMap`, `TreeMap`, `LinkedHashMap` |
+
+### When to Use:
+- **List**: Use when you need an ordered collection that can have duplicates, and when you want to access elements by index.
+- **Set**: Use when you need an unordered collection of unique elements (e.g., to eliminate duplicates).
+- **Map**: Use when you need to store key-value pairs and access data using a key.
+
+
 ### 53. **What is the difference between `ArrayList` and `LinkedList` in Java?**
 
 - **`ArrayList`**:
