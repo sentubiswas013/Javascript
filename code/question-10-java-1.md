@@ -127,24 +127,6 @@ Example Class Variables::
   
 - **Method**: A method is a function defined in a class that describes the behavior of the object. Methods have a return type and are used to perform specific operations or calculations.
 
-
-### Key Differences Between Constructor and Method:
-
-| Feature                | Constructor                                       | Method                                        |
-|------------------------|--------------------------------------------------|-----------------------------------------------|
-| **Purpose**            | Initializes a new object of the class.           | Defines behavior or actions that objects perform. |
-| **Name**               | Must have the same name as the class.            | Can have any valid name, typically action verbs. |
-| **Return Type**        | No return type (not even `void`).                | Can have a return type (e.g., `int`, `String`, `void`). |
-| **Invocation**         | Automatically invoked when an object is created using `new`. | Explicitly invoked using the object or class name. |
-| **Overloading**        | Can be overloaded, but only based on the parameter list. | Can be overloaded, based on the parameter list or return type. |
-| **Call**               | Called only once when the object is created.     | Can be called multiple times after the object is created. |
-| **Default**            | Java provides a default constructor if none is defined. | No default methods are provided. |
-| **Static**             | Constructors cannot be static.                  | Methods can be static, meaning they can be called without creating an instance of the class. |
-
-### Summary:
-- **Constructor:** Special method used to initialize objects. It has no return type, and its name matches the class name. It is called automatically when an object is created.
-- **Method:** Regular function that defines behavior. It can return values and can be called multiple times.
-
 #### Example of Constructor:
 ```java
 public class Car {
@@ -198,6 +180,23 @@ public class Car {
     }
 }
 ```
+
+### Key Differences Between Constructor and Method:
+
+| Feature                | Constructor                                       | Method                                        |
+|------------------------|--------------------------------------------------|-----------------------------------------------|
+| **Purpose**            | Initializes a new object of the class.           | Defines behavior or actions that objects perform. |
+| **Name**               | Must have the same name as the class.            | Can have any valid name, typically action verbs. |
+| **Return Type**        | No return type (not even `void`).                | Can have a return type (e.g., `int`, `String`, `void`). |
+| **Invocation**         | Automatically invoked when an object is created using `new`. | Explicitly invoked using the object or class name. |
+| **Overloading**        | Can be overloaded, but only based on the parameter list. | Can be overloaded, based on the parameter list or return type. |
+| **Call**               | Called only once when the object is created.     | Can be called multiple times after the object is created. |
+| **Default**            | Java provides a default constructor if none is defined. | No default methods are provided. |
+| **Static**             | Constructors cannot be static.                  | Methods can be static, meaning they can be called without creating an instance of the class. |
+
+### Summary:
+- **Constructor:** Special method used to initialize objects. It has no return type, and its name matches the class name. It is called automatically when an object is created.
+- **Method:** Regular function that defines behavior. It can return values and can be called multiple times.
 
 ### 9. **What is the purpose of the `this` keyword in Java?**
 
