@@ -49,6 +49,78 @@ The four pillars of OOP are:
   
 - **Class Variables (Static Variables)**: These are variables defined with the `static` keyword. They belong to the class itself, rather than any instance, and all instances of the class share the same value for class variables.
 
+Example Instance Variables:
+   ```java
+   public class Car {
+       // Instance variable
+       private String color;
+
+       // Constructor to initialize the instance variable
+       public Car(String color) {
+           this.color = color;
+       }
+
+       public void displayColor() {
+           System.out.println("Car color: " + color);
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           // Creating two objects with different instance variables
+           Car car1 = new Car("Red");
+           Car car2 = new Car("Blue");
+
+           car1.displayColor();  // Output: Car color: Red
+           car2.displayColor();  // Output: Car color: Blue
+       }
+   }
+   ```
+
+Example Class Variables::
+   ```java
+   public class Car {
+       // Class variable
+       private static int numberOfCars = 0;
+
+       // Constructor to increment class variable
+       public Car() {
+           numberOfCars++;
+       }
+
+       public static void displayCarCount() {
+           System.out.println("Total cars: " + numberOfCars);
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           // Creating objects of Car
+           Car car1 = new Car();
+           Car car2 = new Car();
+
+           // Accessing class variable through class name
+           Car.displayCarCount();  // Output: Total cars: 2
+       }
+   }
+   ```
+
+### Key Differences:
+
+| Feature                | Instance Variables                                  | Class Variables (Static)                             |
+|------------------------|------------------------------------------------------|-----------------------------------------------------|
+| **Scope**              | Specific to each object (instance)                  | Shared among all instances of the class              |
+| **Memory Allocation**  | Allocated when an object is created, destroyed when the object is garbage collected | Allocated when the class is loaded into memory, destroyed when the class is unloaded |
+| **Access**             | Accessed through object references                  | Accessed through the class name or object reference |
+| **Keyword**            | No keyword (just declared inside the class)         | Declared using the `static` keyword                   |
+| **Initialization**     | Can be initialized through constructors or directly | Typically initialized when declared or inside static blocks |
+| **Lifetime**           | Tied to the lifetime of the object                  | Tied to the lifetime of the class (until the class is unloaded) |
+
+### Summary:
+- **Instance variables** belong to individual objects and each object has its own copy of them.
+- **Class variables** are shared by all instances of a class and there is only one copy of them, regardless of the number of objects created.
+
+
 ### 8. **What is a constructor in Java? How is it different from a method?**
 
 - **Constructor**: A constructor is a special method that is used to initialize objects. It has the same name as the class and is invoked when an object of the class is created. Constructors do not have a return type.
