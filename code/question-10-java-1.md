@@ -290,17 +290,7 @@ class Person {
 }
 ```
 
-### 25. **What is the difference between composition and inheritance?**
-
-- **Composition**: In composition, a class contains references to objects of other classes, allowing one class to be composed of multiple other classes. It is a "has-a" relationship.
-  - **Example**: A `Car` has an `Engine`.
-
-- **Inheritance**: In inheritance, a subclass inherits properties and behaviors from a superclass, establishing an "is-a" relationship.
-  - **Example**: A `Dog` is an `Animal`.
-
-Composition is generally favored over inheritance as it provides better flexibility and avoids the complexities of multiple inheritance.
-
-### 26. **What is abstraction in Java, and how is it implemented?**
+### 25. **What is abstraction in Java, and how is it implemented?**
 
 Abstraction is the process of hiding implementation details and showing only essential features to the user. It helps in reducing complexity and allows focusing on high-level functionalities. In Java, abstraction can be achieved using:
 
@@ -330,6 +320,16 @@ class Dog implements Animal {
     }
 }
 ```
+
+### 26. **What is the difference between composition and inheritance?**
+
+- **Composition**: In composition, a class contains references to objects of other classes, allowing one class to be composed of multiple other classes. It is a "has-a" relationship.
+  - **Example**: A `Car` has an `Engine`.
+
+- **Inheritance**: In inheritance, a subclass inherits properties and behaviors from a superclass, establishing an "is-a" relationship.
+  - **Example**: A `Dog` is an `Animal`.
+
+Composition is generally favored over inheritance as it provides better flexibility and avoids the complexities of multiple inheritance.
 
 ### 27. **What is the `super` keyword in Java?**
 
