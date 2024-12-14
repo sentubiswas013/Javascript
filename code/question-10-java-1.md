@@ -1656,6 +1656,25 @@ This eliminates the need for many configurations and boilerplate code.
 - JPA is a specification, and Hibernate is one of its implementations. You can use Hibernate as the JPA provider, or use another provider like EclipseLink.
 - Hibernate offers more features beyond JPA (e.g., caching and custom query mechanisms), while JPA is focused solely on providing a standard for ORM.
 
+### **Summary of Key Differences**:
+
+| Feature              | **JPA**                                       | **Hibernate**                                  |
+|----------------------|-----------------------------------------------|------------------------------------------------|
+| **Type**             | Specification (Interface)                    | Implementation (Framework)                     |
+| **Standardization**  | Yes, part of Java EE                          | No, it's specific to Hibernate                 |
+| **Query Language**   | JPQL (Java Persistence Query Language)        | HQL (Hibernate Query Language), SQL, Criteria API |
+| **Configuration**    | `persistence.xml` (standard config)           | `hibernate.cfg.xml` or programmatically        |
+| **Performance**      | Depends on the implementation (e.g., EclipseLink or Hibernate) | Advanced performance features (caching, batching) |
+| **Portability**      | Highly portable across different JPA providers | Less portable due to Hibernate-specific features |
+| **Caching**          | No direct caching; depends on implementation | First-level and second-level caching supported |
+| **Session Management**| Managed by JPA provider (e.g., Hibernate)    | Direct control via Hibernate's `Session` API   |
+
+---
+
+### Conclusion:
+- **JPA** is a **specification** for object-relational mapping and provides a standard interface for persistence. It can work with various JPA providers like Hibernate, EclipseLink, etc.
+- **Hibernate** is an **implementation** of JPA, but it also offers extra features that go beyond the JPA specification, like caching, advanced query capabilities, and more fine-grained control over sessions.
+
 ---
 
 ### **4. How does Spring AOP work?**
