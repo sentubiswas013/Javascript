@@ -510,6 +510,26 @@ A **memory leak** in Java occurs when an application consumes memory but fails t
 - **Use try-with-resources**: For managing resources like file streams, database connections, etc., which automatically close and release resources.
 - **Profile memory usage**: Use tools like **VisualVM** or **JProfiler** to monitor memory and identify potential leaks.
 
+**How do you create a memory leak in Java?**
+- Storing objects in static fields or collections, which arent cleared even after the objects are no longer needed.
+- Creating circular references (e.g., two objects referencing each other) that are not cleared.
+- Not releasing resources like database connections, sockets, or file streams.
+
+**Example of a memory leak**:
+```java
+import java.util.ArrayList;
+
+public class MemoryLeakExample {
+    static ArrayList<MyObject> list = new ArrayList<>();
+    
+    public static void main(String[] args) {
+        while (true) {
+            list.add(new MyObject());  // Objects are never removed, causing a memory leak
+        }
+    }
+}
+```
+
 ### 38. **Explain the concept of heap and stack memory in Java.**
 
 - **Heap Memory**: Heap is used to store objects in Java. It is shared among all threads and is managed by the garbage collector. Objects created using `new` (like instances of classes) are allocated in the heap. The heap is large and can be expanded dynamically, but memory allocation and deallocation are slower than in stack memory.
@@ -539,28 +559,11 @@ public class WeakReferenceExample {
 }
 ```
 
-### 40. **How do you create a memory leak in Java?**
+### 40. **===========**
 
 A memory leak in Java can occur if you hold onto references to objects that are no longer needed, preventing the garbage collector from reclaiming their memory. Common ways to create a memory leak:
 
-- Storing objects in static fields or collections, which arent cleared even after the objects are no longer needed.
-- Creating circular references (e.g., two objects referencing each other) that are not cleared.
-- Not releasing resources like database connections, sockets, or file streams.
 
-**Example of a memory leak**:
-```java
-import java.util.ArrayList;
-
-public class MemoryLeakExample {
-    static ArrayList<MyObject> list = new ArrayList<>();
-    
-    public static void main(String[] args) {
-        while (true) {
-            list.add(new MyObject());  // Objects are never removed, causing a memory leak
-        }
-    }
-}
-```
 
 ### 41. **What is the difference between `Shallow Copy` and `Deep Copy` in Java?**
 
