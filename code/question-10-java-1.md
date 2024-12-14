@@ -26,14 +26,8 @@ Java is a high-level, object-oriented programming language designed to have as f
 - **JRE (Java Runtime Environment)**: The JRE is a package that includes the JVM along with libraries and other components required to run Java applications. It does not include development tools.
 - **JDK (Java Development Kit)**: The JDK is a full development kit that includes the JRE and additional tools needed to develop Java applications, such as compilers (javac) and debuggers.
 
-### 4. **Explain the concept of Object-Oriented Programming (OOP).**
+### 4. **====**
 
-Object-Oriented Programming (OOP) is a programming paradigm based on the concept of "objects," which contain both data (fields/variables) and methods (functions). OOP encourages the following principles:
-
-- **Encapsulation**: Bundling data and methods that operate on that data within one unit (class).
-- **Inheritance**: The ability of a new class to inherit properties and behaviors from an existing class.
-- **Polymorphism**: The ability to take many forms, allowing methods or objects to behave differently based on their context.
-- **Abstraction**: Hiding complex implementation details and showing only the essential features of an object.
 
 ### 5. **What are the four pillars of Object-Oriented Programming (OOP)?**
 
@@ -127,14 +121,9 @@ System.out.println(a == b);       // false (different memory references)
 System.out.println(a.equals(b));  // true (same value)
 ```
 
-### 13. **What are access modifiers in Java, and how do they work?**
+### 13. **========**
 
-Access modifiers in Java are keywords that define the visibility or accessibility of classes, methods, and variables. The main access modifiers are:
 
-- **`public`**: The member is accessible from any class.
-- **`private`**: The member is accessible only within the same class.
-- **`protected`**: The member is accessible within the same package or by subclasses (even in different packages).
-- **Default (no modifier)**: The member is accessible only within the same package.
 
 ### 14. **What is the difference between `public`, `private`, `protected`, and default access modifiers?**
 
@@ -212,31 +201,8 @@ final int myVar = 10;  // Cannot be reassigned
   
 - **`equals()`**: The `equals()` method is used to compare two objects for equality based on their content or state. The `hashCode()` method must be overridden if `equals()` is overridden to ensure correct behavior in collections that rely on hashing (like `HashMap`).
 
-### 20. **What is an abstract class, and how is it different from an interface?**
+### 20. **======**
 
-- **Abstract Class**: An abstract class is a class that cannot be instantiated directly. It can contain abstract methods (without implementation) and concrete methods (with implementation). An abstract class allows some methods to be implemented while leaving others to be implemented by subclasses.
-  
-- **Interface**: An interface is a contract that defines a set of abstract methods that implementing classes must provide implementations for. Interfaces cannot contain any method implementations (unless using default or static methods from Java 8 onwards), and all methods are implicitly abstract by default.
-
-**Differences**:
-- A class can implement multiple interfaces but can inherit from only one abstract class (Java doesn't support multiple inheritance for classes).
-- An abstract class can have instance variables, constructors, and methods with body, while interfaces cannot (unless using default/static methods in Java 8+).
-
-**Example**:
-```java
-// Abstract class
-abstract class Animal {
-    abstract void sound();
-    void breathe() {
-        System.out.println("Breathing");
-    }
-}
-
-// Interface
-interface AnimalBehavior {
-    void sound();
-}
-```
 
 ### **Object-Oriented Concepts:**
 Here are the answers to your Java-related questions:
@@ -270,13 +236,8 @@ public class Test {
 }
 ```
 
-### 22. **What is the difference between method overloading and method overriding?**
+### 22. **=====**
 
-- **Method Overloading**: Involves defining multiple methods with the same name in a class, but with different parameters (different number or types of parameters). It occurs at **compile-time**.
-  - **Example**: Different versions of a `print` method with different parameter types.
-  
-- **Method Overriding**: Occurs when a subclass provides its specific implementation of a method already defined in the superclass. It occurs at **runtime**.
-  - **Example**: Overriding the `toString()` method in a subclass.
 
 ### 23. **What is inheritance in Java? Explain with an example.**
 
