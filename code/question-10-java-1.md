@@ -127,6 +127,78 @@ Example Class Variables::
   
 - **Method**: A method is a function defined in a class that describes the behavior of the object. Methods have a return type and are used to perform specific operations or calculations.
 
+
+### Key Differences Between Constructor and Method:
+
+| Feature                | Constructor                                       | Method                                        |
+|------------------------|--------------------------------------------------|-----------------------------------------------|
+| **Purpose**            | Initializes a new object of the class.           | Defines behavior or actions that objects perform. |
+| **Name**               | Must have the same name as the class.            | Can have any valid name, typically action verbs. |
+| **Return Type**        | No return type (not even `void`).                | Can have a return type (e.g., `int`, `String`, `void`). |
+| **Invocation**         | Automatically invoked when an object is created using `new`. | Explicitly invoked using the object or class name. |
+| **Overloading**        | Can be overloaded, but only based on the parameter list. | Can be overloaded, based on the parameter list or return type. |
+| **Call**               | Called only once when the object is created.     | Can be called multiple times after the object is created. |
+| **Default**            | Java provides a default constructor if none is defined. | No default methods are provided. |
+| **Static**             | Constructors cannot be static.                  | Methods can be static, meaning they can be called without creating an instance of the class. |
+
+### Summary:
+- **Constructor:** Special method used to initialize objects. It has no return type, and its name matches the class name. It is called automatically when an object is created.
+- **Method:** Regular function that defines behavior. It can return values and can be called multiple times.
+
+#### Example of Constructor:
+```java
+public class Car {
+    private String color;
+    private String model;
+
+    // Constructor with parameters
+    public Car(String color, String model) {
+        this.color = color;
+        this.model = model;
+    }
+
+    public void displayDetails() {
+        System.out.println("Car Model: " + model + ", Color: " + color);
+    }
+
+    public static void main(String[] args) {
+        // Creating an object using the constructor
+        Car myCar = new Car("Red", "Toyota");
+        myCar.displayDetails();  // Output: Car Model: Toyota, Color: Red
+    }
+}
+```
+
+#### Example of Method:
+```java
+public class Car {
+    private String color;
+    private String model;
+
+    // Constructor to initialize the object
+    public Car(String color, String model) {
+        this.color = color;
+        this.model = model;
+    }
+
+    // Method to display the details of the car
+    public void displayDetails() {
+        System.out.println("Car Model: " + model + ", Color: " + color);
+    }
+
+    // Method with return type
+    public String getCarModel() {
+        return model;
+    }
+
+    public static void main(String[] args) {
+        Car myCar = new Car("Red", "Toyota");
+        myCar.displayDetails();  // Output: Car Model: Toyota, Color: Red
+        System.out.println("Car Model: " + myCar.getCarModel());  // Output: Car Model: Toyota
+    }
+}
+```
+
 ### 9. **What is the purpose of the `this` keyword in Java?**
 
 The `this` keyword in Java refers to the current object, and it is used in the following scenarios:
