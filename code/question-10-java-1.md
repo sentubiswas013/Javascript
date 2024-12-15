@@ -26,8 +26,11 @@ Java is a high-level, object-oriented programming language designed to have as f
 - **JRE (Java Runtime Environment)**: The JRE is a package that includes the JVM along with libraries and other components required to run Java applications. It does not include development tools.
 - **JDK (Java Development Kit)**: The JDK is a full development kit that includes the JRE and additional tools needed to develop Java applications, such as compilers (javac) and debuggers.
 
-### 4. **====**
+### 4. **Explain the concept of heap and stack memory in Java**
 
+- **Heap Memory**: Heap is used to store objects in Java. It is shared among all threads and is managed by the garbage collector. Objects created using `new` (like instances of classes) are allocated in the heap. The heap is large and can be expanded dynamically, but memory allocation and deallocation are slower than in stack memory.
+
+- **Stack Memory**: Stack is used to store method frames and local variables. Each thread has its own stack, and the memory is organized in a last-in, first-out (LIFO) manner. Stack memory is faster but limited in size. Once a method call is completed, the stack space for local variables is freed.
 
 ### 5. **What are the four pillars of Object-Oriented Programming (OOP)?**
 
@@ -1066,11 +1069,8 @@ public class MemoryLeakExample {
 }
 ```
 
-### 38. **Explain the concept of heap and stack memory in Java.**
+### 38. **===========**
 
-- **Heap Memory**: Heap is used to store objects in Java. It is shared among all threads and is managed by the garbage collector. Objects created using `new` (like instances of classes) are allocated in the heap. The heap is large and can be expanded dynamically, but memory allocation and deallocation are slower than in stack memory.
-
-- **Stack Memory**: Stack is used to store method frames and local variables. Each thread has its own stack, and the memory is organized in a last-in, first-out (LIFO) manner. Stack memory is faster but limited in size. Once a method call is completed, the stack space for local variables is freed.
 
 ### 39. **What is the `WeakReference` in Java?**
 
