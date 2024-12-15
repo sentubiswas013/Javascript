@@ -114,19 +114,6 @@ Here are 100 essential JavaScript interview questions, categorized into various 
 
 Here are the answers to the next set of JavaScript questions:
 
-### **11. Explain event delegation in JavaScript.**
-   **Event delegation** is a technique where you attach a single event listener to a parent element, and the event is triggered by the child elements that match a specified selector. This method relies on the event bubbling process, where an event that occurs on a child element bubbles up to its parent elements. It improves performance, especially when you have a large number of child elements, by reducing the number of event listeners attached.
-
-   Example:
-   ```javascript
-   document.getElementById('parent').addEventListener('click', function(event) {
-     if (event.target && event.target.matches('button.classname')) {
-       console.log('Button clicked:', event.target);
-     }
-   });
-   ```
-
-   In this example, even though multiple buttons may be added dynamically, only one event listener is attached to the parent element (`#parent`).
 
 ### **12. What are arrow functions, and how do they differ from regular functions?**
    **Arrow functions** are a shorthand way of writing functions in JavaScript. They differ from regular functions in several ways:
