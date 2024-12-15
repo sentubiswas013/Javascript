@@ -1429,23 +1429,23 @@ This is one of the very common coding interview questions, that often allows the
 
 109. ### What is an event delegation
 
-    **Event delegation** is a technique in JavaScript where instead of attaching an event listener to each individual element (e.g., each list item), you attach a single event listener to a parent element. This parent listens for events triggered by its child elements, taking advantage of event bubbling.
+      **Event delegation** is a technique in JavaScript where instead of attaching an event listener to each individual element (e.g., each list item), you attach a single event listener to a parent element. This parent listens for events triggered by its child elements, taking advantage of event bubbling.
 
-    Event delegation improves performance, especially when dealing with a large number of elements, and makes it easier to handle events dynamically, even for elements added after the initial page load.
+      Event delegation improves performance, especially when dealing with a large number of elements, and makes it easier to handle events dynamically, even for elements added after the initial page load.
 
-    Example:
-    ```javascript
-    // Attaching event listener to the parent
-    const parentElement = document.getElementById("parent");
+      Example:
+      ```javascript
+      // Attaching event listener to the parent
+      const parentElement = document.getElementById("parent");
 
-    parentElement.addEventListener("click", (event) => {
-      // Only handle clicks on list items
-      if (event.target && event.target.matches("li")) {
-        console.log("List item clicked:", event.target.textContent);
-      }
-    });
-    ```
-    Here, the `click` event listener is added to the parent (`#parent`), but the event handler only triggers when a list item (`<li>`) is clicked.
+      parentElement.addEventListener("click", (event) => {
+        // Only handle clicks on list items
+        if (event.target && event.target.matches("li")) {
+          console.log("List item clicked:", event.target.textContent);
+        }
+      });
+      ```
+      Here, the `click` event listener is added to the parent (`#parent`), but the event handler only triggers when a list item (`<li>`) is clicked.
 
      **[⬆ Back to Top](#table-of-contents)**
 
