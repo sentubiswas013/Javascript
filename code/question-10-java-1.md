@@ -744,6 +744,129 @@ class Dog implements Animal {
 
 Composition is generally favored over inheritance as it provides better flexibility and avoids the complexities of multiple inheritance.
 
+#### 1. **Inheritance**
+
+**Definition**: Inheritance is a mechanism where a new class (subclass or child class) derives from an existing class (superclass or parent class), inheriting its properties and methods.
+
+- **"Is-A" Relationship**: Inheritance represents an **"is-a"** relationship. A subclass is a specialized version of the parent class. For example, a `Dog` class may inherit from a `Animal` class, meaning a dog **is an** animal.
+- **Code Reusability**: Inheritance allows code reusability. The subclass inherits the behavior (methods) and properties (fields) of the parent class and can override or extend them.
+- **Extensibility**: Inheritance allows subclasses to extend or modify the functionality of the superclass.
+- **Tight Coupling**: Inheritance creates a strong coupling between the parent and child classes. Changes in the parent class can affect the child class, and subclasses are tightly dependent on the implementation of the parent class.
+- **Example**:
+
+  ```java
+  class Animal {
+      void eat() {
+          System.out.println("Eating...");
+      }
+  }
+
+  class Dog extends Animal {
+      void bark() {
+          System.out.println("Barking...");
+      }
+  }
+
+  public class Test {
+      public static void main(String[] args) {
+          Dog dog = new Dog();
+          dog.eat();  // Inherited method from Animal
+          dog.bark(); // Method in Dog
+      }
+  }
+  ```
+
+  - In this example, `Dog` is a type of `Animal`, so `Dog` inherits the `eat()` method from `Animal`.
+
+#### Pros of Inheritance:
+- Promotes code reuse.
+- Creates a hierarchical structure of classes.
+- Provides an easy way to extend behavior.
+
+#### Cons of Inheritance:
+- Tight coupling between parent and child classes.
+- Can lead to problems like the **Fragile Base Class Problem**, where changes in the base class might unintentionally break the subclass.
+- Overuse can result in deep class hierarchies, which can be hard to maintain.
+
+---
+
+#### 2. **Composition**
+
+**Definition**: Composition is a design principle where one class contains an instance of another class, and delegates certain tasks to it. It’s often described as a **"has-a"** relationship, where one object **has** another object.
+
+- **"Has-A" Relationship**: Composition represents a **"has-a"** relationship. A class contains a reference to another class and relies on it to perform certain functions. For example, a `Car` class might have an `Engine` class, meaning the car **has** an engine.
+- **Loose Coupling**: Composition promotes loose coupling, meaning that classes are more independent. If changes are made in one class, it won’t necessarily affect the other class.
+- **Flexibility**: Composition allows for greater flexibility because you can change the behavior of a class dynamically by swapping out components. It also allows for more modular design.
+- **Example**:
+
+  ```java
+  class Engine {
+      void start() {
+          System.out.println("Engine starting...");
+      }
+  }
+
+  class Car {
+      private Engine engine;  // Car "has-a" Engine
+
+      public Car() {
+          engine = new Engine();  // Create an instance of Engine
+      }
+
+      void startCar() {
+          engine.start();  // Delegate the task to Engine
+          System.out.println("Car started!");
+      }
+  }
+
+  public class Test {
+      public static void main(String[] args) {
+          Car car = new Car();
+          car.startCar();
+      }
+  }
+  ```
+
+  - In this example, `Car` contains an `Engine` object, and it delegates the `start` action to the `Engine`.
+
+#### Pros of Composition:
+- **Loose coupling**: Composition allows classes to remain more independent, reducing interdependence.
+- More **flexibility**: Components can be swapped, allowing more flexibility in changing behavior without affecting other parts of the system.
+- Promotes **modular design**: Encourages breaking down the system into small, reusable components.
+- Less risk of breaking existing code when changes are made, because classes are loosely coupled.
+
+#### Cons of Composition:
+- Can involve more code to achieve the same functionality, as you need to delegate actions to composed objects.
+- More complex to design when objects are tightly dependent on each other.
+
+---
+
+### Key Differences Between Inheritance and Composition:
+
+| **Feature**                 | **Inheritance**                                | **Composition**                            |
+|-----------------------------|------------------------------------------------|--------------------------------------------|
+| **Relationship**             | "Is-a" relationship (a subclass is a type of the superclass) | "Has-a" relationship (one class contains another) |
+| **Coupling**                 | Tight coupling (parent-child relationship)     | Loose coupling (objects are independent)   |
+| **Code Reusability**         | Inherits behavior from the parent class        | Reuses behavior by delegating tasks to other objects |
+| **Extensibility**            | Can be extended through subclassing            | Can be extended by adding or changing components |
+| **Flexibility**              | Less flexible, because subclasses are tightly bound to the superclass | More flexible, because behavior can be modified by swapping components |
+| **Overriding**               | Can override methods from the parent class     | No direct overriding (delegation instead)  |
+| **Use Case**                 | Use when one class is a specialized type of another | Use when one class needs to contain and delegate tasks to other objects |
+
+### When to Use Inheritance:
+- Use inheritance when there is a clear **"is-a"** relationship between the classes, and when you want to extend or specialize the behavior of a base class.
+- It’s useful for **hierarchical structures** where subclasses share common behavior but also have their own unique functionality.
+
+### When to Use Composition:
+- Use composition when there is a **"has-a"** relationship between objects, or when you need to create **modular, reusable** components.
+- It's ideal when you want to **avoid tight coupling** and make your design more **flexible** and **maintainable**.
+
+### Example of Combined Use:
+In many cases, a combination of both inheritance and composition is used. For example, a `Car` can **inherit** from a `Vehicle` class (because a car **is a** vehicle) and **compose** an `Engine` (because a car **has an** engine). This approach combines the strengths of both techniques.
+
+
+
+
 ### 27. **What is the `super` keyword in Java?**
 
 The `super` keyword is used to refer to the superclass (parent class) of the current object. It can be used to:
