@@ -1,17 +1,20 @@
 # JavaScript Interview Questions & Answers
 
 ### 1. **What are the different data types in JavaScript?**
-   JavaScript has both **primitive** and **non-primitive** (or **reference**) data types:
-   - **Primitive data types**: 
-     - `string`: Represents a sequence of characters. Example: `"hello"`
-     - `number`: Represents numeric values. Example: `42`
-     - `bigint`: Represents large integers. Example: `123456789012345678901234567890n`
-     - `boolean`: Represents `true` or `false`. Example: `true`
-     - `undefined`: Represents an uninitialized variable or an absent value. Example: `let a;`
-     - `symbol`: Represents a unique identifier, often used for object property keys. Example: `Symbol('description')`
-     - `null`: Represents the intentional absence of any object value. Example: `let a = null;`
-   - **Non-primitive data types**:
-     - `object`: Includes collections of key-value pairs, such as arrays, functions, and plain objects. Example: `let obj = { key: 'value' };`
+   JavaScript has two main categories of data types:
+
+- **Primitive types** (immutable):
+  1. **String**: A sequence of characters, e.g., `"Hello"`.
+  2. **Number**: Represents both integer and floating-point numbers, e.g., `42`, `3.14`.
+  3. **BigInt**: Large integers (used for numbers larger than `Number.MAX_SAFE_INTEGER`), e.g., `123456789012345678901234567890n`.
+  4. **Boolean**: Represents logical values, e.g., `true`, `false`.
+  5. **undefined**: A variable that has been declared but not assigned a value.
+  6. **null**: Represents the intentional absence of any object value.
+  7. **Symbol**: A unique identifier used to create object property keys that are unique, e.g., `Symbol('id')`.
+  
+- **Non-primitive types** (mutable):
+  1. **Object**: A collection of key-value pairs, e.g., `{ name: 'Alice', age: 30 }`.
+  2. **Array**: A special type of object used for ordered collections, e.g., `[1, 2, 3]`.
 
 ### 2. **What is the difference between `var`, `let`, and `const`?**
    - **`var`**:

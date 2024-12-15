@@ -2,19 +2,6 @@ Here are 100 essential JavaScript interview questions, categorized into various 
 
 ## **1. Basic JavaScript Concepts**
 
-#### 1. **What are the different data types in JavaScript?**
-   JavaScript has both **primitive** and **non-primitive** (or **reference**) data types:
-   - **Primitive data types**: 
-     - `string`: Represents a sequence of characters. Example: `"hello"`
-     - `number`: Represents numeric values. Example: `42`
-     - `bigint`: Represents large integers. Example: `123456789012345678901234567890n`
-     - `boolean`: Represents `true` or `false`. Example: `true`
-     - `undefined`: Represents an uninitialized variable or an absent value. Example: `let a;`
-     - `symbol`: Represents a unique identifier, often used for object property keys. Example: `Symbol('description')`
-     - `null`: Represents the intentional absence of any object value. Example: `let a = null;`
-   - **Non-primitive data types**:
-     - `object`: Includes collections of key-value pairs, such as arrays, functions, and plain objects. Example: `let obj = { key: 'value' };`
-
 #### 2. **What is the difference between `var`, `let`, and `const`?**
    - **`var`**:
      - Declares variables with function or global scope (depending on where it's declared).
