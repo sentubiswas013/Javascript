@@ -1429,23 +1429,23 @@ This is one of the very common coding interview questions, that often allows the
 
 109. ### What is an event delegation
 
-     Event delegation is a technique for listening to events where you delegate a parent element as the listener for all of the events that happen inside it.
+    **Event delegation** is a technique in JavaScript where instead of attaching an event listener to each individual element (e.g., each list item), you attach a single event listener to a parent element. This parent listens for events triggered by its child elements, taking advantage of event bubbling.
 
-     For example, if you wanted to detect field changes in inside a specific form, you can use event delegation technique,
+    Event delegation improves performance, especially when dealing with a large number of elements, and makes it easier to handle events dynamically, even for elements added after the initial page load.
 
-     ```javascript
-     var form = document.querySelector("#registration-form");
+    Example:
+    ```javascript
+    // Attaching event listener to the parent
+    const parentElement = document.getElementById("parent");
 
-     // Listen for changes to fields inside the form
-     form.addEventListener(
-       "input",
-       function (event) {
-         // Log the field that was changed
-         console.log(event.target);
-       },
-       false
-     );
-     ```
+    parentElement.addEventListener("click", (event) => {
+      // Only handle clicks on list items
+      if (event.target && event.target.matches("li")) {
+        console.log("List item clicked:", event.target.textContent);
+      }
+    });
+    ```
+    Here, the `click` event listener is added to the parent (`#parent`), but the event handler only triggers when a list item (`<li>`) is clicked.
 
      **[⬆ Back to Top](#table-of-contents)**
 
