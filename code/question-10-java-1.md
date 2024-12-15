@@ -249,6 +249,122 @@ class Dog extends Animal {
 ```
 In this example, the `Dog` class overrides the `sound()` method of the `Animal` class.
 
+### 12. **What is the difference Differences Between Method Overloading and Method Overriding**
+In Java, **method overloading** and **method overriding** are two important concepts related to methods. They are both ways of defining methods with the same name, but they differ significantly in terms of their purpose, behavior, and how they are used in a program.
+
+### 1. **Method Overloading:**
+
+**Method overloading** occurs when two or more methods in the same class have the **same name** but differ in their **parameter list** (either in the number of parameters or the type of parameters). Overloading is resolved at **compile time**, and it's a way to provide multiple behaviors for a method based on the arguments passed to it.
+
+#### Key Characteristics of Method Overloading:
+- **Same Method Name:** All overloaded methods share the same method name.
+- **Different Parameter List:** The parameters must differ in either the number of parameters, the type of parameters, or both.
+- **Return Type:** The return type may or may not be different, but the return type alone cannot differentiate overloaded methods.
+- **Compile-time Polymorphism:** Overloading is an example of **compile-time polymorphism** (also known as static polymorphism).
+- **Resolved by the Compiler:** The method to be invoked is determined at compile time based on the arguments provided.
+
+#### Example of Method Overloading:
+```java
+public class Calculator {
+
+    // Method to add two integers
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded method to add three integers
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Overloaded method to add two doubles
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(10, 20));           // Output: 30 (calls the first method)
+        System.out.println(calc.add(10, 20, 30));       // Output: 60 (calls the second method)
+        System.out.println(calc.add(10.5, 20.5));       // Output: 31.0 (calls the third method)
+    }
+}
+```
+
+In this example:
+- The method `add` is overloaded three times, with different parameter types or numbers.
+
+---
+
+### 2. **Method Overriding:**
+
+**Method overriding** occurs when a subclass provides its own **implementation** of a method that is already defined in its superclass. The method signature in the subclass must be exactly the same as the method in the superclass (same method name, same parameters, same return type). Overriding allows a subclass to **modify** or **extend** the behavior of a method inherited from the superclass.
+
+#### Key Characteristics of Method Overriding:
+- **Same Method Name and Signature:** The method in the subclass has the same name, return type, and parameters as the method in the superclass.
+- **Subclass's Implementation:** The subclass provides its own implementation for the inherited method, potentially changing or extending the behavior.
+- **Runtime Polymorphism:** Overriding is an example of **runtime polymorphism** (also known as dynamic polymorphism), where the method to be invoked is determined at **runtime**.
+- **`@Override` Annotation:** It's a good practice to use the `@Override` annotation in the subclass method to indicate that the method is intended to override a method in the superclass.
+
+#### Example of Method Overriding:
+```java
+class Animal {
+    // Superclass method
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    // Overriding method in subclass
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Animal();
+        Dog dog = new Dog();
+
+        animal.sound();  // Output: Animal makes a sound
+        dog.sound();     // Output: Dog barks
+
+        Animal a = new Dog();  // Upcasting
+        a.sound();  // Output: Dog barks (runtime polymorphism)
+    }
+}
+```
+
+In this example:
+- The `Dog` class overrides the `sound` method from the `Animal` class.
+- When the `sound` method is called on a `Dog` object, it uses the overridden method in the `Dog` class.
+
+---
+
+### Key Differences Between Method Overloading and Method Overriding:
+
+| Feature                  | **Method Overloading**                            | **Method Overriding**                           |
+|--------------------------|---------------------------------------------------|------------------------------------------------|
+| **Definition**            | Defining multiple methods with the same name but different parameters in the same class. | Redefining a method in a subclass that is already defined in its superclass. |
+| **Method Signature**      | Must differ in number or type of parameters.      | Must have the same method signature (name, return type, and parameters). |
+| **Return Type**           | May or may not be different.                      | Must be the same as the overridden method in the superclass. |
+| **Access Modifier**       | Can have different access modifiers.              | The access modifier of the overridden method must be the same or more permissive. |
+| **Polymorphism Type**     | Compile-time (Static Polymorphism).               | Runtime (Dynamic Polymorphism). |
+| **Method Binding**        | The method to call is determined at compile time. | The method to call is determined at runtime based on the object's actual class. |
+| **Purpose**               | Allows the use of the same method name for different functionalities. | Allows modifying or extending the behavior of an inherited method. |
+| **Inheritance Requirement**| No inheritance is required.                      | Inheritance is required (overridden method exists in the superclass). |
+| **Keyword**               | No special keyword required (but method signatures must differ). | The `@Override` annotation is recommended (but not mandatory). |
+
+### Summary:
+
+- **Overloading** is when multiple methods in the same class have the same name but differ in the number or type of parameters. It is resolved at **compile time**.
+- **Overriding** is when a subclass provides a specific implementation for a method that is already defined in its superclass, with the exact same method signature. It is resolved at **runtime** and supports **runtime polymorphism**.
+
+
+
+
 ### 12. **What is the difference between `==` and `equals()` in Java?**
 
 - **`==`**: The `==` operator is used for reference comparison. It checks if two references point to the exact same object in memory (i.e., it compares object addresses).
