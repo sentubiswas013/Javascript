@@ -1,6 +1,6 @@
 # JavaScript Interview Questions & Answers
 
-#### 1. **What are the different data types in JavaScript?**
+### 1. **What are the different data types in JavaScript?**
    JavaScript has both **primitive** and **non-primitive** (or **reference**) data types:
    - **Primitive data types**: 
      - `string`: Represents a sequence of characters. Example: `"hello"`
@@ -13,7 +13,7 @@
    - **Non-primitive data types**:
      - `object`: Includes collections of key-value pairs, such as arrays, functions, and plain objects. Example: `let obj = { key: 'value' };`
 
-#### 2. **What is the difference between `var`, `let`, and `const`?**
+### 2. **What is the difference between `var`, `let`, and `const`?**
    - **`var`**:
      - Declares variables with function or global scope (depending on where it's declared).
      - Variables are **hoisted** (the declaration is moved to the top of its scope).
