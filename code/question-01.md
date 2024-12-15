@@ -139,7 +139,7 @@
 
   As per the above code, the inner function(i.e, greetingInfo) has access to the variables in the outer function scope(i.e, Welcome) even after the outer function has returned.
 
-#### 4. **What is the `this` keyword in JavaScript?**
+### 4. **What is the `this` keyword in JavaScript?**
    The `this` keyword refers to the **context** in which a function is called. It can vary depending on how the function is invoked:
    - In a **regular function**, `this` refers to the global object (in non-strict mode) or `undefined` (in strict mode).
    - In an **object method**, `this` refers to the object the method is called on.
