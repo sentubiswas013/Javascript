@@ -28,9 +28,6 @@
      - Its value must be assigned at declaration time.
 
 01. ### What is a pure function
-
-    CS
-
     Pure functions do not depend on any state or data change during a program's execution, but only on their input arguments.
 
     To be considered pure, a function must pass two tests:
