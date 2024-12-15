@@ -29,22 +29,6 @@ Here are 100 essential JavaScript interview questions, categorized into various 
      - **Cannot be reassigned** after initial assignment.
      - Its value must be assigned at declaration time.
 
-#### 3. **What is a closure in JavaScript?**
-   A **closure** is a function that **retains access** to variables from its lexical scope, even after the outer function has finished execution. This happens because the inner function "remembers" the environment in which it was created.
-   Example:
-   ```javascript
-   function outer() {
-     let count = 0;
-     function inner() {
-       return count++;
-     }
-     return inner;
-   }
-   const increment = outer();
-   console.log(increment()); // 0
-   console.log(increment()); // 1
-   ```
-
 #### 4. **What is the `this` keyword in JavaScript?**
    The `this` keyword refers to the **context** in which a function is called. It can vary depending on how the function is invoked:
    - In a **regular function**, `this` refers to the global object (in non-strict mode) or `undefined` (in strict mode).
@@ -94,25 +78,6 @@ Here are 100 essential JavaScript interview questions, categorized into various 
    let a = null;    // Explicitly assigned
    let b;           // Implicitly undefined
    ```
-
-#### 10. **What is hoisting in JavaScript?**
-   Hoisting is a JavaScript behavior where **declarations** (but not initializations) of variables and functions are moved to the top of their containing scope during the compilation phase.
-   - **Function declarations** are hoisted with their definitions.
-   - **`var` variables** are hoisted, but only their declarations, not their assignments.
-   - **`let` and `const`** are hoisted, but they are not initialized until the code execution reaches the declaration line. Accessing them before that results in a ReferenceError (due to the "temporal dead zone").
-
-   Example:
-   ```javascript
-   console.log(a); // undefined (hoisted but not assigned)
-   var a = 5;
-
-   myFunction();   // works because function declarations are hoisted
-   function myFunction() {
-     console.log('Hello');
-   }
-   ```
-
-Here are the answers to the next set of JavaScript questions:
 
 
 ### **12. What are arrow functions, and how do they differ from regular functions?**

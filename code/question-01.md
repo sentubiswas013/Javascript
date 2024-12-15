@@ -117,7 +117,7 @@
 
 04. ### What are closures
 
-  A closure is the combination of a function and the lexical environment within which that function was declared. i.e, It is an inner function that has access to the outer or enclosing function’s variables. The closure has three scope chains
+  A closure is a function that "remembers" the lexical environment in which it was created, even after the outer function has finished executing. i.e, It is an inner function that has access to the outer or enclosing function’s variables. The closure has three scope chains
 
   1. Own scope where variables defined between its curly brackets
   2. Outer function’s variables

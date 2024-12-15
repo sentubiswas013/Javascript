@@ -81,46 +81,6 @@ let age = 25; // variable declared using let
 const name = "Alice"; // constant declared using const
 ```
 
----
-
-### 6. **What is hoisting in JavaScript?**
-
-Hoisting is JavaScript's default behavior of moving variable and function declarations to the top of their containing scope during the compile phase, before the code has been executed. However, only the declarations are hoisted, not the initializations.
-
-For example:
-```javascript
-console.log(x); // undefined, because the declaration is hoisted but not the initialization
-var x = 5;
-```
-With `let` and `const`, the variables are hoisted but remain in a "temporal dead zone" (TDZ) until they are initialized, resulting in a ReferenceError if accessed before initialization.
-
----
-
-### 7. **What is a closure in JavaScript? Can you give an example?**
-
-A closure is a function that "remembers" the lexical environment in which it was created, even after the outer function has finished executing. This allows the inner function to access variables from its outer function.
-
-Example:
-```javascript
-function outer() {
-  let counter = 0;
-  
-  function inner() {
-    counter++;
-    console.log(counter);
-  }
-
-  return inner;
-}
-
-const increment = outer();
-increment(); // 1
-increment(); // 2
-```
-In this example, `inner()` is a closure that retains access to `counter` even after `outer()` has executed.
-
----
-
 ### 8. **What is the difference between `undefined` and `null`?**
 
 - **`undefined`**:
