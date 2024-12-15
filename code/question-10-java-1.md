@@ -475,7 +475,6 @@ Here’s a breakdown of the differences between these access modifiers:
 - Use **public** for methods or variables that need to be accessed from outside the class, such as API endpoints or properties that are safe to be accessed by other classes.
 
 
-
 ### 15. **What is a static method in Java?**
 
 A static method is a method that belongs to the class rather than to instances of the class. It can be called without creating an instance of the class. Static methods can access static variables and other static methods directly but cannot access instance variables or instance methods without creating an object.
@@ -538,6 +537,76 @@ final int myVar = 10;  // Cannot be reassigned
 - **`String`**: Immutable, meaning once a `String` object is created, its value cannot be changed. Operations that modify a `String` create a new `String` object.
 - **`StringBuilder`**: Mutable, used for manipulating strings when you need to modify them frequently. It is more efficient than `String` for such tasks.
 - **`StringBuffer`**: Similar to `StringBuilder`, but it is **synchronized**, making it thread-safe. It is slower than `StringBuilder` because of the synchronization overhead.
+
+In Java, `String`, `StringBuilder`, and `StringBuffer` are all used for handling text (sequences of characters), but they have important differences in terms of **mutability**, **thread-safety**, and **performance**. Here's a detailed comparison of these three classes:
+
+### 1. **String**
+- **Mutability**: **Immutable**.
+  - Once a `String` object is created, its value cannot be changed. If you modify a `String`, a new `String` object is created, and the old one remains unchanged.
+- **Performance**: **Less efficient** for repeated modifications.
+  - Since `String` is immutable, operations like concatenation (e.g., using `+` or `concat()`) create new `String` objects each time. This can lead to performance issues when performing many modifications in loops or large-scale string manipulation.
+- **Thread-Safety**: **Not relevant**.
+  - `String` is immutable, so there is no need for synchronization to ensure thread-safety.
+  
+#### Example:
+```java
+String str = "Hello";
+str = str + " World";  // Creates a new String object
+```
+
+### 2. **StringBuilder**
+- **Mutability**: **Mutable**.
+  - Unlike `String`, `StringBuilder` objects can be modified directly without creating new objects. It is designed for efficient string manipulation.
+- **Performance**: **Faster than String** for repeated modifications.
+  - `StringBuilder` is optimized for cases where the string is modified many times (e.g., appending, inserting, or deleting characters). It does not create a new object every time a modification is made, which reduces overhead.
+- **Thread-Safety**: **Not thread-safe**.
+  - `StringBuilder` is not synchronized, meaning it is not safe for use in multithreaded environments where multiple threads could modify the same `StringBuilder` object.
+  
+#### Example:
+```java
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World");  // Modifies the existing StringBuilder object
+```
+
+### 3. **StringBuffer**
+- **Mutability**: **Mutable**.
+  - Similar to `StringBuilder`, `StringBuffer` objects can be modified directly.
+- **Performance**: **Slower than StringBuilder**.
+  - `StringBuffer` is similar to `StringBuilder` in that it allows modification of the string without creating new objects, but it is **synchronized**, which adds overhead and makes it slower than `StringBuilder` in single-threaded environments.
+- **Thread-Safety**: **Thread-safe**.
+  - `StringBuffer` is synchronized, meaning it can be safely used in multithreaded environments where multiple threads are accessing or modifying the same `StringBuffer` object.
+  
+#### Example:
+```java
+StringBuffer sbf = new StringBuffer("Hello");
+sbf.append(" World");  // Modifies the existing StringBuffer object
+```
+
+### Summary of Key Differences:
+
+| Feature             | **String**                             | **StringBuilder**                        | **StringBuffer**                        |
+|---------------------|----------------------------------------|------------------------------------------|-----------------------------------------|
+| **Mutability**       | Immutable (cannot be changed)          | Mutable (can be modified)                | Mutable (can be modified)               |
+| **Performance**      | Less efficient for repeated changes    | Efficient for repeated changes (faster)  | Less efficient than StringBuilder (due to synchronization) |
+| **Thread Safety**    | Not relevant (immutable)               | Not thread-safe                          | Thread-safe (synchronized methods)      |
+| **Use Case**         | When the string value doesn't change frequently | When you need to modify the string frequently in a single thread | When you need thread-safety in a multi-threaded environment |
+| **Example Operation**| `String str = "Hello"; str = str + " World";` | `StringBuilder sb = new StringBuilder("Hello"); sb.append(" World");` | `StringBuffer sbf = new StringBuffer("Hello"); sbf.append(" World");` |
+
+### When to Use Each:
+
+1. **Use `String`** when:
+   - The string value does not change frequently, or if you're working with fixed strings.
+   - You don't need to modify the string many times (since concatenation can be inefficient).
+
+2. **Use `StringBuilder`** when:
+   - You need to modify the string frequently (e.g., appending, inserting, or deleting characters).
+   - You're working in a **single-threaded** environment, and performance is a concern.
+
+3. **Use `StringBuffer`** when:
+   - You need to modify the string frequently and need **thread safety**.
+   - Your code runs in a **multi-threaded** environment and multiple threads might be modifying the same string object.
+
+In general, if thread-safety is not a concern, `StringBuilder` is preferred due to better performance. `StringBuffer` should be used in multi-threaded scenarios where thread safety is essential.
 
 ### 19. **What is the significance of `hashCode()` and `equals()` methods?**
 
