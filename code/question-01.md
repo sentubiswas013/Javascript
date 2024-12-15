@@ -1,5 +1,32 @@
 # JavaScript Interview Questions & Answers
 
+#### 1. **What are the different data types in JavaScript?**
+   JavaScript has both **primitive** and **non-primitive** (or **reference**) data types:
+   - **Primitive data types**: 
+     - `string`: Represents a sequence of characters. Example: `"hello"`
+     - `number`: Represents numeric values. Example: `42`
+     - `bigint`: Represents large integers. Example: `123456789012345678901234567890n`
+     - `boolean`: Represents `true` or `false`. Example: `true`
+     - `undefined`: Represents an uninitialized variable or an absent value. Example: `let a;`
+     - `symbol`: Represents a unique identifier, often used for object property keys. Example: `Symbol('description')`
+     - `null`: Represents the intentional absence of any object value. Example: `let a = null;`
+   - **Non-primitive data types**:
+     - `object`: Includes collections of key-value pairs, such as arrays, functions, and plain objects. Example: `let obj = { key: 'value' };`
+
+#### 2. **What is the difference between `var`, `let`, and `const`?**
+   - **`var`**:
+     - Declares variables with function or global scope (depending on where it's declared).
+     - Variables are **hoisted** (the declaration is moved to the top of its scope).
+     - Can be reassigned and redeclared.
+   - **`let`**:
+     - Declares block-scoped variables (limited to the block, statement, or expression in which it is used).
+     - Cannot be redeclared in the same scope, but can be reassigned.
+     - **Not hoisted** in the same way as `var` (it’s in a "temporal dead zone" from the start of the block until the declaration is encountered).
+   - **`const`**:
+     - Declares block-scoped variables.
+     - **Cannot be reassigned** after initial assignment.
+     - Its value must be assigned at declaration time.
+     
 01. ### What is a pure function
 
     CS
