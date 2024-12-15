@@ -363,8 +363,6 @@ In this example:
 - **Overriding** is when a subclass provides a specific implementation for a method that is already defined in its superclass, with the exact same method signature. It is resolved at **runtime** and supports **runtime polymorphism**.
 
 
-
-
 ### 12. **What is the difference between `==` and `equals()` in Java?**
 
 - **`==`**: The `==` operator is used for reference comparison. It checks if two references point to the exact same object in memory (i.e., it compares object addresses).
@@ -383,13 +381,100 @@ System.out.println(a.equals(b));  // true (same value)
 ### 13. **========**
 
 
-
 ### 14. **What is the difference between `public`, `private`, `protected`, and default access modifiers?**
 
 - **`public`**: The class, method, or variable is accessible from any other class, regardless of the package.
 - **`private`**: The class, method, or variable is accessible only within the same class.
 - **`protected`**: The class, method, or variable is accessible within the same package and by subclasses, even if they are in different packages.
 - **Default (no modifier)**: The class, method, or variable is accessible only within classes that belong to the same package.
+
+Here’s a breakdown of the differences between these access modifiers:
+
+#### 1. **Public**
+- **Visibility**: A member (field, method, or class) declared as `public` is accessible **from anywhere** in the application. It has the **widest scope** of visibility.
+- **Usage**: `public` is typically used for methods or fields that need to be accessed by other classes, both inside and outside the class.
+- **Example**:
+
+  ```java
+  public class MyClass {
+      public int myPublicField;
+      
+      public void myPublicMethod() {
+          System.out.println("This is a public method.");
+      }
+  }
+  ```
+
+  - `myPublicField` and `myPublicMethod()` can be accessed by any class in the project.
+
+#### 2. **Private**
+- **Visibility**: A member declared as `private` is **only accessible within the class** in which it is defined. It is **not visible** outside of that class, not even to subclasses.
+- **Usage**: `private` is used for internal implementation details that should not be exposed to other classes. It helps to encapsulate the data and protect it from being modified directly.
+- **Example**:
+
+  ```java
+  public class MyClass {
+      private int myPrivateField;
+      
+      private void myPrivateMethod() {
+          System.out.println("This is a private method.");
+      }
+  }
+  ```
+
+  - `myPrivateField` and `myPrivateMethod()` cannot be accessed from any other class, even subclasses.
+
+#### 3. **Protected**
+- **Visibility**: A member declared as `protected` is accessible:
+  - **Within the same package** (like package-private or default access).
+  - **By subclasses** (even if the subclass is in a different package).
+- **Usage**: `protected` is used when you want a member to be accessible to subclasses but not to other unrelated classes. This provides a balance between encapsulation and inheritance.
+- **Example**:
+
+  ```java
+  public class MyClass {
+      protected int myProtectedField;
+      
+      protected void myProtectedMethod() {
+          System.out.println("This is a protected method.");
+      }
+  }
+  ```
+
+  - `myProtectedField` and `myProtectedMethod()` can be accessed by subclasses (even those in different packages) and classes within the same package.
+
+#### 4. **Package-Private (Default)**
+- **Visibility**: If no access modifier is specified (i.e., it's just left as default), the member is **accessible only within the same package**. This is also referred to as **package-private** access.
+- **Usage**: This is the default access level when no other access modifier is explicitly provided. It’s useful when you want a member to be accessible by other classes in the same package but not from outside.
+- **Example**:
+
+  ```java
+  public class MyClass {
+      int myPackagePrivateField;  // No modifier means package-private
+      
+      void myPackagePrivateMethod() {  // No modifier means package-private
+          System.out.println("This is package-private.");
+      }
+  }
+  ```
+
+  - `myPackagePrivateField` and `myPackagePrivateMethod()` can only be accessed by other classes in the same package.
+
+### Summary Table:
+
+| Access Modifier | Can be accessed by the same class | Can be accessed by subclasses | Can be accessed by classes in the same package | Can be accessed by any class outside the package |
+|-----------------|----------------------------------|--------------------------------|-----------------------------------------------|------------------------------------------------|
+| `public`        | Yes                              | Yes                            | Yes                                           | Yes                                            |
+| `private`       | Yes                              | No                             | No                                            | No                                             |
+| `protected`     | Yes                              | Yes                            | Yes                                           | No                                             |
+| Package-private | Yes                              | No                             | Yes                                           | No                                             |
+
+### Best Practices:
+- Use **private** for internal details that should not be modified or accessed directly from outside the class.
+- Use **protected** when you want subclasses to access a member but you don’t want it exposed to the general public.
+- Use **public** for methods or variables that need to be accessed from outside the class, such as API endpoints or properties that are safe to be accessed by other classes.
+
+
 
 ### 15. **What is a static method in Java?**
 
