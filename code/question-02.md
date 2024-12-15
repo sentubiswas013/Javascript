@@ -2,34 +2,6 @@ Here are 100 essential JavaScript interview questions, categorized into various 
 
 ## **1. Basic JavaScript Concepts**
 
-#### 2. **What is the difference between `var`, `let`, and `const`?**
-   - **`var`**:
-     - Declares variables with function or global scope (depending on where it's declared).
-     - Variables are **hoisted** (the declaration is moved to the top of its scope).
-     - Can be reassigned and redeclared.
-   - **`let`**:
-     - Declares block-scoped variables (limited to the block, statement, or expression in which it is used).
-     - Cannot be redeclared in the same scope, but can be reassigned.
-     - **Not hoisted** in the same way as `var` (it’s in a "temporal dead zone" from the start of the block until the declaration is encountered).
-   - **`const`**:
-     - Declares block-scoped variables.
-     - **Cannot be reassigned** after initial assignment.
-     - Its value must be assigned at declaration time.
-
-#### 4. **What is the `this` keyword in JavaScript?**
-   The `this` keyword refers to the **context** in which a function is called. It can vary depending on how the function is invoked:
-   - In a **regular function**, `this` refers to the global object (in non-strict mode) or `undefined` (in strict mode).
-   - In an **object method**, `this` refers to the object the method is called on.
-   - In **arrow functions**, `this` is **lexically bound** (it doesn't create its own `this` value but inherits it from the outer function).
-
-#### 5. **What are the primitive data types in JavaScript?**
-   - `string`
-   - `number`
-   - `bigint`
-   - `boolean`
-   - `undefined`
-   - `symbol`
-   - `null` (while technically not an object, it's often treated like one in JavaScript)
 
 #### 6. **What is the difference between `==` and `===` in JavaScript?**
    - **`==` (loose equality)**: Compares values for equality **after type coercion** (converts values to the same type before comparison).
