@@ -12,6 +12,114 @@ Key differences:
 - Java is compiled into bytecode, JavaScript is interpreted or just-in-time compiled.
 - Java is class-based; JavaScript is prototype-based (though it supports object-oriented programming).
 
+---
+
+### 2. **What are the differences between `var`, `let`, and `const`?**
+
+- **`var`**:
+  - Function-scoped or globally scoped (depending on where it is declared).
+  - Can be re-declared and updated within its scope.
+  - Hoisted, but initialized with `undefined`.
+
+- **`let`**:
+  - Block-scoped (limited to the block, statement, or expression where it is defined).
+  - Can be updated, but not re-declared within the same scope.
+  - Hoisted, but not initialized until execution reaches the declaration.
+
+- **`const`**:
+  - Block-scoped.
+  - Cannot be updated or re-declared within its scope.
+  - Hoisted, but not initialized.
+  - Must be assigned a value at the time of declaration (value cannot be changed).
+
+---
+
+### 3. **What are JavaScript data types? Explain each one.**
+
+JavaScript has two main categories of data types:
+
+- **Primitive types** (immutable):
+  1. **String**: A sequence of characters, e.g., `"Hello"`.
+  2. **Number**: Represents both integer and floating-point numbers, e.g., `42`, `3.14`.
+  3. **BigInt**: Large integers (used for numbers larger than `Number.MAX_SAFE_INTEGER`), e.g., `123456789012345678901234567890n`.
+  4. **Boolean**: Represents logical values, e.g., `true`, `false`.
+  5. **undefined**: A variable that has been declared but not assigned a value.
+  6. **null**: Represents the intentional absence of any object value.
+  7. **Symbol**: A unique identifier used to create object property keys that are unique, e.g., `Symbol('id')`.
+  
+- **Non-primitive types** (mutable):
+  1. **Object**: A collection of key-value pairs, e.g., `{ name: 'Alice', age: 30 }`.
+  2. **Array**: A special type of object used for ordered collections, e.g., `[1, 2, 3]`.
+
+---
+
+### 4. **What are primitive data types in JavaScript?**
+
+Primitive data types in JavaScript are types that are immutable and hold a single value. These include:
+- **String**
+- **Number**
+- **BigInt**
+- **Boolean**
+- **undefined**
+- **null**
+- **Symbol**
+
+These types are immutable and compared by their value, not by reference.
+
+---
+
+### 5. **What is a variable in JavaScript? How do you declare a variable?**
+
+A variable in JavaScript is a named container that holds data values. You can declare a variable using one of the following keywords:
+- **`var`**: Declares a variable (function-scoped).
+- **`let`**: Declares a block-scoped variable.
+- **`const`**: Declares a block-scoped constant.
+
+Example:
+```javascript
+let age = 25; // variable declared using let
+const name = "Alice"; // constant declared using const
+```
+
+---
+
+### 6. **What is hoisting in JavaScript?**
+
+Hoisting is JavaScript's default behavior of moving variable and function declarations to the top of their containing scope during the compile phase, before the code has been executed. However, only the declarations are hoisted, not the initializations.
+
+For example:
+```javascript
+console.log(x); // undefined, because the declaration is hoisted but not the initialization
+var x = 5;
+```
+With `let` and `const`, the variables are hoisted but remain in a "temporal dead zone" (TDZ) until they are initialized, resulting in a ReferenceError if accessed before initialization.
+
+---
+
+### 7. **What is a closure in JavaScript? Can you give an example?**
+
+A closure is a function that "remembers" the lexical environment in which it was created, even after the outer function has finished executing. This allows the inner function to access variables from its outer function.
+
+Example:
+```javascript
+function outer() {
+  let counter = 0;
+  
+  function inner() {
+    counter++;
+    console.log(counter);
+  }
+
+  return inner;
+}
+
+const increment = outer();
+increment(); // 1
+increment(); // 2
+```
+In this example, `inner()` is a closure that retains access to `counter` even after `outer()` has executed.
+
+---
 
 ### 8. **What is the difference between `undefined` and `null`?**
 
@@ -826,6 +934,23 @@ console.log(gen.next().done);  // true
 ## Intermediate JavaScript Concepts
 ### 39. **What is event delegation in JavaScript?**
 
+**Event delegation** is a technique in JavaScript where instead of attaching an event listener to each individual element (e.g., each list item), you attach a single event listener to a parent element. This parent listens for events triggered by its child elements, taking advantage of event bubbling.
+
+Event delegation improves performance, especially when dealing with a large number of elements, and makes it easier to handle events dynamically, even for elements added after the initial page load.
+
+Example:
+```javascript
+// Attaching event listener to the parent
+const parentElement = document.getElementById("parent");
+
+parentElement.addEventListener("click", (event) => {
+  // Only handle clicks on list items
+  if (event.target && event.target.matches("li")) {
+    console.log("List item clicked:", event.target.textContent);
+  }
+});
+```
+Here, the `click` event listener is added to the parent (`#parent`), but the event handler only triggers when a list item (`<li>`) is clicked.
 
 ---
 

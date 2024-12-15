@@ -2,6 +2,63 @@ Here are 100 essential JavaScript interview questions, categorized into various 
 
 ## **1. Basic JavaScript Concepts**
 
+#### 1. **What are the different data types in JavaScript?**
+   JavaScript has both **primitive** and **non-primitive** (or **reference**) data types:
+   - **Primitive data types**: 
+     - `string`: Represents a sequence of characters. Example: `"hello"`
+     - `number`: Represents numeric values. Example: `42`
+     - `bigint`: Represents large integers. Example: `123456789012345678901234567890n`
+     - `boolean`: Represents `true` or `false`. Example: `true`
+     - `undefined`: Represents an uninitialized variable or an absent value. Example: `let a;`
+     - `symbol`: Represents a unique identifier, often used for object property keys. Example: `Symbol('description')`
+     - `null`: Represents the intentional absence of any object value. Example: `let a = null;`
+   - **Non-primitive data types**:
+     - `object`: Includes collections of key-value pairs, such as arrays, functions, and plain objects. Example: `let obj = { key: 'value' };`
+
+#### 2. **What is the difference between `var`, `let`, and `const`?**
+   - **`var`**:
+     - Declares variables with function or global scope (depending on where it's declared).
+     - Variables are **hoisted** (the declaration is moved to the top of its scope).
+     - Can be reassigned and redeclared.
+   - **`let`**:
+     - Declares block-scoped variables (limited to the block, statement, or expression in which it is used).
+     - Cannot be redeclared in the same scope, but can be reassigned.
+     - **Not hoisted** in the same way as `var` (it’s in a "temporal dead zone" from the start of the block until the declaration is encountered).
+   - **`const`**:
+     - Declares block-scoped variables.
+     - **Cannot be reassigned** after initial assignment.
+     - Its value must be assigned at declaration time.
+
+#### 3. **What is a closure in JavaScript?**
+   A **closure** is a function that **retains access** to variables from its lexical scope, even after the outer function has finished execution. This happens because the inner function "remembers" the environment in which it was created.
+   Example:
+   ```javascript
+   function outer() {
+     let count = 0;
+     function inner() {
+       return count++;
+     }
+     return inner;
+   }
+   const increment = outer();
+   console.log(increment()); // 0
+   console.log(increment()); // 1
+   ```
+
+#### 4. **What is the `this` keyword in JavaScript?**
+   The `this` keyword refers to the **context** in which a function is called. It can vary depending on how the function is invoked:
+   - In a **regular function**, `this` refers to the global object (in non-strict mode) or `undefined` (in strict mode).
+   - In an **object method**, `this` refers to the object the method is called on.
+   - In **arrow functions**, `this` is **lexically bound** (it doesn't create its own `this` value but inherits it from the outer function).
+
+#### 5. **What are the primitive data types in JavaScript?**
+   - `string`
+   - `number`
+   - `bigint`
+   - `boolean`
+   - `undefined`
+   - `symbol`
+   - `null` (while technically not an object, it's often treated like one in JavaScript)
 
 #### 6. **What is the difference between `==` and `===` in JavaScript?**
    - **`==` (loose equality)**: Compares values for equality **after type coercion** (converts values to the same type before comparison).
@@ -38,6 +95,38 @@ Here are 100 essential JavaScript interview questions, categorized into various 
    let b;           // Implicitly undefined
    ```
 
+#### 10. **What is hoisting in JavaScript?**
+   Hoisting is a JavaScript behavior where **declarations** (but not initializations) of variables and functions are moved to the top of their containing scope during the compilation phase.
+   - **Function declarations** are hoisted with their definitions.
+   - **`var` variables** are hoisted, but only their declarations, not their assignments.
+   - **`let` and `const`** are hoisted, but they are not initialized until the code execution reaches the declaration line. Accessing them before that results in a ReferenceError (due to the "temporal dead zone").
+
+   Example:
+   ```javascript
+   console.log(a); // undefined (hoisted but not assigned)
+   var a = 5;
+
+   myFunction();   // works because function declarations are hoisted
+   function myFunction() {
+     console.log('Hello');
+   }
+   ```
+
+Here are the answers to the next set of JavaScript questions:
+
+### **11. Explain event delegation in JavaScript.**
+   **Event delegation** is a technique where you attach a single event listener to a parent element, and the event is triggered by the child elements that match a specified selector. This method relies on the event bubbling process, where an event that occurs on a child element bubbles up to its parent elements. It improves performance, especially when you have a large number of child elements, by reducing the number of event listeners attached.
+
+   Example:
+   ```javascript
+   document.getElementById('parent').addEventListener('click', function(event) {
+     if (event.target && event.target.matches('button.classname')) {
+       console.log('Button clicked:', event.target);
+     }
+   });
+   ```
+
+   In this example, even though multiple buttons may be added dynamically, only one event listener is attached to the parent element (`#parent`).
 
 ### **12. What are arrow functions, and how do they differ from regular functions?**
    **Arrow functions** are a shorthand way of writing functions in JavaScript. They differ from regular functions in several ways:
