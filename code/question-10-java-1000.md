@@ -10033,102 +10033,2459 @@ In conclusion, the simplest way to ensure that **T1** runs before **T2** is by u
 
 ## Java 8
 
-358.What are the new features released in Java 8?
-359.What are the main benefits of new features introduced in Java 8?
-360.What is a Lambda expression in Java 8?
-361.What are the three main parts of a Lambda expression in Java?
-362.What is the data type of a Lambda expression?
-363.What is the meaning of following lambda expression?
-364.Why did Oracle release a new version of Java like Java 8?
-365.What are the advantages of a lambda expression?
-366.What is a Functional interface in Java 8?
-367.What is a Single Abstract Method (SAM) interface in Java 8?
-368.How can we define a Functional interface in Java 8?
-369.Why do we need Functional interface in Java?
-370.Is it mandatory to use @FunctionalInterface annotation to define a Functional interface in Java 8?
-371.What are the differences between Collection and Stream API in Java8?
-372.What are the main uses of Stream API in Java 8?
-373.What are the differences between Intermediate and Terminal Operations in Java 8 Streams?
-374.What is a Spliterator in Java 8?
-375.What are the differences between Iterator and Spliterator in Java 8?
-376.What is Type Inference in Java 8?
-377.Does Java 7 support Type Inference?
-378.How does Internal Iteration work in Java 8?
-379.What are the main differences between Internal and External Iterator?
-380.What are the main advantages of Internal Iterator over External Iterator in Java 8?
-381.What are the applications in which we should use Internal Iteration?
-382.What is the main disadvantage of Internal Iteration over External Iteration?
-383.Can we provide implementation of a method in a Java Interface?
-384.What is a Default Method in an Interface?
-385.Why do we need Default method in a Java 8 Interface?
-386.What is the purpose of a Static method in an Interface in Java 8?
-387.What are the core ideas behind the Date/Time API of Java 8?
-388.What are the advantages of new Date and Time API in Java 8 over old Date API?
-389.What are the main differences between legacy Date/Time API in Java and Date/Time API of Java 8?
-390.How can we get duration between two dates or time in Java 8?
-391.What is the new method family introduced in Java 8 for processing of Arrays on multi core machines?
-392.How does Java 8 solve Diamond problem of Multiple Inheritance?
-393.What are the differences between Predicate, Supplier and Consumer in Java 8?
-394.Is it possible to have default method definition in an interface without marking it with default keyword?
-395.Can we create a class that implements two Interfaces with default methods of same name and signature?
-396.How Java 8 supports Multiple Inheritance?
-397.In case we create a class that extends a base class and implements an interface. If both base class and interface have a default method with
-same name and arguments, then which definition will be picked by JVM?
-398.If we create same method and define it in a class , in its parent class and in an interface implemented by the class, then definition will be
-invoked if we access it using the reference of Interface and the object of class?
-399.Can we access a static method of an interface by using reference of the interface?
-400.How can you get the name of Parameter in Java by using reflection?
-401.What is Optional in Java 8?
-402.What are the uses of Optional?
-403.Which method in Optional provides the fallback mechanism in case of null value?
-404.How can we get current time by using Date/Time API of Java 8?
-405.Is it possible to define a static method in an Interface?
-406.How can we analyze the dependencies in Java classes and packages?
-407.What are the new JVM arguments introduced by Java 8?
-408.What are the popular annotations introduced in Java 8?
-409.What is a StringJoiner in Java 8?
-410.What is the type of a Lambda expression in Java 8?
-411.What is the target type of a lambda expression?
-412.What are the main differences between an interface with default
-method and an abstract class in Java 8?
+### 358. **What are the new features released in Java 8?**
+
+Java 8 introduced several important features to improve language usability, performance, and functional programming support. Here are some of the major features:
+
+1. **Lambda Expressions**: Allows passing behavior as arguments to methods (enabling functional programming).
+2. **Functional Interfaces**: Interfaces with a single abstract method, commonly used in conjunction with Lambda expressions.
+3. **Streams API**: A new abstraction to process collections of data in a functional style, supporting operations like filter, map, and reduce.
+4. **Default Methods**: Interfaces can now have method implementations with the `default` keyword.
+5. **Method References**: A shorthand notation for invoking a method directly using the class name or object reference.
+6. **Optional Class**: A container object which may or may not contain a non-null value, designed to reduce `NullPointerException`.
+7. **Nashorn JavaScript Engine**: A new JavaScript engine that replaces the old Rhino engine, offering better performance.
+8. **New Date and Time API (java.time package)**: A new set of classes to handle date and time, addressing issues with the old `java.util.Date` and `java.util.Calendar` classes.
+9. **Parallel Streams**: Parallelization of streams to make use of multiple CPU cores for performance improvement.
+10. **Collector Interface**: Used in the Streams API to implement reduction operations (like sum, average, etc.).
+11. **New `java.util.function` Package**: Contains commonly used functional interfaces like `Function`, `Predicate`, `Supplier`, and `Consumer`.
+
+---
+
+### 359. **What are the main benefits of new features introduced in Java 8?**
+
+The main benefits of Java 8 features include:
+
+1. **Improved Code Readability**:
+   - **Lambda Expressions** provide a concise and expressive syntax for writing code. This leads to more readable and maintainable code, especially when working with collections and handling functional tasks.
+
+2. **Enhanced Functional Programming**:
+   - Java 8 introduces **functional programming paradigms** like Lambda expressions, Streams, and the **`Optional` class**, enabling more flexible and modular code. It supports **first-class functions** that can be passed around as arguments or returned from methods.
+
+3. **Efficient Data Processing**:
+   - The **Streams API** makes it easier to perform complex data processing tasks, such as filtering, mapping, and reducing, with **less code** and potentially in a **parallelized manner**.
+   - It makes working with collections, arrays, and other data sources much more straightforward.
+
+4. **Parallelism**:
+   - Java 8 introduces **parallel streams**, allowing you to parallelize the processing of large datasets, making use of multiple cores without having to manually manage threads.
+
+5. **Better Date and Time API**:
+   - The **new Date/Time API** (`java.time`) is much more robust, thread-safe, and easier to use compared to the older `java.util.Date` and `java.util.Calendar` classes.
+
+6. **Optional Handling of Nulls**:
+   - The **`Optional` class** encourages better handling of `null` values, reducing the chances of `NullPointerException`.
+
+7. **Backward Compatibility**:
+   - Java 8's features like **default methods** in interfaces ensure that existing codebases can incorporate these new features without breaking the old code.
+
+8. **Performance Improvements**:
+   - **Nashorn** and **parallel streams** help improve performance, with Nashorn providing a faster JavaScript engine and parallel streams utilizing multi-core processors for large data processing.
+
+---
+
+### 360. **What is a Lambda expression in Java 8?**
+
+A **Lambda expression** is a feature in Java 8 that allows you to express instances of single-method interfaces (functional interfaces) in a much more concise and readable way. It provides a way to pass behavior as arguments to methods or to create small, inline functions.
+
+A typical Lambda expression has the following syntax:
+```java
+(parameters) -> expression or block
+```
+
+For example:
+```java
+// Lambda expression for adding two integers
+(a, b) -> a + b;
+```
+
+Lambda expressions help in writing more compact and readable code, especially in situations where you need to pass behavior to methods, like in the case of **Stream operations**.
+
+---
+
+### 361. **What are the three main parts of a Lambda expression in Java?**
+
+A Lambda expression consists of three main parts:
+
+1. **Parameters**: The list of input parameters to the function. This part can be empty, single, or multiple parameters enclosed in parentheses.
+   - Example: `(a, b)` in `(a, b) -> a + b`.
+
+2. **Arrow Token (`->`)**: This separates the parameters from the body of the Lambda expression.
+   - Example: `->` in `(a, b) -> a + b`.
+
+3. **Body**: The body of the Lambda expression, which defines the behavior or logic that is applied. The body can either be a single expression or a block of code.
+   - Example: `a + b` (expression body) or `{ return a + b; }` (block body).
+
+Example:
+```java
+(a, b) -> a + b   // (a, b) are parameters, -> is the separator, and a + b is the body
+```
+
+---
+
+### 362. **What is the data type of a Lambda expression?**
+
+The data type of a Lambda expression in Java is **a functional interface**. A functional interface is an interface that contains exactly one abstract method. Lambda expressions are used to provide implementations for the abstract method of such interfaces.
+
+In Java 8, the **`java.util.function`** package contains many common functional interfaces like:
+
+- **`Function<T, R>`**: A function that takes an argument of type T and returns a result of type R.
+- **`Predicate<T>`**: A function that takes an argument of type T and returns a boolean result.
+- **`Consumer<T>`**: A function that takes an argument of type T and performs some operation without returning a result.
+- **`Supplier<T>`**: A function that takes no arguments and returns a value of type T.
+  
+The actual data type of a Lambda expression corresponds to one of these functional interfaces.
+
+Example:
+```java
+// Lambda expression assigned to a functional interface (data type is Function)
+Function<Integer, Integer> square = (x) -> x * x;  // x -> x * x is a lambda expression
+```
+
+In this example, the data type of the Lambda expression `(x) -> x * x` is `Function<Integer, Integer>`.
+
+### 363. **What is the meaning of the following lambda expression?**
+
+```java
+(a, b) -> a + b;
+```
+
+This lambda expression represents a **function** that takes two parameters (`a` and `b`) and returns their sum (`a + b`). 
+
+- **(a, b)**: The parameters of the lambda expression.
+- **->**: The lambda operator that separates parameters from the body.
+- **a + b**: The body of the lambda expression, which defines the logic to be executed (adding the two parameters in this case).
+
+This is an example of a **Binary Operation** that adds two integers together, and it could be assigned to a functional interface such as `BiFunction<Integer, Integer, Integer>`.
+
+---
+
+### 364. **Why did Oracle release a new version of Java like Java 8?**
+
+Oracle released **Java 8** in March 2014 to address several limitations in previous versions of Java and to modernize the language to better support **functional programming**, **parallel processing**, and **ease of use**. Key reasons for releasing Java 8 included:
+
+1. **Functional Programming Support**: Introducing **Lambda expressions**, **Streams API**, and **Functional interfaces** helped Java embrace functional programming paradigms, making it easier to work with collections and concurrent tasks.
+   
+2. **Concurrency and Performance**: The new **Streams API** allowed for easier parallel processing, improving performance, especially with large datasets. This was supported by features like **parallel streams** and **new concurrency utilities**.
+
+3. **Improved Date/Time API**: Java 8 introduced a **new Date and Time API** (`java.time` package), replacing the older, less reliable `java.util.Date` and `java.util.Calendar` classes. This made it easier to handle time, time zones, and durations.
+
+4. **Better Code Readability and Maintainability**: **Lambda expressions** and **method references** allowed developers to write more concise, readable, and maintainable code. It also reduced boilerplate code.
+
+5. **Default Methods in Interfaces**: Java 8 allowed adding **default methods** to interfaces, making it easier to evolve interfaces without breaking backward compatibility. This helped with maintaining backward compatibility while adding new features to interfaces.
+
+6. **Improved Support for Parallelism**: **Nashorn JavaScript engine** replaced the older **Rhino engine**, providing better performance for JavaScript execution in Java. Java 8 also provided better handling for **parallel processing**.
+
+---
+
+### 365. **What are the advantages of a lambda expression?**
+
+Lambda expressions bring several advantages, including:
+
+1. **Conciseness**: Lambda expressions enable more compact and readable code by eliminating the need for verbose anonymous class implementations.
+   
+   - **Before**:
+   ```java
+   Comparator<Integer> comparator = new Comparator<Integer>() {
+       public int compare(Integer a, Integer b) {
+           return a.compareTo(b);
+       }
+   };
+   ```
+   - **After** (using Lambda):
+   ```java
+   Comparator<Integer> comparator = (a, b) -> a.compareTo(b);
+   ```
+
+2. **Readability**: The syntax of lambda expressions makes the code easier to understand, especially when passing behaviors as parameters in methods like **`forEach`**, **`map`**, and **`filter`**.
+
+3. **Supports Functional Programming**: Java 8 introduced **functional programming features** like Lambda expressions, **Streams API**, and **functional interfaces** that make Java programming more flexible, especially in operations like **map**, **filter**, and **reduce**.
+
+4. **Enables Parallelism**: Lambda expressions work seamlessly with the **Streams API**, which provides **parallel streams** for parallel data processing, improving performance on multi-core processors.
+
+5. **Reduces Boilerplate Code**: Lambda expressions can eliminate the need for anonymous classes and repetitive code, reducing the overall code size.
+
+6. **Improved Performance**: When used in conjunction with **Streams**, lambda expressions enable **lazy evaluation**, which allows Java programs to only compute results when needed, potentially improving efficiency.
+
+---
+
+### 366. **What is a Functional interface in Java 8?**
+
+A **Functional interface** in Java 8 is an interface that has only one abstract method. Functional interfaces are intended to be used primarily with **lambda expressions** and can have multiple **default methods** or **static methods**, but they must contain exactly one **abstract method**.
+
+Common examples of functional interfaces in Java 8 are:
+
+- **`java.util.function.Function<T, R>`**
+- **`java.util.function.Predicate<T>`**
+- **`java.util.function.Consumer<T>`**
+- **`java.util.function.Supplier<T>`**
+
+Example of a functional interface:
+```java
+@FunctionalInterface
+public interface MyFunctionalInterface {
+    void doSomething();  // single abstract method
+}
+```
+
+Lambda expressions can be used to implement functional interfaces, as shown below:
+```java
+MyFunctionalInterface action = () -> System.out.println("Doing something!");
+action.doSomething();
+```
+
+---
+
+### 367. **What is a Single Abstract Method (SAM) interface in Java 8?**
+
+A **Single Abstract Method (SAM)** interface is essentially the same as a **Functional Interface**. It is an interface that contains only **one abstract method**, and it can optionally have multiple **default methods** and **static methods**. SAM interfaces are designed to be used with lambda expressions and method references.
+
+The term **SAM interface** is commonly used in the context of **functional programming** and Java 8’s **lambda expressions**. SAM interfaces are what lambda expressions are most commonly used with.
+
+For example, the following is a SAM interface:
+```java
+@FunctionalInterface
+public interface MySAMInterface {
+    void execute(); // Single abstract method
+}
+```
+
+A lambda expression implementing this interface:
+```java
+MySAMInterface action = () -> System.out.println("Executing action...");
+action.execute();
+```
+
+In summary, **Functional interfaces** and **SAM interfaces** refer to the same concept, where SAM refers to the number of abstract methods the interface contains (one), which makes it compatible with lambda expressions.
+
+### 368. **How can we define a Functional Interface in Java 8?**
+
+In Java 8, you can define a **Functional Interface** by creating an interface with exactly **one abstract method**. You can optionally add **default methods** and **static methods**, but the interface must contain only **one abstract method** to qualify as a functional interface. You can optionally annotate the interface with the `@FunctionalInterface` annotation to indicate that the interface is intended to be a functional interface, but this annotation is not mandatory.
+
+#### Example of a Functional Interface:
+```java
+@FunctionalInterface
+public interface MyFunctionalInterface {
+    void doSomething();  // single abstract method
+}
+```
+
+You can then implement this functional interface using a lambda expression:
+```java
+MyFunctionalInterface action = () -> System.out.println("Doing something!");
+action.doSomething();
+```
+
+The `@FunctionalInterface` annotation is optional, but it helps to avoid accidental inclusion of more than one abstract method, making the code more readable.
+
+---
+
+### 369. **Why do we need a Functional Interface in Java?**
+
+Functional interfaces are important for several reasons:
+
+1. **Enabling Lambda Expressions**: Functional interfaces provide the target type for lambda expressions. Java 8 introduced **lambda expressions**, which allow for more concise and readable code when implementing functional interfaces.
+
+2. **Functional Programming Support**: Java 8 added **functional programming features**, and functional interfaces enable passing behavior as parameters, simplifying tasks such as collection manipulation, filtering, and sorting.
+
+3. **Compatibility with Streams API**: Many methods in the **Streams API** (like `map()`, `filter()`, and `reduce()`) take functional interfaces as arguments. This makes it easy to use lambda expressions to process collections or data in a functional style.
+
+4. **Simplifying Code**: Functional interfaces allow developers to write more readable and concise code, eliminating the need for boilerplate anonymous class implementations.
+
+5. **Enhances Parallelism**: Using lambda expressions and functional interfaces in conjunction with streams allows for efficient parallel processing of large data sets, improving performance.
+
+---
+
+### 370. **Is it mandatory to use `@FunctionalInterface` annotation to define a Functional Interface in Java 8?**
+
+No, it is **not mandatory** to use the `@FunctionalInterface` annotation to define a functional interface in Java 8. The annotation is optional. 
+
+However, using the `@FunctionalInterface` annotation is a **good practice** because it serves as documentation and enforces the rule that the interface should have only **one abstract method**. If you accidentally add more than one abstract method to the interface, the compiler will generate an error when the `@FunctionalInterface` annotation is used.
+
+#### Example:
+```java
+@FunctionalInterface
+public interface MyInterface {
+    void doSomething();  // valid single abstract method
+
+    // Uncommenting the next line would cause a compile-time error
+    // void anotherMethod();
+}
+```
+
+Without the annotation, the compiler does not enforce the "one abstract method" rule, and you can still define the interface with more than one abstract method.
+
+---
+
+### 371. **What are the differences between Collection and Stream API in Java 8?**
+
+The **Collection API** and **Stream API** in Java 8 have different purposes and functionality:
+
+| **Collection API**                     | **Stream API**                          |
+|----------------------------------------|------------------------------------------|
+| Deals with **data storage** (i.e., collections like lists, sets, maps). | Deals with **data manipulation** and transformation. |
+| Provides methods to modify and interact with **data structures** (add, remove, etc.). | Provides methods to process **data sequences** (filter, map, reduce, etc.). |
+| **Eager** evaluation: Operations are executed **immediately** on the data. | **Lazy** evaluation: Operations are executed **on demand** (delayed until a terminal operation is invoked). |
+| Typically works on **in-memory data structures**. | Can work on **large datasets** or **external sources** like files, databases, or network streams, and supports parallel processing. |
+| Operations on collections are usually **mutating** (modify the collection). | Operations on streams are **non-mutating** (return a new stream or result). |
+| No support for **parallelism** by default. | Supports **parallel processing** using `parallelStream()`. |
+
+#### Example:
+
+- **Collection API** (iterating over a collection):
+```java
+List<String> list = Arrays.asList("apple", "banana", "cherry");
+for (String fruit : list) {
+    System.out.println(fruit);
+}
+```
+
+- **Stream API** (using streams to process data):
+```java
+List<String> list = Arrays.asList("apple", "banana", "cherry");
+list.stream().filter(fruit -> fruit.startsWith("a")).forEach(System.out::println);
+```
+
+---
+
+### 372. **What are the main uses of Stream API in Java 8?**
+
+The **Stream API** in Java 8 is designed for processing sequences of data in a functional style. Some of its main uses include:
+
+1. **Filtering**: Streams provide easy-to-use operations for filtering data, which allows you to remove unwanted elements from a collection.
+   ```java
+   List<String> list = Arrays.asList("apple", "banana", "cherry");
+   list.stream().filter(fruit -> fruit.startsWith("b")).forEach(System.out::println);
+   ```
+
+2. **Mapping**: Streams allow you to transform data, such as converting each element into another form using `map()`.
+   ```java
+   list.stream().map(String::toUpperCase).forEach(System.out::println);
+   ```
+
+3. **Reducing**: The `reduce()` operation helps you to aggregate the data into a single result.
+   ```java
+   int sum = list.stream().mapToInt(String::length).sum();
+   System.out.println(sum); // Sum of lengths of all strings
+   ```
+
+4. **Sorting**: Streams provide `sorted()` to sort data in natural or custom order.
+   ```java
+   list.stream().sorted().forEach(System.out::println);
+   ```
+
+5. **Collecting**: The `collect()` method allows you to accumulate stream elements into collections like lists or sets.
+   ```java
+   List<String> filtered = list.stream().filter(fruit -> fruit.startsWith("a")).collect(Collectors.toList());
+   ```
+
+6. **Parallelism**: Streams can be processed in parallel using `parallelStream()`, which is useful for processing large data sets efficiently on multi-core processors.
+   ```java
+   list.parallelStream().forEach(System.out::println);
+   ```
+
+7. **Chaining Operations**: Multiple operations can be chained together in a concise, readable manner, making the code more functional and declarative.
+
+Overall, the **Stream API** enhances code readability, performance (especially in multi-core environments), and provides a higher-level abstraction for working with data collections.
+
+### 373. **What are the differences between Intermediate and Terminal Operations in Java 8 Streams?**
+
+In Java 8 Streams, operations are divided into **intermediate** and **terminal** operations, each serving different purposes:
+
+| **Feature**                      | **Intermediate Operations**                              | **Terminal Operations**                                    |
+|-----------------------------------|----------------------------------------------------------|------------------------------------------------------------|
+| **Nature**                        | Lazy and non-eager, meaning they are not executed until a terminal operation is invoked. | Eager and executed when invoked. They produce a result or a side-effect. |
+| **Return Type**                   | Return a new **Stream** (allowing further chaining of operations). | Return a **result** or **void** (like a collection, a value, or a side-effect). |
+| **Examples**                      | `filter()`, `map()`, `distinct()`, `sorted()`, `flatMap()` | `collect()`, `forEach()`, `reduce()`, `count()`, `anyMatch()` |
+| **Effect on Stream**              | They do not modify the original Stream but return a new Stream for further operations. | They trigger the processing of the Stream, producing a final result or side-effect. |
+| **Execution**                     | Operations are evaluated **lazily**, i.e., only when the terminal operation is called. | Operations are executed immediately and often result in a data transformation. |
+| **Short-circuiting**              | Not usually short-circuiting (unless combined with a short-circuiting terminal operation like `anyMatch()`). | Can be short-circuiting (e.g., `anyMatch()`, `findFirst()`). |
+
+#### Example:
+- **Intermediate operation**:
+```java
+Stream<String> stream = Stream.of("apple", "banana", "cherry");
+Stream<String> filtered = stream.filter(fruit -> fruit.startsWith("a"));  // lazy operation
+```
+- **Terminal operation**:
+```java
+filtered.forEach(System.out::println);  // This triggers the execution of the stream.
+```
+
+---
+
+### 374. **What is a Spliterator in Java 8?**
+
+A **Spliterator** (short for **Split-able iterator**) is an interface introduced in Java 8, designed for **splitting** and **traversing** data in parallel. It provides a more powerful and flexible alternative to the traditional `Iterator`. The Spliterator is specifically useful when working with **parallel streams** because it allows splitting a data source into smaller chunks for concurrent processing.
+
+Key features of **Spliterator**:
+- It can split data into **smaller sub-sequences** (splitting functionality).
+- It supports **parallel traversal**, allowing more efficient parallelism.
+- It can be used for both **sequential** and **parallel streams**.
+
+#### Key methods:
+- `tryAdvance()`: Similar to `Iterator.next()`, advances the cursor to the next element.
+- `forEachRemaining()`: Performs a given action on each remaining element in the Spliterator.
+- `trySplit()`: Attempts to split the Spliterator into two parts for parallel processing.
+- `estimateSize()`: Estimates the number of elements remaining.
+- `characteristics()`: Returns characteristics of the Spliterator (like whether it is ordered, distinct, etc.).
+
+---
+
+### 375. **What are the differences between Iterator and Spliterator in Java 8?**
+
+| **Feature**                         | **Iterator**                                  | **Spliterator**                               |
+|-------------------------------------|-----------------------------------------------|----------------------------------------------|
+| **Introduction**                    | Introduced in Java 1.0 for iterating over collections. | Introduced in Java 8, mainly for efficient parallel iteration. |
+| **Splitting**                        | Cannot split the underlying data source.       | Can split the data source into smaller chunks for parallel processing. |
+| **Parallel Processing**              | Does not support parallel processing directly. | Supports parallel processing through the `trySplit()` method. |
+| **Traversal**                        | Can only traverse data sequentially.           | Can traverse data both sequentially and in parallel. |
+| **Efficiency**                       | Less efficient for large datasets, especially for parallel processing. | More efficient for large datasets, optimized for parallelism. |
+| **Interface**                        | Part of the **java.util** package.             | Part of the **java.util** package but more suitable for streams. |
+| **Use Case**                         | Commonly used for collections (e.g., `List`, `Set`). | Primarily used for streams (sequential and parallel). |
+
+---
+
+### 376. **What is Type Inference in Java 8?**
+
+**Type inference** in Java 8 refers to the ability of the Java compiler to **automatically deduce** the type of a variable or expression without explicitly specifying it. This feature is most prominently used with **lambda expressions** and **generic methods**.
+
+- In the case of **lambda expressions**, Java 8 can infer the types of the parameters from the context in which the lambda is used.
+- For **generics**, type inference eliminates the need to specify types when calling methods that work with generic types.
+
+#### Example of **Type Inference** with a lambda:
+```java
+List<String> list = Arrays.asList("apple", "banana", "cherry");
+list.forEach((String s) -> System.out.println(s));  // Explicit type (String)
+
+list.forEach(s -> System.out.println(s));  // Type inference: compiler infers String
+```
+
+In this case, the compiler infers that `s` is of type `String` based on the `List<String>` context, so there is no need to explicitly declare it.
+
+---
+
+### 377. **Does Java 7 support Type Inference?**
+
+No, **Java 7 does not support Type Inference** in the way Java 8 does. Prior to Java 8, you had to explicitly specify the types for generic methods, and lambda expressions were not introduced yet.
+
+For example, in Java 7, you would need to explicitly specify the type parameter:
+
+#### Java 7 (without type inference):
+```java
+List<String> list = Arrays.asList("apple", "banana", "cherry");
+for (String s : list) {  // Type is explicitly defined
+    System.out.println(s);
+}
+```
+
+
+### 378. **How does Internal Iteration work in Java 8?**
+
+**Internal Iteration** in Java 8 is a concept introduced with **Stream API**, where the **iteration** over a collection or data source is controlled by the framework (e.g., the Stream API), not by the developer. This means that the **iteration logic** is handled internally by the framework, and the developer typically provides **functions or lambdas** that are applied to the elements of the collection.
+
+In Internal Iteration:
+- The framework (Stream API) is responsible for managing the iteration.
+- The developer specifies the operations or actions to be applied to the elements (like `map()`, `filter()`, `forEach()`, etc.).
+- It is **used with Streams** (sequential or parallel).
+
+#### Example of Internal Iteration:
+```java
+List<String> list = Arrays.asList("apple", "banana", "cherry");
+list.stream().filter(s -> s.startsWith("a")).forEach(System.out::println);  // Internal Iteration
+```
+In this example, the `stream()` creates an internal iterator that processes each element, and `forEach()` is used to apply the action to each element. The developer does not explicitly control the iteration process.
+
+---
+
+### 379. **What are the main differences between Internal and External Iterator?**
+
+| **Feature**                          | **Internal Iterator**                                         | **External Iterator**                                        |
+|--------------------------------------|--------------------------------------------------------------|-------------------------------------------------------------|
+| **Control of Iteration**             | The iteration is **controlled by the framework** (Stream API). | The iteration is **controlled by the developer** using `Iterator`. |
+| **Iteration Process**                | The framework handles the iteration internally.              | The developer is responsible for managing the iteration loop using methods like `hasNext()` and `next()`. |
+| **Parallelism**                       | Supports **parallel processing** out-of-the-box (via Streams). | Manual management is needed to handle parallelism.          |
+| **Flexibility**                       | Less flexible (you can't control the iteration process).     | More flexible (developer can control how and when the iteration happens). |
+| **Performance**                       | Typically optimized by the framework for parallel processing. | Can be optimized but not inherently suited for parallelism.  |
+| **Example**                           | `stream().filter(...).map(...).forEach(...)`                  | `Iterator<String> it = list.iterator(); while (it.hasNext()) { it.next(); }` |
+
+---
+
+### 380. **What are the main advantages of Internal Iterator over External Iterator in Java 8?**
+
+The **Internal Iterator** has several advantages over the **External Iterator**:
+
+1. **Parallel Processing**:
+   - **Internal Iteration** (via Stream API) naturally supports **parallel execution**, which can improve performance for large collections. This is because the framework handles splitting the collection and processing elements in parallel.
+   - **External Iteration** does not provide built-in support for parallelism, and you must manually handle it.
+
+2. **Cleaner Code**:
+   - **Internal Iteration** leads to **cleaner code** because developers don’t need to explicitly manage the iteration process. Operations like filtering, mapping, and reducing can be done in a concise, declarative manner.
+   - **External Iteration** requires verbose code, explicitly managing the iteration process with loops or iterators.
+
+3. **Less Risk of Errors**:
+   - **Internal Iteration** abstracts away the details of iteration, reducing the chances of **errors** (e.g., missing `hasNext()` checks or forgetting to call `next()`).
+   - **External Iteration** can be prone to errors, like modifying the collection while iterating or missing important checks.
+
+4. **More Flexibility with Stream Operations**:
+   - **Internal Iteration** provides powerful methods like `map()`, `filter()`, `reduce()`, etc., which allow **complex data transformations** and **filters** to be applied in a simple and functional style.
+   - **External Iteration** requires more manual control for similar operations, often leading to more complex code.
+
+5. **Less Boilerplate**:
+   - **Internal Iteration** reduces boilerplate code, as you don’t need to create and manage iterators or loops explicitly. You simply chain methods on the stream.
+   - **External Iteration** requires you to manually create and manage `Iterator` objects and loops.
+
+---
+
+### 381. **What are the applications in which we should use Internal Iteration?**
+
+**Internal Iteration** (via the **Stream API**) is well-suited for applications where:
+
+1. **Parallel Processing is Beneficial**:
+   - If you need to process large collections of data in parallel, internal iteration with Streams allows easy parallelism with minimal effort. For example, operations on large datasets in **data processing** or **analytics** applications.
+
+2. **Data Transformation or Aggregation**:
+   - Applications that need to apply complex transformations or aggregations on data collections, such as in **financial data analysis**, **report generation**, or **ETL (Extract, Transform, Load)** processes, can benefit from internal iteration’s streamlined handling of such operations.
+
+3. **Immutable Data**:
+   - If the collection is immutable or does not need to be modified, **stream operations** are ideal. For example, in **functional programming** paradigms where collections should not be mutated, internal iteration supports declarative programming.
+
+4. **Clean and Readable Code**:
+   - Applications where **code readability** and **expressiveness** are priorities. Streams allow for more **concise** and **functional** code, which is useful in applications where **maintainability** is important.
+
+5. **Computation on Large Data**:
+   - **Big Data** and **machine learning** applications, where computations on large datasets need to be efficient and clean. Java’s stream API simplifies handling and processing of large amounts of data.
+
+6. **On-the-fly Filtering and Mapping**:
+   - Any application that requires **dynamic filtering**, **mapping**, or **data transformation** can benefit from internal iteration. For example, filtering out invalid user records from a collection or transforming a list of items into a more complex form, such as **JSON processing** or **formatting output**.
+
+In summary, **Internal Iteration** is a great choice when you need more **expressive** and **concise** code, are handling **large datasets**, or want **parallel processing** capabilities out-of-the-box without managing the low-level details of iteration.
+
+### 382. **What is the main disadvantage of Internal Iteration over External Iteration?**
+
+The **main disadvantage** of **Internal Iteration** compared to **External Iteration** is **lack of control**. 
+
+- **External Iteration** gives you **explicit control** over the iteration process, allowing you to decide when to stop or modify the iteration. For example, you can implement custom iteration behavior or even break the loop early if needed.
+- **Internal Iteration**, on the other hand, is managed by the **Stream API** or other framework, so you lose that **fine-grained control** over the iteration process. You can't directly control how the elements are traversed unless you adapt the entire flow using the Stream operations. This makes **Internal Iteration** less flexible when you need to perform complex custom iteration logic.
+
+In summary, **External Iteration** gives more **control** over the iteration process, while **Internal Iteration** provides **simplified, declarative code** but with **less control** over the flow.
+
+---
+
+### 383. **Can we provide implementation of a method in a Java Interface?**
+
+Yes, starting from **Java 8**, we can provide an implementation for methods in an **interface**. This can be done using **default methods** and **static methods**.
+
+- **Default methods** allow you to provide a method implementation directly in the interface. These methods can be overridden by implementing classes but do not require the implementing classes to provide an implementation if the default method is sufficient.
+- **Static methods** can also be implemented in an interface, and they belong to the interface itself (not to instances of implementing classes).
+
+Before Java 8, all methods in an interface were abstract, meaning they did not have an implementation. Java 8 introduced these features to make interfaces more powerful and flexible.
+
+---
+
+### 384. **What is a Default Method in an Interface?**
+
+A **default method** is a method defined in an interface with a **default implementation**. This allows interfaces to evolve by adding new methods without breaking the existing implementation of classes that already implement the interface.
+
+Default methods are defined using the `default` keyword in the interface.
+
+#### Syntax:
+```java
+public interface MyInterface {
+    default void myMethod() {
+        System.out.println("Default method implementation");
+    }
+}
+```
+
+- Classes that implement the interface can use the default method implementation, or they can override it to provide their own implementation.
+- Default methods allow interfaces to have behavior without forcing every implementing class to provide that behavior.
+
+---
+
+### 385. **Why do we need Default method in a Java 8 Interface?**
+
+The **default method** in Java 8 interfaces was introduced to solve the following issues:
+
+1. **Backward Compatibility**:
+   - Before Java 8, adding a new method to an interface would break the existing classes that implement it, as they would not be aware of the new method and would be forced to implement it. The **default method** allows interfaces to evolve (by adding new methods) without breaking backward compatibility with older implementations.
+
+2. **Multiple Interface Inheritance**:
+   - Java allows a class to implement multiple interfaces, but if two interfaces define the same method, it creates a conflict (diamond problem). The **default method** helps resolve this conflict by providing a default implementation that can be inherited. The class implementing the interfaces can override the default method if necessary.
+
+3. **Code Reusability**:
+   - Default methods enable **code reuse** in interfaces by allowing an interface to provide a default implementation. This can reduce the need for code duplication across multiple classes implementing the same interface.
+
+4. **Interface Evolution**:
+   - Default methods allow **interfaces to evolve** without affecting the implementing classes. For example, new features can be added to an interface without forcing the entire codebase to update.
+
+---
+
+### 386. **What is the purpose of a Static method in an Interface in Java 8?**
+
+In **Java 8**, **static methods** can be defined within interfaces to perform operations that are related to the interface but not specific to any instance of the implementing class. Static methods in interfaces are similar to static methods in classes, and they belong to the interface itself, not to instances of the implementing class.
+
+#### Purpose of Static Methods in Interfaces:
+1. **Helper Methods**:
+   - Static methods can be used to provide **utility** or **helper methods** that are related to the interface but do not require an instance of a class implementing the interface. For example, a utility method for working with the data contained in the interface.
+
+2. **Code Organization**:
+   - Static methods allow you to organize **code better** by grouping related operations within the interface itself, avoiding the need to create a separate utility class.
+
+3. **No Overriding**:
+   - Static methods cannot be overridden by implementing classes. They are meant to be accessed through the interface name (e.g., `InterfaceName.method()`), and are independent of any implementing class instances.
+
+#### Syntax:
+```java
+public interface MyInterface {
+    static void staticMethod() {
+        System.out.println("Static method in interface");
+    }
+}
+```
+Usage:
+```java
+MyInterface.staticMethod(); // Call the static method directly via the interface
+```
+
+### 387. **What are the core ideas behind the Date/Time API of Java 8?**
+
+The core ideas behind the **Date/Time API** introduced in **Java 8** (commonly known as **java.time**) are:
+
+1. **Immutability**: 
+   - The **java.time** classes are **immutable**. This means once an instance is created, it cannot be changed, which helps to prevent issues with mutable objects being changed unintentionally.
+   
+2. **Clarity and Simplicity**: 
+   - The API is designed to be simple and easy to use, avoiding the complexity and confusion present in the legacy **Date** and **Calendar** classes. It provides a better understanding of **time-based calculations** and **timezones**.
+
+3. **Separation of Date and Time**: 
+   - The **java.time** API introduces clear separation between **date**, **time**, and **date-time**. For example, the `LocalDate`, `LocalTime`, and `LocalDateTime` classes allow us to work with these concepts independently, rather than mixing them together as in the legacy `Date` class.
+
+4. **Time Zones**: 
+   - The API provides robust support for working with time zones, such as `ZonedDateTime`, which allows us to work with time zones in a standardized way. Unlike the old `Date` and `Calendar` classes, time zone handling is more reliable.
+
+5. **Fluent and Chainable API**: 
+   - The API provides fluent interfaces, allowing method chaining and making it easy to perform multiple operations in a single line of code.
+
+6. **Support for ISO-8601**: 
+   - The Date/Time API supports the **ISO-8601** standard, which is the international standard for date and time formatting. This makes it easier to work with standardized formats across different platforms.
+
+---
+
+### 388. **What are the advantages of the new Date and Time API in Java 8 over the old Date API?**
+
+The **new Date and Time API** (`java.time`) in Java 8 offers several advantages over the legacy **Date API** (`java.util.Date`, `java.util.Calendar`, etc.):
+
+1. **Immutability**:
+   - The **new API** classes like `LocalDate`, `LocalTime`, and `LocalDateTime` are immutable, unlike `Date` and `Calendar` which are mutable. Immutability makes the classes more thread-safe and prevents issues related to object mutation.
+
+2. **Thread Safety**:
+   - The **new API** is designed to be thread-safe, whereas the legacy `Date` and `Calendar` classes are not thread-safe without external synchronization.
+
+3. **Clear Separation**:
+   - The new API clearly separates **date** and **time** concepts. For instance, `LocalDate` represents only the date (year, month, day), and `LocalTime` represents only time (hour, minute, second). The legacy `Date` class combines date and time, leading to confusion in many use cases.
+
+4. **Time Zones**:
+   - The **java.time** API offers a robust way to handle time zones with `ZonedDateTime`. The legacy API has limited time zone support and often leads to errors when handling daylight saving time or cross-zone calculations.
+
+5. **Better Formatting and Parsing**:
+   - The **new API** uses the `DateTimeFormatter` for formatting and parsing, which is more flexible and easier to use than the old `SimpleDateFormat` class. It also supports ISO-8601 standard formats, providing consistency.
+
+6. **Duration and Period**:
+   - The **new API** has better support for **duration** and **period** calculations through classes like `Duration` and `Period`. These classes provide a more natural and accurate way to calculate time differences.
+
+7. **Cleaner API**:
+   - The **java.time** API is more intuitive and provides cleaner methods for operations such as **adding or subtracting time**, **calculating differences**, **manipulating dates**, and more.
+
+---
+
+### 389. **What are the main differences between legacy Date/Time API in Java and Date/Time API of Java 8?**
+
+The main differences between the **legacy Date/Time API** (like `Date`, `Calendar`) and the **Java 8 Date/Time API** (`java.time`) are:
+
+1. **Immutability**:
+   - **Legacy API** (`Date`, `Calendar`) is **mutable**, meaning the objects can be changed after creation. The **Java 8 Date/Time API** is **immutable**, which ensures better thread safety and eliminates issues with unintended modifications.
+
+2. **Thread Safety**:
+   - **Legacy API** classes are not thread-safe without additional synchronization. The **Java 8 Date/Time API** classes like `LocalDate`, `LocalTime`, `ZonedDateTime` are designed to be **thread-safe**.
+
+3. **Time Zone Handling**:
+   - The **legacy API** handles time zones in a limited and error-prone way (especially with `Calendar` and `Date`). The **Java 8 Date/Time API** offers full support for **time zone management** with classes like `ZonedDateTime`.
+
+4. **Duration vs. Milliseconds**:
+   - **Legacy API** uses `Date` or `Calendar` for date-time manipulation, often relying on **milliseconds** since the epoch. The **Java 8 Date/Time API** has specific classes like `Duration` and `Period` to represent time differences more effectively, making it easier to perform arithmetic with dates and times.
+
+5. **Separation of Date and Time**:
+   - The **legacy API** combines **date and time** into a single class (`Date`). The **Java 8 Date/Time API** provides clear separation between date and time with `LocalDate`, `LocalTime`, and `LocalDateTime`, allowing you to work with only the date or time as needed.
+
+6. **Better Support for ISO-8601**:
+   - **Java 8 Date/Time API** fully supports the **ISO-8601** standard for date and time formats, whereas the legacy `Date` and `Calendar` did not have built-in support for this standard.
+
+7. **Formatting and Parsing**:
+   - The **legacy API** relies on **`SimpleDateFormat`** for formatting, which is not thread-safe. The **Java 8 Date/Time API** uses `DateTimeFormatter`, which is immutable and thread-safe.
+
+8. **Leap Seconds and Adjustments**:
+   - The **Java 8 API** has better handling of leap seconds and other adjustments (like daylight savings) compared to the legacy API.
+
+---
+
+### 390. **How can we get duration between two dates or times in Java 8?**
+
+In Java 8, you can use the `Duration` and `Period` classes to calculate the difference between two `java.time` objects.
+
+- **Duration**: Measures the difference between two time-based objects (`LocalTime`, `Instant`, `ZonedDateTime`, etc.).
+- **Period**: Measures the difference between two date-based objects (`LocalDate`, `LocalDateTime`).
+
+#### Example to get **Duration** between two times:
+```java
+import java.time.LocalTime;
+import java.time.Duration;
+
+LocalTime startTime = LocalTime.of(10, 30);
+LocalTime endTime = LocalTime.of(12, 45);
+
+Duration duration = Duration.between(startTime, endTime);
+System.out.println("Duration: " + duration.toMinutes() + " minutes");
+```
+
+#### Example to get **Period** between two dates:
+```java
+import java.time.LocalDate;
+import java.time.Period;
+
+LocalDate startDate = LocalDate.of(2020, 1, 1);
+LocalDate endDate = LocalDate.of(2023, 1, 1);
+
+Period period = Period.between(startDate, endDate);
+System.out.println("Period: " + period.getYears() + " years, " + period.getMonths() + " months");
+```
+
+---
+
+### 391. **What is the new method family introduced in Java 8 for processing of Arrays on multi-core machines?**
+
+In Java 8, the **`Arrays`** class was enhanced with a set of methods that can process arrays in parallel on multi-core machines. These methods allow **parallel processing** of array elements using the **Fork/Join Framework** and **parallel streams**.
+
+The new methods in the `Arrays` class are:
+
+- **`parallelSort()`**: This method is used to sort arrays in parallel. It can sort large arrays faster by leveraging multiple cores.
+  
+  ```java
+  int[] arr = {5, 2, 8, 1, 3};
+  Arrays.parallelSort(arr);
+  ```
+
+- **`parallelPrefix()`**: This method computes a prefix transformation on an array in parallel, using the provided associative function.
+
+  ```java
+  int[] arr = {1, 2, 3, 4};
+  Arrays.parallelPrefix(arr, (x, y) -> x + y);  // This will sum the elements in parallel
+  ```
+
+These methods leverage **multi-core processors** to improve the **performance** of array operations, especially for large arrays, by distributing the workload across multiple processors.
+
+### 392. **How does Java 8 solve the Diamond problem of Multiple Inheritance?**
+
+Java 8 solves the **diamond problem** (the issue that arises when a class inherits from two classes that both provide a method with the same signature) using **default methods** in interfaces.
+
+- **Default methods** allow an interface to provide method implementations, enabling multiple inheritance of method behaviors.
+- If a class implements two interfaces with the same default method (same name and signature), Java will cause a **compilation error** unless the conflict is resolved explicitly. The class can **override** the default method to resolve the ambiguity.
+
+For example:
+```java
+interface A {
+    default void show() {
+        System.out.println("A's show");
+    }
+}
+
+interface B {
+    default void show() {
+        System.out.println("B's show");
+    }
+}
+
+class C implements A, B {
+    // Must override to resolve the ambiguity
+    @Override
+    public void show() {
+        A.super.show();  // or B.super.show() based on your choice
+    }
+}
+```
+
+Here, `class C` implements both `A` and `B`, which have the same default method `show()`. To resolve the ambiguity, `C` must explicitly override the method and specify which version to use, or provide its own implementation.
+
+### 393. **What are the differences between Predicate, Supplier, and Consumer in Java 8?**
+
+- **Predicate**:
+  - A **Predicate** is a functional interface that takes a single argument and returns a **boolean** result.
+  - It is commonly used for filtering or matching operations.
+  - Example: `Predicate<T> test(T t)`.
+
+  ```java
+  Predicate<Integer> isEven = n -> n % 2 == 0;
+  System.out.println(isEven.test(4)); // true
+  ```
+
+- **Supplier**:
+  - A **Supplier** is a functional interface that does not take any arguments and returns a result.
+  - It is often used to generate values, like factories or random number generators.
+  - Example: `Supplier<T> get()`.
+
+  ```java
+  Supplier<String> getString = () -> "Hello";
+  System.out.println(getString.get()); // Hello
+  ```
+
+- **Consumer**:
+  - A **Consumer** is a functional interface that takes a single argument and returns no result (void).
+  - It is often used for performing actions on elements (like printing values or modifying them).
+  - Example: `Consumer<T> accept(T t)`.
+
+  ```java
+  Consumer<String> printMessage = s -> System.out.println(s);
+  printMessage.accept("Hello World"); // Hello World
+  ```
+
+### 394. **Is it possible to have default method definition in an interface without marking it with default keyword?**
+
+No, in **Java 8** and beyond, you **must** explicitly mark a method as a **default method** by using the `default` keyword in an interface. Without the `default` keyword, the method will be considered an **abstract method**, meaning that any class implementing the interface must provide an implementation.
+
+Example of a valid default method:
+```java
+interface MyInterface {
+    default void myMethod() {
+        System.out.println("This is a default method");
+    }
+}
+```
+
+If the `default` keyword is omitted, Java would treat `myMethod()` as an abstract method.
+
+### 395. **Can we create a class that implements two interfaces with default methods of the same name and signature?**
+
+Yes, it is possible for a class to implement two interfaces that have **default methods** with the same name and signature. However, Java will not allow this without a conflict resolution.
+
+The **diamond problem** occurs in this situation, and to resolve it, the class must **explicitly override** the conflicting method and decide which default method it wants to call or provide its own implementation.
+
+Example:
+```java
+interface A {
+    default void show() {
+        System.out.println("A's show");
+    }
+}
+
+interface B {
+    default void show() {
+        System.out.println("B's show");
+    }
+}
+
+class C implements A, B {
+    @Override
+    public void show() {
+        A.super.show();  // Resolving conflict by calling A's default method
+    }
+}
+```
+
+In the example above, `class C` implements both interfaces `A` and `B`, each of which has a default `show()` method. To resolve the conflict, `C` overrides `show()` and explicitly calls `A.super.show()` or `B.super.show()`.
+
+### 396. **How Java 8 supports Multiple Inheritance?**
+
+Java 8 supports **multiple inheritance** of **interfaces** but not of **classes**. 
+
+- In **Java 8**, you can create **multiple interfaces** that may have **default methods** (methods with an implementation). A class can implement multiple interfaces and inherit the default methods from these interfaces.
+- Java does **not support multiple inheritance** of classes (i.e., a class cannot extend multiple classes), but interfaces can have multiple default methods, allowing you to achieve a form of multiple inheritance.
+
+Java 8 allows multiple inheritance through interfaces, and the conflict in default methods (if any) can be resolved by explicitly overriding the method in the implementing class.
+
+Example:
+```java
+interface A {
+    default void show() {
+        System.out.println("A's show");
+    }
+}
+
+interface B {
+    default void show() {
+        System.out.println("B's show");
+    }
+}
+
+class C implements A, B {
+    @Override
+    public void show() {
+        // Resolving ambiguity by choosing a specific method
+        A.super.show();  // or B.super.show()
+    }
+}
+```
+### 397. **In case we create a class that extends a base class and implements an interface. If both the base class and the interface have a default method with the same name and arguments, then which definition will be picked by the JVM?**
+
+When a class **extends a base class** and **implements an interface**, and both the base class and the interface have the **same default method** (same name and arguments), the JVM will **prioritize the method in the class** over the method from the base class or the interface. 
+
+The reasoning is that the class has the final say, and it is the most specific in the inheritance hierarchy. If the class does not explicitly override the method, the JVM will use the default method from the class.
+
+### Rules for resolving conflicts:
+- If the class does **not override** the default method, Java will search for the method in the following order:
+  1. **Class**: The method in the class is given the highest priority.
+  2. **Base Class**: If the class doesn't have it, it checks the base class (superclass).
+  3. **Interface**: If the base class doesn't have the method, the interface's default method is used.
+
+However, if both the base class and the interface have the same default method, and the class doesn't override it, the class must explicitly resolve the conflict, leading to a **compilation error** unless an **override** is provided.
+
+#### Example:
+
+```java
+interface A {
+    default void show() {
+        System.out.println("A's show");
+    }
+}
+
+class B {
+    public void show() {
+        System.out.println("B's show");
+    }
+}
+
+class C extends B implements A {
+    // No override here, JVM will pick B's show
+}
+```
+
+In the above example, since `C` extends `B` and implements `A`, the method `show()` from `B` will be picked, as `B` is the closest to the class.
+
+### 398. **If we create the same method and define it in a class, in its parent class, and in an interface implemented by the class, then which definition will be invoked if we access it using the reference of the Interface and the object of the class?**
+
+In this case, **the class's method will always be invoked**, regardless of whether you access the method using the **interface reference** or the **class reference**. This is because the class is the most specific, and it defines the actual behavior of the method.
+
+However, if the class **does not override** the method, and it relies on the method from the **parent class** or the **interface**, the behavior will depend on the resolution of the conflict as described in the previous answer.
+
+### Scenario 1: Class overrides the method
+```java
+interface A {
+    default void show() {
+        System.out.println("Interface A's show");
+    }
+}
+
+class B {
+    public void show() {
+        System.out.println("Class B's show");
+    }
+}
+
+class C extends B implements A {
+    // Class C overrides the show() method
+    public void show() {
+        System.out.println("Class C's show");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        A a = new C();  // Interface reference
+        a.show();  // Class C's show
+    }
+}
+```
+
+In this case, when the `show()` method is called via the **interface reference** (`a`), the method defined in **class C** is invoked because it overrides the method. This would be the same if you use the **class reference**:
+
+```java
+C c = new C();
+c.show();  // Class C's show
+```
+
+### Scenario 2: Class does not override the method
+```java
+interface A {
+    default void show() {
+        System.out.println("Interface A's show");
+    }
+}
+
+class B {
+    public void show() {
+        System.out.println("Class B's show");
+    }
+}
+
+class C extends B implements A {
+    // No override of show() method
+}
+
+public class Test {
+    public static void main(String[] args) {
+        A a = new C();  // Interface reference
+        a.show();  // Class B's show
+    }
+}
+```
+
+In this case, since class `C` does not override the method `show()`, Java will pick the method from **class `B`**, because class `B` is closer in the inheritance hierarchy than the interface.
+
+### Conclusion:
+
+- If the **class overrides** the method, that method will be invoked regardless of whether the method is accessed through the **interface reference** or **class reference**.
+- If the **class does not override** the method, the method from the **closest class** (i.e., the base class or the interface) will be used.
+
+### 399. **Can we access a static method of an interface by using reference of the interface?**
+
+Yes, **static methods of an interface** can be accessed using the interface reference. In Java 8 and later versions, interfaces can contain **static methods**, and these methods can be called using the interface name or through a reference to the interface.
+
+However, the common practice is to access a static method **directly using the interface name**, as static methods belong to the interface and not to any specific instance.
+
+### Example:
+```java
+interface MyInterface {
+    static void staticMethod() {
+        System.out.println("Static method in interface");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        // Accessing static method using the interface name
+        MyInterface.staticMethod();  // Output: Static method in interface
+        
+        // Accessing static method using the reference of the interface (not common)
+        MyInterface obj = null;
+        obj.staticMethod();  // Output: Static method in interface
+    }
+}
+```
+
+Although it is technically possible to access a static method via an interface reference (like `obj.staticMethod()`), it is considered poor style to do so. Static methods should typically be accessed directly through the interface (like `MyInterface.staticMethod()`).
+
+---
+
+### 400. **How can you get the name of a parameter in Java using reflection?**
+
+To get the name of a parameter in Java using **reflection**, you can use the **`getParameters()`** method of the `Method` class in Java. By default, parameter names are not available unless the program is compiled with the `-parameters` option. This option ensures that parameter names are stored in the bytecode.
+
+### Steps:
+1. **Ensure that the class is compiled with the `-parameters` flag** (in your build tool or IDE).
+2. **Use reflection** to obtain the `Method` object and then get the parameter names.
+
+### Example:
+```java
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+
+public class Test {
+    public void sampleMethod(int param1, String param2) {
+        // Method logic here
+    }
+
+    public static void main(String[] args) throws NoSuchMethodException {
+        // Get the Method object for sampleMethod
+        Method method = Test.class.getDeclaredMethod("sampleMethod", int.class, String.class);
+        
+        // Get the parameters of the method
+        Parameter[] parameters = method.getParameters();
+        
+        // Print parameter names
+        for (Parameter parameter : parameters) {
+            System.out.println("Parameter name: " + parameter.getName());
+        }
+    }
+}
+```
+
+**Output** (if compiled with the `-parameters` flag):
+```
+Parameter name: param1
+Parameter name: param2
+```
+
+If the code is compiled **without** the `-parameters` flag, you'll only get the parameter type information, but **parameter names will not be available**.
+
+---
+
+### 401. **What is Optional in Java 8?**
+
+In Java 8, **`Optional`** is a container object which may or may not contain a non-null value. It is a way to represent optionality in Java. Instead of returning `null` for methods that might not have a value, you can return an `Optional` object. This approach helps avoid `NullPointerException` and provides a cleaner API for handling missing values.
+
+The `Optional` class is part of the `java.util` package.
+
+### Key Features:
+- **Avoids `NullPointerException`** by providing an explicit container for values that may be absent.
+- **Provides utility methods** to handle the value safely, like `isPresent()`, `ifPresent()`, `orElse()`, etc.
+
+### Example:
+```java
+import java.util.Optional;
+
+public class Test {
+    public static void main(String[] args) {
+        Optional<String> optionalString = Optional.of("Hello");
+
+        // Check if value is present
+        if (optionalString.isPresent()) {
+            System.out.println(optionalString.get());  // Output: Hello
+        }
+
+        // Using ifPresent() method
+        optionalString.ifPresent(s -> System.out.println(s));  // Output: Hello
+
+        // If no value is present, use orElse() to provide a default value
+        Optional<String> emptyOptional = Optional.empty();
+        String value = emptyOptional.orElse("Default Value");
+        System.out.println(value);  // Output: Default Value
+    }
+}
+```
+
+---
+
+### 402. **What are the uses of Optional?**
+
+`Optional` in Java 8 is used to represent a value that might be absent. The primary use cases include:
+
+1. **Avoiding `NullPointerException`**: Instead of returning `null`, you can return an `Optional` to signify that the value might be absent. This encourages better handling of nulls.
+   
+2. **Explicitly representing optional values**: Methods that may or may not return a value can return `Optional<T>`, making the absence of a value explicit and allowing the caller to handle it properly.
+
+3. **Chaining operations**: `Optional` allows you to chain operations that work on the contained value using methods like `map()`, `flatMap()`, etc., making the code cleaner and reducing `null` checks.
+
+4. **Functional programming style**: Methods like `ifPresent()`, `orElse()`, `map()`, `flatMap()`, and `filter()` enable a more functional programming style, making code more readable and concise.
+
+### Example of `Optional` usage:
+```java
+import java.util.Optional;
+
+public class Test {
+    public static void main(String[] args) {
+        // Using Optional to represent a potentially missing value
+        Optional<String> optionalValue = Optional.ofNullable(getValue());
+
+        // If value is present, print it
+        optionalValue.ifPresent(value -> System.out.println("Value: " + value));
+
+        // Provide default value if the optional is empty
+        String result = optionalValue.orElse("Default Value");
+        System.out.println(result);  // Output: Default Value if getValue() returns null
+    }
+
+    public static String getValue() {
+        // This method might return null, which can be safely handled by Optional
+        return null;  // Simulating a missing value
+    }
+}
+```
+
+**In summary**, `Optional` is a great way to handle **missing values** without using `null`. It allows better control over null values and is used for better design in modern Java applications.
+
+### 403. **Which method in Optional provides the fallback mechanism in case of null value?**
+
+The **`orElse()`** method in the `Optional` class provides the fallback mechanism in case the `Optional` object is empty (i.e., contains `null` or no value). If the value inside the `Optional` is present, `orElse()` will return it; otherwise, it will return the value passed as an argument.
+
+### Example:
+```java
+import java.util.Optional;
+
+public class Test {
+    public static void main(String[] args) {
+        Optional<String> optionalValue = Optional.ofNullable(null);  // Empty Optional
+        
+        // Using orElse() for fallback
+        String value = optionalValue.orElse("Fallback Value");
+        System.out.println(value);  // Output: Fallback Value
+    }
+}
+```
+
+In this example, since the `optionalValue` is empty, the `orElse()` method returns `"Fallback Value"`.
+
+---
+
+### 404. **How can we get the current time by using Date/Time API of Java 8?**
+
+In Java 8, you can get the current time using the **`LocalTime`** or **`Instant`** classes, depending on whether you need just the time (without a date) or the exact timestamp.
+
+- **For current time (without date)**:
+  Use **`LocalTime.now()`** to get the current time.
+
+- **For current timestamp (with date and time)**:
+  Use **`Instant.now()`** to get the current timestamp.
+
+### Examples:
+1. **Current Time:**
+   ```java
+   import java.time.LocalTime;
+
+   public class Test {
+       public static void main(String[] args) {
+           // Get current time
+           LocalTime currentTime = LocalTime.now();
+           System.out.println("Current Time: " + currentTime);  // Output: Current time (e.g., 14:34:52.033)
+       }
+   }
+   ```
+
+2. **Current Date and Time (Timestamp):**
+   ```java
+   import java.time.Instant;
+
+   public class Test {
+       public static void main(String[] args) {
+           // Get current timestamp
+           Instant currentTimestamp = Instant.now();
+           System.out.println("Current Timestamp: " + currentTimestamp);  // Output: Current timestamp (e.g., 2023-12-19T14:35:33.123Z)
+       }
+   }
+   ```
+
+---
+
+### 405. **Is it possible to define a static method in an Interface?**
+
+Yes, in **Java 8**, it is possible to define **static methods** in an interface. Static methods in interfaces are similar to static methods in classes; they belong to the interface itself, not to any instance of the interface.
+
+### Example:
+```java
+interface MyInterface {
+    static void staticMethod() {
+        System.out.println("Static method in Interface");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        // Accessing static method using the interface name
+        MyInterface.staticMethod();  // Output: Static method in Interface
+    }
+}
+```
+
+Here, the static method `staticMethod()` is defined within the interface `MyInterface`, and it is called using the interface name.
+
+---
+
+### 406. **How can we analyze the dependencies in Java classes and packages?**
+
+To analyze dependencies in Java classes and packages, several tools and techniques can be used:
+
+1. **Maven or Gradle**: If you are using **build tools** like Maven or Gradle, you can generate dependency reports that show the dependencies between libraries and modules.
+   - In **Maven**, you can use the command `mvn dependency:tree` to view the dependency hierarchy.
+   - In **Gradle**, the command `gradle dependencies` can be used.
+
+2. **JDepend**: **JDepend** is a tool that helps in analyzing the dependencies between Java packages. It provides a detailed report of the dependency structure of the packages and can help in identifying cyclic dependencies.
+
+3. **Dependency Graph Tools**: Tools like **JGraph** or **Graphviz** can be used to visualize dependencies between classes and packages.
+
+4. **IDE Tools**: Most IDEs (like **IntelliJ IDEA**, **Eclipse**) offer features to visualize class and package dependencies. In **IntelliJ IDEA**, you can use "Analyze -> Analyze Dependencies" to inspect the dependencies.
+
+5. **SonarQube**: **SonarQube** is a tool that helps analyze code quality and can also show **dependency analysis** for Java projects.
+
+---
+
+### 407. **What are the new JVM arguments introduced by Java 8?**
+
+Java 8 introduced several new JVM arguments, particularly related to **Lambda Expressions**, **garbage collection**, and **performance tuning**. Some of the important ones are:
+
+1. **`-XX:+UseG1GC`**: Enables the **G1 Garbage Collector** (Garbage First GC), which is designed for applications with large heaps and low-latency requirements. This was introduced in Java 8 as the default garbage collector for large heaps.
+
+2. **`-XX:+UnlockExperimentalVMOptions`**: Used to unlock experimental JVM options, allowing you to use experimental garbage collectors or other JVM features that are not officially supported.
+
+3. **`-XX:+UseConcMarkSweepGC`**: Enables the **Concurrent Mark-Sweep Garbage Collector**. Although not new to Java 8, it is still widely used for low-latency applications.
+
+4. **`-XX:MaxInlineLevel`**: This argument controls the maximum number of method invocations the JVM inlines for optimization. Java 8 improves inlining for lambda expressions, and this parameter controls that.
+
+5. **`-Djava.util.concurrent.ForkJoinPool.common.parallelism`**: Allows you to control the default parallelism level for the common **ForkJoinPool** used by Java 8's parallel streams and other concurrency features.
+
+6. **`-XX:+UseFastAccessorMethods`**: This option optimizes the performance of Java 8 lambdas by using fast accessor methods.
+
+7. **`-XX:+EnableNativeMemoryTracking`**: This option enables native memory tracking, which helps you track memory usage outside the heap.
+
+8. **`-XX:+HeapDumpOnOutOfMemoryError`**: This option causes the JVM to create a heap dump when an **OutOfMemoryError** is thrown, which is useful for debugging memory issues in Java 8 applications.
+
+9. **`-XX:MaxMetaspaceSize`**: Sets the maximum size of the **Metaspace**, where class metadata is stored. This replaced the `PermGen` space in Java 8.
+
+### Example:
+```bash
+java -XX:+UseG1GC -XX:MaxMetaspaceSize=256m -XX:+HeapDumpOnOutOfMemoryError -jar myapp.jar
+```
+
+### 408. **What are the popular annotations introduced in Java 8?**
+
+Java 8 introduced several new annotations, mainly aimed at enhancing functionality related to functional programming and stream processing. The most notable ones include:
+
+1. **`@FunctionalInterface`**: This annotation is used to mark interfaces that are intended to be functional interfaces, i.e., interfaces with exactly one abstract method. It helps the compiler to ensure that the interface follows the functional interface contract.
+   
+   **Example**:
+   ```java
+   @FunctionalInterface
+   public interface MyFunction {
+       void apply();
+   }
+   ```
+
+2. **`@Repeatable`**: This annotation allows an annotation to be applied more than once to the same element. It works in conjunction with a container annotation (an annotation that holds multiple instances of the repeated annotation).
+   
+   **Example**:
+   ```java
+   @Repeatable(Schedules.class)
+   public @interface Schedule {
+       String day();
+   }
+   
+   @Retention(RetentionPolicy.RUNTIME)
+   @Target(ElementType.TYPE)
+   public @interface Schedules {
+       Schedule[] value();
+   }
+   ```
+
+   You can then repeat `@Schedule` annotations:
+   ```java
+   @Schedule(day = "Monday")
+   @Schedule(day = "Wednesday")
+   public class MyTask {}
+   ```
+
+3. **`@SafeVarargs`**: This annotation tells the compiler that the variable arguments passed to the method or constructor are safe and do not result in heap pollution, preventing warnings in the code.
+
+   **Example**:
+   ```java
+   @SafeVarargs
+   public final void myMethod(T... args) {
+       // Safe use of varargs
+   }
+   ```
+
+---
+
+### 409. **What is a StringJoiner in Java 8?**
+
+`StringJoiner` is a new class introduced in Java 8 that helps in constructing a sequence of characters (like a string) with a specified delimiter, prefix, and suffix. It simplifies the process of joining multiple strings into a single string.
+
+### Key features:
+- **Delimiter**: The separator to be placed between the strings.
+- **Prefix**: A prefix added before the first element.
+- **Suffix**: A suffix added after the last element.
+
+### Example:
+```java
+import java.util.StringJoiner;
+
+public class Test {
+    public static void main(String[] args) {
+        StringJoiner sj = new StringJoiner(", ", "[", "]");
+        sj.add("Apple").add("Banana").add("Cherry");
+
+        System.out.println(sj);  // Output: [Apple, Banana, Cherry]
+    }
+}
+```
+
+In this example, `StringJoiner` joins the strings "Apple", "Banana", and "Cherry" with a comma separator, and the result is enclosed in square brackets.
+
+---
+
+### 410. **What is the type of a Lambda expression in Java 8?**
+
+In Java 8, the type of a Lambda expression is determined by the **target type**. The target type is typically an interface that has exactly one abstract method, i.e., a **functional interface**. This functional interface defines the signature of the lambda expression.
+
+### Example:
+```java
+// Functional Interface
+@FunctionalInterface
+public interface MyFunction {
+    void apply();
+}
+
+// Lambda expression implementing MyFunction
+MyFunction func = () -> System.out.println("Hello, World!");
+```
+
+In the above code, the type of the Lambda expression is `MyFunction` (which is a functional interface).
+
+---
+
+### 411. **What is the target type of a lambda expression?**
+
+The **target type** of a lambda expression is the type of the variable or parameter that the lambda expression is assigned to. The target type is usually a functional interface, which is an interface that has exactly one abstract method.
+
+- The target type is determined based on the context in which the lambda is used, for example, a variable, method parameter, or return type.
+- The **compiler** infers the target type from the context, making lambda expressions flexible.
+
+### Example:
+```java
+@FunctionalInterface
+public interface MyFunction {
+    void apply();
+}
+
+public class Test {
+    public static void main(String[] args) {
+        // Lambda expression target type is MyFunction interface
+        MyFunction myFunc = () -> System.out.println("Hello!");
+    }
+}
+```
+
+In this example, the target type of the lambda expression `() -> System.out.println("Hello!")` is `MyFunction` because the variable `myFunc` is declared with this type.
+
+---
+
+### 412. **What are the main differences between an interface with default method and an abstract class in Java 8?**
+
+In Java 8, **default methods** were introduced in interfaces, allowing interfaces to provide method implementations. This contrasts with abstract classes, which can have method implementations and abstract methods. Here are the key differences:
+
+1. **Abstract Class**:
+   - Can have both abstract and non-abstract (concrete) methods.
+   - Can have instance variables (fields).
+   - Can define constructors.
+   - A class can inherit from only one abstract class due to Java's single inheritance model.
+   - Abstract classes are used to provide common functionality that can be shared by all subclasses.
+
+2. **Interface with Default Methods**:
+   - Can have only abstract methods, but can also have default methods with implementations.
+   - Cannot have instance variables (fields). Any variables defined in an interface are implicitly `static` and `final`.
+   - Cannot define constructors.
+   - A class can implement multiple interfaces, including those with default methods.
+   - Default methods allow interfaces to evolve and add new methods without breaking existing implementations. They are mainly used to add default functionality that doesn't require changes in the implementing classes.
+
+### Example:
+
+```java
+// Abstract Class Example
+abstract class MyAbstractClass {
+    abstract void doSomething();
+    void printMessage() {
+        System.out.println("Message from abstract class");
+    }
+}
+
+// Interface with Default Method Example
+interface MyInterface {
+    void doSomethingElse(); // Abstract method
+    default void printMessage() {  // Default method
+        System.out.println("Message from interface");
+    }
+}
+```
+
+- In the **abstract class**, `printMessage()` is a concrete method, and `doSomething()` is an abstract method.
+- In the **interface**, `printMessage()` is a default method (providing a default implementation), and `doSomethingElse()` is an abstract method.
+
+---
+
+### Summary:
+- **Annotations in Java 8**: `@FunctionalInterface`, `@Repeatable`, and `@SafeVarargs` are new annotations in Java 8.
+- **StringJoiner**: A class to join strings with delimiters and optional prefixes/suffixes.
+- **Lambda Expression Type**: Determined by the target type, which is typically a functional interface.
+- **Target Type**: The type inferred by the context in which the lambda expression is used (usually a functional interface).
+- **Interface with Default Method vs Abstract Class**: Default methods allow interfaces to provide implementations, while abstract classes can provide both abstract and concrete methods, but only support single inheritance.
 
 ## Java Tricky Questions
 
-413.Is there any difference between a = a + b and a += b expressions?
-414.What does the expression 1.0 / 0.0 return? Will there be any compilation error? 
-415.Can we use multiple main methods in multiple classes?
-416.Does Java allow you to override a private or static method?
-417.What happens when you put a key object in a HashMap that isalready present?
-418.How can you make sure that N threads can access N resources without deadlock?
-419.How can you determine if JVM is 32-bit or 64-bit from Java Program? 
-420.What is the right data type to represent Money (like Dollar/Pound) in Java?
-421.How can you do multiple inheritances in Java?
-422.Is ++ operation thread-safe in Java?
-423.How can you access a non-static variable from the static context?
-424.Let say there is a method that throws NullPointerException in the superclass. Can we override it with a method that throws
-RuntimeException?
-425.How can you mark an array volatile in Java?
-426.What is a thread local variable in Java?
-427.What is the difference between sleep() and wait() methods in Java?
-428.Can you create an Immutable object that contains a mutable object?
-429.How can you convert an Array of bytes to String?
-430.What is difference between CyclicBarrier and CountDownLatch class?
-431.What is the difference between StringBuffer and StringBuilder?
-432.Which class contains clone method? Cloneable or Object class?
-433.How will you take thread dump in Java?
-434.Can you cast an int variable into a byte variable? What happens if the value of int is larger than byte?
-435.In Java, can we store a double value in a long variable without explicit casting?
-436.What will this return 5*0.1 == 0.5? true or false?
-437.Out of an int and Integer, which one takes more memory?
-438.Can we use String in the switch case statement in Java?
-439.Can we use multiple main methods in same class?
-440.When creating an abstract class, is it a good idea to call abstract methods inside its constructor?
-441.How can you do constructor chaining in Java?
-442.How can we find the memory usage of JVM from Java code?
-443.What is the difference between x == y and x.equals(y) expressions in Java?
-444. How can you guarantee that the garbage collection takes place?
-445.What is the relation between x.hashCode() method and x.equals(y) method of Object class?
-446.What is a compile time constant in Java?
+### 413. **Is there any difference between `a = a + b` and `a += b` expressions?**
+
+There is a subtle difference between `a = a + b` and `a += b`, especially when dealing with object types (like strings or boxed types). 
+
+1. **`a = a + b`**:
+   - This is the regular assignment operator. It performs the addition operation first and then assigns the result back to the variable `a`.
+   - For primitive data types like `int`, this will perform addition and then store the result.
+   - For object types, like strings, `a = a + b` creates a new string object as the result of the addition, because `+` for strings results in string concatenation, which creates a new object.
+   
+2. **`a += b`**:
+   - This is a shorthand assignment operator that performs the addition or concatenation operation and stores the result in `a`. However, in the case of object types (like Strings), `a += b` can sometimes optimize the operation by reusing the existing object, especially in the case of strings (using `StringBuilder` in the background).
+   - For primitive types like `int`, the result is the same as `a = a + b`, but for object types, it can behave more efficiently.
+
+   **Key Difference**: The `+=` operator can perform optimizations like using `StringBuilder` for string concatenation, whereas `=` will always create a new object for string concatenation.
+
+---
+
+### 414. **What does the expression `1.0 / 0.0` return? Will there be any compilation error?**
+
+- **Result**: The expression `1.0 / 0.0` does **not throw a division by zero exception**. Instead, it returns **`Infinity`**, which is a special floating-point value in Java. In Java, dividing a floating-point number (`float` or `double`) by zero results in `Infinity` or `-Infinity` depending on the sign of the operands.
+
+   - **`1.0 / 0.0` returns `Infinity`**.
+   - If you perform `-1.0 / 0.0`, the result would be `-Infinity`.
+
+- **Compilation**: There will be **no compilation error** because dividing floating-point numbers by zero is allowed in Java (unlike integer division, which throws `ArithmeticException`).
+
+   **Example**:
+   ```java
+   public class Test {
+       public static void main(String[] args) {
+           System.out.println(1.0 / 0.0);  // Output: Infinity
+           System.out.println(-1.0 / 0.0); // Output: -Infinity
+       }
+   }
+   ```
+
+---
+
+### 415. **Can we use multiple `main` methods in multiple classes?**
+
+Yes, **you can have multiple `main` methods** in different classes in a Java application. The `main` method is the entry point for a Java application, but it can exist in multiple classes. Java allows the creation of different classes with their own `main` methods, and each class can be executed independently.
+
+- When you run a Java application, you specify the class that contains the `main` method to be executed. If you have multiple classes with `main` methods, you just specify which one you want to run.
+
+**Example**:
+```java
+public class ClassA {
+    public static void main(String[] args) {
+        System.out.println("Main method of ClassA");
+    }
+}
+
+public class ClassB {
+    public static void main(String[] args) {
+        System.out.println("Main method of ClassB");
+    }
+}
+```
+
+You can run either `ClassA` or `ClassB` independently, but only one class's `main` method will be executed per run.
+
+---
+
+### 416. **Does Java allow you to override a private or static method?**
+
+1. **Private methods**: No, **private methods cannot be overridden** in Java because they are not accessible outside the class they are declared in. You can, however, **declare a method with the same name and signature** in a subclass, but it will not be considered overriding — it will be considered as a method hiding or overloading.
+
+2. **Static methods**: No, **static methods cannot be overridden** in the same way as instance methods. Static methods are **resolved at compile time**, and method calls are bound to the class type rather than the object type. If a subclass defines a static method with the same signature as the parent class, it is not overriding but **method hiding**.
+
+   **Example**:
+   ```java
+   class Parent {
+       private void privateMethod() {
+           System.out.println("Private method in Parent");
+       }
+       static void staticMethod() {
+           System.out.println("Static method in Parent");
+       }
+   }
+
+   class Child extends Parent {
+       // This is not overriding; it's hiding the method
+       static void staticMethod() {
+           System.out.println("Static method in Child");
+       }
+   }
+
+   public class Test {
+       public static void main(String[] args) {
+           Parent p = new Child();
+           p.staticMethod(); // Calls the static method in Parent, not Child
+       }
+   }
+   ```
+
+   Here, **private methods** cannot be overridden, and **static methods** are hidden, not overridden.
+
+---
+
+### 417. **What happens when you put a key object in a `HashMap` that is already present?**
+
+When you **put a key-value pair** in a `HashMap` with a key that already exists, the new value will **replace** the old value associated with that key. The `put()` method will return the previous value associated with the key, or `null` if there was no previous value.
+
+### Example:
+```java
+import java.util.HashMap;
+
+public class Test {
+    public static void main(String[] args) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("key1", "value1");
+        System.out.println(map.put("key1", "newValue"));  // Output: value1
+        System.out.println(map.get("key1"));  // Output: newValue
+    }
+}
+```
+
+- When you call `map.put("key1", "newValue")`, the value `"value1"` is replaced with `"newValue"`, and the previous value `"value1"` is returned by `put()`.
+- The key `"key1"` still exists in the map, but the value associated with it is updated to `"newValue"`.
+
+### 418. **How can you make sure that N threads can access N resources without deadlock?**
+
+To ensure that N threads can access N resources without causing a deadlock, the following strategies can be employed:
+
+1. **Resource Ordering (Lock Ordering):**
+   - One of the most effective strategies to avoid deadlock is to impose a consistent global order on the resources (locks). If every thread locks the resources in the same order, deadlock will be avoided.
+   - For example, if there are two resources, `R1` and `R2`, and two threads need access to both, you can ensure that every thread locks `R1` first and `R2` second. This prevents circular dependencies where one thread holds `R1` and waits for `R2`, and another thread holds `R2` and waits for `R1`.
+
+2. **Timeouts (Try Locking):**
+   - Use a **timeout** mechanism to acquire locks. For example, if a thread cannot acquire all necessary locks within a specified timeout, it releases the locks it has acquired and retries, which helps in avoiding deadlock situations.
+
+3. **Using Deadlock Detection Tools:**
+   - Implement algorithms to detect deadlocks at runtime and take corrective actions. Some frameworks or tools can detect when a deadlock occurs and help in handling it.
+
+4. **Use of `ReentrantLock`:**
+   - `ReentrantLock` in Java provides more advanced locking features than `synchronized`, including the ability to specify timeouts when trying to acquire a lock, which can help avoid deadlock situations.
+
+5. **Avoid Nested Locks:**
+   - Minimize the need for acquiring multiple locks simultaneously. By simplifying the synchronization scheme and using fewer locks, you reduce the chances of deadlock.
+
+6. **Use Lock Hierarchy:**
+   - If there are multiple resources, define a strict hierarchy of lock acquisition, where each thread must acquire locks in ascending order.
+
+---
+
+### 419. **How can you determine if JVM is 32-bit or 64-bit from Java Program?**
+
+You can determine whether the JVM is running in 32-bit or 64-bit mode by using the `java.version` and `os.arch` system properties:
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        String arch = System.getProperty("os.arch");
+        if (arch.contains("64")) {
+            System.out.println("64-bit JVM");
+        } else {
+            System.out.println("32-bit JVM");
+        }
+    }
+}
+```
+
+- The `os.arch` property returns the architecture of the underlying operating system (e.g., `x86_64` for 64-bit or `x86` for 32-bit).
+- This approach will help you identify whether the JVM is 32-bit or 64-bit.
+
+---
+
+### 420. **What is the right data type to represent Money (like Dollar/Pound) in Java?**
+
+To represent money (like Dollar or Pound) in Java, you should use the `BigDecimal` class, as it provides precise control over decimal arithmetic. This is essential when dealing with financial calculations, as floating-point types (`float` or `double`) can lead to rounding errors due to their inexact representation of decimal numbers.
+
+Here’s why `BigDecimal` is preferred:
+
+- **Precision**: `BigDecimal` allows for arbitrary precision, making it ideal for handling currency and performing precise calculations.
+- **Avoids rounding issues**: Floating-point types like `float` and `double` can cause rounding issues due to their imprecision, which is unacceptable in financial applications.
+
+### Example:
+
+```java
+import java.math.BigDecimal;
+
+public class MoneyExample {
+    public static void main(String[] args) {
+        BigDecimal price = new BigDecimal("19.99");
+        BigDecimal quantity = new BigDecimal("3");
+        BigDecimal total = price.multiply(quantity);
+        System.out.println("Total: " + total); // Outputs: Total: 59.97
+    }
+}
+```
+
+- In this example, `BigDecimal` is used for currency-related calculations to avoid any precision issues.
+
+---
+
+### 421. **How can you do multiple inheritances in Java?**
+
+Java does not support multiple inheritance of classes due to the **diamond problem**, where ambiguity arises if two classes have the same method. However, you can achieve multiple inheritance through the following mechanisms:
+
+1. **Using Interfaces**:
+   - Java allows a class to implement multiple interfaces. This way, you can achieve the effect of multiple inheritance without the complications that arise from inheriting from more than one class.
+   
+   Example:
+   ```java
+   interface Animal {
+       void sound();
+   }
+
+   interface Swimmer {
+       void swim();
+   }
+
+   class Dolphin implements Animal, Swimmer {
+       public void sound() {
+           System.out.println("Dolphin makes a sound.");
+       }
+
+       public void swim() {
+           System.out.println("Dolphin swims.");
+       }
+   }
+
+   public class Test {
+       public static void main(String[] args) {
+           Dolphin dolphin = new Dolphin();
+           dolphin.sound();
+           dolphin.swim();
+       }
+   }
+   ```
+
+2. **Using Composition**:
+   - Instead of inheritance, use composition. In composition, a class has references to other classes that it delegates work to, which allows you to simulate the effects of multiple inheritance.
+
+---
+
+### 422. **Is `++` operation thread-safe in Java?**
+
+No, the `++` operation is **not thread-safe** in Java when performed on shared variables. This is because the `++` operator is a compound operation, which means it involves multiple steps:
+
+1. Reading the current value of the variable.
+2. Incrementing the value.
+3. Writing the new value back.
+
+In a multi-threaded environment, two threads could simultaneously read the same value and then both increment it, leading to a race condition. This results in lost updates.
+
+To make the `++` operation thread-safe, you can use synchronization, atomic operations, or `AtomicInteger` from the `java.util.concurrent.atomic` package.
+
+**Example using `AtomicInteger`**:
+```java
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class ThreadSafeIncrement {
+    public static void main(String[] args) {
+        AtomicInteger count = new AtomicInteger(0);
+
+        // Simulate multiple threads incrementing the value
+        count.incrementAndGet();
+        System.out.println("Count: " + count);
+    }
+}
+```
+
+Here, `AtomicInteger` ensures that the increment operation is atomic and thread-safe.
+
+
+### 423. **How can you access a non-static variable from the static context?**
+
+In Java, **non-static variables** (instance variables) belong to an instance of a class, while **static variables** belong to the class itself. To access a **non-static variable** from a static context (such as a static method or static block), you need to first create an instance of the class and then access the variable through that instance.
+
+Example:
+
+```java
+public class MyClass {
+    int instanceVar = 10;  // Non-static variable
+
+    public static void main(String[] args) {
+        MyClass obj = new MyClass(); // Create an instance of the class
+        System.out.println(obj.instanceVar); // Access the non-static variable
+    }
+}
+```
+
+In this example, `instanceVar` is a non-static variable, but it is accessed through an instance `obj` of the `MyClass` class.
+
+---
+
+### 424. **Let say there is a method that throws NullPointerException in the superclass. Can we override it with a method that throws RuntimeException?**
+
+Yes, you can override a method that throws a `NullPointerException` in the superclass with a method that throws a `RuntimeException`. However, there are certain rules you need to follow regarding exceptions when overriding methods:
+
+- A **subclass method** can throw fewer exceptions or the same exceptions as the superclass method, but **it cannot throw more checked exceptions** than the method in the superclass.
+- `RuntimeException` and its subclasses are **unchecked exceptions**, so they are not subject to the same restrictions as **checked exceptions**.
+
+Therefore, it is perfectly fine to override a method that throws a checked exception (like `NullPointerException`) with one that throws an unchecked exception (`RuntimeException`).
+
+Example:
+
+```java
+class SuperClass {
+    public void throwException() throws NullPointerException {
+        // some logic
+    }
+}
+
+class SubClass extends SuperClass {
+    @Override
+    public void throwException() throws RuntimeException { // Fine, RuntimeException is unchecked
+        // some logic
+    }
+}
+```
+
+In this case, `RuntimeException` is unchecked, so this overriding is allowed.
+
+---
+
+### 425. **How can you mark an array volatile in Java?**
+
+In Java, the `volatile` keyword can only be applied to **variables** (fields) and not to entire arrays. So, if you have an array and want to mark it as `volatile`, you can only mark the reference to the array as `volatile`. This means that the reference itself is volatile, but not the elements inside the array.
+
+Example:
+
+```java
+public class MyClass {
+    private volatile int[] myArray;  // Mark the array reference as volatile
+
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.myArray = new int[10];
+        obj.myArray[0] = 5;  // Modify an element of the array
+    }
+}
+```
+
+In this case, the reference `myArray` is volatile, meaning that any changes to the reference itself (such as pointing it to a new array) will be visible to all threads. However, **the elements of the array are not volatile**, so changes to the array elements are not automatically visible to other threads unless synchronization mechanisms are used.
+
+---
+
+### 426. **What is a thread local variable in Java?**
+
+A **thread-local variable** in Java is a variable that is specific to the current thread. Each thread accessing the variable will have its own independent copy, and changes to the value of the variable in one thread will not affect the value in other threads.
+
+Thread-local variables are useful when you need to store data that is specific to each thread, such as user session information or temporary thread-specific data.
+
+Java provides the `ThreadLocal` class to create thread-local variables.
+
+Example:
+
+```java
+public class MyClass {
+    private static ThreadLocal<Integer> threadLocal = ThreadLocal.withInitial(() -> 1);  // Thread-local variable
+
+    public static void main(String[] args) {
+        Thread t1 = new Thread(() -> {
+            System.out.println("Thread 1: " + threadLocal.get());
+            threadLocal.set(10);
+            System.out.println("Thread 1 (after setting): " + threadLocal.get());
+        });
+
+        Thread t2 = new Thread(() -> {
+            System.out.println("Thread 2: " + threadLocal.get());
+            threadLocal.set(20);
+            System.out.println("Thread 2 (after setting): " + threadLocal.get());
+        });
+
+        t1.start();
+        t2.start();
+    }
+}
+```
+
+Output might look like:
+
+```
+Thread 1: 1
+Thread 1 (after setting): 10
+Thread 2: 1
+Thread 2 (after setting): 20
+```
+
+In this example, each thread has its own instance of the `threadLocal` variable, which means that modifications in one thread do not affect the value in the other thread.
+
+- **ThreadLocal** can be used to create variables that are unique to each thread, ensuring that no thread interference occurs.
+
+### 427. **What is the difference between `sleep()` and `wait()` methods in Java?**
+
+The `sleep()` and `wait()` methods both cause a thread to pause, but they are used in different contexts and have key differences:
+
+1. **Usage Context**:
+   - `sleep()` is a static method of the `Thread` class. It pauses the execution of the current thread for a specified number of milliseconds.
+   - `wait()` is an instance method of the `Object` class. It can only be called on an object (usually from within a synchronized block). It is used in inter-thread communication, where a thread waits for another thread to notify it.
+
+2. **Synchronization**:
+   - `sleep()` does not require a thread to hold a lock or monitor; it simply pauses the current thread for a specified time.
+   - `wait()` requires the current thread to hold the lock (it must be used within a synchronized block or method). It causes the current thread to release the lock and wait for another thread to notify it via `notify()` or `notifyAll()`.
+
+3. **Behavior After Waiting**:
+   - `sleep()` resumes after the specified time has passed (even if no other thread interacts with it).
+   - `wait()` resumes when another thread calls `notify()` or `notifyAll()` on the object that the current thread is waiting on.
+
+4. **Interrupt Handling**:
+   - `sleep()` can throw `InterruptedException` if another thread interrupts the sleeping thread.
+   - `wait()` can also throw `InterruptedException` if the thread is interrupted while waiting.
+
+**Example**:
+```java
+// sleep example:
+Thread.sleep(1000);  // Thread pauses for 1 second
+
+// wait example:
+synchronized (object) {
+    object.wait();  // Current thread waits until another thread notifies it
+}
+```
+
+---
+
+### 428. **Can you create an Immutable object that contains a mutable object?**
+
+Yes, you can create an **immutable object** that contains a **mutable object**, but the mutable object's state can still be modified. To maintain immutability, you should ensure that:
+
+1. The reference to the mutable object cannot be changed (e.g., by not providing setters for the mutable object).
+2. If the mutable object is mutable, you should create a defensive copy of it to prevent external modification.
+
+Here's an example:
+
+```java
+public final class ImmutableClass {
+    private final List<String> items;  // A mutable object
+
+    public ImmutableClass(List<String> items) {
+        // Creating a defensive copy to maintain immutability
+        this.items = new ArrayList<>(items);
+    }
+
+    public List<String> getItems() {
+        // Returning a defensive copy to prevent modification
+        return new ArrayList<>(items);
+    }
+}
+```
+
+In this example:
+- The original `items` list is mutable.
+- We create a defensive copy in the constructor and the getter method to prevent modification of the original list.
+
+---
+
+### 429. **How can you convert an Array of bytes to String?**
+
+You can convert an array of bytes to a String using the `String` constructor that takes a byte array as an argument. You can also specify the character encoding to correctly interpret the byte data.
+
+Here’s an example:
+
+```java
+byte[] byteArray = {72, 101, 108, 108, 111}; // Corresponds to "Hello" in ASCII
+
+// Convert to String using the default charset
+String str1 = new String(byteArray);
+
+// Convert to String with a specified charset (e.g., UTF-8)
+String str2 = new String(byteArray, StandardCharsets.UTF_8);
+
+System.out.println(str1);  // Output: Hello
+System.out.println(str2);  // Output: Hello
+```
+
+The constructor `new String(byteArray)` decodes the byte array into a string using the platform's default character set, while `new String(byteArray, charset)` allows you to specify the character encoding.
+
+---
+
+### 430. **What is the difference between `CyclicBarrier` and `CountDownLatch` class?**
+
+Both `CyclicBarrier` and `CountDownLatch` are synchronization primitives used to coordinate multiple threads, but they differ in usage and behavior:
+
+1. **Behavior**:
+   - **`CyclicBarrier`**: It allows a group of threads to wait until a certain number of threads have arrived at a barrier point. Once all threads reach the barrier, they are released to continue their execution. It can be reused after all threads have been released (i.e., the barrier is "cyclic").
+   - **`CountDownLatch`**: It is used to block a thread (or multiple threads) until a certain number of events (or actions) occur. Once the count reaches zero, the waiting threads are released. It cannot be reset (i.e., it's a one-time use).
+
+2. **Use Cases**:
+   - **`CyclicBarrier`**: Typically used when you want multiple threads to perform some task in parallel and synchronize them at the same point. It is useful when threads need to wait for each other to reach a certain point.
+   - **`CountDownLatch`**: Useful when one or more threads need to wait for a set of tasks to complete before they can proceed. It's often used in scenarios like waiting for multiple worker threads to finish before proceeding.
+
+3. **Reusability**:
+   - **`CyclicBarrier`**: It is reusable; after all threads reach the barrier, the barrier can be reset and used again.
+   - **`CountDownLatch`**: It is not reusable; once the count reaches zero, the latch cannot be reset or reused.
+
+**Example**:
+
+```java
+// CyclicBarrier example
+CyclicBarrier barrier = new CyclicBarrier(3, () -> System.out.println("All threads reached the barrier!"));
+Thread t1 = new Thread(() -> {
+    System.out.println("Thread 1 is waiting");
+    try {
+        barrier.await();
+    } catch (Exception e) {}
+});
+Thread t2 = new Thread(() -> {
+    System.out.println("Thread 2 is waiting");
+    try {
+        barrier.await();
+    } catch (Exception e) {}
+});
+Thread t3 = new Thread(() -> {
+    System.out.println("Thread 3 is waiting");
+    try {
+        barrier.await();
+    } catch (Exception e) {}
+});
+
+t1.start();
+t2.start();
+t3.start();
+
+// CountDownLatch example
+CountDownLatch latch = new CountDownLatch(3); // Wait for 3 threads
+Thread t1 = new Thread(() -> {
+    System.out.println("Task 1 completed");
+    latch.countDown();
+});
+Thread t2 = new Thread(() -> {
+    System.out.println("Task 2 completed");
+    latch.countDown();
+});
+Thread t3 = new Thread(() -> {
+    System.out.println("Task 3 completed");
+    latch.countDown();
+});
+
+t1.start();
+t2.start();
+t3.start();
+
+latch.await(); // Main thread waits for all tasks to complete
+System.out.println("All tasks completed!");
+```
+
+---
+
+### 431. **What is the difference between `StringBuffer` and `StringBuilder`?**
+
+Both `StringBuffer` and `StringBuilder` are used for creating mutable sequences of characters, but they have the following differences:
+
+1. **Thread-Safety**:
+   - **`StringBuffer`** is **synchronized**, meaning it is thread-safe and can be safely used by multiple threads concurrently.
+   - **`StringBuilder`** is **not synchronized**, meaning it is not thread-safe, but it provides better performance in single-threaded scenarios.
+
+2. **Performance**:
+   - **`StringBuffer`** generally has more overhead due to its synchronization, which can impact performance in multithreaded environments.
+   - **`StringBuilder`** is faster because it does not synchronize methods, making it ideal for single-threaded use cases where thread safety is not a concern.
+
+3. **Usage**:
+   - Use **`StringBuffer`** when thread-safety is a concern (e.g., in multi-threaded applications).
+   - Use **`StringBuilder`** when thread-safety is not required, especially when performance is a priority.
+
+**Example**:
+
+```java
+// StringBuffer (thread-safe)
+StringBuffer buffer = new StringBuffer("Hello");
+buffer.append(" World");
+System.out.println(buffer);  // Output: Hello World
+
+// StringBuilder (faster, but not thread-safe)
+StringBuilder builder = new StringBuilder("Hello");
+builder.append(" World");
+System.out.println(builder);  // Output: Hello World
+```
+
+### 432. **Which class contains `clone` method? `Cloneable` or `Object` class?**
+
+The `clone` method is defined in the **`Object`** class in Java, but it is **protected** by default. If a class wants to provide the functionality of cloning its objects, it must implement the **`Cloneable`** interface, which serves as a marker interface indicating that the class supports cloning. However, implementing `Cloneable` does not automatically make the `clone` method accessible; you still need to override `clone()` in your class to make it public or provide your own cloning logic.
+
+- **`Object` class**: Contains the `clone()` method (but it is protected).
+- **`Cloneable` interface**: Does not contain the `clone()` method, it merely marks that a class supports cloning.
+
+**Example**:
+```java
+class MyClass implements Cloneable {
+    int x;
+
+    MyClass(int x) {
+        this.x = x;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();  // Call Object's clone method
+    }
+}
+
+public class TestClone {
+    public static void main(String[] args) throws CloneNotSupportedException {
+        MyClass obj1 = new MyClass(10);
+        MyClass obj2 = (MyClass) obj1.clone();
+        System.out.println(obj1.x);  // Output: 10
+        System.out.println(obj2.x);  // Output: 10
+    }
+}
+```
+
+---
+
+### 433. **How will you take a thread dump in Java?**
+
+A **thread dump** is a snapshot of all the threads currently running in a Java process. You can take a thread dump using several methods:
+
+1. **Using `jstack` tool** (part of JDK):
+   - Run the following command in the terminal:
+     ```
+     jstack <pid>  // Replace <pid> with the process ID of your Java application
+     ```
+   - This will output the thread dump of the Java process with the given PID.
+
+2. **Using `kill -3` (on UNIX/Linux systems)**:
+   - Send a `SIGQUIT` signal to the Java process:
+     ```
+     kill -3 <pid>  // Replace <pid> with the process ID
+     ```
+   - This will print the thread dump to the console or to the `stderr` log file.
+
+3. **Using `Thread.getAllStackTraces()`** in the Java program:
+   - You can capture the stack traces of all threads programmatically:
+     ```java
+     Map<Thread, StackTraceElement[]> threadDump = Thread.getAllStackTraces();
+     for (Thread thread : threadDump.keySet()) {
+         System.out.println("Thread: " + thread.getName());
+         for (StackTraceElement element : threadDump.get(thread)) {
+             System.out.println("\t" + element);
+         }
+     }
+     ```
+
+---
+
+### 434. **Can you cast an `int` variable into a `byte` variable? What happens if the value of `int` is larger than `byte`?**
+
+Yes, you can **cast** an `int` variable to a `byte`, but since `byte` can only hold values between `-128` and `127`, any `int` value outside this range will be truncated, resulting in unexpected behavior.
+
+**Example**:
+
+```java
+int num = 130;
+byte b = (byte) num;  // Casting int to byte
+
+System.out.println(b);  // Output: -126 (due to overflow)
+```
+
+When casting, Java will take the lower 8 bits of the integer, which means that any values larger than `127` or smaller than `-128` will overflow or underflow. For example, `130` becomes `-126` due to wrapping around the byte range.
+
+---
+
+### 435. **In Java, can we store a `double` value in a `long` variable without explicit casting?**
+
+No, you cannot store a `double` value in a `long` variable without explicit casting. A `double` is a 64-bit floating-point number, and a `long` is a 64-bit integer, so they are different types and cannot be automatically converted.
+
+If you want to store a `double` value in a `long` variable, you must explicitly cast it, which will truncate the decimal part (i.e., it will not round the value).
+
+**Example**:
+```java
+double d = 10.75;
+long l = (long) d;  // Explicit casting
+
+System.out.println(l);  // Output: 10 (fractional part is truncated)
+```
+
+In this case, the decimal part `.75` is discarded, and only the integer part `10` is stored in the `long` variable.
+
+---
+
+### 436. **What will this return `5*0.1 == 0.5`? True or false?**
+
+The expression `5 * 0.1 == 0.5` will return **false** due to the imprecision of floating-point arithmetic.
+
+In Java, floating-point numbers (i.e., `float` and `double`) are represented in binary, and some decimal values cannot be exactly represented in binary, leading to rounding errors.
+
+So, even though mathematically `5 * 0.1` should be `0.5`, the result of `5 * 0.1` might not be exactly `0.5` due to floating-point precision issues.
+
+**Example**:
+```java
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(5 * 0.1 == 0.5);  // Output: false
+    }
+}
+```
+
+To fix this issue, you can use `BigDecimal` for exact decimal calculations:
+
+```java
+import java.math.BigDecimal;
+
+public class Test {
+    public static void main(String[] args) {
+        BigDecimal bd1 = new BigDecimal("5.0");
+        BigDecimal bd2 = new BigDecimal("0.1");
+        System.out.println(bd1.multiply(bd2).equals(new BigDecimal("0.5")));  // Output: true
+    }
+}
+```
+
+### 437. **Out of an `int` and `Integer`, which one takes more memory?**
+
+An `Integer` takes **more memory** than an `int`. This is because:
+
+1. **`int`**: 
+   - It is a **primitive type**, and it takes 4 bytes (32 bits) in memory.
+   
+2. **`Integer`**:
+   - It is an **object** (a wrapper class for `int`), so it contains additional memory overhead due to the object structure, such as:
+     - A reference to the object (which typically takes 4 or 8 bytes, depending on the JVM architecture).
+     - The memory used by the object itself (which contains an `int` field).
+
+In addition to the memory used by the `int` value (4 bytes), an `Integer` object contains object overhead, which means it takes more memory than the primitive `int`.
+
+---
+
+### 438. **Can we use `String` in the `switch` case statement in Java?**
+
+Yes, in **Java 7 and later**, you can use a `String` in a `switch` case statement. Prior to Java 7, `switch` could only work with primitive types (like `int`, `char`, etc.) and their corresponding wrapper classes, but Java 7 introduced the ability to use `String` objects in `switch` statements.
+
+**Example**:
+```java
+public class SwitchExample {
+    public static void main(String[] args) {
+        String color = "Red";
+        
+        switch (color) {
+            case "Red":
+                System.out.println("The color is Red");
+                break;
+            case "Green":
+                System.out.println("The color is Green");
+                break;
+            case "Blue":
+                System.out.println("The color is Blue");
+                break;
+            default:
+                System.out.println("Color not recognized");
+        }
+    }
+}
+```
+In this example, the `switch` statement uses a `String` value.
+
+---
+
+### 439. **Can we use multiple `main` methods in the same class?**
+
+Yes, you **can** define multiple `main` methods in the **same class**, but only one `main` method (the entry point of the program) will be executed when you run the program. Each `main` method would have a different signature, and the JVM will invoke the one with the signature that matches the method signature for starting a Java application (i.e., `public static void main(String[] args)`).
+
+**Example**:
+```java
+public class MultipleMain {
+    public static void main(String[] args) {
+        System.out.println("Main method 1");
+    }
+    
+    public static void main(int[] args) {
+        System.out.println("Main method 2");
+    }
+    
+    public static void main(double[] args) {
+        System.out.println("Main method 3");
+    }
+}
+```
+However, only the `public static void main(String[] args)` method will be invoked when running the class, even though there are other `main` methods with different signatures.
+
+---
+
+### 440. **When creating an abstract class, is it a good idea to call abstract methods inside its constructor?**
+
+It is **not a good practice** to call abstract methods inside the constructor of an abstract class. Here’s why:
+
+- **Abstract methods** are meant to be overridden by subclasses, and the constructor of the abstract class is invoked **before** the subclass's constructor. At the time the constructor of the abstract class runs, the subclass may not have had its own method implementation yet.
+  
+- If the abstract method is called in the constructor, it will result in **undefined behavior** because the subclass method may not yet be available, leading to **unexpected results** or **errors**.
+
+**Example**:
+```java
+abstract class AbstractClass {
+    public AbstractClass() {
+        // This will not work as expected
+        abstractMethod();
+    }
+
+    abstract void abstractMethod();
+}
+
+class ConcreteClass extends AbstractClass {
+    @Override
+    void abstractMethod() {
+        System.out.println("Implemented in subclass.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        new ConcreteClass();  // Will cause issues
+    }
+}
+```
+Instead, the preferred approach is to ensure that any necessary method calls in the constructor are to **concrete methods** or simply avoid calling abstract methods in the constructor.
+
+---
+
+### 441. **How can you do constructor chaining in Java?**
+
+**Constructor chaining** in Java is a process where one constructor calls another constructor within the same class or from a superclass. This is useful for reusing code and simplifying the initialization of objects.
+
+There are two ways to do constructor chaining:
+
+1. **Calling another constructor in the same class**:
+   - You can use `this()` to call another constructor within the same class.
+   - This must be the first statement in the constructor.
+
+   **Example**:
+   ```java
+   class MyClass {
+       MyClass() {
+           System.out.println("Default constructor");
+       }
+
+       MyClass(String name) {
+           this();  // Calls the default constructor
+           System.out.println("Constructor with parameter: " + name);
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           MyClass obj = new MyClass("Java");
+       }
+   }
+   ```
+   In this example, the second constructor calls the first constructor using `this()`.
+
+2. **Calling a constructor from a superclass**:
+   - You can use `super()` to call the constructor of the superclass.
+   - This is useful for ensuring that the superclass is properly initialized before the subclass.
+
+   **Example**:
+   ```java
+   class Animal {
+       Animal() {
+           System.out.println("Animal constructor");
+       }
+   }
+
+   class Dog extends Animal {
+       Dog() {
+           super();  // Calls the constructor of Animal
+           System.out.println("Dog constructor");
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           Dog dog = new Dog();
+       }
+   }
+   ```
+   In this example, the `Dog` class constructor calls the `Animal` class constructor using `super()`.
+
+### 442. **How can we find the memory usage of JVM from Java code?**
+
+To find the memory usage of the JVM from Java code, you can use the `Runtime` class. The `Runtime.getRuntime()` method provides access to the Java runtime environment, which allows you to query memory usage and perform memory management tasks.
+
+You can use the following methods to find memory usage:
+
+1. **`totalMemory()`**: Returns the total memory available to the JVM.
+2. **`freeMemory()`**: Returns the free memory within the JVM.
+3. **`maxMemory()`**: Returns the maximum amount of memory that the JVM can allocate.
+4. **`totalMemory() - freeMemory()`**: This gives the current used memory.
+
+**Example**:
+```java
+public class MemoryUsage {
+    public static void main(String[] args) {
+        Runtime runtime = Runtime.getRuntime();
+
+        long totalMemory = runtime.totalMemory();
+        long freeMemory = runtime.freeMemory();
+        long maxMemory = runtime.maxMemory();
+        long usedMemory = totalMemory - freeMemory;
+
+        System.out.println("Total Memory: " + totalMemory);
+        System.out.println("Free Memory: " + freeMemory);
+        System.out.println("Max Memory: " + maxMemory);
+        System.out.println("Used Memory: " + usedMemory);
+    }
+}
+```
+
+This will print the memory statistics for the JVM.
+
+---
+
+### 443. **What is the difference between `x == y` and `x.equals(y)` expressions in Java?**
+
+- **`x == y`**:
+  - This checks for **reference equality** in Java. It compares whether `x` and `y` are referring to the same object in memory (i.e., whether `x` and `y` point to the same memory location).
+  - For primitive types, it checks if the values are equal.
+
+- **`x.equals(y)`**:
+  - This checks for **content equality** (or logical equality), meaning it compares the contents of the objects that `x` and `y` are referring to. The `equals()` method is defined in the `Object` class and can be overridden to define custom equality logic for a class.
+  - If `x` and `y` are strings, for example, `equals()` will check if the characters in the two strings are the same.
+
+**Example**:
+```java
+String str1 = new String("hello");
+String str2 = new String("hello");
+
+System.out.println(str1 == str2);  // false (because they are different objects)
+System.out.println(str1.equals(str2));  // true (because the contents are the same)
+```
+
+---
+
+### 444. **How can you guarantee that the garbage collection takes place?**
+
+In Java, **garbage collection** is managed automatically by the JVM, and you cannot explicitly force it to happen. However, you can **suggest** to the JVM that it might be a good time to run the garbage collector using `System.gc()` or `Runtime.getRuntime().gc()`. This is merely a suggestion, and the JVM is free to ignore it.
+
+**Example**:
+```java
+public class GarbageCollectionExample {
+    public static void main(String[] args) {
+        // Suggest the JVM to perform garbage collection
+        System.gc();
+        System.out.println("Garbage collection has been requested.");
+    }
+}
+```
+
+However, it is **not guaranteed** that the garbage collector will run immediately or at all, as the JVM controls when garbage collection occurs.
+
+To **force garbage collection**, you could monitor memory usage and manage resources more efficiently by using `try-with-resources` or explicit cleanup when objects are no longer needed.
+
+---
+
+### 445. **What is the relation between `x.hashCode()` method and `x.equals(y)` method of `Object` class?**
+
+The `hashCode()` and `equals()` methods are related because they are both used for comparing objects in Java, particularly in collections like `HashMap`, `HashSet`, and `Hashtable`.
+
+- **`hashCode()`**: This method returns a unique integer that is used for hashing, which is essential for hashing-based collections like `HashMap` and `HashSet`. Two objects that are considered equal by the `equals()` method must return the same `hashCode`. However, two objects with the same `hashCode` are not necessarily equal.
+
+- **`equals()`**: This method is used to check the logical equality of two objects. If `x.equals(y)` returns `true`, then `x.hashCode()` must return the same value for both `x` and `y`. However, if `x.hashCode()` is different from `y.hashCode()`, then `x.equals(y)` must return `false`.
+
+**The general contract is**:
+1. If `x.equals(y)` is `true`, then `x.hashCode()` must be equal to `y.hashCode()`.
+2. If `x.equals(y)` is `false`, `x.hashCode()` can be different or the same (no guarantee of hashCode in this case).
+
+**Example**:
+```java
+class Person {
+    String name;
+    
+    public Person(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return name.equals(person.name);
+    }
+    
+    @Override
+    public int hashCode() {
+        return name.hashCode();  // Using the name to calculate the hash code
+    }
+}
+```
+
+---
+
+### 446. **What is a compile-time constant in Java?**
+
+A **compile-time constant** in Java refers to a constant value that is determined at compile time and is **fixed**. These constants are typically declared as `static final` variables and have values that can be evaluated by the compiler.
+
+In Java, a compile-time constant must:
+- Be a primitive type (e.g., `int`, `float`, etc.) or a `String`.
+- Be assigned a value that is known at compile time (i.e., not dependent on runtime values).
+
+**Example**:
+```java
+class CompileTimeConstantExample {
+    static final int CONSTANT = 100;  // Compile-time constant
+    
+    public static void main(String[] args) {
+        System.out.println(CONSTANT);
+    }
+}
+```
+
+In this example, the value of `CONSTANT` is **known at compile time**, and it cannot be changed during runtime because it is declared as `static final`.
 447.Explain the difference between fail-fast and fail-safe iterators?
 448. You have a character array and a String. Which one is more secure to store sensitive data (like password, date of birth, etc.)?
 449.Why do you use volatile keyword in Java?
