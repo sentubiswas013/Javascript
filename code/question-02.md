@@ -252,6 +252,26 @@ Here are the answers to the next set of JavaScript questions:
        }, 1000);
      };
      ```
+### 32. **What are JavaScript’s built-in objects?**
+
+JavaScript provides several built-in objects, which are available globally. Some of the commonly used built-in objects include:
+
+1. **Object**: The base object for all objects in JavaScript.
+2. **Array**: Used to store ordered collections of data.
+3. **String**: Used to represent and manipulate sequences of characters.
+4. **Number**: Used to represent numerical values.
+5. **Boolean**: Represents a logical entity with `true` or `false`.
+6. **Date**: Provides methods to work with dates and times.
+7. **Math**: A math utility object that provides mathematical constants and functions (e.g., `Math.random()`, `Math.sqrt()`).
+8. **RegExp**: Used for working with regular expressions.
+9. **JSON**: Provides methods for working with JSON data (e.g., `JSON.stringify()`, `JSON.parse()`).
+10. **Error**: Used for creating error objects.
+
+Example:
+```javascript
+const date = new Date();
+console.log(date.getFullYear()); // Built-in Date object
+```
 
 ### **13. What is a prototype in JavaScript?**
    Every JavaScript object has a **prototype**. A prototype is an object that is associated with every function and object by default. It allows objects to inherit properties and methods from other objects. When you try to access a property or method on an object, JavaScript will look for it on the object itself. If it's not found, JavaScript will look for it on the object's prototype, and so on, up the prototype chain.
@@ -269,6 +289,141 @@ Here are the answers to the next set of JavaScript questions:
    const john = new Person('John');
    john.greet(); // Hello John
    ```
+### 74. **What are closures in JavaScript, and why are they important?**
+
+A **closure** is a function that retains access to its lexical scope, even when the function is executed outside of that scope. In other words, closures allow a function to "remember" its environment.
+
+Closures are important for:
+- **Data encapsulation**: Protecting data from being directly accessed or modified by the outside code.
+- **Function factories**: Generating functions dynamically with specific states.
+  
+**Example:**
+
+```javascript
+function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    console.log(count);
+  };
+}
+
+const increment = outer();
+increment(); // 1
+increment(); // 2
+```
+
+Here, `inner` has access to `count` even after `outer` has finished execution, demonstrating closure.
+
+
+### 73. **What is the purpose of `WeakMap` and `WeakSet` in JavaScript?**
+
+- **`WeakMap`** is a collection of key-value pairs, where the keys are objects, and the values can be any arbitrary data type. The key objects are weakly held, meaning if there are no other references to a key, it will be garbage collected, preventing memory leaks.
+
+**Use case**: Storing metadata associated with objects without preventing them from being garbage-collected.
+
+**Example:**
+
+```javascript
+let obj = {};
+let weakMap = new WeakMap();
+weakMap.set(obj, 'value');
+console.log(weakMap.get(obj)); // 'value'
+```
+
+- **`WeakSet`** is similar to `WeakMap` but only stores objects (no key-value pairs), and like `WeakMap`, its elements are weakly referenced.
+
+**Use case**: Storing unique objects without preventing them from being garbage collected.
+
+**Example:**
+
+```javascript
+let obj = {};
+let weakSet = new WeakSet();
+weakSet.add(obj);
+console.log(weakSet.has(obj)); // true
+```
+
+Both `WeakMap` and `WeakSet` help manage memory more efficiently by not preventing garbage collection of objects.
+
+
+### 75. **How does JavaScript handle memory management and garbage collection?**
+
+JavaScript automatically manages memory through **garbage collection**, which means it automatically frees up memory when objects are no longer in use. The garbage collector identifies and removes unreachable objects (those that are no longer referenced in the code) to avoid memory leaks.
+
+- **Mark-and-sweep algorithm**: JavaScript uses the "mark-and-sweep" garbage collection algorithm. It first marks all the objects that are reachable (directly or indirectly) from the root (global scope or variables). Then, it sweeps through and deletes the unmarked objects.
+
+**Example:**
+```javascript
+let obj = { name: "John" };
+obj = null; // The object is now eligible for garbage collection since no references exist.
+```
+
+
+### 54. **How does JavaScript handle scope and closures?**
+
+- **Scope**: Refers to the context in which variables are defined and accessible.
+  - **Global scope**: Variables are accessible throughout the entire code.
+  - **Local scope**: Variables defined inside functions or blocks are only accessible within that function/block.
+  - **Block scope**: Variables defined using `let` or `const` are block-scoped, meaning they are confined to the block in which they are defined.
+
+- **Closures**: A closure is a function that "remembers" its lexical scope, even when the function is executed outside that scope.
+  - A closure allows a function to access variables from its outer (enclosing) function even after the outer function has finished executing.
+
+Example:
+```javascript
+function outer() {
+  let outerVar = "I am from outer";
+  
+  function inner() {
+    console.log(outerVar); // Inner function has access to outerVar (closure)
+  }
+
+  return inner;
+}
+
+const closureFunc = outer();
+closureFunc(); // "I am from outer"
+```
+
+---
+
+### 55. **What is the use of the `window` object in JavaScript?**
+
+The `window` object represents the global context in the browser and provides methods, properties, and events for interacting with the browser window. It is the top-level object in the browser's environment.
+
+Key uses:
+- **Global object**: Variables declared globally are properties of the `window` object.
+- **Browser manipulation**: Methods like `alert()`, `setTimeout()`, `setInterval()`, `location`, etc.
+- **Access to DOM**: Through `window.document`, you can manipulate the DOM.
+
+Example:
+```javascript
+console.log(window.innerWidth); // Width of the window's content area
+alert("Hello, world!"); // Uses window.alert() method
+```
+
+---
+
+### 56. **How does the `new` keyword work in JavaScript?**
+
+The `new` keyword is used to create an instance of an object from a constructor function or a class. It does the following:
+
+1. Creates a new empty object.
+2. Sets the `this` context of the constructor to that new object.
+3. Executes the constructor function, assigning properties and methods to the new object.
+4. Returns the new object, unless the constructor explicitly returns a different object.
+
+Example:
+```javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+const person1 = new Person('Alice', 25);
+console.log(person1); // Person { name: 'Alice', age: 25 }
+```   
 
 ### **14. What is an IIFE (Immediately Invoked Function Expression)?**
    An **IIFE** is a function that is defined and executed immediately after its creation. It is often used to create a local scope and avoid polluting the global namespace.
@@ -319,8 +474,9 @@ Here are the answers to the next set of JavaScript questions:
 
    The `bind()` method is also commonly used in React for handling events.
 
-### **17. What is the purpose of the `call()` and `apply()` methods in JavaScript?**
+### **17. What is the purpose of the `call()`,  `apply()` and `bind()` methods in JavaScript?**
    Both `call()` and `apply()` are used to invoke a function with a specific `this` context and pass arguments to it. The primary difference between them is how arguments are passed:
+
    - **`call()`**: Arguments are passed individually after the `this` context.
      ```javascript
      function greet(age, country) {
@@ -333,6 +489,11 @@ Here are the answers to the next set of JavaScript questions:
      ```javascript
      greet.apply(person, [25, 'USA']);
      ```
+     - **`bind()`**: Returns a new function with `this` set to the provided value, and can optionally preset some arguments.
+      ```javascript
+      const greetAlice = greet.bind(null, "Alice");
+      greetAlice(25); // Hello, Alice, age 25
+      ```
 
 ### **18. What is the use of `setTimeout()` and `setInterval()`?**
    - **`setTimeout()`**: Executes a function or a specified block of code once after a specified delay (in milliseconds).
@@ -373,6 +534,229 @@ Here are the answers to the next set of JavaScript questions:
      const clone = JSON.parse(JSON.stringify(original));
      ```
    - **Using libraries** like Lodash (`_.cloneDeep()`) for deep cloning with more control over complex objects.
+
+### 33. **How does `JSON.stringify()` and `JSON.parse()` work in JavaScript?**
+
+- **`JSON.stringify()`**: Converts a JavaScript object or value to a JSON string. This is useful for sending data over the network or saving it to local storage.
+  - Converts objects, arrays, and primitive values to JSON-formatted strings.
+
+  Example:
+  ```javascript
+  const person = { name: "Alice", age: 25 };
+  const jsonStr = JSON.stringify(person);
+  console.log(jsonStr); // '{"name":"Alice","age":25}'
+  ```
+
+- **`JSON.parse()`**: Converts a JSON string back into a JavaScript object. This is useful when retrieving data from local storage or APIs.
+  - Returns the corresponding JavaScript object or array.
+
+  Example:
+  ```javascript
+  const jsonStr = '{"name":"Alice","age":25}';
+  const obj = JSON.parse(jsonStr);
+  console.log(obj); // { name: 'Alice', age: 25 }
+  ```
+
+
+### 34. **How can you create a class in JavaScript?**
+
+In JavaScript, classes can be created using the `class` keyword (introduced in ES6). A class is a blueprint for creating objects with shared properties and methods.
+
+Syntax:
+```javascript
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+
+const person1 = new Person('Alice', 25);
+person1.greet(); // "Hello, my name is Alice."
+```
+
+- **`constructor()`**: A special method used for initializing new objects created from the class.
+- Methods defined inside a class are automatically added to the prototype of the class.
+
+
+### 76. **Explain the concept of prototype inheritance in JavaScript.**
+
+In JavaScript, every object has a prototype, which is another object from which it inherits properties and methods. This is known as **prototype inheritance**. If you try to access a property or method on an object, and it’s not found, JavaScript will look for it in the object's prototype.
+
+This allows objects to share common functionality without having to duplicate code.
+
+**Example:**
+
+```javascript
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.speak = function() {
+  console.log(this.name + ' makes a noise.');
+};
+
+const dog = new Animal('Dog');
+dog.speak(); // Dog makes a noise.
+```
+
+Here, the `dog` object inherits the `speak` method from `Animal.prototype`.
+
+---
+
+### 77. **What are the different methods of creating objects in JavaScript?**
+
+In JavaScript, objects can be created in various ways:
+
+1. **Object literal syntax**:
+   ```javascript
+   const obj = { name: 'John', age: 30 };
+   ```
+
+2. **Using a constructor function**:
+   ```javascript
+   function Person(name, age) {
+     this.name = name;
+     this.age = age;
+   }
+   const person1 = new Person('Alice', 25);
+   ```
+
+3. **Using `Object.create()`**:
+   ```javascript
+   const obj = Object.create(null); // Creates an object with no prototype
+   ```
+
+4. **Using `class` (ES6)**:
+   ```javascript
+   class Car {
+     constructor(make, model) {
+       this.make = make;
+       this.model = model;
+     }
+   }
+   const myCar = new Car('Toyota', 'Corolla');
+   ```
+
+---
+
+### 78. **What is the difference between `Object.create()` and class-based inheritance?**
+
+- **`Object.create()`**:
+  - Creates a new object, optionally inheriting from another object.
+  - Allows for more flexible and dynamic inheritance.
+  - You can create an object with a custom prototype, but it does not involve constructors or class syntax.
+
+**Example:**
+
+```javascript
+const person = { name: 'John' };
+const student = Object.create(person);
+student.age = 20;
+console.log(student.name); // 'John' (inherited from person)
+```
+
+- **Class-based inheritance**:
+  - Introduced in ES6, it provides a clearer and more structured way to create objects and handle inheritance using `class` and `extends`.
+  - It involves constructors, methods, and inheritance using `extends`.
+
+**Example:**
+
+```javascript
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Student extends Person {
+  constructor(name, age) {
+    super(name);
+    this.age = age;
+  }
+}
+
+const student = new Student('Alice', 20);
+console.log(student.name); // 'Alice'
+```
+
+In summary, `Object.create()` is more flexible and used for direct prototype-based inheritance, while class-based inheritance offers a more structured and syntactic approach to creating objects and managing inheritance.
+
+### 35. **What is the difference between `class` and `constructor` in JavaScript?**
+
+- **`class`**: A class is a blueprint for creating objects, defining properties and methods that can be shared by all instances of the class.
+  
+  - It is a syntactic sugar over JavaScript's existing prototype-based inheritance.
+  - You can create instances of a class using the `new` keyword.
+  
+  Example:
+  ```javascript
+  class Animal {
+    constructor(name) {
+      this.name = name;
+    }
+    speak() {
+      console.log(`${this.name} makes a sound.`);
+    }
+  }
+  ```
+
+- **`constructor`**: A special method inside a class, used to initialize a newly created object.
+  - It is executed when an instance of the class is created using the `new` keyword.
+  
+  Example:
+  ```javascript
+  class Animal {
+    constructor(name) {
+      this.name = name; // Initializes 'name' property
+    }
+  }
+  ```
+
+In summary, `class` is the entire structure defining an object template, while `constructor` is a function used to initialize the properties of an object when an instance of the class is created.
+
+---
+
+### 36. **What are getter and setter methods in JavaScript?**
+
+Getter and setter methods allow you to define how to access or modify the properties of an object.
+
+- **Getter**: A method that gets the value of a property.
+- **Setter**: A method that sets the value of a property.
+
+Both are defined using `get` and `set` keywords.
+
+Example:
+```javascript
+class Person {
+  constructor(name) {
+    this._name = name; // Private property
+  }
+
+  // Getter
+  get name() {
+    return this._name;
+  }
+
+  // Setter
+  set name(value) {
+    if (value.length > 0) {
+      this._name = value;
+    } else {
+      console.log("Name cannot be empty.");
+    }
+  }
+}
+
+const person = new Person("Alice");
+console.log(person.name); // "Alice" - Calls the getter
+person.name = "Bob"; // Calls the setter
+console.log(person.name); // "Bob"
+```  
 
 ## **2. Arrays and Objects**
 Here are the answers to the next set of JavaScript questions:
@@ -735,6 +1119,32 @@ Here are the answers to the next set of JavaScript questions:
 
    In this example, `fetchData` accepts a callback function that is executed once the data fetching operation completes.
 
+
+### 81. **How does JavaScript handle multiple callback functions?**
+
+JavaScript handles multiple callback functions by adding them to the **call stack** sequentially. When an asynchronous event occurs, callbacks are added to the event queue, and the event loop processes them one at a time.
+
+In case of **nested callbacks**, JavaScript will add each function to the call stack in the order they are invoked. However, callbacks can be executed in parallel in asynchronous functions like `setTimeout` or with promises.
+
+**Example with `setTimeout`:**
+
+```javascript
+setTimeout(() => console.log('First'), 1000);
+setTimeout(() => console.log('Second'), 500);
+
+console.log('Third');
+```
+
+**Output**:
+
+```
+Third
+Second
+First
+```
+
+The event loop handles `setTimeout` and logs `Second` after 500ms, followed by `First` after 1000ms.
+
 ### **40. How do you handle errors in JavaScript?**
    Errors in JavaScript can be handled using `try`, `catch`, and `finally` blocks:
    - **`try`**: Wraps code that may throw an error.
@@ -753,6 +1163,44 @@ Here are the answers to the next set of JavaScript questions:
    ```
 
    This ensures that errors are caught and handled properly, and cleanup code is always executed with the `finally` block.
+
+
+### 40. **How does JavaScript handle asynchronous operations?**
+
+JavaScript handles asynchronous operations using:
+
+1. **Callbacks**: Functions passed as arguments to other functions, to be executed later.
+   ```javascript
+   function fetchData(callback) {
+     setTimeout(() => {
+       console.log("Data fetched");
+       callback();
+     }, 1000);
+   }
+
+   fetchData(() => {
+     console.log("Callback executed");
+   });
+   ```
+
+2. **Promises**: Represent the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises allow chaining of asynchronous operations with `.then()`, `.catch()`, and `.finally()`.
+   ```javascript
+   const myPromise = new Promise((resolve, reject) => {
+     setTimeout(() => resolve("Data fetched"), 1000);
+   });
+
+   myPromise.then(result => console.log(result)); // "Data fetched"
+   ```
+
+3. **Async/Await**: Makes asynchronous code look synchronous. The `async` function returns a promise, and `await` pauses execution until the promise is resolved.
+   ```javascript
+   async function fetchData() {
+     let result = await myPromise;
+     console.log(result); // "Data fetched"
+   }
+
+   fetchData();
+   ```
 
 ## **4. Asynchronous JavaScript**
 Here are the answers to the next set of JavaScript questions:
@@ -797,6 +1245,28 @@ Here are the answers to the next set of JavaScript questions:
    ```
 
    The promise is initially in the "pending" state, and depending on the outcome, it either resolves or rejects.
+
+
+### 41. **What is a promise chain in JavaScript?**
+
+A **promise chain** is a sequence of `.then()` or `.catch()` methods chained together, allowing for a series of asynchronous operations to be executed in order. Each `.then()` receives the result of the previous promise.
+
+Example:
+```javascript
+fetchData()
+  .then(data => {
+    console.log("Data received:", data);
+    return processData(data);
+  })
+  .then(processedData => {
+    console.log("Processed data:", processedData);
+    return saveData(processedData);
+  })
+  .catch(error => {
+    console.error("Error occurred:", error);
+  });
+```
+Here, `fetchData` returns a promise, which is passed to the first `.then()`. The subsequent `.then()` methods chain the results of the previous promises.
 
 ### **43. What are the states of a promise?**
    A promise has three states:
@@ -1136,6 +1606,26 @@ Here are the answers to the next set of JavaScript questions:
      ```
      A `Map` maintains the insertion order of the keys.
 
+### 37. **What are symbols in JavaScript? When would you use them?**
+
+A **symbol** is a primitive data type introduced in ES6, used to create unique, immutable identifiers for object properties. Symbols are often used to add properties to objects without the risk of name clashes.
+
+- **Uniqueness**: Each symbol is guaranteed to be unique.
+- **Immutability**: Once created, a symbol cannot be altered.
+
+Symbols are commonly used in situations like:
+- Creating private properties.
+- Adding unique keys to objects to avoid collisions in libraries or frameworks.
+
+Example:
+```javascript
+const uniqueKey = Symbol("key");
+const obj = {};
+obj[uniqueKey] = "value";
+
+console.log(obj[uniqueKey]); // "value"
+```
+
 ### **54. What are generator functions in JavaScript?**
    **Generator functions** are functions that can yield multiple values over time, allowing you to pause their execution and resume it later. Generator functions use the `function*` syntax and the `yield` keyword.
 
@@ -1454,6 +1944,54 @@ Here are the answers to the next set of JavaScript questions:
 
    The **`export`** keyword helps to separate the module's internal logic from what is made available to other parts of the program, providing a clean and modular code structure.
 
+
+### 44. **What are JavaScript arrays and how do you manipulate them?**
+
+An **array** is a collection of ordered values (elements). Arrays in JavaScript are dynamic, meaning they can store any type of data and grow or shrink in size.
+
+Common array manipulation methods include:
+
+1. **`push()`**: Adds elements to the end of an array.
+   ```javascript
+   let arr = [1, 2, 3];
+   arr.push(4); // [1, 2, 3, 4]
+   ```
+
+2. **`pop()`**: Removes the last element from an array.
+   ```javascript
+   arr.pop(); // [1, 2, 3]
+   ```
+
+3. **`shift()`**: Removes the first element from an array.
+   ```javascript
+   arr.shift(); // [2, 3]
+   ```
+
+4. **`unshift()`**: Adds elements to the beginning of an array.
+   ```javascript
+   arr.unshift(0); // [0, 2, 3]
+   ```
+
+5. **`splice()`**: Adds or removes elements at a specific index.
+   ```javascript
+   arr.splice(1, 1, 10); // [0, 10, 3] (removes 2 and adds 10 at index 1)
+   ```
+
+6. **`map()`**: Creates a new array by applying a function to each element.
+   ```javascript
+   const doubled = arr.map(x => x * 2); // [0, 20, 6]
+   ```
+
+7. **`filter()`**: Creates a new array with elements that pass a test.
+   ```javascript
+   const even = arr.filter(x => x % 2 === 0); // [0, 10]
+   ```
+
+8. **`forEach()`**: Iterates over all elements in the array.
+   ```javascript
+   arr.forEach(item => console.log(item));
+   ```
+
 ### **68. How do you implement modules in JavaScript?**
    JavaScript modules can be implemented using **ES6 modules** (introduced in ECMAScript 2015). A module is simply a file that can export its code (functions, variables, or objects) to be used by other files. To implement modules, you need to use `export` and `import` to share and receive functionality.
 
@@ -1529,7 +2067,59 @@ Here are the answers to the next set of JavaScript questions:
 
    Overall, JavaScript modules promote better software architecture by enabling separation of concerns and better code organization.
 
+
+### 45. **How do you make an AJAX request in JavaScript?**
+
+An **AJAX** (Asynchronous JavaScript and XML) request allows you to fetch data from a server without refreshing the page. In JavaScript, you can use the `XMLHttpRequest` object or the `Fetch API`.
+
+- **Using `XMLHttpRequest`**:
+  ```javascript
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://api.example.com/data", true);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+    }
+  };
+  xhr.send();
+  ```
+
+- **Using `Fetch API` (modern approach)**:
+  ```javascript
+  fetch("https://api.example.com/data")
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error("Error:", error));
+  ```
+
 ---
+
+### 46. **What is the Fetch API in JavaScript?**
+
+The **Fetch API** is a modern and more flexible way to make HTTP requests in JavaScript. It returns a **Promise** and provides a simple interface to handle network requests.
+
+Example:
+```javascript
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log('Error:', error));
+```
+
+The `fetch()` function accepts the URL and an optional configuration object, which allows you to specify the HTTP method, headers, body, etc.
+
+---
+
+### 47. **Explain the concept of a single-page application (SPA).**
+
+A **Single-Page Application (SPA)** is a web application or website that dynamically updates the content of a single HTML page, without loading a new page from the server. SPAs provide a smooth and fast user experience by avoiding full page reloads.
+
+- **How it works**: SPAs use AJAX or Fetch API to load content and interact with the server asynchronously. The page is loaded once, and navigation happens by updating the URL and dynamically rendering new content via JavaScript.
+
+- **Popular SPA frameworks**: React, Angular, and Vue.js.
+
+Example:
+- When you click on a navigation link, JavaScript updates the content without reloading the entire page.
 
 
 ## **8. Browser and DOM**
@@ -1607,6 +2197,67 @@ Here are the answers to the next set of JavaScript questions:
      }, true); // Capturing phase
      ```
 
+### 50. **How do you prevent the default action of an event in JavaScript?**
+
+To prevent the default behavior associated with an event (e.g., submitting a form or following a link), you use the `preventDefault()` method.
+
+Example:
+```javascript
+document.getElementById("myLink").addEventListener("click", function(event) {
+  event.preventDefault(); // Prevents the link from navigating
+  console.log("Link clicked but not navigated.");
+});
+```
+
+This prevents the default behavior (in this case, navigating to the URL) from occurring when the event is triggered.
+
+---
+
+### 51. **How do you attach multiple event listeners to the same event?**
+
+You can attach multiple event listeners to the same event by calling `addEventListener` multiple times for the same event on the same element.
+
+Example:
+```javascript
+const button = document.getElementById("myButton");
+
+button.addEventListener("click", function() {
+  console.log("First event listener");
+});
+
+button.addEventListener("click", function() {
+  console.log("Second event listener");
+});
+```
+
+Both event listeners will be executed when the button is clicked.
+
+---
+
+### 52. **What is the difference between `Object.freeze()` and `Object.seal()` in JavaScript?**
+
+- **`Object.freeze()`**: Freezes an object, preventing new properties from being added, existing properties from being removed, and existing properties from being modified (i.e., making the object immutable).
+  ```javascript
+  const obj = { name: "Alice" };
+  Object.freeze(obj);
+  obj.name = "Bob"; // This will not change the property value
+  console.log(obj.name); // "Alice"
+  ```
+
+- **`Object.seal()`**: Seals an object, preventing new properties from being added or existing properties from being deleted, but allows modification of the existing properties.
+  ```javascript
+  const obj = { name: "Alice" };
+  Object.seal(obj);
+  obj.name = "Bob"; // This will change the property value
+  delete obj.name; // This will not delete the property
+  console.log(obj.name); // "Bob"
+  ```
+
+In summary:
+- **`freeze()`**: Prevents changes to properties, making them immutable.
+- **`seal()`**: Prevents property addition/removal but allows modification of values.
+
+
 ### **75. How do you prevent the default action of an event in JavaScript?**
    You can prevent the default behavior of an event by calling the **`preventDefault()`** method on the event object. This is commonly used to stop the browser’s default behavior, like preventing form submission or link navigation.
 
@@ -1655,7 +2306,65 @@ Here are the answers to the next set of JavaScript questions:
        ```javascript
        sessionStorage.setItem('name', 'Alice');
        const name = sessionStorage.getItem('name');
-       ```
+
+
+### 85. **What is the difference between `localStorage` and `cookies` in JavaScript?**
+
+- **`localStorage`**:
+  - Stores data on the client-side with no expiration time.
+  - Data persists even after the browser is closed and reopened.
+  - Can store up to 5-10 MB of data.
+  - Data is only accessible from the same origin.
+  - Syntax: `localStorage.setItem('key', 'value')`.
+
+- **Cookies**:
+  - Store small pieces of data (max 4KB).
+  - Can have an expiration date.
+  - Sent with every HTTP request to the server, making them slower than `localStorage`.
+  - Often used for session management or storing user preferences.
+  - Syntax: `document.cookie = "key=value; expires=date; path=/"`.
+
+
+### 86. **What is a pure function in JavaScript? Can you give an example?**
+
+A **pure function** is a function that:
+1. Always produces the same output for the same input.
+2. Has no side effects (it does not modify external state).
+
+**Example**:
+
+```javascript
+function add(a, b) {
+  return a + b; // Always returns the same result for the same inputs
+}
+```
+
+Here, the `add()` function is pure because it always returns the same result and does not modify any external variables.
+
+---
+
+### 87. **How do you handle CORS (Cross-Origin Resource Sharing) in JavaScript?**
+
+**CORS** is a security feature that restricts web pages from making requests to a domain other than the one from which the page was served. To handle CORS in JavaScript, you must configure the server to allow cross-origin requests.
+
+- **On the server-side**: Add appropriate CORS headers, like `Access-Control-Allow-Origin`, to the HTTP response.
+  
+- **In the browser**: If you are making a request from the client, you can set the `mode` of the request to `'cors'` or `'no-cors'` depending on the scenario.
+
+**Example (fetch with CORS):**
+
+```javascript
+fetch('https://api.example.com/data', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  mode: 'cors'
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+```
 
 ### **78. How do you make an AJAX request in JavaScript?**
    AJAX (Asynchronous JavaScript and XML) is a technique used to make asynchronous requests to the server without refreshing the page. The simplest way is using **`XMLHttpRequest`** or **`Fetch API`**.
@@ -1687,6 +2396,29 @@ Here are the answers to the next set of JavaScript questions:
    **Difference**:
    - `Fetch` is Promise-based, making it easier to work with asynchronous code compared to `XMLHttpRequest`, which uses callbacks.
    - `Fetch` also allows better handling of response types, such as JSON, and avoids some of the complexity of `XMLHttpRequest`.
+
+### 84. **What is the `Function.prototype.bind()` method in JavaScript?**
+
+**`bind()`** creates a new function that, when called, has its `this` value set to the specified context, and any initial arguments passed to `bind()` are pre-set.
+
+**Use case**: Changing the context of a function while preserving its original behavior.
+
+**Example**:
+
+```javascript
+const person = {
+  name: 'John',
+  greet() {
+    console.log('Hello, ' + this.name);
+  }
+};
+
+const greetJohn = person.greet.bind(person);
+greetJohn(); // 'Hello, John'
+```
+
+Here, `bind()` ensures that the `this` inside `greetJohn` refers to the `person` object.
+
 
 ### **80. How do you handle cookies in JavaScript?**
    In JavaScript, cookies can be accessed and modified using the `document.cookie` property. To create, read, or delete cookies, you can set the cookie string in the format `name=value`, optionally with additional attributes like `expires`, `path`, and `domain`.
@@ -1757,6 +2489,27 @@ Here are the answers to the next set of JavaScript questions:
    - **Use requestAnimationFrame**: For animations or visual updates, `requestAnimationFrame` should be used instead of `setTimeout` or `setInterval` to optimize rendering.
    - **Leverage caching**: Use browser caching, service workers, or cache-control headers for assets that don't change often.
 
+
+### 82. **What is the significance of `requestAnimationFrame()` in JavaScript?**
+
+**`requestAnimationFrame()`** is used for creating smooth animations in the browser. It tells the browser to call a specified function before the next repaint, which is typically around 60 frames per second (fps). Using `requestAnimationFrame()` helps improve performance and ensures that animations are synchronized with the display refresh rate.
+
+It is more efficient than using `setTimeout` or `setInterval`, as it allows the browser to optimize the frame rate and avoid unnecessary repaints.
+
+**Example**:
+
+```javascript
+function animate() {
+  // Update animation logic
+  console.log("Animating...");
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
+```
+
+This continuously animates by calling the `animate` function before each repaint.
+
 ### **83. What is lazy loading in JavaScript?**
    **Lazy loading** is a technique where resources (such as images, videos, or even JavaScript files) are loaded only when they are needed. This can significantly reduce the initial load time of the application, improving the overall performance.
 
@@ -1815,6 +2568,16 @@ Here are the answers to the next set of JavaScript questions:
    }
    animate();
    ```
+  **Summary** 
+  1. **Avoid memory leaks**: Use tools like Chrome DevTools to identify memory leaks.
+  2. **Minimize DOM manipulation**: Batch DOM changes and avoid reflow/repaint.
+  3. **Use event delegation**: Instead of adding event listeners to many elements, delegate events to a parent element.
+  4. **Debouncing and throttling**: Limit the frequency of function executions (e.g., for scroll or resize events).
+  5. **Lazy loading**: Load resources only when they are needed, such as images or scripts.
+  6. **Use Web Workers**: Offload intensive computations to background threads.
+  7. **Minify code**: Minify and compress JavaScript files to reduce file size and loading time.
+  8. **Leverage caching**: Cache static assets and data to reduce redundant network requests.
+  9. **Use `requestAnimationFrame`** for animations instead of `setTimeout`.
 
 ### **85. What is debounce and throttle in JavaScript?**
    **Debounce** and **throttle** are techniques used to optimize performance for frequently occurring events like scrolling, resizing, or keypresses.
