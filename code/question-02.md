@@ -1191,6 +1191,41 @@ JavaScript handles asynchronous operations using:
 ## **4. Asynchronous JavaScript**
 Here are the answers to the next set of JavaScript questions:
 
+
+### 89. **What is the difference between synchronous and asynchronous code in JavaScript?**
+
+- **Synchronous code**: Executes line by line. Each operation waits for the previous one to finish before continuing, blocking further code execution.
+
+  **Example**:
+  
+  ```javascript
+  console.log('Start');
+  console.log('End');
+  ```
+
+  Both `console.log()` statements are executed one after the other.
+
+- **Asynchronous code**: Allows operations to run in the background without blocking the main execution thread. It continues executing other code while waiting for the asynchronous operation (like fetching data, setTimeout) to complete.
+
+  **Example**:
+
+  ```javascript
+  console.log('Start');
+  setTimeout(() => {
+    console.log('Middle');
+  }, 1000);
+  console.log('End');
+  ```
+
+  Output: 
+  ```
+  Start
+  End
+  Middle
+  ```
+
+  Here, `setTimeout` runs asynchronously, and the `console.log('End')` statement executes before the `setTimeout` callback.
+
 ### **41. What is the event loop in JavaScript?**
    The **event loop** is a fundamental part of JavaScript's concurrency model. It allows JavaScript to perform non-blocking operations, even though JavaScript is single-threaded. The event loop continuously checks the call stack and the message queue (also called the event queue).
    
@@ -1206,6 +1241,27 @@ Here are the answers to the next set of JavaScript questions:
    ```
 
    Here, the `setTimeout` function doesn't block the main thread; the event loop ensures that the timeout callback executes after the current call stack is empty.
+
+### 70. **What is the concept of currying in JavaScript? Can you provide an example?**
+
+**Currying** is a technique in functional programming where a function that takes multiple arguments is transformed into a sequence of functions, each taking one argument.
+
+In simpler terms, currying allows you to break a function that takes multiple parameters into a series of functions that each take one parameter and return a new function until all parameters are provided.
+
+**Example:**
+
+```javascript
+function multiply(a) {
+  return function(b) {
+    return a * b;
+  };
+}
+
+const multiplyBy2 = multiply(2);
+console.log(multiplyBy2(3)); // 6
+```
+
+Here, `multiply` is a curried function that first takes `a`, then returns a new function that takes `b` and performs the multiplication.
 
 ### **42. What is a promise in JavaScript? How does it work?**
    A **Promise** in JavaScript is an object representing the eventual completion (or failure) of an asynchronous operation and its resulting value. It is used to handle asynchronous operations and avoid callback hell.
@@ -2462,6 +2518,63 @@ Here are the answers to the next set of JavaScript questions:
    element.removeEventListener('click', handleClick);
    ```
 
+### 71. **What is the concept of memoization in JavaScript?**
+
+**Memoization** is an optimization technique where the results of expensive function calls are cached, and when the same inputs occur again, the cached result is returned instead of recalculating it. This can greatly improve performance for functions that are called repeatedly with the same arguments.
+
+**Example:**
+
+```javascript
+function memoize(fn) {
+  const cache = {};
+  return function(arg) {
+    if (cache[arg]) {
+      return cache[arg];
+    }
+    const result = fn(arg);
+    cache[arg] = result;
+    return result;
+  };
+}
+
+const square = memoize(function(n) {
+  console.log('Calculating...');
+  return n * n;
+});
+
+console.log(square(4)); // Calculating... 16
+console.log(square(4)); // 16 (cached)
+```
+
+Here, the `memoize` function caches results, so the second time `square(4)` is called, it returns the cached result without recalculating.
+
+
+### 72. **What are decorators in JavaScript?**
+
+**Decorators** are a special kind of declaration that can be used to modify the behavior of a class, method, accessor, property, or parameter in JavaScript. They are usually used in frameworks like TypeScript, Angular, or Babel, as part of the class syntax.
+
+Decorators are functions that are applied to a class or method and can be used to add additional behavior or modify how things work.
+
+**Example (in TypeScript):**
+
+```typescript
+function log(target: any, key: string) {
+  console.log(`Method ${key} is called`);
+}
+
+class MyClass {
+  @log
+  sayHello() {
+    console.log("Hello!");
+  }
+}
+
+const obj = new MyClass();
+obj.sayHello();
+```
+
+In the above example, the `@log` decorator is applied to the `sayHello` method, which will log every time the method is invoked.
+
 ### **82. How can you optimize the performance of a JavaScript application?**
    Optimizing the performance of a JavaScript application can involve several strategies, including:
 
@@ -2959,36 +3072,6 @@ In summary, **function declarations** are hoisted and can be called before their
 ### **11. JavaScript Best Practices**
 Here are the answers to your final set of JavaScript-related questions:
 
-### **91. What are some best practices for writing clean, maintainable JavaScript code?**
-   Best practices for writing clean and maintainable JavaScript code include:
-   - **Use descriptive variable and function names**: Make code self-documenting by using meaningful names.
-   - **Follow a consistent coding style**: Use consistent indentation, naming conventions, and code structure. Tools like ESLint can help enforce style guidelines.
-   - **Avoid global variables**: Minimize the use of global variables to avoid conflicts. Use `let`, `const`, or block-level scoping.
-   - **Write modular code**: Break your code into smaller, reusable functions or modules.
-   - **Comment your code**: Write comments where necessary to explain complex logic.
-   - **Use functions and classes appropriately**: Keep functions small and focused on a single task (Single Responsibility Principle).
-   - **Avoid deeply nested code**: Refactor deeply nested code into smaller functions to improve readability.
-   - **Write tests**: Unit tests help ensure code correctness and can serve as documentation for expected behavior.
-
-### **92. How do you avoid callback hell in JavaScript?**
-   **Callback hell** occurs when you have deeply nested callbacks that make the code difficult to read and maintain. To avoid callback hell:
-   - **Use Promises**: Promises allow you to chain asynchronous operations and handle them more cleanly.
-   - **Use async/await**: Introduced in ES6, `async/await` allows you to write asynchronous code that looks like synchronous code, reducing nesting.
-   - **Refactor complex code into functions**: Break large, complex callback chains into smaller, more manageable functions.
-   - **Use libraries**: There are libraries like `async.js` that help manage asynchronous flow without callback hell.
-
-   **Example** using async/await:
-   ```javascript
-   async function fetchData() {
-     try {
-       const data1 = await getData1();
-       const data2 = await getData2(data1);
-       console.log(data2);
-     } catch (error) {
-       console.error(error);
-     }
-   }
-   ```
 
 ### **93. What is the importance of code minification in JavaScript?**
    **Code minification** reduces the size of JavaScript files by removing unnecessary characters (like spaces, newlines, and comments), which results in faster loading times for web pages. Minification is crucial for:
