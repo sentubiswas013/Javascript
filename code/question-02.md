@@ -14,6 +14,8 @@ Here are 100 essential JavaScript interview questions, categorized into various 
      - `null`: Represents the intentional absence of any object value. Example: `let a = null;`
    - **Non-primitive data types**:
      - `object`: Includes collections of key-value pairs, such as arrays, functions, and plain objects. Example: `let obj = { key: 'value' };`
+     - `Array`:
+     - `Function`:
 
 #### 2. **What is the difference between `var`, `let`, and `const`?**
    - **`var`**:
