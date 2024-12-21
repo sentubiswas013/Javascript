@@ -869,6 +869,35 @@ Here are the answers to the next set of JavaScript questions:
 
    Both methods perform shallow copies, meaning nested objects are still referenced by the original object.
 
+
+### 97. **What is the difference between shallow copy and deep copy in JavaScript?**
+
+- **Shallow Copy**:
+  A shallow copy means creating a new object, but nested objects or arrays within it are still referenced (not copied). It only copies the top-level properties.
+
+  **Example**:
+
+  ```javascript
+  const obj1 = { a: 1, b: { c: 2 } };
+  const shallowCopy = { ...obj1 };
+  
+  shallowCopy.b.c = 3;  // Modifying nested object
+  console.log(obj1.b.c);  // 3, both obj1 and shallowCopy share the same reference to b
+  ```
+
+- **Deep Copy**:
+  A deep copy means creating a completely independent copy of the original object, including all nested objects. It ensures that no references are shared between the copied object and the original.
+
+  **Example**:
+
+  ```javascript
+  const obj1 = { a: 1, b: { c: 2 } };
+  const deepCopy = JSON.parse(JSON.stringify(obj1));  // Simple deep copy method
+  
+  deepCopy.b.c = 3;
+  console.log(obj1.b.c);  // 2, obj1 and deepCopy are independent
+  ```
+
 ### **27. How do you check if an object is an array in JavaScript?**
    You can check if an object is an array using:
    - **`Array.isArray()`**:
@@ -2484,7 +2513,91 @@ Here, `bind()` ensures that the `this` inside `greetJohn` refers to the `person`
 
    **Note**: Cookies are small pieces of data stored in the user's browser and sent with each HTTP request to the same domain.
 
+
+### 98. **What is functional programming in JavaScript? How is it different from object-oriented programming?**
+
+- **Functional Programming**:
+  Functional programming (FP) is a programming paradigm where you treat computation as the evaluation of mathematical functions and avoid changing state and mutable data. It focuses on immutability, higher-order functions, pure functions, and declarative code.
+
+  **Features of FP**:
+  - **Pure functions**: Functions that always return the same output for the same input and have no side effects.
+  - **Immutability**: Data is not modified, but instead, new data is returned.
+  - **First-class functions**: Functions can be passed as arguments and returned as values.
+  - **Higher-order functions**: Functions that take other functions as arguments or return functions.
+
+  **Example**:
+
+  ```javascript
+  const add = (a, b) => a + b;
+  const multiply = (a, b) => a * b;
+
+  const result = multiply(add(2, 3), 4);  // Using FP
+  ```
+
+- **Object-Oriented Programming (OOP)**:
+  OOP is based on objects and classes. It focuses on data and methods that operate on that data, organizing code around objects that represent real-world entities.
+
+  **Features of OOP**:
+  - **Classes and objects**: Encapsulating data and behavior into objects.
+  - **Inheritance**: Allowing classes to inherit properties and methods from other classes.
+  - **Encapsulation**: Hiding the internal state and requiring all interaction to be done through methods.
+  - **Polymorphism**: Allowing objects of different classes to be treated as objects of a common superclass.
+
+  **Example**:
+
+  ```javascript
+  class Animal {
+    constructor(name) {
+      this.name = name;
+    }
+    speak() {
+      console.log(this.name + ' makes a sound');
+    }
+  }
+
+  const dog = new Animal('Rex');
+  dog.speak();
+  ```
+
+**Key Differences**:
+- **OOP** is about organizing code into objects and their interactions, while **FP** is about using pure functions and avoiding shared state.
+- OOP typically uses mutable state, while FP emphasizes immutability.
+
 ---
+
+### 99. **What is an abstract class in JavaScript?**
+
+JavaScript does not have built-in support for **abstract classes** in the same way that languages like Java or C# do. However, you can simulate abstract classes by creating a class with methods that are not implemented, and then using subclasses to implement those methods.
+
+**Example**:
+
+```javascript
+class Animal {
+  constructor(name) {
+    if (this.constructor === Animal) {
+      throw new Error("Abstract class cannot be instantiated.");
+    }
+    this.name = name;
+  }
+
+  speak() {
+    throw new Error("Method 'speak()' must be implemented.");
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log(`${this.name} barks`);
+  }
+}
+
+const dog = new Dog('Rex');
+dog.speak();  // Rex barks
+
+// const animal = new Animal('Generic');  // Error: Abstract class cannot be instantiated.
+```
+
+Here, `Animal` is treated as an abstract class by throwing an error if you try to instantiate it directly. Subclasses like `Dog` implement the abstract `speak()` method.
 
 
 ## **9. Performance Optimization**
@@ -2731,6 +2844,18 @@ This continuously animates by calling the `animate` function before each repaint
    - **Throttle** ensures that the function is called at regular intervals (ideal for scenarios like scrolling or resizing).
 
 ---
+
+
+
+### 92. **What are JavaScript frameworks, and how do they differ from libraries?**
+
+- **JavaScript frameworks**: A framework is a collection of prewritten code that provides a structure for building applications. It usually dictates the structure of your code and is opinionated about how things should be done. Frameworks provide a lot of functionality out of the box and are generally used to build large-scale applications (e.g., **Angular**, **Vue.js**, **React**).
+
+  **Example**: Angular is a framework because it provides structure, conventions, and tools for building applications.
+
+- **JavaScript libraries**: A library is a collection of functions and utilities that you can use to perform specific tasks (e.g., manipulating the DOM, making AJAX requests). Libraries are not opinionated, meaning they allow you to structure your application as you choose (e.g., **Lodash**, **jQuery**).
+
+  **Example**: Lodash is a library because it provides utility functions, but it doesn't dictate how your app should be structured.
 
 ## **10. Testing and Tools**
 Here are the answers to the next set of JavaScript testing-related questions:
@@ -2987,6 +3112,31 @@ self.onmessage = function(event) {
 ```
 
 Web Workers are useful for offloading CPU-intensive tasks and keeping the user interface responsive.
+
+
+### 94. **What are service workers in JavaScript, and how do they work?**
+
+**Service workers** are a type of web worker that runs in the background, separate from the web page, enabling features like caching, push notifications, and background synchronization. They allow for offline-first web experiences and can intercept network requests, enabling you to cache resources or serve content while offline.
+
+**How they work**:
+1. **Registration**: The service worker is registered in the browser via `navigator.serviceWorker.register()`.
+2. **Installation**: After registration, the service worker goes through the installation phase, where it caches resources.
+3. **Activation**: Once installed, it activates and begins intercepting network requests, allowing caching or returning responses from the cache.
+4. **Fetching**: The service worker intercepts network requests and serves cached data, allowing for offline functionality.
+
+**Example**:
+
+```javascript
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+    console.log('Service Worker registered with scope:', registration.scope);
+  }).catch(function(error) {
+    console.log('Service Worker registration failed:', error);
+  });
+}
+```
+
+Service workers enable powerful features like offline support, caching strategies, and background tasks for modern web applications.
 
 ---
 
