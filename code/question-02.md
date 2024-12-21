@@ -45,20 +45,6 @@ Here are 100 essential JavaScript interview questions, categorized into various 
    console.log(increment()); // 1
    ```
 
-#### 4. **What is the `this` keyword in JavaScript?**
-   The `this` keyword refers to the **context** in which a function is called. It can vary depending on how the function is invoked:
-   - In a **regular function**, `this` refers to the global object (in non-strict mode) or `undefined` (in strict mode).
-   - In an **object method**, `this` refers to the object the method is called on.
-   - In **arrow functions**, `this` is **lexically bound** (it doesn't create its own `this` value but inherits it from the outer function).
-
-#### 5. **What are the primitive data types in JavaScript?**
-   - `string`
-   - `number`
-   - `bigint`
-   - `boolean`
-   - `undefined`
-   - `symbol`
-   - `null` (while technically not an object, it's often treated like one in JavaScript)
 
 #### 6. **What is the difference between `==` and `===` in JavaScript?**
    - **`==` (loose equality)**: Compares values for equality **after type coercion** (converts values to the same type before comparison).
