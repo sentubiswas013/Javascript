@@ -70,6 +70,62 @@ Here are 100 essential JavaScript interview questions, categorized into various 
    5 === '5'; // false (different types: number vs string)
    ```
 
+
+### 11. **Explain the concept of “truthy” and “falsy” values in JavaScript.**
+
+In JavaScript, values are evaluated as either **truthy** or **falsy** when they are used in a boolean context (such as an `if` statement). These values determine the flow of control based on their evaluation.
+
+- **Falsy values** are values that are considered false when encountered in a boolean context. There are only 6 falsy values in JavaScript:
+  - `false`
+  - `0` (zero)
+  - `""` (empty string)
+  - `null`
+  - `undefined`
+  - `NaN`
+
+- **Truthy values** are values that are considered true in a boolean context. Essentially, any value that is not falsy is truthy. For example:
+  - `"hello"` (non-empty string)
+  - `42` (any non-zero number)
+  - `[]` (empty array)
+  - `{}` (empty object)
+
+Example:
+```javascript
+if (0) {
+  console.log("This will not run");
+}
+
+if ("Hello") {
+  console.log("This will run"); // "Hello" is truthy
+}
+```
+
+---
+
+### 12. **How does the `this` keyword work in JavaScript?**
+
+In JavaScript, the **`this`** keyword refers to the context in which a function is called. The value of `this` depends on how a function is invoked:
+
+- **In a regular function**: `this` refers to the global object (`window` in browsers) in non-strict mode, or `undefined` in strict mode.
+  
+- **In a method**: If the function is a method of an object, `this` refers to the object that called the method.
+
+- **In an arrow function**: `this` is lexically inherited from the surrounding context (it does not have its own `this`).
+
+- **With `call()`, `apply()`, or `bind()`**: You can explicitly set the value of `this`.
+
+Example:
+```javascript
+const person = {
+  name: 'Alice',
+  greet: function() {
+    console.log(this.name);
+  }
+};
+
+person.greet(); // "Alice", 'this' refers to the 'person' object
+```
+
 #### 7. **What are the JavaScript data structures, and when would you use them?**
    - **Arrays**: Ordered collections, used when the order of elements matters.
    - **Objects**: Key-value pairs, used to represent a collection of related data.
@@ -93,6 +149,48 @@ Here are 100 essential JavaScript interview questions, categorized into various 
    ```javascript
    let a = null;    // Explicitly assigned
    let b;           // Implicitly undefined
+   ```
+
+### 9. **What are the different ways to create objects in JavaScript?**
+
+There are several ways to create objects in JavaScript:
+1. **Object literal**:
+   ```javascript
+   const obj = { name: 'Alice', age: 25 };
+   ```
+
+2. **Using `new Object()`**:
+   ```javascript
+   const obj = new Object();
+   obj.name = 'Alice';
+   obj.age = 25;
+   ```
+
+3. **Using `Object.create()`**:
+   ```javascript
+   const obj = Object.create(null);
+   obj.name = 'Alice';
+   obj.age = 25;
+   ```
+
+4. **Using a constructor function**:
+   ```javascript
+   function Person(name, age) {
+     this.name = name;
+     this.age = age;
+   }
+   const person1 = new Person('Alice', 25);
+   ```
+
+5. **Using a class (ES6)**:
+   ```javascript
+   class Person {
+     constructor(name, age) {
+       this.name = name;
+       this.age = age;
+     }
+   }
+   const person1 = new Person('Alice', 25);
    ```
 
 #### 10. **What is hoisting in JavaScript?**
@@ -770,6 +868,66 @@ Here are the answers to the next set of JavaScript questions:
    }
    ```
 
+
+### 14. **Explain the concept of JavaScript’s single-threaded model.**
+
+JavaScript operates on a **single-threaded** model, meaning it can only execute one task at a time in a single execution thread. This is different from multi-threaded environments where multiple tasks can run simultaneously.
+
+However, JavaScript uses an **event loop** and **asynchronous operations** (such as `setTimeout`, `Promises`, and AJAX) to handle tasks like I/O without blocking the main thread. These asynchronous tasks are queued and executed when the main thread is free, enabling non-blocking behavior while still being single-threaded.
+
+This single-threaded nature can cause performance issues if long-running tasks block the event loop, which is why techniques like **web workers** (for parallelism) or breaking tasks into smaller chunks are used in JavaScript.
+
+---
+
+### 15. **What are the data types that are mutable in JavaScript?**
+
+In JavaScript, **mutable** data types are those whose values can be changed after they are created. The mutable data types are:
+
+- **Objects**: You can add, modify, or delete properties.
+  ```javascript
+  const obj = { name: "Alice", age: 25 };
+  obj.age = 26; // mutable property
+  ```
+
+- **Arrays**: You can add, remove, or change elements.
+  ```javascript
+  const arr = [1, 2, 3];
+  arr[0] = 10; // mutable element
+  ```
+
+- **Functions**: Functions themselves are objects, and their properties can be modified.
+  ```javascript
+  function greet() { return "Hello"; }
+  greet.message = "Welcome"; // Adding property to function
+  ```
+
+---
+
+### 16. **What is a function in JavaScript? How do you declare one?**
+
+A **function** in JavaScript is a block of reusable code that performs a specific task. Functions can accept inputs (parameters) and return outputs (values).
+
+You can declare a function in several ways:
+
+- **Function declaration (function statement)**:
+  ```javascript
+  function greet(name) {
+    return `Hello, ${name}!`;
+  }
+  ```
+
+- **Function expression**:
+  ```javascript
+  const greet = function(name) {
+    return `Hello, ${name}!`;
+  };
+  ```
+
+- **Arrow function** (ES6+):
+  ```javascript
+  const greet = (name) => `Hello, ${name}!`;
+  ```
+
 ### **47. How does JavaScript handle multiple asynchronous operations in sequence?**
    JavaScript handles multiple asynchronous operations in sequence by chaining promises or using `async/await`. When one asynchronous operation completes, the next one can be executed.
 
@@ -866,7 +1024,56 @@ Here are the answers to the next set of JavaScript questions:
 
    By using promises or `async/await`, you can avoid the nested callbacks and make the code cleaner and more maintainable.
 
----
+
+### 21. **What are the different ways to loop through an array in JavaScript?**
+
+There are several ways to loop through an array in JavaScript:
+
+1. **`for` loop**: Traditional loop that allows manual control over index.
+   ```javascript
+   const arr = [1, 2, 3];
+   for (let i = 0; i < arr.length; i++) {
+     console.log(arr[i]);
+   }
+   ```
+
+2. **`forEach()`**: A higher-order function that executes a callback for each item in the array.
+   ```javascript
+   const arr = [1, 2, 3];
+   arr.forEach(item => {
+     console.log(item);
+   });
+   ```
+
+3. **`for...of`**: Simplified iteration over array values.
+   ```javascript
+   const arr = [1, 2, 3];
+   for (const item of arr) {
+     console.log(item);
+   }
+   ```
+
+4. **`for...in`**: Iterates over the array indices (not recommended for arrays).
+   ```javascript
+   const arr = [1, 2, 3];
+   for (const index in arr) {
+     console.log(arr[index]);
+   }
+   ```
+
+5. **`map()`**: Creates a new array by applying a function to each element.
+   ```javascript
+   const arr = [1, 2, 3];
+   const doubled = arr.map(item => item * 2);
+   console.log(doubled);
+   ```
+
+6. **`filter()`**: Creates a new array with elements that pass a test.
+   ```javascript
+   const arr = [1, 2, 3, 4];
+   const even = arr.filter(item => item % 2 === 0);
+   console.log(even);
+   ```
 
 ## **5. ES6 and Beyond**
 Here are the answers to the next set of JavaScript questions:
