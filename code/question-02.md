@@ -2829,6 +2829,147 @@ async function fetchData() {
 ```
 
 
+### 60. **How do you use regular expressions in JavaScript?**
+
+Regular expressions (regex) are used for pattern matching and text manipulation in JavaScript. They can be created using the `RegExp` constructor or using a literal syntax.
+
+- **Creating a regex**:
+  ```javascript
+  const regex = /hello/; // regex literal
+  const regex2 = new RegExp("hello"); // using RegExp constructor
+  ```
+
+- **Using regex with methods**:
+  - `test()`: Tests if a pattern exists in a string.
+  ```javascript
+  const regex = /hello/;
+  console.log(regex.test("hello world")); // true
+  ```
+
+  - `exec()`: Executes a search for a match in a string and returns detailed information.
+  ```javascript
+  const regex = /hello/;
+  console.log(regex.exec("hello world")); // ["hello"]
+  ```
+
+  - `match()`: Matches a string against a regex pattern and returns the result.
+  ```javascript
+  const str = "hello world";
+  console.log(str.match(/world/)); // ["world"]
+  ```
+
+  - `replace()`: Replaces part of a string that matches a pattern.
+  ```javascript
+  const str = "hello world";
+  console.log(str.replace(/world/, "JavaScript")); // "hello JavaScript"
+  ```
+
+### 61. **What are Web Workers in JavaScript?**
+
+Web Workers are JavaScript scripts that run in the background, separate from the main thread, enabling you to perform tasks like calculations, data processing, or making network requests without blocking the UI or affecting performance.
+
+- **Creating a Worker**:
+  ```javascript
+  const worker = new Worker('worker.js'); // worker.js is the script file
+
+  worker.onmessage = function(event) {
+    console.log('Message from worker:', event.data);
+  };
+
+  worker.postMessage('Hello, worker!');
+  ```
+
+In `worker.js`:
+```javascript
+self.onmessage = function(event) {
+  console.log('Message from main thread:', event.data);
+  self.postMessage('Hello from worker!');
+};
+```
+
+Web Workers are useful for offloading CPU-intensive tasks and keeping the user interface responsive.
+
+---
+
+### 62. **How do you compare two objects in JavaScript?**
+
+In JavaScript, objects are compared by reference, not by value. To compare objects by their values, you need to compare their properties individually.
+
+- **Shallow comparison**: Compare the properties of two objects.
+  ```javascript
+  function shallowEqual(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+  }
+
+  const obj1 = { name: "Alice", age: 25 };
+  const obj2 = { name: "Alice", age: 25 };
+
+  console.log(shallowEqual(obj1, obj2)); // true
+  ```
+
+- **Deep comparison**: You can implement or use libraries for deep comparison, which compares nested objects or arrays.
+  ```javascript
+  function deepEqual(a, b) {
+    if (typeof a !== 'object' || typeof b !== 'object' || a === null || b === null) {
+      return a === b;
+    }
+
+    const keysA = Object.keys(a);
+    const keysB = Object.keys(b);
+
+    if (keysA.length !== keysB.length) return false;
+
+    for (let key of keysA) {
+      if (!keysB.includes(key) || !deepEqual(a[key], b[key])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+  ```
+
+
+### 64. **What are the differences between a function expression and a function declaration?**
+
+- **Function Declaration**:
+  ```javascript
+  function greet() {
+    console.log("Hello");
+  }
+  ```
+
+  - Can be called before it's defined (due to hoisting).
+  - Has function scope.
+
+- **Function Expression**:
+  ```javascript
+  const greet = function() {
+    console.log("Hello");
+  };
+  ```
+
+  - Cannot be called before it's defined.
+  - Is treated as an expression and can be anonymous.
+
+In summary, **function declarations** are hoisted and can be called before their declaration, while **function expressions** are not hoisted and must be defined before usage.
+
+
+### 65. **What is the difference between `slice()` and `splice()` methods in JavaScript?**
+
+- **`slice()`**: Creates a shallow copy of a portion of an array and returns a new array without modifying the original array.
+  ```javascript
+  const arr = [1, 2, 3, 4, 5];
+  const newArr = arr.slice(1, 4); // [2, 3, 4]
+  ```
+
+- **`splice()`**: Changes the original array by adding/removing elements at a specified index.
+  ```javascript
+  const arr = [1, 2, 3, 4, 5];
+  arr.splice(2, 2, 'a', 'b'); // Removes 3 and 4, and adds 'a', 'b'
+  console.log(arr); // [1, 2, 'a', 'b', 5]
+  ```
+
 ### **11. JavaScript Best Practices**
 Here are the answers to your final set of JavaScript-related questions:
 
