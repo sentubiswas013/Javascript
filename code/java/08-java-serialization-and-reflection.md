@@ -282,3 +282,179 @@ The main differences between the `Serializable` and `Externalizable` interfaces 
 **In summary:**
 - `Serializable` is simpler and automatic, suitable for objects that do not need custom serialization logic.
 - `Externalizable` provides full control over the process and is more suitable when complex or custom serialization is required.
+
+## Reflection
+
+### 96. **What is Reflection in Java?**
+
+**Reflection** in Java is a feature that allows the program to inspect and manipulate the runtime behavior of classes, methods, fields, and other components of Java applications. Using reflection, we can:
+- **Inspect** the properties of objects, such as their class names, fields, methods, etc.
+- **Modify** the behavior of objects and classes during runtime.
+- **Invoke methods** and access fields dynamically, even if they are private or protected.
+
+Reflection is part of the **java.lang.reflect** package and provides a way to access the metadata of a class or interface, such as the methods, constructors, fields, etc., at runtime.
+
+#### Key Components of Reflection:
+1. **Class Class**: Provides methods to inspect class properties.
+2. **Method Class**: Allows invocation of methods dynamically.
+3. **Field Class**: Allows access to fields.
+4. **Constructor Class**: Allows instantiation of objects dynamically.
+
+### 97. **What Are the Uses of Reflection in Java?**
+
+Reflection in Java can be used in several advanced scenarios, such as:
+
+1. **Accessing Private Fields and Methods**:
+   Reflection allows access to private members of a class, which is not possible in regular code.
+
+2. **Object Creation**:
+   Reflection allows the creation of new objects at runtime without knowing the class name at compile time.
+
+3. **Dynamic Method Invocation**:
+   You can invoke methods of objects dynamically using reflection, which is useful in scenarios like plugin systems or frameworks.
+
+4. **Serialization and Deserialization**:
+   Reflection can be used in frameworks that perform object serialization or deserialization, where fields and methods are accessed dynamically.
+
+5. **Testing and Mocking**:
+   Reflection is often used in unit testing frameworks like JUnit to access private methods or fields for testing purposes.
+
+6. **Frameworks and Libraries**:
+   Reflection is used in many frameworks (such as Spring, Hibernate) to scan classes, inject dependencies, and manage configuration dynamically.
+
+7. **Developing Generic Libraries**:
+   Libraries or frameworks that need to work with any class, such as object-relational mapping (ORM) frameworks, utilize reflection to access properties or methods generically.
+
+### 98. **How Can We Access a Private Method of a Class from Outside the Class?**
+
+In Java, you can access private methods using **reflection** by bypassing the access control checks. Here’s how you can do it:
+
+1. Get the `Class` object of the class that contains the private method.
+2. Use the `getDeclaredMethod()` method to retrieve the private method.
+3. Set the method accessible using `setAccessible(true)`.
+4. Invoke the private method using the `invoke()` method.
+
+#### Example:
+```java
+import java.lang.reflect.*;
+
+class MyClass {
+    private void privateMethod() {
+        System.out.println("Private method accessed!");
+    }
+}
+
+public class ReflectionExample {
+    public static void main(String[] args) {
+        try {
+            // Get the Class object of MyClass
+            Class<?> cls = Class.forName("MyClass");
+
+            // Get the private method
+            Method method = cls.getDeclaredMethod("privateMethod");
+
+            // Make the method accessible
+            method.setAccessible(true);
+
+            // Create an instance of MyClass
+            Object obj = cls.newInstance();
+
+            // Invoke the private method
+            method.invoke(obj);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+In this example:
+- The private method `privateMethod()` is accessed via reflection, even though it's private.
+- `setAccessible(true)` is crucial for allowing access to private members.
+
+### 99. **How Can We Create an Object Dynamically at Runtime in Java?**
+
+In Java, you can create an object dynamically at runtime using reflection, which allows you to instantiate a class even if the class name is not known at compile time.
+
+1. **Using `Class.forName()`** to load the class.
+2. **Using `newInstance()`** or **`Constructor.newInstance()`** to create an instance of the class.
+
+#### Example 1: Using `Class.newInstance()`
+```java
+public class DynamicObjectCreation {
+    public static void main(String[] args) {
+        try {
+            // Load the class dynamically
+            Class<?> cls = Class.forName("java.util.ArrayList");
+
+            // Create an object of the class dynamically
+            Object obj = cls.newInstance();
+
+            // Cast to the desired type (ArrayList)
+            java.util.ArrayList<?> list = (java.util.ArrayList<?>) obj;
+
+            // Use the object
+            list.add("Hello, Reflection!");
+            System.out.println(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+In this example:
+- `Class.forName("java.util.ArrayList")` dynamically loads the `ArrayList` class.
+- `cls.newInstance()` creates an instance of `ArrayList` dynamically.
+
+#### Example 2: Using `Constructor.newInstance()`
+```java
+import java.lang.reflect.Constructor;
+
+class Person {
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', age=" + age + "}";
+    }
+}
+
+public class DynamicObjectExample {
+    public static void main(String[] args) {
+        try {
+            // Load the class dynamically
+            Class<?> cls = Class.forName("Person");
+
+            // Get the constructor that takes two arguments
+            Constructor<?> constructor = cls.getConstructor(String.class, int.class);
+
+            // Create an instance using the constructor
+            Object obj = constructor.newInstance("John Doe", 30);
+
+            // Use the object
+            System.out.println(obj);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+In this example:
+- We use `getConstructor()` to obtain the constructor with specific parameters.
+- We then call `newInstance()` to create the object dynamically by passing parameters to the constructor.
+
+### Summary of Key Points:
+- **Reflection** in Java provides the ability to inspect and modify the runtime behavior of classes, methods, and fields.
+- Reflection is used in scenarios like dynamic method invocation, object creation, frameworks, testing, and more.
+- You can access **private methods** using `setAccessible(true)` in combination with reflection.
+- You can **dynamically create objects** using `Class.forName()` and `newInstance()`, or by accessing constructors with reflection to instantiate objects at runtime.
