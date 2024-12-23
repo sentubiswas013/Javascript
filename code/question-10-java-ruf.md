@@ -130,23 +130,23 @@ variables in interfaces?
 
 96. What is Reflection in Java?
 97. What are the uses of Reflection in Java?
-98.How can we access private method of a class from outside the class?
+98. How can we access private method of a class from outside the class?
 99. How can we create an Object dynamically at Runtime in Java?
 
 ## Garbage Collection
 
-100.What is Garbage Collection in Java?
-101.Why Java provides Garbage Collector?
-102.What is the purpose of gc() in Java?
-103.How does Garbage Collection work in Java?
-104.When does an object become eligible for Garbage Collection in Java?
-105.Why do we use finalize() method in Java?
-106.What are the different types of References in Java?
-107.How can we reference an unreferenced object again?
-108.What kind of process is the Garbage collector thread?
-109.What is the purpose of the Runtime class?
-110.How can we invoke an external process in Java?
-111.What are the uses of Runtime class?
+100. What is Garbage Collection in Java?
+101. Why Java provides Garbage Collector?
+102. What is the purpose of gc() in Java?
+103. How does Garbage Collection work in Java?
+104. When does an object become eligible for Garbage Collection in Java?
+105. Why do we use finalize() method in Java?
+106. What are the different types of References in Java?
+107. How can we reference an unreferenced object again?
+108. What kind of process is the Garbage collector thread?
+109. What is the purpose of the Runtime class?
+110. How can we invoke an external process in Java?
+111. What are the uses of Runtime class?
 
 ## Inner Classes
 
