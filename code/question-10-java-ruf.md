@@ -1101,4 +1101,4 @@ better and more efficient?
 997.What is the preferred type of communication between Microservices? Synchronous or Asynchronous?
 998.What is the difference between Orchestration and Choreography in Microservices architecture?
 999.What are the issues in using REST over HTTP for Microservices?
-1000. Can we create Microservices as State Machines?
+1000. Can we create Microservices as State Machines?n
