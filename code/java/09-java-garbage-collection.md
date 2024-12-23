@@ -320,3 +320,9 @@ public class RuntimeExample {
     }
 }
 ```
+
+### Summary:
+
+1. **`Runtime` Class**: Provides methods for interacting with the Java runtime, managing system resources, executing external processes, and managing memory.
+2. **Invoking External Process**: You can invoke external processes using `Runtime.exec()` or `ProcessBuilder`.
+3. **Uses of `Runtime`**: It can be used for accessing system resources, triggering garbage collection, exiting the JVM, and executing external processes, among other tasks.
