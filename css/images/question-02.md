@@ -1,6 +1,4 @@
-Here are 100 essential JavaScript interview questions, categorized into various topics like basic concepts, advanced topics, and practical coding challenges. These questions will help you prepare for a variety of JavaScript interview scenarios:
-
-## **1. Basic JavaScript Concepts**
+### **1. Basic JavaScript Concepts**
 
 #### 1. **What are the different data types in JavaScript?**
    JavaScript has both **primitive** and **non-primitive** (or **reference**) data types:
