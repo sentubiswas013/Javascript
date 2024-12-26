@@ -172,11 +172,6 @@ There are several ways to create objects in JavaScript:
    }
    ```
 
-Here are the answers to the next set of JavaScript questions:
-
-
-
-
 ### 86. **What is a pure function in JavaScript? Can you give an example?**
 
 A **pure function** is a function that:
@@ -525,6 +520,90 @@ Here, `fetchData` returns a promise, which is passed to the first `.then()`. The
    }
    ```
 
+### **11. Differenct between callback and promise**
+The difference between a **callback** and a **promise** in JavaScript lies primarily in how they handle asynchronous operations, their structure, and how they deal with results or errors.
+
+### 1. **Callback**
+A callback is a function that is passed as an argument to another function and is executed once the asynchronous operation is complete.
+
+#### Characteristics of Callbacks:
+- **Execution**: A callback is executed directly when the asynchronous task finishes. 
+- **Error Handling**: Callbacks typically follow an **error-first pattern**, where the first argument is an error (if any) and the second argument is the result.
+- **Nested Callbacks**: Callbacks can be nested, but this often leads to what is called **callback hell**, where multiple nested functions can make the code hard to read and maintain.
+  
+#### Example of Callback:
+```javascript
+function fetchData(callback) {
+  setTimeout(() => {
+    const data = { message: "Hello, world!" };
+    callback(null, data);  // No error, just data
+  }, 1000);
+}
+
+fetchData(function (error, result) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log(result);
+  }
+});
+```
+
+### 2. **Promise**
+A promise is a more structured and modern way to handle asynchronous operations. It represents a value that might be available now, or in the future, or never (rejected).
+
+#### Characteristics of Promises:
+- **States**: A promise can be in one of three states:
+  1. **Pending**: The operation is still in progress.
+  2. **Fulfilled**: The operation completed successfully.
+  3. **Rejected**: The operation failed (error).
+  
+- **Chaining**: Promises allow chaining of `.then()` for success and `.catch()` for error handling. This avoids the nested structure of callbacks and is easier to read and maintain.
+  
+- **Error Handling**: With promises, errors are propagated through the `.catch()` method, making it cleaner and more consistent to handle errors.
+  
+#### Example of a Promise:
+```javascript
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const data = { message: "Hello, world!" };
+      resolve(data);  // Successful resolution
+      // reject("Error occurred"); // If there was an error
+    }, 1000);
+  });
+}
+
+fetchData()
+  .then((result) => {
+    console.log(result);  // Handles success
+  })
+  .catch((error) => {
+    console.error(error);  // Handles errors
+  });
+```
+
+### Key Differences:
+
+| Feature              | Callback                               | Promise                                    |
+|----------------------|----------------------------------------|--------------------------------------------|
+| **Handling Flow**     | Nested functions (callback hell)       | Chainable with `.then()` and `.catch()`    |
+| **Error Handling**    | Error-first pattern (often manually)   | Uses `.catch()` for error handling         |
+| **State Management**  | No explicit state management           | Has states: Pending, Fulfilled, Rejected  |
+| **Code Readability**  | Can become hard to read with nesting   | More readable with chaining and `.catch()` |
+| **Multiple Async Ops**| Difficult to manage multiple async ops | Can easily handle multiple async ops with `.all()` or `async/await` |
+| **Use Case**          | Simple, small asynchronous tasks       | Complex async tasks or chains of async ops |
+
+### Modern Alternative: **Async/Await**
+`async/await` is built on top of promises and allows you to write asynchronous code that looks synchronous, making it easier to read and maintain.
+
+#### Example of Async/Await:
+```javascript
+async function fetchData() {
+  const result = await someAsyncOperation();
+  console.log(result);
+}
+```
 
 07. ### What is an observable
 
@@ -570,45 +649,26 @@ Here, `fetchData` returns a promise, which is passed to the first `.then()`. The
 | **Return Value**       | Returns nothing directly; it executes some code when called. | Returns a new component, often with added props or logic. |
 | **Usage**              | Used in async operations (e.g., `setTimeout`, API calls). | Used in React to modify or augment component behavior. |
 
+### 70. **What is the concept of currying in JavaScript? Can you provide an example?**
 
-15. ### What is the currying function
+**Currying** is a technique in functional programming where a function that takes multiple arguments is transformed into a sequence of functions, each taking one argument.
 
-    Currying is a powerful technique in JavaScript (and functional programming in general) that allows a function to be broken down into multiple smaller functions, each accepting one argument. It promotes code reusability and flexibility, particularly when working with functions that take multiple parameters.
+In simpler terms, currying allows you to break a function that takes multiple parameters into a series of functions that each take one parameter and return a new function until all parameters are provided.
 
-    Let's take an example of n-ary function and how it turns into a currying function,
+**Example:**
 
-    ```javascript
-    function multiply(a) {
-      return function(b) {
-        return function(c) {
-          return a * b * c;
-        };
-      };
-    }
+```javascript
+function multiply(a) {
+  return function(b) {
+    return a * b;
+  };
+}
 
-    const result = multiply(2)(3)(4); // Output: 24
-    console.log(result);
-    ```
+const multiplyBy2 = multiply(2);
+console.log(multiplyBy2(3)); // 6
+```
 
-    ```javascript
-    function handleEvent(eventType) {
-      return function(message) {
-        console.log(`${eventType}: ${message}`);
-      };
-    }
-
-    const logClick = handleEvent('Click');
-    const logSubmit = handleEvent('Submit');
-
-    logClick('Button clicked!'); // Output: Click: Button clicked!
-    logSubmit('Form submitted!'); // Output: Submit: Form submitted!
-    ```
-
-    Curried functions are great to improve **code reusability** and **functional composition**.
-
-    **[⬆ Back to Top](#table-of-contents)**
-
-   
+Here, `multiply` is a curried function that first takes `a`, then returns a new function that takes `b` and performs the multiplication.   
 
 214. ### What is an anonymous function
 
@@ -638,6 +698,8 @@ Here, `fetchData` returns a promise, which is passed to the first `.then()`. The
      console.log(z); // 50
      ```
 
+
+
 ### **11. Explain event delegation in JavaScript.**
    **Event delegation** is a technique where you attach a single event listener to a parent element, and the event is triggered by the child elements that match a specified selector. This method relies on the event bubbling process, where an event that occurs on a child element bubbles up to its parent elements. It improves performance, especially when you have a large number of child elements, by reducing the number of event listeners attached.
 
@@ -651,6 +713,174 @@ Here, `fetchData` returns a promise, which is passed to the first `.then()`. The
    ```
 
    In this example, even though multiple buttons may be added dynamically, only one event listener is attached to the parent element (`#parent`).
+
+### **41. What is the event loop in JavaScript?**
+   The **event loop** is a fundamental part of JavaScript's concurrency model. It allows JavaScript to perform non-blocking operations, even though JavaScript is single-threaded. The event loop continuously checks the call stack and the message queue (also called the event queue).
+   
+   - If the call stack is empty, it pushes the first task in the event queue to the call stack and executes it.
+   - The event loop allows JavaScript to handle asynchronous operations (like I/O tasks, setTimeout, and network requests) without blocking the main execution thread.
+
+   Example:
+   ```javascript
+   console.log('Start');
+   setTimeout(() => console.log('Inside Timeout'), 0);
+   console.log('End');
+   // Output: Start, End, Inside Timeout
+   ```
+
+   Here, the `setTimeout` function doesn't block the main thread; the event loop ensures that the timeout callback executes after the current call stack is empty.
+
+   
+### **73. What is event propagation in JavaScript?**
+   **Event propagation** refers to the way events move through the DOM when they are triggered. It happens in two phases: **bubbling** and **capturing**.
+
+   - **Capturing phase**: The event starts at the root of the DOM and travels down to the target element.
+   - **Bubbling phase**: The event starts from the target element and bubbles up to the root.
+
+   The default behavior is event bubbling, where events trigger handlers in the order from the target element to the root.
+
+### **74. What is event bubbling and capturing in JavaScript?**
+   - **Event Bubbling**: In this phase, when an event is triggered on an element, it first triggers the event handler of that element, then propagates up to its parent elements, and continues up to the root.
+   
+     Example:
+     ```javascript
+     document.getElementById('parent').addEventListener('click', () => {
+       console.log('Parent clicked');
+     });
+     document.getElementById('child').addEventListener('click', () => {
+       console.log('Child clicked');
+     });
+     // Clicking on #child will trigger both the child and parent events (bubbling).
+     ```
+   
+   - **Event Capturing**: The event starts from the root of the DOM and propagates down to the target element. This phase can be used by specifying the third argument as `true` in `addEventListener()`.
+
+     Example:
+     ```javascript
+     document.getElementById('parent').addEventListener('click', () => {
+       console.log('Parent clicked');
+     }, true); // Capturing phase
+     ```
+
+### 50. **How do you prevent the default action of an event in JavaScript?**
+
+To prevent the default behavior associated with an event (e.g., submitting a form or following a link), you use the `preventDefault()` method.
+
+Example:
+```javascript
+document.getElementById("myLink").addEventListener("click", function(event) {
+  event.preventDefault(); // Prevents the link from navigating
+  console.log("Link clicked but not navigated.");
+});
+```
+
+This prevents the default behavior (in this case, navigating to the URL) from occurring when the event is triggered.
+
+---
+
+### 51. **How do you attach multiple event listeners to the same event?**
+
+You can attach multiple event listeners to the same event by calling `addEventListener` multiple times for the same event on the same element.
+
+Example:
+```javascript
+const button = document.getElementById("myButton");
+
+button.addEventListener("click", function() {
+  console.log("First event listener");
+});
+
+button.addEventListener("click", function() {
+  console.log("Second event listener");
+});
+```
+
+Both event listeners will be executed when the button is clicked.
+
+
+### 71. **What is the concept of memoization in JavaScript?**
+
+**Memoization** is an optimization technique where the results of expensive function calls are cached, and when the same inputs occur again, the cached result is returned instead of recalculating it. This can greatly improve performance for functions that are called repeatedly with the same arguments.
+
+**Example:**
+
+```javascript
+function memoize(fn) {
+  const cache = {};
+  return function(arg) {
+    if (cache[arg]) {
+      return cache[arg];
+    }
+    const result = fn(arg);
+    cache[arg] = result;
+    return result;
+  };
+}
+
+const square = memoize(function(n) {
+  console.log('Calculating...');
+  return n * n;
+});
+
+console.log(square(4)); // Calculating... 16
+console.log(square(4)); // 16 (cached)
+```
+
+Here, the `memoize` function caches results, so the second time `square(4)` is called, it returns the cached result without recalculating.
+
+
+### **85. What is debounce and throttle in JavaScript?**
+   **Debounce** and **throttle** are techniques used to optimize performance for frequently occurring events like scrolling, resizing, or keypresses.
+
+   - **Debounce**: Limits the rate at which a function is invoked. It ensures the function is only called once after a specified delay, triggered by the end of a series of rapid events. It’s useful for search input or resizing events where you don't want to trigger the action every time an event occurs.
+
+     Example (Debouncing a keypress event):
+     ```javascript
+     function debounce(func, delay) {
+       let timeout;
+       return function() {
+         clearTimeout(timeout);
+         timeout = setTimeout(() => func.apply(this, arguments), delay);
+       };
+     }
+
+     const searchInput = document.getElementById('search');
+     searchInput.addEventListener('input', debounce(function() {
+       console.log('Search query:', this.value);
+     }, 300));
+     ```
+
+   - **Throttle**: Ensures a function is called at most once every specified interval, regardless of how many times the event is triggered. It’s useful for events like scrolling or window resizing where you don't want to perform the action too frequently.
+
+     Example (Throttling a scroll event):
+     ```javascript
+     function throttle(func, limit) {
+       let lastFunc;
+       let lastTime;
+       return function() {
+         const now = new Date();
+         if (!lastTime || now - lastTime >= limit) {
+           func.apply(this, arguments);
+           lastTime = now;
+         } else {
+           clearTimeout(lastFunc);
+           lastFunc = setTimeout(() => {
+             func.apply(this, arguments);
+             lastTime = now;
+           }, limit - (now - lastTime));
+         }
+       };
+     }
+
+     window.addEventListener('scroll', throttle(() => {
+       console.log('Scrolling...');
+     }, 1000));
+     ```
+
+   **Key Difference**:
+   - **Debounce** delays the execution of a function until after a certain amount of idle time has passed (ideal for scenarios like searching).
+   - **Throttle** ensures that the function is called at regular intervals (ideal for scenarios like scrolling or resizing).
+
 
 ### **12. What are arrow functions, and how do they differ from regular functions?**
    **Arrow functions** are a shorthand way of writing functions in JavaScript. They differ from regular functions in several ways:
@@ -1573,43 +1803,6 @@ JavaScript handles asynchronous operations using:
 ## **4. Asynchronous JavaScript**
 Here are the answers to the next set of JavaScript questions:
 
-### **41. What is the event loop in JavaScript?**
-   The **event loop** is a fundamental part of JavaScript's concurrency model. It allows JavaScript to perform non-blocking operations, even though JavaScript is single-threaded. The event loop continuously checks the call stack and the message queue (also called the event queue).
-   
-   - If the call stack is empty, it pushes the first task in the event queue to the call stack and executes it.
-   - The event loop allows JavaScript to handle asynchronous operations (like I/O tasks, setTimeout, and network requests) without blocking the main execution thread.
-
-   Example:
-   ```javascript
-   console.log('Start');
-   setTimeout(() => console.log('Inside Timeout'), 0);
-   console.log('End');
-   // Output: Start, End, Inside Timeout
-   ```
-
-   Here, the `setTimeout` function doesn't block the main thread; the event loop ensures that the timeout callback executes after the current call stack is empty.
-
-### 70. **What is the concept of currying in JavaScript? Can you provide an example?**
-
-**Currying** is a technique in functional programming where a function that takes multiple arguments is transformed into a sequence of functions, each taking one argument.
-
-In simpler terms, currying allows you to break a function that takes multiple parameters into a series of functions that each take one parameter and return a new function until all parameters are provided.
-
-**Example:**
-
-```javascript
-function multiply(a) {
-  return function(b) {
-    return a * b;
-  };
-}
-
-const multiplyBy2 = multiply(2);
-console.log(multiplyBy2(3)); // 6
-```
-
-Here, `multiply` is a curried function that first takes `a`, then returns a new function that takes `b` and performs the multiplication.
-
 ### **44. How can you handle asynchronous operations in JavaScript?**
    Asynchronous operations can be handled in JavaScript in several ways:
    1. **Callbacks**: Functions passed as arguments to be executed once an operation is complete.
@@ -2454,74 +2647,6 @@ Here are the answers to the next set of JavaScript questions:
    });
    ```
 
-### **73. What is event propagation in JavaScript?**
-   **Event propagation** refers to the way events move through the DOM when they are triggered. It happens in two phases: **bubbling** and **capturing**.
-
-   - **Capturing phase**: The event starts at the root of the DOM and travels down to the target element.
-   - **Bubbling phase**: The event starts from the target element and bubbles up to the root.
-
-   The default behavior is event bubbling, where events trigger handlers in the order from the target element to the root.
-
-### **74. What is event bubbling and capturing in JavaScript?**
-   - **Event Bubbling**: In this phase, when an event is triggered on an element, it first triggers the event handler of that element, then propagates up to its parent elements, and continues up to the root.
-   
-     Example:
-     ```javascript
-     document.getElementById('parent').addEventListener('click', () => {
-       console.log('Parent clicked');
-     });
-     document.getElementById('child').addEventListener('click', () => {
-       console.log('Child clicked');
-     });
-     // Clicking on #child will trigger both the child and parent events (bubbling).
-     ```
-   
-   - **Event Capturing**: The event starts from the root of the DOM and propagates down to the target element. This phase can be used by specifying the third argument as `true` in `addEventListener()`.
-
-     Example:
-     ```javascript
-     document.getElementById('parent').addEventListener('click', () => {
-       console.log('Parent clicked');
-     }, true); // Capturing phase
-     ```
-
-### 50. **How do you prevent the default action of an event in JavaScript?**
-
-To prevent the default behavior associated with an event (e.g., submitting a form or following a link), you use the `preventDefault()` method.
-
-Example:
-```javascript
-document.getElementById("myLink").addEventListener("click", function(event) {
-  event.preventDefault(); // Prevents the link from navigating
-  console.log("Link clicked but not navigated.");
-});
-```
-
-This prevents the default behavior (in this case, navigating to the URL) from occurring when the event is triggered.
-
----
-
-### 51. **How do you attach multiple event listeners to the same event?**
-
-You can attach multiple event listeners to the same event by calling `addEventListener` multiple times for the same event on the same element.
-
-Example:
-```javascript
-const button = document.getElementById("myButton");
-
-button.addEventListener("click", function() {
-  console.log("First event listener");
-});
-
-button.addEventListener("click", function() {
-  console.log("Second event listener");
-});
-```
-
-Both event listeners will be executed when the button is clicked.
-
----
-
 ### 52. **What is the difference between `Object.freeze()` and `Object.seal()` in JavaScript?**
 
 - **`Object.freeze()`**: Freezes an object, preventing new properties from being added, existing properties from being removed, and existing properties from being modified (i.e., making the object immutable).
@@ -2830,37 +2955,6 @@ Here are the answers to the next set of JavaScript questions:
    element.removeEventListener('click', handleClick);
    ```
 
-### 71. **What is the concept of memoization in JavaScript?**
-
-**Memoization** is an optimization technique where the results of expensive function calls are cached, and when the same inputs occur again, the cached result is returned instead of recalculating it. This can greatly improve performance for functions that are called repeatedly with the same arguments.
-
-**Example:**
-
-```javascript
-function memoize(fn) {
-  const cache = {};
-  return function(arg) {
-    if (cache[arg]) {
-      return cache[arg];
-    }
-    const result = fn(arg);
-    cache[arg] = result;
-    return result;
-  };
-}
-
-const square = memoize(function(n) {
-  console.log('Calculating...');
-  return n * n;
-});
-
-console.log(square(4)); // Calculating... 16
-console.log(square(4)); // 16 (cached)
-```
-
-Here, the `memoize` function caches results, so the second time `square(4)` is called, it returns the cached result without recalculating.
-
-
 ### 72. **What are decorators in JavaScript?**
 
 **Decorators** are a special kind of declaration that can be used to modify the behavior of a class, method, accessor, property, or parameter in JavaScript. They are usually used in frameworks like TypeScript, Angular, or Babel, as part of the class syntax.
@@ -2990,61 +3084,6 @@ This continuously animates by calling the `animate` function before each repaint
   8. **Leverage caching**: Cache static assets and data to reduce redundant network requests.
   9. **Use `requestAnimationFrame`** for animations instead of `setTimeout`.
 
-### **85. What is debounce and throttle in JavaScript?**
-   **Debounce** and **throttle** are techniques used to optimize performance for frequently occurring events like scrolling, resizing, or keypresses.
-
-   - **Debounce**: Limits the rate at which a function is invoked. It ensures the function is only called once after a specified delay, triggered by the end of a series of rapid events. It’s useful for search input or resizing events where you don't want to trigger the action every time an event occurs.
-
-     Example (Debouncing a keypress event):
-     ```javascript
-     function debounce(func, delay) {
-       let timeout;
-       return function() {
-         clearTimeout(timeout);
-         timeout = setTimeout(() => func.apply(this, arguments), delay);
-       };
-     }
-
-     const searchInput = document.getElementById('search');
-     searchInput.addEventListener('input', debounce(function() {
-       console.log('Search query:', this.value);
-     }, 300));
-     ```
-
-   - **Throttle**: Ensures a function is called at most once every specified interval, regardless of how many times the event is triggered. It’s useful for events like scrolling or window resizing where you don't want to perform the action too frequently.
-
-     Example (Throttling a scroll event):
-     ```javascript
-     function throttle(func, limit) {
-       let lastFunc;
-       let lastTime;
-       return function() {
-         const now = new Date();
-         if (!lastTime || now - lastTime >= limit) {
-           func.apply(this, arguments);
-           lastTime = now;
-         } else {
-           clearTimeout(lastFunc);
-           lastFunc = setTimeout(() => {
-             func.apply(this, arguments);
-             lastTime = now;
-           }, limit - (now - lastTime));
-         }
-       };
-     }
-
-     window.addEventListener('scroll', throttle(() => {
-       console.log('Scrolling...');
-     }, 1000));
-     ```
-
-   **Key Difference**:
-   - **Debounce** delays the execution of a function until after a certain amount of idle time has passed (ideal for scenarios like searching).
-   - **Throttle** ensures that the function is called at regular intervals (ideal for scenarios like scrolling or resizing).
-
----
-
-
 
 ### 92. **What are JavaScript frameworks, and how do they differ from libraries?**
 
@@ -3164,92 +3203,6 @@ Here are the answers to the next set of JavaScript testing-related questions:
    **Key Differences**:
    - **`assert`** is simpler and more bare-bones, often requiring fewer lines of code but less flexibility for more complex assertions.
    - **`expect`** is more powerful and expressive, allowing for more readable tests with better syntax for complex assertions.
-
-
-### **11. Differenct between callback and promise**
-The difference between a **callback** and a **promise** in JavaScript lies primarily in how they handle asynchronous operations, their structure, and how they deal with results or errors.
-
-### 1. **Callback**
-A callback is a function that is passed as an argument to another function and is executed once the asynchronous operation is complete.
-
-#### Characteristics of Callbacks:
-- **Execution**: A callback is executed directly when the asynchronous task finishes. 
-- **Error Handling**: Callbacks typically follow an **error-first pattern**, where the first argument is an error (if any) and the second argument is the result.
-- **Nested Callbacks**: Callbacks can be nested, but this often leads to what is called **callback hell**, where multiple nested functions can make the code hard to read and maintain.
-  
-#### Example of Callback:
-```javascript
-function fetchData(callback) {
-  setTimeout(() => {
-    const data = { message: "Hello, world!" };
-    callback(null, data);  // No error, just data
-  }, 1000);
-}
-
-fetchData(function (error, result) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log(result);
-  }
-});
-```
-
-### 2. **Promise**
-A promise is a more structured and modern way to handle asynchronous operations. It represents a value that might be available now, or in the future, or never (rejected).
-
-#### Characteristics of Promises:
-- **States**: A promise can be in one of three states:
-  1. **Pending**: The operation is still in progress.
-  2. **Fulfilled**: The operation completed successfully.
-  3. **Rejected**: The operation failed (error).
-  
-- **Chaining**: Promises allow chaining of `.then()` for success and `.catch()` for error handling. This avoids the nested structure of callbacks and is easier to read and maintain.
-  
-- **Error Handling**: With promises, errors are propagated through the `.catch()` method, making it cleaner and more consistent to handle errors.
-  
-#### Example of a Promise:
-```javascript
-function fetchData() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const data = { message: "Hello, world!" };
-      resolve(data);  // Successful resolution
-      // reject("Error occurred"); // If there was an error
-    }, 1000);
-  });
-}
-
-fetchData()
-  .then((result) => {
-    console.log(result);  // Handles success
-  })
-  .catch((error) => {
-    console.error(error);  // Handles errors
-  });
-```
-
-### Key Differences:
-
-| Feature              | Callback                               | Promise                                    |
-|----------------------|----------------------------------------|--------------------------------------------|
-| **Handling Flow**     | Nested functions (callback hell)       | Chainable with `.then()` and `.catch()`    |
-| **Error Handling**    | Error-first pattern (often manually)   | Uses `.catch()` for error handling         |
-| **State Management**  | No explicit state management           | Has states: Pending, Fulfilled, Rejected  |
-| **Code Readability**  | Can become hard to read with nesting   | More readable with chaining and `.catch()` |
-| **Multiple Async Ops**| Difficult to manage multiple async ops | Can easily handle multiple async ops with `.all()` or `async/await` |
-| **Use Case**          | Simple, small asynchronous tasks       | Complex async tasks or chains of async ops |
-
-### Modern Alternative: **Async/Await**
-`async/await` is built on top of promises and allows you to write asynchronous code that looks synchronous, making it easier to read and maintain.
-
-#### Example of Async/Await:
-```javascript
-async function fetchData() {
-  const result = await someAsyncOperation();
-  console.log(result);
-}
-```
 
 
 ### 60. **How do you use regular expressions in JavaScript?**
