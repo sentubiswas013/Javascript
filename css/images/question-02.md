@@ -206,33 +206,6 @@ Here, the `add()` function is pure because it always returns the same result and
     console.log(double(5)); // 10
    ```
 
-  In this example, `multiplier` is a higher-order function because it returns a function that multiplies its argument by a specific factor.
-
-    ```javascript
-      const firstOrderFunc = () =>
-        console.log("Hello, I am a First order function");
-      const higherOrder = (ReturnFirstOrderFunc) => ReturnFirstOrderFunc();
-      higherOrder(firstOrderFunc);
-    ```
-
-    ```javascript
-      // Callback function, passed as a parameter in the higher order function
-      function callbackFunction(){
-          console.log('I am  a callback function');
-      }
-
-      // higher order function
-      function higherOrderFunction(func){
-          console.log('I am higher order function')
-          func()
-      }
-
-      higherOrderFunction(callbackFunction);
-      // Output
-      // I am higher order function
-      // I am  a callback function
-    ```
-
 ### **39. What is a callback function in JavaScript?**
    A **callback function** is a function passed as an argument to another function, which is then executed after some operation (e.g., asynchronous code) is completed.
 
