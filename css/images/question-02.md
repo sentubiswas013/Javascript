@@ -850,10 +850,10 @@ Here, the `memoize` function caches results, so the second time `square(4)` is c
 ### **12. What are Object-Oriented Programming (OOP) in javascript**
 **Object-Oriented Programming (OOP) in JavaScript** is a programming paradigm that uses objects and classes to organize code into reusable, modular units. JavaScript supports OOP concepts like encapsulation, inheritance, and polymorphism, but it differs from traditional OOP languages like Java or C++ because it is prototype-based, rather than class-based (though with ES6, it introduced class syntax for easier readability).
 
-**Encapsulation:** Wrapping data and methods into a single unit (class) and restricting access to some components using access modifiers.
-**Inheritance:** The ability of a class to inherit the properties and behaviors of another class.
-**Polymorphism:** Allowing one entity to take multiple forms (e.g., method overloading, method overriding).
-**Abstraction:** Hiding the implementation details and showing only the necessary functionality to the user.
+- **Encapsulation:** Wrapping data and methods into a single unit (class) and restricting access to some components using access modifiers.
+- **Inheritance:** The ability of a class to inherit the properties and behaviors of another class.
+- **Polymorphism:** Allowing one entity to take multiple forms (e.g., method overloading, method overriding).
+- **Abstraction:** Hiding the implementation details and showing only the necessary functionality to the user.
 
 Here’s a breakdown of the key concepts and how they are implemented in JavaScript:
 
