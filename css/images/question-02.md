@@ -208,8 +208,6 @@ Here, the `add()` function is pure because it always returns the same result and
 
   In this example, `multiplier` is a higher-order function because it returns a function that multiplies its argument by a specific factor.
 
-   **Way 2:**  
-
     ```javascript
       const firstOrderFunc = () =>
         console.log("Hello, I am a First order function");
