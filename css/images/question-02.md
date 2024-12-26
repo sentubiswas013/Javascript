@@ -254,32 +254,31 @@ Here, the `add()` function is pure because it always returns the same result and
 
    In this example, `fetchData` accepts a callback function that is executed once the data fetching operation completes.
 
-   ```
-### 74. **What are closures in JavaScript, and why are they important?**
+  ### 74. **What are closures in JavaScript, and why are they important?**
 
-A **closure** is a function that retains access to its lexical scope, even when the function is executed outside of that scope. In other words, closures allow a function to "remember" its environment.
+    A **closure** is a function that retains access to its lexical scope, even when the function is executed outside of that scope. In other words, closures allow a function to "remember" its environment.
 
-Closures are important for:
-- **Data encapsulation**: Protecting data from being directly accessed or modified by the outside code.
-- **Function factories**: Generating functions dynamically with specific states.
-  
-**Example:**
+    Closures are important for:
+    - **Data encapsulation**: Protecting data from being directly accessed or modified by the outside code.
+    - **Function factories**: Generating functions dynamically with specific states.
+      
+    **Example:**
 
-```javascript
-function outer() {
-  let count = 0;
-  return function inner() {
-    count++;
-    console.log(count);
-  };
-}
+    ```javascript
+    function outer() {
+      let count = 0;
+      return function inner() {
+        count++;
+        console.log(count);
+      };
+    }
 
-const increment = outer();
-increment(); // 1
-increment(); // 2
-```
+    const increment = outer();
+    increment(); // 1
+    increment(); // 2
+    ```
 
-Here, `inner` has access to `count` even after `outer` has finished execution, demonstrating closure.
+    Here, `inner` has access to `count` even after `outer` has finished execution, demonstrating closure.
 
 
 ### 12. **How does the `this` keyword work in JavaScript?**
@@ -294,19 +293,17 @@ In JavaScript, the **`this`** keyword refers to the context in which a function 
 
 - **With `call()`, `apply()`, or `bind()`**: You can explicitly set the value of `this`.
 
-Example:
-```javascript
-const person = {
-  name: 'Alice',
-  greet: function() {
-    console.log(this.name);
-  }
-};
+  Example:
+  ```javascript
+  const person = {
+    name: 'Alice',
+    greet: function() {
+      console.log(this.name);
+    }
+  };
 
-person.greet(); // "Alice", 'this' refers to the 'person' object
-```
-
-
+  person.greet(); // "Alice", 'this' refers to the 'person' object
+  ```
 ### 89. **What is the difference between synchronous and asynchronous code in JavaScript?**
 
 - **Synchronous code**: Executes line by line. Each operation waits for the previous one to finish before continuing, blocking further code execution.
