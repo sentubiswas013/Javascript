@@ -1274,7 +1274,816 @@ The core interfaces in the Java Collections Framework are:
 6. **`SortedSet`** and **`NavigableSet`**: Extensions of `Set` that maintain order (e.g., `TreeSet`).
 7. **`SortedMap`** and **`NavigableMap`**: Extensions of `Map` that maintain order (e.g., `TreeMap`).
 
-These interfaces define the standard behaviors for collections in Java, while the classes (such as `ArrayList`, `HashMap`) provide the actual implementations.
+### Collection:=========== 
+
+In Java, **Collection** is a root interface of the collection framework, and it has several subinterfaces that represent different types of collections, including `List`, `Set`, and `Queue`. Each of these subinterfaces provides specialized behavior and is used to store and manage groups of objects in different ways. Let’s dive into each one:
+
+### 1. **List Interface**:
+   - A `List` is an ordered collection that allows duplicate elements. It maintains the order of insertion, and each element can be accessed by its index (position).
+   - Lists allow random access to elements and provide several methods for manipulating the collection.
+
+   #### Key Characteristics:
+   - **Ordered**: Elements are stored in the order in which they are inserted.
+   - **Allows Duplicates**: Multiple identical elements can exist in a list.
+   - **Indexed Access**: You can access elements by their index (position in the list).
+
+   #### Common Implementations:
+   - `ArrayList`: A dynamically resizing array-based list.
+   - `LinkedList`: A doubly linked list that allows efficient insertion and removal of elements.
+   - `Vector`: Similar to `ArrayList`, but synchronized.
+   - `Stack`: A subclass of `Vector` that implements a stack (LIFO).
+
+   #### Example:
+   ```java
+   import java.util.*;
+
+   public class ListExample {
+       public static void main(String[] args) {
+           List<String> list = new ArrayList<>();
+           list.add("Apple");
+           list.add("Banana");
+           list.add("Orange");
+
+           System.out.println("List: " + list);  // Output: [Apple, Banana, Orange]
+
+           // Accessing an element by index
+           System.out.println("Element at index 1: " + list.get(1));  // Output: Banana
+       }
+   }
+   ```
+
+### 2. **Set Interface**:
+   - A `Set` is a collection that **does not allow duplicate elements**. It models the mathematical set abstraction, meaning no two elements are equal in a set.
+   - Sets do not guarantee any specific order of elements (though certain implementations do).
+
+   #### Key Characteristics:
+   - **No Duplicates**: A set will not store duplicate elements.
+   - **Unordered**: Elements in a set are not stored in any specific order (except for specific implementations like `LinkedHashSet` or `TreeSet`).
+
+   #### Common Implementations:
+   - `HashSet`: A set backed by a hash table. It does not maintain order.
+   - `LinkedHashSet`: A set that maintains the order of elements based on insertion order.
+   - `TreeSet`: A set that maintains elements in sorted (natural) order or according to a comparator.
+
+   #### Example:
+   ```java
+   import java.util.*;
+
+   public class SetExample {
+       public static void main(String[] args) {
+           Set<String> set = new HashSet<>();
+           set.add("Apple");
+           set.add("Banana");
+           set.add("Apple");  // Duplicate, will not be added
+
+           System.out.println("Set: " + set);  // Output: [Apple, Banana]
+       }
+   }
+   ```
+
+### 3. **Queue Interface**:
+   - A `Queue` is a collection that is primarily used to hold elements before processing them. It typically follows a **First-In-First-Out (FIFO)** order, but some implementations may offer other orderings, such as **Priority-Based**.
+   - Queues are designed for storing elements to be processed in a particular order.
+
+   #### Key Characteristics:
+   - **FIFO**: Elements are processed in the order they were added, unless a different ordering is implemented (e.g., priority queue).
+   - **Additional Operations**: Queues may have methods for adding, removing, or peeking at elements.
+   - **Used for Processing**: Commonly used in scenarios like job scheduling or data buffering.
+
+   #### Common Implementations:
+   - `LinkedList`: Can be used as a `Queue` since it implements the `Queue` interface.
+   - `PriorityQueue`: A queue where elements are processed based on priority.
+   - `ArrayDeque`: A resizable array implementation of the `Deque` interface (double-ended queue), which can also be used as a queue.
+
+   #### Example:
+   ```java
+   import java.util.*;
+
+   public class QueueExample {
+       public static void main(String[] args) {
+           Queue<Integer> queue = new LinkedList<>();
+           queue.add(10);
+           queue.add(20);
+           queue.add(30);
+
+           System.out.println("Queue: " + queue);  // Output: [10, 20, 30]
+
+           // Removing elements from the queue (FIFO)
+           System.out.println("Removed: " + queue.poll());  // Output: 10
+           System.out.println("Queue after poll: " + queue);  // Output: [20, 30]
+       }
+   }
+   ```
+
+---
+
+### **Summary Comparison of `List`, `Set`, and `Queue`:**
+
+| Feature          | `List`                             | `Set`                        | `Queue`                           |
+|------------------|------------------------------------|-----------------------------|-----------------------------------|
+| **Duplicates**   | Allows duplicates                 | No duplicates               | Can allow duplicates, depending on the implementation |
+| **Ordering**     | Maintains insertion order (or can be sorted) | Unordered (except `LinkedHashSet` and `TreeSet`) | Usually FIFO (first-in-first-out) |
+| **Access Type**  | Access by index                   | No index access             | FIFO (queue-based access)         |
+| **Common Classes** | `ArrayList`, `LinkedList`          | `HashSet`, `TreeSet`, `LinkedHashSet` | `LinkedList`, `PriorityQueue`, `ArrayDeque` |
+| **Use Case**     | Storing ordered collections of elements | Storing unique elements     | Storing elements for processing (FIFO) |
+
+### Conclusion:
+- **List** is used when you need to store ordered collections where elements can be accessed by their index.
+- **Set** is used when you need to store unique elements without duplicates and do not care about the order of the elements.
+- **Queue** is used when you need to store elements for processing, following a particular order, often FIFO, and is typically used in scenarios like task scheduling or processing data in batches.
+
+Each of these interfaces provides essential functionality suited for different use cases, and you can choose the one that best fits your needs in a program.
+
+### List:===========   
+In Java, both **`ArrayList`** and **`LinkedList`** are implementations of the `List` interface. They are used to store an ordered collection of elements, but they differ in terms of internal implementation, performance, and use cases. Let's explore both in more detail.
+
+### 1. **`ArrayList`**:
+   - **`ArrayList`** is a part of Java's standard library and is implemented using a **dynamic array**. It is one of the most commonly used `List` implementations.
+   
+#### Key Characteristics of `ArrayList`:
+   - **Dynamic Array-Based**: Internally, it uses a resizable array to store the elements.
+   - **Random Access**: Since the elements are stored in contiguous memory locations, you can access them directly by index, making random access efficient.
+   - **Resizable**: As elements are added to the `ArrayList`, it dynamically resizes itself (typically by doubling its size).
+   - **Faster at Reading**: Accessing an element by its index is very fast (constant time `O(1)`).
+   - **Slower at Insertions/Deletions**: Insertions or deletions, especially in the middle of the list, can be slower since it may require shifting elements to maintain the array's order (linear time `O(n)`).
+   - **Not Thread-Safe**: By default, it is not synchronized, so it is not thread-safe unless explicitly synchronized.
+
+#### When to Use `ArrayList`:
+   - **Frequent access by index**: If your application involves frequent access to elements by their index.
+   - **Limited insertions/removals in the middle**: If you mostly add/remove elements at the end of the list or don't often need to insert/remove from the middle of the list.
+
+#### Example of Using `ArrayList`:
+```java
+import java.util.*;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        // Creating an ArrayList of Strings
+        List<String> fruits = new ArrayList<>();
+        
+        // Adding elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        
+        // Accessing elements by index
+        System.out.println("Element at index 1: " + fruits.get(1));  // Output: Banana
+        
+        // Removing an element
+        fruits.remove("Banana");
+        
+        // Iterating through the ArrayList
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}
+```
+
+### 2. **`LinkedList`**:
+   - **`LinkedList`** is also a part of Java's standard library and is implemented using a **doubly linked list**. Each element in a `LinkedList` is represented as a node containing the element and pointers (links) to the previous and next nodes.
+
+#### Key Characteristics of `LinkedList`:
+   - **Doubly Linked List**: Each element (node) holds references (pointers) to both the previous and the next elements, allowing for efficient insertions and deletions.
+   - **Slower Access by Index**: Unlike `ArrayList`, random access is slower because it needs to traverse the list from the beginning (or end) to find the element at a specific index (`O(n)` time complexity).
+   - **Efficient Insertions/Deletions**: Inserting or deleting elements at the beginning, end, or middle of the list is faster than `ArrayList` since only pointers need to be adjusted (constant time `O(1)` for operations at both ends).
+   - **More Memory Overhead**: Each element in a `LinkedList` requires additional memory for storing references to the previous and next nodes.
+   - **Not Thread-Safe**: Like `ArrayList`, it is not synchronized by default.
+
+#### When to Use `LinkedList`:
+   - **Frequent insertions and deletions**: If your program frequently inserts or removes elements from the beginning, middle, or end of the list.
+   - **Less frequent access by index**: If the program does not require fast random access by index.
+
+#### Example of Using `LinkedList`:
+```java
+import java.util.*;
+
+public class LinkedListExample {
+    public static void main(String[] args) {
+        // Creating a LinkedList of Strings
+        List<String> fruits = new LinkedList<>();
+        
+        // Adding elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        
+        // Accessing elements by index (slower than ArrayList)
+        System.out.println("Element at index 1: " + fruits.get(1));  // Output: Banana
+        
+        // Removing an element
+        fruits.remove("Banana");
+        
+        // Iterating through the LinkedList
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}
+```
+
+### **Comparison of `ArrayList` and `LinkedList`**:
+
+| Feature                | `ArrayList`                          | `LinkedList`                        |
+|------------------------|--------------------------------------|-------------------------------------|
+| **Internal Structure**  | Dynamic Array                        | Doubly Linked List                  |
+| **Access Time (by index)** | Constant time `O(1)`                | Linear time `O(n)`                  |
+| **Insertion/Deletion (at the end)** | Constant time `O(1)`                | Constant time `O(1)`                |
+| **Insertion/Deletion (in the middle)** | Linear time `O(n)`                 | Constant time `O(1)` (if references are available) |
+| **Memory Overhead**     | Less memory overhead (stores only data) | More memory overhead (stores data + two references per node) |
+| **Best Use Case**       | Frequent random access and few insertions/removals | Frequent insertions and deletions (especially at the ends or middle) |
+| **Performance**         | Faster for accessing elements by index | Faster for insertions and deletions in general |
+
+### **When to Choose Which**:
+- **Use `ArrayList`**:
+  - When you need fast access to elements by index.
+  - When the list size is relatively static, or the list is appended to (i.e., insertions and deletions are rare, and occur mainly at the end).
+  - When memory consumption is a concern, as `ArrayList` uses less memory per element compared to `LinkedList`.
+
+- **Use `LinkedList`**:
+  - When your program involves frequent insertions or deletions of elements at both ends of the list, or in the middle.
+  - When random access is not critical, and you need constant-time insertions/deletions (at the cost of slower access by index).
+  - When memory consumption is not a primary concern and your program needs the flexibility of quick insertions/deletions.
+
+### Conclusion:
+- **`ArrayList`** is generally preferred when you have many lookups or need fast random access to elements. It's most efficient when your application doesn’t involve frequent modifications to the list.
+- **`LinkedList`** shines when you need to frequently insert or remove elements, especially at the beginning or in the middle of the list, but comes at the cost of slower access by index.
+
+
+### Set :===========
+In Java, **`Set`** is a collection interface that models the mathematical set abstraction. It does not allow duplicate elements, meaning that it only stores unique values. Two common implementations of the `Set` interface are **`HashSet`** and **`TreeSet`**. While both implement the `Set` interface and provide the same basic functionality, they differ in terms of ordering and performance characteristics.
+
+### 1. **`HashSet`**:
+   - **`HashSet`** is one of the most commonly used `Set` implementations in Java.
+   - It is backed by a **hash table** and does not maintain any specific order of elements.
+   - The elements in a `HashSet` are stored based on the **hash value** of the objects, which allows for **constant-time** performance for basic operations like `add()`, `remove()`, and `contains()`, assuming the hash function disperses the elements properly across the hash table.
+
+#### Key Characteristics of `HashSet`:
+   - **Unordered**: Elements are not stored in any particular order (they may appear in a different order when iterated).
+   - **Constant-Time Performance**: The typical time complexity for basic operations like `add()`, `remove()`, and `contains()` is **O(1)**, assuming a good hash function.
+   - **No Duplicates**: A `HashSet` does not allow duplicate elements.
+   - **Not Synchronized**: `HashSet` is not synchronized by default, so it is not thread-safe. You need to explicitly synchronize it if you want to use it in a multi-threaded environment.
+   
+#### When to Use `HashSet`:
+   - When you need a **collection of unique elements** and do not care about the order of the elements.
+   - When you need **fast performance** for basic operations like adding, removing, and checking if an element exists.
+
+#### Example of Using `HashSet`:
+```java
+import java.util.*;
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        Set<String> fruits = new HashSet<>();
+        
+        // Adding elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Apple");  // Duplicate, will not be added
+
+        // Iterating through the HashSet (unordered output)
+        System.out.println("Fruits in HashSet:");
+        for (String fruit : fruits) {
+            System.out.println(fruit);  // Output order may vary
+        }
+        
+        // Checking if an element exists
+        System.out.println("Contains 'Banana': " + fruits.contains("Banana"));  // true
+    }
+}
+```
+
+### 2. **`TreeSet`**:
+   - **`TreeSet`** is an implementation of the `Set` interface that is backed by a **Red-Black Tree**, which is a self-balancing binary search tree.
+   - Unlike `HashSet`, `TreeSet` **maintains the order** of its elements, either in **natural ordering** (if the elements are comparable) or according to a custom comparator provided at the time of creation.
+
+#### Key Characteristics of `TreeSet`:
+   - **Ordered**: Elements in a `TreeSet` are sorted according to their **natural order** (for comparable elements) or according to a **custom comparator** if provided.
+   - **Logarithmic-Time Performance**: The time complexity for basic operations like `add()`, `remove()`, and `contains()` is **O(log n)** because the underlying data structure is a balanced tree.
+   - **No Duplicates**: Like `HashSet`, `TreeSet` does not allow duplicates.
+   - **Not Synchronized**: `TreeSet` is not synchronized by default, so it is also not thread-safe.
+   
+#### When to Use `TreeSet`:
+   - When you need a collection that stores **unique elements in a sorted order**.
+   - When you want to perform **range-based queries** (e.g., finding the first or last element, or elements within a certain range).
+   - When you need to guarantee that the elements are ordered, either naturally or by a custom comparator.
+
+#### Example of Using `TreeSet`:
+```java
+import java.util.*;
+
+public class TreeSetExample {
+    public static void main(String[] args) {
+        Set<String> fruits = new TreeSet<>();
+        
+        // Adding elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Apple");  // Duplicate, will not be added
+
+        // Iterating through the TreeSet (sorted output)
+        System.out.println("Fruits in TreeSet (sorted order):");
+        for (String fruit : fruits) {
+            System.out.println(fruit);  // Output will be in sorted order: Apple, Banana, Orange
+        }
+        
+        // Checking if an element exists
+        System.out.println("Contains 'Banana': " + fruits.contains("Banana"));  // true
+    }
+}
+```
+
+### **Comparison of `HashSet` and `TreeSet`**:
+
+| Feature                    | **`HashSet`**                          | **`TreeSet`**                          |
+|----------------------------|----------------------------------------|----------------------------------------|
+| **Ordering**                | No specific order (unordered)         | Sorted order (natural or by comparator)|
+| **Internal Data Structure** | Hash table                            | Red-Black Tree (self-balancing BST)    |
+| **Time Complexity (add, remove, contains)** | O(1) on average (constant time)     | O(log n) (logarithmic time)            |
+| **Duplicates**              | Does not allow duplicates             | Does not allow duplicates             |
+| **Null Elements**           | Allows `null` (only one `null` allowed) | Does not allow `null` elements         |
+| **Thread Safety**           | Not synchronized (not thread-safe)    | Not synchronized (not thread-safe)     |
+| **Best Use Case**           | When you need fast performance and don't care about order | When you need elements in sorted order (natural or custom) |
+
+### **When to Choose `HashSet` or `TreeSet`**:
+- **Use `HashSet`**:
+  - When you do not need the elements to be ordered.
+  - When you require **fast performance** for basic operations like adding, removing, and checking for the existence of an element (constant time complexity).
+  - When order does not matter, and you want a collection that gives you the fastest operations.
+
+- **Use `TreeSet`**:
+  - When you need elements to be stored in a **sorted order**.
+  - When you need to perform **range queries** (e.g., getting all elements between two values) or work with ordered sets.
+  - When you require **logarithmic time complexity** for adding, removing, or searching for elements (in exchange for slower performance than `HashSet`).
+
+### Conclusion:
+Both `HashSet` and `TreeSet` are useful in different scenarios:
+- **`HashSet`** is ideal for fast, unordered collections when you only need to ensure uniqueness.
+- **`TreeSet`** is ideal when you need to store elements in a specific order and need to take advantage of sorted data, such as for range queries or ordered traversal.
+
+### Queue:===========
+In Java, **Queue** is an interface that represents a collection designed for holding elements prior to processing. It typically follows a **First-In-First-Out (FIFO)** ordering, but there are some queue implementations that offer different ordering strategies, such as **priority queues**.
+
+Two common implementations of the `Queue` interface are **`LinkedList`** and **`PriorityQueue`**. While both are part of the Java Collection Framework, they differ in terms of how they manage elements and the order in which they process them.
+
+### 1. **`LinkedList`** as a Queue:
+- **`LinkedList`** implements both the `Queue` interface and the `Deque` interface (double-ended queue). This allows it to function as a queue, but it can also be used as a deque for more complex operations (adding/removing from both ends).
+  
+#### Key Characteristics of `LinkedList` as a Queue:
+- **FIFO (First-In-First-Out)**: When used as a queue, elements are processed in the order they were added. The first element added is the first one to be removed.
+- **Efficient Add/Remove Operations**: Since `LinkedList` is based on a doubly linked list, adding or removing elements from either end of the list is efficient (`O(1)` time complexity).
+- **Supports All Queue Operations**: As a queue, `LinkedList` supports typical queue operations like `offer()`, `poll()`, and `peek()`.
+
+#### When to Use `LinkedList` as a Queue:
+- When you need a **double-ended queue** that allows efficient addition/removal of elements from both ends.
+- When the **FIFO** order is sufficient for your use case and you need to efficiently manage the elements at both ends of the queue.
+
+#### Example of Using `LinkedList` as a Queue:
+```java
+import java.util.*;
+
+public class LinkedListQueueExample {
+    public static void main(String[] args) {
+        Queue<String> queue = new LinkedList<>();
+        
+        // Adding elements to the queue
+        queue.add("Apple");
+        queue.add("Banana");
+        queue.add("Orange");
+
+        // Removing elements from the queue (FIFO)
+        System.out.println("Removed: " + queue.poll());  // Output: Apple
+        
+        // Peeking at the front element
+        System.out.println("Front of queue: " + queue.peek());  // Output: Banana
+        
+        // Iterating through the queue
+        System.out.println("Remaining queue:");
+        for (String fruit : queue) {
+            System.out.println(fruit);  // Output: Banana, Orange
+        }
+    }
+}
+```
+
+### 2. **`PriorityQueue`**:
+- **`PriorityQueue`** is a specialized queue that orders its elements based on their **natural ordering** (if they are `Comparable`) or by a **custom comparator** provided at the time of queue creation.
+- Unlike `LinkedList`, which follows the FIFO order, **`PriorityQueue`** uses **priority-based ordering**. The element with the highest priority (according to the comparator or natural order) will be the first to be removed.
+
+#### Key Characteristics of `PriorityQueue`:
+- **Priority Ordering**: Elements are ordered according to their priority. By default, the elements are ordered in **natural order** (ascending for `Comparable` objects like numbers or strings), but you can provide a custom comparator.
+- **Not FIFO**: The order of elements in a `PriorityQueue` is not guaranteed to be FIFO. Instead, the queue will serve elements based on their priority.
+- **Unbounded**: The queue will grow as needed to accommodate more elements. However, it does not limit the size of the queue.
+- **Efficient Insertions/Removals**: Operations like adding and removing elements have a time complexity of **O(log n)**, where `n` is the number of elements in the queue.
+
+#### When to Use `PriorityQueue`:
+- When you need a **priority-based queue** where elements should be processed in order of their priority (not necessarily the order they were added).
+- When **natural ordering** or a **custom comparator** can determine the priority of elements.
+
+#### Example of Using `PriorityQueue`:
+```java
+import java.util.*;
+
+public class PriorityQueueExample {
+    public static void main(String[] args) {
+        // Creating a priority queue (natural ordering)
+        Queue<String> queue = new PriorityQueue<>();
+        
+        // Adding elements to the queue
+        queue.add("Banana");
+        queue.add("Apple");
+        queue.add("Orange");
+
+        // Removing elements from the queue (based on priority - natural order)
+        System.out.println("Removed: " + queue.poll());  // Output: Apple (because it's the first in natural order)
+
+        // Peeking at the front element
+        System.out.println("Front of queue: " + queue.peek());  // Output: Banana
+        
+        // Iterating through the queue (not necessarily in insertion order)
+        System.out.println("Remaining queue:");
+        for (String fruit : queue) {
+            System.out.println(fruit);  // Output: Banana, Orange
+        }
+
+        // Priority Queue with a custom comparator (e.g., reverse order)
+        Queue<Integer> numQueue = new PriorityQueue<>(Collections.reverseOrder());
+        numQueue.add(10);
+        numQueue.add(5);
+        numQueue.add(20);
+        
+        System.out.println("Priority Queue (Reverse Order):");
+        while (!numQueue.isEmpty()) {
+            System.out.println(numQueue.poll());  // Output: 20, 10, 5
+        }
+    }
+}
+```
+
+### **Comparison of `LinkedList` and `PriorityQueue` as Queues**:
+
+| Feature                    | **`LinkedList`**                          | **`PriorityQueue`**                          |
+|----------------------------|------------------------------------------|----------------------------------------------|
+| **Order of Elements**       | FIFO (First-In-First-Out)                | Based on priority (either natural or custom order) |
+| **Performance (Insert/Remove)** | O(1) for adding/removing at both ends   | O(log n) for adding/removing (due to heap structure) |
+| **Element Ordering**        | Maintains insertion order                | Orders elements by priority (not by insertion order) |
+| **Null Elements**           | Allows `null` elements                   | Does not allow `null` elements               |
+| **Thread Safety**           | Not synchronized (not thread-safe)       | Not synchronized (not thread-safe)           |
+| **Best Use Case**           | When you need FIFO behavior or both ends of the queue to be accessed efficiently | When you need to process elements based on priority rather than insertion order |
+
+### **When to Choose `LinkedList` or `PriorityQueue`**:
+- **Use `LinkedList`** as a Queue:
+  - When you need a **FIFO** order (i.e., the order of processing should match the order of insertion).
+  - When you need efficient operations to add/remove elements from both ends of the queue.
+  
+- **Use `PriorityQueue`**:
+  - When the order of processing should be determined by **priority**, not the order of insertion.
+  - When you need a **priority-based queue** for use cases such as scheduling tasks, event-driven simulations, or algorithms like Dijkstra's shortest path.
+
+### Conclusion:
+- **`LinkedList`** is best for simple FIFO queues where elements are processed in the order they arrive, and operations like add/remove are efficient at both ends.
+- **`PriorityQueue`** is useful when you need to process elements based on their priority, such as in scenarios where tasks with higher importance need to be handled first. It provides an efficient way to manage and retrieve elements based on their priority.
+
+### Map:===========
+In Java, the **`Map`** interface represents a collection of key-value pairs, where each key is associated with exactly one value. The `Map` interface has several implementations, the most commonly used being **`HashMap`**, **`TreeMap`**, and **`LinkedHashMap`**. These implementations differ in their ordering, performance characteristics, and use cases. Let's explore each of them in detail.
+
+### 1. **`HashMap`**:
+- **`HashMap`** is a part of the Java Collections Framework and is the most commonly used implementation of the `Map` interface.
+- It stores key-value pairs in a **hash table**, where the keys are hashed into indices of an array, which makes searching for elements very efficient.
+
+#### Key Characteristics of `HashMap`:
+- **Unordered**: The elements in a `HashMap` are not stored in any predictable order. The order of the keys and values can change if the map is modified.
+- **Fast Access**: It offers constant-time **O(1)** performance for most operations like `put()`, `get()`, and `remove()`, assuming the hash function disperses the elements well across the hash table.
+- **No Duplicates**: A `HashMap` does not allow duplicate keys. If a key is inserted again, the new value will replace the existing one.
+- **Allows Null Values**: `HashMap` allows one **null key** and multiple **null values**.
+- **Not Synchronized**: `HashMap` is **not thread-safe** by default. If thread-safety is needed, you should use `ConcurrentHashMap` or synchronize the map manually.
+
+#### When to Use `HashMap`:
+- When you don’t need a specific order for the key-value pairs and require fast access to values based on keys.
+- When you need to store unique keys and their associated values.
+
+#### Example of Using `HashMap`:
+```java
+import java.util.*;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        Map<String, String> capitalCities = new HashMap<>();
+        
+        // Adding key-value pairs to the HashMap
+        capitalCities.put("USA", "Washington D.C.");
+        capitalCities.put("Japan", "Tokyo");
+        capitalCities.put("India", "New Delhi");
+
+        // Accessing a value by key
+        System.out.println("Capital of USA: " + capitalCities.get("USA"));  // Output: Washington D.C.
+        
+        // Checking if a key exists
+        System.out.println("Is Japan a key? " + capitalCities.containsKey("Japan"));  // true
+        
+        // Removing a key-value pair
+        capitalCities.remove("India");
+
+        // Iterating through the HashMap
+        for (Map.Entry<String, String> entry : capitalCities.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+    }
+}
+```
+
+### 2. **`TreeMap`**:
+- **`TreeMap`** is a **sorted** map implementation that is based on a **Red-Black tree** (a type of self-balancing binary search tree). It implements the `SortedMap` interface, which extends `Map`.
+
+#### Key Characteristics of `TreeMap`:
+- **Sorted**: A `TreeMap` maintains the order of keys based on their natural ordering (if the keys are `Comparable`) or according to a **custom comparator**.
+- **Logarithmic Time Complexity**: Operations like `put()`, `get()`, and `remove()` take **O(log n)** time because of the underlying Red-Black tree structure.
+- **No Null Keys**: A `TreeMap` does not allow `null` keys, but it allows `null` values.
+- **Navigable**: `TreeMap` provides additional methods like `firstKey()`, `lastKey()`, `headMap()`, and `tailMap()`, which allow you to work with subsets of the map based on key ranges.
+
+#### When to Use `TreeMap`:
+- When you need to maintain **sorted order** of keys and values.
+- When you need to perform **range queries** (e.g., find all keys in a certain range).
+- When you need to access the **smallest** or **largest** key, or the **first** or **last** element.
+
+#### Example of Using `TreeMap`:
+```java
+import java.util.*;
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        Map<String, Integer> map = new TreeMap<>();
+        
+        // Adding key-value pairs to the TreeMap
+        map.put("Apple", 40);
+        map.put("Banana", 30);
+        map.put("Orange", 20);
+        
+        // Iterating through the TreeMap (sorted order by keys)
+        System.out.println("TreeMap contents:");
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+        
+        // Accessing the first and last keys
+        System.out.println("First key: " + ((TreeMap) map).firstKey());  // Output: Apple
+        System.out.println("Last key: " + ((TreeMap) map).lastKey());  // Output: Orange
+    }
+}
+```
+
+### 3. **`LinkedHashMap`**:
+- **`LinkedHashMap`** is a **hash table** based implementation of the `Map` interface, similar to `HashMap`, but it maintains the **insertion order** of elements.
+- It keeps a **linked list** of the entries in the map, which preserves the order in which they were added.
+
+#### Key Characteristics of `LinkedHashMap`:
+- **Order of Insertion**: `LinkedHashMap` maintains the order of insertion, meaning that the order of keys in the map is the same as the order in which they were added.
+- **Constant-Time Performance**: Similar to `HashMap`, operations like `put()`, `get()`, and `remove()` are done in **O(1)** time complexity (on average).
+- **Allows Null Values and Keys**: Like `HashMap`, `LinkedHashMap` allows one **null key** and multiple **null values**.
+- **Not Synchronized**: It is also not thread-safe by default.
+
+#### When to Use `LinkedHashMap`:
+- When you need a **hash map** that also preserves the **insertion order** of elements.
+- When you need predictable order in iteration, especially when order of insertion is important (for example, in caches or when maintaining the order of processing).
+
+#### Example of Using `LinkedHashMap`:
+```java
+import java.util.*;
+
+public class LinkedHashMapExample {
+    public static void main(String[] args) {
+        Map<String, String> countries = new LinkedHashMap<>();
+        
+        // Adding key-value pairs to the LinkedHashMap
+        countries.put("USA", "Washington D.C.");
+        countries.put("India", "New Delhi");
+        countries.put("Japan", "Tokyo");
+        
+        // Iterating through the LinkedHashMap (insertion order is maintained)
+        System.out.println("Countries in LinkedHashMap:");
+        for (Map.Entry<String, String> entry : countries.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+    }
+}
+```
+
+### **Comparison of `HashMap`, `TreeMap`, and `LinkedHashMap`**:
+
+| Feature                    | **`HashMap`**                          | **`TreeMap`**                          | **`LinkedHashMap`**                     |
+|----------------------------|----------------------------------------|----------------------------------------|----------------------------------------|
+| **Ordering**                | Unordered                              | Sorted (based on natural order or comparator) | Insertion order                       |
+| **Performance (Put/Get)**   | O(1) on average                        | O(log n)                               | O(1) on average                        |
+| **Null Keys/Values**        | One `null` key, multiple `null` values | No `null` keys, but allows `null` values | One `null` key, multiple `null` values |
+| **Thread Safety**           | Not synchronized (not thread-safe)     | Not synchronized (not thread-safe)     | Not synchronized (not thread-safe)     |
+| **Use Case**                | Fast access to key-value pairs, no need for sorting | Sorted order of keys, range-based queries | When insertion order matters (e.g., cache) |
+| **Additional Features**     | None                                   | NavigableMap methods (e.g., firstKey(), lastKey()) | Predictable iteration order (insertion order) |
+
+### **When to Choose Which**:
+- **Use `HashMap`**:
+  - When you do not care about the order of keys and values.
+  - When you need fast access to elements (constant-time operations).
+  
+- **Use `TreeMap`**:
+  - When you need the map to maintain keys in sorted order.
+  - When you need to perform range queries or retrieve the smallest/largest keys.
+  
+- **Use `LinkedHashMap`**:
+  - When you need to maintain insertion order (i.e., the order in which keys were added).
+  - When you want the performance of a `HashMap` but also need predictable iteration order.
+
+### Conclusion:
+Each of the three map implementations has its strengths:
+- **`HashMap`** provides the best performance when order is not important.
+- **`TreeMap`** is the best choice when you need sorted keys and additional range-based operations.
+- **`LinkedHashMap`** is ideal when insertion order needs to be preserved while maintaining the performance benefits of a hash map.
+
+Choose the one that best fits the requirements of your application based on whether you need order preservation, sorting, or just fast key-value access.
+
+### SortedSet:===========
+In Java, **`SortedSet`** is an interface that extends the `Set` interface and represents a collection of elements that are sorted in a defined order. The elements in a `SortedSet` are ordered either by their natural ordering (if they are `Comparable`) or by a **Comparator** provided at the time of set creation. The most common implementation of the `SortedSet` interface is **`TreeSet`**.
+
+### **`SortedSet` Interface**:
+The `SortedSet` interface adds several methods to the `Set` interface that allow you to work with sorted data. It ensures that the elements in the set are ordered according to their natural ordering or a specified comparator.
+
+#### Key Methods in `SortedSet`:
+- **`first()`**: Returns the first (lowest) element in the set.
+- **`last()`**: Returns the last (highest) element in the set.
+- **`headSet(E toElement)`**: Returns a view of the portion of the set whose elements are strictly less than `toElement`.
+- **`tailSet(E fromElement)`**: Returns a view of the portion of the set whose elements are greater than or equal to `fromElement`.
+- **`subSet(E fromElement, E toElement)`**: Returns a view of the portion of the set whose elements are between `fromElement` and `toElement`.
+- **`comparator()`**: Returns the comparator used to order the elements in the set (if any).
+
+### **`TreeSet`**:
+**`TreeSet`** is the most commonly used implementation of the `SortedSet` interface. It is a **navigable set** that is backed by a **Red-Black tree**, which provides a balanced tree structure to maintain the order of elements. Since `TreeSet` implements `SortedSet`, the elements stored in a `TreeSet` are sorted based on their natural ordering (if they implement `Comparable`) or by a custom comparator (if provided).
+
+#### Key Characteristics of `TreeSet`:
+- **Sorted Order**: The elements in a `TreeSet` are automatically sorted in their natural order (if they are `Comparable`) or according to the provided `Comparator`.
+- **No Duplicates**: A `TreeSet` does not allow duplicate elements. If you attempt to add a duplicate element, it will not be added to the set.
+- **Efficient Operations**: Operations like `add()`, `remove()`, and `contains()` take **O(log n)** time complexity due to the underlying Red-Black tree structure.
+- **Navigable**: `TreeSet` provides several additional methods, such as `lower()`, `higher()`, `floor()`, and `ceiling()`, to navigate through the set and find elements based on their ordering.
+- **Null Elements**: `TreeSet` does not allow `null` elements, because `null` cannot be compared to other elements.
+
+#### When to Use `TreeSet`:
+- When you need a set that stores elements in **sorted order**.
+- When you need to perform operations like **range queries** (e.g., get all elements in a certain range).
+- When you need to efficiently perform operations like finding the **smallest** or **largest** element.
+
+### Example of Using `TreeSet`:
+```java
+import java.util.*;
+
+public class TreeSetExample {
+    public static void main(String[] args) {
+        // Creating a TreeSet (sorted order)
+        SortedSet<String> set = new TreeSet<>();
+        
+        // Adding elements to the TreeSet
+        set.add("Apple");
+        set.add("Banana");
+        set.add("Orange");
+        set.add("Grape");
+        
+        // Printing the TreeSet (elements will be in natural sorted order)
+        System.out.println("TreeSet: " + set);  // Output: [Apple, Banana, Grape, Orange]
+        
+        // Accessing the first and last elements
+        System.out.println("First element: " + set.first());  // Output: Apple
+        System.out.println("Last element: " + set.last());  // Output: Orange
+        
+        // Creating a subset of elements (e.g., elements that are less than "Grape")
+        SortedSet<String> headSet = set.headSet("Grape");
+        System.out.println("HeadSet (elements less than Grape): " + headSet);  // Output: [Apple, Banana]
+        
+        // Creating a subset of elements (e.g., elements greater than or equal to "Banana")
+        SortedSet<String> tailSet = set.tailSet("Banana");
+        System.out.println("TailSet (elements greater than or equal to Banana): " + tailSet);  // Output: [Banana, Grape, Orange]
+        
+        // Removing an element
+        set.remove("Banana");
+        System.out.println("TreeSet after removal: " + set);  // Output: [Apple, Grape, Orange]
+    }
+}
+```
+
+### **Comparison of `SortedSet` and `TreeSet`**:
+
+| Feature                    | **`SortedSet`**                            | **`TreeSet`**                                  |
+|----------------------------|--------------------------------------------|------------------------------------------------|
+| **Ordering**                | Maintains elements in sorted order (based on natural ordering or comparator) | Stores elements in sorted order (natural or custom comparator) |
+| **Duplicates**              | Does not allow duplicates                  | Does not allow duplicates                      |
+| **Null Elements**           | `SortedSet` itself doesn't allow null elements (implementation like `TreeSet` doesn't allow `null`) | `TreeSet` does not allow `null` elements       |
+| **Performance (Add/Remove)**| O(log n)                                   | O(log n) (due to underlying Red-Black tree)    |
+| **Additional Operations**   | Provides methods like `first()`, `last()`, `headSet()`, `tailSet()`, `subSet()` | Provides methods like `lower()`, `higher()`, `floor()`, `ceiling()` (additional navigation methods) |
+| **Thread Safety**           | Not synchronized                          | Not synchronized                               |
+| **Best Use Case**           | When you need sorted order for the set of elements | When you need a sorted set with efficient insertion, removal, and range-based queries |
+
+### **When to Use `TreeSet`**:
+- When you need a **sorted collection** of elements (based on natural ordering or a comparator).
+- When you want to efficiently query the **first**, **last**, or **subsets** of elements based on ranges.
+- When you need to perform operations such as finding the **next** or **previous** element relative to a given element (using methods like `higher()`, `lower()`, `floor()`, and `ceiling()`).
+- When **duplicate elements** should be automatically avoided in the set.
+
+### **Conclusion**:
+- **`SortedSet`** is an interface that provides methods for managing a set of elements in a sorted order. It ensures that elements are ordered and provides methods for range queries and navigation.
+- **`TreeSet`** is the most commonly used implementation of `SortedSet`. It provides an efficient, balanced tree structure to store elements in sorted order, and it supports additional navigation operations that make it very useful when dealing with ranges and sorted data.
+
+If you need to maintain a sorted set of elements and perform efficient operations like range queries or finding the smallest/largest element, **`TreeSet`** is the ideal choice.
+
+### SortedMap:===========
+In Java, the **`SortedMap`** interface is part of the Java Collections Framework and represents a map that maintains its entries in a sorted order. The **`TreeMap`** is the most commonly used implementation of the `SortedMap` interface. Let's explore both in detail.
+
+### **`SortedMap` Interface**:
+The `SortedMap` interface extends the `Map` interface and ensures that the entries in the map are sorted according to their **natural ordering** (if the keys are `Comparable`) or by a **custom comparator** provided at the time of map creation. 
+
+#### Key Methods in `SortedMap`:
+- **`firstKey()`**: Returns the first (lowest) key in the map.
+- **`lastKey()`**: Returns the last (highest) key in the map.
+- **`headMap(K toKey)`**: Returns a view of the portion of the map whose keys are strictly less than `toKey`.
+- **`tailMap(K fromKey)`**: Returns a view of the portion of the map whose keys are greater than or equal to `fromKey`.
+- **`subMap(K fromKey, K toKey)`**: Returns a view of the portion of the map whose keys are between `fromKey` (inclusive) and `toKey` (exclusive).
+- **`comparator()`**: Returns the comparator used to order the keys in the map (if any).
+
+### **`TreeMap`**:
+**`TreeMap`** is the most common implementation of the `SortedMap` interface. It is a **navigable map** that is backed by a **Red-Black tree**, a type of self-balancing binary search tree. `TreeMap` stores key-value pairs in sorted order based on the keys, either by their **natural ordering** (if the keys are `Comparable`) or by a **custom comparator** provided at the time of map creation.
+
+#### Key Characteristics of `TreeMap`:
+- **Sorted Order**: The keys in a `TreeMap` are stored in **sorted order** based on their natural ordering or a specified comparator.
+- **Navigable**: `TreeMap` provides various methods like `lowerKey()`, `higherKey()`, `floorKey()`, and `ceilingKey()` to navigate through the map and access keys in a specific order.
+- **Efficient Operations**: Operations like `put()`, `get()`, and `remove()` take **O(log n)** time complexity due to the underlying Red-Black tree structure.
+- **No Null Keys**: `TreeMap` does not allow **null keys**, although it allows **null values**.
+- **Thread Safety**: `TreeMap` is **not synchronized** by default, so it is not thread-safe. If thread safety is required, you can use `ConcurrentSkipListMap` or synchronize the map explicitly.
+
+#### When to Use `TreeMap`:
+- When you need to maintain a **sorted order** of keys.
+- When you need to perform **range queries** or access the **smallest**/ **largest** key.
+- When you need efficient operations on the map based on key comparisons.
+
+### Example of Using `TreeMap`:
+```java
+import java.util.*;
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        // Creating a TreeMap (sorted order by natural ordering of keys)
+        SortedMap<String, String> capitals = new TreeMap<>();
+        
+        // Adding key-value pairs to the TreeMap
+        capitals.put("USA", "Washington D.C.");
+        capitals.put("India", "New Delhi");
+        capitals.put("Japan", "Tokyo");
+        capitals.put("Canada", "Ottawa");
+        
+        // Printing the TreeMap (keys will be in sorted order)
+        System.out.println("TreeMap: " + capitals);  
+        // Output: TreeMap: {Canada=Ottawa, India=New Delhi, Japan=Tokyo, USA=Washington D.C.}
+
+        // Accessing the first and last keys
+        System.out.println("First Key: " + capitals.firstKey());  // Output: Canada
+        System.out.println("Last Key: " + capitals.lastKey());  // Output: USA
+        
+        // Creating a subset (headMap - keys less than "Japan")
+        SortedMap<String, String> headMap = capitals.headMap("Japan");
+        System.out.println("HeadMap (keys less than Japan): " + headMap);  
+        // Output: HeadMap (keys less than Japan): {Canada=Ottawa, India=New Delhi}
+        
+        // Creating a subset (tailMap - keys greater than or equal to "India")
+        SortedMap<String, String> tailMap = capitals.tailMap("India");
+        System.out.println("TailMap (keys greater than or equal to India): " + tailMap);  
+        // Output: TailMap (keys greater than or equal to India): {India=New Delhi, Japan=Tokyo, USA=Washington D.C.}
+        
+        // Removing an entry
+        capitals.remove("Canada");
+        System.out.println("TreeMap after removal: " + capitals);  
+        // Output: TreeMap after removal: {India=New Delhi, Japan=Tokyo, USA=Washington D.C.}
+    }
+}
+```
+
+### **Comparison of `SortedMap` and `TreeMap`**:
+
+| Feature                    | **`SortedMap`**                            | **`TreeMap`**                                  |
+|----------------------------|--------------------------------------------|------------------------------------------------|
+| **Ordering**                | Maintains elements in sorted order (based on natural ordering or comparator) | Stores elements in sorted order (natural or custom comparator) |
+| **Duplicates**              | Does not allow duplicate keys              | Does not allow duplicate keys                  |
+| **Null Keys**               | `SortedMap` itself does not allow null keys | `TreeMap` does not allow null keys             |
+| **Performance (Add/Remove)**| O(log n)                                   | O(log n) (due to underlying Red-Black tree)    |
+| **Navigability**            | Provides methods like `firstKey()`, `lastKey()`, `headMap()`, `tailMap()`, `subMap()` | Provides additional navigation methods like `lowerKey()`, `higherKey()`, `floorKey()`, `ceilingKey()` |
+| **Thread Safety**           | Not synchronized                          | Not synchronized                               |
+| **Best Use Case**           | When you need sorted order for the map of elements | When you need a sorted map with efficient insertion, removal, and range-based queries |
+
+### **When to Use `TreeMap`**:
+- When you need a **sorted map** that maintains keys in a sorted order (natural or custom).
+- When you need efficient range queries, such as getting all keys between two values.
+- When you need to access the **smallest** or **largest** key in the map or efficiently find the **next** or **previous** key using methods like `lowerKey()`, `higherKey()`, `floorKey()`, or `ceilingKey()`.
+
+### **Conclusion**:
+- **`SortedMap`** is an interface that ensures that a map's keys are maintained in a sorted order, either based on their natural ordering or according to a custom comparator.
+- **`TreeMap`** is the most commonly used implementation of the `SortedMap` interface. It provides efficient **O(log n)** operations and maintains keys in a sorted order, making it ideal for use cases that require range queries or ordered data.
+  
+When working with maps that require sorting, **`TreeMap`** is a powerful and efficient choice that provides not only sorting but also additional navigation features, like finding the smallest/largest key or subsets of keys.
 
 ### 52. **What is the difference between a `List`, `Set`, and `Map` in Java?**
 
