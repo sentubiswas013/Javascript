@@ -794,7 +794,6 @@ console.log(square(4)); // 16 (cached)
 
 Here, the `memoize` function caches results, so the second time `square(4)` is called, it returns the cached result without recalculating.
 
-
 ### **85. What is debounce and throttle in JavaScript?**
    **Debounce** and **throttle** are techniques used to optimize performance for frequently occurring events like scrolling, resizing, or keypresses.
 
@@ -847,6 +846,196 @@ Here, the `memoize` function caches results, so the second time `square(4)` is c
    - **Debounce** delays the execution of a function until after a certain amount of idle time has passed (ideal for scenarios like searching).
    - **Throttle** ensures that the function is called at regular intervals (ideal for scenarios like scrolling or resizing).
 
+
+### **12. What are Object-Oriented Programming (OOP) in javascript**
+**Object-Oriented Programming (OOP) in JavaScript** is a programming paradigm that uses objects and classes to organize code into reusable, modular units. JavaScript supports OOP concepts like encapsulation, inheritance, and polymorphism, but it differs from traditional OOP languages like Java or C++ because it is prototype-based, rather than class-based (though with ES6, it introduced class syntax for easier readability).
+
+Here’s a breakdown of the key concepts and how they are implemented in JavaScript:
+
+### 1. **Classes and Objects**
+A **class** is a blueprint for creating objects. It defines the properties and methods that an object of that class will have. In JavaScript, classes are a newer addition (introduced in ES6), but you can still use the older prototype-based approach.
+
+#### Example: Class and Object in JavaScript
+
+```javascript
+// ES6 Class Syntax
+class Animal {
+  constructor(name, sound) {
+    this.name = name;
+    this.sound = sound;
+  }
+
+  makeSound() {
+    console.log(`${this.name} says ${this.sound}`);
+  }
+}
+
+// Creating an object from the class
+const dog = new Animal('Dog', 'Woof');
+dog.makeSound();  // Output: Dog says Woof
+
+const cat = new Animal('Cat', 'Meow');
+cat.makeSound();  // Output: Cat says Meow
+```
+
+- **Constructor**: The `constructor` method is a special method used for initializing new objects.
+- **Method**: `makeSound` is a method that is available to every object created from the `Animal` class.
+
+### 2. **Encapsulation**
+Encapsulation is the concept of bundling data (properties) and methods that operate on that data into a single unit called an object. In JavaScript, this is done using objects and methods, where access to the properties is controlled (often through getters and setters).
+
+#### Example: Encapsulation with Getters and Setters
+
+```javascript
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this._age = age; // _age is a convention for private-like fields
+  }
+
+  // Getter
+  get age() {
+    return this._age;
+  }
+
+  // Setter
+  set age(value) {
+    if (value >= 0) {
+      this._age = value;
+    } else {
+      console.log("Age cannot be negative");
+    }
+  }
+}
+
+const person = new Person("John", 30);
+console.log(person.age);  // Output: 30
+person.age = 25;          // Changes the age
+console.log(person.age);  // Output: 25
+person.age = -5;          // Output: Age cannot be negative
+```
+
+### 3. **Inheritance**
+Inheritance allows a class to inherit properties and methods from another class. In JavaScript, inheritance is prototype-based by default, but it can be achieved using the `extends` keyword in class-based syntax (introduced in ES6).
+
+#### Example: Inheritance in JavaScript
+
+```javascript
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a sound`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);  // Calls the constructor of the parent class
+    this.breed = breed;
+  }
+
+  speak() {
+    console.log(`${this.name} barks`);
+  }
+}
+
+const dog = new Dog('Rex', 'Golden Retriever');
+dog.speak();  // Output: Rex barks
+```
+
+- `extends`: This keyword allows `Dog` to inherit from `Animal`.
+- `super`: The `super` keyword is used to call the parent class constructor and methods.
+
+### 4. **Polymorphism**
+Polymorphism is the ability to use a method in different ways. In JavaScript, polymorphism is achieved when a subclass redefines (overrides) a method of its parent class.
+
+#### Example: Polymorphism in JavaScript
+
+```javascript
+class Animal {
+  speak() {
+    console.log("Animal makes a sound");
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log("Dog barks");
+  }
+}
+
+class Cat extends Animal {
+  speak() {
+    console.log("Cat meows");
+  }
+}
+
+const animal = new Animal();
+const dog = new Dog();
+const cat = new Cat();
+
+animal.speak();  // Output: Animal makes a sound
+dog.speak();     // Output: Dog barks
+cat.speak();     // Output: Cat meows
+```
+
+### 5. **Abstraction**
+Abstraction is the process of hiding the complex implementation details and showing only the necessary functionality to the user. In JavaScript, this can be done by defining methods inside classes that provide high-level interfaces without exposing the underlying implementation.
+
+#### Example: Abstraction in JavaScript
+
+```javascript
+class BankAccount {
+  constructor(owner, balance) {
+    this.owner = owner;
+    this.balance = balance;
+  }
+
+  // Public method for deposit
+  deposit(amount) {
+    if (amount > 0) {
+      this.balance += amount;
+      console.log(`${this.owner} deposited ${amount}. Balance: ${this.balance}`);
+    } else {
+      console.log("Deposit amount must be positive");
+    }
+  }
+
+  // Private method to check balance
+  #checkBalance() {
+    console.log(`Balance: ${this.balance}`);
+  }
+}
+
+const account = new BankAccount('Alice', 1000);
+account.deposit(500);  // Output: Alice deposited 500. Balance: 1500
+// account.#checkBalance(); // Error: Private method, cannot be accessed outside the class
+```
+
+- **Private Fields**: JavaScript now supports private fields (using the `#` syntax) that cannot be accessed directly outside the class.
+
+### 6. **Prototype-Based Inheritance (Before ES6)**
+Before the introduction of ES6 classes, JavaScript used prototypes for inheritance. Every object has a prototype, which is another object from which it inherits properties and methods.
+
+#### Example: Prototype-Based Inheritance
+
+```javascript
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.speak = function() {
+  console.log(`${this.name} makes a sound`);
+};
+
+const dog = new Animal('Dog');
+dog.speak();  // Output: Dog makes a sound
+```
+
+In this example, `Animal` is a constructor function, and methods like `speak` are added to the prototype of `Animal`. All instances of `Animal` will have access to these methods.
 
 ### **12. What are arrow functions, and how do they differ from regular functions?**
    **Arrow functions** are a shorthand way of writing functions in JavaScript. They differ from regular functions in several ways:
