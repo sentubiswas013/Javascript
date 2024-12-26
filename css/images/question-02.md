@@ -174,6 +174,470 @@ There are several ways to create objects in JavaScript:
 
 Here are the answers to the next set of JavaScript questions:
 
+
+
+
+### 86. **What is a pure function in JavaScript? Can you give an example?**
+
+A **pure function** is a function that:
+1. Always produces the same output for the same input.
+2. Has no side effects (it does not modify external state).
+
+**Example**:
+
+```javascript
+function add(a, b) {
+  return a + b; // Always returns the same result for the same inputs
+}
+```
+
+Here, the `add()` function is pure because it always returns the same result and does not modify any external variables.
+
+### **37. What are higher-order functions in JavaScript?**
+  Higher-order function is a function that accepts another function as an argument or returns a function as a return value or both.
+
+   A **higher-order function** is a function that:
+   - Takes one or more functions as arguments.
+   - Returns a function as a result.
+
+   Higher-order functions are a key feature in functional programming. They allow you to abstract operations and create more flexible, reusable code.
+
+   Example:
+   ```javascript
+   function multiplier(factor) {
+     return function(number) {
+       return number * factor;
+     };
+   }
+   const double = multiplier(2);
+   console.log(double(5)); // 10
+   ```
+
+   In this example, `multiplier` is a higher-order function because it returns a function that multiplies its argument by a specific factor.
+
+   **Way 2:**  
+
+    ```javascript
+    const firstOrderFunc = () =>
+      console.log("Hello, I am a First order function");
+    const higherOrder = (ReturnFirstOrderFunc) => ReturnFirstOrderFunc();
+    higherOrder(firstOrderFunc);
+    ```
+
+    ```javascript
+    // Callback function, passed as a parameter in the higher order function
+    function callbackFunction(){
+        console.log('I am  a callback function');
+    }
+
+    // higher order function
+    function higherOrderFunction(func){
+        console.log('I am higher order function')
+        func()
+    }
+
+    higherOrderFunction(callbackFunction);
+    // Output
+    // I am higher order function
+    // I am  a callback function
+    ```
+
+### **39. What is a callback function in JavaScript?**
+   A **callback function** is a function passed as an argument to another function, which is then executed after some operation (e.g., asynchronous code) is completed.
+
+   Example:
+   ```javascript
+   function fetchData(callback) {
+     setTimeout(() => {
+       console.log('Data fetched');
+       callback(); // Calling the callback function
+     }, 1000);
+   }
+
+   fetchData(function() {
+     console.log('Callback executed');
+   });
+   ```
+
+   In this example, `fetchData` accepts a callback function that is executed once the data fetching operation completes.
+
+   ```
+### 74. **What are closures in JavaScript, and why are they important?**
+
+A **closure** is a function that retains access to its lexical scope, even when the function is executed outside of that scope. In other words, closures allow a function to "remember" its environment.
+
+Closures are important for:
+- **Data encapsulation**: Protecting data from being directly accessed or modified by the outside code.
+- **Function factories**: Generating functions dynamically with specific states.
+  
+**Example:**
+
+```javascript
+function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    console.log(count);
+  };
+}
+
+const increment = outer();
+increment(); // 1
+increment(); // 2
+```
+
+Here, `inner` has access to `count` even after `outer` has finished execution, demonstrating closure.
+
+
+### 12. **How does the `this` keyword work in JavaScript?**
+
+In JavaScript, the **`this`** keyword refers to the context in which a function is called. The value of `this` depends on how a function is invoked:
+
+- **In a regular function**: `this` refers to the global object (`window` in browsers) in non-strict mode, or `undefined` in strict mode.
+  
+- **In a method**: If the function is a method of an object, `this` refers to the object that called the method.
+
+- **In an arrow function**: `this` is lexically inherited from the surrounding context (it does not have its own `this`).
+
+- **With `call()`, `apply()`, or `bind()`**: You can explicitly set the value of `this`.
+
+Example:
+```javascript
+const person = {
+  name: 'Alice',
+  greet: function() {
+    console.log(this.name);
+  }
+};
+
+person.greet(); // "Alice", 'this' refers to the 'person' object
+```
+
+
+### 89. **What is the difference between synchronous and asynchronous code in JavaScript?**
+
+- **Synchronous code**: Executes line by line. Each operation waits for the previous one to finish before continuing, blocking further code execution.
+
+  **Example**:
+  
+  ```javascript
+  console.log('Start');
+  console.log('End');
+  ```
+
+  Both `console.log()` statements are executed one after the other.
+
+- **Asynchronous code**: Allows operations to run in the background without blocking the main execution thread. It continues executing other code while waiting for the asynchronous operation (like fetching data, setTimeout) to complete.
+
+  **Example**:
+
+  ```javascript
+  console.log('Start');
+  setTimeout(() => {
+    console.log('Middle');
+  }, 1000);
+  console.log('End');
+  ```
+
+  Output: 
+  ```
+  Start
+  End
+  Middle
+  ```
+
+  Here, `setTimeout` runs asynchronously, and the `console.log('End')` statement executes before the `setTimeout` callback.
+
+  
+### Key Differences:
+
+| **Aspect**               | **Synchronous**                             | **Asynchronous**                              |
+|--------------------------|---------------------------------------------|-----------------------------------------------|
+| **Execution Flow**        | Tasks are executed one after another.      | Tasks can be executed concurrently.          |
+| **Blocking**              | Blocks the program until the task finishes. | Does not block the program; can continue with other tasks. |
+| **Complexity**            | Easier to understand and implement.        | More complex but more efficient for I/O-bound tasks. |
+| **Efficiency**            | Not efficient for tasks that take time (e.g., I/O operations). | More efficient for handling many I/O-bound tasks concurrently. |
+| **Common Use Cases**      | Simple tasks where timing is not critical. | Web servers, network requests, background jobs, etc. |
+| **Example**               | A function waits for a file read to finish before continuing. | A function initiates a file read but continues doing other work until the file is read. |
+
+
+
+### **17. What is the purpose of the `call()`,  `apply()` and `bind()` methods in JavaScript?**
+   Both `call()` and `apply()` are used to invoke a function with a specific `this` context and pass arguments to it. The primary difference between them is how arguments are passed:
+
+  The difference between Call, Apply and Bind can be explained with below examples,
+
+   **Call:** The call() method invokes a function with a given `this` value and arguments provided one by one
+
+   ```javascript
+   var employee1 = { firstName: "John", lastName: "Rodson" };
+   var employee2 = { firstName: "Jimmy", lastName: "Baily" };
+
+   function invite(greeting1, greeting2) {
+     console.log(
+       greeting1 + " " + this.firstName + " " + this.lastName + ", " + greeting2
+     );
+   }
+
+   invite.call(employee1, "Hello", "How are you?"); // Hello John Rodson, How are you?
+   invite.call(employee2, "Hello", "How are you?"); // Hello Jimmy Baily, How are you?
+   ```
+
+   **Apply:** Invokes the function with a given `this` value and allows you to pass in arguments as an array
+
+   ```javascript
+   var employee1 = { firstName: "John", lastName: "Rodson" };
+   var employee2 = { firstName: "Jimmy", lastName: "Baily" };
+
+   function invite(greeting1, greeting2) {
+     console.log(
+       greeting1 + " " + this.firstName + " " + this.lastName + ", " + greeting2
+     );
+   }
+
+   invite.apply(employee1, ["Hello", "How are you?"]); // Hello John Rodson, How are you?
+   invite.apply(employee2, ["Hello", "How are you?"]); // Hello Jimmy Baily, How are you?
+   ```
+
+   **bind:** returns a new function, allowing you to pass any number of arguments
+
+   ```javascript
+   var employee1 = { firstName: "John", lastName: "Rodson" };
+   var employee2 = { firstName: "Jimmy", lastName: "Baily" };
+
+   function invite(greeting1, greeting2) {
+     console.log(
+       greeting1 + " " + this.firstName + " " + this.lastName + ", " + greeting2
+     );
+   }
+
+   var inviteEmployee1 = invite.bind(employee1);
+   var inviteEmployee2 = invite.bind(employee2);
+   inviteEmployee1("Hello", "How are you?"); // Hello John Rodson, How are you?
+   inviteEmployee2("Hello", "How are you?"); // Hello Jimmy Baily, How are you?
+   ```
+
+   Call and apply are pretty interchangeable. Both execute the current function immediately. You need to decide whether it’s easier to send in an array or a comma separated list of arguments. You can remember by treating Call is for **comma** (separated list) and Apply is for **Array**.
+
+   Whereas Bind creates a new function that will have `this` set to the first parameter passed to bind().
+
+   
+### **45. What is `async/await` in JavaScript?**
+  An async function is a function declared with the `async` keyword which enables asynchronous, promise-based behavior to be written in a cleaner style by avoiding promise chains. These functions can contain zero or more `await` expressions.
+
+   **`async`/`await`** are syntax improvements in JavaScript to work with promises in a cleaner and more readable way:
+   - **`async`** is used to define a function that returns a promise.
+   - **`await`** can be used inside an `async` function to pause execution until the promise is resolved.
+
+   Example:
+   ```javascript
+   async function fetchData() {
+     let data = await new Promise(resolve => setTimeout(() => resolve('Data fetched'), 1000));
+     console.log(data);
+   }
+   fetchData(); // Output: Data fetched
+   ```
+
+   With `async/await`, you can handle asynchronous operations in a synchronous-like manner, avoiding the need for chaining `.then()` and `.catch()`.
+
+
+### **42. What is a promise in JavaScript? How does it work?**
+   A **Promise** in JavaScript is an object representing the eventual completion (or failure) of an asynchronous operation and its resulting value. It is used to handle asynchronous operations and avoid callback hell.
+
+   A promise can be in one of the following states:
+   - **Pending**: The promise is still being processed.
+   - **Resolved** (Fulfilled): The operation was successful, and the promise has a result.
+   - **Rejected**: The operation failed, and the promise has an error.
+
+   Example:
+   ```javascript
+   let promise = new Promise((resolve, reject) => {
+     let success = true;
+     if (success) {
+       resolve('Operation was successful');
+     } else {
+       reject('Operation failed');
+     }
+   });
+
+   promise.then(result => console.log(result))
+          .catch(error => console.log(error));
+   ```
+
+   The promise is initially in the "pending" state, and depending on the outcome, it either resolves or rejects.
+
+
+### 41. **What is a promise chain in JavaScript?**
+
+A **promise chain** is a sequence of `.then()` or `.catch()` methods chained together, allowing for a series of asynchronous operations to be executed in order. Each `.then()` receives the result of the previous promise.
+
+Example:
+```javascript
+fetchData()
+  .then(data => {
+    console.log("Data received:", data);
+    return processData(data);
+  })
+  .then(processedData => {
+    console.log("Processed data:", processedData);
+    return saveData(processedData);
+  })
+  .catch(error => {
+    console.error("Error occurred:", error);
+  });
+```
+Here, `fetchData` returns a promise, which is passed to the first `.then()`. The subsequent `.then()` methods chain the results of the previous promises.
+
+### **43. What are the states of a promise?**
+   A promise has three states:
+   1. **Pending**: The promise is neither resolved nor rejected; it is still in progress.
+   2. **Fulfilled** (Resolved): The asynchronous operation has completed successfully, and the promise now has a result.
+   3. **Rejected**: The asynchronous operation has failed, and the promise is rejected with an error or failure reason.
+
+   The state transitions occur like this:
+   - A promise starts in the `pending` state.
+   - It can transition to `fulfilled` if the operation completes successfully.
+   - It can transition to `rejected` if the operation encounters an error.
+
+### **46. What is the difference between `async/await` and promises?**
+   - **Promises** are the core mechanism for handling asynchronous operations, and you can chain `.then()` and `.catch()` for handling the result or error.
+   - **`async/await`** is a syntactical sugar over promises. It makes asynchronous code look synchronous, making it easier to read and write.
+
+   **Key differences**:
+   - `async/await` makes asynchronous code look more like synchronous code, improving readability.
+   - Promises involve chaining `.then()` for success and `.catch()` for error handling.
+   - `async/await` avoids callback-style nesting and makes error handling easier with `try/catch`.
+
+   Example using promises:
+   ```javascript
+   getData()
+     .then(result => console.log(result))
+     .catch(error => console.log(error));
+   ```
+
+   Example using async/await:
+   ```javascript
+   try {
+     const result = await getData();
+     console.log(result);
+   } catch (error) {
+     console.log(error);
+   }
+   ```
+
+
+07. ### What is an observable
+
+     An Observable is basically a function that can return a stream of values either synchronously or asynchronously to an observer over time. The consumer can get the value by calling `subscribe()` method.
+     Let's look at a simple example of an Observable
+
+     ```javascript
+     import { Observable } from "rxjs";
+
+     const observable = new Observable((observer) => {
+       setTimeout(() => {
+         observer.next("Message from a Observable!");
+       }, 3000);
+     });
+
+     observable.subscribe((value) => console.log(value));
+     ```
+
+     ![Screenshot](images/observables.png)
+
+     **Note:** Observables are not part of the JavaScript language yet but they are being proposed to be added to the language
+
+08. ### What are the differences between promises and observables
+
+     Some of the major difference in a tabular form
+
+     | Promises                                                           | Observables                                                                              |
+     | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+     | Emits only a single value at a time                                | Emits multiple values over a period of time(stream of values ranging from 0 to multiple) |
+     | Eager in nature; they are going to be called immediately           | Lazy in nature; they require subscription to be invoked                                  |
+     | Promise is always asynchronous even though it resolved immediately | Observable can be either synchronous or asynchronous                                     |
+     | Doesn't provide any operators                                      | Provides operators such as map, forEach, filter, reduce, retry, and retryWhen etc        |
+     | Cannot be canceled                                                 | Canceled by using unsubscribe() method                                                   |
+
+08. ### What are the differences between Callback Functions and Higher-Order Components
+
+### Key Differences:
+| Feature               | Callback Functions                          | Higher-Order Components (HOCs)                |
+|-----------------------|---------------------------------------------|----------------------------------------------|
+| **Definition**         | A function passed as an argument to be executed later. | A function that takes a component and returns a new component with additional behavior. |
+| **Context**            | General JavaScript, often used for async operations (e.g., event handlers, APIs). | Primarily used in React to enhance or modify components. |
+| **Purpose**            | To handle asynchronous operations or custom actions after a task is complete. | To add reusable functionality to components without changing the component itself. |
+| **Return Value**       | Returns nothing directly; it executes some code when called. | Returns a new component, often with added props or logic. |
+| **Usage**              | Used in async operations (e.g., `setTimeout`, API calls). | Used in React to modify or augment component behavior. |
+
+
+15. ### What is the currying function
+
+    Currying is a powerful technique in JavaScript (and functional programming in general) that allows a function to be broken down into multiple smaller functions, each accepting one argument. It promotes code reusability and flexibility, particularly when working with functions that take multiple parameters.
+
+    Let's take an example of n-ary function and how it turns into a currying function,
+
+    ```javascript
+    function multiply(a) {
+      return function(b) {
+        return function(c) {
+          return a * b * c;
+        };
+      };
+    }
+
+    const result = multiply(2)(3)(4); // Output: 24
+    console.log(result);
+    ```
+
+    ```javascript
+    function handleEvent(eventType) {
+      return function(message) {
+        console.log(`${eventType}: ${message}`);
+      };
+    }
+
+    const logClick = handleEvent('Click');
+    const logSubmit = handleEvent('Submit');
+
+    logClick('Button clicked!'); // Output: Click: Button clicked!
+    logSubmit('Form submitted!'); // Output: Submit: Form submitted!
+    ```
+
+    Curried functions are great to improve **code reusability** and **functional composition**.
+
+    **[⬆ Back to Top](#table-of-contents)**
+
+   
+
+214. ### What is an anonymous function
+
+     An anonymous function is a function without a name! Anonymous functions are commonly assigned to a variable name or used as a callback function. The syntax would be as below,
+
+     ```javascript
+     function (optionalParameters) {
+       //do something
+     }
+
+     const myFunction = function(){ //Anonymous function assigned to a variable
+       //do something
+     };
+
+     [1, 2, 3].map(function(element){ //Anonymous function used as a callback function
+       //do something
+     });
+     ```
+
+     Let's see the above anonymous function in an example,
+
+     ```javascript
+     var x = function (a, b) {
+       return a * b;
+     };
+     var z = x(5, 10);
+     console.log(z); // 50
+     ```
+
 ### **11. Explain event delegation in JavaScript.**
    **Event delegation** is a technique where you attach a single event listener to a parent element, and the event is triggered by the child elements that match a specified selector. This method relies on the event bubbling process, where an event that occurs on a child element bubbles up to its parent elements. It improves performance, especially when you have a large number of child elements, by reducing the number of event listeners attached.
 
