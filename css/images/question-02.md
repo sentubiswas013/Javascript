@@ -1053,22 +1053,6 @@ console.log(person1); // Person { name: 'Alice', age: 25 }
      greet(); // works only after the function expression
      ```
 
-### **16. What is the use of the `bind` method in JavaScript?**
-   The `bind()` method creates a new function that, when called, has its `this` value set to the specified value. This is useful for situations where you want to explicitly set `this` for a function, especially in event handlers or callbacks.
-
-   Example:
-   ```javascript
-   function greet() {
-     console.log('Hello, ' + this.name);
-   }
-
-   const person = { name: 'John' };
-   const greetPerson = greet.bind(person);
-   greetPerson(); // Hello, John
-   ```
-
-   The `bind()` method is also commonly used in React for handling events.
-
 ### **18. What is the use of `setTimeout()` and `setInterval()`?**
    - **`setTimeout()`**: Executes a function or a specified block of code once after a specified delay (in milliseconds).
      ```javascript
@@ -1082,13 +1066,6 @@ console.log(person1); // Person { name: 'Alice', age: 25 }
        console.log('Hello every 2 seconds');
      }, 2000);
      ```
-
-### **19. What is the difference between `call()` and `apply()` methods in JavaScript?**
-   This question is a repeat of question **17**, but to summarize:
-   - **`call()`**: Accepts arguments as a **comma-separated list**.
-   - **`apply()`**: Accepts arguments as an **array**.
-
-   Both methods allow you to control the `this` context for the function.
 
 ### **20. How do you clone an object in JavaScript?**
    There are multiple ways to clone an object in JavaScript:
