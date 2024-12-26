@@ -88,32 +88,6 @@ if ("Hello") {
 }
 ```
 
----
-
-### 12. **How does the `this` keyword work in JavaScript?**
-
-In JavaScript, the **`this`** keyword refers to the context in which a function is called. The value of `this` depends on how a function is invoked:
-
-- **In a regular function**: `this` refers to the global object (`window` in browsers) in non-strict mode, or `undefined` in strict mode.
-  
-- **In a method**: If the function is a method of an object, `this` refers to the object that called the method.
-
-- **In an arrow function**: `this` is lexically inherited from the surrounding context (it does not have its own `this`).
-
-- **With `call()`, `apply()`, or `bind()`**: You can explicitly set the value of `this`.
-
-Example:
-```javascript
-const person = {
-  name: 'Alice',
-  greet: function() {
-    console.log(this.name);
-  }
-};
-
-person.greet(); // "Alice", 'this' refers to the 'person' object
-```
-
 #### 7. **What are the JavaScript data structures, and when would you use them?**
    - **Arrays**: Ordered collections, used when the order of elements matters.
    - **Objects**: Key-value pairs, used to represent a collection of related data.
@@ -276,33 +250,6 @@ console.log(date.getFullYear()); // Built-in Date object
 
    const john = new Person('John');
    john.greet(); // Hello John
-   ```
-### 74. **What are closures in JavaScript, and why are they important?**
-
-A **closure** is a function that retains access to its lexical scope, even when the function is executed outside of that scope. In other words, closures allow a function to "remember" its environment.
-
-Closures are important for:
-- **Data encapsulation**: Protecting data from being directly accessed or modified by the outside code.
-- **Function factories**: Generating functions dynamically with specific states.
-  
-**Example:**
-
-```javascript
-function outer() {
-  let count = 0;
-  return function inner() {
-    count++;
-    console.log(count);
-  };
-}
-
-const increment = outer();
-increment(); // 1
-increment(); // 2
-```
-
-Here, `inner` has access to `count` even after `outer` has finished execution, demonstrating closure.
-
 
 ### 73. **What is the purpose of `WeakMap` and `WeakSet` in JavaScript?**
 
@@ -461,27 +408,6 @@ console.log(person1); // Person { name: 'Alice', age: 25 }
    ```
 
    The `bind()` method is also commonly used in React for handling events.
-
-### **17. What is the purpose of the `call()`,  `apply()` and `bind()` methods in JavaScript?**
-   Both `call()` and `apply()` are used to invoke a function with a specific `this` context and pass arguments to it. The primary difference between them is how arguments are passed:
-
-   - **`call()`**: Arguments are passed individually after the `this` context.
-     ```javascript
-     function greet(age, country) {
-       console.log('Hello, ' + this.name + '. Age: ' + age + ', Country: ' + country);
-     }
-     const person = { name: 'John' };
-     greet.call(person, 25, 'USA');
-     ```
-   - **`apply()`**: Arguments are passed as an array.
-     ```javascript
-     greet.apply(person, [25, 'USA']);
-     ```
-     - **`bind()`**: Returns a new function with `this` set to the provided value, and can optionally preset some arguments.
-      ```javascript
-      const greetAlice = greet.bind(null, "Alice");
-      greetAlice(25); // Hello, Alice, age 25
-      ```
 
 ### **18. What is the use of `setTimeout()` and `setInterval()`?**
    - **`setTimeout()`**: Executes a function or a specified block of code once after a specified delay (in milliseconds).
@@ -1083,26 +1009,6 @@ Here are the answers to the next set of JavaScript questions:
 
    This way, you can return multiple values by packaging them into a single object or array.
 
-### **37. What are higher-order functions in JavaScript?**
-   A **higher-order function** is a function that:
-   - Takes one or more functions as arguments.
-   - Returns a function as a result.
-
-   Higher-order functions are a key feature in functional programming. They allow you to abstract operations and create more flexible, reusable code.
-
-   Example:
-   ```javascript
-   function multiplier(factor) {
-     return function(number) {
-       return number * factor;
-     };
-   }
-   const double = multiplier(2);
-   console.log(double(5)); // 10
-   ```
-
-   In this example, `multiplier` is a higher-order function because it returns a function that multiplies its argument by a specific factor.
-
 ### **38. What is recursion in JavaScript? Can you provide an example?**
    **Recursion** is when a function calls itself to solve a problem. A base case is usually defined to prevent infinite recursion.
 
@@ -1116,25 +1022,6 @@ Here are the answers to the next set of JavaScript questions:
    ```
 
    In this example, the `factorial` function calls itself with a reduced value of `n` until it reaches the base case (`n === 0`).
-
-### **39. What is a callback function in JavaScript?**
-   A **callback function** is a function passed as an argument to another function, which is then executed after some operation (e.g., asynchronous code) is completed.
-
-   Example:
-   ```javascript
-   function fetchData(callback) {
-     setTimeout(() => {
-       console.log('Data fetched');
-       callback(); // Calling the callback function
-     }, 1000);
-   }
-
-   fetchData(function() {
-     console.log('Callback executed');
-   });
-   ```
-
-   In this example, `fetchData` accepts a callback function that is executed once the data fetching operation completes.
 
 
 ### 81. **How does JavaScript handle multiple callback functions?**
@@ -1222,41 +1109,6 @@ JavaScript handles asynchronous operations using:
 ## **4. Asynchronous JavaScript**
 Here are the answers to the next set of JavaScript questions:
 
-
-### 89. **What is the difference between synchronous and asynchronous code in JavaScript?**
-
-- **Synchronous code**: Executes line by line. Each operation waits for the previous one to finish before continuing, blocking further code execution.
-
-  **Example**:
-  
-  ```javascript
-  console.log('Start');
-  console.log('End');
-  ```
-
-  Both `console.log()` statements are executed one after the other.
-
-- **Asynchronous code**: Allows operations to run in the background without blocking the main execution thread. It continues executing other code while waiting for the asynchronous operation (like fetching data, setTimeout) to complete.
-
-  **Example**:
-
-  ```javascript
-  console.log('Start');
-  setTimeout(() => {
-    console.log('Middle');
-  }, 1000);
-  console.log('End');
-  ```
-
-  Output: 
-  ```
-  Start
-  End
-  Middle
-  ```
-
-  Here, `setTimeout` runs asynchronously, and the `console.log('End')` statement executes before the `setTimeout` callback.
-
 ### **41. What is the event loop in JavaScript?**
    The **event loop** is a fundamental part of JavaScript's concurrency model. It allows JavaScript to perform non-blocking operations, even though JavaScript is single-threaded. The event loop continuously checks the call stack and the message queue (also called the event queue).
    
@@ -1294,64 +1146,6 @@ console.log(multiplyBy2(3)); // 6
 
 Here, `multiply` is a curried function that first takes `a`, then returns a new function that takes `b` and performs the multiplication.
 
-### **42. What is a promise in JavaScript? How does it work?**
-   A **Promise** in JavaScript is an object representing the eventual completion (or failure) of an asynchronous operation and its resulting value. It is used to handle asynchronous operations and avoid callback hell.
-
-   A promise can be in one of the following states:
-   - **Pending**: The promise is still being processed.
-   - **Resolved** (Fulfilled): The operation was successful, and the promise has a result.
-   - **Rejected**: The operation failed, and the promise has an error.
-
-   Example:
-   ```javascript
-   let promise = new Promise((resolve, reject) => {
-     let success = true;
-     if (success) {
-       resolve('Operation was successful');
-     } else {
-       reject('Operation failed');
-     }
-   });
-
-   promise.then(result => console.log(result))
-          .catch(error => console.log(error));
-   ```
-
-   The promise is initially in the "pending" state, and depending on the outcome, it either resolves or rejects.
-
-
-### 41. **What is a promise chain in JavaScript?**
-
-A **promise chain** is a sequence of `.then()` or `.catch()` methods chained together, allowing for a series of asynchronous operations to be executed in order. Each `.then()` receives the result of the previous promise.
-
-Example:
-```javascript
-fetchData()
-  .then(data => {
-    console.log("Data received:", data);
-    return processData(data);
-  })
-  .then(processedData => {
-    console.log("Processed data:", processedData);
-    return saveData(processedData);
-  })
-  .catch(error => {
-    console.error("Error occurred:", error);
-  });
-```
-Here, `fetchData` returns a promise, which is passed to the first `.then()`. The subsequent `.then()` methods chain the results of the previous promises.
-
-### **43. What are the states of a promise?**
-   A promise has three states:
-   1. **Pending**: The promise is neither resolved nor rejected; it is still in progress.
-   2. **Fulfilled** (Resolved): The asynchronous operation has completed successfully, and the promise now has a result.
-   3. **Rejected**: The asynchronous operation has failed, and the promise is rejected with an error or failure reason.
-
-   The state transitions occur like this:
-   - A promise starts in the `pending` state.
-   - It can transition to `fulfilled` if the operation completes successfully.
-   - It can transition to `rejected` if the operation encounters an error.
-
 ### **44. How can you handle asynchronous operations in JavaScript?**
    Asynchronous operations can be handled in JavaScript in several ways:
    1. **Callbacks**: Functions passed as arguments to be executed once an operation is complete.
@@ -1368,49 +1162,6 @@ Here, `fetchData` returns a promise, which is passed to the first `.then()`. The
 
    fetchData().then(result => console.log(result));
    ```
-
-### **45. What is `async/await` in JavaScript?**
-   **`async`/`await`** are syntax improvements in JavaScript to work with promises in a cleaner and more readable way:
-   - **`async`** is used to define a function that returns a promise.
-   - **`await`** can be used inside an `async` function to pause execution until the promise is resolved.
-
-   Example:
-   ```javascript
-   async function fetchData() {
-     let data = await new Promise(resolve => setTimeout(() => resolve('Data fetched'), 1000));
-     console.log(data);
-   }
-   fetchData(); // Output: Data fetched
-   ```
-
-   With `async/await`, you can handle asynchronous operations in a synchronous-like manner, avoiding the need for chaining `.then()` and `.catch()`.
-
-### **46. What is the difference between `async/await` and promises?**
-   - **Promises** are the core mechanism for handling asynchronous operations, and you can chain `.then()` and `.catch()` for handling the result or error.
-   - **`async/await`** is a syntactical sugar over promises. It makes asynchronous code look synchronous, making it easier to read and write.
-
-   **Key differences**:
-   - `async/await` makes asynchronous code look more like synchronous code, improving readability.
-   - Promises involve chaining `.then()` for success and `.catch()` for error handling.
-   - `async/await` avoids callback-style nesting and makes error handling easier with `try/catch`.
-
-   Example using promises:
-   ```javascript
-   getData()
-     .then(result => console.log(result))
-     .catch(error => console.log(error));
-   ```
-
-   Example using async/await:
-   ```javascript
-   try {
-     const result = await getData();
-     console.log(result);
-   } catch (error) {
-     console.log(error);
-   }
-   ```
-
 
 ### 14. **Explain the concept of JavaScript’s single-threaded model.**
 
@@ -2397,24 +2148,6 @@ In summary:
   - Often used for session management or storing user preferences.
   - Syntax: `document.cookie = "key=value; expires=date; path=/"`.
 
-
-### 86. **What is a pure function in JavaScript? Can you give an example?**
-
-A **pure function** is a function that:
-1. Always produces the same output for the same input.
-2. Has no side effects (it does not modify external state).
-
-**Example**:
-
-```javascript
-function add(a, b) {
-  return a + b; // Always returns the same result for the same inputs
-}
-```
-
-Here, the `add()` function is pure because it always returns the same result and does not modify any external variables.
-
----
 
 ### 87. **How do you handle CORS (Cross-Origin Resource Sharing) in JavaScript?**
 
