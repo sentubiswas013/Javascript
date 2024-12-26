@@ -197,42 +197,42 @@ Here, the `add()` function is pure because it always returns the same result and
 
    Example:
    ```javascript
-   function multiplier(factor) {
-     return function(number) {
-       return number * factor;
-     };
-   }
-   const double = multiplier(2);
-   console.log(double(5)); // 10
+    function multiplier(factor) {
+      return function(number) {
+        return number * factor;
+      };
+    }
+    const double = multiplier(2);
+    console.log(double(5)); // 10
    ```
 
-   In this example, `multiplier` is a higher-order function because it returns a function that multiplies its argument by a specific factor.
+  In this example, `multiplier` is a higher-order function because it returns a function that multiplies its argument by a specific factor.
 
    **Way 2:**  
 
     ```javascript
-    const firstOrderFunc = () =>
-      console.log("Hello, I am a First order function");
-    const higherOrder = (ReturnFirstOrderFunc) => ReturnFirstOrderFunc();
-    higherOrder(firstOrderFunc);
+      const firstOrderFunc = () =>
+        console.log("Hello, I am a First order function");
+      const higherOrder = (ReturnFirstOrderFunc) => ReturnFirstOrderFunc();
+      higherOrder(firstOrderFunc);
     ```
 
     ```javascript
-    // Callback function, passed as a parameter in the higher order function
-    function callbackFunction(){
-        console.log('I am  a callback function');
-    }
+      // Callback function, passed as a parameter in the higher order function
+      function callbackFunction(){
+          console.log('I am  a callback function');
+      }
 
-    // higher order function
-    function higherOrderFunction(func){
-        console.log('I am higher order function')
-        func()
-    }
+      // higher order function
+      function higherOrderFunction(func){
+          console.log('I am higher order function')
+          func()
+      }
 
-    higherOrderFunction(callbackFunction);
-    // Output
-    // I am higher order function
-    // I am  a callback function
+      higherOrderFunction(callbackFunction);
+      // Output
+      // I am higher order function
+      // I am  a callback function
     ```
 
 ### **39. What is a callback function in JavaScript?**
